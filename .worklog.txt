@@ -64,9 +64,9 @@ GitHub Personal Access Token: <PASTE_YOUR_TOKEN_HERE>
 CURRENT STATE
 =============
 - Goal: Implement Pacer ETFs holdings-to-watchlist web application in daggerok/Pacer matching sibling parity (Bun-only, zero runtime dependencies, static client app + update-data feed).
-- Status (2026-10-01): IMPLEMENTED on branch feat/pacer-etfs, live acceptance done, PR to main being opened (NOT merged). Remaining: review/merge by the user, Pages enablement, optional first api/pacer snapshot.
+- Status (2026-10-01): IMPLEMENTED on branch feat/pacer-etfs, live acceptance done, PR https://github.com/daggerok/Pacer/pull/2 open against main (NOT merged). Remaining: review/merge by the user, Pages enablement, optional first api/pacer snapshot.
 - Repository: https://github.com/daggerok/Pacer
-- Branch: feat/pacer-etfs (pushed); base main f00bced
+- Branch: feat/pacer-etfs (pushed, a61aada); base main f00bced; PR #2
 - Authorization used: edits, push and PR creation on this repo; no merge, no force-push; refreshed api/ data NOT committed (no initial snapshot was required by the acceptance criteria)
 - Completed:
   1. Branch created; scaffold from daggerok/Schwab (package.json, bun.lock, .gitignore, favicon, dependabot.yml, index.html, app.tsx with only brand/provenance substitutions)
