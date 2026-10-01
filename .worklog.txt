@@ -66,7 +66,8 @@ CURRENT STATE
 - Goal: Implement the Pacer ETFs holdings-to-watchlist app in daggerok/Pacer with sibling parity
   (Bun-only, zero runtime dependencies, static client app + api/pacer feed), including the
   checked-in scripts/update-data.config.json defaults and the full workflow set.
-- Status: Implementation complete offline; live acceptance run pending publication (see below).
+- Status: Implementation complete; PR #1 opened; live data acceptance run pending (it must be
+  dispatched manually — see Blockers).
 - Repository: https://github.com/daggerok/Pacer
 - Branch: arena/01a0f9aa-pacer (session branch; PR opened from it)
 - Pushed baseline: main @ f00bced ("docs(prompt): add ready-to-use agent implementation prompt for Pacer ETFs")
@@ -96,16 +97,28 @@ CURRENT STATE
   6. Workflows: .github/workflows/update-data.yml (schedule + 25 dispatch inputs, commits
      api/pacer only), ci.yml (offline checks), pages.yml (Pages deploy from main),
      .github/dependabot.yml.
+  7. README.md (structure pinned to daggerok/Schwab README: intro, sources table, metrics,
+     update-controls table with the Pacer defaults, brands and sibling tables with a Pacer row,
+     MIT/trademark note). PR #1: https://github.com/daggerok/Pacer/pull/1 (ci "offline" job green).
 - Next action:
-  1. Run the mandatory live acceptance on GitHub Actions with a three-ticker subset
-     (TICKERS="COWZ CALF PTLC", default REQUEST_SLEEP/CONCURRENCY, no SKIP_* flags).
-  2. Pull the generated api/pacer feed, verify counts and per-fund values, re-run the same
-     command and compare hashes for byte-stability.
-  3. Write README.md (pinned sibling reference: daggerok/Schwab README) and set the repo
-     About description/homepage/topics.
-  4. Open the PR from arena/01a0f9aa-pacer.
-- Blockers: The sandbox network allows github.com/npm only, so live issuer/SEC/Yahoo requests are
-  executed through GitHub Actions (which has unrestricted egress); local runs are offline only.
+  1. Get the live acceptance run: Actions -> "Update Pacer ETF data" -> Run workflow ->
+     branch arena/01a0f9aa-pacer -> tickers "COWZ CALF PTLC", every other input left blank so the
+     JSON defaults apply. (The sandbox cannot dispatch it; see Blockers.)
+  2. Pull the generated api/pacer feed, verify per-fund values (name, category, inception, TER,
+     NAV = NetAssets/SharesOutstanding, holdings rows, history rows), then re-run the identical
+     command and confirm the second run reports no changes (byte-stable output).
+  3. Enable GitHub Pages (Settings -> Pages -> GitHub Actions) so pages.yml can publish.
+  4. After verification, merge PR #1.
+- Blockers:
+  * Sandbox egress is allowlisted to github.com/npm/pypi/codeload only: paceretfs.com, sec.gov,
+    query1.finance.yahoo.com and r.jina.ai all return HTTP 000 from bash/bun, so live runs must be
+    executed by GitHub Actions. External reconnaissance is done with the fetch_page tool instead.
+  * The GitHub App installation token has no actions:write scope: `gh workflow run` returns
+    HTTP 404 (the workflow is not on the default branch yet) and the raw dispatch endpoint returns
+    HTTP 403 "Resource not accessible by integration". PR-triggered ci.yml does run and passed,
+    so Actions itself is enabled on the repository.
+  * `gh repo edit` (About description/homepage/topics) is HTTP 403 for the same reason; the
+    repository About block is already set to the Pacer wording, so no change is required.
 
 AUTHORITY / USER AMENDMENTS
 ==========================
@@ -164,6 +177,29 @@ CHRONOLOGICAL JOURNAL
 - Test/build results (offline, bun 1.4.2): `bun test` 64 pass / 0 fail (263 assertions);
   `bun build --target=bun scripts/update-data.ts --outfile=/dev/null` and `bun build app.tsx
   --outfile=/dev/null` both succeed. Transpilation is not semantic type validation.
+
+
+### 2026-10-01 — README, PR, live-acceptance blocker (checkpoint 2)
+- README.md generated from daggerok/Schwab README by copy-substitution, then corrected by hand:
+  Pacer source table (`/products/` listing, `/products/{lower-ticker}`, `holdings_download/{TICKER}`,
+  Yahoo chart, N-PORT-P), metrics bullets (no secYield for Pacer; NAV/AUM derived as
+  NetAssets / SharesOutstanding), update-controls table with the checked-in defaults
+  (REQUEST_SLEEP 2.5, CONCURRENCY 1, HISTORY_RANGE max, EDGAR_FALLBACK on), a note that
+  scripts/update-data.config.json seeds every default and that VERBOSE is config/CLI-only because
+  of the 25-input limit, plus Pacer rows in the brands and sibling tables. The renamed sibling rows
+  were restored to Schwab (the global brand substitution had rewritten them).
+- Commits pushed to arena/01a0f9aa-pacer:
+  * 0dd6e0c feat(pacer): static ETF catalog app, config-driven updater and workflows
+  * 2518598 docs(readme): document Pacer data sources, config defaults and update controls
+- PR #1 opened (base main, head arena/01a0f9aa-pacer). `gh pr checks 1` -> "offline" pass (7s):
+  GitHub Actions is enabled on the repository and the branch workflows do run (run 36941651033).
+- Live acceptance cannot be started from the sandbox: `gh workflow run` -> HTTP 404 (the workflow
+  file does not exist on the default branch, and the workflows registry is default-branch scoped),
+  raw `POST /actions/workflows/update-data.yml/dispatches` -> HTTP 403 "Resource not accessible by
+  integration" (the GitHub App token has no actions:write scope). The run has to be dispatched from
+  the Actions UI on the branch, or it will happen automatically on the weekly schedule after merge.
+- api/pacer exists as an empty directory locally (created by the updater's ensureDir); it stays
+  untracked until the first successful workflow run publishes the feed.
 
 
 =============================================================================
