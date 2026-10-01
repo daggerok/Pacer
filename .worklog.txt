@@ -63,28 +63,49 @@ GitHub Personal Access Token: <PASTE_YOUR_TOKEN_HERE>
 ================================================================
 CURRENT STATE
 =============
-- Goal: Implement Pacer ETFs holdings-to-watchlist web application in daggerok/Pacer matching sibling parity (Bun-only, zero runtime dependencies, static client app + update-data feed).
-- Status: Researched & Baseline Initialized. Repository cloned, clean baseline verified (LICENSE + placeholder README), official ETF brand site researched, data endpoints discovered and verified live, SEC EDGAR CIK confirmed, and self-contained plan embedded. Ready for implementation.
+- Goal: Implement the Pacer ETFs holdings-to-watchlist app in daggerok/Pacer with sibling parity
+  (Bun-only, zero runtime dependencies, static client app + api/pacer feed), including the
+  checked-in scripts/update-data.config.json defaults and the full workflow set.
+- Status: Implementation complete offline; live acceptance run pending publication (see below).
 - Repository: https://github.com/daggerok/Pacer
-- Branch: main (feature branch feat/pacer-etfs to be created during implementation)
-- Pushed remote baseline: main branch with initialized .worklog.txt
+- Branch: arena/01a0f9aa-pacer (session branch; PR opened from it)
+- Pushed baseline: main @ f00bced ("docs(prompt): add ready-to-use agent implementation prompt for Pacer ETFs")
+- User amendments for this session (2026-10-01), applied in this order:
+  1. Check the closest sibling for how scripts/update-data.config.json is used and do the same.
+  2. Implement all workflows, working around GitHub Actions' 25 workflow_dispatch input limit
+     the way the sibling already does.
+  3. Do the full implementation accordingly, then open a PR.
 - Completed:
-  1. Cloned target repository and verified clean baseline state.
-  2. Conducted live research on official ETF issuer portal (https://www.paceretfs.com/ (catalog at https://www.paceretfs.com/products/)).
-  3. Discovered and verified data acquisition pathways (endpoints, holdings formats, WAF characteristics).
-  4. Confirmed SEC EDGAR Trust registrant and CIK (CONFIRMED: 'Pacer Funds Trust', CIK 0001616668 (76 tickers).).
-  5. Established closest sibling reference architecture (daggerok/Franklin or daggerok/Schwab (confirmed WAF proxy-fallback pattern with r.jina.ai + SEC EDGAR N-PORT-P fallback).).
-  6. Generated complete self-contained implementation plan (generic protocol + brand-specific specifications), eliminating any requirement for 00-generic.txt.
-  7. Committed initialized .worklog.txt into main branch.
+  1. Sibling research for update-data.config.json: daggerok/Schwab, Franklin, AAM, Themes and
+     Xtrackers all ship scripts/update-data.config.json; daggerok/Schwab is the closest match
+     (identical source shape: WAF-protected issuer site + r.jina.ai read-only rendering fallback,
+     per-fund CSV export, SEC EDGAR Form N-PORT-P holdings fallback, Yahoo Finance chart API).
+     Its updater loads the JSON at import time and only fills env vars that are unset/blank.
+  2. Sibling research for the GitHub Actions limit: daggerok/AAM documents it in-workflow
+     ("GitHub permits 25 inputs. SEC_UA and VERBOSE remain config-file/CLI-only.") and
+     daggerok/Schwab ships 25 inputs for a 26-key config (VERBOSE omitted). Copied that pattern:
+     Pacer has a 26-key config and 25 workflow_dispatch inputs; VERBOSE is config/CLI-only.
+  3. UI copied from daggerok/Schwab (app.tsx + index.html + favicon.ico) with only the 8
+     enumerated substitutions (file header, localStorage keys, api/pacer paths, export prefix,
+     brand/source status strings, tooltip provenance sentences, unchanged detail rows,
+     Pacer Funds Trust CIK 0001616668 attribution). Offline parity tests guard the leak list.
+  4. scripts/update-data.ts written for the Pacer sources (product listing + fund page + daily
+     holdings CSV + N-PORT-P fallback + Yahoo chart), single shared WAF-conservative request gate.
+  5. scripts/update-data.config.json + scripts/update-data.test.ts (64 offline tests, fixtures
+     under scripts/fixtures with capture notes). `bun test` passes; both Bun builds succeed.
+  6. Workflows: .github/workflows/update-data.yml (schedule + 25 dispatch inputs, commits
+     api/pacer only), ci.yml (offline checks), pages.yml (Pages deploy from main),
+     .github/dependabot.yml.
 - Next action:
-  1. The next implementing agent starts here: read this .worklog.txt completely.
-  2. Create feature branch `feat/pacer-etfs`.
-  3. Live-verify the site endpoints listed in PART 2 below.
-  4. Scaffold repo files from closest sibling (daggerok/Franklin or daggerok/Schwab (confirmed WAF proxy-fallback pattern with r.jina.ai + SEC EDGAR N-PORT-P fallback).): package.json, bun.lock, index.html, app.tsx, scripts/update-data.ts, scripts/update-data.test.ts, .github/workflows/update-data.yml, .github/dependabot.yml, and README.md.
-  5. Implement data updater matching verified endpoints and run offline tests (bun test scripts/update-data.test.ts).
-  6. Execute isolated acceptance runs (minimum 3 tickers), verify byte-stability across repeat runs.
-  7. Update .worklog.txt after each stage, commit with Conventional Commits, and push to feature branch.
-- Blockers: None. Ready for feature branch implementation.
+  1. Run the mandatory live acceptance on GitHub Actions with a three-ticker subset
+     (TICKERS="COWZ CALF PTLC", default REQUEST_SLEEP/CONCURRENCY, no SKIP_* flags).
+  2. Pull the generated api/pacer feed, verify counts and per-fund values, re-run the same
+     command and compare hashes for byte-stability.
+  3. Write README.md (pinned sibling reference: daggerok/Schwab README) and set the repo
+     About description/homepage/topics.
+  4. Open the PR from arena/01a0f9aa-pacer.
+- Blockers: The sandbox network allows github.com/npm only, so live issuer/SEC/Yahoo requests are
+  executed through GitHub Actions (which has unrestricted egress); local runs are offline only.
 
 AUTHORITY / USER AMENDMENTS
 ==========================
@@ -103,6 +124,47 @@ CHRONOLOGICAL JOURNAL
 - Verified SEC EDGAR filing registrant CIK: CONFIRMED: 'Pacer Funds Trust', CIK 0001616668 (76 tickers)..
 - Assembled self-contained plan integrating the full generic build requirements (PART 1) and brand-specific research (PART 2).
 - Committed initialized .worklog.txt to main branch. Repository is ready for implementing agent.
+
+### 2026-10-01 — Sibling research, implementation, workflows (checkpoint 1)
+- Confirmed which sibling owns the config file pattern: code search found daggerok/Vanguard first,
+  then direct inspection showed Schwab, Franklin, AAM, Themes and Xtrackers all ship
+  scripts/update-data.config.json. Chose daggerok/Schwab as the reference: same WAF/proxy, CSV
+  export, N-PORT-P and Yahoo shape as Pacer. Schwab commit inspected: main @ tip (clone 2026-10-01).
+- Config usage copied verbatim in shape: the updater reads ./update-data.config.json at import and
+  only assigns process.env[key] when the current value is undefined or blank, so CLI/workflow env
+  always wins over the checked-in default. ENOENT is tolerated (config file stays optional).
+- GitHub Actions input limit: documented in daggerok/AAM .github/workflows/update-data.yml.
+  Pacer mirrors it: 26 config keys, 25 inputs, VERBOSE intentionally excluded and documented in
+  the workflow comment. A regression test asserts inputs.length <= 25, that every input maps to
+  `ENV: ${{ inputs.<name> || '' }}`, and that the only config key without an input is VERBOSE.
+- Live source verification (2026-10-01, through fetch_page):
+  * https://www.paceretfs.com/products/ is server-rendered HTML with the full listing table
+    (Name | Ticker | Total Expenses | Fund Inception | YTD | 1 Month | 3 Month | 1 Year | 3 Year |
+    5 Year | 10 Year | Since Inception) grouped by investment theme; header shows
+    "Total Return as of 09/30/2026" (NAV pane) and 08/31/2026 (Market Price pane).
+  * https://www.paceretfs.com/products/cowz renders the Performance (%) table (quarter-end),
+    Top 10 Holdings (%) and the full Distributions table without JavaScript.
+  * https://www.paceretfs.com/products/holdings_download/COWZ returns the daily holdings CSV
+    (Date,Account,StockTicker,CUSIP,SecurityName,Shares,Price,MarketValue,Weightings,NetAssets,
+    SharesOutstanding,CreationUnits,MoneyMarketFlag). r.jina.ai cannot proxy it (HTTP 422,
+    "unexpected content type application/octet-stream"), so N-PORT-P is the real holdings fallback.
+  * No NAV/distribution CSV endpoints exist (nav_download and distributions_download both 500).
+  * NAV is therefore derived as NetAssets / SharesOutstanding from the holdings CSV and is
+    labelled as derived in meta.json; the fund page publishes no closing price either.
+- Parser decisions recorded in code comments: catalog cells are read from the raw line (the shared
+  markdown cleaner drops a published "-" cell and would shift every tenor), performance-table
+  values are mapped by header label (Pacer reorders/shortens the tenor columns per fund), and a
+  row is only accepted when it carries data columns or names the fund (series/menu links such as
+  /products/trendpilot/trendpilot-series must not become funds).
+- Files added: app.tsx, index.html, favicon.ico, package.json, bun.lock, .gitignore,
+  scripts/update-data.ts, scripts/update-data.config.json, scripts/update-data.test.ts,
+  scripts/fixtures/{catalog-listing.txt,cowz-product-page.txt,cowz-holdings.csv,cowz-chart.json,
+  README-capture-notes.txt}, .github/workflows/{update-data.yml,ci.yml,pages.yml},
+  .github/dependabot.yml.
+- Test/build results (offline, bun 1.4.2): `bun test` 64 pass / 0 fail (263 assertions);
+  `bun build --target=bun scripts/update-data.ts --outfile=/dev/null` and `bun build app.tsx
+  --outfile=/dev/null` both succeed. Transpilation is not semantic type validation.
+
 
 =============================================================================
 FULL SELF-CONTAINED IMPLEMENTATION PLAN
