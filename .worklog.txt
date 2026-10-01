@@ -64,27 +64,19 @@ GitHub Personal Access Token: <PASTE_YOUR_TOKEN_HERE>
 CURRENT STATE
 =============
 - Goal: Implement Pacer ETFs holdings-to-watchlist web application in daggerok/Pacer matching sibling parity (Bun-only, zero runtime dependencies, static client app + update-data feed).
-- Status: Researched & Baseline Initialized. Repository cloned, clean baseline verified (LICENSE + placeholder README), official ETF brand site researched, data endpoints discovered and verified live, SEC EDGAR CIK confirmed, and self-contained plan embedded. Ready for implementation.
+- Status (2026-10-01): IMPLEMENTED on branch feat/pacer-etfs, live acceptance done, PR to main being opened (NOT merged). Remaining: review/merge by the user, Pages enablement, optional first api/pacer snapshot.
 - Repository: https://github.com/daggerok/Pacer
-- Branch: main (feature branch feat/pacer-etfs to be created during implementation)
-- Pushed remote baseline: main branch with initialized .worklog.txt
+- Branch: feat/pacer-etfs (pushed); base main f00bced
+- Authorization used: edits, push and PR creation on this repo; no merge, no force-push; refreshed api/ data NOT committed (no initial snapshot was required by the acceptance criteria)
 - Completed:
-  1. Cloned target repository and verified clean baseline state.
-  2. Conducted live research on official ETF issuer portal (https://www.paceretfs.com/ (catalog at https://www.paceretfs.com/products/)).
-  3. Discovered and verified data acquisition pathways (endpoints, holdings formats, WAF characteristics).
-  4. Confirmed SEC EDGAR Trust registrant and CIK (CONFIRMED: 'Pacer Funds Trust', CIK 0001616668 (76 tickers).).
-  5. Established closest sibling reference architecture (daggerok/Franklin or daggerok/Schwab (confirmed WAF proxy-fallback pattern with r.jina.ai + SEC EDGAR N-PORT-P fallback).).
-  6. Generated complete self-contained implementation plan (generic protocol + brand-specific specifications), eliminating any requirement for 00-generic.txt.
-  7. Committed initialized .worklog.txt into main branch.
-- Next action:
-  1. The next implementing agent starts here: read this .worklog.txt completely.
-  2. Create feature branch `feat/pacer-etfs`.
-  3. Live-verify the site endpoints listed in PART 2 below.
-  4. Scaffold repo files from closest sibling (daggerok/Franklin or daggerok/Schwab (confirmed WAF proxy-fallback pattern with r.jina.ai + SEC EDGAR N-PORT-P fallback).): package.json, bun.lock, index.html, app.tsx, scripts/update-data.ts, scripts/update-data.test.ts, .github/workflows/update-data.yml, .github/dependabot.yml, and README.md.
-  5. Implement data updater matching verified endpoints and run offline tests (bun test scripts/update-data.test.ts).
-  6. Execute isolated acceptance runs (minimum 3 tickers), verify byte-stability across repeat runs.
-  7. Update .worklog.txt after each stage, commit with Conventional Commits, and push to feature branch.
-- Blockers: None. Ready for feature branch implementation.
+  1. Branch created; scaffold from daggerok/Schwab (package.json, bun.lock, .gitignore, favicon, dependabot.yml, index.html, app.tsx with only brand/provenance substitutions)
+  2. Live issuer research (see journal): Cloudflare 403 direct, r.jina.ai proxy rendered markdown OK, full holdings only via protected download -> SEC N-PORT-P primary
+  3. scripts/update-data.ts (catalog, fund page, N-PORT-P holdings, top 10 fallback, distributions table, Yahoo history, shared resolveControls/CONTROL_NAMES/runtimeControls), scripts/update-data.config.json, scripts/update-data.test.ts, scripts/config-docs.test.ts
+  4. .github/workflows/update-data.yml via gen-workflow.ts (api/pacer only), README per SPEC (Pages deployment pending)
+  5. Checks: bun install --frozen-lockfile, bun test (59 pass), bun build --target=bun, git diff --check, check-readme ok, check-workflow ok (actionlint not installed)
+  6. Live acceptance (isolated, 4 tickers, 2 runs): evidence/live-acceptance-2026-10-01.txt; app renders the generated feed in headless Chrome (4 ETFs, tabs and values shown)
+- Next action: user reviews the PR; enable GitHub Pages to deploy; run the Update Pacer ETF data workflow (full pass writes api/pacer); add repo About/topics per generic section 11 (not done: outside granted scope)
+- Blockers: none. Known limits: full daily holdings file not readable (protected download); N-PORT-P is quarterly-lagged; ACBH/ACBE/PEVC-type new funds may only have the top 10; Yahoo adjusted-close jitter can flip a 0.01 at rounding boundaries in old history rows
 
 AUTHORITY / USER AMENDMENTS
 ==========================
@@ -834,3 +826,14 @@ REPORT BACK WHEN DONE:
   * SEC: company_tickers_mf.json lists 76 tickers under CIK 1616668 incl. all catalog funds except none missing (PEVC present); SZNE/SZNG exist in SEC but not on the site (ignored: not in the issuer catalog). A bare repo-URL User-Agent gets 403 from sec.gov; a descriptor with a contact-like token (like Schwab's example address) gets 200. NPORT-P atom feed per seriesId works (COWZ S000055466 latest accession 0000894189-26-029012 filed 2026-09-29).
 - Decisions: catalog = performance tables (+ series-listing-only tickers such as PEVC), category = investment theme; holdings = N-PORT-P -> official top-10 (partial, labelled) -> previous run; distributions = fund-page table -> Yahoo -> previous; returns = catalog NAV table (month-end) + fund-page quarter-end NAV/market rows; history = Yahoo. Defaults REQUEST_SLEEP=2.5, CONCURRENCY=1 per plan (WAF host); proxy requests stay >= 3.2s.
 - UI: app.tsx/index.html copied from Schwab (869a070 header-popover + None-frequency versions) with only the enumerated substitutions (storage keys, api paths, export prefix, brand/source strings, tooltip provenance, N-PORT/Pacer Funds Trust CIK text). Diff vs Schwab: app.tsx 43 lines, index.html 10 lines, all brand/provenance strings.
+
+### 2026-10-01 - Updater, tests, workflow, README, live acceptance (feat/pacer-etfs)
+- Commits (all pushed): 9ff47be feat(app) scaffold; 112cf72 feat(updater); f6bdd3d ci(workflow); 2ebd1bb docs(readme); c196428 test(config); last confirmed pushed SHA before this entry: c196428
+- Updater design (differences from the Schwab base): catalog parsed from the rendered product listing (theme tables, NAV returns as of the first header date, tie-out COWZ YTD 12.15); fund page parser reads Fund Details (also the Structured Outcome layout without the heading), Recent Investment Performance (YTD of the first column group only), quarter-end Performance table (header-mapped, type-safe ReturnSlot = Exclude<keyof OfficialReturnRow, 'asOfDate'>), Top 10 Holdings, Distributions; holdings N-PORT-P -> official top 10 (partial, labelled, derived market values) -> previous (holdingsFallback keeps a previously published full schedule over the partial table); market price/NAV/premium are the official fund-page values; dividend yield is indicated only (Pacer publishes none); EDGAR_FALLBACK control name kept for parity but is the primary holdings source here
+- Controls: same 25 names as the Schwab updater with SKIP_SCHWAB -> SKIP_PACER; defaults REQUEST_SLEEP=2.5, CONCURRENCY=1; SEC_UA default = non-personal descriptor (sec.gov returns 403 for a UA without a contact-like token, 200 with it)
+- Verification: bun install --frozen-lockfile ok; bun test 59 pass / 0 fail (update-data.test.ts 49 incl. fixtures from the live pages, config-docs.test.ts 10 incl. README structure, 27-brand tables, workflow); bun build --target=bun ok; git diff --check ok; check-readme.ts ok; check-workflow.ts ok (25 inputs); actionlint not installed (skipped); '/// <reference types="bun" />' present at scripts/update-data.ts line 3
+- UI parity: diffs vs Schwab app.tsx 43 lines / index.html 10 lines, all brand or provenance substitutions (keys pacer-*, api/pacer, export prefix, tooltips naming the Pacer ETFs fund page / product listing, N-PORT-P wording because full holdings come from SEC)
+- Live acceptance 2026-10-01 (evidence/live-acceptance-2026-10-01.txt): TICKERS="COWZ FLRT PSFF ACBH" VERBOSE=1 bun scripts/update-data.ts, isolated temp dir, 2 runs, exit 0 both, 0 failures. Results: COWZ holdings 102 / history 2456 / distributions 40; FLRT 320 / 2922 / 129; PSFF 14 / 1445 / 1 (Yahoo; no page table); ACBH 3 / 15 / 1 (top 10 fallback, no N-PORT-P yet). Only the 4 requested fund directories written. Byte-stability: 19 of 20 files identical across runs; FLRT history/002.json differs in 2 of 6838 rows by 0.01 Adj Close (Yahoo recomputation at a rounding boundary), documented, not masked.
+- Answer to the plan's report-back question: the rendering proxy (r.jina.ai) cannot deliver full holdings at all (holdings_download is an octet-stream, HTTP 422 from the proxy; direct is 403), so SEC EDGAR N-PORT-P is the only reliable full-holdings source; the proxy delivers the catalog and one fund page per fund (about 3.2s each, 74 funds ~ 4 min). A full pass at CONCURRENCY=1 is estimated at 15 min (not measured end to end).
+- Plan assumptions corrected: catalog is not a fund list with holdings on the page (only top 10); SOS funds use /products/structured-outcome-strategies/<TICKER>; SEC lists 76 series, the site lists 74 (SZNE, SZNG not on the site).
+- Not done (outside the granted scope): GitHub About description/topics (generic section 11), doc-only PRs adding the brand row to other sibling READMEs (shared tables already list Pacer ETFs as deployment pending), publishing an initial api/pacer snapshot (never committed refreshed data).
