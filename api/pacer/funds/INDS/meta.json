@@ -1,75 +1,75 @@
 {
   "ticker": "INDS",
-  "name": "Pacer Trendpilot® ETF Series",
+  "name": "Pacer Industrial Real Estate ETF",
   "category": "Thematic Growth",
   "categoryPath": "Thematic Growth",
   "source": {
     "fundPage": "https://www.paceretfs.com/products/INDS",
     "officialProductPage": "https://www.paceretfs.com/products/INDS",
-    "productPageRendering": "read-only rendering proxy (r.jina.ai) of the official product page",
+    "productPageRendering": "read-only rendering proxy (r.jina.ai) of the official fund page",
     "productPageAsOf": "Sep 30 2026",
+    "catalogListing": "https://www.paceretfs.com/products/",
     "holdingsDownload": "https://www.sec.gov/Archives/edgar/data/1616668/000089418926029007/0000894189-26-029007.txt",
-    "navHistoryDownload": null,
+    "officialHoldingsDownload": "https://www.paceretfs.com/products/holdings_download/INDS",
+    "officialHoldingsDownloadNote": "protected Daily Holdings download (Cloudflare challenge; not readable by the updater)",
+    "distributionsDownload": "https://www.paceretfs.com/products/INDS",
     "yahooChart": "https://query1.finance.yahoo.com/v8/finance/chart/INDS",
     "holdingsSource": "SEC EDGAR Form N-PORT-P (accession 0000894189-26-029007, report period 2026-07-31)",
     "historySource": "Yahoo Finance public chart API (adjusted close)",
-    "distributionsSource": "paceretfs.com fund page distribution history (total distribution per share)",
-    "provider": "Pacer ETFs product listing + official product page + per-fund daily holdings CSV export + SEC EDGAR Form N-PORT-P fallback + Yahoo Finance public chart API"
+    "distributionsSource": "paceretfs.com fund page Distributions table (Total Distributions per share, via read-only rendering proxy)",
+    "provider": "Pacer ETFs product listing + official fund pages (read-only rendering proxy) + SEC EDGAR Form N-PORT-P full holdings + Yahoo Finance public chart API"
   },
   "identifiers": {
-    "cusip": null,
-    "isin": null,
-    "isinBasis": null,
-    "indexTicker": "[Pacer Trendpilot ETF Series](https://www.paceretfs.com/products/INDS#product-menu-trendpilot) [Pacer Cash Cows Index ETF Series](https://www.paceretfs.com/products/INDS#product-menu-cashcows) [Pacer Metaurus Dividend Multiplier ETF Series](https://www.paceretfs.com/products/INDS#product-menu-metaurus) [Pacer Leaders ETF Series](https://www.paceretfs.com/products/INDS#product-menu-leaders) [Pacer Factor ETF Series](https://www.paceretfs.com/products/INDS#product-menu-factor) [Pacer Thematic ETF Series](https://www.paceretfs.com/products/INDS#product-menu-thematic) [Pacer Swan SOS ETF Series](https://www.paceretfs.com/products/structured-outcome-strategies) [Pacer Custom ETF Series](https://www.paceretfs.com/products/INDS#product-menu-custom) [Pacer UCITS For International Investors](https://www.paceretfs.com/products/INDS#)",
-    "exchange": null,
-    "morningstarCategory": null
+    "cusip": "69374H766",
+    "isin": "US69374H7668",
+    "isinBasis": "published on the official fund page",
+    "indexTicker": null,
+    "exchange": null
   },
   "expenseRatio": {
     "display": "0.49%",
     "value": 0.49,
-    "kind": "Total Expenses published in the official Pacer ETFs product listing"
+    "gross": null,
+    "kind": "Total Expenses published on the official fund page (product listing for funds without a page value)"
   },
   "nav": {
-    "display": "—",
-    "value": null,
-    "asOfDate": "Jul 31 2026",
-    "source": "previous run"
+    "display": "$37.48",
+    "value": 37.48,
+    "asOfDate": "Sep 30 2026"
   },
   "marketPrice": {
-    "display": "$37.22",
-    "value": 37.2171,
-    "asOfDate": "Oct 1 2026",
-    "source": "Yahoo Finance last regular-session price (the anonymous product page publishes no closing price)"
+    "display": "$37.37",
+    "value": 37.37,
+    "asOfDate": "Sep 30 2026",
+    "source": "official fund page Market Price (closing price as of the Fund Details date)"
   },
   "premiumDiscount": {
-    "display": "—",
-    "value": null,
-    "asOfDate": "Oct 1 2026",
-    "source": "computed from Yahoo last price / the net-asset value implied by the daily holdings CSV"
+    "display": "-0.31%",
+    "value": -0.31,
+    "asOfDate": "Sep 30 2026",
+    "source": "official fund page Fund Details Premium/Discount"
   },
   "aum": {
-    "display": "$117.96 M",
-    "value": 117963010.04,
-    "asOfDate": "Jul 31 2026",
-    "source": "SEC Form N-PORT-P net assets (2026-07-31)"
+    "display": "$101.20 M",
+    "value": 101200092.8,
+    "asOfDate": "Sep 30 2026",
+    "source": "official fund page Net Assets"
   },
   "fundFacts": {
-    "sharesOutstanding": null,
-    "portfolioTurnover": null,
-    "publishedTotalHoldings": null,
-    "bidAskMidpoint": null
+    "sharesOutstanding": 2700000,
+    "publishedTotalHoldings": 39,
+    "medianBidAskSpread": 0.001806
   },
   "yields": {
-    "dividendYield": 8.5,
-    "dividendYieldText": "8.50%",
-    "dividendYieldKind": "indicated (latest distribution per share x inferred payments per year / NAV) from the official Pacer distribution history",
-    "distributionRate": null,
+    "dividendYield": 8.44,
+    "dividendYieldText": "8.44%",
+    "dividendYieldKind": "indicated (latest distribution x inferred payments per year / NAV; Pacer publishes no distribution yield)",
     "secYield": null,
     "secYieldText": "—",
-    "secYieldKind": "not published on the official Pacer ETFs product page for this fund"
+    "secYieldKind": "not published on the official fund page for this fund"
   },
   "returns": {
-    "derivedFrom": "official Pacer NAV total returns (product listing, month-end) where published; Yahoo adjusted market-price closes for missing values",
+    "derivedFrom": "official Pacer ETFs NAV total returns (product listing, month-end) where published; Yahoo adjusted market-price closes for missing values",
     "monthEnd": {
       "asOfDate": "Sep 30 2026",
       "mo1": -5.51,
@@ -92,25 +92,24 @@
       "sinceInceptionText": "8.77%"
     },
     "quarterEnd": {
-      "asOfDate": "Sep 30 2026",
-      "ytd": 9.96,
-      "yr1": null,
-      "yr3": null,
-      "yr5": null,
+      "asOfDate": "Jun 30 2026",
+      "ytd": 9.27,
+      "yr1": 12.68,
+      "yr3": 4.39,
+      "yr5": 1.48,
       "yr10": null,
-      "sinceInception": null
+      "sinceInception": 8.88
     }
   },
   "officialMarketPriceReturns": {
-    "monthEnd": null,
-    "quarterEnd": {
+    "monthEnd": {
       "asOfDate": "Sep 30 2026",
       "mo1": null,
       "mo1Text": "—",
-      "mo3": 1.12,
-      "mo3Text": "1.12%",
-      "ytd": 10.16,
-      "ytdText": "10.16%",
+      "mo3": null,
+      "mo3Text": "—",
+      "ytd": 4.09,
+      "ytdText": "4.09%",
       "yr1": null,
       "yr1Text": "—",
       "yr3": null,
@@ -121,343 +120,164 @@
       "yr10Text": "—",
       "sinceInception": null,
       "sinceInceptionText": "—"
+    },
+    "quarterEnd": {
+      "asOfDate": "Jun 30 2026",
+      "mo1": null,
+      "mo1Text": "—",
+      "mo3": null,
+      "mo3Text": "—",
+      "ytd": 9.8,
+      "ytdText": "9.80%",
+      "yr1": 12.7,
+      "yr1Text": "12.70%",
+      "yr3": 4.39,
+      "yr3Text": "4.39%",
+      "yr5": 1.47,
+      "yr5Text": "1.47%",
+      "yr10": null,
+      "yr10Text": "—",
+      "sinceInception": 8.88,
+      "sinceInceptionText": "8.88%"
     }
   },
   "distributions": {
     "frequency": "Quarterly",
     "frequencyCode": "04 - Quarterly",
     "paymentsPerYear": 4,
-    "source": "paceretfs.com fund page distribution history (total distribution per share)",
+    "source": "paceretfs.com fund page Distributions table (Total Distributions per share, via read-only rendering proxy)",
     "headers": [
-      "Ex Date",
-      "Record Date",
-      "Pay Date",
-      "Total Distribution",
-      "Ordinary Income*",
-      "Short Term Capital Gains",
-      "Long Term Capital Gains",
-      "Return of Capital"
+      "Ex-Date",
+      "Amount"
     ],
     "rows": [
       [
-        "6/26/2018",
-        "6/27/2018",
-        "6/28/2018",
-        "$0.06997160",
-        "$0.06997160",
-        "$0",
-        "$0",
-        "$0"
+        "06/26/2018",
+        "0.069972"
       ],
       [
-        "9/25/2018",
-        "9/26/2018",
-        "9/27/2018",
-        "$0.20413530",
-        "$0.20413530",
-        "$0",
-        "$0",
-        "$0"
+        "09/25/2018",
+        "0.204135"
       ],
       [
         "12/24/2018",
-        "12/26/2018",
-        "12/27/2018",
-        "$0.15970000",
-        "$0.15970000",
-        "$0",
-        "$0",
-        "$0"
+        "0.1597"
       ],
       [
-        "3/26/2019",
-        "3/27/2019",
-        "3/28/2019",
-        "$0.23914630",
-        "$0.23914630",
-        "$0",
-        "$0",
-        "$0"
+        "03/26/2019",
+        "0.239146"
       ],
       [
-        "6/25/2019",
-        "6/26/2019",
-        "6/27/2019",
-        "$0.05932848",
-        "$0.05932848",
-        "$0",
-        "$0",
-        "$0"
+        "06/25/2019",
+        "0.059328"
       ],
       [
-        "9/24/2019",
-        "9/25/2019",
-        "9/26/2019",
-        "$0.14944141",
-        "$0.14944141",
-        "$0",
-        "$0",
-        "$0"
+        "09/24/2019",
+        "0.149441"
       ],
       [
         "12/24/2019",
-        "12/26/2019",
-        "12/27/2019",
-        "$0.30357584",
-        "$0.30357584",
-        "$0",
-        "$0",
-        "$0"
+        "0.303576"
       ],
       [
-        "3/23/2020",
-        "3/24/2020",
-        "3/27/2020",
-        "$0.10594241",
-        "$0.10594241",
-        "$0",
-        "$0",
-        "$0"
+        "03/23/2020",
+        "0.105942"
       ],
       [
-        "6/22/2020",
-        "6/23/2020",
-        "6/26/2020",
-        "$0.07284705",
-        "$0.07284705",
-        "$0",
-        "$0",
-        "$0"
+        "06/22/2020",
+        "0.072847"
       ],
       [
-        "9/21/2020",
-        "9/22/2022",
-        "9/25/2020",
-        "$0.18513122",
-        "$0.18513122",
-        "$0",
-        "$0",
-        "$0"
+        "09/21/2020",
+        "0.185131"
       ],
       [
         "12/21/2020",
-        "12/22/2020",
-        "12/28/2020",
-        "$0.25469067",
-        "$0.25469067",
-        "$0",
-        "$0",
-        "$0"
+        "0.254691"
       ],
       [
-        "3/22/2021",
-        "3/23/2021",
-        "3/26/2021",
-        "$0.16398831",
-        "$0.16398831",
-        "$0",
-        "$0",
-        "$0"
+        "03/22/2021",
+        "0.163988"
       ],
       [
-        "6/21/2021",
-        "6/22/2021",
-        "6/25/2021",
-        "$0.07517926",
-        "$0.07517926",
-        "$0",
-        "$0",
-        "$0"
+        "06/21/2021",
+        "0.075179"
       ],
       [
-        "9/23/2021",
-        "9/24/2021",
-        "9/29/2021",
-        "$0.19228844",
-        "$0.19228844",
-        "$0",
-        "$0",
-        "$0"
+        "09/23/2021",
+        "0.192288"
       ],
       [
         "12/23/2021",
-        "12/27/2021",
-        "12/30/2021",
-        "$0.26144865",
-        "$0.26144865",
-        "$0",
-        "$0",
-        "$0"
+        "0.261449"
       ],
       [
-        "3/24/2022",
-        "3/25/2022",
-        "3/30/2022",
-        "$0.04561399",
-        "$0.04561399",
-        "$0",
-        "$0",
-        "$0"
+        "03/24/2022",
+        "0.045614"
       ],
       [
-        "6/23/2022",
-        "6/24/2022",
-        "6/29/2022",
-        "$0.08988072",
-        "$0.08988072",
-        "$0",
-        "$0",
-        "$0"
+        "06/23/2022",
+        "0.089881"
       ],
       [
-        "9/22/2022",
-        "9/23/2022",
-        "9/28/2022",
-        "$0.51506846",
-        "$0.51506846",
-        "$0",
-        "$0",
-        "$0"
+        "09/22/2022",
+        "0.515068"
       ],
       [
         "12/22/2022",
-        "12/23/2022",
-        "12/29/2022",
-        "$0.31687288",
-        "$0.31687288",
-        "$0",
-        "$0",
-        "$0"
+        "0.316873"
       ],
       [
-        "3/23/2023",
-        "3/24/2023",
-        "3/29/2023",
-        "$0.08075377",
-        "$0.08075377",
-        "$0",
-        "$0",
-        "$0"
+        "03/23/2023",
+        "0.080754"
       ],
       [
-        "6/22/2023",
-        "6/23/2023",
-        "6/28/2023",
-        "$0.17692021",
-        "$0.17692021",
-        "$0",
-        "$0",
-        "$0"
+        "06/22/2023",
+        "0.17692"
       ],
       [
-        "9/21/2023",
-        "9/22/2023",
-        "9/27/2023",
-        "$1.04229269",
-        "$1.04229269",
-        "$0",
-        "$0",
-        "$0"
+        "09/21/2023",
+        "1.042293"
       ],
       [
-        "3/31/2024",
-        "3/22/2024",
-        "3/27/2024",
-        "$0.34455912",
-        "$0.34455912",
-        "$0",
-        "$0",
-        "$0"
+        "03/31/2024",
+        "0.344559"
       ],
       [
-        "6/27/2024",
-        "6/27/2024",
-        "7/3/2024",
-        "$0.203424",
-        "$0.203424",
-        "$0",
-        "$0",
-        "$0"
+        "06/27/2024",
+        "0.203424"
       ],
       [
-        "9/26/2024",
-        "9/26/2024",
-        "10/2/2024",
-        "$0.342853",
-        "$0.342853",
-        "$0",
-        "$0",
-        "$0"
+        "09/26/2024",
+        "0.342853"
       ],
       [
         "12/27/2024",
-        "12/27/2024",
-        "1/2/2025",
-        "$0.431941",
-        "$0.431941",
-        "$0",
-        "$0",
-        "$0"
+        "0.431941"
       ],
       [
-        "6/5/2025",
-        "6/5/2025",
-        "6/11/2025",
-        "$0.067071",
-        "$0.067071",
-        "$0",
-        "$0",
-        "$0"
+        "06/05/2025",
+        "0.067071"
       ],
       [
-        "9/4/2025",
-        "9/4/2025",
-        "9/10/2025",
-        "$0.3976171",
-        "$0.3976171",
-        "$0",
-        "$0",
-        "$0"
+        "09/04/2025",
+        "0.397617"
       ],
       [
         "12/30/2025",
-        "12/30/2025",
-        "1/5/2026",
-        "$0.8916334",
-        "$0.8916334",
-        "$0",
-        "$0",
-        "$0"
+        "0.891633"
       ],
       [
-        "3/5/2026",
-        "3/5/2026",
-        "3/9/2026",
-        "$0.02898439",
-        "$0.02898439",
-        "$0",
-        "$0",
-        "$0"
+        "03/05/2026",
+        "0.028984"
       ],
       [
-        "6/4/2026",
-        "6/4/2026",
-        "6/8/2026",
-        "$0.036860",
-        "$0.036860",
-        "$0",
-        "$0",
-        "$0"
+        "06/04/2026",
+        "0.03686"
       ],
       [
-        "9/3/2026",
-        "9/3/2026",
-        "9/8/2026",
-        "$0.791105",
-        "$0.791105",
-        "$0",
-        "$0",
-        "$0"
+        "09/03/2026",
+        "0.791105"
       ]
     ]
   },
@@ -470,7 +290,8 @@
     "asOfDate": "2026-07-31",
     "asOf": "Jul 31 2026",
     "source": "SEC EDGAR Form N-PORT-P (accession 0000894189-26-029007, report period 2026-07-31)",
-    "publishedTopHoldings": 10
+    "marketValueBasis": "SEC Form N-PORT-P reported value (valUSD)",
+    "publishedTotalHoldings": 39
   },
   "history": {
     "pages": [

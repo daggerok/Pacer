@@ -1,0 +1,62 @@
+{
+  "ticker": "MNVR",
+  "page": 1,
+  "pageSize": 250,
+  "totalRows": 5,
+  "headers": [
+    "Name",
+    "Ticker",
+    "Identifier",
+    "Weight",
+    "Market Value",
+    "Shares Held",
+    "Asset Category"
+  ],
+  "rows": [
+    {
+      "Name": "N/A",
+      "Ticker": "-",
+      "Identifier": "US78462F1030",
+      "Weight": "98.8432570942",
+      "Market Value": "1621383.72",
+      "Shares Held": "22.000000000000",
+      "Asset Category": "DE"
+    },
+    {
+      "Name": "N/A",
+      "Ticker": "-",
+      "Identifier": "US78462F1030",
+      "Weight": "-2.1721191487",
+      "Market Value": "-35630.54",
+      "Shares Held": "-22.000000000000",
+      "Asset Category": "DE"
+    },
+    {
+      "Name": "N/A",
+      "Ticker": "-",
+      "Identifier": "US78462F1030",
+      "Weight": "-0.3584679922",
+      "Market Value": "-5880.16",
+      "Shares Held": "-22.000000000000",
+      "Asset Category": "DE"
+    },
+    {
+      "Name": "N/A",
+      "Ticker": "-",
+      "Identifier": "US78462F1030",
+      "Weight": "1.5703092211",
+      "Market Value": "25758.7",
+      "Shares Held": "22.000000000000",
+      "Asset Category": "DE"
+    },
+    {
+      "Name": "U.S. Bank Money Market Deposit Account",
+      "Ticker": "-",
+      "Identifier": "8AMMF0A84",
+      "Weight": "1.8205807395",
+      "Market Value": "29864.05",
+      "Shares Held": "29864.050000000000",
+      "Asset Category": "STIV"
+    }
+  ]
+}

@@ -1,0 +1,134 @@
+{
+  "ticker": "LADM",
+  "page": 1,
+  "pageSize": 250,
+  "totalRows": 13,
+  "headers": [
+    "Name",
+    "Ticker",
+    "Identifier",
+    "Weight",
+    "Market Value",
+    "Shares Held",
+    "Asset Category"
+  ],
+  "rows": [
+    {
+      "Name": "Pacer Swan SOS Moderate April",
+      "Ticker": "-",
+      "Identifier": "69374H519",
+      "Weight": "8.2468673679",
+      "Market Value": "133441.85",
+      "Shares Held": "4117.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Pacer Swan SOS Moderate August ETF",
+      "Ticker": "-",
+      "Identifier": "69374H139",
+      "Weight": "8.2600458572",
+      "Market Value": "133655.09",
+      "Shares Held": "4073.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Pacer Swan Sos Moderate December Etf",
+      "Ticker": "-",
+      "Identifier": "69374H121",
+      "Weight": "8.2435134164",
+      "Market Value": "133387.58",
+      "Shares Held": "4110.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Pacer Swan SOS Moderate February ETF",
+      "Ticker": "-",
+      "Identifier": "69374H113",
+      "Weight": "8.2492071616",
+      "Market Value": "133479.71",
+      "Shares Held": "4063.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Pacer Swan SOS Moderate Januar",
+      "Ticker": "-",
+      "Identifier": "69374H550",
+      "Weight": "8.2644627895",
+      "Market Value": "133726.56",
+      "Shares Held": "3873.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Pacer Swan SOS Moderate July E",
+      "Ticker": "-",
+      "Identifier": "69374H493",
+      "Weight": "8.1909144093",
+      "Market Value": "132536.48",
+      "Shares Held": "3905.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Pacer Swan SOS Moderate June ETF",
+      "Ticker": "-",
+      "Identifier": "69384J109",
+      "Weight": "8.2442247483",
+      "Market Value": "133399.09",
+      "Shares Held": "4110.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Pacer Swan Sos Moderate March Etf",
+      "Ticker": "-",
+      "Identifier": "69384J208",
+      "Weight": "8.2427007305",
+      "Market Value": "133374.43",
+      "Shares Held": "4110.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Pacer Swan SOS Moderate May ETF",
+      "Ticker": "-",
+      "Identifier": "69384J307",
+      "Weight": "8.2509147289",
+      "Market Value": "133507.34",
+      "Shares Held": "4063.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Pacer Swan SOS Moderate November ETF",
+      "Ticker": "-",
+      "Identifier": "69384J406",
+      "Weight": "8.246821635",
+      "Market Value": "133441.11",
+      "Shares Held": "4063.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Pacer Swan SOS Moderate Octobe",
+      "Ticker": "-",
+      "Identifier": "69374H485",
+      "Weight": "8.275447336",
+      "Market Value": "133904.3",
+      "Shares Held": "4082.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Pacer Swan Sos Moderate September Etf",
+      "Ticker": "-",
+      "Identifier": "69384J505",
+      "Weight": "8.2220133946",
+      "Market Value": "133039.69",
+      "Shares Held": "4107.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "U.S. Bank Money Market Deposit Account",
+      "Ticker": "-",
+      "Identifier": "8AMMF0A84",
+      "Weight": "1.0690434554",
+      "Market Value": "17298.1",
+      "Shares Held": "17298.100000000000",
+      "Asset Category": "STIV"
+    }
+  ]
+}

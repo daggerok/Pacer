@@ -1,0 +1,143 @@
+{
+  "ticker": "PSFF",
+  "page": 1,
+  "pageSize": 250,
+  "totalRows": 14,
+  "headers": [
+    "Name",
+    "Ticker",
+    "Identifier",
+    "Weight",
+    "Market Value",
+    "Shares Held",
+    "Asset Category"
+  ],
+  "rows": [
+    {
+      "Name": "Pacer Swan SOS Flex October ET",
+      "Ticker": "-",
+      "Identifier": "69374H451",
+      "Weight": "4.9613067134",
+      "Market Value": "29374563.32",
+      "Shares Held": "840907.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Pacer Swan SOS Flex July ETF",
+      "Ticker": "-",
+      "Identifier": "69374H469",
+      "Weight": "4.516630689",
+      "Market Value": "26741756.12",
+      "Shares Held": "758541.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Pacer Swan SOS Flex April ETF",
+      "Ticker": "-",
+      "Identifier": "69374H477",
+      "Weight": "3.0093715316",
+      "Market Value": "17817679.84",
+      "Shares Held": "507781.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Pacer Swan SOS Moderate Octobe",
+      "Ticker": "-",
+      "Identifier": "69374H485",
+      "Weight": "14.5678587257",
+      "Market Value": "86252375.29",
+      "Shares Held": "2629357.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Pacer Swan SOS Moderate July E",
+      "Ticker": "-",
+      "Identifier": "69374H493",
+      "Weight": "13.692778198",
+      "Market Value": "81071258.73",
+      "Shares Held": "2388650.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Pacer Swan SOS Moderate April",
+      "Ticker": "-",
+      "Identifier": "69374H519",
+      "Weight": "13.1797616007",
+      "Market Value": "78033825.37",
+      "Shares Held": "2407530.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Pacer Swan SOS Conservative Oc",
+      "Ticker": "-",
+      "Identifier": "69374H527",
+      "Weight": "7.1334855125",
+      "Market Value": "42235450.05",
+      "Shares Held": "1342756.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Pacer Swan SOS Conservative Ju",
+      "Ticker": "-",
+      "Identifier": "69374H535",
+      "Weight": "6.0190417172",
+      "Market Value": "35637127.93",
+      "Shares Held": "1121765.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Pacer Swan SOS Conservative Ap",
+      "Ticker": "-",
+      "Identifier": "69374H543",
+      "Weight": "8.898831662",
+      "Market Value": "52687590.03",
+      "Shares Held": "1744472.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Pacer Swan SOS Moderate Januar",
+      "Ticker": "-",
+      "Identifier": "69374H550",
+      "Weight": "13.6376351691",
+      "Market Value": "80744771.68",
+      "Shares Held": "2338537.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Pacer Swan SOS Flex January ET",
+      "Ticker": "-",
+      "Identifier": "69374H576",
+      "Weight": "5.5834648459",
+      "Market Value": "33058194.37",
+      "Shares Held": "824213.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Pacer Swan SOS Conservative Ja",
+      "Ticker": "-",
+      "Identifier": "69374H584",
+      "Weight": "4.3814270011",
+      "Market Value": "25941251.43",
+      "Shares Held": "788754.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "U.S. Bank Money Market Deposit Account",
+      "Ticker": "-",
+      "Identifier": "8AMMF0A84",
+      "Weight": "0.4234571367",
+      "Market Value": "2507175.87",
+      "Shares Held": "2507175.870000000000",
+      "Asset Category": "STIV"
+    },
+    {
+      "Name": "Mount Vernon Liquid Assets Portfolio, LLC",
+      "Ticker": "-",
+      "Identifier": "990VR1110",
+      "Weight": "0.3471572919",
+      "Market Value": "2055425",
+      "Shares Held": "2055425.000000000000",
+      "Asset Category": "STIV"
+    }
+  ]
+}

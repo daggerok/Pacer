@@ -1,0 +1,177 @@
+{
+  "ticker": "PSFJ",
+  "name": "Pacer Swan SOS Flex (July) ETF",
+  "category": "Structured Outcome",
+  "categoryPath": "Structured Outcome",
+  "source": {
+    "fundPage": "https://www.paceretfs.com/products/structured-outcome-strategies/PSFJ",
+    "officialProductPage": "https://www.paceretfs.com/products/structured-outcome-strategies/PSFJ",
+    "productPageRendering": "read-only rendering proxy (r.jina.ai) of the official fund page",
+    "productPageAsOf": "Sep 30 2026",
+    "catalogListing": "https://www.paceretfs.com/products/",
+    "holdingsDownload": "https://www.sec.gov/Archives/edgar/data/1616668/000089418926029037/0000894189-26-029037.txt",
+    "officialHoldingsDownload": "https://www.paceretfs.com/products/holdings_download/PSFJ",
+    "officialHoldingsDownloadNote": "protected Daily Holdings download (Cloudflare challenge; not readable by the updater)",
+    "distributionsDownload": "https://www.paceretfs.com/products/structured-outcome-strategies/PSFJ",
+    "yahooChart": "https://query1.finance.yahoo.com/v8/finance/chart/PSFJ",
+    "holdingsSource": "SEC EDGAR Form N-PORT-P (accession 0000894189-26-029037, report period 2026-07-31)",
+    "historySource": "Yahoo Finance public chart API (adjusted close)",
+    "distributionsSource": "not available",
+    "provider": "Pacer ETFs product listing + official fund pages (read-only rendering proxy) + SEC EDGAR Form N-PORT-P full holdings + Yahoo Finance public chart API"
+  },
+  "identifiers": {
+    "cusip": "69374H469",
+    "isin": "US69374H4699",
+    "isinBasis": "published on the official fund page",
+    "indexTicker": null,
+    "exchange": null
+  },
+  "expenseRatio": {
+    "display": "0.49%",
+    "value": 0.49,
+    "gross": null,
+    "kind": "Total Expenses published on the official fund page (product listing for funds without a page value)"
+  },
+  "nav": {
+    "display": "$35.96",
+    "value": 35.96,
+    "asOfDate": "Sep 30 2026"
+  },
+  "marketPrice": {
+    "display": "$35.97",
+    "value": 35.97,
+    "asOfDate": "Sep 30 2026",
+    "source": "official fund page Market Price (closing price as of the Fund Details date)"
+  },
+  "premiumDiscount": {
+    "display": "0.01%",
+    "value": 0.01,
+    "asOfDate": "Sep 30 2026",
+    "source": "official fund page Fund Details Premium/Discount"
+  },
+  "aum": {
+    "display": "$56.64 M",
+    "value": 56639085.85,
+    "asOfDate": "Sep 30 2026",
+    "source": "official fund page Net Assets"
+  },
+  "fundFacts": {
+    "sharesOutstanding": 1575000,
+    "publishedTotalHoldings": 7,
+    "medianBidAskSpread": 0.001666
+  },
+  "yields": {
+    "dividendYield": null,
+    "dividendYieldText": "—",
+    "dividendYieldKind": "indicated (latest distribution x inferred payments per year / NAV; Pacer publishes no distribution yield)",
+    "secYield": null,
+    "secYieldText": "—",
+    "secYieldKind": "not published on the official fund page for this fund"
+  },
+  "returns": {
+    "derivedFrom": "official Pacer ETFs NAV total returns (product listing, month-end) where published; Yahoo adjusted market-price closes for missing values",
+    "monthEnd": {
+      "asOfDate": "Sep 30 2026",
+      "mo1": 0.02,
+      "mo1Text": "0.02%",
+      "mo3": 2.24,
+      "mo3Text": "2.24%",
+      "qtd": 0,
+      "qtdText": "0.00%",
+      "ytd": 8.25,
+      "ytdText": "8.25%",
+      "yr1": 12.68,
+      "yr1Text": "12.68%",
+      "yr3": 14.4,
+      "yr3Text": "14.40%",
+      "yr5": 11.34,
+      "yr5Text": "11.34%",
+      "yr10": null,
+      "yr10Text": "—",
+      "sinceInception": 11.5,
+      "sinceInceptionText": "11.50%"
+    },
+    "quarterEnd": {
+      "asOfDate": "Jun 30 2026",
+      "ytd": 5.87,
+      "yr1": 13.45,
+      "yr3": 14.09,
+      "yr5": 11.42,
+      "yr10": null,
+      "sinceInception": 11.42
+    }
+  },
+  "officialMarketPriceReturns": {
+    "monthEnd": {
+      "asOfDate": "Sep 30 2026",
+      "mo1": null,
+      "mo1Text": "—",
+      "mo3": null,
+      "mo3Text": "—",
+      "ytd": 8.43,
+      "ytdText": "8.43%",
+      "yr1": null,
+      "yr1Text": "—",
+      "yr3": null,
+      "yr3Text": "—",
+      "yr5": null,
+      "yr5Text": "—",
+      "yr10": null,
+      "yr10Text": "—",
+      "sinceInception": null,
+      "sinceInceptionText": "—"
+    },
+    "quarterEnd": {
+      "asOfDate": "Jun 30 2026",
+      "mo1": null,
+      "mo1Text": "—",
+      "mo3": null,
+      "mo3Text": "—",
+      "ytd": 6.03,
+      "ytdText": "6.03%",
+      "yr1": 13.33,
+      "yr1Text": "13.33%",
+      "yr3": 14.06,
+      "yr3Text": "14.06%",
+      "yr5": 11.42,
+      "yr5Text": "11.42%",
+      "yr10": null,
+      "yr10Text": "—",
+      "sinceInception": 11.42,
+      "sinceInceptionText": "11.42%"
+    }
+  },
+  "distributions": {
+    "frequency": "—",
+    "frequencyCode": "00 - None",
+    "paymentsPerYear": null,
+    "source": "not available",
+    "headers": [
+      "Ex-Date",
+      "Amount"
+    ],
+    "rows": []
+  },
+  "holdings": {
+    "pages": [
+      "holdings/001.json"
+    ],
+    "pageSize": 250,
+    "totalRows": 6,
+    "asOfDate": "2026-07-31",
+    "asOf": "Jul 31 2026",
+    "source": "SEC EDGAR Form N-PORT-P (accession 0000894189-26-029037, report period 2026-07-31)",
+    "marketValueBasis": "SEC Form N-PORT-P reported value (valUSD)",
+    "publishedTotalHoldings": 7
+  },
+  "history": {
+    "pages": [
+      "history/001.json",
+      "history/002.json"
+    ],
+    "pageSize": 1000,
+    "totalRows": 1319,
+    "asOf": "Oct 1 2026",
+    "source": "Yahoo Finance public chart API (adjusted close)"
+  }
+}

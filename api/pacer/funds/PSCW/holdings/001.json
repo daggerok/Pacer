@@ -1,0 +1,62 @@
+{
+  "ticker": "PSCW",
+  "page": 1,
+  "pageSize": 250,
+  "totalRows": 5,
+  "headers": [
+    "Name",
+    "Ticker",
+    "Identifier",
+    "Weight",
+    "Market Value",
+    "Shares Held",
+    "Asset Category"
+  ],
+  "rows": [
+    {
+      "Name": "N/A",
+      "Ticker": "-",
+      "Identifier": "US78462F1030",
+      "Weight": "106.9755292056",
+      "Market Value": "64630048.41",
+      "Shares Held": "879.000000000000",
+      "Asset Category": "DE"
+    },
+    {
+      "Name": "N/A",
+      "Ticker": "-",
+      "Identifier": "US78462F1030",
+      "Weight": "-8.3611580316",
+      "Market Value": "-5051454.78",
+      "Shares Held": "-879.000000000000",
+      "Asset Category": "DE"
+    },
+    {
+      "Name": "N/A",
+      "Ticker": "-",
+      "Identifier": "US78462F1030",
+      "Weight": "-0.4046711912",
+      "Market Value": "-244485.06",
+      "Shares Held": "-879.000000000000",
+      "Asset Category": "DE"
+    },
+    {
+      "Name": "N/A",
+      "Ticker": "-",
+      "Identifier": "US78462F1030",
+      "Weight": "1.4595311673",
+      "Market Value": "881786.43",
+      "Shares Held": "879.000000000000",
+      "Asset Category": "DE"
+    },
+    {
+      "Name": "U.S. Bank Money Market Deposit Account",
+      "Ticker": "-",
+      "Identifier": "8AMMF0A84",
+      "Weight": "0.3636685261",
+      "Market Value": "219713",
+      "Shares Held": "219713.000000000000",
+      "Asset Category": "STIV"
+    }
+  ]
+}
