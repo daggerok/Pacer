@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-02T01:09:42Z",
+  "generatedAt": "2026-10-02T01:47:18Z",
   "source": {
     "provider": "Pacer ETFs (Pacer Funds Trust, Pacer Advisors, Inc.), U.S.-listed ETFs",
     "market": "us",
@@ -12,8 +12,8 @@
   },
   "counts": {
     "funds": 49,
-    "holdings": 474,
-    "history": 63549
+    "holdings": 8153,
+    "history": 63580
   },
   "funds": [
     {
@@ -28,8 +28,8 @@
       "terValue": 0.39,
       "nav": "—",
       "navValue": null,
-      "aum": "—",
-      "aumValue": null,
+      "aum": "$86.33 M",
+      "aumValue": 86334734.08,
       "asOfDate": "Sep 30 2026",
       "inceptionDate": "Jun 22 2026",
       "exchange": "NGM",
@@ -51,8 +51,8 @@
           "mo1Text": "0.46%",
           "mo3": 1.71,
           "mo3Text": "1.71%",
-          "qtd": 1.7,
-          "qtdText": "1.70%",
+          "qtd": 0,
+          "qtdText": "0.00%",
           "ytd": null,
           "ytdText": "—",
           "yr1": null,
@@ -92,8 +92,8 @@
         "secYieldText": "—",
         "returnsBasis": "official Pacer NAV total returns (product listing, month-end) where published; Yahoo adjusted market-price closes for missing values"
       },
-      "holdings": 10,
-      "history": 70
+      "holdings": 79,
+      "history": 71
     },
     {
       "ticker": "ALTL",
@@ -107,8 +107,8 @@
       "terValue": 0.6,
       "nav": "—",
       "navValue": null,
-      "aum": "—",
-      "aumValue": null,
+      "aum": "$92.09 M",
+      "aumValue": 92087804.08,
       "asOfDate": "Sep 30 2026",
       "inceptionDate": "Jun 24 2020",
       "exchange": "PCX",
@@ -171,7 +171,7 @@
         "secYieldText": "—",
         "returnsBasis": "official Pacer NAV total returns (product listing, month-end) where published; Yahoo adjusted market-price closes for missing values"
       },
-      "holdings": 10,
+      "holdings": 102,
       "history": 1575
     },
     {
@@ -186,8 +186,8 @@
       "terValue": 0.6,
       "nav": "—",
       "navValue": null,
-      "aum": "—",
-      "aumValue": null,
+      "aum": "$131.37 M",
+      "aumValue": 131366197.45,
       "asOfDate": "Sep 30 2026",
       "inceptionDate": "May 2 2019",
       "exchange": "PCX",
@@ -250,7 +250,7 @@
         "secYieldText": "—",
         "returnsBasis": "official Pacer NAV total returns (product listing, month-end) where published; Yahoo adjusted market-price closes for missing values"
       },
-      "holdings": 10,
+      "holdings": 51,
       "history": 1863
     },
     {
@@ -265,8 +265,8 @@
       "terValue": 0.49,
       "nav": "—",
       "navValue": null,
-      "aum": "—",
-      "aumValue": null,
+      "aum": "$14.86 M",
+      "aumValue": 14863855.87,
       "asOfDate": "Sep 30 2026",
       "inceptionDate": "May 4 2022",
       "exchange": "NGM",
@@ -288,8 +288,8 @@
           "mo1Text": "1.68%",
           "mo3": -5.17,
           "mo3Text": "-5.17%",
-          "qtd": -2.24,
-          "qtdText": "-2.24%",
+          "qtd": 0,
+          "qtdText": "0.00%",
           "ytd": 39.16,
           "ytdText": "39.16%",
           "yr1": 52.99,
@@ -329,8 +329,8 @@
         "secYieldText": "—",
         "returnsBasis": "official Pacer NAV total returns (product listing, month-end) where published; Yahoo adjusted market-price closes for missing values"
       },
-      "holdings": 10,
-      "history": 1104
+      "holdings": 62,
+      "history": 1105
     },
     {
       "ticker": "CAFG",
@@ -344,8 +344,8 @@
       "terValue": 0.59,
       "nav": "—",
       "navValue": null,
-      "aum": "—",
-      "aumValue": null,
+      "aum": "$30.15 M",
+      "aumValue": 30152093.88,
       "asOfDate": "Sep 30 2026",
       "inceptionDate": "May 1 2023",
       "exchange": "NGM",
@@ -408,7 +408,7 @@
         "secYieldText": "—",
         "returnsBasis": "official Pacer NAV total returns (product listing, month-end) where published; Yahoo adjusted market-price closes for missing values"
       },
-      "holdings": 10,
+      "holdings": 102,
       "history": 858
     },
     {
@@ -423,8 +423,8 @@
       "terValue": 0.59,
       "nav": "—",
       "navValue": null,
-      "aum": "—",
-      "aumValue": null,
+      "aum": "$3.67 B",
+      "aumValue": 3670403157.55,
       "asOfDate": "Sep 30 2026",
       "inceptionDate": "Jun 16 2017",
       "exchange": "BTS",
@@ -446,8 +446,8 @@
           "mo1Text": "-7.17%",
           "mo3": 5.59,
           "mo3Text": "5.59%",
-          "qtd": 4.7,
-          "qtdText": "4.70%",
+          "qtd": 0,
+          "qtdText": "0.00%",
           "ytd": 20.85,
           "ytdText": "20.85%",
           "yr1": 34.77,
@@ -487,8 +487,8 @@
         "secYieldText": "—",
         "returnsBasis": "official Pacer NAV total returns (product listing, month-end) where published; Yahoo adjusted market-price closes for missing values"
       },
-      "holdings": 10,
-      "history": 2334
+      "holdings": 200,
+      "history": 2335
     },
     {
       "ticker": "COWG",
@@ -502,8 +502,8 @@
       "terValue": 0.49,
       "nav": "—",
       "navValue": null,
-      "aum": "—",
-      "aumValue": null,
+      "aum": "$2.21 B",
+      "aumValue": 2209762313.32,
       "asOfDate": "Sep 30 2026",
       "inceptionDate": "Dec 21 2022",
       "exchange": "NGM",
@@ -525,8 +525,8 @@
           "mo1Text": "-0.43%",
           "mo3": -0.22,
           "mo3Text": "-0.22%",
-          "qtd": 1.23,
-          "qtdText": "1.23%",
+          "qtd": 0,
+          "qtdText": "0.00%",
           "ytd": 13.93,
           "ytdText": "13.93%",
           "yr1": 15.15,
@@ -566,8 +566,8 @@
         "secYieldText": "—",
         "returnsBasis": "official Pacer NAV total returns (product listing, month-end) where published; Yahoo adjusted market-price closes for missing values"
       },
-      "holdings": 10,
-      "history": 940
+      "holdings": 102,
+      "history": 941
     },
     {
       "ticker": "COWZ",
@@ -581,8 +581,8 @@
       "terValue": 0.49,
       "nav": "—",
       "navValue": null,
-      "aum": "—",
-      "aumValue": null,
+      "aum": "$18.69 B",
+      "aumValue": 18693242457.68,
       "asOfDate": "Sep 30 2026",
       "inceptionDate": "Dec 16 2016",
       "exchange": "BTS",
@@ -604,8 +604,8 @@
           "mo1Text": "-6.84%",
           "mo3": 7.98,
           "mo3Text": "7.98%",
-          "qtd": 6.99,
-          "qtdText": "6.99%",
+          "qtd": 0,
+          "qtdText": "0.00%",
           "ytd": 12.15,
           "ytdText": "12.15%",
           "yr1": 26.63,
@@ -645,8 +645,8 @@
         "secYieldText": "—",
         "returnsBasis": "official Pacer NAV total returns (product listing, month-end) where published; Yahoo adjusted market-price closes for missing values"
       },
-      "holdings": 10,
-      "history": 2455
+      "holdings": 102,
+      "history": 2456
     },
     {
       "ticker": "EAFG",
@@ -660,8 +660,8 @@
       "terValue": 0.65,
       "nav": "—",
       "navValue": null,
-      "aum": "—",
-      "aumValue": null,
+      "aum": "$1.88 M",
+      "aumValue": 1879033.7,
       "asOfDate": "Sep 30 2026",
       "inceptionDate": "Mar 20 2024",
       "exchange": "PCX",
@@ -724,7 +724,7 @@
         "secYieldText": "—",
         "returnsBasis": "official Pacer NAV total returns (product listing, month-end) where published; Yahoo adjusted market-price closes for missing values"
       },
-      "holdings": 10,
+      "holdings": 103,
       "history": 634
     },
     {
@@ -739,8 +739,8 @@
       "terValue": 0.7,
       "nav": "—",
       "navValue": null,
-      "aum": "—",
-      "aumValue": null,
+      "aum": "$220.54 M",
+      "aumValue": 220537665.14,
       "asOfDate": "Sep 30 2026",
       "inceptionDate": "May 2 2019",
       "exchange": "NGM",
@@ -762,8 +762,8 @@
           "mo1Text": "-2.41%",
           "mo3": 1.86,
           "mo3Text": "1.86%",
-          "qtd": 1.32,
-          "qtdText": "1.32%",
+          "qtd": 0,
+          "qtdText": "0.00%",
           "ytd": 10.85,
           "ytdText": "10.85%",
           "yr1": 22.19,
@@ -803,8 +803,8 @@
         "secYieldText": "—",
         "returnsBasis": "official Pacer NAV total returns (product listing, month-end) where published; Yahoo adjusted market-price closes for missing values"
       },
-      "holdings": 10,
-      "history": 1862
+      "holdings": 111,
+      "history": 1863
     },
     {
       "ticker": "FLRT",
@@ -818,8 +818,8 @@
       "terValue": 0.6,
       "nav": "—",
       "navValue": null,
-      "aum": "—",
-      "aumValue": null,
+      "aum": "$659.38 M",
+      "aumValue": 659375419.13,
       "asOfDate": "Sep 30 2026",
       "inceptionDate": "Feb 18 2015",
       "exchange": "PCX",
@@ -841,8 +841,8 @@
           "mo1Text": "0.00%",
           "mo3": 1.36,
           "mo3Text": "1.36%",
-          "qtd": 1.23,
-          "qtdText": "1.23%",
+          "qtd": 0,
+          "qtdText": "0.00%",
           "ytd": 3.21,
           "ytdText": "3.21%",
           "yr1": 5.42,
@@ -882,8 +882,8 @@
         "secYieldText": "—",
         "returnsBasis": "official Pacer NAV total returns (product listing, month-end) where published; Yahoo adjusted market-price closes for missing values"
       },
-      "holdings": 10,
-      "history": 2921
+      "holdings": 320,
+      "history": 2922
     },
     {
       "ticker": "FOWF",
@@ -897,8 +897,8 @@
       "terValue": 0.49,
       "nav": "—",
       "navValue": null,
-      "aum": "—",
-      "aumValue": null,
+      "aum": "$15.81 M",
+      "aumValue": 15813142,
       "asOfDate": "Sep 30 2026",
       "inceptionDate": "Dec 17 2024",
       "exchange": "BTS",
@@ -961,7 +961,7 @@
         "secYieldText": "—",
         "returnsBasis": "official Pacer NAV total returns (product listing, month-end) where published; Yahoo adjusted market-price closes for missing values"
       },
-      "holdings": 10,
+      "holdings": 92,
       "history": 447
     },
     {
@@ -976,8 +976,8 @@
       "terValue": 0.6,
       "nav": "—",
       "navValue": null,
-      "aum": "—",
-      "aumValue": null,
+      "aum": "$3.44 B",
+      "aumValue": 3441585902.12,
       "asOfDate": "Sep 30 2026",
       "inceptionDate": "Feb 22 2016",
       "exchange": "BTS",
@@ -999,8 +999,8 @@
           "mo1Text": "-4.46%",
           "mo3": 4.58,
           "mo3Text": "4.58%",
-          "qtd": 4.97,
-          "qtdText": "4.97%",
+          "qtd": 0,
+          "qtdText": "0.00%",
           "ytd": 11.55,
           "ytdText": "11.55%",
           "yr1": 24.07,
@@ -1040,8 +1040,8 @@
         "secYieldText": "—",
         "returnsBasis": "official Pacer NAV total returns (product listing, month-end) where published; Yahoo adjusted market-price closes for missing values"
       },
-      "holdings": 10,
-      "history": 2667
+      "holdings": 101,
+      "history": 2668
     },
     {
       "ticker": "GLBL",
@@ -1055,8 +1055,8 @@
       "terValue": 0.65,
       "nav": "—",
       "navValue": null,
-      "aum": "—",
-      "aumValue": null,
+      "aum": "$1.11 M",
+      "aumValue": 1107325,
       "asOfDate": "Sep 30 2026",
       "inceptionDate": "Sep 16 2024",
       "exchange": "BTS",
@@ -1078,8 +1078,8 @@
           "mo1Text": "0.40%",
           "mo3": 2.27,
           "mo3Text": "2.27%",
-          "qtd": 3.3,
-          "qtdText": "3.30%",
+          "qtd": 0,
+          "qtdText": "0.00%",
           "ytd": 13.29,
           "ytdText": "13.29%",
           "yr1": 20.62,
@@ -1119,8 +1119,8 @@
         "secYieldText": "—",
         "returnsBasis": "official Pacer NAV total returns (product listing, month-end) where published; Yahoo adjusted market-price closes for missing values"
       },
-      "holdings": 10,
-      "history": 361
+      "holdings": 363,
+      "history": 362
     },
     {
       "ticker": "HERD",
@@ -1134,8 +1134,8 @@
       "terValue": 0.74,
       "nav": "—",
       "navValue": null,
-      "aum": "—",
-      "aumValue": null,
+      "aum": "$99.90 M",
+      "aumValue": 99901732.32,
       "asOfDate": "Sep 30 2026",
       "inceptionDate": "May 3 2019",
       "exchange": "NGM",
@@ -1198,7 +1198,7 @@
         "secYieldText": "—",
         "returnsBasis": "official Pacer NAV total returns (product listing, month-end) where published; Yahoo adjusted market-price closes for missing values"
       },
-      "holdings": 7,
+      "holdings": 6,
       "history": 1862
     },
     {
@@ -1213,8 +1213,8 @@
       "terValue": 0.65,
       "nav": "—",
       "navValue": null,
-      "aum": "—",
-      "aumValue": null,
+      "aum": "$1.81 B",
+      "aumValue": 1809884609.88,
       "asOfDate": "Sep 30 2026",
       "inceptionDate": "Jun 16 2017",
       "exchange": "BTS",
@@ -1236,8 +1236,8 @@
           "mo1Text": "-4.71%",
           "mo3": 3.6,
           "mo3Text": "3.60%",
-          "qtd": 3.94,
-          "qtdText": "3.94%",
+          "qtd": 0,
+          "qtdText": "0.00%",
           "ytd": 11.88,
           "ytdText": "11.88%",
           "yr1": 29.27,
@@ -1277,8 +1277,8 @@
         "secYieldText": "—",
         "returnsBasis": "official Pacer NAV total returns (product listing, month-end) where published; Yahoo adjusted market-price closes for missing values"
       },
-      "holdings": 10,
-      "history": 2334
+      "holdings": 101,
+      "history": 2335
     },
     {
       "ticker": "INDQ",
@@ -1292,8 +1292,8 @@
       "terValue": 0.88,
       "nav": "—",
       "navValue": null,
-      "aum": "—",
-      "aumValue": null,
+      "aum": "$1.05 M",
+      "aumValue": 1054557.37,
       "asOfDate": "Sep 30 2026",
       "inceptionDate": "Mar 31 2026",
       "exchange": "NGM",
@@ -1356,7 +1356,7 @@
         "secYieldText": "—",
         "returnsBasis": "official Pacer NAV total returns (product listing, month-end) where published; Yahoo adjusted market-price closes for missing values"
       },
-      "holdings": 10,
+      "holdings": 29,
       "history": 126
     },
     {
@@ -1371,8 +1371,8 @@
       "terValue": 0.49,
       "nav": "—",
       "navValue": null,
-      "aum": "—",
-      "aumValue": null,
+      "aum": "$117.96 M",
+      "aumValue": 117963010.04,
       "asOfDate": "Sep 30 2026",
       "inceptionDate": "May 14 2018",
       "exchange": "PCX",
@@ -1435,7 +1435,7 @@
         "secYieldText": "—",
         "returnsBasis": "official Pacer NAV total returns (product listing, month-end) where published; Yahoo adjusted market-price closes for missing values"
       },
-      "holdings": 10,
+      "holdings": 32,
       "history": 2106
     },
     {
@@ -1450,8 +1450,8 @@
       "terValue": 0.49,
       "nav": "—",
       "navValue": null,
-      "aum": "—",
-      "aumValue": null,
+      "aum": "$25.87 M",
+      "aumValue": 25867754.86,
       "asOfDate": "Sep 30 2026",
       "inceptionDate": "May 6 2025",
       "exchange": "BTS",
@@ -1514,7 +1514,7 @@
         "secYieldText": "—",
         "returnsBasis": "official Pacer NAV total returns (product listing, month-end) where published; Yahoo adjusted market-price closes for missing values"
       },
-      "holdings": 10,
+      "holdings": 101,
       "history": 352
     },
     {
@@ -1529,8 +1529,8 @@
       "terValue": 0.49,
       "nav": "—",
       "navValue": null,
-      "aum": "—",
-      "aumValue": null,
+      "aum": "$1.06 M",
+      "aumValue": 1063457.77,
       "asOfDate": "Sep 30 2026",
       "inceptionDate": "Aug 27 2025",
       "exchange": "BTS",
@@ -1552,8 +1552,8 @@
           "mo1Text": "0.23%",
           "mo3": 0.46,
           "mo3Text": "0.46%",
-          "qtd": 1.1,
-          "qtdText": "1.10%",
+          "qtd": 0,
+          "qtdText": "0.00%",
           "ytd": 11.16,
           "ytdText": "11.16%",
           "yr1": 7.68,
@@ -1593,8 +1593,8 @@
         "secYieldText": "—",
         "returnsBasis": "official Pacer NAV total returns (product listing, month-end) where published; Yahoo adjusted market-price closes for missing values"
       },
-      "holdings": 10,
-      "history": 274
+      "holdings": 78,
+      "history": 275
     },
     {
       "ticker": "MILK",
@@ -1608,8 +1608,8 @@
       "terValue": 0.49,
       "nav": "—",
       "navValue": null,
-      "aum": "—",
-      "aumValue": null,
+      "aum": "$19.21 M",
+      "aumValue": 19214051.72,
       "asOfDate": "Sep 30 2026",
       "inceptionDate": "Dec 17 2024",
       "exchange": "BTS",
@@ -1631,8 +1631,8 @@
           "mo1Text": "-3.04%",
           "mo3": -3.87,
           "mo3Text": "-3.87%",
-          "qtd": -3.9,
-          "qtdText": "-3.90%",
+          "qtd": 0,
+          "qtdText": "0.00%",
           "ytd": -1.33,
           "ytdText": "-1.33%",
           "yr1": 4.4,
@@ -1672,8 +1672,8 @@
         "secYieldText": "—",
         "returnsBasis": "official Pacer NAV total returns (product listing, month-end) where published; Yahoo adjusted market-price closes for missing values"
       },
-      "holdings": 10,
-      "history": 446
+      "holdings": 103,
+      "history": 447
     },
     {
       "ticker": "ODDS",
@@ -1687,8 +1687,8 @@
       "terValue": 0.49,
       "nav": "—",
       "navValue": null,
-      "aum": "—",
-      "aumValue": null,
+      "aum": "$4.03 M",
+      "aumValue": 4028378.8,
       "asOfDate": "Sep 30 2026",
       "inceptionDate": "Apr 8 2022",
       "exchange": "NGM",
@@ -1710,8 +1710,8 @@
           "mo1Text": "-8.80%",
           "mo3": -3.32,
           "mo3Text": "-3.32%",
-          "qtd": -5.08,
-          "qtdText": "-5.08%",
+          "qtd": 0,
+          "qtdText": "0.00%",
           "ytd": -19.04,
           "ytdText": "-19.04%",
           "yr1": -23.7,
@@ -1751,8 +1751,8 @@
         "secYieldText": "—",
         "returnsBasis": "official Pacer NAV total returns (product listing, month-end) where published; Yahoo adjusted market-price closes for missing values"
       },
-      "holdings": 10,
-      "history": 1122
+      "holdings": 43,
+      "history": 1123
     },
     {
       "ticker": "PALC",
@@ -1766,8 +1766,8 @@
       "terValue": 0.6,
       "nav": "—",
       "navValue": null,
-      "aum": "—",
-      "aumValue": null,
+      "aum": "$210.09 M",
+      "aumValue": 210094172.74,
       "asOfDate": "Sep 30 2026",
       "inceptionDate": "Jun 24 2020",
       "exchange": "PCX",
@@ -1830,7 +1830,7 @@
         "secYieldText": "—",
         "returnsBasis": "official Pacer NAV total returns (product listing, month-end) where published; Yahoo adjusted market-price closes for missing values"
       },
-      "holdings": 10,
+      "holdings": 179,
       "history": 1575
     },
     {
@@ -1845,8 +1845,8 @@
       "terValue": 0.6,
       "nav": "—",
       "navValue": null,
-      "aum": "—",
-      "aumValue": null,
+      "aum": "$53.65 M",
+      "aumValue": 53652074.11,
       "asOfDate": "Sep 30 2026",
       "inceptionDate": "Jun 24 2020",
       "exchange": "PCX",
@@ -1909,7 +1909,7 @@
         "secYieldText": "—",
         "returnsBasis": "official Pacer NAV total returns (product listing, month-end) where published; Yahoo adjusted market-price closes for missing values"
       },
-      "holdings": 10,
+      "holdings": 151,
       "history": 1575
     },
     {
@@ -1924,8 +1924,8 @@
       "terValue": 0.65,
       "nav": "—",
       "navValue": null,
-      "aum": "—",
-      "aumValue": null,
+      "aum": "$206.72 M",
+      "aumValue": 206720137.06,
       "asOfDate": "Sep 30 2026",
       "inceptionDate": "Sep 16 2024",
       "exchange": "NGM",
@@ -1947,8 +1947,8 @@
           "mo1Text": "0.22%",
           "mo3": -2.44,
           "mo3Text": "-2.44%",
-          "qtd": -1.37,
-          "qtdText": "-1.37%",
+          "qtd": 0,
+          "qtdText": "0.00%",
           "ytd": 32.6,
           "ytdText": "32.60%",
           "yr1": 50.29,
@@ -1988,8 +1988,8 @@
         "secYieldText": "—",
         "returnsBasis": "official Pacer NAV total returns (product listing, month-end) where published; Yahoo adjusted market-price closes for missing values"
       },
-      "holdings": 10,
-      "history": 511
+      "holdings": 101,
+      "history": 512
     },
     {
       "ticker": "PBSC",
@@ -2003,8 +2003,8 @@
       "terValue": 0.49,
       "nav": "—",
       "navValue": null,
-      "aum": "—",
-      "aumValue": null,
+      "aum": "$85.79 M",
+      "aumValue": 85785386.18,
       "asOfDate": "Sep 30 2026",
       "inceptionDate": "Jun 22 2026",
       "exchange": "NGM",
@@ -2067,7 +2067,7 @@
         "secYieldText": "—",
         "returnsBasis": "official Pacer NAV total returns (product listing, month-end) where published; Yahoo adjusted market-price closes for missing values"
       },
-      "holdings": 10,
+      "holdings": 265,
       "history": 71
     },
     {
@@ -2082,8 +2082,8 @@
       "terValue": 0.6,
       "nav": "—",
       "navValue": null,
-      "aum": "—",
-      "aumValue": null,
+      "aum": "$50.64 M",
+      "aumValue": 50636593.19,
       "asOfDate": "Sep 30 2026",
       "inceptionDate": "Jul 23 2018",
       "exchange": "PCX",
@@ -2146,7 +2146,7 @@
         "secYieldText": "—",
         "returnsBasis": "official Pacer NAV total returns (product listing, month-end) where published; Yahoo adjusted market-price closes for missing values"
       },
-      "holdings": 10,
+      "holdings": 102,
       "history": 1998
     },
     {
@@ -2161,8 +2161,8 @@
       "terValue": 0.6,
       "nav": "—",
       "navValue": null,
-      "aum": "—",
-      "aumValue": null,
+      "aum": "$1.14 M",
+      "aumValue": 1141038.52,
       "asOfDate": "Sep 30 2026",
       "inceptionDate": "Dec 22 2025",
       "exchange": "BTS",
@@ -2184,8 +2184,8 @@
           "mo1Text": "-3.54%",
           "mo3": -4.22,
           "mo3Text": "-4.22%",
-          "qtd": -2.78,
-          "qtdText": "-2.78%",
+          "qtd": 0,
+          "qtdText": "0.00%",
           "ytd": 12.41,
           "ytdText": "12.41%",
           "yr1": null,
@@ -2225,8 +2225,8 @@
         "secYieldText": "—",
         "returnsBasis": "official Pacer NAV total returns (product listing, month-end) where published; Yahoo adjusted market-price closes for missing values"
       },
-      "holdings": 10,
-      "history": 190
+      "holdings": 101,
+      "history": 191
     },
     {
       "ticker": "PSAI",
@@ -2240,8 +2240,8 @@
       "terValue": 0.49,
       "nav": "—",
       "navValue": null,
-      "aum": "—",
-      "aumValue": null,
+      "aum": "$2.20 M",
+      "aumValue": 2196285.05,
       "asOfDate": "Sep 30 2026",
       "inceptionDate": "Apr 22 2026",
       "exchange": "BTS",
@@ -2263,8 +2263,8 @@
           "mo1Text": "-4.41%",
           "mo3": -3.78,
           "mo3Text": "-3.78%",
-          "qtd": -2.82,
-          "qtdText": "-2.82%",
+          "qtd": 0,
+          "qtdText": "0.00%",
           "ytd": null,
           "ytdText": "—",
           "yr1": null,
@@ -2304,8 +2304,8 @@
         "secYieldText": "—",
         "returnsBasis": "official Pacer NAV total returns (product listing, month-end) where published; Yahoo adjusted market-price closes for missing values"
       },
-      "holdings": 10,
-      "history": 101
+      "holdings": 102,
+      "history": 102
     },
     {
       "ticker": "PTBD",
@@ -2319,8 +2319,8 @@
       "terValue": 0.6,
       "nav": "—",
       "navValue": null,
-      "aum": "—",
-      "aumValue": null,
+      "aum": "$85.20 M",
+      "aumValue": 85196659.86,
       "asOfDate": "Sep 30 2026",
       "inceptionDate": "Oct 22 2019",
       "exchange": "PCX",
@@ -2342,8 +2342,8 @@
           "mo1Text": "-2.58%",
           "mo3": -2.05,
           "mo3Text": "-2.05%",
-          "qtd": -2.39,
-          "qtdText": "-2.39%",
+          "qtd": 0,
+          "qtdText": "0.00%",
           "ytd": -0.96,
           "ytdText": "-0.96%",
           "yr1": 1.56,
@@ -2383,8 +2383,8 @@
         "secYieldText": "—",
         "returnsBasis": "official Pacer NAV total returns (product listing, month-end) where published; Yahoo adjusted market-price closes for missing values"
       },
-      "holdings": 10,
-      "history": 1743
+      "holdings": 992,
+      "history": 1744
     },
     {
       "ticker": "PTEU",
@@ -2398,8 +2398,8 @@
       "terValue": 0.65,
       "nav": "—",
       "navValue": null,
-      "aum": "—",
-      "aumValue": null,
+      "aum": "$37.17 M",
+      "aumValue": 37165919.22,
       "asOfDate": "Sep 30 2026",
       "inceptionDate": "Dec 14 2015",
       "exchange": "BTS",
@@ -2421,8 +2421,8 @@
           "mo1Text": "-4.54%",
           "mo3": -2.14,
           "mo3Text": "-2.14%",
-          "qtd": -1.45,
-          "qtdText": "-1.45%",
+          "qtd": 0,
+          "qtdText": "0.00%",
           "ytd": 6.31,
           "ytdText": "6.31%",
           "yr1": 20.62,
@@ -2462,8 +2462,8 @@
         "secYieldText": "—",
         "returnsBasis": "official Pacer NAV total returns (product listing, month-end) where published; Yahoo adjusted market-price closes for missing values"
       },
-      "holdings": 10,
-      "history": 2711
+      "holdings": 289,
+      "history": 2712
     },
     {
       "ticker": "PTIN",
@@ -2477,8 +2477,8 @@
       "terValue": 0.67,
       "nav": "—",
       "navValue": null,
-      "aum": "—",
-      "aumValue": null,
+      "aum": "$184.70 M",
+      "aumValue": 184702484.33,
       "asOfDate": "Sep 30 2026",
       "inceptionDate": "May 2 2019",
       "exchange": "PCX",
@@ -2500,8 +2500,8 @@
           "mo1Text": "-2.64%",
           "mo3": 0.12,
           "mo3Text": "0.12%",
-          "qtd": 0.76,
-          "qtdText": "0.76%",
+          "qtd": 0,
+          "qtdText": "0.00%",
           "ytd": 15.72,
           "ytdText": "15.72%",
           "yr1": 29.53,
@@ -2541,8 +2541,8 @@
         "secYieldText": "—",
         "returnsBasis": "official Pacer NAV total returns (product listing, month-end) where published; Yahoo adjusted market-price closes for missing values"
       },
-      "holdings": 10,
-      "history": 1862
+      "holdings": 501,
+      "history": 1863
     },
     {
       "ticker": "PTLC",
@@ -2556,8 +2556,8 @@
       "terValue": 0.6,
       "nav": "—",
       "navValue": null,
-      "aum": "—",
-      "aumValue": null,
+      "aum": "$3.26 B",
+      "aumValue": 3260345635.46,
       "asOfDate": "Sep 30 2026",
       "inceptionDate": "Jun 11 2015",
       "exchange": "BTS",
@@ -2579,8 +2579,8 @@
           "mo1Text": "-0.41%",
           "mo3": 2.16,
           "mo3Text": "2.16%",
-          "qtd": 2.31,
-          "qtdText": "2.31%",
+          "qtd": 0,
+          "qtdText": "0.00%",
           "ytd": 7.08,
           "ytdText": "7.08%",
           "yr1": 14.17,
@@ -2620,8 +2620,8 @@
         "secYieldText": "—",
         "returnsBasis": "official Pacer NAV total returns (product listing, month-end) where published; Yahoo adjusted market-price closes for missing values"
       },
-      "holdings": 10,
-      "history": 2842
+      "holdings": 506,
+      "history": 2843
     },
     {
       "ticker": "PTMC",
@@ -2635,8 +2635,8 @@
       "terValue": 0.6,
       "nav": "—",
       "navValue": null,
-      "aum": "—",
-      "aumValue": null,
+      "aum": "$391.46 M",
+      "aumValue": 391460016.06,
       "asOfDate": "Sep 30 2026",
       "inceptionDate": "Jun 11 2015",
       "exchange": "BTS",
@@ -2699,7 +2699,7 @@
         "secYieldText": "—",
         "returnsBasis": "official Pacer NAV total returns (product listing, month-end) where published; Yahoo adjusted market-price closes for missing values"
       },
-      "holdings": 10,
+      "holdings": 402,
       "history": 2843
     },
     {
@@ -2714,8 +2714,8 @@
       "terValue": 0.65,
       "nav": "—",
       "navValue": null,
-      "aum": "—",
-      "aumValue": null,
+      "aum": "$1.19 B",
+      "aumValue": 1194402804.07,
       "asOfDate": "Sep 30 2026",
       "inceptionDate": "Jun 11 2015",
       "exchange": "NGM",
@@ -2737,8 +2737,8 @@
           "mo1Text": "3.23%",
           "mo3": 0.42,
           "mo3Text": "0.42%",
-          "qtd": 1.98,
-          "qtdText": "1.98%",
+          "qtd": 0,
+          "qtdText": "0.00%",
           "ytd": 13.37,
           "ytdText": "13.37%",
           "yr1": 18.43,
@@ -2778,8 +2778,8 @@
         "secYieldText": "—",
         "returnsBasis": "official Pacer NAV total returns (product listing, month-end) where published; Yahoo adjusted market-price closes for missing values"
       },
-      "holdings": 10,
-      "history": 2842
+      "holdings": 105,
+      "history": 2843
     },
     {
       "ticker": "PWS",
@@ -2793,8 +2793,8 @@
       "terValue": 0.6,
       "nav": "—",
       "navValue": null,
-      "aum": "—",
-      "aumValue": null,
+      "aum": "$24.07 M",
+      "aumValue": 24066624.71,
       "asOfDate": "Sep 30 2026",
       "inceptionDate": "Dec 11 2017",
       "exchange": "BTS",
@@ -2857,7 +2857,7 @@
         "secYieldText": "—",
         "returnsBasis": "official Pacer NAV total returns (product listing, month-end) where published; Yahoo adjusted market-price closes for missing values"
       },
-      "holdings": 10,
+      "holdings": 339,
       "history": 2212
     },
     {
@@ -2872,8 +2872,8 @@
       "terValue": 0.6,
       "nav": "—",
       "navValue": null,
-      "aum": "—",
-      "aumValue": null,
+      "aum": "$1.71 B",
+      "aumValue": 1706115815.27,
       "asOfDate": "Sep 30 2026",
       "inceptionDate": "Jul 12 2021",
       "exchange": "PCX",
@@ -2895,8 +2895,8 @@
           "mo1Text": "-0.41%",
           "mo3": 2,
           "mo3Text": "2.00%",
-          "qtd": 1.96,
-          "qtdText": "1.96%",
+          "qtd": 0,
+          "qtdText": "0.00%",
           "ytd": 11.91,
           "ytdText": "11.91%",
           "yr1": 19.07,
@@ -2936,8 +2936,8 @@
         "secYieldText": "—",
         "returnsBasis": "official Pacer NAV total returns (product listing, month-end) where published; Yahoo adjusted market-price closes for missing values"
       },
-      "holdings": 10,
-      "history": 1301
+      "holdings": 519,
+      "history": 1302
     },
     {
       "ticker": "QFHD",
@@ -2951,8 +2951,8 @@
       "terValue": 0.49,
       "nav": "—",
       "navValue": null,
-      "aum": "—",
-      "aumValue": null,
+      "aum": "$549.64 K",
+      "aumValue": 549635.93,
       "asOfDate": "Sep 30 2026",
       "inceptionDate": "Jan 12 2026",
       "exchange": "BTS",
@@ -3015,7 +3015,7 @@
         "secYieldText": "—",
         "returnsBasis": "official Pacer NAV total returns (product listing, month-end) where published; Yahoo adjusted market-price closes for missing values"
       },
-      "holdings": 10,
+      "holdings": 98,
       "history": 180
     },
     {
@@ -3030,8 +3030,8 @@
       "terValue": 0.49,
       "nav": "—",
       "navValue": null,
-      "aum": "—",
-      "aumValue": null,
+      "aum": "$1.12 M",
+      "aumValue": 1121402.99,
       "asOfDate": "Sep 30 2026",
       "inceptionDate": "Jan 12 2026",
       "exchange": "BTS",
@@ -3094,7 +3094,7 @@
         "secYieldText": "—",
         "returnsBasis": "official Pacer NAV total returns (product listing, month-end) where published; Yahoo adjusted market-price closes for missing values"
       },
-      "holdings": 10,
+      "holdings": 51,
       "history": 180
     },
     {
@@ -3109,8 +3109,8 @@
       "terValue": 0.49,
       "nav": "—",
       "navValue": null,
-      "aum": "—",
-      "aumValue": null,
+      "aum": "$20.38 M",
+      "aumValue": 20376648.41,
       "asOfDate": "Sep 30 2026",
       "inceptionDate": "Aug 19 2024",
       "exchange": "NGM",
@@ -3122,7 +3122,7 @@
       "distributions": {
         "frequency": "Quarterly",
         "exDate": "09/03/2026",
-        "dividend": "0.01"
+        "dividend": "0.010049"
       },
       "returns": {
         "derivedFrom": "official Pacer NAV total returns (product listing, month-end) where published; Yahoo adjusted market-price closes for missing values",
@@ -3132,8 +3132,8 @@
           "mo1Text": "4.82%",
           "mo3": -1.07,
           "mo3Text": "-1.07%",
-          "qtd": 1.56,
-          "qtdText": "1.56%",
+          "qtd": 0,
+          "qtdText": "0.00%",
           "ytd": 34.98,
           "ytdText": "34.98%",
           "yr1": 36.03,
@@ -3173,8 +3173,8 @@
         "secYieldText": "—",
         "returnsBasis": "official Pacer NAV total returns (product listing, month-end) where published; Yahoo adjusted market-price closes for missing values"
       },
-      "holdings": 0,
-      "history": 529
+      "holdings": 52,
+      "history": 530
     },
     {
       "ticker": "QQWZ",
@@ -3188,8 +3188,8 @@
       "terValue": 0.49,
       "nav": "—",
       "navValue": null,
-      "aum": "—",
-      "aumValue": null,
+      "aum": "$50.80 M",
+      "aumValue": 50803172.55,
       "asOfDate": "Sep 30 2026",
       "inceptionDate": "May 6 2025",
       "exchange": "NGM",
@@ -3211,8 +3211,8 @@
           "mo1Text": "-6.84%",
           "mo3": -6.25,
           "mo3Text": "-6.25%",
-          "qtd": -4.75,
-          "qtdText": "-4.75%",
+          "qtd": 0,
+          "qtdText": "0.00%",
           "ytd": 9.51,
           "ytdText": "9.51%",
           "yr1": 26.85,
@@ -3252,8 +3252,8 @@
         "secYieldText": "—",
         "returnsBasis": "official Pacer NAV total returns (product listing, month-end) where published; Yahoo adjusted market-price closes for missing values"
       },
-      "holdings": 10,
-      "history": 351
+      "holdings": 104,
+      "history": 352
     },
     {
       "ticker": "QSIX",
@@ -3267,8 +3267,8 @@
       "terValue": 0.6,
       "nav": "—",
       "navValue": null,
-      "aum": "—",
-      "aumValue": null,
+      "aum": "$18.35 M",
+      "aumValue": 18353576.83,
       "asOfDate": "Sep 30 2026",
       "inceptionDate": "Sep 23 2024",
       "exchange": "NGM",
@@ -3290,8 +3290,8 @@
           "mo1Text": "2.76%",
           "mo3": 0.16,
           "mo3Text": "0.16%",
-          "qtd": 1.73,
-          "qtdText": "1.73%",
+          "qtd": 0,
+          "qtdText": "0.00%",
           "ytd": 18.62,
           "ytdText": "18.62%",
           "yr1": 24.04,
@@ -3331,8 +3331,8 @@
         "secYieldText": "—",
         "returnsBasis": "official Pacer NAV total returns (product listing, month-end) where published; Yahoo adjusted market-price closes for missing values"
       },
-      "holdings": 10,
-      "history": 506
+      "holdings": 108,
+      "history": 507
     },
     {
       "ticker": "SCOW",
@@ -3346,8 +3346,8 @@
       "terValue": 0.59,
       "nav": "—",
       "navValue": null,
-      "aum": "—",
-      "aumValue": null,
+      "aum": "$1.71 M",
+      "aumValue": 1710658.52,
       "asOfDate": "Sep 30 2026",
       "inceptionDate": "Aug 27 2025",
       "exchange": "BTS",
@@ -3369,8 +3369,8 @@
           "mo1Text": "-6.25%",
           "mo3": -0.36,
           "mo3Text": "-0.36%",
-          "qtd": -0.25,
-          "qtdText": "-0.25%",
+          "qtd": 0,
+          "qtdText": "0.00%",
           "ytd": 11.73,
           "ytdText": "11.73%",
           "yr1": 16.58,
@@ -3410,8 +3410,8 @@
         "secYieldText": "—",
         "returnsBasis": "official Pacer NAV total returns (product listing, month-end) where published; Yahoo adjusted market-price closes for missing values"
       },
-      "holdings": 10,
-      "history": 274
+      "holdings": 80,
+      "history": 275
     },
     {
       "ticker": "SHPP",
@@ -3425,8 +3425,8 @@
       "terValue": 0.6,
       "nav": "—",
       "navValue": null,
-      "aum": "—",
-      "aumValue": null,
+      "aum": "$2.07 M",
+      "aumValue": 2067411.86,
       "asOfDate": "Sep 30 2026",
       "inceptionDate": "Jun 8 2022",
       "exchange": "PCX",
@@ -3448,8 +3448,8 @@
           "mo1Text": "-5.35%",
           "mo3": 0.99,
           "mo3Text": "0.99%",
-          "qtd": -0.14,
-          "qtdText": "-0.14%",
+          "qtd": 0,
+          "qtdText": "0.00%",
           "ytd": 15.22,
           "ytdText": "15.22%",
           "yr1": 29.14,
@@ -3489,8 +3489,8 @@
         "secYieldText": "—",
         "returnsBasis": "official Pacer NAV total returns (product listing, month-end) where published; Yahoo adjusted market-price closes for missing values"
       },
-      "holdings": 10,
-      "history": 1080
+      "holdings": 115,
+      "history": 1081
     },
     {
       "ticker": "SRVR",
@@ -3504,8 +3504,8 @@
       "terValue": 0.49,
       "nav": "—",
       "navValue": null,
-      "aum": "—",
-      "aumValue": null,
+      "aum": "$370.71 M",
+      "aumValue": 370709705.56,
       "asOfDate": "Sep 30 2026",
       "inceptionDate": "May 15 2018",
       "exchange": "PCX",
@@ -3527,8 +3527,8 @@
           "mo1Text": "-7.37%",
           "mo3": -8.76,
           "mo3Text": "-8.76%",
-          "qtd": -8.21,
-          "qtdText": "-8.21%",
+          "qtd": 0,
+          "qtdText": "0.00%",
           "ytd": 1.74,
           "ytdText": "1.74%",
           "yr1": 1.57,
@@ -3568,8 +3568,8 @@
         "secYieldText": "—",
         "returnsBasis": "official Pacer NAV total returns (product listing, month-end) where published; Yahoo adjusted market-price closes for missing values"
       },
-      "holdings": 10,
-      "history": 2105
+      "holdings": 67,
+      "history": 2106
     },
     {
       "ticker": "TRFK",
@@ -3583,8 +3583,8 @@
       "terValue": 0.49,
       "nav": "—",
       "navValue": null,
-      "aum": "—",
-      "aumValue": null,
+      "aum": "$954.54 M",
+      "aumValue": 954535489.86,
       "asOfDate": "Sep 30 2026",
       "inceptionDate": "Jun 8 2022",
       "exchange": "PCX",
@@ -3606,8 +3606,8 @@
           "mo1Text": "7.35%",
           "mo3": -5.19,
           "mo3Text": "-5.19%",
-          "qtd": -0.73,
-          "qtdText": "-0.73%",
+          "qtd": 0,
+          "qtdText": "0.00%",
           "ytd": 57.71,
           "ytdText": "57.71%",
           "yr1": 53.13,
@@ -3647,8 +3647,8 @@
         "secYieldText": "—",
         "returnsBasis": "official Pacer NAV total returns (product listing, month-end) where published; Yahoo adjusted market-price closes for missing values"
       },
-      "holdings": 10,
-      "history": 1080
+      "holdings": 96,
+      "history": 1081
     },
     {
       "ticker": "TRND",
@@ -3662,8 +3662,8 @@
       "terValue": 0.77,
       "nav": "—",
       "navValue": null,
-      "aum": "—",
-      "aumValue": null,
+      "aum": "$61.93 M",
+      "aumValue": 61929269.16,
       "asOfDate": "Sep 30 2026",
       "inceptionDate": "May 3 2019",
       "exchange": "PCX",
@@ -3741,8 +3741,8 @@
       "terValue": 0.75,
       "nav": "—",
       "navValue": null,
-      "aum": "—",
-      "aumValue": null,
+      "aum": "$132.82 M",
+      "aumValue": 132822883.7,
       "asOfDate": "Sep 30 2026",
       "inceptionDate": "Dec 12 2017",
       "exchange": "PCX",
@@ -3764,8 +3764,8 @@
           "mo1Text": "-9.32%",
           "mo3": -3.78,
           "mo3Text": "-3.78%",
-          "qtd": -2.62,
-          "qtdText": "-2.62%",
+          "qtd": 0,
+          "qtdText": "0.00%",
           "ytd": 17.05,
           "ytdText": "17.05%",
           "yr1": 25.49,
@@ -3805,8 +3805,8 @@
         "secYieldText": "—",
         "returnsBasis": "official Pacer NAV total returns (product listing, month-end) where published; Yahoo adjusted market-price closes for missing values"
       },
-      "holdings": 10,
-      "history": 2210
+      "holdings": 36,
+      "history": 2211
     },
     {
       "ticker": "WDAI",
@@ -3820,8 +3820,8 @@
       "terValue": 0.6,
       "nav": "—",
       "navValue": null,
-      "aum": "—",
-      "aumValue": null,
+      "aum": "$1.11 M",
+      "aumValue": 1106059.51,
       "asOfDate": "Sep 30 2026",
       "inceptionDate": "Apr 22 2026",
       "exchange": "BTS",
@@ -3843,8 +3843,8 @@
           "mo1Text": "-3.34%",
           "mo3": 2.45,
           "mo3Text": "2.45%",
-          "qtd": 2.46,
-          "qtdText": "2.46%",
+          "qtd": 0,
+          "qtdText": "0.00%",
           "ytd": null,
           "ytdText": "—",
           "yr1": null,
@@ -3884,8 +3884,8 @@
         "secYieldText": "—",
         "returnsBasis": "official Pacer NAV total returns (product listing, month-end) where published; Yahoo adjusted market-price closes for missing values"
       },
-      "holdings": 10,
-      "history": 101
+      "holdings": 302,
+      "history": 102
     }
   ]
 }

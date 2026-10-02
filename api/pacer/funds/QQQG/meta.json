@@ -8,12 +8,12 @@
     "officialProductPage": "https://www.paceretfs.com/products/QQQG",
     "productPageRendering": "read-only rendering proxy (r.jina.ai) of the official product page",
     "productPageAsOf": "Sep 30 2026",
-    "holdingsDownload": "https://www.paceretfs.com/products/holdings_download/QQQG",
+    "holdingsDownload": "https://www.sec.gov/Archives/edgar/data/1616668/000089418926029016/0000894189-26-029016.txt",
     "navHistoryDownload": null,
     "yahooChart": "https://query1.finance.yahoo.com/v8/finance/chart/QQQG",
-    "holdingsSource": "not available from the issuer CSV export or a public SEC filing",
+    "holdingsSource": "SEC EDGAR Form N-PORT-P (accession 0000894189-26-029016, report period 2026-07-31)",
     "historySource": "Yahoo Finance public chart API (adjusted close)",
-    "distributionsSource": "Yahoo Finance chart dividend events (the fund page published no distribution table)",
+    "distributionsSource": "paceretfs.com fund page distribution history (total distribution per share)",
     "provider": "Pacer ETFs product listing + official product page + per-fund daily holdings CSV export + SEC EDGAR Form N-PORT-P fallback + Yahoo Finance public chart API"
   },
   "identifiers": {
@@ -32,7 +32,7 @@
   "nav": {
     "display": "—",
     "value": null,
-    "asOfDate": "Sep 30 2026",
+    "asOfDate": "Jul 31 2026",
     "source": "previous run"
   },
   "marketPrice": {
@@ -48,10 +48,10 @@
     "source": "computed from Yahoo last price / the net-asset value implied by the daily holdings CSV"
   },
   "aum": {
-    "display": "—",
-    "value": null,
-    "asOfDate": "Sep 30 2026",
-    "source": "previous run"
+    "display": "$20.38 M",
+    "value": 20376648.41,
+    "asOfDate": "Jul 31 2026",
+    "source": "SEC Form N-PORT-P net assets (2026-07-31)"
   },
   "fundFacts": {
     "sharesOutstanding": null,
@@ -76,8 +76,8 @@
       "mo1Text": "4.82%",
       "mo3": -1.07,
       "mo3Text": "-1.07%",
-      "qtd": 1.56,
-      "qtdText": "1.56%",
+      "qtd": 0,
+      "qtdText": "0.00%",
       "ytd": 34.98,
       "ytdText": "34.98%",
       "yr1": 36.03,
@@ -127,61 +127,118 @@
     "frequency": "Quarterly",
     "frequencyCode": "04 - Quarterly",
     "paymentsPerYear": 4,
-    "source": "Yahoo Finance chart dividend events (the fund page published no distribution table)",
+    "source": "paceretfs.com fund page distribution history (total distribution per share)",
     "headers": [
-      "Ex-Date",
-      "Total Distributions",
-      "Ordinary Income",
+      "Ex Date",
+      "Record Date",
+      "Pay Date",
+      "Total Distribution",
+      "Ordinary Income*",
       "Short Term Capital Gains",
       "Long Term Capital Gains",
       "Return of Capital"
     ],
     "rows": [
       [
-        "09/26/2024",
-        "0.015"
+        "9/26/2024",
+        "9/26/2024",
+        "10/2/2024",
+        "$0.014658",
+        "$0.014658",
+        "$0",
+        "$0",
+        "$0"
       ],
       [
         "12/27/2024",
-        "0.009"
+        "12/27/2024",
+        "1/2/2025",
+        "$0.009192",
+        "$0.009192",
+        "$0",
+        "$0",
+        "$0"
       ],
       [
-        "06/05/2025",
-        "0.003"
+        "3/6/2025",
+        "3/6/2025",
+        "3/12/2025",
+        "$0.000181",
+        "$0.000181",
+        "$0",
+        "$0",
+        "$0"
       ],
       [
-        "09/04/2025",
-        "0.004"
+        "6/5/2025",
+        "6/5/2025",
+        "6/11/2025",
+        "$0.003092",
+        "$0.003092",
+        "$0",
+        "$0",
+        "$0"
+      ],
+      [
+        "9/4/2025",
+        "9/4/2025",
+        "9/10/2025",
+        "$0.0041050",
+        "$0.0041050",
+        "$0",
+        "$0",
+        "$0"
       ],
       [
         "12/30/2025",
-        "0.006"
+        "12/30/2025",
+        "1/5/2026",
+        "$0.0063222",
+        "$0.0063222",
+        "$0",
+        "$0",
+        "$0"
       ],
       [
-        "06/04/2026",
-        "0.005"
+        "6/4/2026",
+        "6/4/2026",
+        "6/8/2026",
+        "$0.004765",
+        "$0.004765",
+        "$0",
+        "$0",
+        "$0"
       ],
       [
-        "09/03/2026",
-        "0.01"
+        "9/3/2026",
+        "9/3/2026",
+        "9/8/2026",
+        "$0.010049",
+        "$0.010049",
+        "$0",
+        "$0",
+        "$0"
       ]
     ]
   },
   "holdings": {
-    "pages": [],
+    "pages": [
+      "holdings/001.json"
+    ],
     "pageSize": 250,
-    "totalRows": 0,
-    "asOfDate": null,
-    "asOf": "—",
-    "source": "not available from the issuer CSV export or a public SEC filing"
+    "totalRows": 52,
+    "asOfDate": "2026-07-31",
+    "asOf": "Jul 31 2026",
+    "source": "SEC EDGAR Form N-PORT-P (accession 0000894189-26-029016, report period 2026-07-31)",
+    "publishedTopHoldings": 10
   },
   "history": {
     "pages": [
       "history/001.json"
     ],
     "pageSize": 1000,
-    "totalRows": 529,
-    "asOf": "Sep 30 2026",
+    "totalRows": 530,
+    "asOf": "Oct 1 2026",
     "source": "Yahoo Finance public chart API (adjusted close)"
   }
 }

@@ -1,0 +1,368 @@
+{
+  "ticker": "PTEU",
+  "page": 2,
+  "pageSize": 250,
+  "totalRows": 289,
+  "headers": [
+    "Name",
+    "Ticker",
+    "Identifier",
+    "Weight",
+    "Market Value",
+    "Shares Held",
+    "Asset Category"
+  ],
+  "rows": [
+    {
+      "Name": "Mediobanca Banca di Credito Fi",
+      "Ticker": "-",
+      "Identifier": "IT0000062957",
+      "Weight": "0.0346510466",
+      "Market Value": "12878.38",
+      "Shares Held": "400.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Merck KGaA",
+      "Ticker": "-",
+      "Identifier": "DE0006599905",
+      "Weight": "0.2669357091",
+      "Market Value": "99209.11",
+      "Shares Held": "601.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Henkel AG & Co KGaA",
+      "Ticker": "-",
+      "Identifier": "DE0006048408",
+      "Weight": "0.097726925",
+      "Market Value": "36321.11",
+      "Shares Held": "443.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Hellenic Telecommunications Or",
+      "Ticker": "-",
+      "Identifier": "GRS260333000",
+      "Weight": "0.0435434676",
+      "Market Value": "16183.33",
+      "Shares Held": "701.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Henkel AG & Co KGaA",
+      "Ticker": "-",
+      "Identifier": "DE0006048432",
+      "Weight": "0.1719814049",
+      "Market Value": "63918.47",
+      "Shares Held": "733.000000000000",
+      "Asset Category": "EP"
+    },
+    {
+      "Name": "HOCHTIEF AG",
+      "Ticker": "-",
+      "Identifier": "DE0006070006",
+      "Weight": "0.0962584022",
+      "Market Value": "35775.32",
+      "Shares Held": "70.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Heidelberg Materials AG",
+      "Ticker": "-",
+      "Identifier": "DE0006047004",
+      "Weight": "0.2927280484",
+      "Market Value": "108795.07",
+      "Shares Held": "586.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Interpump Group SpA",
+      "Ticker": "-",
+      "Identifier": "IT0001078911",
+      "Weight": "0.0378336129",
+      "Market Value": "14061.21",
+      "Shares Held": "351.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Hermes International SCA",
+      "Ticker": "-",
+      "Identifier": "FR0000052292",
+      "Weight": "0.7555357055",
+      "Market Value": "280801.79",
+      "Shares Held": "159.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "HELLENiQ ENERGY Holdings S.A.",
+      "Ticker": "-",
+      "Identifier": "GRS298343005",
+      "Weight": "0.0162147476",
+      "Market Value": "6026.36",
+      "Shares Held": "402.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Mercedes-Benz Group AG",
+      "Ticker": "-",
+      "Identifier": "DE0007100000",
+      "Weight": "0.5096381954",
+      "Market Value": "189411.72",
+      "Shares Held": "3515.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Infineon Technologies AG",
+      "Ticker": "IFNNY",
+      "Identifier": "DE0006231004",
+      "Weight": "1.1645194821",
+      "Market Value": "432804.37",
+      "Shares Held": "6086.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Koninklijke KPN NV",
+      "Ticker": "-",
+      "Identifier": "NL0000009082",
+      "Weight": "0.2261502521",
+      "Market Value": "84050.82",
+      "Shares Held": "17730.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Koninklijke Philips NV",
+      "Ticker": "PHG",
+      "Identifier": "NL0000009538",
+      "Weight": "0.2607028483",
+      "Market Value": "96892.61",
+      "Shares Held": "3695.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "JUMBO SA",
+      "Ticker": "-",
+      "Identifier": "GRS282183003",
+      "Weight": "0.0390444803",
+      "Market Value": "14511.24",
+      "Shares Held": "520.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Klepierre SA",
+      "Ticker": "-",
+      "Identifier": "FR0000121964",
+      "Weight": "0.1257223311",
+      "Market Value": "46725.86",
+      "Shares Held": "1030.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Hera SpA",
+      "Ticker": "-",
+      "Identifier": "IT0001250932",
+      "Weight": "0.0422850836",
+      "Market Value": "15715.64",
+      "Shares Held": "3594.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Heineken NV",
+      "Ticker": "-",
+      "Identifier": "NL0000009165",
+      "Weight": "0.3014404119",
+      "Market Value": "112033.1",
+      "Shares Held": "1237.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Kone Oyj",
+      "Ticker": "-",
+      "Identifier": "FI0009013403",
+      "Weight": "0.225396201",
+      "Market Value": "83770.57",
+      "Shares Held": "1450.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Heineken Holding NV",
+      "Ticker": "-",
+      "Identifier": "NL0000008977",
+      "Weight": "0.1084180638",
+      "Market Value": "40294.57",
+      "Shares Held": "479.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Leonardo SpA",
+      "Ticker": "-",
+      "Identifier": "IT0003856405",
+      "Weight": "0.3196387241",
+      "Market Value": "118796.67",
+      "Shares Held": "1869.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Ipsen SA",
+      "Ticker": "-",
+      "Identifier": "FR0010259150",
+      "Weight": "0.0840411879",
+      "Market Value": "31234.68",
+      "Shares Held": "162.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Legrand SA",
+      "Ticker": "-",
+      "Identifier": "FR0010307819",
+      "Weight": "0.4802656405",
+      "Market Value": "178495.14",
+      "Shares Held": "1178.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Mapfre SA",
+      "Ticker": "-",
+      "Identifier": "ES0124244E34",
+      "Weight": "0.0583313973",
+      "Market Value": "21679.4",
+      "Shares Held": "4240.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Jeronimo Martins SGPS SA",
+      "Ticker": "-",
+      "Identifier": "PTJMT0AE0001",
+      "Weight": "0.0685137366",
+      "Market Value": "25463.76",
+      "Shares Held": "1272.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Iberdrola SA",
+      "Ticker": "-",
+      "Identifier": "ES0144580Y14",
+      "Weight": "2.0566763208",
+      "Market Value": "764382.66",
+      "Shares Held": "32100.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "LEG Immobilien SE",
+      "Ticker": "-",
+      "Identifier": "DE000LEG1110",
+      "Weight": "0.0566850772",
+      "Market Value": "21067.53",
+      "Shares Held": "351.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "KION Group AG",
+      "Ticker": "-",
+      "Identifier": "DE000KGX8881",
+      "Weight": "0.0392562334",
+      "Market Value": "14589.94",
+      "Shares Held": "325.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Koninklijke Ahold Delhaize NV",
+      "Ticker": "-",
+      "Identifier": "NL0011794037",
+      "Weight": "0.4424275074",
+      "Market Value": "164432.25",
+      "Shares Held": "4150.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Knorr-Bremse AG",
+      "Ticker": "-",
+      "Identifier": "DE000KBX1006",
+      "Weight": "0.0980154689",
+      "Market Value": "36428.35",
+      "Shares Held": "307.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Italgas SpA",
+      "Ticker": "-",
+      "Identifier": "IT0005211237",
+      "Weight": "0.0787183544",
+      "Market Value": "29256.4",
+      "Shares Held": "2836.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Hensoldt AG",
+      "Ticker": "HNSDF",
+      "Identifier": "DE000HAG0005",
+      "Weight": "0.06904468",
+      "Market Value": "25661.09",
+      "Shares Held": "279.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "InPost SA",
+      "Ticker": "-",
+      "Identifier": "LU2290522684",
+      "Weight": "0.0563142805",
+      "Market Value": "20929.72",
+      "Shares Held": "1174.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "IMCD NV",
+      "Ticker": "-",
+      "Identifier": "NL0010801007",
+      "Weight": "0.0791060752",
+      "Market Value": "29400.5",
+      "Shares Held": "269.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Industria de Diseno Textil SA",
+      "Ticker": "-",
+      "Identifier": "ES0148396007",
+      "Weight": "0.9022018748",
+      "Market Value": "335311.62",
+      "Shares Held": "5152.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Magnum Ice Cream Co NV/The",
+      "Ticker": "-",
+      "Identifier": "NL0015002MS2",
+      "Weight": "0.0998496493",
+      "Market Value": "37110.04",
+      "Shares Held": "1987.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Holding Co ADMIE IPTO SA",
+      "Ticker": "-",
+      "Identifier": "GRS518003009",
+      "Weight": "0.0115746633",
+      "Market Value": "4301.83",
+      "Shares Held": "829.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Infrastrutture Wireless Italia",
+      "Ticker": "-",
+      "Identifier": "IT0005090300",
+      "Weight": "0.0288657195",
+      "Market Value": "10728.21",
+      "Shares Held": "1448.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "ING Groep NV",
+      "Ticker": "ING",
+      "Identifier": "NL0011821202",
+      "Weight": "1.2672820958",
+      "Market Value": "470997.04",
+      "Shares Held": "13418.000000000000",
+      "Asset Category": "EC"
+    }
+  ]
+}

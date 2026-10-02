@@ -8,10 +8,10 @@
     "officialProductPage": "https://www.paceretfs.com/products/ICOW",
     "productPageRendering": "read-only rendering proxy (r.jina.ai) of the official product page",
     "productPageAsOf": "Sep 30 2026",
-    "holdingsDownload": null,
+    "holdingsDownload": "https://www.sec.gov/Archives/edgar/data/1616668/000089418926029028/0000894189-26-029028.txt",
     "navHistoryDownload": null,
     "yahooChart": "https://query1.finance.yahoo.com/v8/finance/chart/ICOW",
-    "holdingsSource": "top 10 holdings published on the official Pacer ETFs product page (no CSV export or N-PORT-P holdings in this run)",
+    "holdingsSource": "SEC EDGAR Form N-PORT-P (accession 0000894189-26-029028, report period 2026-07-31)",
     "historySource": "Yahoo Finance public chart API (adjusted close)",
     "distributionsSource": "paceretfs.com fund page distribution history (total distribution per share)",
     "provider": "Pacer ETFs product listing + official product page + per-fund daily holdings CSV export + SEC EDGAR Form N-PORT-P fallback + Yahoo Finance public chart API"
@@ -32,7 +32,7 @@
   "nav": {
     "display": "—",
     "value": null,
-    "asOfDate": "Sep 30 2026",
+    "asOfDate": "Jul 31 2026",
     "source": "previous run"
   },
   "marketPrice": {
@@ -48,10 +48,10 @@
     "source": "computed from Yahoo last price / the net-asset value implied by the daily holdings CSV"
   },
   "aum": {
-    "display": "—",
-    "value": null,
-    "asOfDate": "Sep 30 2026",
-    "source": "previous run"
+    "display": "$1.81 B",
+    "value": 1809884609.88,
+    "asOfDate": "Jul 31 2026",
+    "source": "SEC Form N-PORT-P net assets (2026-07-31)"
   },
   "fundFacts": {
     "sharesOutstanding": null,
@@ -76,8 +76,8 @@
       "mo1Text": "-4.71%",
       "mo3": 3.6,
       "mo3Text": "3.60%",
-      "qtd": 3.94,
-      "qtdText": "3.94%",
+      "qtd": 0,
+      "qtdText": "0.00%",
       "ytd": 11.88,
       "ytdText": "11.88%",
       "yr1": 29.27,
@@ -516,10 +516,10 @@
       "holdings/001.json"
     ],
     "pageSize": 250,
-    "totalRows": 10,
-    "asOfDate": null,
-    "asOf": "—",
-    "source": "top 10 holdings published on the official Pacer ETFs product page (no CSV export or N-PORT-P holdings in this run)",
+    "totalRows": 101,
+    "asOfDate": "2026-07-31",
+    "asOf": "Jul 31 2026",
+    "source": "SEC EDGAR Form N-PORT-P (accession 0000894189-26-029028, report period 2026-07-31)",
     "publishedTopHoldings": 10
   },
   "history": {
@@ -529,8 +529,8 @@
       "history/003.json"
     ],
     "pageSize": 1000,
-    "totalRows": 2334,
-    "asOf": "Sep 30 2026",
+    "totalRows": 2335,
+    "asOf": "Oct 1 2026",
     "source": "Yahoo Finance public chart API (adjusted close)"
   }
 }

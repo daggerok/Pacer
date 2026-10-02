@@ -2,7 +2,7 @@
   "ticker": "USAI",
   "page": 1,
   "pageSize": 250,
-  "totalRows": 10,
+  "totalRows": 36,
   "headers": [
     "Name",
     "Ticker",
@@ -14,94 +14,328 @@
   ],
   "rows": [
     {
-      "Name": "Cheniere Energy Inc",
-      "Ticker": "LNG",
-      "Identifier": "-",
-      "Weight": "7.42",
-      "Market Value": "-",
-      "Shares Held": "-",
-      "Asset Category": "-"
+      "Name": "Gulfport Energy Corp",
+      "Ticker": "GPOR",
+      "Identifier": "402635502",
+      "Weight": "0.3302169384",
+      "Market Value": "438603.66",
+      "Shares Held": "2718.000000000000",
+      "Asset Category": "EC"
     },
     {
-      "Name": "Enbridge Inc",
-      "Ticker": "ENBCN",
-      "Identifier": "-",
-      "Weight": "7.3",
-      "Market Value": "-",
-      "Shares Held": "-",
-      "Asset Category": "-"
+      "Name": "Hess Midstream LP",
+      "Ticker": "HESM",
+      "Identifier": "428103105",
+      "Weight": "1.3241334633",
+      "Market Value": "1758752.25",
+      "Shares Held": "43075.000000000000",
+      "Asset Category": "EC"
     },
     {
-      "Name": "Energy Transfer LP",
-      "Ticker": "ET",
-      "Identifier": "-",
-      "Weight": "7.29",
-      "Market Value": "-",
-      "Shares Held": "-",
-      "Asset Category": "-"
+      "Name": "Keyera Corp",
+      "Ticker": "-",
+      "Identifier": "493271100",
+      "Weight": "1.933580132",
+      "Market Value": "2568236.89",
+      "Shares Held": "60448.000000000000",
+      "Asset Category": "EC"
     },
     {
-      "Name": "TC Energy Corp",
-      "Ticker": "TRPCN",
-      "Identifier": "-",
-      "Weight": "7.28",
-      "Market Value": "-",
-      "Shares Held": "-",
-      "Asset Category": "-"
+      "Name": "Gibson Energy Inc",
+      "Ticker": "GBNXY",
+      "Identifier": "374825206",
+      "Weight": "1.2055782448",
+      "Market Value": "1601283.79",
+      "Shares Held": "69952.000000000000",
+      "Asset Category": "EC"
     },
     {
-      "Name": "Williams Cos Inc/The",
-      "Ticker": "WMB",
-      "Identifier": "-",
-      "Weight": "7.21",
-      "Market Value": "-",
-      "Shares Held": "-",
-      "Asset Category": "-"
-    },
-    {
-      "Name": "Enterprise Products Partners LP",
-      "Ticker": "EPD",
-      "Identifier": "-",
-      "Weight": "7.05",
-      "Market Value": "-",
-      "Shares Held": "-",
-      "Asset Category": "-"
-    },
-    {
-      "Name": "Venture Global Inc",
-      "Ticker": "VG",
-      "Identifier": "-",
-      "Weight": "4.32",
-      "Market Value": "-",
-      "Shares Held": "-",
-      "Asset Category": "-"
+      "Name": "Kinetik Holdings Inc",
+      "Ticker": "KNTK",
+      "Identifier": "02215L209",
+      "Weight": "1.0627388675",
+      "Market Value": "1411560.41",
+      "Shares Held": "27913.000000000000",
+      "Asset Category": "EC"
     },
     {
       "Name": "Kinder Morgan Inc",
       "Ticker": "KMI",
-      "Identifier": "-",
-      "Weight": "4.25",
-      "Market Value": "-",
-      "Shares Held": "-",
-      "Asset Category": "-"
+      "Identifier": "49456B101",
+      "Weight": "4.0863981633",
+      "Market Value": "5427671.88",
+      "Shares Held": "168666.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Kodiak Gas Services Inc",
+      "Ticker": "KGS",
+      "Identifier": "50012A108",
+      "Weight": "1.1707709746",
+      "Market Value": "1555051.77",
+      "Shares Held": "26487.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "MPLX LP",
+      "Ticker": "MPLX",
+      "Identifier": "55336V100",
+      "Weight": "3.2364631608",
+      "Market Value": "4298763.7",
+      "Shares Held": "73546.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "NextDecade Corp",
+      "Ticker": "NEXT",
+      "Identifier": "65342K105",
+      "Weight": "2.6910784501",
+      "Market Value": "3574368",
+      "Shares Held": "531900.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "ONEOK Inc",
+      "Ticker": "-",
+      "Identifier": "682680103",
+      "Weight": "4.3094501192",
+      "Market Value": "5723935.92",
+      "Shares Held": "63032.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Plains GP Holdings LP",
+      "Ticker": "PAGP",
+      "Identifier": "72651A207",
+      "Weight": "1.3443431058",
+      "Market Value": "1785595.28",
+      "Shares Held": "67816.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Range Resources Corp",
+      "Ticker": "RRC",
+      "Identifier": "75281A109",
+      "Weight": "1.3343646145",
+      "Market Value": "1772341.56",
+      "Shares Held": "44154.000000000000",
+      "Asset Category": "EC"
     },
     {
       "Name": "Targa Resources Corp",
       "Ticker": "TRGP",
-      "Identifier": "-",
-      "Weight": "4.23",
-      "Market Value": "-",
-      "Shares Held": "-",
-      "Asset Category": "-"
+      "Identifier": "87612G101",
+      "Weight": "4.1847205129",
+      "Market Value": "5558266.46",
+      "Shares Held": "20558.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "U.S. Bank Money Market Deposit Account",
+      "Ticker": "-",
+      "Identifier": "8AMMF0A84",
+      "Weight": "0.055800475",
+      "Market Value": "74115.8",
+      "Shares Held": "74115.800000000000",
+      "Asset Category": "STIV"
+    },
+    {
+      "Name": "Venture Global Inc",
+      "Ticker": "VG",
+      "Identifier": "92333F101",
+      "Weight": "4.8620969822",
+      "Market Value": "6457977.42",
+      "Shares Held": "482659.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Western Midstream Partners LP",
+      "Ticker": "WES",
+      "Identifier": "958669103",
+      "Weight": "1.7552252331",
+      "Market Value": "2331340.77",
+      "Shares Held": "50061.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Williams Cos Inc/The",
+      "Ticker": "-",
+      "Identifier": "969457100",
+      "Weight": "6.6680705111",
+      "Market Value": "8856723.54",
+      "Shares Held": "123801.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Mount Vernon Liquid Assets Portfolio, LLC",
+      "Ticker": "-",
+      "Identifier": "990VR1110",
+      "Weight": "2.6131728233",
+      "Market Value": "3470891.5",
+      "Shares Held": "3470891.500000000000",
+      "Asset Category": "STIV"
+    },
+    {
+      "Name": "Pembina Pipeline Corp",
+      "Ticker": "PBA",
+      "Identifier": "706327103",
+      "Weight": "3.4878518904",
+      "Market Value": "4632665.46",
+      "Shares Held": "94752.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "TC Energy Corp",
+      "Ticker": "TRP",
+      "Identifier": "87807B107",
+      "Weight": "6.8735890425",
+      "Market Value": "9129699.18",
+      "Shares Held": "135577.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "South Bow Corp",
+      "Ticker": "SOBO",
+      "Identifier": "83671M105",
+      "Weight": "1.5157572731",
+      "Market Value": "2013272.52",
+      "Shares Held": "54296.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Antero Resources Corp",
+      "Ticker": "AR",
+      "Identifier": "03674X106",
+      "Weight": "1.5009120601",
+      "Market Value": "1993554.68",
+      "Shares Held": "55162.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Antero Midstream Corp",
+      "Ticker": "AM",
+      "Identifier": "03676B102",
+      "Weight": "1.4532437531",
+      "Market Value": "1930240.26",
+      "Shares Held": "87858.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Archrock Inc",
+      "Ticker": "AROC",
+      "Identifier": "03957W106",
+      "Weight": "1.3045843545",
+      "Market Value": "1732786.56",
+      "Shares Held": "48456.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "BKV Corp",
+      "Ticker": "BKV",
+      "Identifier": "05603J108",
+      "Weight": "0.1284481222",
+      "Market Value": "170608.5",
+      "Shares Held": "6975.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "CNX Resources Corp",
+      "Ticker": "CNX",
+      "Identifier": "12653C108",
+      "Weight": "0.7162809401",
+      "Market Value": "951385",
+      "Shares Held": "26575.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Cheniere Energy Inc",
+      "Ticker": "LNG",
+      "Identifier": "16411R208",
+      "Weight": "7.9755875982",
+      "Market Value": "10593405.44",
+      "Shares Held": "40192.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Expand Energy Corp",
+      "Ticker": "EXE",
+      "Identifier": "165167735",
+      "Weight": "3.1737444728",
+      "Market Value": "4215458.93",
+      "Shares Held": "44831.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Comstock Resources Inc",
+      "Ticker": "CRK",
+      "Identifier": "205768302",
+      "Weight": "0.1486701045",
+      "Market Value": "197467.92",
+      "Shares Held": "14892.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "DT Midstream Inc",
+      "Ticker": "DTM",
+      "Identifier": "23345M107",
+      "Weight": "2.0515651551",
+      "Market Value": "2724948",
+      "Shares Held": "19746.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Enbridge Inc",
+      "Ticker": "ENB",
+      "Identifier": "29250N105",
+      "Weight": "6.9292733704",
+      "Market Value": "9203660.71",
+      "Shares Held": "169142.000000000000",
+      "Asset Category": "EC"
     },
     {
       "Name": "EQT Corp",
       "Ticker": "EQT",
-      "Identifier": "-",
-      "Weight": "4.22",
-      "Market Value": "-",
-      "Shares Held": "-",
-      "Asset Category": "-"
+      "Identifier": "26884L109",
+      "Weight": "4.7031957717",
+      "Market Value": "6246920.25",
+      "Shares Held": "117225.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Energy Transfer LP",
+      "Ticker": "ET",
+      "Identifier": "29273V100",
+      "Weight": "7.5297867667",
+      "Market Value": "10001279.92",
+      "Shares Held": "491222.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Enterprise Products Partners L",
+      "Ticker": "-",
+      "Identifier": "293792107",
+      "Weight": "7.298726492",
+      "Market Value": "9694379",
+      "Shares Held": "254780.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Excelerate Energy Inc",
+      "Ticker": "EE",
+      "Identifier": "30069T101",
+      "Weight": "0.9141119558",
+      "Market Value": "1214149.86",
+      "Shares Held": "30918.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Genesis Energy LP",
+      "Ticker": "GEL",
+      "Identifier": "371927104",
+      "Weight": "0.5709600024",
+      "Market Value": "758365.54",
+      "Shares Held": "49534.000000000000",
+      "Asset Category": "EC"
     }
   ]
 }

@@ -14,67 +14,67 @@
   ],
   "rows": [
     {
-      "Name": "Pacer Funds Trust - Pacer Trendpilot 100 ETF",
-      "Ticker": "PTNQ",
-      "Identifier": "-",
-      "Weight": "20.14",
-      "Market Value": "-",
-      "Shares Held": "-",
-      "Asset Category": "-"
+      "Name": "Pacer Trendpilot US Large Cap",
+      "Ticker": "-",
+      "Identifier": "69374H105",
+      "Weight": "20.4737692726",
+      "Market Value": "12679255.68",
+      "Shares Held": "217707.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Pacer Trendpilot US Mid Cap ET",
+      "Ticker": "-",
+      "Identifier": "69374H204",
+      "Weight": "19.7975557702",
+      "Market Value": "12260481.6",
+      "Shares Held": "300502.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Pacer Funds Trust - Pacer Tren",
+      "Ticker": "-",
+      "Identifier": "69374H303",
+      "Weight": "19.51460583",
+      "Market Value": "12085252.77",
+      "Shares Held": "145623.000000000000",
+      "Asset Category": "EC"
     },
     {
       "Name": "Pacer Trendpilot US Bond ETF",
-      "Ticker": "PTBD",
-      "Identifier": "-",
-      "Weight": "20.03",
-      "Market Value": "-",
-      "Shares Held": "-",
-      "Asset Category": "-"
+      "Ticker": "-",
+      "Identifier": "69374H642",
+      "Weight": "20.0252531609",
+      "Market Value": "12401492.93",
+      "Shares Held": "652535.000000000000",
+      "Asset Category": "EC"
     },
     {
-      "Name": "Pacer Trendpilot US Large Cap ETF",
-      "Ticker": "PTLC",
-      "Identifier": "-",
-      "Weight": "19.97",
-      "Market Value": "-",
-      "Shares Held": "-",
-      "Asset Category": "-"
+      "Name": "Pacer Trendpilot International",
+      "Ticker": "-",
+      "Identifier": "69374H683",
+      "Weight": "20.1524406622",
+      "Market Value": "12480259.22",
+      "Shares Held": "341096.000000000000",
+      "Asset Category": "EC"
     },
     {
-      "Name": "Pacer Trendpilot US Mid Cap ETF",
-      "Ticker": "PTMC",
-      "Identifier": "-",
-      "Weight": "19.94",
-      "Market Value": "-",
-      "Shares Held": "-",
-      "Asset Category": "-"
+      "Name": "U.S. Bank Money Market Deposit Account",
+      "Ticker": "-",
+      "Identifier": "8AMMF0A84",
+      "Weight": "0.0487911619",
+      "Market Value": "30216.01",
+      "Shares Held": "30216.010000000000",
+      "Asset Category": "STIV"
     },
     {
-      "Name": "Pacer Trendpilot International ETF",
-      "Ticker": "PTIN",
-      "Identifier": "-",
-      "Weight": "19.84",
-      "Market Value": "-",
-      "Shares Held": "-",
-      "Asset Category": "-"
-    },
-    {
-      "Name": "U.S. Bank Money Market Deposit Account 06/01/2031",
-      "Ticker": "USBFS03",
-      "Identifier": "-",
-      "Weight": "0.14",
-      "Market Value": "-",
-      "Shares Held": "-",
-      "Asset Category": "-"
-    },
-    {
-      "Name": "Cash & Other",
-      "Ticker": "CASH&OTHER",
-      "Identifier": "-",
-      "Weight": "-0.06",
-      "Market Value": "-",
-      "Shares Held": "-",
-      "Asset Category": "-"
+      "Name": "Mount Vernon Liquid Assets Portfolio, LLC",
+      "Ticker": "-",
+      "Identifier": "990VR1110",
+      "Weight": "0.0922826973",
+      "Market Value": "57150",
+      "Shares Held": "57150.000000000000",
+      "Asset Category": "STIV"
     }
   ]
 }

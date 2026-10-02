@@ -2,7 +2,7 @@
   "ticker": "INDQ",
   "page": 1,
   "pageSize": 250,
-  "totalRows": 10,
+  "totalRows": 29,
   "headers": [
     "Name",
     "Ticker",
@@ -14,94 +14,265 @@
   ],
   "rows": [
     {
-      "Name": "Titan Co Ltd",
-      "Ticker": "TTANIN",
-      "Identifier": "-",
-      "Weight": "5.47",
-      "Market Value": "-",
-      "Shares Held": "-",
-      "Asset Category": "-"
-    },
-    {
-      "Name": "Eicher Motors Ltd",
-      "Ticker": "EIMIN",
-      "Identifier": "-",
-      "Weight": "5.13",
-      "Market Value": "-",
-      "Shares Held": "-",
-      "Asset Category": "-"
-    },
-    {
-      "Name": "Hero MotoCorp Ltd",
-      "Ticker": "HMCLIN",
-      "Identifier": "-",
-      "Weight": "4.95",
-      "Market Value": "-",
-      "Shares Held": "-",
-      "Asset Category": "-"
-    },
-    {
-      "Name": "Dr Reddy's Laboratories Ltd",
-      "Ticker": "DRRDIN",
-      "Identifier": "-",
-      "Weight": "4.81",
-      "Market Value": "-",
-      "Shares Held": "-",
-      "Asset Category": "-"
-    },
-    {
-      "Name": "Dr Lal PathLabs Ltd",
-      "Ticker": "DLPLIN",
-      "Identifier": "-",
-      "Weight": "4.38",
-      "Market Value": "-",
-      "Shares Held": "-",
-      "Asset Category": "-"
-    },
-    {
-      "Name": "Indus Towers Ltd",
-      "Ticker": "INDUSTOWIN",
-      "Identifier": "-",
-      "Weight": "4.26",
-      "Market Value": "-",
-      "Shares Held": "-",
-      "Asset Category": "-"
-    },
-    {
-      "Name": "Astral Ltd",
-      "Ticker": "ASTRAIN",
-      "Identifier": "-",
-      "Weight": "4.15",
-      "Market Value": "-",
-      "Shares Held": "-",
-      "Asset Category": "-"
+      "Name": "Timken India Ltd",
+      "Ticker": "-",
+      "Identifier": "INE325A01013",
+      "Weight": "2.1663183673",
+      "Market Value": "22845.07",
+      "Shares Held": "693.000000000000",
+      "Asset Category": "EC"
     },
     {
       "Name": "National Aluminium Co Ltd",
-      "Ticker": "NACLIN",
-      "Identifier": "-",
-      "Weight": "4.1",
-      "Market Value": "-",
-      "Shares Held": "-",
-      "Asset Category": "-"
+      "Ticker": "-",
+      "Identifier": "INE139A01034",
+      "Weight": "4.0237071218",
+      "Market Value": "42432.3",
+      "Shares Held": "11566.000000000000",
+      "Asset Category": "EC"
     },
     {
-      "Name": "Nippon Life India Asset Management Ltd",
-      "Ticker": "NAMIN",
-      "Identifier": "-",
-      "Weight": "3.76",
-      "Market Value": "-",
-      "Shares Held": "-",
-      "Asset Category": "-"
+      "Name": "Hero MotoCorp Ltd",
+      "Ticker": "-",
+      "Identifier": "INE158A01026",
+      "Weight": "4.8603254273",
+      "Market Value": "51254.92",
+      "Shares Held": "908.000000000000",
+      "Asset Category": "EC"
     },
     {
       "Name": "Bank of Maharashtra",
-      "Ticker": "BOMHIN",
-      "Identifier": "-",
-      "Weight": "3.63",
-      "Market Value": "-",
-      "Shares Held": "-",
-      "Asset Category": "-"
+      "Ticker": "-",
+      "Identifier": "INE457A01014",
+      "Weight": "3.4688345121",
+      "Market Value": "36580.85",
+      "Shares Held": "43998.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Hindustan Copper Ltd",
+      "Ticker": "-",
+      "Identifier": "INE531E01026",
+      "Weight": "2.7926550833",
+      "Market Value": "29450.15",
+      "Shares Held": "5716.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Marico Ltd",
+      "Ticker": "-",
+      "Identifier": "INE196A01026",
+      "Weight": "3.2413390653",
+      "Market Value": "34181.78",
+      "Shares Held": "3746.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Bajaj Auto Ltd",
+      "Ticker": "-",
+      "Identifier": "INE917I01010",
+      "Weight": "3.5722267059",
+      "Market Value": "37671.18",
+      "Shares Held": "312.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Polycab India Ltd",
+      "Ticker": "-",
+      "Identifier": "INE455K01017",
+      "Weight": "3.5748818483",
+      "Market Value": "37699.18",
+      "Shares Held": "395.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "NMDC Ltd",
+      "Ticker": "-",
+      "Identifier": "INE584A01023",
+      "Weight": "3.0235424745",
+      "Market Value": "31884.99",
+      "Shares Held": "35775.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Cummins India Ltd",
+      "Ticker": "-",
+      "Identifier": "INE298A01020",
+      "Weight": "3.351311271",
+      "Market Value": "35341.5",
+      "Shares Held": "611.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "AU Small Finance Bank Ltd",
+      "Ticker": "-",
+      "Identifier": "INE949L01017",
+      "Weight": "3.3806505947",
+      "Market Value": "35650.9",
+      "Shares Held": "3248.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Britannia Industries Ltd",
+      "Ticker": "-",
+      "Identifier": "INE216A01030",
+      "Weight": "2.7507607291",
+      "Market Value": "29008.35",
+      "Shares Held": "511.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Astral Ltd",
+      "Ticker": "-",
+      "Identifier": "INE006I01046",
+      "Weight": "4.193746235",
+      "Market Value": "44225.46",
+      "Shares Held": "2913.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Dr Lal PathLabs Ltd",
+      "Ticker": "-",
+      "Identifier": "INE600L01024",
+      "Weight": "4.0160062605",
+      "Market Value": "42351.09",
+      "Shares Held": "2121.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Titan Co Ltd",
+      "Ticker": "-",
+      "Identifier": "INE280A01028",
+      "Weight": "5.557365741",
+      "Market Value": "58605.61",
+      "Shares Held": "1147.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Maruti Suzuki India Ltd",
+      "Ticker": "-",
+      "Identifier": "INE585B01010",
+      "Weight": "3.1546050453",
+      "Market Value": "33267.12",
+      "Shares Held": "223.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Eicher Motors Ltd",
+      "Ticker": "-",
+      "Identifier": "INE066A01021",
+      "Weight": "5.3639926674",
+      "Market Value": "56566.38",
+      "Shares Held": "689.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "APL Apollo Tubes Ltd",
+      "Ticker": "-",
+      "Identifier": "INE702C01027",
+      "Weight": "2.5623300134",
+      "Market Value": "27021.24",
+      "Shares Held": "1417.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Nestle India Ltd",
+      "Ticker": "-",
+      "Identifier": "INE239A01024",
+      "Weight": "3.5751890862",
+      "Market Value": "37702.42",
+      "Shares Held": "2383.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Canara Bank",
+      "Ticker": "-",
+      "Identifier": "INE476A01022",
+      "Weight": "2.750363406",
+      "Market Value": "29004.16",
+      "Shares Held": "22143.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Avenue Supermarts Ltd",
+      "Ticker": "-",
+      "Identifier": "INE192R01011",
+      "Weight": "2.5485185315",
+      "Market Value": "26875.59",
+      "Shares Held": "654.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Nippon Life India Asset Manage",
+      "Ticker": "-",
+      "Identifier": "INE298J01013",
+      "Weight": "3.9001661901",
+      "Market Value": "41129.49",
+      "Shares Held": "3379.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Dr Reddy's Laboratories Ltd",
+      "Ticker": "RDY",
+      "Identifier": "INE089A01031",
+      "Weight": "4.2731160278",
+      "Market Value": "45062.46",
+      "Shares Held": "3745.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Torrent Pharmaceuticals Ltd",
+      "Ticker": "-",
+      "Identifier": "INE685A01028",
+      "Weight": "3.5779968993",
+      "Market Value": "37732.03",
+      "Shares Held": "702.780000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Alkem Laboratories Ltd",
+      "Ticker": "-",
+      "Identifier": "INE540L01014",
+      "Weight": "2.5321998366",
+      "Market Value": "26703.5",
+      "Shares Held": "443.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Coal India Ltd",
+      "Ticker": "-",
+      "Identifier": "INE522F01014",
+      "Weight": "2.5716495633",
+      "Market Value": "27119.52",
+      "Shares Held": "6248.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Indus Towers Ltd",
+      "Ticker": "-",
+      "Identifier": "INE121J01017",
+      "Weight": "4.268181256",
+      "Market Value": "45010.42",
+      "Shares Held": "10981.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Zen Technologies Ltd",
+      "Ticker": "-",
+      "Identifier": "INE251B01027",
+      "Weight": "3.4091535485",
+      "Market Value": "35951.48",
+      "Shares Held": "2112.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Natco Pharma Ltd",
+      "Ticker": "-",
+      "Identifier": "INE987B01026",
+      "Weight": "2.5754587444",
+      "Market Value": "27159.69",
+      "Shares Held": "2826.000000000000",
+      "Asset Category": "EC"
     }
   ]
 }

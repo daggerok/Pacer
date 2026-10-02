@@ -2,7 +2,7 @@
   "ticker": "CALF",
   "page": 1,
   "pageSize": 1000,
-  "totalRows": 2334,
+  "totalRows": 2335,
   "headers": [
     "Date",
     "Close",
@@ -3235,7 +3235,7 @@
     {
       "Date": "Aug 7 2019",
       "Close": "22.604000091552734",
-      "Adj Close": "20.6",
+      "Adj Close": "20.59",
       "Volume": "4400"
     },
     {

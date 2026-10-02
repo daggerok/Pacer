@@ -2,7 +2,7 @@
   "ticker": "AAAP",
   "page": 1,
   "pageSize": 1000,
-  "totalRows": 70,
+  "totalRows": 71,
   "headers": [
     "Date",
     "Close",
@@ -429,6 +429,12 @@
       "Close": "25.329999923706055",
       "Adj Close": "25.33",
       "Volume": "200"
+    },
+    {
+      "Date": "Oct 1 2026",
+      "Close": "25.34000015258789",
+      "Adj Close": "25.34",
+      "Volume": "6500"
     }
   ]
 }

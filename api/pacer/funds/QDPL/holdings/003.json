@@ -1,0 +1,190 @@
+{
+  "ticker": "QDPL",
+  "page": 3,
+  "pageSize": 250,
+  "totalRows": 519,
+  "headers": [
+    "Name",
+    "Ticker",
+    "Identifier",
+    "Weight",
+    "Market Value",
+    "Shares Held",
+    "Asset Category",
+    "Coupon",
+    "Maturity"
+  ],
+  "rows": [
+    {
+      "Name": "Johnson & Johnson",
+      "Ticker": "JNJ",
+      "Identifier": "478160104",
+      "Weight": "0.8715608851",
+      "Market Value": "14869838.1",
+      "Shares Held": "58006.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Marsh & McLennan Cos Inc",
+      "Ticker": "-",
+      "Identifier": "571748102",
+      "Weight": "0.1289937858",
+      "Market Value": "2200783.38",
+      "Shares Held": "11602.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Martin Marietta Materials Inc",
+      "Ticker": "MLM",
+      "Identifier": "573284106",
+      "Weight": "0.0443845531",
+      "Market Value": "757251.88",
+      "Shares Held": "1442.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Marvell Technology Inc",
+      "Ticker": "MRVL",
+      "Identifier": "573874104",
+      "Weight": "0.2316527568",
+      "Market Value": "3952264.32",
+      "Shares Held": "21072.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Masco Corp",
+      "Ticker": "-",
+      "Identifier": "574599106",
+      "Weight": "0.0202401195",
+      "Market Value": "345319.88",
+      "Shares Held": "4831.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "O'Reilly Automotive Inc",
+      "Ticker": "-",
+      "Identifier": "67103H107",
+      "Weight": "0.1044266154",
+      "Market Value": "1781639",
+      "Shares Held": "19940.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Otis Worldwide Corp",
+      "Ticker": "OTIS",
+      "Identifier": "68902V107",
+      "Weight": "0.0389456709",
+      "Market Value": "664458.25",
+      "Shares Held": "9235.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "PACCAR Inc",
+      "Ticker": "PCAR",
+      "Identifier": "693718108",
+      "Weight": "0.0986089212",
+      "Market Value": "1682382.4",
+      "Shares Held": "12680.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Packaging Corp of America",
+      "Ticker": "PKG",
+      "Identifier": "695156109",
+      "Weight": "0.0303892945",
+      "Market Value": "518476.56",
+      "Shares Held": "2109.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "RTX Corp",
+      "Ticker": "RTX",
+      "Identifier": "75513E101",
+      "Weight": "0.4090290025",
+      "Market Value": "6978508.5",
+      "Shares Held": "32425.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Ross Stores Inc",
+      "Ticker": "ROST",
+      "Identifier": "778296103",
+      "Weight": "0.1141511011",
+      "Market Value": "1947549.99",
+      "Shares Held": "7757.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "S&P Global Inc",
+      "Ticker": "SPGI",
+      "Identifier": "78409V104",
+      "Weight": "0.1757223345",
+      "Market Value": "2998026.54",
+      "Shares Held": "7278.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Charles Schwab Corp/The",
+      "Ticker": "-",
+      "Identifier": "808513105",
+      "Weight": "0.2429423233",
+      "Market Value": "4144877.4",
+      "Shares Held": "39385.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Carnival Corp Ltd",
+      "Ticker": "CCL",
+      "Identifier": "BMG2004J1036",
+      "Weight": "0.0504963369",
+      "Market Value": "861525.99",
+      "Shares Held": "30979.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "CRH PLC",
+      "Ticker": "-",
+      "Identifier": "IE0001827041",
+      "Weight": "0.0895182927",
+      "Market Value": "1527285.75",
+      "Shares Held": "16075.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Johnson Controls International",
+      "Ticker": "JCI",
+      "Identifier": "IE00BY7QL619",
+      "Weight": "0.1261826495",
+      "Market Value": "2152822.14",
+      "Shares Held": "14679.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Bunge Global SA",
+      "Ticker": "BG",
+      "Identifier": "CH1300646267",
+      "Weight": "0.02024833",
+      "Market Value": "345459.96",
+      "Shares Held": "3252.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Chubb Ltd",
+      "Ticker": "CB",
+      "Identifier": "CH0044328745",
+      "Weight": "0.1780207095",
+      "Market Value": "3037239.48",
+      "Shares Held": "8661.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Royal Caribbean Cruises Ltd",
+      "Ticker": "RCL",
+      "Identifier": "LR0008862868",
+      "Weight": "0.1116213145",
+      "Market Value": "1904388.9",
+      "Shares Held": "5983.000000000000",
+      "Asset Category": "EC"
+    }
+  ]
+}

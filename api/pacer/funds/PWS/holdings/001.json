@@ -2,7 +2,7 @@
   "ticker": "PWS",
   "page": 1,
   "pageSize": 250,
-  "totalRows": 10,
+  "totalRows": 339,
   "headers": [
     "Name",
     "Ticker",
@@ -10,98 +10,2262 @@
     "Weight",
     "Market Value",
     "Shares Held",
-    "Asset Category"
+    "Asset Category",
+    "Coupon",
+    "Maturity"
   ],
   "rows": [
     {
-      "Name": "Cash & Other",
-      "Ticker": "CASH&OTHER",
-      "Identifier": "-",
-      "Weight": "19.99",
-      "Market Value": "-",
-      "Shares Held": "-",
-      "Asset Category": "-"
+      "Name": "Spyre Therapeutics Inc",
+      "Ticker": "SYRE",
+      "Identifier": "00773J202",
+      "Weight": "0.2508645094",
+      "Market Value": "60374.62",
+      "Shares Held": "614.000000000000",
+      "Asset Category": "EC"
     },
     {
-      "Name": "NVIDIA Corp",
-      "Ticker": "NVDA",
-      "Identifier": "-",
-      "Weight": "4.21",
-      "Market Value": "-",
-      "Shares Held": "-",
-      "Asset Category": "-"
+      "Name": "BXP Inc",
+      "Ticker": "BXP",
+      "Identifier": "101121101",
+      "Weight": "0.1736492778",
+      "Market Value": "41791.52",
+      "Shares Held": "596.000000000000",
+      "Asset Category": "EC"
     },
     {
-      "Name": "Apple Inc",
-      "Ticker": "AAPL",
-      "Identifier": "-",
-      "Weight": "3.7",
-      "Market Value": "-",
-      "Shares Held": "-",
-      "Asset Category": "-"
+      "Name": "BridgeBio Oncology Therapeutic",
+      "Ticker": "-",
+      "Identifier": "107924102",
+      "Weight": "0.0127064764",
+      "Market Value": "3058.02",
+      "Shares Held": "378.000000000000",
+      "Asset Category": "EC"
     },
     {
-      "Name": "Eli Lilly & Co",
-      "Ticker": "LLY",
-      "Identifier": "-",
-      "Weight": "2.97",
-      "Market Value": "-",
-      "Shares Held": "-",
-      "Asset Category": "-"
+      "Name": "Bridgebio Pharma Inc",
+      "Ticker": "BBIO",
+      "Identifier": "10806X102",
+      "Weight": "0.2276246074",
+      "Market Value": "54781.56",
+      "Shares Held": "684.000000000000",
+      "Asset Category": "EC"
     },
     {
-      "Name": "Microsoft Corp",
-      "Ticker": "MSFT",
-      "Identifier": "-",
-      "Weight": "2.9",
-      "Market Value": "-",
-      "Shares Held": "-",
-      "Asset Category": "-"
+      "Name": "Broadridge Financial Solutions",
+      "Ticker": "BR",
+      "Identifier": "11133T103",
+      "Weight": "0.0639682556",
+      "Market Value": "15395",
+      "Shares Held": "100.000000000000",
+      "Asset Category": "EC"
     },
     {
-      "Name": "Meta Platforms Inc",
-      "Ticker": "META",
-      "Identifier": "-",
-      "Weight": "2.25",
-      "Market Value": "-",
-      "Shares Held": "-",
-      "Asset Category": "-"
+      "Name": "Broadcom Inc",
+      "Ticker": "AVGO",
+      "Identifier": "11135F101",
+      "Weight": "1.5900120794",
+      "Market Value": "382662.24",
+      "Shares Held": "983.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Builders FirstSource Inc",
+      "Ticker": "BLDR",
+      "Identifier": "12008R107",
+      "Weight": "0.0256742276",
+      "Market Value": "6178.92",
+      "Shares Held": "93.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "CBRE Group Inc",
+      "Ticker": "CBRE",
+      "Identifier": "12504L109",
+      "Weight": "0.7185975686",
+      "Market Value": "172942.18",
+      "Shares Held": "1178.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "CDW Corp/DE",
+      "Ticker": "-",
+      "Identifier": "12514G108",
+      "Weight": "0.0165825912",
+      "Market Value": "3990.87",
+      "Shares Held": "27.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "CH Robinson Worldwide Inc",
+      "Ticker": "-",
+      "Identifier": "12541W209",
+      "Weight": "0.0626114388",
+      "Market Value": "15068.46",
+      "Shares Held": "102.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "CSX Corp",
+      "Ticker": "CSX",
+      "Identifier": "126408103",
+      "Weight": "0.3369546041",
+      "Market Value": "81093.6",
+      "Shares Held": "1609.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Cabaletta Bio Inc",
+      "Ticker": "CABA",
+      "Identifier": "12674W109",
+      "Weight": "0.0271712385",
+      "Market Value": "6539.2",
+      "Shares Held": "2440.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Cadence Design Systems Inc",
+      "Ticker": "CDNS",
+      "Identifier": "127387108",
+      "Weight": "0.080531193",
+      "Market Value": "19381.14",
+      "Shares Held": "57.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Camden Property Trust",
+      "Ticker": "CPT",
+      "Identifier": "133131102",
+      "Weight": "0.1860137869",
+      "Market Value": "44767.24",
+      "Shares Held": "404.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Candel Therapeutics Inc",
+      "Ticker": "CADL",
+      "Identifier": "137404109",
+      "Weight": "0.0390972981",
+      "Market Value": "9409.4",
+      "Shares Held": "940.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Capricor Therapeutics Inc",
+      "Ticker": "CAPR",
+      "Identifier": "14070B309",
+      "Weight": "0.0161252359",
+      "Market Value": "3880.8",
+      "Shares Held": "1008.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "CareDx Inc",
+      "Ticker": "CDNA",
+      "Identifier": "14167L103",
+      "Weight": "0.0964406529",
+      "Market Value": "23210.01",
+      "Shares Held": "531.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Carrier Global Corp",
+      "Ticker": "CARR",
+      "Identifier": "14448C104",
+      "Weight": "0.173616203",
+      "Market Value": "41783.56",
+      "Shares Held": "676.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Caterpillar Inc",
+      "Ticker": "CAT",
+      "Identifier": "149123101",
+      "Weight": "1.3508715656",
+      "Market Value": "325109.19",
+      "Shares Held": "399.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Celcuity Inc",
+      "Ticker": "CELC",
+      "Identifier": "15102K100",
+      "Weight": "0.1873563931",
+      "Market Value": "45090.36",
+      "Shares Held": "522.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Celldex Therapeutics Inc",
+      "Ticker": "CLDX",
+      "Identifier": "15117B202",
+      "Weight": "0.1483393722",
+      "Market Value": "35700.28",
+      "Shares Held": "938.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "CG oncology Inc",
+      "Ticker": "CGON",
+      "Identifier": "156944100",
+      "Weight": "0.2481794216",
+      "Market Value": "59728.41",
+      "Shares Held": "839.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Ciena Corp",
+      "Ticker": "CIEN",
+      "Identifier": "171779309",
+      "Weight": "0.045434082",
+      "Market Value": "10934.45",
+      "Shares Held": "29.000000000000",
+      "Asset Category": "EC"
     },
     {
       "Name": "Cisco Systems Inc",
       "Ticker": "CSCO",
-      "Identifier": "-",
-      "Weight": "2.06",
-      "Market Value": "-",
-      "Shares Held": "-",
-      "Asset Category": "-"
+      "Identifier": "17275R102",
+      "Weight": "0.395202074",
+      "Market Value": "95111.8",
+      "Shares Held": "820.000000000000",
+      "Asset Category": "EC"
     },
     {
-      "Name": "Johnson & Johnson",
-      "Ticker": "JNJ",
-      "Identifier": "-",
-      "Weight": "2.04",
-      "Market Value": "-",
-      "Shares Held": "-",
-      "Asset Category": "-"
+      "Name": "Cintas Corp",
+      "Ticker": "CTAS",
+      "Identifier": "172908105",
+      "Weight": "0.2508280689",
+      "Market Value": "60365.85",
+      "Shares Held": "295.000000000000",
+      "Asset Category": "EC"
     },
     {
-      "Name": "Amazon.com Inc",
-      "Ticker": "AMZN",
-      "Identifier": "-",
-      "Weight": "2",
-      "Market Value": "-",
-      "Shares Held": "-",
-      "Asset Category": "-"
+      "Name": "Cogent Biosciences Inc",
+      "Ticker": "COGT",
+      "Identifier": "19240Q201",
+      "Weight": "0.2376243893",
+      "Market Value": "57188.17",
+      "Shares Held": "1469.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Cognizant Technology Solutions",
+      "Ticker": "CTSH",
+      "Identifier": "192446102",
+      "Weight": "0.022538682",
+      "Market Value": "5424.3",
+      "Shares Held": "98.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Coherent Corp",
+      "Ticker": "COHR",
+      "Identifier": "19247G107",
+      "Weight": "0.0447860476",
+      "Market Value": "10778.49",
+      "Shares Held": "41.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Comfort Systems USA Inc",
+      "Ticker": "FIX",
+      "Identifier": "199908104",
+      "Weight": "0.2156127028",
+      "Market Value": "51890.7",
+      "Shares Held": "30.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Compass Therapeutics Inc",
+      "Ticker": "CMPX",
+      "Identifier": "20454B104",
+      "Weight": "0.0251977586",
+      "Market Value": "6064.25",
+      "Shares Held": "3175.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Absci Corp",
+      "Ticker": "ABSI",
+      "Identifier": "00091E109",
+      "Weight": "0.0776169497",
+      "Market Value": "18679.78",
+      "Shares Held": "2401.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "ACADIA Pharmaceuticals Inc",
+      "Ticker": "ACAD",
+      "Identifier": "004225108",
+      "Weight": "0.1978950957",
+      "Market Value": "47626.67",
+      "Shares Held": "1841.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Achieve Life Sciences Inc",
+      "Ticker": "ACHV",
+      "Identifier": "004468500",
+      "Weight": "0.0167258186",
+      "Market Value": "4025.34",
+      "Shares Held": "627.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Copart Inc",
+      "Ticker": "CPRT",
+      "Identifier": "217204106",
+      "Weight": "0.0929260346",
+      "Market Value": "22364.16",
+      "Shares Held": "768.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Corning Inc",
+      "Ticker": "-",
+      "Identifier": "219350105",
+      "Weight": "0.0936348585",
+      "Market Value": "22534.75",
+      "Shares Held": "163.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Corvus Pharmaceuticals Inc",
+      "Ticker": "CRVS",
+      "Identifier": "221015100",
+      "Weight": "0.0749870836",
+      "Market Value": "18046.86",
+      "Shares Held": "1361.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "CoStar Group Inc",
+      "Ticker": "CSGP",
+      "Identifier": "22160N109",
+      "Weight": "0.1962216163",
+      "Market Value": "47223.92",
+      "Shares Held": "1642.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Ardelyx Inc",
+      "Ticker": "ARDX",
+      "Identifier": "039697107",
+      "Weight": "0.0708152897",
+      "Market Value": "17042.85",
+      "Shares Held": "3443.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Arcus Biosciences Inc",
+      "Ticker": "RCUS",
+      "Identifier": "03969F109",
+      "Weight": "0.1403255355",
+      "Market Value": "33771.62",
+      "Shares Held": "1198.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Arcutis Biotherapeutics Inc",
+      "Ticker": "ARQT",
+      "Identifier": "03969K108",
+      "Weight": "0.1505576309",
+      "Market Value": "36234.14",
+      "Shares Held": "1349.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Arista Networks Inc",
+      "Ticker": "ANET",
+      "Identifier": "040413205",
+      "Weight": "0.1603669001",
+      "Market Value": "38594.9",
+      "Shares Held": "214.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Crowdstrike Holdings Inc",
+      "Ticker": "CRWD",
+      "Identifier": "22788C105",
+      "Weight": "0.1681262765",
+      "Market Value": "40462.32",
+      "Shares Held": "212.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Crown Castle Inc",
+      "Ticker": "CCI",
+      "Identifier": "22822V101",
+      "Weight": "0.5563991694",
+      "Market Value": "133906.5",
+      "Shares Held": "1755.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Fair Isaac Corp",
+      "Ticker": "FICO",
+      "Identifier": "303250104",
+      "Weight": "0.0233304423",
+      "Market Value": "5614.85",
+      "Shares Held": "5.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Fastenal Co",
+      "Ticker": "FAST",
+      "Identifier": "311900104",
+      "Weight": "0.1970518948",
+      "Market Value": "47423.74",
+      "Shares Held": "994.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Federal Realty Investment Trus",
+      "Ticker": "-",
+      "Identifier": "313745101",
+      "Weight": "0.1629328602",
+      "Market Value": "39212.44",
+      "Shares Held": "316.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "WW Grainger Inc",
+      "Ticker": "-",
+      "Identifier": "384802104",
+      "Weight": "0.2182456436",
+      "Market Value": "52524.36",
+      "Shares Held": "38.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "ArriVent Biopharma Inc",
+      "Ticker": "AVBP",
+      "Identifier": "04272N102",
+      "Weight": "0.0504297555",
+      "Market Value": "12136.74",
+      "Shares Held": "407.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Arrowhead Pharmaceuticals Inc",
+      "Ticker": "ARWR",
+      "Identifier": "04280A100",
+      "Weight": "0.2293292087",
+      "Market Value": "55191.8",
+      "Shares Held": "652.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Autodesk Inc",
+      "Ticker": "ADSK",
+      "Identifier": "052769106",
+      "Weight": "0.0428178032",
+      "Market Value": "10304.8",
+      "Shares Held": "44.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Automatic Data Processing Inc",
+      "Ticker": "ADP",
+      "Identifier": "053015103",
+      "Weight": "0.3830830501",
+      "Market Value": "92195.16",
+      "Shares Held": "346.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Ocugen Inc",
+      "Ticker": "OCGN",
+      "Identifier": "67577C105",
+      "Weight": "0.0331845038",
+      "Market Value": "7986.39",
+      "Shares Held": "6493.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Old Dominion Freight Line Inc",
+      "Ticker": "ODFL",
+      "Identifier": "679580100",
+      "Weight": "0.1401536792",
+      "Market Value": "33730.26",
+      "Shares Held": "159.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Avalo Therapeutics Inc",
+      "Ticker": "AVTX",
+      "Identifier": "05338F306",
+      "Weight": "0.07143295",
+      "Market Value": "17191.5",
+      "Shares Held": "942.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "AvalonBay Communities Inc",
+      "Ticker": "-",
+      "Identifier": "053484101",
+      "Weight": "0.4311198236",
+      "Market Value": "103755.99",
+      "Shares Held": "559.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Olema Pharmaceuticals Inc",
+      "Ticker": "OLMA",
+      "Identifier": "68062P106",
+      "Weight": "0.0599936641",
+      "Market Value": "14438.45",
+      "Shares Held": "1261.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "ON Semiconductor Corp",
+      "Ticker": "ON",
+      "Identifier": "682189105",
+      "Weight": "0.0274671254",
+      "Market Value": "6610.41",
+      "Shares Held": "81.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Qnity Electronics Inc",
+      "Ticker": "Q",
+      "Identifier": "74743L100",
+      "Weight": "0.0234380187",
+      "Market Value": "5640.74",
+      "Shares Held": "43.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "QUALCOMM Inc",
+      "Ticker": "-",
+      "Identifier": "747525103",
+      "Weight": "0.1343212452",
+      "Market Value": "32326.59",
+      "Shares Held": "219.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Axon Enterprise Inc",
+      "Ticker": "AXON",
+      "Identifier": "05464C101",
+      "Weight": "0.1535038687",
+      "Market Value": "36943.2",
+      "Shares Held": "70.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Bicara Therapeutics Inc",
+      "Ticker": "BCAX",
+      "Identifier": "055477103",
+      "Weight": "0.0573154739",
+      "Market Value": "13793.9",
+      "Shares Held": "509.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Quanta Services Inc",
+      "Ticker": "PWR",
+      "Identifier": "74762E102",
+      "Weight": "0.360485947",
+      "Market Value": "86756.8",
+      "Shares Held": "130.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Realty Income Corp",
+      "Ticker": "O",
+      "Identifier": "756109104",
+      "Weight": "0.9952060286",
+      "Market Value": "239512.5",
+      "Shares Held": "3750.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Beam Therapeutics Inc",
+      "Ticker": "BEAM",
+      "Identifier": "07373V105",
+      "Weight": "0.1657389039",
+      "Market Value": "39887.76",
+      "Shares Held": "1563.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "BioCryst Pharmaceuticals Inc",
+      "Ticker": "BCRX",
+      "Identifier": "09058V103",
+      "Weight": "0.1655208426",
+      "Market Value": "39835.28",
+      "Shares Held": "4436.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "SBA Communications Corp",
+      "Ticker": "SBAC",
+      "Identifier": "78410G104",
+      "Weight": "0.3211021941",
+      "Market Value": "77278.46",
+      "Shares Held": "427.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Sandisk Corp",
+      "Ticker": "SNDK",
+      "Identifier": "80004C200",
+      "Weight": "0.1564811454",
+      "Market Value": "37659.73",
+      "Shares Held": "31.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "BioMarin Pharmaceutical Inc",
+      "Ticker": "BMRN",
+      "Identifier": "09061G101",
+      "Weight": "0.2047500245",
+      "Market Value": "49276.42",
+      "Shares Held": "821.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Biogen Inc",
+      "Ticker": "BIIB",
+      "Identifier": "09062X103",
+      "Weight": "0.1998583124",
+      "Market Value": "48099.15",
+      "Shares Held": "237.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Sarepta Therapeutics Inc",
+      "Ticker": "SRPT",
+      "Identifier": "803607100",
+      "Weight": "0.1275039619",
+      "Market Value": "30685.9",
+      "Shares Held": "2065.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Savara Inc",
+      "Ticker": "SVRA",
+      "Identifier": "805111101",
+      "Weight": "0.0336675379",
+      "Market Value": "8102.64",
+      "Shares Held": "1484.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Boeing Co/The",
+      "Ticker": "BA",
+      "Identifier": "097023105",
+      "Weight": "0.6133956123",
+      "Market Value": "147623.62",
+      "Shares Held": "683.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Oracle Corp",
+      "Ticker": "ORCL",
+      "Identifier": "68389X105",
+      "Weight": "0.1899486968",
+      "Market Value": "45714.24",
+      "Shares Held": "352.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Scholar Rock Holding Corp",
+      "Ticker": "SRRK",
+      "Identifier": "80706P103",
+      "Weight": "0.2055567434",
+      "Market Value": "49470.57",
+      "Shares Held": "1046.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "SELLAS Life Sciences Group Inc",
+      "Ticker": "SLS",
+      "Identifier": "81642T209",
+      "Weight": "0.1666210384",
+      "Market Value": "40100.06",
+      "Shares Held": "4006.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "ORIC Pharmaceuticals Inc",
+      "Ticker": "ORIC",
+      "Identifier": "68622P109",
+      "Weight": "0.0697319221",
+      "Market Value": "16782.12",
+      "Shares Held": "1516.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Oruka Therapeutics Inc",
+      "Ticker": "ORKA",
+      "Identifier": "687604108",
+      "Weight": "0.2887284812",
+      "Market Value": "69487.2",
+      "Shares Held": "720.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "ServiceNow Inc",
+      "Ticker": "NOW",
+      "Identifier": "81762P102",
+      "Weight": "0.0989055187",
+      "Market Value": "23803.22",
+      "Shares Held": "214.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Simon Property Group Inc",
+      "Ticker": "SPG",
+      "Identifier": "828806109",
+      "Weight": "1.2427936348",
+      "Market Value": "299098.48",
+      "Shares Held": "1304.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Otis Worldwide Corp",
+      "Ticker": "OTIS",
+      "Identifier": "68902V107",
+      "Weight": "0.0992552977",
+      "Market Value": "23887.4",
+      "Shares Held": "332.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "RTX Corp",
+      "Ticker": "RTX",
+      "Identifier": "75513E101",
+      "Weight": "1.0427158898",
+      "Market Value": "250946.52",
+      "Shares Held": "1166.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Sionna Therapeutics Inc",
+      "Ticker": "SION",
+      "Identifier": "829401108",
+      "Weight": "0.0589452413",
+      "Market Value": "14186.13",
+      "Shares Held": "301.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Skyworks Solutions Inc",
+      "Ticker": "SWKS",
+      "Identifier": "83088M102",
+      "Weight": "0.0080222301",
+      "Market Value": "1930.68",
+      "Shares Held": "31.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Snap-on Inc",
+      "Ticker": "SNA",
+      "Identifier": "833034101",
+      "Weight": "0.0767388457",
+      "Market Value": "18468.45",
+      "Shares Held": "45.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Solid Biosciences Inc",
+      "Ticker": "SLDB",
+      "Identifier": "83422E204",
+      "Weight": "0.0401549454",
+      "Market Value": "9663.94",
+      "Shares Held": "1199.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Southwest Airlines Co",
+      "Ticker": "LUV",
+      "Identifier": "844741108",
+      "Weight": "0.079040207",
+      "Market Value": "19022.31",
+      "Shares Held": "423.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Stanley Black & Decker Inc",
+      "Ticker": "SWK",
+      "Identifier": "854502101",
+      "Weight": "0.0530539706",
+      "Market Value": "12768.3",
+      "Shares Held": "135.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Recursion Pharmaceuticals Inc",
+      "Ticker": "RXRX",
+      "Identifier": "75629V104",
+      "Weight": "0.1277453751",
+      "Market Value": "30744",
+      "Shares Held": "10248.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Regency Centers Corp",
+      "Ticker": "REG",
+      "Identifier": "758849103",
+      "Weight": "0.2211871031",
+      "Market Value": "53232.27",
+      "Shares Held": "663.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Regeneron Pharmaceuticals Inc",
+      "Ticker": "REGN",
+      "Identifier": "75886F107",
+      "Weight": "0.2439997744",
+      "Market Value": "58722.51",
+      "Shares Held": "77.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "REGENXBIO Inc",
+      "Ticker": "RGNX",
+      "Identifier": "75901B107",
+      "Weight": "0.0365992743",
+      "Market Value": "8808.21",
+      "Shares Held": "909.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Relay Therapeutics Inc",
+      "Ticker": "RLAY",
+      "Identifier": "75943R102",
+      "Weight": "0.2283858691",
+      "Market Value": "54964.77",
+      "Shares Held": "2919.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Replimune Group Inc",
+      "Ticker": "REPL",
+      "Identifier": "76029N106",
+      "Weight": "0.0593352835",
+      "Market Value": "14280",
+      "Shares Held": "1275.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Stoke Therapeutics Inc",
+      "Ticker": "STOK",
+      "Identifier": "86150R107",
+      "Weight": "0.0876594049",
+      "Market Value": "21096.66",
+      "Shares Held": "731.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Summit Therapeutics Inc",
+      "Ticker": "SMMT",
+      "Identifier": "86627T108",
+      "Weight": "0.1866984695",
+      "Market Value": "44932.02",
+      "Shares Held": "3451.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Republic Services Inc",
+      "Ticker": "RSG",
+      "Identifier": "760759100",
+      "Weight": "0.1513513026",
+      "Market Value": "36425.15",
+      "Shares Held": "173.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Revolution Medicines Inc",
+      "Ticker": "RVMD",
+      "Identifier": "76155X100",
+      "Weight": "0.2493478031",
+      "Market Value": "60009.6",
+      "Shares Held": "320.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Super Micro Computer Inc",
+      "Ticker": "SMCI",
+      "Identifier": "86800U302",
+      "Weight": "0.0138066723",
+      "Market Value": "3322.8",
+      "Shares Held": "117.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Synopsys Inc",
+      "Ticker": "SNPS",
+      "Identifier": "871607107",
+      "Weight": "0.0646139631",
+      "Market Value": "15550.4",
+      "Shares Held": "40.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Rhythm Pharmaceuticals Inc",
+      "Ticker": "RYTM",
+      "Identifier": "76243J105",
+      "Weight": "0.2218695004",
+      "Market Value": "53396.5",
+      "Shares Held": "538.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Rigel Pharmaceuticals Inc",
+      "Ticker": "RIGL",
+      "Identifier": "766559702",
+      "Weight": "0.0461910224",
+      "Market Value": "11116.62",
+      "Shares Held": "302.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Syndax Pharmaceuticals Inc",
+      "Ticker": "SNDX",
+      "Identifier": "87164F105",
+      "Weight": "0.1292605439",
+      "Market Value": "31108.65",
+      "Shares Held": "1633.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Tango Therapeutics Inc",
+      "Ticker": "TNGX",
+      "Identifier": "87583X109",
+      "Weight": "0.1511090169",
+      "Market Value": "36366.84",
+      "Shares Held": "1338.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Taysha Gene Therapies Inc",
+      "Ticker": "TSHA",
+      "Identifier": "877619106",
+      "Weight": "0.0629180044",
+      "Market Value": "15142.24",
+      "Shares Held": "2584.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Teledyne Technologies Inc",
+      "Ticker": "TDY",
+      "Identifier": "879360105",
+      "Weight": "0.0272397982",
+      "Market Value": "6555.7",
+      "Shares Held": "10.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Rockwell Automation Inc",
+      "Ticker": "ROK",
+      "Identifier": "773903109",
+      "Weight": "0.1915003893",
+      "Market Value": "46087.68",
+      "Shares Held": "96.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Rollins Inc",
+      "Ticker": "ROL",
+      "Identifier": "775711104",
+      "Weight": "0.040073671",
+      "Market Value": "9644.38",
+      "Shares Held": "254.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Teradyne Inc",
+      "Ticker": "TER",
+      "Identifier": "880770102",
+      "Weight": "0.0504174148",
+      "Market Value": "12133.77",
+      "Shares Held": "33.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Texas Instruments Inc",
+      "Ticker": "TXN",
+      "Identifier": "882508104",
+      "Weight": "0.2165441171",
+      "Market Value": "52114.86",
+      "Shares Held": "189.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Textron Inc",
+      "Ticker": "TXT",
+      "Identifier": "883203101",
+      "Weight": "0.0534942484",
+      "Market Value": "12874.26",
+      "Shares Held": "151.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "TG Therapeutics Inc",
+      "Ticker": "TGTX",
+      "Identifier": "88322Q108",
+      "Weight": "0.213813406",
+      "Market Value": "51457.67",
+      "Shares Held": "989.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Roper Technologies Inc",
+      "Ticker": "ROP",
+      "Identifier": "776696106",
+      "Weight": "0.034202428",
+      "Market Value": "8231.37",
+      "Shares Held": "21.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Sagimet Biosciences Inc",
+      "Ticker": "SGMT",
+      "Identifier": "786700104",
+      "Weight": "0.0134716024",
+      "Market Value": "3242.16",
+      "Shares Held": "456.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Salesforce Inc",
+      "Ticker": "CRM",
+      "Identifier": "79466L302",
+      "Weight": "0.1299866532",
+      "Market Value": "31283.4",
+      "Shares Held": "170.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Sana Biotechnology Inc",
+      "Ticker": "SANA",
+      "Identifier": "799566104",
+      "Weight": "0.0427362795",
+      "Market Value": "10285.18",
+      "Shares Held": "3286.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "TransDigm Group Inc",
+      "Ticker": "TDG",
+      "Identifier": "893641100",
+      "Weight": "0.2501814888",
+      "Market Value": "60210.24",
+      "Shares Held": "48.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Travere Therapeutics Inc",
+      "Ticker": "TVTX",
+      "Identifier": "89422G107",
+      "Weight": "0.2289790973",
+      "Market Value": "55107.54",
+      "Shares Held": "986.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "ARS Pharmaceuticals Inc",
+      "Ticker": "SPRY",
+      "Identifier": "82835W108",
+      "Weight": "0.0226374079",
+      "Market Value": "5448.06",
+      "Shares Held": "1062.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Roche Holding AG",
+      "Ticker": "-",
+      "Identifier": "BBG01XDTSXM1",
+      "Weight": "0.0031673739",
+      "Market Value": "762.28",
+      "Shares Held": "2242.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Trimble Inc",
+      "Ticker": "TRMB",
+      "Identifier": "896239100",
+      "Weight": "0.0112846734",
+      "Market Value": "2715.84",
+      "Shares Held": "48.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "U.S. Bank Money Market Deposit Account",
+      "Ticker": "-",
+      "Identifier": "8AMMF0A84",
+      "Weight": "3.9588716801",
+      "Market Value": "952766.79",
+      "Shares Held": "952766.790000000000",
+      "Asset Category": "STIV"
+    },
+    {
+      "Name": "Biohaven Ltd",
+      "Ticker": "BHVN",
+      "Identifier": "VGG1110E1079",
+      "Weight": "0.0987259339",
+      "Market Value": "23760",
+      "Shares Held": "1760.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Accenture PLC",
+      "Ticker": "ACN",
+      "Identifier": "IE00B4BNMY34",
+      "Weight": "0.0875562745",
+      "Market Value": "21071.84",
+      "Shares Held": "127.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Roivant Sciences Ltd",
+      "Ticker": "ROIV",
+      "Identifier": "BMG762791017",
+      "Weight": "0.2286815483",
+      "Market Value": "55035.93",
+      "Shares Held": "1623.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Twist Bioscience Corp",
+      "Ticker": "TWST",
+      "Identifier": "90184D100",
+      "Weight": "0.2586735812",
+      "Market Value": "62254",
+      "Shares Held": "680.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Tyler Technologies Inc",
+      "Ticker": "TYL",
+      "Identifier": "902252105",
+      "Weight": "0.0115778595",
+      "Market Value": "2786.4",
+      "Shares Held": "9.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Tyra Biosciences Inc",
+      "Ticker": "TYRA",
+      "Identifier": "90240B106",
+      "Weight": "0.0855727808",
+      "Market Value": "20594.48",
+      "Shares Held": "646.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "UDR Inc",
+      "Ticker": "UDR",
+      "Identifier": "902653104",
+      "Weight": "0.1885276417",
+      "Market Value": "45372.24",
+      "Shares Held": "1189.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Uber Technologies Inc",
+      "Ticker": "UBER",
+      "Identifier": "90353T100",
+      "Weight": "0.5154220066",
+      "Market Value": "124044.68",
+      "Shares Held": "1763.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Ultragenyx Pharmaceutical Inc",
+      "Ticker": "RARE",
+      "Identifier": "90400D108",
+      "Weight": "0.1757503618",
+      "Market Value": "42297.18",
+      "Shares Held": "1698.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Union Pacific Corp",
+      "Ticker": "UNP",
+      "Identifier": "907818108",
+      "Weight": "0.6239130822",
+      "Market Value": "150154.82",
+      "Shares Held": "514.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "United Airlines Holdings Inc",
+      "Ticker": "UAL",
+      "Identifier": "910047109",
+      "Weight": "0.141663945",
+      "Market Value": "34093.73",
+      "Shares Held": "281.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "United Parcel Service Inc",
+      "Ticker": "UPS",
+      "Identifier": "911312106",
+      "Weight": "0.2801819566",
+      "Market Value": "67430.34",
+      "Shares Held": "647.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "United Rentals Inc",
+      "Ticker": "URI",
+      "Identifier": "911363109",
+      "Weight": "0.2421612532",
+      "Market Value": "58280.04",
+      "Shares Held": "54.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "TREASURY BILL",
+      "Ticker": "-",
+      "Identifier": "912797SA6",
+      "Weight": "16.4750331124",
+      "Market Value": "3964984.39",
+      "Shares Held": "3989000.000000000000",
+      "Asset Category": "DBT",
+      "Coupon": ".000000000000",
+      "Maturity": "2026-10-01"
+    },
+    {
+      "Name": "United Therapeutics Corp",
+      "Ticker": "UTHR",
+      "Identifier": "91307C102",
+      "Weight": "0.1828480334",
+      "Market Value": "44005.35",
+      "Shares Held": "85.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Vanda Pharmaceuticals Inc",
+      "Ticker": "VNDA",
+      "Identifier": "921659108",
+      "Weight": "0.0225474077",
+      "Market Value": "5426.4",
+      "Shares Held": "1064.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Vaxcyte Inc",
+      "Ticker": "PCVX",
+      "Identifier": "92243G108",
+      "Weight": "0.228080176",
+      "Market Value": "54891.2",
+      "Shares Held": "1015.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Ventas Inc",
+      "Ticker": "VTR",
+      "Identifier": "92276F100",
+      "Weight": "0.7596081802",
+      "Market Value": "182812.05",
+      "Shares Held": "1955.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Verastem Inc",
+      "Ticker": "VSTM",
+      "Identifier": "92337C203",
+      "Weight": "0.0379089304",
+      "Market Value": "9123.4",
+      "Shares Held": "1573.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Veracyte Inc",
+      "Ticker": "VCYT",
+      "Identifier": "92337F107",
+      "Weight": "0.1333787367",
+      "Market Value": "32099.76",
+      "Shares Held": "693.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Vera Therapeutics Inc",
+      "Ticker": "VERA",
+      "Identifier": "92337R101",
+      "Weight": "0.1636569335",
+      "Market Value": "39386.7",
+      "Shares Held": "1227.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Veralto Corp",
+      "Ticker": "VLTO",
+      "Identifier": "92338C103",
+      "Weight": "0.0833445082",
+      "Market Value": "20058.21",
+      "Shares Held": "213.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "VeriSign Inc",
+      "Ticker": "-",
+      "Identifier": "92343E102",
+      "Weight": "0.020486213",
+      "Market Value": "4930.34",
+      "Shares Held": "17.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Verisk Analytics Inc",
+      "Ticker": "VRSK",
+      "Identifier": "92345Y106",
+      "Weight": "0.0914879019",
+      "Market Value": "22018.05",
+      "Shares Held": "113.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Vericel Corp",
+      "Ticker": "VCEL",
+      "Identifier": "92346J108",
+      "Weight": "0.1057973036",
+      "Market Value": "25461.84",
+      "Shares Held": "554.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Vertex Pharmaceuticals Inc",
+      "Ticker": "-",
+      "Identifier": "92532F100",
+      "Weight": "0.2101358234",
+      "Market Value": "50572.6",
+      "Shares Held": "106.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Vertiv Holdings Co",
+      "Ticker": "VRT",
+      "Identifier": "92537N108",
+      "Weight": "0.3342504858",
+      "Market Value": "80442.81",
+      "Shares Held": "333.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Vor BioPharma Inc",
+      "Ticker": "VOR",
+      "Identifier": "929033207",
+      "Weight": "0.0716230473",
+      "Market Value": "17237.25",
+      "Shares Held": "815.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Westinghouse Air Brake Technol",
+      "Ticker": "-",
+      "Identifier": "929740108",
+      "Weight": "0.1776585646",
+      "Market Value": "42756.42",
+      "Shares Held": "147.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Waste Management Inc",
+      "Ticker": "WM",
+      "Identifier": "94106L109",
+      "Weight": "0.301230442",
+      "Market Value": "72496",
+      "Shares Held": "320.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Welltower Inc",
+      "Ticker": "WELL",
+      "Identifier": "95040Q104",
+      "Weight": "2.7558112863",
+      "Market Value": "663230.76",
+      "Shares Held": "2829.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Western Digital Corp",
+      "Ticker": "WDC",
+      "Identifier": "958102105",
+      "Weight": "0.1629995085",
+      "Market Value": "39228.48",
+      "Shares Held": "72.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Weyerhaeuser Co",
+      "Ticker": "WY",
+      "Identifier": "962166104",
+      "Weight": "0.3016085591",
+      "Market Value": "72587",
+      "Shares Held": "2900.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Workday Inc",
+      "Ticker": "WDAY",
+      "Identifier": "98138H101",
+      "Weight": "0.0279818216",
+      "Market Value": "6734.28",
+      "Shares Held": "42.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Xencor Inc",
+      "Ticker": "XNCR",
+      "Identifier": "98401F105",
+      "Weight": "0.0756616693",
+      "Market Value": "18209.21",
+      "Shares Held": "901.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Xylem Inc/NY",
+      "Ticker": "-",
+      "Identifier": "98419M100",
+      "Weight": "0.1001213103",
+      "Market Value": "24095.82",
+      "Shares Held": "206.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Zebra Technologies Corp",
+      "Ticker": "ZBRA",
+      "Identifier": "989207105",
+      "Weight": "0.0122086085",
+      "Market Value": "2938.2",
+      "Shares Held": "10.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Zenas Biopharma Inc",
+      "Ticker": "ZBIO",
+      "Identifier": "98937L105",
+      "Weight": "0.0817789791",
+      "Market Value": "19681.44",
+      "Shares Held": "626.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Seagate Technology Holdings PL",
+      "Ticker": "-",
+      "Identifier": "IE00BKVD2N49",
+      "Weight": "0.1671946544",
+      "Market Value": "40238.11",
+      "Shares Held": "47.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "TE Connectivity PLC",
+      "Ticker": "TEL",
+      "Identifier": "IE000IVNQZ81",
+      "Weight": "0.0521348139",
+      "Market Value": "12547.09",
+      "Shares Held": "61.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Trane Technologies PLC",
+      "Ticker": "TT",
+      "Identifier": "IE00BK9ZQ967",
+      "Weight": "0.3610620561",
+      "Market Value": "86895.45",
+      "Shares Held": "191.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "CRISPR Therapeutics AG",
+      "Ticker": "CRSP",
+      "Identifier": "CH0334081137",
+      "Weight": "0.1858452547",
+      "Market Value": "44726.68",
+      "Shares Held": "932.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "NXP Semiconductors NV",
+      "Ticker": "-",
+      "Identifier": "NL0009538784",
+      "Weight": "0.0495138813",
+      "Market Value": "11916.32",
+      "Shares Held": "52.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "uniQure NV",
+      "Ticker": "-",
+      "Identifier": "NL0010696654",
+      "Weight": "0.2012301292",
+      "Market Value": "48429.3",
+      "Shares Held": "1110.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Geron Corp",
+      "Ticker": "GERN",
+      "Identifier": "374163103",
+      "Weight": "0.0542872969",
+      "Market Value": "13065.12",
+      "Shares Held": "10128.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Gilead Sciences Inc",
+      "Ticker": "GILD",
+      "Identifier": "375558103",
+      "Weight": "0.2055950953",
+      "Market Value": "49479.8",
+      "Shares Held": "380.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "GoDaddy Inc",
+      "Ticker": "GDDY",
+      "Identifier": "380237107",
+      "Weight": "0.0092824816",
+      "Market Value": "2233.98",
+      "Shares Held": "27.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "GRAIL Inc",
+      "Ticker": "GRAL",
+      "Identifier": "384747101",
+      "Weight": "0.1880180563",
+      "Market Value": "45249.6",
+      "Shares Held": "660.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "HP Inc",
+      "Ticker": "HPQ",
+      "Identifier": "40434L105",
+      "Weight": "0.0215289849",
+      "Market Value": "5181.3",
+      "Shares Held": "190.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Halozyme Therapeutics Inc",
+      "Ticker": "HALO",
+      "Identifier": "40637H109",
+      "Weight": "0.2242988398",
+      "Market Value": "53981.16",
+      "Shares Held": "654.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Healthpeak Properties Inc",
+      "Ticker": "DOC",
+      "Identifier": "42250P103",
+      "Weight": "0.2515292058",
+      "Market Value": "60534.59",
+      "Shares Held": "2773.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Hewlett Packard Enterprise Co",
+      "Ticker": "HPE",
+      "Identifier": "42824C109",
+      "Weight": "0.0547334749",
+      "Market Value": "13172.5",
+      "Shares Held": "275.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Honeywell Aerospace Inc",
+      "Ticker": "HONA",
+      "Identifier": "43849R105",
+      "Weight": "0.2353747594",
+      "Market Value": "56646.76",
+      "Shares Held": "274.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Honeywell International Inc",
+      "Ticker": "HON",
+      "Identifier": "438516205",
+      "Weight": "0.2767139173",
+      "Market Value": "66595.7",
+      "Shares Held": "274.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Host Hotels & Resorts Inc",
+      "Ticker": "HST",
+      "Identifier": "44107P104",
+      "Weight": "0.2675201063",
+      "Market Value": "64383.06",
+      "Shares Held": "2562.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Howmet Aerospace Inc",
+      "Ticker": "HWM",
+      "Identifier": "443201108",
+      "Weight": "0.4069711527",
+      "Market Value": "97944.22",
+      "Shares Held": "347.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Hubbell Inc",
+      "Ticker": "HUBB",
+      "Identifier": "443510607",
+      "Weight": "0.0903213486",
+      "Market Value": "21737.3",
+      "Shares Held": "46.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Huntington Ingalls Industries",
+      "Ticker": "HII",
+      "Identifier": "446413106",
+      "Weight": "0.0461190555",
+      "Market Value": "11099.3",
+      "Shares Held": "34.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Hyperliquid Strategies Inc",
+      "Ticker": "PURR",
+      "Identifier": "44916Y106",
+      "Weight": "0.0758102984",
+      "Market Value": "18244.98",
+      "Shares Held": "2938.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Ideaya Biosciences Inc",
+      "Ticker": "IDYA",
+      "Identifier": "45166A102",
+      "Weight": "0.1579801923",
+      "Market Value": "38020.5",
+      "Shares Held": "1071.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "IDEX Corp",
+      "Ticker": "-",
+      "Identifier": "45167R104",
+      "Weight": "0.0612832093",
+      "Market Value": "14748.8",
+      "Shares Held": "64.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Illinois Tool Works Inc",
+      "Ticker": "ITW",
+      "Identifier": "452308109",
+      "Weight": "0.2706555272",
+      "Market Value": "65137.65",
+      "Shares Held": "227.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "ImmunityBio Inc",
+      "Ticker": "IBRX",
+      "Identifier": "45256X103",
+      "Weight": "0.172378223",
+      "Market Value": "41485.62",
+      "Shares Held": "5786.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Immunome Inc",
+      "Ticker": "IMNM",
+      "Identifier": "45257U108",
+      "Weight": "0.131358844",
+      "Market Value": "31613.64",
+      "Shares Held": "1389.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Immix Biopharma Inc",
+      "Ticker": "IMMX",
+      "Identifier": "45258H106",
+      "Weight": "0.0337755713",
+      "Market Value": "8128.64",
+      "Shares Held": "977.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Immunovant Inc",
+      "Ticker": "IMVT",
+      "Identifier": "45258J102",
+      "Weight": "0.1914421343",
+      "Market Value": "46073.66",
+      "Shares Held": "1193.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Incyte Corp",
+      "Ticker": "INCY",
+      "Identifier": "45337C102",
+      "Weight": "0.2170235362",
+      "Market Value": "52230.24",
+      "Shares Held": "437.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Ingersoll Rand Inc",
+      "Ticker": "IR",
+      "Identifier": "45687V106",
+      "Weight": "0.1067081085",
+      "Market Value": "25681.04",
+      "Shares Held": "308.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Inhibrx Biosciences Inc",
+      "Ticker": "INBX",
+      "Identifier": "45720N103",
+      "Weight": "0.0634127144",
+      "Market Value": "15261.3",
+      "Shares Held": "186.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Insmed Inc",
+      "Ticker": "INSM",
+      "Identifier": "457669307",
+      "Weight": "0.2056673946",
+      "Market Value": "49497.2",
+      "Shares Held": "502.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Intel Corp",
+      "Ticker": "INTC",
+      "Identifier": "458140100",
+      "Weight": "0.3676718321",
+      "Market Value": "88486.2",
+      "Shares Held": "981.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Intellia Therapeutics Inc",
+      "Ticker": "NTLA",
+      "Identifier": "45826J105",
+      "Weight": "0.1182641951",
+      "Market Value": "28462.2",
+      "Shares Held": "2665.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "IBM",
+      "Ticker": "-",
+      "Identifier": "459200101",
+      "Weight": "0.1812125735",
+      "Market Value": "43611.75",
+      "Shares Held": "195.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Intuit Inc",
+      "Ticker": "INTU",
+      "Identifier": "461202103",
+      "Weight": "0.0748588147",
+      "Market Value": "18015.99",
+      "Shares Held": "57.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Invitation Homes Inc",
+      "Ticker": "INVH",
+      "Identifier": "46187W107",
+      "Weight": "0.271432163",
+      "Market Value": "65324.56",
+      "Shares Held": "2198.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Ionis Pharmaceuticals Inc",
+      "Ticker": "IONS",
+      "Identifier": "462222100",
+      "Weight": "0.1353049312",
+      "Market Value": "32563.33",
+      "Shares Held": "629.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Monte Rosa Therapeutics Inc",
+      "Ticker": "GLUE",
+      "Identifier": "61225M102",
+      "Weight": "0.0673385661",
+      "Market Value": "16206.12",
+      "Shares Held": "981.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Motorola Solutions Inc",
+      "Ticker": "MSI",
+      "Identifier": "620076307",
+      "Weight": "0.0615603566",
+      "Market Value": "14815.5",
+      "Shares Held": "34.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Myriad Genetics Inc",
+      "Ticker": "MYGN",
+      "Identifier": "62855J104",
+      "Weight": "0.0166371481",
+      "Market Value": "4004",
+      "Shares Held": "1400.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Natera Inc",
+      "Ticker": "NTRA",
+      "Identifier": "632307104",
+      "Weight": "0.2369791389",
+      "Market Value": "57032.88",
+      "Shares Held": "213.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "NetApp Inc",
+      "Ticker": "NTAP",
+      "Identifier": "64110D104",
+      "Weight": "0.0304093328",
+      "Market Value": "7318.5",
+      "Shares Held": "41.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Neurocrine Biosciences Inc",
+      "Ticker": "NBIX",
+      "Identifier": "64125C109",
+      "Weight": "0.1989128121",
+      "Market Value": "47871.6",
+      "Shares Held": "287.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Nordson Corp",
+      "Ticker": "NDSN",
+      "Identifier": "655663102",
+      "Weight": "0.0569164981",
+      "Market Value": "13697.88",
+      "Shares Held": "46.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Norfolk Southern Corp",
+      "Ticker": "NSC",
+      "Identifier": "655844108",
+      "Weight": "0.2718229116",
+      "Market Value": "65418.6",
+      "Shares Held": "195.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Northrop Grumman Corp",
+      "Ticker": "-",
+      "Identifier": "666807102",
+      "Weight": "0.2614728104",
+      "Market Value": "62927.68",
+      "Shares Held": "116.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Novavax Inc",
+      "Ticker": "NVAX",
+      "Identifier": "670002401",
+      "Weight": "0.1060286613",
+      "Market Value": "25517.52",
+      "Shares Held": "3486.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "NVIDIA Corp",
+      "Ticker": "NVDA",
+      "Identifier": "67066G104",
+      "Weight": "4.1882306395",
+      "Market Value": "1007965.75",
+      "Shares Held": "5021.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Nurix Therapeutics Inc",
+      "Ticker": "NRIX",
+      "Identifier": "67080M103",
+      "Weight": "0.1101351782",
+      "Market Value": "26505.82",
+      "Shares Held": "1142.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Mount Vernon Liquid Assets Portfolio, LLC",
+      "Ticker": "-",
+      "Identifier": "990VR1110",
+      "Weight": "8.9639636883",
+      "Market Value": "2157323.5",
+      "Shares Held": "2157323.500000000000",
+      "Asset Category": "STIV"
+    },
+    {
+      "Name": "FedEx Corp",
+      "Ticker": "FDX",
+      "Identifier": "31428X106",
+      "Weight": "0.2426846336",
+      "Market Value": "58406",
+      "Shares Held": "190.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Fedex Freight Holding Co Inc",
+      "Ticker": "FDXF",
+      "Identifier": "314352105",
+      "Weight": "0.0548885444",
+      "Market Value": "13209.82",
+      "Shares Held": "94.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "First Solar Inc",
+      "Ticker": "FSLR",
+      "Identifier": "336433107",
+      "Weight": "0.0192908647",
+      "Market Value": "4642.66",
+      "Shares Held": "22.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "First Tracks Biotherapeutics I",
+      "Ticker": "-",
+      "Identifier": "337185102",
+      "Weight": "0.0790525478",
+      "Market Value": "19025.28",
+      "Shares Held": "432.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Fortinet Inc",
+      "Ticker": "FTNT",
+      "Identifier": "34959E109",
+      "Weight": "0.0868071458",
+      "Market Value": "20891.55",
+      "Shares Held": "129.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Perspective Therapeutics Inc",
+      "Ticker": "CATX",
+      "Identifier": "46489V302",
+      "Weight": "0.022659347",
+      "Market Value": "5453.34",
+      "Shares Held": "1874.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Fortive Corp",
+      "Ticker": "FTV",
+      "Identifier": "34959J108",
+      "Weight": "0.0649506949",
+      "Market Value": "15631.44",
+      "Shares Held": "264.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Gartner Inc",
+      "Ticker": "IT",
+      "Identifier": "366651107",
+      "Weight": "0.0087851123",
+      "Market Value": "2114.28",
+      "Shares Held": "14.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Ovid therapeutics Inc",
+      "Ticker": "OVID",
+      "Identifier": "690469101",
+      "Weight": "0.0210685132",
+      "Market Value": "5070.48",
+      "Shares Held": "2284.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "PTC Therapeutics Inc",
+      "Ticker": "PTCT",
+      "Identifier": "69366J200",
+      "Weight": "0.1777494373",
+      "Market Value": "42778.29",
+      "Shares Held": "629.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "GE Vernova Inc",
+      "Ticker": "GEV",
+      "Identifier": "36828A101",
+      "Weight": "0.9587450371",
+      "Market Value": "230737.57",
+      "Shares Held": "233.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Generac Holdings Inc",
+      "Ticker": "GNRC",
+      "Identifier": "368736104",
+      "Weight": "0.0417699205",
+      "Market Value": "10052.61",
+      "Shares Held": "51.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "General Dynamics Corp",
+      "Ticker": "GD",
+      "Identifier": "369550108",
+      "Weight": "0.3504953479",
+      "Market Value": "84352.4",
+      "Shares Held": "220.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "General Electric Co",
+      "Ticker": "GE",
+      "Identifier": "369604301",
+      "Weight": "1.3525090615",
+      "Market Value": "325503.28",
+      "Shares Held": "904.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "PTC Inc",
+      "Ticker": "PTC",
+      "Identifier": "69370C100",
+      "Weight": "0.0136820183",
+      "Market Value": "3292.8",
+      "Shares Held": "24.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "PACCAR Inc",
+      "Ticker": "PCAR",
+      "Identifier": "693718108",
+      "Weight": "0.2513941225",
+      "Market Value": "60502.08",
+      "Shares Held": "456.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Iovance Biotherapeutics Inc",
+      "Ticker": "IOVA",
+      "Identifier": "462260100",
+      "Weight": "0.1137967219",
+      "Market Value": "27387.03",
+      "Shares Held": "6729.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Iron Mountain Inc",
+      "Ticker": "IRM",
+      "Identifier": "46284V101",
+      "Weight": "0.6083821133",
+      "Market Value": "146417.04",
+      "Shares Held": "1197.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Gen Digital Inc",
+      "Ticker": "GEN",
+      "Identifier": "668771108",
+      "Weight": "0.0130026542",
+      "Market Value": "3129.3",
+      "Shares Held": "114.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Flex Ltd",
+      "Ticker": "FLEX",
+      "Identifier": "SG9999000020",
+      "Weight": "0.0359211153",
+      "Market Value": "8645",
+      "Shares Held": "76.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Palantir Technologies Inc",
+      "Ticker": "PLTR",
+      "Identifier": "69608A108",
+      "Weight": "0.2439046634",
+      "Market Value": "58699.62",
+      "Shares Held": "477.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Palo Alto Networks Inc",
+      "Ticker": "PANW",
+      "Identifier": "697435105",
+      "Weight": "0.2316379662",
+      "Market Value": "55747.44",
+      "Shares Held": "168.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Palvella Therapeutics Inc",
+      "Ticker": "PVLA",
+      "Identifier": "697947109",
+      "Weight": "0.1097686124",
+      "Market Value": "26417.6",
+      "Shares Held": "190.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Parker-Hannifin Corp",
+      "Ticker": "PH",
+      "Identifier": "701094104",
+      "Weight": "0.4422795938",
+      "Market Value": "106441.77",
+      "Shares Held": "109.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Paychex Inc",
+      "Ticker": "PAYX",
+      "Identifier": "704326107",
+      "Weight": "0.1354504854",
+      "Market Value": "32598.36",
+      "Shares Held": "279.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Praxis Precision Medicines Inc",
+      "Ticker": "PRAX",
+      "Identifier": "74006W207",
+      "Weight": "0.2455822564",
+      "Market Value": "59103.36",
+      "Shares Held": "192.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Precigen Inc",
+      "Ticker": "PGEN",
+      "Identifier": "74017N105",
+      "Weight": "0.0856872546",
+      "Market Value": "20622.03",
+      "Shares Held": "3289.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Prime Medicine Inc",
+      "Ticker": "PRME",
+      "Identifier": "74168J101",
+      "Weight": "0.029434622",
+      "Market Value": "7083.92",
+      "Shares Held": "2426.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Prologis Inc",
+      "Ticker": "PLD",
+      "Identifier": "74340W103",
+      "Weight": "2.2466664791",
+      "Market Value": "540696.79",
+      "Shares Held": "3739.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Protagonist Therapeutics Inc",
+      "Ticker": "PTGX",
+      "Identifier": "74366E102",
+      "Weight": "0.247542149",
+      "Market Value": "59575.04",
+      "Shares Held": "436.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Public Storage",
+      "Ticker": "PSA",
+      "Identifier": "74460D109",
+      "Weight": "0.9024693019",
+      "Market Value": "217193.9",
+      "Shares Held": "670.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "VICI Properties Inc",
+      "Ticker": "VICI",
+      "Identifier": "925652109",
+      "Weight": "0.4811985536",
+      "Market Value": "115808.25",
+      "Shares Held": "4395.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Viking Therapeutics Inc",
+      "Ticker": "VKTX",
+      "Identifier": "92686J106",
+      "Weight": "0.2190591354",
+      "Market Value": "52720.14",
+      "Shares Held": "1661.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Vir Biotechnology Inc",
+      "Ticker": "VIR",
+      "Identifier": "92764N102",
+      "Weight": "0.0826179834",
+      "Market Value": "19883.36",
+      "Shares Held": "2296.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Viridian Therapeutics Inc",
+      "Ticker": "-",
+      "Identifier": "92790C104",
+      "Weight": "0.1427650134",
+      "Market Value": "34358.72",
+      "Shares Held": "1816.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Pfizer Inc",
+      "Ticker": "PFE",
+      "Identifier": "BBG01XH93S67",
+      "Weight": "0.0264071097",
+      "Market Value": "6355.3",
+      "Shares Held": "1297.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Prothena Corp PLC",
+      "Ticker": "-",
+      "Identifier": "IE00B91XRN20",
+      "Weight": "0.0227742779",
+      "Market Value": "5481",
+      "Shares Held": "675.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Pentair PLC",
+      "Ticker": "PNR",
+      "Identifier": "IE00BLS09M33",
+      "Weight": "0.0380676564",
+      "Market Value": "9161.6",
+      "Shares Held": "140.000000000000",
+      "Asset Category": "EC"
     },
     {
       "Name": "AbbVie Inc",
       "Ticker": "ABBV",
-      "Identifier": "-",
-      "Weight": "1.78",
-      "Market Value": "-",
-      "Shares Held": "-",
-      "Asset Category": "-"
+      "Identifier": "00287Y109",
+      "Weight": "0.2137512037",
+      "Market Value": "51442.7",
+      "Shares Held": "205.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "ABIOMED INC",
+      "Ticker": "-",
+      "Identifier": "003654100CVR",
+      "Weight": "0",
+      "Market Value": "0",
+      "Shares Held": "64.000000000000",
+      "Asset Category": "EC"
     }
   ]
 }

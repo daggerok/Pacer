@@ -2,7 +2,7 @@
   "ticker": "ICOW",
   "page": 2,
   "pageSize": 1000,
-  "totalRows": 2334,
+  "totalRows": 2335,
   "headers": [
     "Date",
     "Close",
@@ -1285,7 +1285,7 @@
     {
       "Date": "Apr 11 2022",
       "Close": "30.552000045776367",
-      "Adj Close": "25.39",
+      "Adj Close": "25.4",
       "Volume": "10900"
     },
     {
