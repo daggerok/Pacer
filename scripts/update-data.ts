@@ -1,21 +1,10 @@
 #!/usr/bin/env bun
+// Bun provides Node-compatible fs/promises; node types are intentionally not required at runtime.
 /// <reference types="bun" />
 import { readFile as outputReadFile, readdir as outputReadDir } from 'node:fs/promises';
 import { createHash as outputCreateHash } from 'node:crypto';
 import { join as outputJoin } from 'node:path';
 import { fileURLToPath as outputFileURLToPath } from 'node:url';
-import { appendFile, mkdir, readFile, readdir, rm, writeFile } from 'node:fs/promises';
-
-declare const process: {
-  env: Record<string, string | undefined>;
-  argv: string[];
-  exitCode?: number;
-};
-
-type JsonRecord = Record<string, any>;
-type Range = { min?: number; max?: number };
-type ReturnPeriod = 'YTD' | '1Y' | '3Y' | '5Y' | '10Y';
-type RangeMap = Partial<Record<ReturnPeriod, Range>>;
 
 // Console presentation; no changes to provider requests or persisted data.
 /** Presentation only: no requests, writes, filtering, or changes to updater state. */
@@ -31,7 +20,8 @@ function outputConfigEntries(config: Record<string, any>): [string, string][] {
     requestSleepSeconds: 'REQUEST_SLEEP', categories: 'CATEGORY',
     aumRange: 'AUM', terRange: 'TER', dividendYieldRange: 'DIVIDEND_YIELD', secYieldRange: 'SEC_YIELD',
     performanceRanges: 'PERFORMANCE', totalReturnRanges: 'TOTAL_RETURN',
-    skipPacer: 'SKIP_PACER', skipYahoo: 'SKIP_YAHOO',
+    skipVanEck: 'SKIP_VANECK', skipProShares: 'SKIP_PROSHARES',
+    skipWisdomTree: 'SKIP_WISDOMTREE', skipGoldmanSachs: 'SKIP_GOLDMANSACHS',
   };
   const range = (v: any): string => v?.source ?? `${Number.isFinite(v?.min) ? v.min : ''}:${Number.isFinite(v?.max) ? v.max : ''}`;
   for (const [key, value] of Object.entries(config)) {
@@ -52,7 +42,7 @@ function outputConfigEntries(config: Record<string, any>): [string, string][] {
 }
 function outputPrintConfig(brand: string, config: Record<string, any>): void {
   const entries: [string, string][] = [...outputConfigEntries(config), ['VERBOSE', String(outputVerbose())]];
-  console.log(`[ config   ] ${brand} updater:\n${entries.map(([key, value]) => `              ${key}=${/TOKEN|PASSWORD|SECRET|COOKIE|^SEC_UA$/i.test(key) ? '<redacted>' : outputClean(value)}`).join('\n')}`);
+  console.log(`[ config   ] ${brand} updater:\n${entries.map(([key, value]) => `              ${key}=${/TOKEN|PASSWORD|SECRET|COOKIE/i.test(key) ? '<redacted>' : outputClean(value)}`).join('\n')}`);
 }
 function outputHasOutputFilters(config: Record<string, any>): boolean {
   return outputConfigEntries(config).some(([name, value]) =>
@@ -113,6 +103,7 @@ function outputFundLine(index: number, total: number, ticker: string, status: st
     field('yahoo', data.yahooHistoryCount),
   ].filter(part => part !== '').join(' ');
   const detail = [
+    field('port', data.portId ?? data.portfolioId),
     field('history', outputCount(data.history ?? data.historyCount)),
     sources ? `(${sources})` : '',
     field('holdings', outputCount(data.holdings ?? data.holdingsCount)),
@@ -121,6 +112,7 @@ function outputFundLine(index: number, total: number, ticker: string, status: st
     field('total', outputMoney(data.totalFundNetAssets ?? data.totalNetAssets)),
     field('div', outputScalar(data.trailingYield ?? data.yields?.effectiveYield ?? data.yields?.dividendYield ?? data.dividendYield ?? metrics.dividendYield)),
     field('sec', outputScalar(data.secYield ?? data.yields?.secYield ?? metrics.secYield)),
+    field('wp', data.workplaceRaw),
   ].filter(part => part !== '').join(' ');
   return `[ ${String(index).padStart(width)}/${String(total).padEnd(width)}  ] ${outputClean(ticker).padEnd(5)} ${status.padEnd(9)}${detail ? ` ${detail}` : ''}${reason ? ` reason=${outputClean(reason)}` : ''}`;
 }
@@ -135,36 +127,48 @@ function outputCreateReporter(root: URL | string, total: number) {
   };
 }
 
-// ---------------------------------------------------------------------------
-// Pacer ETFs (Pacer Funds Trust, SEC EDGAR CIK 0001616668) static data updater.
+
+// Pacer ETFs static data updater.
 //
 // The browser application is deliberately static. This script builds the feed
 // under api/pacer/** from public issuer/SEC/market-data sources:
 //
-//   catalog       Pacer ETFs product listing
-//                 https://www.paceretfs.com/products/ (fund name, total
-//                 expenses, inception and the month-end NAV total-return row
-//                 grouped by investment theme)
-//   product page  https://www.paceretfs.com/products/<TICKER>
-//                 (fund name, quarter-end NAV/market-price performance table,
-//                 the full distribution history, the published top 10 holdings)
-//   holdings      the daily holdings CSV export
-//                 https://www.paceretfs.com/products/holdings_download/<TICKER>
-//                 (SEC EDGAR Form N-PORT-P for the exact series when the CSV
-//                 is unavailable; the previous run as the last resort)
-//   distributions the Distributions table published on the fund page (Yahoo
-//                 dividend events as the fallback)
+//   catalog       https://www.paceretfs.com/products/ - one performance table per
+//                 investment theme (name, ticker, total expenses, inception, NAV
+//                 total returns) plus the series listing for funds without a row
+//   fund page     https://www.paceretfs.com/products/<TICKER> (Structured Outcome
+//                 funds: /products/structured-outcome-strategies/<TICKER>): Fund
+//                 Details, quarter-end performance, top 10 holdings, distributions
+//   holdings      SEC EDGAR Form N-PORT-P (Pacer Funds Trust, CIK 0001616668) full
+//                 schedule; the official top 10 table is a labelled partial
+//                 fallback (the full "Daily Holdings" file is a protected download
+//                 that neither direct requests nor the rendering proxy can read);
+//                 the previous run as the last resort
+//   distributions the fund page Distributions table (Yahoo dividend events fallback)
 //   history       Yahoo Finance's public chart endpoint (daily close, adjusted
 //                 close, volume, dividends, splits)
 //
-// Issuer requests are made directly with a browser-like User-Agent first; when
-// the issuer answers a non-browser client with an error or a bot-wall page,
-// the same public URL is read through the read-only r.jina.ai rendering proxy
-// (identical to daggerok/Schwab). No user data or credentials are sent to the
-// proxy. SEC and Yahoo requests stay direct.
+// paceretfs.com sits behind a Cloudflare managed challenge (direct requests get
+// HTTP 403). Issuer requests are made directly with a browser-like User-Agent
+// first; after two denials the same public URL is read through the read-only
+// r.jina.ai rendering proxy for the rest of the run (same approach as
+// other WAF-protected sibling feeds). No user data or credentials are sent to the proxy. SEC and
+// Yahoo requests stay direct.
 //
 // Usage: bun ./scripts/update-data.ts [--help]
-// ---------------------------------------------------------------------------
+
+import { appendFile, mkdir, readFile, readdir, rm, writeFile } from 'node:fs/promises';
+
+declare const process: {
+  env: Record<string, string | undefined>;
+  argv: string[];
+  exitCode?: number;
+};
+
+type JsonRecord = Record<string, any>;
+type Range = { min?: number; max?: number };
+type ReturnPeriod = 'YTD' | '1Y' | '3Y' | '5Y' | '10Y';
+type RangeMap = Partial<Record<ReturnPeriod, Range>>;
 
 const PACER_SITE = 'https://www.paceretfs.com';
 const PACER_CATALOG_URL = `${PACER_SITE}/products/`;
@@ -175,7 +179,7 @@ const SEC_BROWSE_URL = `${SEC_SITE}/cgi-bin/browse-edgar`;
 const SEC_ARCHIVES = `${SEC_SITE}/Archives/edgar/data`;
 const SEC_FUND_TICKERS_URL = `${SEC_SITE}/files/company_tickers_mf.json`;
 const SEC_COMPANY_TICKERS_URL = `${SEC_SITE}/files/company_tickers.json`;
-const DEFAULT_SEC_UA = 'daggerok ETF feed daggerok@gmail.com';
+const DEFAULT_SEC_UA = 'DaggerOk Pacer ETF feed admin@daggerok.example.com';
 let secUa = DEFAULT_SEC_UA; // overridden by the SEC_UA control when nonblank
 const BROWSER_UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36';
 const PROXY_SLEEP_SECONDS = 3.2; // r.jina.ai anonymous tier is ~20 requests per minute
@@ -185,17 +189,13 @@ const INDEX_FILE = new URL('index.json', API_ROOT);
 const STATE_FILE = new URL('update-state.json', API_ROOT);
 
 const HOLDINGS_HEADERS = ['Name', 'Ticker', 'Identifier', 'Weight', 'Market Value', 'Shares Held', 'Asset Category'];
-const DISTRIBUTION_HEADERS = ['Ex-Date', 'Total Distributions', 'Ordinary Income', 'Short Term Capital Gains', 'Long Term Capital Gains', 'Return of Capital'];
+const BOND_HOLDINGS_HEADERS = [...HOLDINGS_HEADERS, 'Coupon', 'Maturity'];
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 const TRUTHY = new Set(['1', 'true', 'yes', 'y', 'on']);
 const AUM_BOUNDS = { nano: [0, 10_000_000], micro: [10_000_000, 300_000_000], small: [300_000_000, 2_000_000_000], mid: [2_000_000_000, 10_000_000_000], large: [10_000_000_000, undefined] } as const;
-/** Investment themes the Pacer ETFs product listing groups its funds by. */
-const KNOWN_THEMES = ['Risk Mitigation', 'High Quality Value', 'Growth', 'Thematic Growth', 'Factor', 'Structured Outcome', 'Income'];
 
 export type CatalogReturns = {
   ytd: number | null;
-  mo1: number | null;
-  mo3: number | null;
   yr1: number | null;
   yr3: number | null;
   yr5: number | null;
@@ -214,15 +214,17 @@ export type CatalogFund = {
   isin: string;
   benchmark: string;
   ter: number | null;
+  grossTer: number | null;
   nav: number | null;
   close: number | null;
   premiumDiscount: number | null;
   netAssets: number | null;
-  sharesOutstanding: number | null;
   dividendYield: number | null;
   secYield: number | null;
   asOfDate: string | null;
   returns: CatalogReturns;
+  /** NAV total returns from the catalog table (as of its first header date), null when the table has none. */
+  monthEnd: OfficialReturnRow | null;
   fundPage: string;
   source: 'pacer' | 'previous index' | 'seed';
 };
@@ -260,7 +262,7 @@ export type ParsedNport = {
   netAssets: number | null;
 };
 
-/** One row of an official performance table (NAV or Market Price basis). */
+/** One row of the official performance table (NAV or Market Price basis). */
 export type OfficialReturnRow = {
   asOfDate: string;
   mo1: number | null;
@@ -278,26 +280,29 @@ export type OfficialReturns = {
   quarterEnd: { nav: OfficialReturnRow | null; marketPrice: OfficialReturnRow | null };
 };
 
+export type TopHolding = { ticker: string; name: string; weight: number };
+export type TopHoldings = { asOfDate: string | null; rows: TopHolding[]; total: number | null };
+
 export type ProductPageSummary = {
   name: string | null;
+  asOfDate: string | null;
+  cusip: string;
+  isin: string;
   inception: string | null;
-  indexName: string | null;
+  nav: number | null;
+  marketPrice: number | null;
+  totalNetAssets: number | null;
+  totalExpenseRatio: number | null;
+  sharesOutstanding: number | null;
+  totalHoldings: number | null;
+  premiumDiscount: number | null;
+  medianBidAskSpread: number | null;
+  secYield: number | null;
   officialReturns: OfficialReturns;
+  topHoldings: TopHoldings;
   distributions: Distribution[];
-  distributionColumns: string[];
-  distributionRows: string[][];
-  topHoldings: JsonRecord[];
-  topHoldingsAsOf: string | null;
-  holdingsDownloadUrl: string;
 };
 
-export type HoldingsCsv = {
-  headers: string[];
-  rows: JsonRecord[];
-  asOfDate: string | null;
-  netAssets: number | null;
-  sharesOutstanding: number | null;
-};
 export type Distribution = { epoch: number; amount: number };
 
 type SecSeriesRef = { cik: string; seriesId: string; classId: string };
@@ -324,15 +329,15 @@ type UpdaterConfig = {
   secUa: string;
 };
 
-const EMPTY_RETURNS: CatalogReturns = { ytd: null, mo1: null, mo3: null, yr1: null, yr3: null, yr5: null, yr10: null, sinceInception: null };
+const EMPTY_RETURNS: CatalogReturns = { ytd: null, yr1: null, yr3: null, yr5: null, yr10: null, sinceInception: null };
 const EMPTY_PRICE_RETURNS: PriceReturns = { asOfDate: '', mo1: null, qtd: null, ytd: null, yr1: null, cagr3y: null, cagr5y: null, cagr10y: null, siAnn: null };
 
-// paceretfs.com sits behind a Cloudflare managed challenge for non-browser
-// clients. Requests are made through ONE shared, conservative gate rather than
-// one lane per worker: speeding up direct requests against a site that is
-// actively fingerprinting clients is the wrong tradeoff (same decision as
-// daggerok/Franklin and daggerok/Schwab). The proxy has its own slower gate.
-let nextRequestAt = 0;
+// One pacing lane per concurrent worker (sized from config.concurrency in
+// main()). A single shared gate capped total throughput at one request per
+// requestSleepSeconds no matter how high CONCURRENCY was set; CONCURRENCY
+// workers now each get their own paced lane, so concurrency actually
+// multiplies throughput as documented instead of only overlapping wait time.
+let requestGates: number[] = [0];
 let proxyGateAt = 0;
 let requestSleepSeconds = 2.5;
 let fundTickerMap: Map<string, SecSeriesRef> | null = null;
@@ -367,7 +372,7 @@ export function decodeEntities(value: string): string {
 
 function cleanText(value: unknown): string {
   return decodeEntities(String(value ?? ''))
-    .replace(/ /g, ' ')
+    .replace(/\u00a0/g, ' ')
     .replace(/\s+/g, ' ')
     .trim();
 }
@@ -542,7 +547,7 @@ export function readConfig(env: Record<string, string | undefined> = process.env
     maxRetries: Math.max(0, parsePositiveInt(env.MAX_RETRIES, 2)),
     tickers: readTickerSet(env.TICKERS),
     historyRange: env.HISTORY_RANGE?.trim() || 'max',
-    edgarFallback: !['0', 'false', 'off', 'no'].includes(String(env.EDGAR_FALLBACK ?? '1').toLowerCase()),
+    edgarFallback: !['0', 'false', 'off', 'no', 'n'].includes(String(env.EDGAR_FALLBACK ?? '1').trim().toLowerCase()),
     skipPacer: parseBoolean(env.SKIP_PACER),
     skipYahoo: parseBoolean(env.SKIP_YAHOO),
     secUa: env.SEC_UA?.trim() || DEFAULT_SEC_UA,
@@ -604,7 +609,7 @@ export function htmlToText(html: string): string {
   text = decodeEntities(text);
   return text
     .split(/\r?\n/)
-    .map((line) => line.replace(/ /g, ' ').replace(/\s+/g, ' ').trim())
+    .map((line) => line.replace(/\u00a0/g, ' ').replace(/\s+/g, ' ').trim())
     .filter(Boolean)
     .join('\n');
 }
@@ -640,170 +645,146 @@ export function toTextLines(text: string): TextLine[] {
   return lines;
 }
 
-/** Product-page links of a normalized line: `[{ label, url, slug }]`. */
-function productLinks(line: string): Array<{ label: string; url: string; slug: string }> {
-  const result: Array<{ label: string; url: string; slug: string }> = [];
-  const pattern = /\[([^\]]*)\]\((https?:\/\/[^)\s]*\/products\/([A-Za-z0-9._-]+))\)/gi;
-  for (const match of String(line ?? '').matchAll(pattern)) {
-    result.push({ label: cleanText(match[1]), url: match[2], slug: match[3] });
-  }
-  return result;
-}
-
-/** True for the product-listing slugs that are fund tickers, not content pages. */
-function isTickerSlug(slug: string): boolean {
-  return /^[A-Za-z]{2,6}$/.test(cleanText(slug));
+function normalizeLabel(value: string): string {
+  return cleanText(value).replace(/[:：]+$/, '').replace(/\s+/g, ' ').trim().toLowerCase();
 }
 
 // ---------------------------------------------------------------------------
-// Catalog: the Pacer ETFs product listing
+// Catalog: product listing (one performance table per investment theme)
 // ---------------------------------------------------------------------------
 
+type ReturnSlot = Exclude<keyof OfficialReturnRow, 'asOfDate'>;
+
+/** Maps a performance-table column header to the numeric OfficialReturnRow slot it fills. */
+export function returnSlotForHeader(header: string): ReturnSlot | null {
+  const text = cleanText(header).toLowerCase().replace(/\([^)]*\)/g, '').trim();
+  if (text === 'ytd') return 'ytd';
+  if (text === '1 month' || text === 'previous month') return 'mo1';
+  if (text === '3 month' || text === '3 month total') return 'mo3';
+  if (text === '1 year') return 'yr1';
+  if (text === '3 year') return 'cagr3y';
+  if (text === '5 year') return 'cagr5y';
+  if (text === '10 year') return 'cagr10y';
+  if (/^since (?:fund )?inception$/.test(text)) return 'siAnn';
+  return null;
+}
+
+function returnRowHasValues(row: OfficialReturnRow): boolean {
+  return [row.mo1, row.mo3, row.ytd, row.yr1, row.cagr3y, row.cagr5y, row.cagr10y, row.siAnn].some((value) => value !== null);
+}
+
+/** Cells of a markdown table row (`| a | b |`); empty for any other line. */
+function tableCells(line: string): string[] {
+  const trimmed = line.trim();
+  if (!trimmed.startsWith('|')) return [];
+  return trimmed.replace(/^\|/, '').replace(/\|$/, '').split('|').map((cell) => cell.trim());
+}
+
+function linkParts(cell: string): { label: string; url: string } {
+  const match = /^\[([^\]]*)\]\(([^)\s]*)\)/.exec(cell.trim());
+  return match ? { label: stripMarkdown(match[1]), url: absoluteUrl(match[2]) } : { label: stripMarkdown(cell), url: '' };
+}
+
+/** Fund page URL as published in the catalog (Structured Outcome funds live under a sub-path). */
 function canonicalFundPage(raw: string, ticker: string): string {
-  const fallback = `${PACER_SITE}/products/${ticker.toUpperCase()}`;
-  if (!raw) return fallback;
-  const absolute = absoluteUrl(raw);
-  const match = /\/products\/([a-z0-9.-]+)/i.exec(absolute);
-  return match ? `${PACER_SITE}/products/${match[1].toUpperCase()}` : fallback;
+  const fallback = `${PACER_SITE}/products/${ticker}`;
+  try {
+    const url = new URL(raw);
+    if (url.hostname.replace(/^www\./, '') !== 'paceretfs.com' || !/^\/products\//i.test(url.pathname)) return fallback;
+    return `${url.origin}${url.pathname.replace(/\/+$/, '')}`;
+  } catch {
+    return fallback;
+  }
 }
 
-function normalizeCategory(value: string): string {
-  const raw = cleanText(value);
-  const known = KNOWN_THEMES.find((item) => item.toLowerCase() === raw.toLowerCase());
-  return known || raw || 'ETF';
+function catalogFund(ticker: string, name: string, category: string, fundPage: string): CatalogFund {
+  return {
+    ticker,
+    name,
+    category,
+    categoryPath: category,
+    inception: null,
+    exchange: '',
+    cusip: '',
+    isin: '',
+    benchmark: '',
+    ter: null,
+    grossTer: null,
+    nav: null,
+    close: null,
+    premiumDiscount: null,
+    netAssets: null,
+    dividendYield: null,
+    secYield: null,
+    asOfDate: null,
+    returns: { ...EMPTY_RETURNS },
+    monthEnd: null,
+    fundPage,
+    source: 'pacer',
+  };
 }
 
-/** "Total Return as of 09/30/2026" -> 2026-09-30. */
-export function catalogAsOfDate(text: string): string | null {
-  const match = /as of\s+(\d{1,2}\/\d{1,2}\/\d{2,4})/i.exec(String(text ?? ''));
-  return match ? toIsoDate(match[1]) : null;
-}
+// Section headings render as `## **![Image n](...)` + newline + ` Risk Mitigation**`.
+const THEME_HEADING = /^##\s+\*\*!\[[^\]]*\]\([^)]*\)[ \t]*\r?\n[ \t]*([^*\r\n]+?)\*\*[ \t]*$/gm;
 
 /**
- * Parses the product listing (HTML or proxied markdown). Every fund row looks
- * like
- *   | [Name](https://www.paceretfs.com/products/PTLC) | [PTLC](…/PTLC) |
- *     0.60% | 6/11/15 | 7.08 | -0.41 | 2.16 | 14.17 | 13.63 | 9.63 | 11.05 | 9.09 |
- * with the columns YTD, 1 Month, 3 Month, 1 Year, 3 Year, 5 Year, 10 Year and
- * Since Inception; the theme heading above the table is the fund category.
- * The listing renders one row per fund for the active NAV/Market Price pane,
- * so a row is kept per ticker and a later "Total Return as of" date wins.
- */
-/** One cell of a markdown/HTML table row: images, bold and heading marks off. */
-function cleanRowCell(value: string): string {
-  return cleanText(
-    String(value ?? '')
-      .replace(/!\[[^\]]*\]\([^)]*\)/g, ' ')
-      .replace(/\*\*|__|`/g, '')
-      .replace(/^\s*#{1,6}\s+/, ''),
-  );
-}
-
-/**
- * Parses the product listing (HTML or proxied markdown). Every fund row looks
- * like
- *   | [Name](https://www.paceretfs.com/products/PTLC) | [PTLC](…/PTLC) |
- *     0.60% | 6/11/15 | 7.08 | -0.41 | 2.16 | 14.17 | 13.63 | 9.63 | 11.05 | 9.09 |
- * with the columns YTD, 1 Month, 3 Month, 1 Year, 3 Year, 5 Year, 10 Year and
- * Since Inception; the theme heading above the table is the fund category.
- *
- * Cells are taken from the raw line (not the shared `toTextLines` model) so a
- * published "-" / "n/a" placeholder keeps its column: dropping it would shift
- * every tenor by one. Rows are keyed per ticker and the row published with the
- * later "Total Return as of" date wins (the listing renders one row per fund
- * for the active NAV / Market Price pane).
+ * Parses the product listing (rendered markdown through the proxy). Every
+ * investment-theme section carries one table (Name | Ticker | Total Expenses |
+ * Fund Inception | YTD | 1 Month | 3 Month | 1 Year | 3 Year | 5 Year | 10 Year |
+ * Since Inception) headed by "Total Return as of <date>". The returns are NAV
+ * total returns as of that first header date (the table's second header date
+ * is a different, older series and is not used). Funds that only appear in the
+ * series listing (no table row) are added with their name and page link.
  */
 export function parseCatalogText(text: string): CatalogFund[] {
   const source = htmlToText(stripProxyPreamble(text));
-  const rawLines = source.split('\n');
   const funds = new Map<string, CatalogFund>();
-  const themePattern = /^(risk mitigation|high quality value|growth|thematic growth|factor|structured outcome|income)$/i;
-  let theme = '';
-  let currentAsOf: string | null = null;
-  let bestAsOf: string | null = null;
-  for (let index = 0; index < rawLines.length; index += 1) {
-    const raw = rawLines[index].trim();
-    if (!raw) continue;
-    if (/^\|?\s*(?:-{2,}\s*\|\s*)+-{0,}\s*\|?$/.test(raw)) continue; // markdown separator
-    const cells = raw.split('|').map((cell) => cleanRowCell(cell)).filter((cell) => cell !== '');
-    if (!cells.length) continue;
-    const joined = cells.join(' | ');
-    const asOfMatch = /total return as of\s+(\d{1,2}\/\d{1,2}\/\d{2,4})/i.exec(joined);
-    if (asOfMatch) {
-      currentAsOf = toIsoDate(asOfMatch[1]);
-      if (currentAsOf && (!bestAsOf || currentAsOf > bestAsOf)) bestAsOf = currentAsOf;
-      continue;
+  const themes = [...source.matchAll(THEME_HEADING)];
+  themes.forEach((theme, index) => {
+    const section = source.slice((theme.index ?? 0) + theme[0].length, themes[index + 1]?.index ?? source.length);
+    const category = cleanText(theme[1]);
+    const asOf = firstDate(/Total Return as of\s+(\d{1,2}\/\d{1,2}\/\d{4})/i.exec(section)?.[1] ?? '');
+    let header: string[] | null = null;
+    for (const line of section.split('\n')) {
+      const cells = tableCells(line);
+      if (cells.length < 5) continue;
+      const lower = cells.map((cell) => cleanText(cell).toLowerCase());
+      if (lower.includes('ticker') && lower.includes('total expenses')) {
+        header = lower;
+        continue;
+      }
+      if (!header) continue;
+      const tickerCell = linkParts(cells[header.indexOf('ticker')] ?? '');
+      const nameCell = linkParts(cells[Math.max(0, header.indexOf('name'))] ?? '');
+      const ticker = sanitizeTicker(tickerCell.label);
+      if (!ticker || funds.has(ticker)) continue;
+      const fund = catalogFund(ticker, cleanText(nameCell.label.replace(/\*\*/g, '')) || ticker, category, canonicalFundPage(tickerCell.url || nameCell.url, ticker));
+      fund.ter = numberOrNull(/(\d+(?:\.\d+)?)%/.exec(cells[header.indexOf('total expenses')] ?? '')?.[1] ?? null);
+      const inception = toIsoDate(cells[header.indexOf('fund inception')] ?? '');
+      fund.inception = /^\d{4}-\d{2}-\d{2}$/.test(inception) ? inception : null;
+      fund.asOfDate = asOf;
+      const row = emptyReturnRow(asOf ?? '');
+      header.forEach((title, column) => {
+        const slot = returnSlotForHeader(title);
+        if (slot) row[slot] = numberOrNull(cells[column] ?? '');
+      });
+      if (returnRowHasValues(row)) {
+        fund.monthEnd = row;
+        fund.returns = { ytd: row.ytd, yr1: row.yr1, yr3: row.cagr3y, yr5: row.cagr5y, yr10: row.cagr10y, sinceInception: row.siAnn };
+      }
+      funds.set(ticker, fund);
     }
-    if (cells.length <= 2 && themePattern.test(cells[0])) {
-      theme = normalizeCategory(cells[0]);
-      continue;
-    }
-    const links = productLinks(joined);
-    if (!links.length) continue;
-    const tickerLink = links.find((link) => isTickerSlug(link.slug) && link.label.toUpperCase() === link.slug.toUpperCase())
-      ?? links.find((link) => isTickerSlug(link.slug));
-    if (!tickerLink) continue;
-    const ticker = sanitizeTicker(tickerLink.slug);
-    if (!ticker) continue;
-    // The listing also renders card-style entries (`#### [PTLC](…)` followed by
-    // the fund-name link on the next line); use that line for the name only.
-    let cardLine = '';
-    for (let ahead = index + 1; ahead < rawLines.length && !cardLine; ahead += 1) cardLine = rawLines[ahead].trim();
-    const cardLinks = productLinks(cardLine);
-    const nameLink = links.find((link) => link !== tickerLink && link.label.length > ticker.length + 3)
-      ?? cardLinks.find((link) => link.slug.toUpperCase() === ticker && link.label.length > ticker.length + 3);
-    const anchor = cells.findIndex((cell) => new RegExp(`\\[${ticker}\\]`, 'i').test(cell) && /\/products\//i.test(cell));
-    const nameIndex = nameLink ? cells.findIndex((cell) => cell.includes(nameLink.label)) : -1;
-    const from = Math.max(anchor, nameIndex);
-    const tail = from >= 0 ? cells.slice(from + 1) : [];
-    const expenseCell = tail.find((cell) => /^\d+(?:\.\d+)?%/.test(cell));
-    const inceptionCell = tail.find((cell) => /^\d{1,2}\/\d{1,2}\/\d{2,4}$/.test(cell));
-    const expenses = expenseCell ? numberOrNull(/^(\d+(?:\.\d+)?)%/.exec(expenseCell)?.[1] ?? null) : null;
-    const inception = inceptionCell ? toIsoDate(inceptionCell) : '';
-    const numbers = tail
-      .filter((cell) => cell !== expenseCell && cell !== inceptionCell)
-      .map((cell) => numberOrNull(cell));
-    const [ytd, mo1, mo3, yr1, yr3, yr5, yr10, sinceInception] = [0, 1, 2, 3, 4, 5, 6, 7].map((i) => numbers[i] ?? null);
-    const name = cleanText(nameLink?.label || tickerLink.label);
-    // A product link alone is not a fund: series/menu pages link to
-    // /products/<slug> too. Keep rows that carry the data columns and
-    // card-style rows that name the fund.
-    const hasData = expenses !== null || Boolean(inception) || numbers.filter((value) => value !== null).length >= 4;
-    if (!hasData && !(tickerLink && nameLink)) continue;
-    const existing = funds.get(ticker);
-    if (existing && existing.asOfDate && currentAsOf && currentAsOf < existing.asOfDate) continue;
-    const fund: CatalogFund = existing || {
-      ticker,
-      name,
-      category: theme || 'ETF',
-      categoryPath: theme || 'ETF',
-      inception: null,
-      exchange: '',
-      cusip: '',
-      isin: '',
-      benchmark: '',
-      ter: null,
-      nav: null,
-      close: null,
-      premiumDiscount: null,
-      netAssets: null,
-      sharesOutstanding: null,
-      dividendYield: null,
-      secYield: null,
-      asOfDate: currentAsOf,
-      returns: { ...EMPTY_RETURNS },
-      fundPage: canonicalFundPage(tickerLink.url, ticker),
-      source: 'pacer',
-    };
-    if (name.length > fund.name.length) fund.name = name;
-    if (theme) { fund.category = normalizeCategory(theme); fund.categoryPath = fund.category; }
-    if (expenses !== null) fund.ter = expenses;
-    if (inception) fund.inception = toIsoDate(inception) || fund.inception;
-    fund.returns = { ytd, mo1, mo3, yr1, yr3, yr5, yr10, sinceInception };
-    fund.asOfDate = currentAsOf ?? fund.asOfDate;
-    funds.set(ticker, fund);
+  });
+  // Series listing: `#### [TICKER](url)` followed by the `[Fund name](url)` link.
+  const series = [...source.matchAll(/^##\s+(Pacer[^\n]*?\bSeries)\s*$/gm)];
+  for (const match of source.matchAll(/####\s+\[([A-Z][A-Z0-9.]{0,5})\]\((https?:\/\/[^)\s]+)\)\s*\n+\s*\[([^\]]+)\]\(/g)) {
+    const ticker = sanitizeTicker(match[1]);
+    if (!ticker || funds.has(ticker)) continue;
+    const heading = [...series].reverse().find((item) => (item.index ?? 0) < (match.index ?? 0));
+    const label = cleanText(heading?.[1] ?? '').replace(/[®™]/g, '').replace(/^Pacer\s+/i, '').replace(/\s+ETF Series$/i, '').trim();
+    funds.set(ticker, catalogFund(ticker, cleanText(match[3]), label || 'ETF', canonicalFundPage(match[2], ticker)));
   }
-  if (!funds.size) throw new Error('Pacer ETFs product listing: no ETF rows found');
+  if (!funds.size) throw new Error('Pacer product listing: no ETF rows found');
   return [...funds.values()].sort((a, b) => a.ticker.localeCompare(b.ticker));
 }
 
@@ -819,8 +800,10 @@ async function paceRequests(proxy = false): Promise<void> {
     if (wait) await sleep(wait);
     return;
   }
-  const wait = Math.max(0, nextRequestAt - now);
-  nextRequestAt = Math.max(now, nextRequestAt) + Math.max(0, requestSleepSeconds * 1000);
+  let lane = 0;
+  for (let i = 1; i < requestGates.length; i++) if (requestGates[i] < requestGates[lane]) lane = i;
+  const wait = Math.max(0, requestGates[lane] - now);
+  requestGates[lane] = Math.max(now, requestGates[lane]) + Math.max(0, requestSleepSeconds * 1000);
   if (wait) await sleep(wait);
 }
 
@@ -882,13 +865,13 @@ const ISSUER_DIRECT_DENIAL_LIMIT = 2;
 
 /**
  * Issuer documents: one direct request with a browser-like User-Agent first,
- * then the same public URL through the read-only rendering proxy. paceretfs.com
- * answers datacenter clients with a Cloudflare managed challenge (HTTP 403);
- * after two such denials in a run the direct attempt is skipped to keep the run
- * short. The proxy itself sits behind Cloudflare and challenges browser
- * User-Agents, so proxy requests declare the plain feed User-Agent. `validate`
- * rejects bot-wall/HTML error pages so that the fallback is taken instead of
- * parsing garbage.
+ * then the same public URL through the read-only rendering proxy. The issuer
+ * CDN answers datacenter clients with "Access Denied" (HTTP 403); after two
+ * such denials in a run the direct attempt is skipped to keep the run short.
+ * The proxy itself sits behind Cloudflare and challenges browser User-Agents,
+ * so proxy requests declare the plain feed User-Agent. `validate` rejects
+ * bot-wall/HTML error pages so that the fallback is taken instead of parsing
+ * garbage.
  */
 async function fetchIssuerText(url: string, label: string, config: UpdaterConfig, validate: (text: string) => boolean, accept = 'text/html,application/xhtml+xml,text/csv,text/plain;q=0.9,*/*;q=0.8', options: { cache?: boolean } = {}): Promise<{ text: string; via: 'direct' | 'proxy' }> {
   let lastError: unknown = new Error('direct request skipped (issuer CDN denies this network)');
@@ -922,341 +905,223 @@ async function fetchIssuerText(url: string, label: string, config: UpdaterConfig
 }
 
 // ---------------------------------------------------------------------------
-// Product page: performance table, distributions, published top 10 holdings
+// Fund page
 // ---------------------------------------------------------------------------
 
 function emptyReturnRow(asOfDate = ''): OfficialReturnRow {
   return { asOfDate, mo1: null, mo3: null, ytd: null, yr1: null, cagr3y: null, cagr5y: null, cagr10y: null, siAnn: null };
 }
 
-/** Maps a performance-table header cell to the row slot it fills. */
-export function returnSlotForHeader(header: string): Exclude<keyof OfficialReturnRow, 'asOfDate'> | null {
-  const label = cleanText(header).toLowerCase();
-  if (!label) return null;
-  if (/since fund inception|since inception/.test(label)) return 'siAnn';
-  if (/\bytd\b|year to date/.test(label)) return 'ytd';
-  if (/\b1\s*month\b/.test(label)) return 'mo1';
-  if (/\b3\s*month\b/.test(label)) return 'mo3';
-  if (/\b1\s*year\b/.test(label)) return 'yr1';
-  if (/\b3\s*year\b/.test(label)) return 'cagr3y';
-  if (/\b5\s*year\b/.test(label)) return 'cagr5y';
-  if (/\b10\s*year\b/.test(label)) return 'cagr10y';
-  return null;
+/** Fund Details block: the `as of` date and the label -> value rows (footnote digits stripped from labels). */
+export function parseFundDetails(lines: TextLine[]): { asOfDate: string | null; values: Map<string, string> } {
+  const values = new Map<string, string>();
+  const heading = lines.findIndex((line) => line.cells.length === 1 && /^fund details$/i.test(line.cells[0]));
+  // Structured Outcome pages have no "Fund Details" heading: the block opens with `### as of <date>` right before the NAV row.
+  const bare = lines.findIndex((line, index) => line.cells.length === 1 && /^as of\s+\d/i.test(line.cells[0]) && /^nav$/i.test(lines[index + 1]?.cells[0] ?? ''));
+  const from = heading >= 0 ? heading + 1 : bare;
+  if (from < 0) return { asOfDate: null, values };
+  let asOfDate: string | null = null;
+  for (const line of lines.slice(from, from + 40)) {
+    if (line.cells.length === 1) {
+      if (!asOfDate && /^as of\b/i.test(line.cells[0])) {
+        asOfDate = firstDate(line.cells[0]);
+        continue;
+      }
+      break;
+    }
+    const label = normalizeLabel(line.cells[0]).replace(/\*+$/, '').replace(/\s+\d+$/, '');
+    if (!values.has(label)) values.set(label, line.cells.slice(1).join(' | '));
+  }
+  return { asOfDate, values };
 }
 
 /**
- * Reads the fund page Performance (%) table. The header carries the tenors
- * ("Since Fund Inception (12/16/16) | YTD | 1 Year | 3 Year | 5 Year") and the
- * rows are `<Fund Name> NAV`, `<Fund Name> Market Price` and benchmark rows, so
- * every cell is mapped by its header label instead of by position.
+ * Recent Investment Performance: the first column group (the latest month-end
+ * date) carries YTD only; the later group is the previous month-end and is not
+ * used. Rows are `<fund name> NAV` and `<fund name> Market Price`.
  */
-export function parseOfficialReturns(lines: TextLine[], ticker: string): OfficialReturns {
-  const result: OfficialReturns = { monthEnd: { nav: null, marketPrice: null }, quarterEnd: { nav: null, marketPrice: null } };
-  let slots: Array<Exclude<keyof OfficialReturnRow, 'asOfDate'> | null> | null = null;
+export function parseRecentPerformance(lines: TextLine[]): OfficialReturns['monthEnd'] {
+  const result: OfficialReturns['monthEnd'] = { nav: null, marketPrice: null };
+  const start = lines.findIndex((line) => line.cells.length === 1 && /^recent investment performance/i.test(line.cells[0]));
+  if (start < 0) return result;
   let asOfDate = '';
-  let inception: string | null = null;
-  for (let index = 0; index < lines.length; index += 1) {
-    const line = lines[index];
-    const headerCells = line.cells;
-    const mapped = headerCells.map((cell) => returnSlotForHeader(cell));
-    // A header row carries tenor labels; a data row is the label + numbers.
-    const isHeader = mapped.filter((slot) => slot !== null).length >= 2
-      && !headerCells.some((cell) => /^[-+]?\d+(?:\.\d+)?%?$/.test(cleanText(cell)));
-    if (isHeader && !slots) {
-      slots = mapped;
-      const previous = lines[index - 1];
-      asOfDate = previous ? firstDate(previous.text) ?? '' : '';
-      const inceptionHeader = headerCells.find((cell) => /since fund inception/i.test(cell));
-      if (inceptionHeader) inception = firstDate(inceptionHeader);
+  let ytdFirst = false;
+  for (const line of lines.slice(start + 1, start + 14)) {
+    if (line.cells.length === 1 && !/^as of\b/i.test(line.cells[0])) break;
+    if (line.cells.length >= 1 && line.cells.every((cell) => /^as of\b/i.test(cell))) {
+      asOfDate = toIsoDate(firstDate(line.cells[0]) ?? '');
       continue;
     }
-    if (!slots) continue;
-    const first = cleanText(line.cells[0] || '');
-    if (!first || /^(performance|as of|monthly performance)/i.test(first)) continue;
-    if (/index|russell|s&p|bloomberg|msci|ftse/i.test(first) && !new RegExp(`^${ticker}\\b`, 'i').test(first)) continue;
-    const basis = /\bmarket price\b/i.test(first) ? 'marketPrice' : /\bnav\b/i.test(first) ? 'nav' : null;
-    if (!basis) continue;
-    if (!new RegExp(`\\b${ticker}\\b`, 'i').test(first) && !/pacer/i.test(first)) continue;
+    if (/^ytd$/i.test(line.cells[0] ?? '')) {
+      ytdFirst = true;
+      continue;
+    }
+    const label = line.cells[0] ?? '';
+    const kind = /\sNAV$/i.test(label) ? 'nav' : /\sMarket Price$/i.test(label) ? 'marketPrice' : null;
+    if (!kind || !ytdFirst || line.cells.length < 2 || result[kind]) continue;
     const row = emptyReturnRow(asOfDate);
-    let filled = 0;
-    // The header's leading cell is empty in the published table and is dropped
-    // with the other empty cells, so a data row has one more cell than the
-    // header: align the values to the labels by that difference.
-    const shift = line.cells.length - slots.length;
-    line.cells.forEach((cell, cellIndex) => {
-      const slot = slots?.[cellIndex - shift] ?? null;
-      if (!slot) return;
-      const value = numberOrNull(cell);
-      if (value === null) return;
-      row[slot] = value;
-      filled += 1;
-    });
-    if (!filled) continue;
-    // The fund page table is a quarter-end series (Pacer publishes the month-end
-    // row in the product listing), so it lands in quarterEnd.
-    if (!result.quarterEnd[basis]) result.quarterEnd[basis] = row;
+    row.ytd = numberOrNull(line.cells[1]);
+    if (returnRowHasValues(row)) result[kind] = row;
   }
-  void inception;
   return result;
 }
 
-/** Inception date from the "Since Fund Inception (12/16/16)" performance header. */
-export function parsePageInception(lines: TextLine[]): string | null {
-  for (const line of lines) {
-    for (const cell of line.cells) {
-      if (/since fund inception/i.test(cell)) return firstDate(cell);
-    }
-  }
-  return null;
-}
-
-/** Index/benchmark name: the first performance-table row that is not the fund. */
-export function parseIndexName(lines: TextLine[], ticker: string): string | null {
-  for (const line of lines) {
-    const first = cleanText(line.cells[0] || '');
-    if (!first || new RegExp(`^${ticker}\\b`, 'i').test(first)) continue;
-    if (!/index/i.test(first)) continue;
-    if (/russell|s&p|bloomberg|msci|ftse|dow jones|nasdaq/i.test(first)) continue;
-    return first.replace(/\s*(NAV|Market Price)\s*$/i, '').trim() || null;
-  }
-  return null;
-}
-
 /**
- * Official fund name: the page heading (`## <TICKER>` / `## Pacer … ETF`) first,
- * then the document title (which carries a site suffix).
+ * Quarter-end Performance table: `as of <date>` line, a header row (Since Fund
+ * Inception (date) | YTD | 1 Year | 3 Year | 5 Year | 10 Year, only the tenors
+ * the fund has) and `<fund name> NAV` / `<fund name> Market Price` rows. Index
+ * rows are ignored.
  */
-export function parseFundName(source: string, ticker: string): string | null {
-  const upper = ticker.toUpperCase();
-  const patterns = [
-    new RegExp(`^#{1,3}\\s+(?:\\*\\*)?(?:${upper}\\s+)?(Pacer[^\\n|]*?\\bETF\\b[^\\n|]*)$`, 'im'),
-    new RegExp(`^Title:\\s*(?:${upper}\\s+)?(Pacer[^\\n|]*?\\bETF\\b[^\\n|]*)`, 'im'),
-  ];
-  for (const pattern of patterns) {
-    const match = pattern.exec(source);
-    if (!match) continue;
-    const cleaned = cleanText(match[1].replace(/\*\*/g, '')).replace(/\s*\|\s*Pacer ETFs$/i, '');
-    if (cleaned) return cleaned;
-  }
-  return null;
-}
-
-/**
- * Distribution history from the fund page Distributions table:
- * `| Ex Date | Record Date | Pay Date | Total Distributions | Ordinary Income* |
- *  Short Term Capital Gains | Long Term Capital Gains | Return of Capital |`.
- */
-export function parseDistributionsTable(lines: TextLine[]): { distributions: Distribution[]; columns: string[]; rows: string[][] } {
-  const distributions: Distribution[] = [];
-  let columns: string[] = [];
-  const rows: string[][] = [];
-  let inTable = false;
-  let totalIndex = -1;
-  let dateIndex = -1;
-  let parts: number[] = [];
-  for (let index = 0; index < lines.length; index += 1) {
-    const cells = lines[index].cells;
-    if (/^ex[- ]?date$/i.test(cleanText(cells[0] || ''))) {
-      columns = cells.map((cell) => cleanText(cell));
-      inTable = true;
-      dateIndex = 0;
-      totalIndex = cells.findIndex((cell) => /^total distribution/i.test(cleanText(cell)));
-      parts = ['ordinary income', 'short term', 'long term', 'return of capital']
-        .map((label) => cells.findIndex((cell) => cleanText(cell).toLowerCase().includes(label)));
+export function parseQuarterPerformance(lines: TextLine[]): OfficialReturns['quarterEnd'] {
+  const result: OfficialReturns['quarterEnd'] = { nav: null, marketPrice: null };
+  const start = lines.findIndex((line) => line.cells.length === 1 && /^performance \(%\)$/i.test(line.cells[0]));
+  if (start < 0) return result;
+  let asOfDate = '';
+  let slots: Array<ReturnSlot | null> | null = null;
+  for (const line of lines.slice(start + 1, start + 16)) {
+    if (line.cells.length === 1) {
+      if (!asOfDate && /as of\s+\d/i.test(line.cells[0])) {
+        asOfDate = toIsoDate(firstDate(line.cells[0]) ?? '');
+        continue;
+      }
+      if (slots) break;
       continue;
     }
-    if (!inTable || dateIndex < 0) continue;
-    const iso = toIsoDate(cleanText(cells[dateIndex]));
-    const epoch = isoToEpoch(iso);
-    if (epoch === null) {
-      if (cells.length) inTable = false; // table ended (or a footer row appeared)
+    if (!slots) {
+      if (/^since\b/i.test(line.cells[0])) slots = line.cells.map(returnSlotForHeader);
       continue;
     }
-    let amount = totalIndex >= 0 ? numberOrNull(cells[totalIndex]) : null;
-    if (amount === null) {
-      const sum = parts.map((partIndex) => (partIndex >= 0 ? numberOrNull(cells[partIndex]) : null)).filter((value): value is number => value !== null);
-      amount = sum.length ? sum.reduce((acc, value) => acc + value, 0) : null;
-    }
-    if (amount === null || amount <= 0) continue;
-    distributions.push({ epoch, amount: round(amount, 6) });
-    rows.push(cells.map((cell) => cleanText(cell)));
-  }
-  const ascending = rows.map((row, rowIndex) => ({ row, epoch: distributions[rowIndex]?.epoch ?? 0 })).sort((a, b) => a.epoch - b.epoch).map((item) => item.row);
-  distributions.sort((a, b) => a.epoch - b.epoch);
-  return { distributions, columns: columns.length ? columns : DISTRIBUTION_HEADERS, rows: ascending };
-}
-
-/** Published "Top 10 Holdings (%)" table: `| Ticker | Holding | Weight |`. */
-export function parseTopHoldings(lines: TextLine[]): { rows: JsonRecord[]; asOfDate: string | null } {
-  const rows: JsonRecord[] = [];
-  let asOfDate: string | null = null;
-  let columns: string[] = [];
-  for (let index = 0; index < lines.length; index += 1) {
-    const cells = lines[index].cells;
-    const lower = cells.map((cell) => cleanText(cell).toLowerCase());
-    if (lower.includes('ticker') && lower.includes('holding') && lower.includes('weight')) {
-      columns = cells.map((cell) => cleanText(cell));
-      asOfDate = firstDate(lines[index - 1]?.text ?? '') ?? null;
-      continue;
-    }
-    if (!columns.length) continue;
-    if (lower.includes('total') || cells.length < 3) { columns = []; continue; }
-    const tickerIndex = columns.findIndex((column) => /^ticker$/i.test(column));
-    const nameIndex = columns.findIndex((column) => /^holding$/i.test(column));
-    const weightIndex = columns.findIndex((column) => /^weight$/i.test(column));
-    if (tickerIndex < 0 || nameIndex < 0 || weightIndex < 0) { columns = []; continue; }
-    const weight = numberOrNull(cells[weightIndex]);
-    if (weight === null) { columns = []; continue; }
-    rows.push({
-      Name: cleanText(cells[nameIndex]) || '-',
-      Ticker: cleanHoldingTicker(cells[tickerIndex]) || '-',
-      Identifier: '-',
-      Weight: String(round(weight, 6)),
-      'Market Value': '-',
-      'Shares Held': '-',
-      'Asset Category': '-',
+    const label = line.cells[0];
+    const kind = /\sNAV$/i.test(label) ? 'nav' : /\sMarket Price$/i.test(label) ? 'marketPrice' : null;
+    if (!kind || result[kind]) continue;
+    const row = emptyReturnRow(asOfDate);
+    line.cells.slice(1).forEach((cell, column) => {
+      const slot = slots?.[column];
+      if (slot) row[slot] = numberOrNull(cell);
     });
+    if (returnRowHasValues(row)) result[kind] = row;
   }
-  return { rows, asOfDate };
+  return result;
+}
+
+/** Top 10 Holdings table (daily as-of date): Ticker | Holding | Weight, closed by a Total row. */
+export function parseTopHoldings(lines: TextLine[]): TopHoldings {
+  const empty: TopHoldings = { asOfDate: null, rows: [], total: null };
+  const header = lines.findIndex((line) => line.cells.length >= 2 && /^ticker$/i.test(line.cells[0]) && /^holding$/i.test(line.cells[1]));
+  if (header < 0) return empty;
+  let asOfDate: string | null = null;
+  for (let index = header - 1; index >= Math.max(0, header - 10); index -= 1) {
+    const cells = lines[index].cells;
+    if (cells.length === 1 && /^as of\s+\d/i.test(cells[0])) {
+      asOfDate = firstDate(cells[0]);
+      break;
+    }
+  }
+  const rows: TopHolding[] = [];
+  let total: number | null = null;
+  for (const line of lines.slice(header + 1)) {
+    const cells = line.cells;
+    if (/^total$/i.test(cells[0] ?? '')) {
+      total = numberOrNull(cells[1] ?? '');
+      break;
+    }
+    // A blank ticker cell is dropped by the line model, leaving [name, weight].
+    const named = cells.length >= 3 ? { ticker: cells[0], name: cells[1], weight: numberOrNull(cells[2]) } : cells.length === 2 ? { ticker: '', name: cells[0], weight: numberOrNull(cells[1]) } : null;
+    if (!named || named.weight === null) break;
+    rows.push({ ticker: cleanText(named.ticker).toUpperCase(), name: cleanText(named.name), weight: named.weight });
+  }
+  return { asOfDate, rows, total };
+}
+
+/** Distributions table: Ex Date | Record Date | Pay Date | Total Distributions | ... -> ascending {epoch, amount}. */
+export function parseDistributionsTable(lines: TextLine[]): Distribution[] {
+  const header = lines.findIndex((line) => line.cells.length >= 4 && /^ex[- ]?date$/i.test(line.cells[0]));
+  if (header < 0) return [];
+  const totalIndex = lines[header].cells.findIndex((cell) => /^total distributions?$/i.test(cell));
+  if (totalIndex < 0) return [];
+  const result: Distribution[] = [];
+  for (const line of lines.slice(header + 1)) {
+    if (!/^\d{1,2}\/\d{1,2}\/\d{2,4}$/.test(line.cells[0] ?? '')) break;
+    const epoch = isoToEpoch(toIsoDate(line.cells[0]));
+    const amount = numberOrNull(line.cells[totalIndex] ?? '');
+    if (epoch === null || amount === null || amount <= 0) continue;
+    result.push({ epoch, amount: round(amount, 6) });
+  }
+  result.sort((a, b) => a.epoch - b.epoch);
+  return result;
+}
+
+/** Official fund name: the second heading (`## TICKER` then `## Pacer ... ETF`). */
+export function parseFundName(source: string, ticker: string): string | null {
+  const match = new RegExp(`^##\\s+${ticker.toUpperCase()}\\s*\\n+\\s*##\\s+([^\\n]+?)\\s*$`, 'im').exec(source);
+  const cleaned = match ? cleanText(match[1].replace(/\*\*/g, '')) : '';
+  return cleaned || null;
 }
 
 export function parseProductPage(text: string, ticker: string): ProductPageSummary {
   const source = htmlToText(stripProxyPreamble(text));
   const lines = toTextLines(source);
   const upper = ticker.toUpperCase();
-  const name = parseFundName(source, upper);
-  const officialReturns = parseOfficialReturns(lines, upper);
-  const inception = parsePageInception(lines);
-  const indexName = parseIndexName(lines, upper);
-  const { distributions, columns, rows } = parseDistributionsTable(lines);
-  const top = parseTopHoldings(lines);
+  const details = parseFundDetails(lines);
+  const detail = (label: string): string => details.values.get(label) ?? '';
+  const cusip = detail('cusip#').replace(/[^A-Za-z0-9]/g, '').toUpperCase();
+  const isin = detail('isin').replace(/[^A-Za-z0-9]/g, '').toUpperCase();
+  const inception = toIsoDate(detail('inception date'));
+  const spread = numberOrNull(detail('30-day median bid/ask spread'));
+  const monthEnd = parseRecentPerformance(lines);
+  const quarterEnd = parseQuarterPerformance(lines);
   return {
-    name,
-    inception,
-    indexName,
-    officialReturns,
-    distributions,
-    distributionColumns: columns,
-    distributionRows: rows,
-    topHoldings: top.rows,
-    topHoldingsAsOf: top.asOfDate,
-    holdingsDownloadUrl: holdingsDownloadUrl(upper),
+    name: parseFundName(source, upper),
+    asOfDate: details.asOfDate,
+    cusip: /^[A-Z0-9]{9}$/.test(cusip) ? cusip : '',
+    isin: /^[A-Z]{2}[A-Z0-9]{9}[0-9]$/.test(isin) ? isin : '',
+    inception: /^\d{4}-\d{2}-\d{2}$/.test(inception) ? inception : null,
+    nav: firstNumber(detail('nav')),
+    marketPrice: firstNumber(detail('market price')),
+    totalNetAssets: firstNumber(detail('net assets')),
+    totalExpenseRatio: numberOrNull(/(\d+(?:\.\d+)?)%/.exec(detail('total expenses'))?.[1] ?? null),
+    sharesOutstanding: firstNumber(detail('shares outstanding')),
+    totalHoldings: firstNumber(detail('number of securities')),
+    premiumDiscount: firstNumber(detail('premium/discount')),
+    medianBidAskSpread: spread,
+    secYield: firstNumber(detail('30 day sec yield')),
+    officialReturns: { monthEnd, quarterEnd },
+    topHoldings: parseTopHoldings(lines),
+    distributions: parseDistributionsTable(lines),
   };
 }
 
-// ---------------------------------------------------------------------------
-// CSV export: daily holdings
-// ---------------------------------------------------------------------------
+/** Sheet rows for the official top 10 table (weights only: values are derived from net assets). */
+export function topHoldingRows(top: TopHoldings, netAssets: number | null): JsonRecord[] {
+  return top.rows.map((row) => ({
+    Name: row.name || '-',
+    Ticker: /^[A-Z]{1,5}(?:[.-][A-Z]{1,2})?$/.test(row.ticker) ? row.ticker : '-',
+    Identifier: row.ticker || '-',
+    Weight: String(round(row.weight, 6)),
+    'Market Value': netAssets !== null ? String(round(row.weight / 100 * netAssets, 2)) : '-',
+    'Shares Held': '-',
+    'Asset Category': '-',
+  }));
+}
 
-export function parseCsv(text: string): string[][] {
-  const rows: string[][] = [];
-  let row: string[] = [];
-  let field = '';
-  let quoted = false;
-  const source = String(text ?? '').replace(/^﻿/, '');
-  for (let i = 0; i < source.length; i += 1) {
-    const char = source[i];
-    if (quoted) {
-      if (char === '"') {
-        if (source[i + 1] === '"') { field += '"'; i += 1; } else quoted = false;
-      } else field += char;
-      continue;
-    }
-    if (char === '"') { quoted = true; continue; }
-    if (char === ',') { row.push(field); field = ''; continue; }
-    if (char === '\n' || char === '\r') {
-      if (char === '\r' && source[i + 1] === '\n') i += 1;
-      row.push(field);
-      field = '';
-      if (row.some((cell) => cell.trim() !== '')) rows.push(row);
-      row = [];
-      continue;
-    }
-    field += char;
+/** ISIN for a U.S. CUSIP: `US` + CUSIP + Luhn check digit (labelled derived in meta.json). */
+export function isinFromCusip(cusip: string): string {
+  const base = cleanText(cusip).toUpperCase();
+  if (!/^[A-Z0-9]{9}$/.test(base)) return '';
+  const digits = `US${base}`.split('').map((char) => (/[0-9]/.test(char) ? char : String(char.charCodeAt(0) - 55))).join('');
+  let sum = 0;
+  let double = true;
+  for (let i = digits.length - 1; i >= 0; i -= 1) {
+    let value = Number(digits[i]);
+    if (double) { value *= 2; if (value > 9) value -= 9; }
+    sum += value;
+    double = !double;
   }
-  row.push(field);
-  if (row.some((cell) => cell.trim() !== '')) rows.push(row);
-  return rows;
-}
-
-function csvColumn(headers: string[], ...patterns: RegExp[]): number {
-  for (const pattern of patterns) {
-    const index = headers.findIndex((header) => pattern.test(header));
-    if (index >= 0) return index;
-  }
-  return -1;
-}
-
-function plainNumber(value: unknown, digits: number): string {
-  const parsed = numberOrNull(value);
-  return parsed === null ? '-' : String(round(parsed, digits));
-}
-
-export function isHoldingsCsv(text: string): boolean {
-  return /^\s*"?Date"?\s*,\s*"?Account"?\s*,\s*"?StockTicker"?/i.test(String(text ?? '').replace(/^﻿/, ''));
-}
-
-export function holdingsDownloadUrl(ticker: string): string {
-  return `${PACER_SITE}/products/holdings_download/${sanitizeTicker(ticker)}`;
-}
-
-/**
- * Converts the daily holdings CSV export into the sibling sheet contract.
- * Header: Date,Account,StockTicker,CUSIP,SecurityName,Shares,Price,MarketValue,
- * Weightings,NetAssets,SharesOutstanding,CreationUnits,MoneyMarketFlag.
- * NetAssets / SharesOutstanding are fund-level columns repeated on every row;
- * they are returned so the caller can publish AUM and the NAV implied by them.
- */
-export function parseHoldingsCsv(text: string): HoldingsCsv {
-  const table = parseCsv(stripProxyPreamble(text));
-  const headerIndex = table.findIndex((row) => /^date$/i.test(cleanText(row[0])) && /stockticker/i.test(cleanText(row[2] ?? '')));
-  if (headerIndex < 0) throw new Error('holdings CSV: header row not found');
-  const headers = table[headerIndex].map((cell) => cleanText(cell));
-  const col = {
-    date: csvColumn(headers, /^date$/i),
-    ticker: csvColumn(headers, /^stockticker$/i, /^symbol$/i, /^ticker$/i),
-    cusip: csvColumn(headers, /^cusip$/i),
-    name: csvColumn(headers, /^securityname$/i, /^name$/i),
-    shares: csvColumn(headers, /^shares$/i, /^quantity$/i),
-    price: csvColumn(headers, /^price$/i),
-    marketValue: csvColumn(headers, /^marketvalue$/i),
-    weight: csvColumn(headers, /^weightings$/i, /^weight$/i, /percent of assets/i),
-    netAssets: csvColumn(headers, /^netassets$/i),
-    sharesOutstanding: csvColumn(headers, /^sharesoutstanding$/i),
-    moneyMarket: csvColumn(headers, /^moneymarketflag$/i),
-  };
-  const rows: JsonRecord[] = [];
-  let asOfDate: string | null = null;
-  let netAssets: number | null = null;
-  let sharesOutstanding: number | null = null;
-  const at = (row: string[], index: number): string => (index >= 0 ? cleanText(row[index]) : '');
-  for (const row of table.slice(headerIndex + 1)) {
-    const date = toIsoDate(at(row, col.date));
-    if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) continue; // disclaimer trailer lines
-    if (!asOfDate) asOfDate = date;
-    if (netAssets === null) netAssets = numberOrNull(at(row, col.netAssets));
-    if (sharesOutstanding === null) sharesOutstanding = numberOrNull(at(row, col.sharesOutstanding));
-    const name = at(row, col.name) || '-';
-    const symbolRaw = cleanHoldingTicker(at(row, col.ticker));
-    const moneyMarket = /^(1|true|yes|y|on)$/i.test(at(row, col.moneyMarket));
-    const symbol = symbolRaw && !moneyMarket ? symbolRaw : '-';
-    const cusip = at(row, col.cusip).toUpperCase();
-    const weight = numberOrNull(at(row, col.weight));
-    rows.push({
-      Name: name,
-      Ticker: symbol,
-      Identifier: cusip || '-',
-      Weight: weight === null ? '0' : String(round(weight, 6)),
-      'Market Value': plainNumber(at(row, col.marketValue), 2),
-      'Shares Held': plainNumber(at(row, col.shares), 4),
-      'Asset Category': '-',
-    });
-  }
-  return { headers: HOLDINGS_HEADERS, rows, asOfDate, netAssets, sharesOutstanding };
+  return `US${base}${(10 - (sum % 10)) % 10}`;
 }
 
 // ---------------------------------------------------------------------------
-// SEC EDGAR Form N-PORT-P fallback (same resolver as daggerok/Schwab)
+// SEC EDGAR Form N-PORT-P fallback (same resolver as daggerok/WisdomTree)
 // ---------------------------------------------------------------------------
 
 function secHeaders(): Record<string, string> {
@@ -1334,7 +1199,7 @@ export function parseNport(xml: string): ParsedNport {
     const weight = numberOrNull(tagValue(body, 'pctVal'));
     if (value !== null) totalValue += value;
     const debt = /<debtSec\b[^>]*>([\s\S]*?)<\/debtSec>/i.exec(body)?.[1] || '';
-    const row: JsonRecord = {
+    holdings.push({
       Name: name,
       Ticker: '-',
       Identifier: identifier,
@@ -1342,9 +1207,8 @@ export function parseNport(xml: string): ParsedNport {
       'Market Value': value === null ? '0' : String(value),
       'Shares Held': tagValue(body, 'balance') || '-',
       'Asset Category': tagValue(body, 'assetCat') || '-',
-    };
-    if (debt) { row.Coupon = tagValue(debt, 'annualizedRt') || '-'; row.Maturity = tagValue(debt, 'maturityDt') || '-'; }
-    holdings.push(row);
+      ...(debt ? { Coupon: tagValue(debt, 'annualizedRt') || '-', Maturity: tagValue(debt, 'maturityDt') || '-' } : {}),
+    });
   }
   return {
     regName: tagValue(genInfo, 'regName'),
@@ -1564,7 +1428,7 @@ function lastCompletedQuarterEnd(now = new Date()): string {
 }
 
 const DERIVED_RETURNS_BASIS = 'adjusted market-price closes (Yahoo chart API), not official Pacer NAV returns';
-const OFFICIAL_RETURNS_BASIS = 'official Pacer NAV total returns (product listing, month-end) where published; Yahoo adjusted market-price closes for missing values';
+const OFFICIAL_RETURNS_BASIS = 'official Pacer ETFs NAV total returns (product listing, month-end) where published; Yahoo adjusted market-price closes for missing values';
 
 function deriveMetrics(effective: PriceReturns, fund: CatalogFund, dividends: Distribution[], frequency: { paymentsPerYear: number | null }, price: number | null, official: boolean): JsonRecord {
   const latest = dividends[dividends.length - 1];
@@ -1606,8 +1470,7 @@ export function mergeOfficialReturns(derived: PriceReturns, official: OfficialRe
     ...derived,
     asOfDate: official.asOfDate || derived.asOfDate,
     mo1: official.mo1 ?? derived.mo1,
-    mo3: official.mo3 ?? derived.mo3,
-    qtd: derived.qtd,
+    qtd: derived.qtd, // the product page publishes 3-month, not quarter-to-date
     ytd: official.ytd ?? derived.ytd,
     yr1: official.yr1 ?? derived.yr1,
     cagr3y: official.cagr3y ?? derived.cagr3y,
@@ -1644,32 +1507,24 @@ function parsePreviousFund(ticker: string, row: JsonRecord): CatalogFund {
     ticker,
     name: String(row.name || ticker),
     category: String(row.category || 'ETF'),
-    categoryPath: String(row.categoryPath || row.category || 'ETF'),
+    categoryPath: String(row.category || 'ETF'),
     inception: toIsoDate(row.inceptionDate) || null,
     exchange: String(row.exchange || ''),
     cusip: String(row.cusip || ''),
     isin: String(row.isin || ''),
     benchmark: '',
     ter: numberOrNull(row.terValue),
+    grossTer: null,
     nav: numberOrNull(row.navValue),
     close: numberOrNull(row.closePriceValue),
     premiumDiscount: numberOrNull(row.premiumDiscountValue),
     netAssets: numberOrNull(row.aumValue),
-    sharesOutstanding: numberOrNull(row.sharesOutstanding ?? row.sharesOutstandingValue),
-    dividendYield: numberOrNull(metrics.dividendYield),
+    dividendYield: null, // always recomputed (indicated); Pacer publishes no distribution yield
     secYield: numberOrNull(metrics.secYield),
     asOfDate: null,
-    returns: {
-      ytd: numberOrNull(monthEnd.ytd),
-      mo1: numberOrNull(monthEnd.mo1),
-      mo3: numberOrNull(monthEnd.mo3),
-      yr1: numberOrNull(monthEnd.yr1),
-      yr3: numberOrNull(monthEnd.yr3),
-      yr5: numberOrNull(monthEnd.yr5),
-      yr10: numberOrNull(monthEnd.yr10),
-      sinceInception: numberOrNull(monthEnd.sinceInception),
-    },
-    fundPage: String(row.fundPage || `${PACER_SITE}/products/${ticker.toUpperCase()}`),
+    returns: { ytd: numberOrNull(monthEnd.ytd), yr1: numberOrNull(monthEnd.yr1), yr3: numberOrNull(monthEnd.yr3), yr5: numberOrNull(monthEnd.yr5), yr10: numberOrNull(monthEnd.yr10), sinceInception: numberOrNull(monthEnd.sinceInception) },
+    monthEnd: null,
+    fundPage: String(row.fundPage || `${PACER_SITE}/products/${ticker}`),
     source: 'previous index',
   };
 }
@@ -1727,13 +1582,10 @@ async function readPreviousHeaders(ticker: string, kind: 'holdings' | 'history')
 // every fund's actual data unchanged) as a real change and rewrite the file
 // every time. Compare with both timestamps stripped instead.
 export function samePublishedContent(previous: string, value: unknown): boolean {
-  // Timestamps can be nested (for example under a `source` object): a shallow
-  // top-level-only strip rewrites those files on every single run.
   const withoutRunTimestamp = (item: unknown): unknown => {
-    if (Array.isArray(item)) return item.map(withoutRunTimestamp);
-    if (!item || typeof item !== 'object') return item;
-    const { generatedAt, savedAt, catalogReadAt, ...content } = item as Record<string, unknown>;
-    return Object.fromEntries(Object.entries(content).map(([key, value]) => [key, withoutRunTimestamp(value)]));
+    if (!item || typeof item !== 'object' || Array.isArray(item)) return item;
+    const { generatedAt, savedAt, ...content } = item as Record<string, unknown>;
+    return content;
   };
   try {
     return JSON.stringify(withoutRunTimestamp(JSON.parse(previous))) === JSON.stringify(withoutRunTimestamp(value));
@@ -1793,7 +1645,27 @@ function postFetchFilterReasons(fund: CatalogFund, metrics: JsonRecord, config: 
 // Per-fund pipeline
 // ---------------------------------------------------------------------------
 
-const PROVIDER_LABEL = 'Pacer ETFs product listing + official product page + per-fund daily holdings CSV export + SEC EDGAR Form N-PORT-P fallback + Yahoo Finance public chart API';
+/**
+ * Holdings when no N-PORT-P schedule was read: a previously published full
+ * schedule beats a fresh but partial top 10; the top 10 beats nothing.
+ */
+export function holdingsFallback(previousCount: number, topCount: number): 'previous' | 'top10' | 'none' {
+  if (previousCount > 0 && (previousCount > topCount || topCount === 0)) return 'previous';
+  return topCount > 0 ? 'top10' : 'none';
+}
+
+/** The proxied/direct catalog must carry the performance tables and fund links, not a bot wall. */
+export function isCatalogPage(text: string): boolean {
+  const source = htmlToText(stripProxyPreamble(text));
+  return /Total Return as of\s+\d/i.test(source) && /\]\(https?:\/\/[^)\s]*\/products\//i.test(source);
+}
+
+/** A fund page must carry the Fund Details table with a numeric Net Assets row. */
+export function isFundPage(text: string): boolean {
+  return /\|\s*Net Assets\s*\|\s*\$?\d[\d,]*/i.test(htmlToText(stripProxyPreamble(text)));
+}
+
+const PROVIDER_LABEL = 'Pacer ETFs product listing + official fund pages (read-only rendering proxy) + SEC EDGAR Form N-PORT-P full holdings + Yahoo Finance public chart API';
 
 async function processFund(fund: CatalogFund, config: UpdaterConfig, previous: JsonRecord = {}): Promise<JsonRecord> {
   const reasons = catalogFilterReasons(fund, config);
@@ -1804,55 +1676,46 @@ async function processFund(fund: CatalogFund, config: UpdaterConfig, previous: J
   await mkdir(fundDir, { recursive: true });
   const previousMeta = await readPreviousMeta(fund.ticker);
 
-  // 1. Official product page ---------------------------------------------------
+  // 1. Official fund page (WAF host: read-only rendering proxy) -------------------
   let summary: ProductPageSummary | null = null;
   let productVia: 'direct' | 'proxy' | null = null;
   if (!config.skipPacer && fund.fundPage) {
     try {
-      const page = await fetchIssuerText(fund.fundPage, `[product ] ${fund.ticker}`, config, (text) => /Performance \(|Distributions|Fund Documents/i.test(text), undefined, { cache: false });
+      const page = await fetchIssuerText(fund.fundPage, `[product ] ${fund.ticker}`, config, isFundPage, undefined, { cache: false });
       productVia = page.via;
       summary = parseProductPage(page.text, fund.ticker);
       if (config.storeRawDownloads) {
         const raw = new URL('raw/', API_ROOT);
         await mkdir(raw, { recursive: true });
-        await writeFile(new URL(`${fund.ticker}-product-page.${page.via === 'proxy' ? 'md' : 'html'}`, raw), page.text, 'utf8');
+        await writeFile(new URL(`${fund.ticker}-fund-page.${page.via === 'proxy' ? 'md' : 'html'}`, raw), page.text, 'utf8');
       }
       if (summary.name) fund.name = summary.name;
-      if (summary.indexName) fund.benchmark = summary.indexName;
+      if (summary.cusip) fund.cusip = summary.cusip;
+      if (summary.isin) fund.isin = summary.isin;
       if (summary.inception) fund.inception = summary.inception;
+      if (summary.nav !== null) fund.nav = summary.nav;
+      if (summary.marketPrice !== null) fund.close = summary.marketPrice;
+      if (summary.totalNetAssets !== null) fund.netAssets = summary.totalNetAssets;
+      if (summary.totalExpenseRatio !== null) fund.ter = summary.totalExpenseRatio;
+      if (summary.premiumDiscount !== null) fund.premiumDiscount = summary.premiumDiscount;
+      if (summary.secYield !== null) fund.secYield = summary.secYield;
+      if (summary.asOfDate) fund.asOfDate = summary.asOfDate;
     } catch (error) {
       outputNote(`[ ${'product'.padEnd(9)}] ${fund.ticker}: ${error instanceof Error ? error.message : String(error)}`);
     }
   }
+  if (!fund.isin && fund.cusip) fund.isin = isinFromCusip(fund.cusip);
 
-  // 2. Holdings: issuer CSV -> N-PORT-P -> published top 10 -> previous run -----
+  // 2. Holdings: N-PORT-P (full) -> official top 10 (partial) -> previous run ------
   let holdingsRows: JsonRecord[] = [];
   let holdingsHeaders: string[] = HOLDINGS_HEADERS;
   let holdingsAsOf: string | null = null;
-  let holdingsSource = 'not available from the issuer CSV export or a public SEC filing';
-  let holdingsDownload: string | null = summary?.holdingsDownloadUrl || holdingsDownloadUrl(fund.ticker);
-  let sharesOutstanding: number | null = null;
-  let csvNetAssets: number | null = null;
+  let holdingsSource = 'not available from a public SEC filing or the official fund page top 10 table';
+  let holdingsDownload: string | null = null;
+  let marketValueBasis: string | null = null;
   let nport: ParsedNport | null = null;
-  if (!config.skipPacer) {
-    try {
-      const csv = await fetchIssuerText(holdingsDownload, `[holdings] ${fund.ticker}`, config, isHoldingsCsv, 'text/csv,text/plain;q=0.9,*/*;q=0.8');
-      const parsed = parseHoldingsCsv(csv.text);
-      if (parsed.rows.length) {
-        holdingsRows = parsed.rows;
-        holdingsHeaders = parsed.headers;
-        holdingsAsOf = parsed.asOfDate;
-        csvNetAssets = parsed.netAssets;
-        sharesOutstanding = parsed.sharesOutstanding;
-        holdingsSource = `paceretfs.com daily holdings CSV export (${holdingsDownload.split('/').pop()}${csv.via === 'proxy' ? ', via read-only rendering proxy' : ''})`;
-        if (csvNetAssets !== null) fund.netAssets = csvNetAssets;
-        if (sharesOutstanding !== null) fund.sharesOutstanding = sharesOutstanding;
-      }
-    } catch (error) {
-      outputNote(`[ ${'holdings'.padEnd(9)}] ${fund.ticker}: ${error instanceof Error ? error.message : String(error)}`);
-    }
-  }
-  if (!holdingsRows.length && config.edgarFallback) {
+  const topRows = summary ? topHoldingRows(summary.topHoldings, fund.netAssets) : [];
+  if (config.edgarFallback) {
     try {
       const filing = await resolveNportFiling(fund, config);
       if (filing) {
@@ -1861,44 +1724,43 @@ async function processFund(fund: CatalogFund, config: UpdaterConfig, previous: J
         if (seriesMatches && parsed.holdings.length) {
           const names = await loadCompanyTickerTable(config);
           holdingsRows = fillNportTickers(parsed.holdings, names);
-          holdingsHeaders = holdingsRows.some((row) => 'Coupon' in row || 'Maturity' in row) ? [...HOLDINGS_HEADERS, 'Coupon', 'Maturity'] : HOLDINGS_HEADERS;
+          holdingsHeaders = holdingsRows.some((row) => 'Coupon' in row || 'Maturity' in row) ? BOND_HOLDINGS_HEADERS : HOLDINGS_HEADERS;
           holdingsAsOf = parsed.repPdDate || null;
           nport = parsed;
           holdingsDownload = filing.accession.url;
           holdingsSource = `SEC EDGAR Form N-PORT-P (accession ${filing.accession.accession}, report period ${parsed.repPdDate || 'n/a'})`;
+          marketValueBasis = 'SEC Form N-PORT-P reported value (valUSD)';
         }
       }
     } catch (error) {
       outputNote(`[ ${'nport'.padEnd(9)}] ${fund.ticker}: ${error instanceof Error ? error.message : String(error)}`);
     }
   }
-  if (!holdingsRows.length && summary?.topHoldings.length) {
-    holdingsRows = summary.topHoldings;
-    holdingsHeaders = HOLDINGS_HEADERS;
-    holdingsAsOf = summary.topHoldingsAsOf;
-    holdingsDownload = null;
-    holdingsSource = 'top 10 holdings published on the official Pacer ETFs product page (no CSV export or N-PORT-P holdings in this run)';
-  }
   if (!holdingsRows.length) {
-    holdingsRows = await readPreviousSheet(fund.ticker, 'holdings');
-    holdingsHeaders = (await readPreviousHeaders(fund.ticker, 'holdings')) || holdingsHeaders;
-    holdingsAsOf = previousMeta?.holdings?.asOfDate || null;
-    holdingsSource = previousMeta?.holdings?.source || holdingsSource;
-    holdingsDownload = previousMeta?.source?.holdingsDownload || holdingsDownload;
-  }
-
-  // 3. Distributions: fund page table -> Yahoo dividends -> previous run -------
-  let dividends: Distribution[] = summary?.distributions ? [...summary.distributions] : [];
-  let distributionTable: string[][] = summary?.distributionRows?.length ? summary.distributionRows : [];
-  let distributionsSource = dividends.length ? 'paceretfs.com fund page distribution history (total distribution per share)' : 'not available';
-  if (!dividends.length) {
-    const previousRows = Array.isArray(previousMeta?.distributions?.rows) ? previousMeta.distributions.rows : [];
-    if (previousRows.length) {
-      distributionTable = previousRows;
-      dividends = previousRows.map((row: string[]) => ({ epoch: isoToEpoch(toIsoDate(row[0])) ?? 0, amount: numberOrNull(row[1]) ?? 0 })).filter((item: Distribution) => item.epoch > 0 && item.amount > 0).sort((a, b) => a.epoch - b.epoch);
-      distributionsSource = previousMeta?.distributions?.source || 'previous run';
+    // A previously published full schedule beats a fresh but partial top 10.
+    const previousRows = await readPreviousSheet(fund.ticker, 'holdings');
+    const fallback = holdingsFallback(previousRows.length, topRows.length);
+    if (fallback === 'previous') {
+      holdingsRows = previousRows;
+      holdingsHeaders = (await readPreviousHeaders(fund.ticker, 'holdings')) || holdingsHeaders;
+      holdingsAsOf = previousMeta?.holdings?.asOfDate || null;
+      holdingsSource = previousMeta?.holdings?.source || holdingsSource;
+      holdingsDownload = previousMeta?.source?.holdingsDownload || holdingsDownload;
+      marketValueBasis = previousMeta?.holdings?.marketValueBasis || marketValueBasis;
+    } else if (fallback === 'top10') {
+      holdingsRows = topRows;
+      holdingsAsOf = summary?.topHoldings.asOfDate || null;
+      holdingsDownload = fund.fundPage;
+      holdingsSource = `paceretfs.com fund page Top 10 Holdings (partial: ${topRows.length} positions only; the full Daily Holdings file is a protected download and no SEC N-PORT-P filing was available${productVia === 'proxy' ? '; read via the rendering proxy' : ''})`;
+      marketValueBasis = fund.netAssets !== null ? 'derived: weight x Total Net Assets (the fund page publishes weights, not values)' : 'not derivable: Total Net Assets unavailable in this run';
     }
   }
+
+  // 3. Distributions: fund page table -> Yahoo dividends -> previous run ---------
+  let dividends: Distribution[] = summary?.distributions.length ? summary.distributions : [];
+  let distributionsSource = 'not available';
+  const distributionsDownload: string | null = fund.fundPage || null;
+  if (dividends.length) distributionsSource = `paceretfs.com fund page Distributions table (Total Distributions per share${productVia === 'proxy' ? ', via read-only rendering proxy' : ''})`;
 
   // 4. Yahoo chart: history + dividend fallback --------------------------------
   let chart: ParsedChart | null = null;
@@ -1922,34 +1784,25 @@ async function processFund(fund: CatalogFund, config: UpdaterConfig, previous: J
   }
   if (!dividends.length && chart?.dividends.length) {
     dividends = chart.dividends.map((item) => ({ epoch: item.epoch, amount: round(item.amount, 6) }));
-    distributionTable = distributionRows(dividends);
-    distributionsSource = 'Yahoo Finance chart dividend events (the fund page published no distribution table)';
+    distributionsSource = 'Yahoo Finance chart dividend events (fund page Distributions table unavailable)';
+  }
+  let distributionTable: string[][] = dividends.length ? distributionRows(dividends) : [];
+  if (!distributionTable.length && Array.isArray(previousMeta?.distributions?.rows) && previousMeta.distributions.rows.length) {
+    distributionTable = previousMeta.distributions.rows;
+    distributionsSource = previousMeta.distributions.source || 'previous run';
+    dividends = distributionTable.map((row) => ({ epoch: isoToEpoch(toIsoDate(row[0])) ?? 0, amount: numberOrNull(row[1]) ?? 0 })).filter((item) => item.epoch > 0 && item.amount > 0);
   }
 
   // 5. Returns + metrics --------------------------------------------------------
   const frequency = inferDistributionFrequency(dividends);
   const latest = dividends[dividends.length - 1] || null;
   const derived = priceReturns(days);
-  // The product listing publishes the month-end NAV row (YTD, 1/3 Month,
-  // 1/3/5/10 Year, Since Inception); the fund page table is the quarter-end row.
-  const catalogReturnsPublished = [fund.returns.ytd, fund.returns.mo1, fund.returns.mo3, fund.returns.yr1, fund.returns.yr3, fund.returns.yr5, fund.returns.yr10, fund.returns.sinceInception].some((value) => value !== null);
-  const officialMonthly: OfficialReturnRow | null = catalogReturnsPublished
-    ? {
-        asOfDate: fund.asOfDate || derived.asOfDate,
-        mo1: fund.returns.mo1,
-        mo3: fund.returns.mo3,
-        ytd: fund.returns.ytd,
-        yr1: fund.returns.yr1,
-        cagr3y: fund.returns.yr3,
-        cagr5y: fund.returns.yr5,
-        cagr10y: fund.returns.yr10,
-        siAnn: fund.returns.sinceInception,
-      }
-    : null;
+  const officialMonthly = fund.monthEnd || summary?.officialReturns.monthEnd.nav || null;
   const officialQuarterly = summary?.officialReturns.quarterEnd.nav || null;
   const effective = mergeOfficialReturns(derived, officialMonthly);
-  const marketPrice = chart?.regularMarketPrice ?? (days.length ? days[days.length - 1].close : numberOrNull(previous.closePriceValue));
-  const nav = fund.nav ?? (fund.netAssets !== null && fund.sharesOutstanding ? round(fund.netAssets / fund.sharesOutstanding, 2) : null) ?? numberOrNull(previous.navValue);
+  const officialPrice = summary?.marketPrice ?? null;
+  const marketPrice = officialPrice ?? chart?.regularMarketPrice ?? (days.length ? days[days.length - 1].close : numberOrNull(previous.closePriceValue));
+  const nav = fund.nav ?? numberOrNull(previous.navValue);
   const metrics = deriveMetrics(effective, fund, dividends, frequency, nav ?? marketPrice, Boolean(officialMonthly));
   const skipReasons = postFetchFilterReasons(fund, metrics, config);
   if (skipReasons.length) {
@@ -1960,21 +1813,22 @@ async function processFund(fund: CatalogFund, config: UpdaterConfig, previous: J
   const history = historyRows(days);
   const historyAsOf = derived.asOfDate || previousMeta?.history?.asOf || null;
   const holdingManifest = await writePages(fundDir, fund.ticker, 'holdings', holdingsHeaders, holdingsRows, config.holdingsPageSize, holdingsAsOf, holdingsSource);
-  if (summary?.topHoldings.length) holdingManifest.publishedTopHoldings = summary.topHoldings.length;
+  if (marketValueBasis) holdingManifest.marketValueBasis = marketValueBasis;
+  if (summary?.totalHoldings !== null && summary?.totalHoldings !== undefined) holdingManifest.publishedTotalHoldings = summary.totalHoldings;
   const historyManifest = await writePages(fundDir, fund.ticker, 'history', historyHeaders(), history, config.historyPageSize, historyAsOf, historySource);
   const distributionFrequency = dividends.length ? frequency.frequency : (previousMeta?.distributions?.frequency || '—');
   const premiumDiscount = fund.premiumDiscount ?? (nav && marketPrice ? round((marketPrice / nav - 1) * 100, 2) : numberOrNull(previous.premiumDiscountValue));
-  const netAssets = fund.netAssets ?? csvNetAssets ?? nport?.netAssets ?? numberOrNull(previous.aumValue);
-  const asOfDate = fund.asOfDate || holdingsAsOf || toIsoDate(previous.asOfDate) || null;
+  const netAssets = fund.netAssets ?? nport?.netAssets ?? numberOrNull(previous.aumValue);
+  const asOfDate = fund.asOfDate || toIsoDate(previous.asOfDate) || null;
   const asOfLabel = asOfDate ? formatDate(asOfDate) : chart?.regularMarketTime ? formatDate(new Date(chart.regularMarketTime * 1000).toISOString().slice(0, 10)) : '—';
-  const marketPriceAsOfLabel = chart?.regularMarketTime ? formatDate(new Date(chart.regularMarketTime * 1000).toISOString().slice(0, 10)) : (days.length ? formatDate(days[days.length - 1].date) : asOfLabel);
+  const marketPriceAsOfLabel = officialPrice !== null ? asOfLabel : chart?.regularMarketTime ? formatDate(new Date(chart.regularMarketTime * 1000).toISOString().slice(0, 10)) : (days.length ? formatDate(days[days.length - 1].date) : asOfLabel);
   const text = (value: number | null) => (value === null ? '—' : `${value.toFixed(2)}%`);
   const returns: JsonRecord = {
     derivedFrom: officialMonthly ? OFFICIAL_RETURNS_BASIS : DERIVED_RETURNS_BASIS,
     monthEnd: {
       asOfDate: effective.asOfDate ? formatDate(effective.asOfDate) : '—',
       mo1: effective.mo1, mo1Text: text(effective.mo1),
-      mo3: effective.mo3, mo3Text: text(effective.mo3),
+      mo3: officialMonthly?.mo3 ?? null, mo3Text: text(officialMonthly?.mo3 ?? null),
       qtd: effective.qtd, qtdText: text(effective.qtd),
       ytd: effective.ytd, ytdText: text(effective.ytd),
       yr1: effective.yr1, yr1Text: text(effective.yr1),
@@ -1985,7 +1839,7 @@ async function processFund(fund: CatalogFund, config: UpdaterConfig, previous: J
     },
     quarterEnd: officialQuarterly ? {
       asOfDate: officialQuarterly.asOfDate ? formatDate(officialQuarterly.asOfDate) : formatDate(lastCompletedQuarterEnd()),
-      ytd: officialQuarterly.ytd ?? null,
+      ytd: officialQuarterly.ytd,
       yr1: officialQuarterly.yr1,
       yr3: officialQuarterly.cagr3y,
       yr5: officialQuarterly.cagr5y,
@@ -2002,35 +1856,37 @@ async function processFund(fund: CatalogFund, config: UpdaterConfig, previous: J
     source: {
       fundPage: fund.fundPage,
       officialProductPage: fund.fundPage,
-      productPageRendering: productVia ? (productVia === 'proxy' ? 'read-only rendering proxy (r.jina.ai) of the official product page' : 'official product page (direct)') : 'not fetched in this run',
-      productPageAsOf: summary?.officialReturns.quarterEnd.nav?.asOfDate ? formatDate(summary.officialReturns.quarterEnd.nav.asOfDate) : null,
+      productPageRendering: productVia ? (productVia === 'proxy' ? 'read-only rendering proxy (r.jina.ai) of the official fund page' : 'official fund page (direct)') : 'not fetched in this run',
+      productPageAsOf: summary?.asOfDate ? formatDate(summary.asOfDate) : null,
+      catalogListing: PACER_CATALOG_URL,
       holdingsDownload,
-      navHistoryDownload: null,
+      officialHoldingsDownload: `${PACER_SITE}/products/holdings_download/${fund.ticker}`,
+      officialHoldingsDownloadNote: 'protected Daily Holdings download (Cloudflare challenge; not readable by the updater)',
+      distributionsDownload,
       yahooChart: `${YAHOO_CHART_URL}/${encodeURIComponent(fund.ticker)}`,
       holdingsSource,
       historySource,
       distributionsSource,
       provider: PROVIDER_LABEL,
     },
-    identifiers: { cusip: fund.cusip || null, isin: fund.isin || null, isinBasis: null, indexTicker: fund.benchmark || null, exchange: fund.exchange || null, morningstarCategory: null },
-    expenseRatio: { display: fund.ter === null ? '—' : `${fund.ter}%`, value: fund.ter, kind: 'Total Expenses published in the official Pacer ETFs product listing' },
-    nav: { display: nav === null ? '—' : `$${nav.toFixed(2)}`, value: nav, asOfDate: holdingsAsOf ? formatDate(holdingsAsOf) : asOfLabel, source: fund.netAssets !== null && fund.sharesOutstanding ? 'derived: daily holdings CSV NetAssets / SharesOutstanding (paceretfs.com publishes no NAV in the static fund page)' : 'previous run' },
-    marketPrice: { display: marketPrice === null ? '—' : `$${marketPrice.toFixed(2)}`, value: marketPrice, asOfDate: marketPriceAsOfLabel, source: chart ? 'Yahoo Finance last regular-session price (the anonymous product page publishes no closing price)' : 'previous run' },
-    premiumDiscount: { display: premiumDiscount === null ? '—' : `${premiumDiscount.toFixed(2)}%`, value: premiumDiscount, asOfDate: marketPriceAsOfLabel, source: 'computed from Yahoo last price / the net-asset value implied by the daily holdings CSV' },
-    aum: { display: formatAumDisplay(netAssets), value: netAssets, asOfDate: holdingsAsOf ? formatDate(holdingsAsOf) : (nport?.repPdDate ? formatDate(nport.repPdDate) : asOfLabel), source: fund.netAssets !== null ? 'NetAssets column of the paceretfs.com daily holdings CSV' : nport ? `SEC Form N-PORT-P net assets (${nport.repPdDate || 'n/a'})` : 'previous run' },
-    fundFacts: { sharesOutstanding: fund.sharesOutstanding ?? null, portfolioTurnover: null, publishedTotalHoldings: null, bidAskMidpoint: null },
+    identifiers: { cusip: fund.cusip || null, isin: fund.isin || null, isinBasis: fund.isin ? (summary?.isin && summary.isin === fund.isin ? 'published on the official fund page' : fund.cusip && fund.isin === isinFromCusip(fund.cusip) ? 'derived from the published CUSIP (US prefix + check digit)' : 'previous run') : null, indexTicker: fund.benchmark || null, exchange: fund.exchange || null },
+    expenseRatio: { display: fund.ter === null ? '—' : `${fund.ter}%`, value: fund.ter, gross: fund.grossTer, kind: 'Total Expenses published on the official fund page (product listing for funds without a page value)' },
+    nav: { display: nav === null ? '—' : `$${nav.toFixed(2)}`, value: nav, asOfDate: summary?.asOfDate ? formatDate(summary.asOfDate) : asOfLabel },
+    marketPrice: { display: marketPrice === null ? '—' : `$${marketPrice.toFixed(2)}`, value: marketPrice, asOfDate: marketPriceAsOfLabel, source: officialPrice !== null ? 'official fund page Market Price (closing price as of the Fund Details date)' : chart ? 'Yahoo Finance last regular-session price (the fund page published no market price)' : 'previous run' },
+    premiumDiscount: { display: premiumDiscount === null ? '—' : `${premiumDiscount.toFixed(2)}%`, value: premiumDiscount, asOfDate: asOfLabel, source: summary?.premiumDiscount !== null && summary?.premiumDiscount !== undefined ? 'official fund page Fund Details Premium/Discount' : 'computed from market price / NAV' },
+    aum: { display: formatAumDisplay(netAssets), value: netAssets, asOfDate: summary?.totalNetAssets !== null && summary?.totalNetAssets !== undefined ? asOfLabel : (nport?.repPdDate ? formatDate(nport.repPdDate) : asOfLabel), source: summary?.totalNetAssets !== null && summary?.totalNetAssets !== undefined ? 'official fund page Net Assets' : nport ? `SEC Form N-PORT-P net assets (${nport.repPdDate || 'n/a'})` : 'previous run' },
+    fundFacts: { sharesOutstanding: summary?.sharesOutstanding ?? null, publishedTotalHoldings: summary?.totalHoldings ?? null, medianBidAskSpread: summary?.medianBidAskSpread ?? null },
     yields: {
       dividendYield: metrics.dividendYield,
       dividendYieldText: metrics.dividendYieldText,
-      dividendYieldKind: 'indicated (latest distribution per share x inferred payments per year / NAV) from the official Pacer distribution history',
-      distributionRate: null,
+      dividendYieldKind: 'indicated (latest distribution x inferred payments per year / NAV; Pacer publishes no distribution yield)',
       secYield: metrics.secYield,
       secYieldText: metrics.secYieldText,
-      secYieldKind: 'not published on the official Pacer ETFs product page for this fund',
+      secYieldKind: fund.secYield !== null ? `30 Day SEC Yield published on the official fund page${summary?.secYield !== null && summary?.secYield !== undefined && summary.asOfDate ? ` as of ${formatDate(summary.asOfDate)}` : ''}` : 'not published on the official fund page for this fund',
     },
     returns,
     officialMarketPriceReturns: summary ? { monthEnd: returnRowJson(summary.officialReturns.monthEnd.marketPrice), quarterEnd: returnRowJson(summary.officialReturns.quarterEnd.marketPrice) } : null,
-    distributions: { frequency: distributionFrequency, frequencyCode: frequencyCodeLabel(distributionFrequency), paymentsPerYear: frequency.paymentsPerYear, source: distributionsSource, headers: distributionTable.length ? (summary?.distributionColumns || (Array.isArray(previousMeta?.distributions?.headers) ? previousMeta.distributions.headers : DISTRIBUTION_HEADERS)) : DISTRIBUTION_HEADERS, rows: distributionTable },
+    distributions: { frequency: distributionFrequency, frequencyCode: frequencyCodeLabel(distributionFrequency), paymentsPerYear: frequency.paymentsPerYear, source: distributionsSource, headers: ['Ex-Date', 'Amount'], rows: distributionTable },
     holdings: holdingManifest,
     history: historyManifest,
   };
@@ -2082,54 +1938,44 @@ function configLines(config: UpdaterConfig): string[] {
     `HISTORY_RANGE=${config.historyRange}`,
   ];
 }
-void configLines;
 
 const USAGE = `
 Pacer ETFs static data updater
 
 Sources:
-  catalog       Pacer ETFs product listing, https://www.paceretfs.com/products/
-                (official page; read-only r.jina.ai rendering fallback when a
-                non-browser request is refused)
-  product page  official per-fund page: quarter-end NAV / Market Price
-                performance, the full distribution history, the published
-                top 10 holdings
-  holdings      daily holdings CSV export per fund, /products/holdings_download/
-                SEC EDGAR Form N-PORT-P for the exact series as the fallback
-  distributions the Distributions table of the fund page (Yahoo dividend events
-                as the fallback)
+  catalog       paceretfs.com product listing (performance table per investment
+                theme: name, ticker, total expenses, inception, NAV total
+                returns); read through the read-only r.jina.ai rendering proxy
+                when direct requests are refused (Cloudflare challenge)
+  fund page     official per-fund page: Fund Details, quarter-end performance,
+                top 10 holdings, distribution history
+  holdings      SEC EDGAR Form N-PORT-P full schedule (Pacer Funds Trust); the
+                official top 10 table is a labelled partial fallback
+  distributions fund page Distributions table (Yahoo dividend events fallback)
   history       Yahoo Finance public chart API (adjusted market-price closes)
 
 Configuration: scripts/update-data.config.json defaults < advanced JSON (workflow
 only) < nonblank workflow inputs < environment variables below (all filters use
 AND logic):
   MAX_FETCHES=0       all eligible funds; positive value is a resumable batch
-  REQUEST_SLEEP=2.5   seconds between outgoing request starts
-  CONCURRENCY=1       parallel fund workers; the WAF gate stays conservative
-  AUM=:               min:max, bounds may be amounts or nano/micro/small/mid/large
-  TER=:               total expense ratio percentage range
-  DIVIDEND_YIELD=:    indicated dividend-yield percentage range
-  TICKERS="COWZ CALF PTLC"   optional ticker allowlist
+  REQUEST_SLEEP=2.5   seconds between request starts (proxy requests >= 3.2s)
+  CONCURRENCY=1       parallel fund workers; every request stays paced
+  AUM=:\n  TER=:\n  DIVIDEND_YIELD=:\n  TICKERS="COWZ FLRT"  optional ticker allowlist
   PERFORMANCE_YTD|1Y|3Y|5Y|10Y=min:max   annualized ranges
-  TOTAL_RETURN_YTD|1Y|3Y|5Y|10Y=min:max  cumulative ranges
+  TOTAL_RETURN_YTD|1Y|3Y|5Y|10Y=min:max cumulative ranges
   HOLDINGS_PAGE_SIZE=250
   HISTORY_PAGE_SIZE=1000
   HISTORY_RANGE=max
   MAX_RETRIES=2
-  STORE_RAW_DOWNLOADS=off
-  EDGAR_FALLBACK=1
-  SKIP_PACER=off      use the previously published catalog/product data
+  STORE_RAW_DOWNLOADS=false
+  EDGAR_FALLBACK=true full holdings from SEC EDGAR Form N-PORT-P (off keeps the official top 10 or the previous holdings)
+  SEC_UA=             SEC User-Agent override (declare a contact); blank uses the built-in descriptor
+  VERBOSE=false
+  SKIP_PACER=off      use the previously published catalog/fund page data
   SKIP_YAHOO=off      keep previously published history when possible
-  SEC_UA=             SEC User-Agent override (declare a contact); blank uses the
-                      built-in default (daggerok ETF feed daggerok@gmail.com)
-  VERBOSE=off         per-fund retry / fallback notices
-
-Defaults live in scripts/update-data.config.json. Precedence: file defaults <
-advanced JSON < nonblank workflow_dispatch inputs < environment variables, all
-resolved by resolveControls() (exported below and used by the workflow).
 
 Examples:
-  TICKERS="COWZ CALF PTLC" ./scripts/update-data.ts
+  TICKERS="COWZ FLRT PSFF" ./scripts/update-data.ts
   AUM="large:" TER=":0.50" ./scripts/update-data.ts
   PERFORMANCE_3Y="10:" TOTAL_RETURN_1Y="15:" ./scripts/update-data.ts
 `;
@@ -2175,7 +2021,7 @@ export function resolveControls(
   for (const key of ['MAX_FETCHES', 'CONCURRENCY', 'HOLDINGS_PAGE_SIZE', 'HISTORY_PAGE_SIZE', 'MAX_RETRIES']) {
     const v = result[key];
     if (v === undefined || v.trim() === '') continue;
-    const min = key === 'MAX_FETCHES' ? 0 : 1;
+    const min = ['MAX_FETCHES', 'MAX_RETRIES'].includes(key) ? 0 : 1;
     if (!/^\d+$/.test(v.trim()) || !Number.isSafeInteger(Number(v)) || Number(v) < min) throw new Error(`${key}: expected integer >= ${min}`);
   }
   const sleep = result.REQUEST_SLEEP;
@@ -2194,11 +2040,11 @@ export async function runtimeControls(env: Record<string, string | undefined> = 
 
 async function main(): Promise<void> {
   const controls = await runtimeControls();
+  if (controls.VERBOSE !== undefined) process.env.VERBOSE = controls.VERBOSE;
   const config = readConfig(controls);
   secUa = config.secUa;
-  if (controls.VERBOSE !== undefined) process.env.VERBOSE = controls.VERBOSE;
   requestSleepSeconds = config.requestSleep;
-  nextRequestAt = 0;
+  requestGates = new Array(Math.max(1, config.concurrency)).fill(0);
   proxyGateAt = 0;
   issuerDirectDenials = 0;
   outputPrintConfig('Pacer', config);
@@ -2208,15 +2054,7 @@ async function main(): Promise<void> {
   let catalogSource = 'previous api/pacer/index.json';
   if (!config.skipPacer) {
     try {
-      // The full listing carries the data columns; the proxy rendering only
-      // shows the fund cards (tickers + names). Accept the degraded rendering
-      // rather than losing the catalog, but never a bot-wall page.
-      const catalogValidate = (text: string): boolean => {
-        if (!/\/products\/[a-z0-9]{2,6}/i.test(text)) return false;
-        if (/Total Expenses|Fund Inception/i.test(text)) return true;
-        return /Pacer\s+[A-Z][a-z]+/.test(text) && !/just a moment|enable javascript|cf-browser-verification|attention required/i.test(text);
-      };
-      const fetched = await fetchIssuerText(PACER_CATALOG_URL, '[catalog ] product listing', config, catalogValidate, undefined, { cache: false });
+      const fetched = await fetchIssuerText(PACER_CATALOG_URL, '[catalog ] product listing', config, isCatalogPage, undefined, { cache: false });
       const parsed = parseCatalogText(fetched.text);
       for (const fund of parsed) catalog.set(fund.ticker, fund);
       catalogSource = fetched.via === 'proxy' ? 'Pacer ETFs product listing via read-only rendering proxy' : 'Pacer ETFs product listing';
@@ -2233,7 +2071,7 @@ async function main(): Promise<void> {
   if (catalog.size && catalogSource !== 'previous api/pacer/index.json') for (const [ticker, row] of previous) if (!catalog.has(ticker)) catalog.set(ticker, parsePreviousFund(ticker, row));
 
   const universe = [...catalog.values()].sort((a, b) => a.ticker.localeCompare(b.ticker));
-  if (!universe.length) throw new Error('No catalog rows available. Run this where www.paceretfs.com is reachable or seed api/pacer/index.json first.');
+  if (!universe.length) throw new Error('No catalog rows available. Run this where www.paceretfs.com is reachable (or through the rendering proxy) or seed api/pacer/index.json first.');
   console.log(`[ ${'catalog'.padEnd(9)}] ${universe.length} Pacer ETFs (${catalogSource})`);
 
   let state: JsonRecord = {};
@@ -2289,13 +2127,13 @@ async function main(): Promise<void> {
   await writeIfChanged(INDEX_FILE, {
     generatedAt: new Date().toISOString().replace(/\.\d{3}Z$/, 'Z'),
     source: {
-      provider: 'Pacer ETFs (Pacer Funds Trust, Pacer Advisors, Inc.), U.S.-listed ETFs',
+      provider: 'Pacer ETFs (Pacer Advisors, Inc.; Pacer Funds Trust, SEC CIK 0001616668), U.S.-listed ETFs',
       market: 'us',
       site: PACER_SITE,
       catalog: PACER_CATALOG_URL,
       catalogFallback: proxyUrl(PACER_CATALOG_URL),
-      holdings: 'paceretfs.com daily holdings CSV export per fund (SEC EDGAR Form N-PORT-P fallback)',
-      distributions: 'paceretfs.com fund page distribution history (Yahoo dividend events fallback)',
+      holdings: 'SEC EDGAR Form N-PORT-P full schedule per fund (official fund page top 10 table as a labelled partial fallback)',
+      distributions: 'paceretfs.com fund page Distributions table per fund (Yahoo dividend events fallback)',
       history: 'Yahoo Finance public chart API (adjusted close)',
     },
     counts,

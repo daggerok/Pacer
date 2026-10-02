@@ -1,0 +1,109 @@
+Pacer live acceptance - 2026-10-01 (isolated output, nothing under api/ was written or committed)
+
+Revision: c196428 (scripts/update-data.ts and scripts/update-data.config.json byte-identical to the working copy used)
+Method: scripts/ and package.json copied to a temporary directory outside the repository (the updater writes to ../api/pacer relative to its own location); empty seed (main has no api/)
+Command (run twice back to back, real network, no mocks, default REQUEST_SLEEP=2.5 and CONCURRENCY=1, no SKIP flags):
+  TICKERS="COWZ FLRT PSFF ACBH" VERBOSE=1 bun scripts/update-data.ts
+Run A: 2026-10-01T23:35:03Z -> 2026-10-01T23:35:53Z, exit 0
+Run B: 2026-10-01T23:35:53Z -> 2026-10-01T23:36:42Z, exit 0
+Paths exercised: COWZ equity (N-PORT-P full holdings, fund page distributions), FLRT bank-loan fund (monthly distributions, 320 of 351 N-PORT positions), PSFF Structured Outcome fund-of-funds (sub-path fund page, no distributions table -> Yahoo), ACBH autocallable launched 2026-09-09 (no N-PORT-P filing -> official top 10 table, partial)
+Catalog: 74 funds (73 table rows + PEVC from the series listing) read via the rendering proxy after 2 direct 403 denials
+
+== Run A log (skipped lines removed: 70 funds skipped by TICKERS) ==
+[ config   ] Pacer updater:
+              MAX_FETCHES=0
+              REQUEST_SLEEP=2.5
+              CONCURRENCY=1
+              AUM=:
+              DIVIDEND_YIELD=:
+              EDGAR_FALLBACK=true
+              HISTORY_PAGE_SIZE=1000
+              HISTORY_RANGE=max
+              HOLDINGS_PAGE_SIZE=250
+              MAX_RETRIES=2
+              PERFORMANCE_10Y=:
+              PERFORMANCE_1Y=:
+              PERFORMANCE_3Y=:
+              PERFORMANCE_5Y=:
+              PERFORMANCE_YTD=:
+              SEC_UA=DaggerOk Pacer ETF feed admin@daggerok.example.com
+              SKIP_PACER=false
+              SKIP_YAHOO=false
+              STORE_RAW_DOWNLOADS=false
+              TER=:
+              TICKERS=COWZ,FLRT,PSFF,ACBH
+              TOTAL_RETURN_10Y=:
+              TOTAL_RETURN_1Y=:
+              TOTAL_RETURN_3Y=:
+              TOTAL_RETURN_5Y=:
+              TOTAL_RETURN_YTD=:
+              VERBOSE=true
+[ catalog  ] 74 Pacer ETFs (Pacer ETFs product listing via read-only rendering proxy)
+[ filter   ] 74 of 74 funds selected for evaluation (data-dependent filters applied per fund)
+[ issuer   ] direct requests are denied from this network; using the read-only rendering proxy for the rest of the run
+[ edgar    ] SEC fund ticker table: 28579 share classes
+[  3/74  ] ACBH  updated   history=15 holdings=3 divs=1 netAssets=$3.1M sec=1.24
+[ edgar    ] SEC company ticker table: 8001 issuer names
+[ 10/74  ] COWZ  updated   history=2456 holdings=102 divs=40 netAssets=$18.6B div=2.58 sec=1.63
+[ 13/74  ] FLRT  updated   history=2922 holdings=320 divs=129 netAssets=$962.1M div=5.66 sec=6.25
+[ 47/74  ] PSFF  updated   history=1445 holdings=14 divs=1 netAssets=$611.9M
+[ done     ] 4 funds updated, 0 failures
+[ done     ] counts: 4 funds / 439 holdings rows / 6,838 history rows
+exit=0
+
+== Run B log (skipped lines removed) ==
+[ catalog  ] 74 Pacer ETFs (Pacer ETFs product listing via read-only rendering proxy)
+[ filter   ] 74 of 74 funds selected for evaluation (data-dependent filters applied per fund)
+[ issuer   ] direct requests are denied from this network; using the read-only rendering proxy for the rest of the run
+[ edgar    ] SEC fund ticker table: 28579 share classes
+[  3/74  ] ACBH  unchanged history=15 holdings=3 divs=1 netAssets=$3.1M sec=1.24
+[ edgar    ] SEC company ticker table: 8001 issuer names
+[ 10/74  ] COWZ  unchanged history=2456 holdings=102 divs=40 netAssets=$18.6B div=2.58 sec=1.63
+[ 13/74  ] FLRT  updated   history=2922 holdings=320 divs=129 netAssets=$962.1M div=5.66 sec=6.25
+[ 47/74  ] PSFF  unchanged history=1445 holdings=14 divs=1 netAssets=$611.9M
+[ done     ] 4 funds updated, 0 failures
+[ done     ] counts: 4 funds / 439 holdings rows / 6,838 history rows
+exit=0
+
+== Per-fund results (Run A meta.json) ==
+ACBH: holdings=3 (as of Oct 1 2026; paceretfs.com fund page Top 10 Holdings (partial: 3 positions only; the full Daily Holdings file is a protecte) history=15 distributions=1 frequency=Unknown
+     NAV $24.86 as of Sep 30 2026 | net assets $3.11 M | month-end returns as of Oct 1 2026 | quarter-end as of Sep 30 2026
+COWZ: holdings=102 (as of Jul 31 2026; SEC EDGAR Form N-PORT-P (accession 0000894189-26-029012, report period 2026-07-31)) history=2456 distributions=40 frequency=Quarterly
+     NAV $66.77 as of Sep 30 2026 | net assets $18.59 B | month-end returns as of Sep 30 2026 | quarter-end as of Jun 30 2026
+FLRT: holdings=320 (as of Jul 31 2026; SEC EDGAR Form N-PORT-P (accession 0000894189-26-028988, report period 2026-07-31)) history=2922 distributions=129 frequency=Monthly
+     NAV $46.46 as of Sep 30 2026 | net assets $962.15 M | month-end returns as of Sep 30 2026 | quarter-end as of Jun 30 2026
+PSFF: holdings=14 (as of Jul 31 2026; SEC EDGAR Form N-PORT-P (accession 0000894189-26-029004, report period 2026-07-31)) history=1445 distributions=1 frequency=Unknown
+     NAV $35.12 as of Sep 30 2026 | net assets $611.92 M | month-end returns as of Sep 30 2026 | quarter-end as of Jun 30 2026
+index counts: {'funds': 4, 'holdings': 439, 'history': 6838} | funds written: ['ACBH', 'COWZ', 'FLRT', 'PSFF']
+
+== Files written (identical set in both runs; no unrequested fund directories) ==
+./pacer/funds/ACBH/history/001.json
+./pacer/funds/ACBH/holdings/001.json
+./pacer/funds/ACBH/meta.json
+./pacer/funds/COWZ/history/001.json
+./pacer/funds/COWZ/history/002.json
+./pacer/funds/COWZ/history/003.json
+./pacer/funds/COWZ/holdings/001.json
+./pacer/funds/COWZ/meta.json
+./pacer/funds/FLRT/history/001.json
+./pacer/funds/FLRT/history/002.json
+./pacer/funds/FLRT/history/003.json
+./pacer/funds/FLRT/holdings/001.json
+./pacer/funds/FLRT/holdings/002.json
+./pacer/funds/FLRT/meta.json
+./pacer/funds/PSFF/history/001.json
+./pacer/funds/PSFF/history/002.json
+./pacer/funds/PSFF/holdings/001.json
+./pacer/funds/PSFF/meta.json
+./pacer/index.json
+./pacer/update-state.json
+
+== Byte stability (sha256 of every file, Run A vs Run B) ==
+19 of 20 files byte-identical (index.json, update-state.json, every meta.json and holdings page, COWZ/PSFF/ACBH history).
+Only ./pacer/funds/FLRT/history/002.json differs: 2 of 6838 history rows changed Adj Close by 0.01 (Apr 23 2020 30.52 vs 30.53, Apr 12 2021 34.11 vs 34.10).
+Cause: Yahoo recomputes adjusted closes on every request; at a 2-decimal rounding boundary the last digit flips. This is upstream jitter, documented here and not masked. Close, volume, dates, holdings, meta and index are unchanged.
+
+10c10
+< c67367fd843fcdd1c282615654720cd0e6ab97c7fabbb04131d5c435865445c2  ./pacer/funds/FLRT/history/002.json
+---
+> 29c36884fa6d0d797b816ff4e45051132ecd97256a07645229677d0ba2c8ddb7  ./pacer/funds/FLRT/history/002.json

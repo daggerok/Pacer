@@ -1,6 +1,6 @@
 # Pacer
 
-One of the app's features lets you select Pacer ETFs in the Watchlist and aggregate their holdings to see how often each ticker appears across the selected funds. Repeated holdings make overlapping exposure visible: the more selected funds include a ticker, the greater its potential influence on the portfolio; gains in that holding may help, while declines may hurt, and actual impact also depends on each fund's position size.  Another feature makes it faster and easier to find funds with stronger growth over different periods, higher dividend yields or distributions, greater Total Return (price performance plus dividends), and other key performance metrics. A single-file client-side tool that reads the generated `./api/pacer` static feed (Pacer ETFs product listing and per-fund pages, daily holdings CSV exports, SEC EDGAR N-PORT-P holdings fallback, Yahoo Finance daily history) into a searchable ETF/investment-theme catalog with per-fund tabs, watchlist aggregation, ticker copy and CSV/TXT export - the same look, feel, columns and business logic as the sibling applications.
+One of the app's features lets you select Pacer ETFs in the Watchlist and aggregate their holdings to see how often each ticker appears across the selected funds. Repeated holdings make overlapping exposure visible: the more selected funds include a ticker, the greater its potential influence on the portfolio; gains in that holding may help, while declines may hurt, and actual impact also depends on each fund's position size.  Another feature makes it faster and easier to find funds with stronger growth over different periods, higher dividend yields or distributions, greater Total Return (price performance plus dividends), and other key performance metrics. A single-file client-side tool that reads the generated `./api/pacer` static feed (Pacer ETFs product listing and per-fund pages, SEC EDGAR N-PORT-P full holdings, Yahoo Finance daily history) into a searchable ETF/investment-theme catalog with per-fund tabs, watchlist aggregation, ticker copy and CSV/TXT export - the same look, feel, columns and business logic as the sibling applications.
 
 ## Using Bun
 
@@ -23,40 +23,38 @@ bun test
 
 Run `./scripts/update-data.ts -h` (or `--help`) to print every configuration variable with its default and usage examples.
 
-Defaults live in `scripts/update-data.config.json` (every control as a string). Explicit environment variables override the file. The **Update Pacer ETF data** GitHub Actions workflow uses the same resolver (`resolveControls` in `scripts/update-data.ts`): individual `workflow_dispatch` inputs are blank by default and inherit the file, and the `advanced` input accepts a JSON object with any control (for example `{"VERBOSE":"true"}`). Precedence: file defaults < advanced JSON < nonblank inputs < protected Actions variable or environment. GitHub allows at most 25 inputs, so `STORE_RAW_DOWNLOADS`, `SEC_UA` and `VERBOSE` are set through `advanced`, and `SEC_UA` is also taken from the protected `SEC_UA` repository Actions variable when it is nonblank. The workflow always writes to `api/pacer` only. All supplied filters use **AND** logic.
+Defaults live in `scripts/update-data.config.json` (every control as a string). Explicit environment variables override the file. The **Update Pacer ETF data** GitHub Actions workflow uses the same resolver (`resolveControls` in `scripts/update-data.ts`): individual `workflow_dispatch` inputs are blank by default and inherit the file, and the `advanced` input accepts a JSON object with any control (for example `{"VERBOSE":"true"}`). Precedence: file defaults < advanced JSON < nonblank inputs < protected Actions variable or environment. GitHub allows at most 25 inputs, so `STORE_RAW_DOWNLOADS`, `VERBOSE` and `SEC_UA` are set through `advanced`, and `SEC_UA` is also taken from the protected `SEC_UA` repository Actions variable when it is nonblank. The workflow always writes to `api/pacer` only. All supplied filters use **AND** logic.
 
 ### Data sources
 
 | Block | Source |
 | --- | --- |
-| Catalog (all Pacer ETFs) | `https://www.paceretfs.com/products/` - one performance table per investment theme (name, ticker, total expenses, inception, NAV total returns) |
-| Fund page per fund | `https://www.paceretfs.com/products/{lower-ticker}` - quarter-end Performance (%), Top 10 Holdings (%) and the full Distributions table (e.g. [COWZ](https://www.paceretfs.com/products/cowz)) |
-| Holdings per fund | `https://www.paceretfs.com/products/holdings_download/{TICKER}` daily holdings CSV export (net assets, shares outstanding, CUSIP, weight, market value) |
-| Holdings fallback | SEC EDGAR Form N-PORT-P (Pacer Funds Trust, CIK 0001616668) when the daily CSV is unavailable; the official top 10 table is a labelled partial last resort |
-| Daily history, dividends | Yahoo Finance public chart API (`/v8/finance/chart/{TICKER}?range=max&interval=1d&events=div%7Csplit`); the fund-page distribution history wins where published |
-| Access | paceretfs.com sits behind a Cloudflare managed challenge: pages are fetched direct first and through the read-only r.jina.ai rendering proxy (paced at 3.2s or slower) after two denials |
+| Catalog (all Pacer ETFs) | `https://www.paceretfs.com/products/` - one performance table per investment theme (name, ticker, total expenses, inception, NAV total returns) plus the series listing for funds without a table row |
+| Fund page per fund | `https://www.paceretfs.com/products/{TICKER}` (Structured Outcome funds: `/products/structured-outcome-strategies/{TICKER}`) - Fund Details, quarter-end performance, top 10 holdings, distribution history (e.g. [COWZ](https://www.paceretfs.com/products/COWZ)) |
+| Holdings per fund | SEC EDGAR Form N-PORT-P full schedule (Pacer Funds Trust, CIK 0001616668); the official top 10 table is a labelled partial fallback |
+| Daily history | Yahoo Finance public chart API (`/v8/finance/chart/{TICKER}?range=max&interval=1d&events=div`); distributions fall back to its dividend events |
+| Access | paceretfs.com sits behind a Cloudflare managed challenge: direct requests get HTTP 403, so pages are read through the read-only r.jina.ai rendering proxy |
 
 ### Metrics and caveats
 
 Each fund carries a derived `metrics` object that powers the catalog columns shared with the sibling sites:
 
-- `ytd` / `tr1y` - official YTD and 1-year total returns published in the product listing -> *YTD Return*, *TR 1Y*
+- `ytd` / `tr1y` - official YTD and 1-year returns -> *YTD Return*, *TR 1Y*
 - `cagr3y` / `cagr5y` / `cagr10y` - published annualized 3Y/5Y/10Y figures -> *CAGR 3Y/5Y/10Y*
 - `tr3y` / `tr5y` / `tr10y` - cumulative 3Y/5Y/10Y figures `(1 + CAGR)^n - 1` -> *TR 3Y/5Y/10Y*
 - `siAnn` - since-inception annualized -> *SI Ann.*
-- `ter` - total annual fund operating expenses published in the product listing -> *Expense Ratio*
-- `dividendYield` - indicated yield (latest distribution x payments per year / NAV), an estimate: Pacer publishes no distribution yield; `-` when no distribution or NAV is available
-- `nav` - derived as `NetAssets / SharesOutstanding` from the daily holdings CSV, because paceretfs.com publishes no NAV or closing price
+- `dividendYield` - indicated yield (latest distribution x payments per year / NAV), an estimate: Pacer publishes no distribution yield
+- `secYield` - 30-day SEC yield when the fund page publishes one; `-` otherwise
 
 Caveats:
 
-- Returns in the product listing are official NAV total returns as of the table header date (month-end); the fund pages add quarter-end NAV and market-price rows; values derived from Yahoo Finance daily history are market-price estimates used only where the official figure is missing
+- Returns in the product listing are official NAV total returns as of the table's first header date (month-end); the fund pages add quarter-end NAV and market-price rows; values derived from Yahoo Finance daily history are market-price estimates used only where the official figure is missing
 - Unavailable values stay empty and are never written as `0`; young funds and autocallable funds publish `-` or `n/a` for tenors they do not have yet
 - Each fund keeps as-of date and source metadata for holdings, history and distributions
-- Holdings come from the dated daily CSV export; SEC EDGAR N-PORT-P is used only when the CSV is unavailable and `EDGAR_FALLBACK` is on (a quarterly-lagged report period, shown in the holdings as-of date), the official top 10 table is a labelled partial fallback, and the previous run is the last resort
-- Net assets and shares outstanding are the official figures from the daily holdings CSV; NAV is derived from them and labelled as such in `meta.json`; premium/discount is computed from the market price and the derived NAV
-- Only funds listed in the Pacer product listing are published; SEC series without a listing entry are ignored
-- Pages are fetched direct first and through the rendering proxy after two denials; `REQUEST_SLEEP` (2.5s) and `CONCURRENCY` (1) defaults are conservative for this reason
+- The full "Daily Holdings" file is a protected download that neither direct requests nor the rendering proxy can read, so full holdings come from the latest SEC EDGAR N-PORT-P filing (a quarterly-lagged report period, shown in the holdings as-of date); new funds without a filing fall back to the official top 10 table (partial, weights only, market values derived from net assets and labelled as such); a previously published full schedule is kept over the partial table, and the previous run is the last resort
+- Net assets, NAV and market price are the official fund-page figures as of the Fund Details date; premium/discount is the published value
+- Only funds listed in the Pacer product listing are published; SEC series without a listing entry (for example SZNE and SZNG) are ignored
+- Pages are fetched direct first and through the rendering proxy (paced at 3.2s or slower, one request per fund) after two denials; `REQUEST_SLEEP` and `CONCURRENCY` defaults are conservative for this reason
 
 ### Update controls
 
@@ -75,8 +73,8 @@ Keep this table, `scripts/update-data.config.json`, `CONTROL_NAMES` and `--help`
 | `HISTORY_PAGE_SIZE` | `1000` | Rows in each generated daily-history JSON page |
 | `STORE_RAW_DOWNLOADS` | `false` | Store the official product listing and fund pages (markdown) under `api/pacer/raw` |
 | `MAX_RETRIES` | `2` | Retries after the initial request; only network errors and HTTP 403/408/425/429/5xx are retried with exponential backoff |
-| `HISTORY_RANGE` | `max` | Yahoo chart range for history rows (`max`, `10y`, `5y`, ...); older rows already published are always retained |
-| `EDGAR_FALLBACK` | `true` | Read full holdings from SEC EDGAR Form N-PORT-P when the daily holdings CSV is unavailable |
+| `HISTORY_RANGE` | `max` | Yahoo chart range for history rows (`max`, `10y`, `5y`, ...) |
+| `EDGAR_FALLBACK` | `true` | Read full holdings from SEC EDGAR Form N-PORT-P; when off, the official top 10 table or the previous holdings are used |
 | `SKIP_YAHOO` | `false` | Keep previous history and distributions while refreshing catalog and holdings |
 | `SKIP_PACER` | `false` | Keep the previously published catalog, fund-page data, holdings and distributions |
 | `SEC_UA` | empty (built-in descriptor) | SEC User-Agent override; SEC policy requires automated tools to declare a contact; the protected `SEC_UA` Actions variable wins when nonblank |
@@ -109,7 +107,7 @@ bun build app.tsx --outfile=/dev/null
 git diff --check
 ```
 
-`bun test` also covers the README controls table, the config file, `--help` and the workflow.
+`bun test` also covers the README controls table, the config file, `--help` and the workflow (`scripts/config-docs.test.ts`).
 
 ## Brands table
 
@@ -162,7 +160,7 @@ git diff --check
 | JPMorgan | am.jpmorgan.com fund explorer + product-data JSON | [JPMorgan](https://github.com/daggerok/JPMorgan) |
 | NEOS | neosfunds.com lineup table + official fund pages + daily holdings CSV | [Neos](https://github.com/daggerok/Neos) |
 | Northern Trust | etfs.ntam.northerntrust.com funds list + per-fund CSV/JSON downloads | [Northern-Trust](https://github.com/daggerok/Northern-Trust) |
-| Pacer ETFs | paceretfs.com product listing and fund pages (Cloudflare WAF; r.jina.ai proxy fallback) + daily holdings CSV + SEC EDGAR N-PORT-P (Pacer Funds Trust) holdings fallback + Yahoo Finance history/dividends | [Pacer](https://github.com/daggerok/Pacer) |
+| Pacer ETFs | paceretfs.com product catalog and fund pages (Cloudflare WAF; r.jina.ai proxy fallback) + SEC EDGAR N-PORT-P (Pacer Funds Trust) + Yahoo Finance history/dividends | [Pacer](https://github.com/daggerok/Pacer) |
 | ProShares | proshares.com ETF finder + fund pages + official data host | [ProShares](https://github.com/daggerok/ProShares) |
 | Schwab | schwabassetmanagement.com product pages + CSV exports | [Schwab](https://github.com/daggerok/Schwab) |
 | SPDR | SSGA / State Street public feeds | [SPDR](https://github.com/daggerok/SPDR) |
@@ -179,4 +177,4 @@ git diff --check
 
 [MIT - same as all sibling ETF repositories.](./LICENSE)
 
-Pacer(R) and the fund names/tickers referenced here are trademarks of Pacer Financial, Inc. This is an independent, unofficial tool; it is not affiliated with, endorsed by, or sponsored by Pacer Financial, Inc. or Pacer Advisors, LLC. All data is reproduced from Pacer ETFs' own public product pages, public SEC EDGAR filings and Yahoo Finance for research purposes. All other trademarks, including index names, are the property of their respective owners.
+Pacer®, Pacer ETFs®, Pacer Cash Cows Index®, Pacer Trendpilot® and the fund names/tickers referenced here are trademarks or service marks of Pacer Financial, Inc. and/or its affiliates. This is an independent, unofficial tool; it is not affiliated with, endorsed by, or sponsored by Pacer ETFs, Pacer Advisors, Inc. or Pacer Financial, Inc. All data is reproduced from Pacer ETFs' own public fund pages (read through a public rendering proxy), public SEC EDGAR filings and Yahoo Finance for research purposes. All other trademarks, including index names, are the property of their respective owners.

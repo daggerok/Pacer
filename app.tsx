@@ -138,10 +138,10 @@ const COLUMN_TOOLTIPS: Record<string, string> = {
   '#': 'Row index in current table view.',
   Use: 'Use / Multi-ETF Selection — Check this box to include this ETF\'s underlying holdings in the combined Watchlist tab.',
   Ticker: 'Ticker Symbol — Unique stock market identifier. For holdings: the exchange ticker resolved from public SEC / exchange data at data-build time. "—" when the position has no exchange ticker (bond, private debt) — then the Identifier is the key.',
-  'Fund Name': 'Fund Name — Official Pacer ETFs product listing / product-page name of the exchange-traded fund (ETF).',
-  Category: 'Category — the Pacer ETFs product listing groups its ETFs by investment theme (Risk Mitigation, High Quality Value, Growth, Thematic Growth, Factor, Structured Outcome, Income); the tab shows that theme, the product-listing grouping is kept in meta.json.',
+  'Fund Name': 'Fund Name — Official Pacer ETFs fund-page name of the exchange-traded fund (ETF).',
+  Category: 'Category — the Pacer ETFs product listing groups its ETFs by investment theme (Risk Mitigation, High Quality Value, Growth, Thematic Growth, Factor, Structured Outcome, Income); the tab shows that theme, the listing grouping is kept in meta.json.',
   Name: 'Security Name — Full registered legal name of the company or underlying financial asset.',
-  Identifier: 'Identifier — CUSIP as published in the paceretfs.com daily holdings CSV (CUSIP / other identifier when the SEC N-PORT-P fallback supplied the sheet). Positions without an exchange ticker (cash, money market) are identified in the Watchlist by this.',
+  Identifier: 'Identifier — CUSIP / ISIN as published in the SEC Form N-PORT-P filing (the official fund-page top-10 identifier when that fallback supplied the sheet). Positions without an exchange ticker (bonds, cash, futures) are identified in the Watchlist by this.',
   SEDOL: 'SEDOL — Stock Exchange Daily Official List identifier.',
   TER: 'Gross Expense Ratio — Total annual fund operating expenses as a % of assets.',
   NAV: 'NAV (Net Asset Value) — Per-share dollar value of the fund.',
@@ -153,22 +153,22 @@ const COLUMN_TOOLTIPS: Record<string, string> = {
   ETFs: 'Selected ETFs holding this security.',
   Type: 'Category — the investment theme from the Pacer ETFs product listing (see the Category column). Same source as the category tabs.',
   Expense: 'Gross Expense Ratio — Total annual fund operating expenses as a % of assets.',
-  'Dividend Yield': 'Dividend Yield — indicated (latest distribution per share x payments per year / NAV) from the official Pacer distribution history; the official Pacer ETFs product page publishes no fund distribution yield.',
-  'SEC Yield': 'SEC Yield (30-Day) — The 30-day SEC yield as published on the official Pacer ETFs product page; "—" when that page does not publish one.',
-  'YTD Return': 'YTD Return — Official Pacer NAV total return year-to-date (product listing, month-end series) where published; otherwise market-price return since the start of the year computed from adjusted closes (Yahoo).',
-  'TR 1Y': 'TR 1Y (1-Year Total Return) — Official Pacer NAV total return over the past year (product listing, month-end series) where published, otherwise adjusted market-price return from Yahoo.',
+  'Dividend Yield': 'Dividend Yield — indicated (latest distribution per share x payments per year / NAV) from the official distribution history.',
+  'SEC Yield': 'SEC Yield (30-Day) — The 30-day SEC yield as published on the official Pacer ETFs fund page; "—" when that page does not publish one.',
+  'YTD Return': 'YTD Return — Official Pacer ETFs NAV total return year-to-date (product listing, month-end series) where published; otherwise market-price return since the start of the year computed from adjusted closes (Yahoo).',
+  'TR 1Y': 'TR 1Y (1-Year Total Return) — Official Pacer ETFs NAV total return over the past year (product listing, month-end series) where published, otherwise adjusted market-price return from Yahoo.',
   'TR 3Y': 'TR 3Y (3-Year Total Return) — Cumulative total return over 3 years, derived exactly from the 3Y CAGR: (1 + CAGR 3Y)^3 - 1 (official NAV CAGR where published, adjusted closes otherwise).',
   'TR 5Y': 'TR 5Y (5-Year Total Return) — Cumulative total return over 5 years, derived exactly from the 5Y CAGR: (1 + CAGR 5Y)^5 - 1 (official NAV CAGR where published, adjusted closes otherwise).',
   'TR 10Y': 'TR 10Y (10-Year Total Return) — Cumulative total return over 10 years, derived exactly from the 10Y CAGR: (1 + CAGR 10Y)^10 - 1 (official NAV CAGR where published, adjusted closes otherwise).',
-  'CAGR 3Y': 'CAGR 3Y (3-Year Compound Annual Growth Rate) — Official Pacer annualized NAV total return over 3 years (product listing) where published, otherwise computed from adjusted closes.',
-  'CAGR 5Y': 'CAGR 5Y (5-Year Compound Annual Growth Rate) — Official Pacer annualized NAV total return over 5 years (product listing) where published, otherwise computed from adjusted closes.',
-  'CAGR 10Y': 'CAGR 10Y (10-Year Compound Annual Growth Rate) — Official Pacer annualized NAV total return over 10 years (product listing) where published, otherwise computed from adjusted closes.',
-  YTD: 'YTD total return — official Pacer NAV return (month-end) where published, otherwise market-price return from adjusted closes.',
-  '1Y': '1-year official Pacer NAV total return where published, otherwise adjusted market-price return, month-end series.',
-  '3Y': '3-year average annual return (CAGR), official Pacer NAV total return where published, otherwise Yahoo adjusted close.',
-  '5Y': '5-year average annual return (CAGR), official Pacer NAV total return where published, otherwise Yahoo adjusted close.',
-  '10Y': '10-year average annual return (CAGR), official Pacer NAV total return where published, otherwise Yahoo adjusted close.',
-  'SI Ann.': 'Since-inception annualized return, official Pacer NAV total return where published, otherwise Yahoo adjusted close.',
+  'CAGR 3Y': 'CAGR 3Y (3-Year Compound Annual Growth Rate) — Official Pacer ETFs annualized NAV total return over 3 years (product listing) where published, otherwise computed from adjusted closes.',
+  'CAGR 5Y': 'CAGR 5Y (5-Year Compound Annual Growth Rate) — Official Pacer ETFs annualized NAV total return over 5 years (product listing) where published, otherwise computed from adjusted closes.',
+  'CAGR 10Y': 'CAGR 10Y (10-Year Compound Annual Growth Rate) — Official Pacer ETFs annualized NAV total return over 10 years (product listing) where published, otherwise computed from adjusted closes.',
+  YTD: 'YTD total return — official Pacer ETFs NAV return (month-end) where published, otherwise market-price return from adjusted closes.',
+  '1Y': '1-year official Pacer ETFs NAV total return where published, otherwise adjusted market-price return, month-end series.',
+  '3Y': '3-year average annual return (CAGR), official Pacer ETFs NAV total return where published, otherwise Yahoo adjusted close.',
+  '5Y': '5-year average annual return (CAGR), official Pacer ETFs NAV total return where published, otherwise Yahoo adjusted close.',
+  '10Y': '10-year average annual return (CAGR), official Pacer ETFs NAV total return where published, otherwise Yahoo adjusted close.',
+  'SI Ann.': 'Since-inception annualized return, official Pacer ETFs NAV total return where published, otherwise Yahoo adjusted close.',
   'Return As Of': 'As-of date of the month-end return series.',
   Inception: 'Fund inception date.',
   Exchange: 'Primary listing exchange.',
@@ -177,12 +177,12 @@ const COLUMN_TOOLTIPS: Record<string, string> = {
   Holdings: 'Rows in the fund\'s latest daily holdings file.',
   History: 'Rows in the fund\'s NAV history file.',
   'As Of': 'NAV / AUM as-of date.',
-  Frequency: 'Frequency — sortable payment cadence coded by scripts/update-data.ts (frequencyCode in index.json) from the official Pacer distribution history, Yahoo dividends as fallback: 01 - Monthly, 04 - Quarterly, 06 - Semi-annually, 12 - Annually; 00 denotes unavailable/unknown and 99 denotes irregular.',
+  Frequency: 'Frequency — sortable payment cadence coded by scripts/update-data.ts (frequencyCode in index.json) from the official Pacer ETFs distribution history, Yahoo dividends as fallback: 01 - Monthly, 04 - Quarterly, 06 - Semi-annually, 12 - Annually; 00 denotes unavailable/unknown and 99 denotes irregular.',
   'Ex-Date': 'Ex-dividend date of the latest distribution.',
   Dividend: 'Latest dividend per share.',
   Coupon: 'Bond annual coupon rate (%).',
   Maturity: 'Bond maturity date.',
-  'Market Value': 'Position market value in USD — as published in the paceretfs.com daily holdings CSV (N-PORT-P value when that fallback supplied the sheet).',
+  'Market Value': 'Position market value in USD — the N-PORT-P reported value; derived by the feed as weight x Total Net Assets when only the official fund-page top-10 table (weights, not values) supplied the sheet.',
   Section: 'Section — Grouping of the overview metric (Fund, Cost, Price, Assets, Returns, Distributions, Holdings).',
   Metric: 'Metric — Overview metric name.',
   Value: 'Overview metric value.',
@@ -452,7 +452,7 @@ function normalizeFundRow(fund: IndexFund): FundRow {
     // The updater writes the coded label (frequencyCode) into index.json; the
     // client-side formatter is only the fallback for feeds that predate it.
     dividendFrequency: fund.frequencyCode ? String(fund.frequencyCode) : formatDividendFrequency(fund.distributions && fund.distributions.frequency ? fund.distributions.frequency : '—'),
-    secYield: metrics.secYield ?? null, // official Pacer ETFs product pages publish the 30-day SEC yield for most funds.
+    secYield: metrics.secYield ?? null, // official Pacer ETFs fund pages publish the 30-day SEC yield for some funds.
     returnAsOf: monthEnd.asOfDate ?? null,
     searchIndex: '',
   };
@@ -1526,7 +1526,7 @@ function renderOverviewTable(fund: FundRow): void {
     { section: 'Distributions', metric: 'Ex-Date', value: fund.distributions ? fund.distributions.exDate : null },
     { section: 'Distributions', metric: 'Latest Dividend', value: fund.distributions ? fund.distributions.dividend : null },
     { section: 'Distributions', metric: 'Dividend Yield (indicated)', value: fund.dividendYield === null || fund.dividendYield === undefined ? null : `${fund.dividendYield.toFixed(2)}% (latest distribution x frequency / NAV)` },
-    { section: 'Distributions', metric: 'SEC Yield (30-day)', value: meta && meta.yields ? (meta.yields.secYieldText || '—') : (fund.secYield === null || fund.secYield === undefined ? 'not published on the official Pacer ETFs product page for this fund' : `${fund.secYield.toFixed(2)}%`) },
+    { section: 'Distributions', metric: 'SEC Yield (30-day)', value: meta && meta.yields ? (meta.yields.secYieldText || '—') : (fund.secYield === null || fund.secYield === undefined ? 'not published on the official Pacer ETFs fund page for this fund' : `${fund.secYield.toFixed(2)}%`) },
     { section: 'Distributions', metric: 'Dividend Yield Basis', value: meta && meta.yields ? meta.yields.dividendYieldKind : null },
     { section: 'Distributions', metric: 'SEC Yield Basis', value: meta && meta.yields ? meta.yields.secYieldKind : null },
     { section: 'Holdings', metric: 'Holdings Rows', value: fund.holdings },
@@ -1568,7 +1568,7 @@ function renderOverviewTable(fund: FundRow): void {
   }
 
   el.tickerCount.textContent = fund.ticker;
-  renderSubtitle(`${fund.ticker} overview · ${rows.length} metrics. Returns are the official Pacer NAV total returns where published (Yahoo adjusted closes otherwise).`);
+  renderSubtitle(`${fund.ticker} overview · ${rows.length} metrics. Returns are the official Pacer ETFs NAV total returns where published (Yahoo adjusted closes otherwise).`);
 }
 
 function renderDistributionsTable(fund: FundRow): void {
@@ -1604,7 +1604,7 @@ function renderDistributionsTable(fund: FundRow): void {
   }
 
   el.tickerCount.textContent = fund.ticker;
-  renderSubtitle(`${fund.ticker} distributions · official Pacer distribution history (ex-date, total distribution per share; Yahoo dividends when the fund page is unavailable); frequency is inferred from the cadence.`);
+  renderSubtitle(`${fund.ticker} distributions · official Pacer ETFs distribution history (ex-date, total distribution per share; Yahoo dividends when the fund-page table is unavailable); frequency is inferred from the cadence.`);
 }
 
 // =========================================================================
@@ -1657,7 +1657,7 @@ function renderSubtitleDetails(text?: string): void {
   }
   el.subtitle.innerHTML = `
     <span class="block sm:inline">${escapeHtml(base)}${selectionItem}</span>
-    <span class="block sm:inline">·${generated ? ` updated ${escapeHtml(generated)}` : ''}${countsText ? ` · ${escapeHtml(countsText)}.` : '.'} Data: <a href="./api/pacer/index.json" target="_blank" rel="noopener noreferrer" class="font-semibold text-blue-600 dark:text-blue-400 hover:underline">api/pacer/index.json</a> generated from <a href="https://www.paceretfs.com/products/" target="_blank" rel="noopener noreferrer" class="font-semibold text-blue-600 dark:text-blue-400 hover:underline">paceretfs.com product listing, pages + holdings CSV downloads</a> + SEC EDGAR N-PORT-P (<a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&amp;CIK=0001616668" target="_blank" rel="noopener noreferrer" class="font-semibold text-blue-600 dark:text-blue-400 hover:underline">Pacer Funds Trust, CIK 0001616668</a> — holdings fallback only) + Yahoo Finance</span>
+    <span class="block sm:inline">·${generated ? ` updated ${escapeHtml(generated)}` : ''}${countsText ? ` · ${escapeHtml(countsText)}.` : '.'} Data: <a href="./api/pacer/index.json" target="_blank" rel="noopener noreferrer" class="font-semibold text-blue-600 dark:text-blue-400 hover:underline">api/pacer/index.json</a> generated from <a href="https://www.paceretfs.com/products/" target="_blank" rel="noopener noreferrer" class="font-semibold text-blue-600 dark:text-blue-400 hover:underline">paceretfs.com fund pages (read-only rendering proxy)</a> + SEC EDGAR N-PORT-P (<a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&amp;CIK=0001616668" target="_blank" rel="noopener noreferrer" class="font-semibold text-blue-600 dark:text-blue-400 hover:underline">Pacer Funds Trust, CIK 0001616668</a>, full holdings) + Yahoo Finance</span>
   `;
   el.subtitle.querySelectorAll('a[data-activate-fund]').forEach((link: any) => {
     link.addEventListener('click', () => activateFund(link.dataset.activateFund || ''));
