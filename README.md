@@ -86,7 +86,7 @@ Keep this table, `scripts/update-data.config.json`, `CONTROL_NAMES` and `--help`
 | `PERFORMANCE_YTD`, `_1Y`, `_3Y`, `_5Y`, `_10Y` | `:` | Annualized return ranges (`min:max`); YTD and 1Y are the official returns where published |
 | `TOTAL_RETURN_YTD`, `_1Y`, `_3Y`, `_5Y`, `_10Y` | `:` | Cumulative return ranges (`min:max`) |
 
-`TICKERS` combines with the AUM, TER, yield and return filters using AND logic; it does not override them. Funds not selected for a successful update keep their prior published metadata and data files
+`TICKERS` combines with the AUM, TER, yield and return filters using AND logic; it does not override them. Filtered or bounded runs (`TICKERS`, `MAX_FETCHES`, filters, `SKIP_PACER`) and runs where the live catalog could not be read never shrink the feed: funds not selected keep their published rows and data files, and `index.json` always lists every known fund (the published index plus every `funds/*/meta.json`), with selected funds refreshed
 
 ### Examples
 
