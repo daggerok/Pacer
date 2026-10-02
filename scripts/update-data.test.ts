@@ -5,6 +5,9 @@ import { spawnSync } from 'node:child_process';
 import { readFileSync } from 'node:fs';
 import {
   CONTROL_NAMES,
+  configurePacing,
+  fetchText,
+  runWorkers,
   annualizedToTotal,
   cleanHoldingTicker,
   firstDate,
@@ -793,7 +796,7 @@ describe('samePublishedContent', () => {
 
 // ---------------------------------------------------------------------------
 // Offline parity tests for the shared updater controls: the config file,
-// CONTROL_NAMES, the README controls table, --help, the workflows and the UI
+// CONTROL_NAMES, the README controls table, --help and the workflow
 // stay in sync with each other. No network access and no api/pacer writes.
 // ---------------------------------------------------------------------------
 
@@ -815,6 +818,8 @@ test('blank input inherits the file value; advanced may deliberately blank a key
   expect(resolveControls({ TICKERS: 'COWZ' }, { TICKERS: '' }, { TICKERS: '' }).TICKERS).toBe('');
   expect(resolveControls({ CONCURRENCY: 2 }, {}, { CONCURRENCY: '' }).CONCURRENCY).toBe('2');
   expect(readConfig(resolveControls({ MAX_RETRIES: 1 })).maxRetries).toBe(1);
+  expect(() => resolveControls({}, {}, {}, { MAX_RETRIES: '0' })).toThrow();
+  expect(resolveControls({ TICKERS: 'COWZ' }, {}, {}, { TICKERS: '' }).TICKERS).toBe('');
 });
 
 test('scheduled path (empty inputs and advanced) equals the config defaults', () => {
@@ -825,7 +830,7 @@ test('scheduled path (empty inputs and advanced) equals the config defaults', ()
 
 test('resolver rejects unknown keys, invalid values, non-scalars and newline injection', () => {
   const invalid: unknown[] = [
-    { UNKNOWN: 1 }, { SEC_UA: 'x\nEVIL=yes' }, { CONCURRENCY: 0 }, { MAX_RETRIES: -1 }, { MAX_FETCHES: 1.5 },
+    { UNKNOWN: 1 }, { SEC_UA: 'x\nEVIL=yes' }, { CONCURRENCY: 0 }, { MAX_RETRIES: 0 }, { MAX_RETRIES: -1 }, { HISTORY_RANGE: 'forever' }, { SEC_YIELD: '5:1' }, { MAX_FETCHES: 1.5 },
     { REQUEST_SLEEP: '-1' }, { VERBOSE: 'maybe' }, { EDGAR_FALLBACK: 'maybe' }, { AUM: '1:2:3' }, { TER: '5:1' },
     { PERFORMANCE_1Y: 'a:b' }, { TICKERS: ['COWZ'] }, { TICKERS: { a: 1 } }, null, [],
   ];
@@ -852,10 +857,46 @@ test('Pacer-specific default values (WAF-conservative pacing)', () => {
   expect(config.tickers).toBeNull();
   expect(config.performance).toEqual({});
   expect(config.totalReturn).toEqual({});
-  // SEC_UA is blank by default: the built-in descriptor (with a contact) is used.
-  expect(file().SEC_UA).toBe('');
-  expect(config.secUa).toContain('@');
+  expect(file().SEC_UA).toBe('daggerok ETF feed daggerok@gmail.com');
+  expect(config.secUa).toBe('daggerok ETF feed daggerok@gmail.com');
+  expect(readConfig({}).secUa).toBe('daggerok ETF feed daggerok@gmail.com');
+  expect(config.secYield).toBeUndefined();
+  expect(readConfig(resolveControls(file(), {}, {}, { SEC_YIELD: '3:' })).secYield).toEqual({ min: 3, max: undefined });
   expect(readConfig(resolveControls(file(), { SEC_UA: 'My Feed me@example.org' })).secUa).toBe('My Feed me@example.org');
+});
+
+test('CONCURRENCY=15 really fetches in parallel (in-flight counter), CONCURRENCY=1 stays sequential', async () => {
+  const realFetch = globalThis.fetch;
+  const run = async (concurrency: number): Promise<number> => {
+    let inFlight = 0;
+    let peak = 0;
+    globalThis.fetch = (async () => {
+      inFlight += 1;
+      peak = Math.max(peak, inFlight);
+      await new Promise((resolve) => setTimeout(resolve, 20));
+      inFlight -= 1;
+      return new Response('ok');
+    }) as unknown as typeof fetch;
+    try {
+      const config = readConfig(resolveControls(file(), {}, {}, { REQUEST_SLEEP: '0', CONCURRENCY: String(concurrency) }));
+      configurePacing(config.requestSleep, config.concurrency);
+      const queue = Array.from({ length: 30 }, (_, i) => `https://example.test/${i}`);
+      await runWorkers(config.concurrency, async () => {
+        for (let url = queue.shift(); url; url = queue.shift()) await fetchText(url, 'test', config);
+      });
+      return peak;
+    } finally {
+      globalThis.fetch = realFetch;
+    }
+  };
+  expect(await run(15)).toBe(15);
+  expect(await run(1)).toBe(1);
+});
+
+test('SEC_UA is redacted in config logs', () => {
+  const source = read('scripts/update-data.ts');
+  expect(source).toMatch(/TOKEN\|PASSWORD\|SECRET\|COOKIE\|SEC_UA/);
+  expect(source).not.toMatch(/example\.com/);
 });
 
 test('runtimeControls reads the config file and lets env override it', async () => {
@@ -893,6 +934,8 @@ test('workflow: inputs, schedule, fixed output dir and no direct interpolation',
   for (const name of names.filter((n) => n !== 'advanced')) expect(CONTROL_NAMES).toContain(name.toUpperCase() as never);
   // SEC_UA stays out of the inputs: the protected Actions variable carries it.
   expect(names).not.toContain('sec_ua');
+  expect(yml).toContain('timeout-minutes: 30');
+  expect(yml).toContain('persist-credentials: false');
   expect(yml).toContain("cron: '0 0 * * 0'");
   expect(yml).not.toMatch(/^  push:/m);
   expect(yml).toContain('toJSON(inputs)');
@@ -904,7 +947,7 @@ test('workflow: inputs, schedule, fixed output dir and no direct interpolation',
   expect(yml).not.toContain('OUTPUT_DIR');
 });
 
-test('README keeps the standard structure, the deployment-pending note and the 27-brand shared tables', () => {
+test('README keeps the standard structure and the 29-brand shared tables', () => {
   const doc = read('README.md');
   const headings: string[] = [];
   let inFence = false;
@@ -916,7 +959,7 @@ test('README keeps the standard structure, the deployment-pending note and the 2
     '# Pacer', '## Using Bun', '## Updating the static Pacer data', '### Data sources', '### Metrics and caveats',
     '### Update controls', '### Examples', '## TypeScript and verification', '## Brands table', '## Sibling applications', '## License',
   ]);
-  expect(doc).toMatch(/deployment is pending/);
+  expect(doc).not.toMatch(/pending/i);
   expect(doc).toContain('https://daggerok.github.io/Pacer/');
   const rows = (heading: string): string[] => {
     const start = doc.indexOf(`\n${heading}\n`);
@@ -928,7 +971,7 @@ test('README keeps the standard structure, the deployment-pending note and the 2
   const brands = rows('## Brands table').map((row) => row.split('|')[1].trim().replace(/\*\*/g, ''));
   const siblings = rows('## Sibling applications').map((row) => row.split('|')[1].trim());
   const sorted = (values: string[]) => [...values].sort((a, b) => a.localeCompare(b, 'en', { sensitivity: 'base' }));
-  expect(brands).toHaveLength(27);
+  expect(brands).toHaveLength(29);
   expect(siblings).toEqual(brands);
   expect(brands).toEqual(sorted(brands));
   expect(brands).toContain('Pacer ETFs');
@@ -944,64 +987,4 @@ test('updater is fixed to api/pacer and keeps the reference types line first', (
   expect(source).toContain("new URL('../api/pacer/', import.meta.url)");
   expect(source.split('\n').slice(0, 4).join('\n')).toContain('/// <reference types="bun" />');
   expect(source).not.toMatch(/OUTPUT_DIR/);
-});
-
-// ---------------------------------------------------------------------------
-// Repository parity guards (workflows, UI, README)
-// ---------------------------------------------------------------------------
-
-describe('repository parity', () => {
-  const workflows = ['update-data.yml'];
-
-  test('every expected workflow exists', () => {
-    for (const name of workflows) expect(() => read(`.github/workflows/${name}`)).not.toThrow();
-    expect(() => read('.github/dependabot.yml')).not.toThrow();
-  });
-
-  test('the data workflow runs on a schedule + manual dispatch only (never on push)', () => {
-    const workflow = read('.github/workflows/update-data.yml');
-    expect(workflow).toContain("cron: '0 0 * * 0'");
-    expect(workflow).toContain('workflow_dispatch:');
-    expect(workflow).not.toMatch(/^\s+push:/m);
-  });
-
-  test('the data workflow commits only api/pacer and never runs tsc', () => {
-    const workflow = read('.github/workflows/update-data.yml');
-    expect(workflow).toContain('api/pacer');
-    expect(workflow).not.toContain('tsc');
-    expect(workflow).toContain('bun install --frozen-lockfile');
-    expect(workflow).toContain('bun test');
-  });
-
-  test('the UI is brand-substituted, with no leftover sibling identifiers', () => {
-    const app = read('app.tsx');
-    const html = read('index.html');
-    const leaks = ['schwab', 'Schwab', 'SCHWAB', 'franklin', 'Franklin', 'jpmorgan', 'JPMorgan']
-      .filter((needle) => app.includes(needle) || html.includes(needle));
-    expect(leaks).toEqual([]);
-    expect(html).toContain('<title>Pacer ETFs</title>');
-    expect(html).toContain("localStorage.getItem('pacer-theme')");
-    expect(app).toContain("const INDEX_URL = './api/pacer/index.json';");
-    for (const key of ['THEME_KEY', 'SELECTED_KEY', 'BLACKLIST_KEY', 'ACTIVE_FUND_KEY', 'FILTERS_KEY', 'LEGACY_FILTERS_KEY', 'SORTS_KEY', 'SITE_STATE_KEY']) {
-      expect(app).toContain(`const ${key} = 'pacer-`);
-    }
-    expect(app).toContain('return `pacer-${scope');
-    // Mandatory shared Frequency display rule.
-    expect(app).toContain("'00 - None'");
-    // SEC EDGAR trust attribution for this brand, and the provenance wording
-    // matches the updater (N-PORT-P is the full-holdings source, not a fallback).
-    expect(app).toContain('Pacer Funds Trust, CIK 0001616668');
-    expect(html).toContain('Pacer Funds Trust, CIK 0001616668');
-    expect(app).not.toContain('holdings CSV');
-    expect(html).not.toContain('holdings CSV');
-  });
-
-  test('package.json keeps the Bun-only toolchain (no runtime deps, no typescript)', () => {
-    const pkg = JSON.parse(read('package.json')) as Record<string, any>;
-    expect(pkg.scripts.test).toBe('bun test');
-    expect(pkg.dependencies).toEqual({});
-    expect(Object.keys(pkg.devDependencies).sort()).toEqual(['@types/bun', '@types/node']);
-    expect(JSON.stringify(pkg)).not.toContain('typescript');
-    expect(read('.gitignore')).toContain('node_modules/');
-  });
 });

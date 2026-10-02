@@ -4,10 +4,6 @@ on:
   schedule:
     - cron: '0 0 * * 0'
   workflow_dispatch:
-    # Every input is blank by default and inherits scripts/update-data.config.json.
-    # GitHub allows at most 25 workflow_dispatch inputs, so the controls that are
-    # rarely changed (STORE_RAW_DOWNLOADS, SEC_UA, VERBOSE) are set through the
-    # `advanced` JSON input instead: {"VERBOSE":"true"}.
     inputs:
       max_fetches:
         description: "Batch size; continue after the saved ticker cursor; empty or 0 means a full pass over every catalog fund; blank inherits scripts/update-data.config.json"
@@ -34,11 +30,6 @@ on:
         required: false
         default: ""
         type: string
-      holdings_page_size:
-        description: "Rows in each generated holdings JSON page; blank inherits scripts/update-data.config.json"
-        required: false
-        default: ""
-        type: string
       history_page_size:
         description: "Rows in each generated history JSON page; blank inherits scripts/update-data.config.json"
         required: false
@@ -59,13 +50,18 @@ on:
         required: false
         default: ""
         type: string
+      sec_yield:
+        description: "30-day SEC yield percentage range: min:max; blank inherits scripts/update-data.config.json"
+        required: false
+        default: ""
+        type: string
       history_range:
-        description: "Yahoo chart range for history rows (max, 10y, 5y, ...); blank inherits scripts/update-data.config.json"
+        description: "Yahoo history window: max, or Ny such as 10y or 5y; blank inherits scripts/update-data.config.json"
         required: false
         default: ""
         type: string
       edgar_fallback:
-        description: "Read full holdings from SEC EDGAR Form N-PORT-P (Pacer Funds Trust, CIK 0001616668) when the daily holdings CSV is unavailable; blank inherits scripts/update-data.config.json"
+        description: "Read full holdings from SEC EDGAR Form N-PORT-P (Pacer Funds Trust, CIK 0001616668); when off the official top 10 table or previous holdings are used; blank inherits scripts/update-data.config.json"
         required: false
         default: ""
         type: string
