@@ -1,14 +1,15 @@
 /// <reference types="bun" />
-// Offline regression tests for the Pacer ETFs updater. No network calls: every
-// parser is exercised against dated fixtures captured from the public sources
-// (see scripts/fixtures/README-capture-notes.txt for where each file came from).
+// Offline tests for the Pacer ETFs updater. No network calls: parsers run
+// against small inline samples shaped like the public sources.
 import { describe, expect, test } from 'bun:test';
 import { readFileSync } from 'node:fs';
 
 import {
+  CONTROL_NAMES,
   annualizedToTotal,
   catalogAsOfDate,
   frequencyCodeLabel,
+  historyPeriodStart,
   holdingsDownloadUrl,
   inferDistributionFrequency,
   isHoldingsCsv,
@@ -25,58 +26,278 @@ import {
   parseRange,
   parseRanges,
   priceReturns,
+  readConfig,
+  resolveControls,
   returnSlotForHeader,
+  runtimeControls,
   samePublishedContent,
   toIsoDate,
 } from './update-data';
 
-const fixture = (name: string): string => readFileSync(new URL(`./fixtures/${name}`, import.meta.url), 'utf8');
-
-const CATALOG = fixture('catalog-listing.txt');
-const PRODUCT_PAGE = fixture('cowz-product-page.txt');
-const HOLDINGS_CSV = fixture('cowz-holdings.csv');
-const CHART = JSON.parse(fixture('cowz-chart.json')) as Record<string, any>;
+const read = (path: string): string => readFileSync(new URL(`../${path}`, import.meta.url), 'utf8');
 
 // ---------------------------------------------------------------------------
-// Config file / GitHub Actions input contract
+// Inline samples
 // ---------------------------------------------------------------------------
 
-describe('scripts/update-data.config.json', () => {
-  const raw = JSON.parse(readFileSync(new URL('./update-data.config.json', import.meta.url), 'utf8')) as Record<string, unknown>;
-  const workflow = readFileSync(new URL('../.github/workflows/update-data.yml', import.meta.url), 'utf8');
-  const inputs = [...workflow.matchAll(/^      ([a-z][a-z0-9_]*):$/gm)].map((match) => match[1]);
+const link = (name: string, ticker: string): string =>
+  `| [${name}](https://www.paceretfs.com/products/${ticker}) | [${ticker}](https://www.paceretfs.com/products/${ticker}) |`;
 
-  test('every default is a plain string (env values are strings everywhere)', () => {
-    for (const [key, value] of Object.entries(raw)) {
-      expect(typeof value, key).toBe('string');
+const CATALOG = [
+  '### Risk Mitigation',
+  '',
+  '| click on column headers to sort |  | Total Return as of 09/30/2026 | Total Return as of 08/31/2026 |',
+  '| Name | Ticker | Total Expenses | Fund Inception | YTD | 1 Month | 3 Month | 1 Year | 3 Year | 5 Year | 10 Year | Since Inception |',
+  `${link('Pacer Trendpilot US Large Cap ETF', 'PTLC')} 0.60% | 6/11/15 | 7.08 | -0.41 | 2.16 | 14.17 | 13.63 | 9.63 | 11.05 | 9.09 |`,
+  `${link('Pacer Trendpilot 100 ETF', 'PTNQ')} 0.65% | 6/11/15 | 13.37 | 3.23 | 0.42 | 18.43 | 12.66 | 9.51 | 15.15 | 12.36 |`,
+  `${link('Pacer Trendpilot US Bond ETF', 'PTBD')} 0.60% | 10/22/19 | -0.96 | -2.58 | -2.05 | 1.56 | 4.68 | -1.53 | n/a | 0.97 |`,
+  `${link('Pacer Trendpilot Fund of Funds ETF', 'TRND')} 0.77%1 | 5/3/19 | 9.04 | -1.48 | -1.37 | 16.02 | 10.92 | 5.70 | n/a | 6.97 |`,
+  '',
+  '### High Quality Value',
+  '',
+  '| click on column headers to sort |  | Total Return as of 09/30/2026 | Total Return as of 08/31/2026 |',
+  '| Name | Ticker | Total Expenses | Fund Inception | YTD | 1 Month | 3 Month | 1 Year | 3 Year | 5 Year | 10 Year | Since Inception |',
+  `${link('Pacer US Cash Cows 100 ETF', 'COWZ')} 0.49% | 12/16/16 | 12.15 | -6.84 | 7.98 | 26.63 | 14.48 | 12.02 | n/a | 13.79 |`,
+  `${link('Pacer Cash Cows Fund of Funds ETF', 'HERD')} 0.74%1 | 5/3/19 | 13.65 | -5.79 | 4.84 | 27.71 | 16.94 | 11.21 | n/a | 13.15 |`,
+  `${link('Pacer S&P 500 Quality FCF High Dividend ETF', 'QFHD')} 0.49% | 1/12/26 | - | -5.07 | 0.19 | n/a | n/a | n/a | n/a | 13.62 |`,
+].join('\n');
+
+const PRODUCT_PAGE = [
+  '### COWZ',
+  '### Pacer US Cash Cows 100 ETF',
+  '## Performance (%)',
+  'as of 06/30/2026',
+  '|  | Since Fund Inception (12/16/16) | YTD | 1 Year | 3 Year | 5 Year |',
+  '| Pacer US Cash Cows 100 ETF NAV | 12.30 | 3.87 | 15.13 | 11.24 | 9.87 |',
+  '| Pacer US Cash Cows 100 ETF Market Price | 12.26 | 3.88 | 15.21 | 11.24 | 9.87 |',
+  '| Pacer US Cash Cows 100 Index | 12.81 | 4.14 | 15.74 | 11.89 | 10.48 |',
+  '| Russell 1000 Value Index | 10.88 | 16.26 | 27.12 | 17.79 | 11.17 |',
+  '',
+  '### Top 10 Holdings (%)',
+  'as of 10/01/2026',
+  '| Ticker | Holding | Weight |',
+  '| QCOM | QUALCOMM Inc | 2.32 |',
+  '| VLO | Valero Energy Corp | 2.22 |',
+  '| MPC | Marathon Petroleum Corp | 2.16 |',
+  '|  | Total | 6.70 |',
+  '',
+  '### Distributions',
+  '| Ex Date | Record Date | Pay Date | Total Distributions | Ordinary Income\\* | Short Term Capital Gains | Long Term Capital Gains | Return of Capital |',
+  '| 9/3/2026 | 9/3/2026 | 9/8/2026 | $0.431373 | $0.431373 | $0 | $0 | $0 |',
+  '| 6/4/2026 | 6/4/2026 | 6/8/2026 | $0.111843 | $0.111843 | $0 | $0 | $0 |',
+  '| 3/5/2026 | 3/5/2026 | 3/9/2026 | $0.20026985 | $0.20026985 | $0 | $0 | $0 |',
+  '',
+  'Pacer ETFs - Documents',
+].join('\n');
+
+const HOLDINGS_CSV = [
+  'Date,Account,StockTicker,CUSIP,SecurityName,Shares,Price,MarketValue,Weightings,NetAssets,SharesOutstanding,CreationUnits,MoneyMarketFlag',
+  '10/01/2026,COWZ,ABNB,009066101,Airbnb Inc,1225079.00000000,160.650000,196808941.35,1.06%,18581478740.00,278300000,5566.000000000000,',
+  '10/01/2026,COWZ,ACN,G1151C101,Accenture PLC,2116398.00000000,183.370000,388083901.26,2.09%,18581478740.00,278300000,5566.000000000000,',
+  '10/01/2026,COWZ,,-,CASH & OTHER,12345.00000000,1.000000,12345.00,0.00%,18581478740.00,278300000,5566.000000000000,Y',
+  '10/01/2026,COWZ,PFFD,70459X107,Cash Offset,-1.00000000,1.000000,-1.00,0.00%,18581478740.00,278300000,5566.000000000000,',
+  'Past performance is no guarantee of future results.',
+].join('\n');
+
+const CHART = {
+  chart: { result: [{
+    meta: { currency: 'USD', symbol: 'COWZ', exchangeName: 'BTS', firstTradeDate: 1482417000, regularMarketTime: 1790884800, regularMarketPrice: 67.63 },
+    timestamp: [1790343000, 1790602200, 1790688600, 1790775000, 1790861400],
+    indicators: {
+      quote: [{ close: [67.7300033569336, 67.11000061035156, 66.91000366210938, 66.76000213623047, 67.62999725341797], volume: [1316100, 893300, 879600, 724500, 1400943] }],
+      adjclose: [{ adjclose: [67.7300033569336, 67.11000061035156, 66.91000366210938, 66.76000213623047, 67.62999725341797] }],
+    },
+    events: { dividends: { '1790343000': { amount: 0.431373, date: 1790343000 } } },
+  }], error: null },
+} as Record<string, any>;
+
+// ---------------------------------------------------------------------------
+// Controls: config file, resolver, workflow, README and --help parity
+// ---------------------------------------------------------------------------
+
+describe('control resolver', () => {
+  const file = JSON.parse(read('scripts/update-data.config.json')) as Record<string, unknown>;
+
+  test('layers apply as file < advanced < nonblank inputs < env', () => {
+    const resolved = resolveControls({ MAX_FETCHES: '1', REQUEST_SLEEP: '1' }, { MAX_FETCHES: '2', REQUEST_SLEEP: '2' }, { MAX_FETCHES: '3', REQUEST_SLEEP: '' }, { MAX_FETCHES: '4' });
+    expect(resolved.MAX_FETCHES).toBe('4');
+    expect(resolved.REQUEST_SLEEP).toBe('2');
+    expect(resolveControls({ MAX_FETCHES: '1' }, { MAX_FETCHES: '2' }, { MAX_FETCHES: '3' }, {}).MAX_FETCHES).toBe('3');
+    expect(resolveControls({ MAX_FETCHES: '1' }, { MAX_FETCHES: '2' }, {}, {}).MAX_FETCHES).toBe('2');
+  });
+
+  test('blank input inherits the file value; advanced may clear a key deliberately; explicit empty env clears too', () => {
+    expect(resolveControls({ TICKERS: 'COWZ' }, {}, { TICKERS: '' }, {}).TICKERS).toBe('COWZ');
+    expect(resolveControls({ TICKERS: 'COWZ' }, { TICKERS: '' }, {}, {}).TICKERS).toBe('');
+    expect(resolveControls({ TICKERS: 'COWZ' }, {}, {}, { TICKERS: '' }).TICKERS).toBe('');
+  });
+
+  test('scheduled path (empty advanced and inputs) equals the config defaults', () => {
+    expect(resolveControls(file, {}, {}, {})).toEqual(file as Record<string, string>);
+  });
+
+  test('values are stringified; non-scalars, unknown keys and multiline values are rejected', () => {
+    expect(resolveControls({ MAX_FETCHES: 5, VERBOSE: true }, {}, {}, {})).toMatchObject({ MAX_FETCHES: '5', VERBOSE: 'true' });
+    expect(() => resolveControls({ NOPE: '1' })).toThrow(/Unknown updater control: NOPE/);
+    expect(() => resolveControls({}, { TICKERS: ['COWZ'] })).toThrow(/expected string, number or boolean/);
+    expect(() => resolveControls({}, { TICKERS: null })).toThrow(/expected string, number or boolean/);
+    expect(() => resolveControls({}, { TICKERS: 'COWZ\nCALF' })).toThrow(/multiline/);
+    expect(() => resolveControls({}, {}, { TICKERS: 'A\rB' })).toThrow(/multiline/);
+    expect(() => resolveControls({}, {}, {}, { TICKERS: 'A\0B' })).toThrow(/multiline/);
+    expect(() => resolveControls([] as unknown)).toThrow(/JSON object/);
+    expect(() => resolveControls({}, 'x')).toThrow(/JSON object/);
+  });
+
+  test('every control is validated strictly, never silently falling back', () => {
+    for (const [name, value, message] of [
+      ['MAX_FETCHES', '-1', /integer >= 0/],
+      ['MAX_FETCHES', '1.5', /integer >= 0/],
+      ['CONCURRENCY', '0', /integer >= 1/],
+      ['HOLDINGS_PAGE_SIZE', '0', /integer >= 1/],
+      ['HISTORY_PAGE_SIZE', 'abc', /integer >= 1/],
+      ['MAX_RETRIES', '0', /integer >= 1/],
+      ['REQUEST_SLEEP', '-1', /nonnegative/],
+      ['REQUEST_SLEEP', 'fast', /nonnegative/],
+      ['HISTORY_RANGE', '5', /max or Ny/],
+      ['HISTORY_RANGE', '0y', /max or Ny/],
+      ['EDGAR_FALLBACK', 'maybe', /boolean/],
+      ['SKIP_YAHOO', '2', /boolean/],
+      ['SKIP_PACER', 'x', /boolean/],
+      ['STORE_RAW_DOWNLOADS', 'x', /boolean/],
+      ['VERBOSE', 'loud', /boolean/],
+      ['AUM', '10', /colon/],
+      ['AUM', 'huge:', /invalid bound/],
+      ['TER', '1:0', /minimum must not exceed maximum/],
+      ['DIVIDEND_YIELD', 'a:b', /numbers/],
+      ['PERFORMANCE_3Y', '5', /colon/],
+      ['TOTAL_RETURN_1Y', '9:1', /minimum/],
+    ] as const) {
+      expect(() => resolveControls({}, {}, {}, { [name]: value }), `${name}=${value}`).toThrow(message);
     }
   });
 
-  test('GitHub allows at most 25 workflow_dispatch inputs — the workflow stays under it', () => {
-    expect(inputs.length).toBeLessThanOrEqual(25);
+  test('config defaults resolve to the documented Pacer values', () => {
+    const config = readConfig(resolveControls(file, {}, {}, {}));
+    expect(config).toMatchObject({
+      maxFetches: 0, requestSleep: 2.5, concurrency: 1, holdingsPageSize: 250, historyPageSize: 1000, maxRetries: 2,
+      historyRange: 'max', edgarFallback: true, skipPacer: false, skipYahoo: false, storeRawDownloads: false, tickers: null,
+      secUa: 'daggerok ETF feed daggerok@gmail.com',
+    });
+    expect(config.aum).toBeUndefined();
+    expect(config.performance).toEqual({});
   });
 
-  test('every workflow input is mirrored 1:1 into the updater env', () => {
-    for (const input of inputs) {
-      const envName = input.toUpperCase();
-      const needle = ['      ', envName, ': ${{ inputs.', input, " || '' }}"].join('');
-      expect(workflow, envName).toContain(needle);
-      expect(Object.keys(raw), envName).toContain(envName);
+  test('filters and scalar controls are parsed from the resolved values', () => {
+    const config = readConfig(resolveControls(file, {}, {}, { TICKERS: 'cowz, calf;ptlc', AUM: 'large:', TER: ':0.5', MAX_RETRIES: '1', HISTORY_RANGE: '5Y', SEC_UA: ' me me@example.org ' }));
+    expect([...(config.tickers ?? [])]).toEqual(['COWZ', 'CALF', 'PTLC']);
+    expect(config.aum).toEqual({ min: 10_000_000_000, max: undefined });
+    expect(config.ter).toEqual({ min: undefined, max: 0.5 });
+    expect(config.maxRetries).toBe(1);
+    expect(config.historyRange).toBe('5y');
+    expect(config.secUa).toBe('me me@example.org');
+  });
+
+  test('HISTORY_RANGE limits the Yahoo request window', () => {
+    const now = Date.UTC(2026, 9, 1);
+    expect(historyPeriodStart('max', now)).toBe(0);
+    const fiveYears = historyPeriodStart('5y', now);
+    expect(fiveYears).toBeGreaterThan(0);
+    expect(Math.round((now / 1000 - fiveYears) / (365.25 * 86_400))).toBe(5);
+    expect(historyPeriodStart('1y', now)).toBeGreaterThan(fiveYears);
+  });
+
+  test('runtimeControls reads the checked-in file and lets env win', async () => {
+    expect(await runtimeControls({})).toEqual(file as Record<string, string>);
+    expect((await runtimeControls({ TICKERS: 'COWZ', UNRELATED: 'x' })).TICKERS).toBe('COWZ');
+  });
+});
+
+describe('config, CONTROL_NAMES, --help and README stay in sync', () => {
+  const file = JSON.parse(read('scripts/update-data.config.json')) as Record<string, unknown>;
+  const names = [...CONTROL_NAMES];
+
+  test('config keys equal CONTROL_NAMES and every value is a string', () => {
+    expect(Object.keys(file).sort()).toEqual([...names].sort());
+    for (const [key, value] of Object.entries(file)) expect(typeof value, key).toBe('string');
+    expect(new Set(names).size).toBe(names.length);
+    for (const name of names) expect(name).toMatch(/^[A-Z0-9_]+$/);
+  });
+
+  test('the only contact in the config is the owner SEC User-Agent', () => {
+    expect(file.SEC_UA).toBe('daggerok ETF feed daggerok@gmail.com');
+    expect(JSON.stringify(file).match(/@/g)?.length).toBe(1);
+  });
+
+  test('--help documents every control and rejects stray arguments', () => {
+    const run = (args: string[]) => Bun.spawnSync(['bun', new URL('./update-data.ts', import.meta.url).pathname, ...args], { env: { PATH: process.env.PATH ?? '' } });
+    const help = run(['--help']);
+    expect(help.exitCode).toBe(0);
+    const text = new TextDecoder().decode(help.stdout);
+    for (const name of names) {
+      const tenor = /^(PERFORMANCE|TOTAL_RETURN)_(YTD|1Y|3Y|5Y|10Y)$/.exec(name);
+      expect(text, name).toContain(tenor ? `${tenor[1]}_YTD|1Y|3Y|5Y|10Y` : `${name}=`);
     }
+    expect(run(['--bogus']).exitCode).toBe(1);
   });
 
-  test('config keys without a workflow input are documented as CLI/config-only', () => {
-    const missing = Object.keys(raw).filter((key) => !inputs.includes(key.toLowerCase()));
-    // VERBOSE is config-file/CLI-only on purpose: 25 inputs is the GitHub limit.
-    expect(missing).toEqual(['VERBOSE']);
+  test('README controls table lists exactly the CONTROL_NAMES', () => {
+    const readme = read('README.md');
+    const section = readme.slice(readme.indexOf('### Update controls'), readme.indexOf('### Examples'));
+    const documented = [...section.matchAll(/`([A-Z][A-Z0-9_]+)`/g)].map((match) => match[1]);
+    expect([...new Set(documented)].sort()).toEqual([...names].sort());
   });
 
-  test('checked-in defaults match the documented Pacer pacing (WAF-conservative)', () => {
-    expect(raw.REQUEST_SLEEP).toBe('2.5');
-    expect(raw.CONCURRENCY).toBe('1');
-    expect(raw.MAX_FETCHES).toBe('0');
-    expect(raw.TICKERS).toBe('');
-    expect(raw.EDGAR_FALLBACK).toBe('true');
+  test('README has the standard sections and no leftover process artifacts', () => {
+    const readme = read('README.md');
+    const headings = [...readme.matchAll(/^(#{1,3}) (.+)$/gm)].map((match) => match[2]);
+    const order = ['Using Bun', 'Updating the static Pacer data', 'Data sources', 'Metrics and caveats', 'Update controls', 'Examples', 'TypeScript and verification', 'Brands table', 'Sibling applications', 'License'];
+    expect(headings.filter((heading) => order.includes(heading))).toEqual(order);
+    expect(headings[0]).toBe('Pacer');
+    expect(readme).not.toMatch(/worklog|fixture|evidence|config-docs/i);
+    expect(readme.slice(0, readme.indexOf('## Brands table'))).not.toMatch(/[\u2014\u2013\u2192]/);
+  });
+});
+
+describe('update-data workflow', () => {
+  const text = read('.github/workflows/update-data.yml');
+  const workflow = (Bun as unknown as { YAML: { parse(source: string): any } }).YAML.parse(text);
+  const inputs = workflow.on.workflow_dispatch.inputs as Record<string, { default: string; type: string }>;
+  const individual = Object.keys(inputs).filter((key) => key !== 'advanced');
+
+  test('at most 25 inputs, with a string advanced input defaulting to {}', () => {
+    expect(Object.keys(inputs).length).toBeLessThanOrEqual(25);
+    expect(inputs.advanced).toMatchObject({ default: '{}', type: 'string' });
+    for (const key of individual) expect(inputs[key].default, key).toBe('');
+  });
+
+  test('every individual input maps to a control name', () => {
+    for (const key of individual) expect(CONTROL_NAMES as readonly string[], key).toContain(key.toUpperCase());
+  });
+
+  test('weekly schedule plus manual dispatch only, never push', () => {
+    expect(workflow.on.schedule).toEqual([{ cron: '0 0 * * 0' }]);
+    expect(workflow.on.push).toBeUndefined();
+  });
+
+  test('uses the shared resolver with the protected SEC_UA variable and no direct input interpolation', () => {
+    expect(text).toContain('import { resolveControls } from "./scripts/update-data.ts"');
+    expect(text).toContain('toJSON(inputs)');
+    expect(text).toContain('PROTECTED_SEC_UA: ${{ vars.SEC_UA }}');
+    expect(text).not.toMatch(/\$\{\{\s*(inputs|github\.event\.inputs)\./);
+    expect(text).not.toMatch(/OUTPUT_DIR|OUT_DIR/);
+  });
+
+  test('hardened job: timeout, no persisted credentials, tests before the update, runtime-only token push', () => {
+    expect(workflow.jobs['update-data']['timeout-minutes']).toBe(30);
+    expect(text).toContain('persist-credentials: false');
+    expect(text.indexOf('bun test')).toBeLessThan(text.indexOf('bun ./scripts/update-data.ts'));
+    expect(text).toContain("credential.helper='!f()");
+    expect(text).not.toContain('tsc');
+  });
+
+  test('writes only under api/pacer', () => {
+    expect(text.match(/git add (.+)/)?.[1]).toBe('api/pacer');
+    expect(text).toContain('git diff --cached --quiet -- api/pacer');
   });
 });
 
@@ -89,7 +310,7 @@ describe('parseCatalogText (product listing)', () => {
   const byTicker = new Map(funds.map((fund) => [fund.ticker, fund]));
 
   test('parses every fund row and keeps the ticker order', () => {
-    expect(funds.map((fund) => fund.ticker)).toEqual(['CALF', 'COWZ', 'GCOW', 'HERD', 'PTBD', 'PTLC', 'PTMC', 'PTNQ', 'PWS', 'QFHD', 'TRND']);
+    expect(funds.map((fund) => fund.ticker)).toEqual(['COWZ', 'HERD', 'PTBD', 'PTLC', 'PTNQ', 'QFHD', 'TRND']);
   });
 
   test('reads the fund name and the canonical (uppercase) product page', () => {
@@ -212,20 +433,20 @@ describe('parseProductPage (fund page)', () => {
   });
 
   test('parses the published distribution history newest-first into ascending events', () => {
-    expect(summary.distributions).toHaveLength(7);
-    expect(summary.distributions[0]).toEqual({ epoch: 1741219200, amount: 0.228684 }); // 2025-03-06
+    expect(summary.distributions).toHaveLength(3);
+    expect(summary.distributions[0]).toEqual({ epoch: 1772668800, amount: 0.20027 }); // 2026-03-05, rounded to 6 decimals
     expect(summary.distributions.at(-1)).toEqual({ epoch: 1788393600, amount: 0.431373 }); // 2026-09-03
   });
 
   test('keeps the published distribution columns and rows', () => {
     expect(summary.distributionColumns[0]).toBe('Ex Date');
     expect(summary.distributionColumns[3]).toBe('Total Distributions');
-    expect(summary.distributionRows).toHaveLength(7);
+    expect(summary.distributionRows).toHaveLength(3);
     expect(summary.distributionRows.at(-1)?.slice(0, 4)).toEqual(['9/3/2026', '9/3/2026', '9/8/2026', '$0.431373']);
   });
 
   test('parses the published top 10 holdings and stops at the total row', () => {
-    expect(summary.topHoldings).toHaveLength(10);
+    expect(summary.topHoldings).toHaveLength(3);
     expect(summary.topHoldingsAsOf).toBe('2026-10-01');
     expect(summary.topHoldings[0]).toEqual({
       Name: 'QUALCOMM Inc',
@@ -276,7 +497,7 @@ describe('parseHoldingsCsv (daily holdings export)', () => {
   });
 
   test('parses rows, drops the disclaimer trailer', () => {
-    expect(parsed.rows).toHaveLength(7);
+    expect(parsed.rows).toHaveLength(4);
     expect(parsed.asOfDate).toBe('2026-10-01');
   });
 
@@ -504,38 +725,16 @@ describe('SEC EDGAR helpers', () => {
 });
 
 // ---------------------------------------------------------------------------
-// Repository parity guards (workflows, UI, README)
+// Repository guards (CI, Pages, UI, package.json)
 // ---------------------------------------------------------------------------
 
-describe('repository parity', () => {
-  const read = (path: string): string => readFileSync(new URL(`../${path}`, import.meta.url), 'utf8');
-  const workflows = ['update-data.yml', 'ci.yml', 'pages.yml'];
-
-  test('every expected workflow exists', () => {
-    for (const name of workflows) expect(() => read(`.github/workflows/${name}`)).not.toThrow();
-    expect(() => read('.github/dependabot.yml')).not.toThrow();
-  });
-
-  test('the data workflow runs on a schedule + manual dispatch only (never on push)', () => {
-    const workflow = read('.github/workflows/update-data.yml');
-    expect(workflow).toContain("cron: '0 0 * * 0'");
-    expect(workflow).toContain('workflow_dispatch:');
-    expect(workflow).not.toMatch(/^\s+push:/m);
-  });
-
-  test('the data workflow commits only api/pacer and never runs tsc', () => {
-    const workflow = read('.github/workflows/update-data.yml');
-    expect(workflow).toContain('api/pacer');
-    expect(workflow).not.toContain('tsc');
-    expect(workflow).toContain('bun install --frozen-lockfile');
-    expect(workflow).toContain('bun test');
-  });
-
+describe('repository guards', () => {
   test('CI runs the offline tests and both Bun builds', () => {
     const ci = read('.github/workflows/ci.yml');
     expect(ci).toContain('bun test');
     expect(ci).toContain('bun build --target=bun scripts/update-data.ts --outfile=/dev/null');
     expect(ci).toContain('bun build app.tsx --outfile=/dev/null');
+    expect(ci).toContain('git diff --check');
     expect(ci).not.toContain('tsc');
   });
 
@@ -543,8 +742,9 @@ describe('repository parity', () => {
     const pages = read('.github/workflows/pages.yml');
     expect(pages).toContain('_site');
     expect(pages).toContain('api/pacer');
-    expect(pages).toContain(".nojekyll");
+    expect(pages).toContain('.nojekyll');
     expect(pages).toContain("github.ref == 'refs/heads/main'");
+    expect(pages).toContain('workflows: [Update Pacer ETF data]');
   });
 
   test('the UI is brand-substituted, with no leftover sibling identifiers', () => {
