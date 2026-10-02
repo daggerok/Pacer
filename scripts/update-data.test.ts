@@ -8,6 +8,7 @@ import {
   firstDate,
   firstNumber,
   frequencyCodeLabel,
+  historyPeriodStart,
   holdingsFallback,
   htmlToText,
   inferDistributionFrequency,
@@ -749,6 +750,18 @@ headerTest('header markup supplies a focusable counter and hidden rich panel wit
   headerExpect(html).toContain("trigger.addEventListener('pointerenter'");
 });
 
+
+describe('HISTORY_RANGE window', () => {
+  test('max (and non-year tokens) start at epoch 0; Ny starts N years back', () => {
+    const now = Date.UTC(2026, 9, 1, 12);
+    expect(historyPeriodStart('max', now)).toBe(0);
+    expect(historyPeriodStart('', now)).toBe(0);
+    expect(historyPeriodStart('6mo', now)).toBe(0);
+    expect(historyPeriodStart('5y', now)).toBe(Math.floor(now / 1000 - 5 * 365.25 * 86_400));
+    expect(historyPeriodStart(' 10Y ', now)).toBe(Math.floor(now / 1000 - 10 * 365.25 * 86_400));
+    expect(historyPeriodStart('1y', now)).toBeLessThan(now / 1000);
+  });
+});
 
 describe('return range defaults', () => {
   test('colon-only values do not create active return filters', () => {

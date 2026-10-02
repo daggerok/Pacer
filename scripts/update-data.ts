@@ -1768,8 +1768,10 @@ async function processFund(fund: CatalogFund, config: UpdaterConfig, previous: J
   let historySource = 'Yahoo Finance public chart API (adjusted close)';
   if (!config.skipYahoo) {
     try {
-      const query = new URLSearchParams({ period1: '0', period2: String(Math.floor(Date.now() / 1000) + 86_400), interval: '1d', events: 'div|split', includeAdjustedClose: 'true' });
-      if (config.historyRange && config.historyRange !== 'max') query.set('range', config.historyRange);
+      // Yahoo ignores `range` once period1/period2 are present, so an `Ny` window is
+      // applied through period1 (merged from PR #3); other range tokens are passed as-is.
+      const query = new URLSearchParams({ period1: String(historyPeriodStart(config.historyRange)), period2: String(Math.floor(Date.now() / 1000) + 86_400), interval: '1d', events: 'div|split', includeAdjustedClose: 'true' });
+      if (config.historyRange && config.historyRange !== 'max' && !/^\d+y$/i.test(config.historyRange)) query.set('range', config.historyRange);
       const payload = await fetchJson(`${YAHOO_CHART_URL}/${encodeURIComponent(fund.ticker)}?${query.toString()}`, `[chart   ] ${fund.ticker}`, config, { 'User-Agent': 'Mozilla/5.0' });
       chart = parseChart(payload);
       days = chart.days;
@@ -1920,6 +1922,13 @@ async function processFund(fund: CatalogFund, config: UpdaterConfig, previous: J
     holdings: holdingsRows.length,
     history: history.length,
   };
+}
+
+/** Unix start of the Yahoo request window: 0 for max (or any non-`Ny` token), otherwise N years back from now. */
+export function historyPeriodStart(historyRange: string, now = Date.now()): number {
+  const years = /^(\d+)y$/i.exec(String(historyRange ?? '').trim());
+  if (!years) return 0;
+  return Math.max(0, Math.floor(now / 1000 - Number(years[1]) * 365.25 * 86_400));
 }
 
 function historyHeaders(): string[] {

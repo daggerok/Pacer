@@ -73,7 +73,7 @@ Keep this table, `scripts/update-data.config.json`, `CONTROL_NAMES` and `--help`
 | `HISTORY_PAGE_SIZE` | `1000` | Rows in each generated daily-history JSON page |
 | `STORE_RAW_DOWNLOADS` | `false` | Store the official product listing and fund pages (markdown) under `api/pacer/raw` |
 | `MAX_RETRIES` | `2` | Retries after the initial request; only network errors and HTTP 403/408/425/429/5xx are retried with exponential backoff |
-| `HISTORY_RANGE` | `max` | Yahoo chart range for history rows (`max`, `10y`, `5y`, ...) |
+| `HISTORY_RANGE` | `max` | Yahoo history window: `max`, or `Ny` (for example `5y`, applied as the request start date); other Yahoo range tokens are passed through as-is |
 | `EDGAR_FALLBACK` | `true` | Read full holdings from SEC EDGAR Form N-PORT-P; when off, the official top 10 table or the previous holdings are used |
 | `SKIP_YAHOO` | `false` | Keep previous history and distributions while refreshing catalog and holdings |
 | `SKIP_PACER` | `false` | Keep the previously published catalog, fund-page data, holdings and distributions |
