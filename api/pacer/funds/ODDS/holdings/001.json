@@ -1,0 +1,404 @@
+{
+  "ticker": "ODDS",
+  "page": 1,
+  "pageSize": 250,
+  "totalRows": 43,
+  "headers": [
+    "Name",
+    "Ticker",
+    "Identifier",
+    "Weight",
+    "Market Value",
+    "Shares Held",
+    "Asset Category"
+  ],
+  "rows": [
+    {
+      "Name": "NetEase Inc",
+      "Ticker": "NTES",
+      "Identifier": "64110W102",
+      "Weight": "4.8234704244",
+      "Market Value": "194307.66",
+      "Shares Held": "1458.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Nintendo Co Ltd",
+      "Ticker": "-",
+      "Identifier": "JP3756600007",
+      "Weight": "4.5469279106",
+      "Market Value": "183167.48",
+      "Shares Held": "3798.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "ROBLOX Corp",
+      "Ticker": "RBLX",
+      "Identifier": "771049103",
+      "Weight": "2.1598366072",
+      "Market Value": "87006.4",
+      "Shares Held": "2444.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Rush Street Interactive Inc",
+      "Ticker": "RSI",
+      "Identifier": "782011100",
+      "Weight": "3.2037791481",
+      "Market Value": "129060.36",
+      "Shares Held": "4796.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Rank Group PLC",
+      "Ticker": "-",
+      "Identifier": "GB00B1L5QH97",
+      "Weight": "0.6436825157",
+      "Market Value": "25929.97",
+      "Shares Held": "19905.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Nexon Co Ltd",
+      "Ticker": "-",
+      "Identifier": "JP3758190007",
+      "Weight": "1.2531932201",
+      "Market Value": "50483.37",
+      "Shares Held": "3214.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Playtech Plc",
+      "Ticker": "-",
+      "Identifier": "IM00B7S9G985",
+      "Weight": "2.1955303707",
+      "Market Value": "88444.28",
+      "Shares Held": "17359.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Pearl Abyss Corp",
+      "Ticker": "-",
+      "Identifier": "KR7263750002",
+      "Weight": "0.8856016718",
+      "Market Value": "35675.39",
+      "Shares Held": "1532.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Sportradar Group AG",
+      "Ticker": "SRAD",
+      "Identifier": "CH1134239669",
+      "Weight": "2.1342337518",
+      "Market Value": "85975.02",
+      "Shares Held": "5913.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Square Enix Holdings Co Ltd",
+      "Ticker": "-",
+      "Identifier": "JP3164630000",
+      "Weight": "1.1636939406",
+      "Market Value": "46878",
+      "Shares Held": "2700.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Take-Two Interactive Software",
+      "Ticker": "TTWO",
+      "Identifier": "874054109",
+      "Weight": "3.2502871875",
+      "Market Value": "130933.88",
+      "Shares Held": "539.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "U.S. Bank Money Market Deposit Account",
+      "Ticker": "-",
+      "Identifier": "8AMMF0A84",
+      "Weight": "0.0910480415",
+      "Market Value": "3667.76",
+      "Shares Held": "3667.760000000000",
+      "Asset Category": "STIV"
+    },
+    {
+      "Name": "Unity Software Inc",
+      "Ticker": "U",
+      "Identifier": "91332U101",
+      "Weight": "1.8655817571",
+      "Market Value": "75152.7",
+      "Shares Held": "2370.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Tencent Holdings Ltd",
+      "Ticker": "-",
+      "Identifier": "KYG875721634",
+      "Weight": "8.2181231318",
+      "Market Value": "331057.13",
+      "Shares Held": "5463.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Super Group SGHC Ltd",
+      "Ticker": "SGHC",
+      "Identifier": "GG00BMG42V42",
+      "Weight": "3.5323391137",
+      "Market Value": "142296",
+      "Shares Held": "10164.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Micro-Star International Co Lt",
+      "Ticker": "-",
+      "Identifier": "TW0002377009",
+      "Weight": "1.2359664389",
+      "Market Value": "49789.41",
+      "Shares Held": "11332.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Konami Group Corp",
+      "Ticker": "-",
+      "Identifier": "JP3300200007",
+      "Weight": "1.8406201026",
+      "Market Value": "74147.15",
+      "Shares Held": "572.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "DraftKings Inc",
+      "Ticker": "DKNG",
+      "Identifier": "26142V105",
+      "Weight": "6.5694685912",
+      "Market Value": "264643.08",
+      "Shares Held": "11271.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Electronic Arts Inc",
+      "Ticker": "-",
+      "Identifier": "285512109",
+      "Weight": "3.5841634357",
+      "Market Value": "144383.68",
+      "Shares Held": "688.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "GameStop Corp",
+      "Ticker": "GME",
+      "Identifier": "36467W109",
+      "Weight": "1.4821912974",
+      "Market Value": "59708.28",
+      "Shares Held": "2749.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Capcom Co Ltd",
+      "Ticker": "-",
+      "Identifier": "JP3218900003",
+      "Weight": "1.7538986155",
+      "Market Value": "70653.68",
+      "Shares Held": "2838.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Aristocrat Leisure Ltd",
+      "Ticker": "-",
+      "Identifier": "AU000000ALL7",
+      "Weight": "2.7387811692",
+      "Market Value": "110328.48",
+      "Shares Held": "2451.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Jumbo Interactive Ltd",
+      "Ticker": "-",
+      "Identifier": "AU000000JIN0",
+      "Weight": "0.8461192875",
+      "Market Value": "34084.89",
+      "Shares Held": "6703.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "International Games System Co",
+      "Ticker": "-",
+      "Identifier": "TW0003293007",
+      "Weight": "1.4239333699",
+      "Market Value": "57361.43",
+      "Shares Held": "2389.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "CD Projekt SA",
+      "Ticker": "-",
+      "Identifier": "PLOPTTC00011",
+      "Weight": "1.3704880484",
+      "Market Value": "55208.45",
+      "Shares Held": "827.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Bandai Namco Holdings Inc",
+      "Ticker": "-",
+      "Identifier": "JP3778630008",
+      "Weight": "2.1348521147",
+      "Market Value": "85999.93",
+      "Shares Held": "2971.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Evoke PLC",
+      "Ticker": "-",
+      "Identifier": "GI000A0F6407",
+      "Weight": "0.7533345672",
+      "Market Value": "30347.17",
+      "Shares Held": "50732.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Kingsoft Corp Ltd",
+      "Ticker": "-",
+      "Identifier": "G5264Y108",
+      "Weight": "1.2552804121",
+      "Market Value": "50567.45",
+      "Shares Held": "14818.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Entain PLC",
+      "Ticker": "-",
+      "Identifier": "IM00B5VQMV65",
+      "Weight": "3.8945466102",
+      "Market Value": "156887.09",
+      "Shares Held": "21533.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Krafton Inc",
+      "Ticker": "-",
+      "Identifier": "KR7259960003",
+      "Weight": "1.3750901479",
+      "Market Value": "55393.84",
+      "Shares Held": "325.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Modern Times Group MTG AB",
+      "Ticker": "-",
+      "Identifier": "W56523231",
+      "Weight": "1.0636747964",
+      "Market Value": "42848.85",
+      "Shares Held": "3130.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Better Collective A/S",
+      "Ticker": "-",
+      "Identifier": "DK0060952240",
+      "Weight": "0.8936451061",
+      "Market Value": "35999.41",
+      "Shares Held": "2843.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Evolution AB",
+      "Ticker": "-",
+      "Identifier": "SE0012673267",
+      "Weight": "8.064428797",
+      "Market Value": "324865.74",
+      "Shares Held": "4256.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "China Ruyi Holdings Ltd",
+      "Ticker": "-",
+      "Identifier": "BMG4404N1149",
+      "Weight": "1.1100043521",
+      "Market Value": "44715.18",
+      "Shares Held": "243499.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Kambi Group PLC",
+      "Ticker": "-",
+      "Identifier": "MT0000780107",
+      "Weight": "0.9988256318",
+      "Market Value": "40236.48",
+      "Shares Held": "2181.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Betsson AB",
+      "Ticker": "-",
+      "Identifier": "SE0022726485",
+      "Weight": "1.7906794167",
+      "Market Value": "72135.35",
+      "Shares Held": "7472.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Hacksaw AB",
+      "Ticker": "-",
+      "Identifier": "SE0025138357",
+      "Weight": "2.110572124",
+      "Market Value": "85021.84",
+      "Shares Held": "11043.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Flutter Entertainment PLC",
+      "Ticker": "FLUT",
+      "Identifier": "IE00BWT6H894",
+      "Weight": "7.4532906389",
+      "Market Value": "300246.78",
+      "Shares Held": "2874.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Genius Sports Ltd",
+      "Ticker": "GENI",
+      "Identifier": "GG00BMF1JR16",
+      "Weight": "2.2565109815",
+      "Market Value": "90900.81",
+      "Shares Held": "13117.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Vivendi SE",
+      "Ticker": "-",
+      "Identifier": "FR0000127771",
+      "Weight": "0.7847658219",
+      "Market Value": "31613.34",
+      "Shares Held": "17216.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "XD Inc",
+      "Ticker": "-",
+      "Identifier": "G9830N109",
+      "Weight": "1.0272839784",
+      "Market Value": "41382.89",
+      "Shares Held": "6826.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "NC Corp",
+      "Ticker": "-",
+      "Identifier": "KR7036570000",
+      "Weight": "1.0452601925",
+      "Market Value": "42107.04",
+      "Shares Held": "256.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Mount Vernon Liquid Assets Portfolio, LLC",
+      "Ticker": "-",
+      "Identifier": "990VR1110",
+      "Weight": "8.1827272549",
+      "Market Value": "329631.25",
+      "Shares Held": "329631.250000000000",
+      "Asset Category": "STIV"
+    }
+  ]
+}

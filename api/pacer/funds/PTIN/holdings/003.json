@@ -1,0 +1,26 @@
+{
+  "ticker": "PTIN",
+  "page": 3,
+  "pageSize": 250,
+  "totalRows": 501,
+  "headers": [
+    "Name",
+    "Ticker",
+    "Identifier",
+    "Weight",
+    "Market Value",
+    "Shares Held",
+    "Asset Category"
+  ],
+  "rows": [
+    {
+      "Name": "Monday.com Ltd",
+      "Ticker": "MNDY",
+      "Identifier": "IL0011762130",
+      "Weight": "0.0149573245",
+      "Market Value": "27626.55",
+      "Shares Held": "317.000000000000",
+      "Asset Category": "EC"
+    }
+  ]
+}

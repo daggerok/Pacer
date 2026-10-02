@@ -1,0 +1,71 @@
+{
+  "ticker": "HERD",
+  "page": 1,
+  "pageSize": 250,
+  "totalRows": 6,
+  "headers": [
+    "Name",
+    "Ticker",
+    "Identifier",
+    "Weight",
+    "Market Value",
+    "Shares Held",
+    "Asset Category"
+  ],
+  "rows": [
+    {
+      "Name": "Pacer US Cash Cows Growth ETF",
+      "Ticker": "-",
+      "Identifier": "69374H667",
+      "Weight": "19.461501436",
+      "Market Value": "19442377.07",
+      "Shares Held": "317823.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Pacer Global Cash Cows Dividen",
+      "Ticker": "-",
+      "Identifier": "69374H709",
+      "Weight": "20.2062830456",
+      "Market Value": "20186426.8",
+      "Shares Held": "434584.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Pacer US Small Cap Cash Cows E",
+      "Ticker": "-",
+      "Identifier": "69374H857",
+      "Weight": "20.2480237632",
+      "Market Value": "20228126.5",
+      "Shares Held": "373075.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Pacer Developed Markets Intern",
+      "Ticker": "-",
+      "Identifier": "69374H873",
+      "Weight": "19.9173622298",
+      "Market Value": "19897789.9",
+      "Shares Held": "455327.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Pacer US Cash Cows 100 ETF",
+      "Ticker": "-",
+      "Identifier": "69374H881",
+      "Weight": "20.1053361274",
+      "Market Value": "20085579.08",
+      "Shares Held": "300188.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "U.S. Bank Money Market Deposit Account",
+      "Ticker": "-",
+      "Identifier": "8AMMF0A84",
+      "Weight": "0.0737329957",
+      "Market Value": "73660.54",
+      "Shares Held": "73660.540000000000",
+      "Asset Category": "STIV"
+    }
+  ]
+}

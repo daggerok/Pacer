@@ -1,0 +1,229 @@
+{
+  "ticker": "PTEU",
+  "name": "Pacer Trendpilot® ETF Series",
+  "category": "Risk Mitigation",
+  "categoryPath": "Risk Mitigation",
+  "source": {
+    "fundPage": "https://www.paceretfs.com/products/PTEU",
+    "officialProductPage": "https://www.paceretfs.com/products/PTEU",
+    "productPageRendering": "read-only rendering proxy (r.jina.ai) of the official product page",
+    "productPageAsOf": null,
+    "holdingsDownload": "https://www.sec.gov/Archives/edgar/data/1616668/000089418926028997/0000894189-26-028997.txt",
+    "navHistoryDownload": null,
+    "yahooChart": "https://query1.finance.yahoo.com/v8/finance/chart/PTEU",
+    "holdingsSource": "SEC EDGAR Form N-PORT-P (accession 0000894189-26-028997, report period 2026-07-31)",
+    "historySource": "Yahoo Finance public chart API (adjusted close)",
+    "distributionsSource": "paceretfs.com fund page distribution history (total distribution per share)",
+    "provider": "Pacer ETFs product listing + official product page + per-fund daily holdings CSV export + SEC EDGAR Form N-PORT-P fallback + Yahoo Finance public chart API"
+  },
+  "identifiers": {
+    "cusip": null,
+    "isin": null,
+    "isinBasis": null,
+    "indexTicker": "[Pacer Trendpilot ETF Series](https://www.paceretfs.com/products/PTEU#product-menu-trendpilot) [Pacer Cash Cows Index ETF Series](https://www.paceretfs.com/products/PTEU#product-menu-cashcows) [Pacer Metaurus Dividend Multiplier ETF Series](https://www.paceretfs.com/products/PTEU#product-menu-metaurus) [Pacer Leaders ETF Series](https://www.paceretfs.com/products/PTEU#product-menu-leaders) [Pacer Factor ETF Series](https://www.paceretfs.com/products/PTEU#product-menu-factor) [Pacer Thematic ETF Series](https://www.paceretfs.com/products/PTEU#product-menu-thematic) [Pacer Swan SOS ETF Series](https://www.paceretfs.com/products/structured-outcome-strategies) [Pacer Custom ETF Series](https://www.paceretfs.com/products/PTEU#product-menu-custom) [Pacer UCITS For International Investors](https://www.paceretfs.com/products/PTEU#)",
+    "exchange": null,
+    "morningstarCategory": null
+  },
+  "expenseRatio": {
+    "display": "0.65%",
+    "value": 0.65,
+    "kind": "Total Expenses published in the official Pacer ETFs product listing"
+  },
+  "nav": {
+    "display": "—",
+    "value": null,
+    "asOfDate": "Jul 31 2026",
+    "source": "previous run"
+  },
+  "marketPrice": {
+    "display": "$32.11",
+    "value": 32.112,
+    "asOfDate": "Oct 1 2026",
+    "source": "Yahoo Finance last regular-session price (the anonymous product page publishes no closing price)"
+  },
+  "premiumDiscount": {
+    "display": "—",
+    "value": null,
+    "asOfDate": "Oct 1 2026",
+    "source": "computed from Yahoo last price / the net-asset value implied by the daily holdings CSV"
+  },
+  "aum": {
+    "display": "$37.17 M",
+    "value": 37165919.22,
+    "asOfDate": "Jul 31 2026",
+    "source": "SEC Form N-PORT-P net assets (2026-07-31)"
+  },
+  "fundFacts": {
+    "sharesOutstanding": null,
+    "portfolioTurnover": null,
+    "publishedTotalHoldings": null,
+    "bidAskMidpoint": null
+  },
+  "yields": {
+    "dividendYield": 1.84,
+    "dividendYieldText": "1.84%",
+    "dividendYieldKind": "indicated (latest distribution per share x inferred payments per year / NAV) from the official Pacer distribution history",
+    "distributionRate": null,
+    "secYield": null,
+    "secYieldText": "—",
+    "secYieldKind": "not published on the official Pacer ETFs product page for this fund"
+  },
+  "returns": {
+    "derivedFrom": "official Pacer NAV total returns (product listing, month-end) where published; Yahoo adjusted market-price closes for missing values",
+    "monthEnd": {
+      "asOfDate": "Sep 30 2026",
+      "mo1": -4.54,
+      "mo1Text": "-4.54%",
+      "mo3": -2.14,
+      "mo3Text": "-2.14%",
+      "qtd": 0,
+      "qtdText": "0.00%",
+      "ytd": 6.31,
+      "ytdText": "6.31%",
+      "yr1": 20.62,
+      "yr1Text": "20.62%",
+      "yr3": 12.45,
+      "yr3Text": "12.45%",
+      "yr5": 8.21,
+      "yr5Text": "8.21%",
+      "yr10": 5.75,
+      "yr10Text": "5.75%",
+      "sinceInception": 4.58,
+      "sinceInceptionText": "4.58%"
+    },
+    "quarterEnd": {
+      "asOfDate": "Sep 30 2026",
+      "ytd": null,
+      "yr1": null,
+      "yr3": null,
+      "yr5": null,
+      "yr10": null,
+      "sinceInception": null
+    }
+  },
+  "officialMarketPriceReturns": {
+    "monthEnd": null,
+    "quarterEnd": null
+  },
+  "distributions": {
+    "frequency": "Annual",
+    "frequencyCode": "12 - Annually",
+    "paymentsPerYear": 1,
+    "source": "paceretfs.com fund page distribution history (total distribution per share)",
+    "headers": [
+      "Ex Date",
+      "Record Date",
+      "Pay Date",
+      "Total Distribution",
+      "Ordinary Income*",
+      "Short Term Capital Gains",
+      "Long Term Capital Gains",
+      "Return of Capital"
+    ],
+    "rows": [
+      [
+        "12/27/2017",
+        "12/28/2017",
+        "12/29/2017",
+        "$0.185598970",
+        "$0.185598970",
+        "$0",
+        "$0",
+        "$0"
+      ],
+      [
+        "12/24/2018",
+        "12/26/2018",
+        "12/27/2018",
+        "$0.46674195",
+        "$0.46674195",
+        "$0",
+        "$0",
+        "$0"
+      ],
+      [
+        "12/24/2019",
+        "12/26/2019",
+        "12/27/2019",
+        "$0.94284563",
+        "$0.94284563",
+        "$0",
+        "$0",
+        "$0"
+      ],
+      [
+        "12/23/2021",
+        "12/27/2021",
+        "12/30/2021",
+        "$0.38403610",
+        "$0.38403610",
+        "$0",
+        "$0",
+        "$0"
+      ],
+      [
+        "12/22/2022",
+        "12/23/2022",
+        "12/29/2022",
+        "$0.15621943",
+        "$0.15621943",
+        "$0",
+        "$0",
+        "$0"
+      ],
+      [
+        "12/27/2023",
+        "12/28/2023",
+        "1/3/2024",
+        "$0.68163772",
+        "$0.68163772",
+        "$0",
+        "$0",
+        "$0"
+      ],
+      [
+        "12/27/2024",
+        "12/27/2024",
+        "1/2/2025",
+        "$0.834808",
+        "$0.834808",
+        "$0",
+        "$0",
+        "$0"
+      ],
+      [
+        "12/30/2025",
+        "12/30/2025",
+        "1/5/2026",
+        "$0.5893775",
+        "$0.5893775",
+        "$0",
+        "$0",
+        "$0"
+      ]
+    ]
+  },
+  "holdings": {
+    "pages": [
+      "holdings/001.json",
+      "holdings/002.json"
+    ],
+    "pageSize": 250,
+    "totalRows": 289,
+    "asOfDate": "2026-07-31",
+    "asOf": "Jul 31 2026",
+    "source": "SEC EDGAR Form N-PORT-P (accession 0000894189-26-028997, report period 2026-07-31)",
+    "publishedTopHoldings": 10
+  },
+  "history": {
+    "pages": [
+      "history/001.json",
+      "history/002.json",
+      "history/003.json"
+    ],
+    "pageSize": 1000,
+    "totalRows": 2712,
+    "asOf": "Oct 1 2026",
+    "source": "Yahoo Finance public chart API (adjusted close)"
+  }
+}

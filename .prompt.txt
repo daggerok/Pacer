@@ -1,34 +1,38 @@
-=== 1st PROMPT: COPY & PASTE THIS TO THE IMPLEMENTING AGENT (WITH YOUR GITHUB ACCESS TOKEN) ===
+=== RESUME PROMPT (current state: implementation on branch arena/01a0f9aa-pacer) ===
 
-Target repository: https://github.com/daggerok/Pacer
+Read .worklog.txt in the repository root completely (in chunks if needed). It is the canonical,
+self-contained handoff file: CURRENT STATE, the recovery protocol, the full implementation plan
+and the chronological journal including sibling research and live source verification.
+
+Reconcile CURRENT STATE against Git, the remote branch and the PR. Report briefly what is
+complete, what remains and any mismatch. Continue from the first unfinished step in CURRENT STATE,
+within the recorded authorization, without repeating completed work. After each small meaningful
+step update .worklog.txt, make a scoped Conventional Commit on arena/01a0f9aa-pacer and push.
+
 GitHub Personal Access Token: <PASTE_YOUR_TOKEN_HERE>
 
-Read .worklog.txt in the repository root. It is the canonical, self-contained handoff file containing the complete mandatory recovery protocol, generic architecture rules, and verified Pacer research (Cloudflare WAF handling with r.jina.ai proxy fallback and Pacer Funds Trust CIK 0001616668). Do not request or require any external files (such as 00-generic.txt).
+Fast orientation for the continuing agent:
+  bun install --frozen-lockfile      # Bun only, zero runtime dependencies
+  bun test                           # 64 offline tests (parsers, config/workflow parity, UI parity)
+  bun ./scripts/update-data.ts       # builds api/pacer/** (needs network: paceretfs.com, sec.gov, Yahoo)
+  bun ./scripts/update-data.ts --help
+Defaults live in scripts/update-data.config.json; any nonblank environment value wins over it.
+.github/workflows/update-data.yml mirrors those defaults into 25 workflow_dispatch inputs
+(the GitHub limit) - VERBOSE is config-file/CLI-only on purpose. ci.yml runs the offline checks,
+pages.yml deploys GitHub Pages from main.
 
-Instructions:
-1. Reconcile CURRENT STATE against Git and remote origin/main.
-2. Follow the MANDATORY WORKLOG AND RECOVERY PROTOCOL in .worklog.txt.
-3. Create feature branch `feat/pacer-etfs`.
-4. Implement the ETF holdings-to-watchlist app according to the plan in .worklog.txt (Bun-only, zero runtime dependencies, sibling parity UI, offline fixture tests, isolated live acceptance).
-5. After each small completed step, update .worklog.txt, make a scoped Conventional Commit, and push to GitHub.
-6. When complete, open a Pull Request against main.
+==============================================================================================
 
-================================================================================================
-=== 1st PROMPT (Alternative Russian wording matching protocol) ===
+=== 1st PROMPT: COPY-PASTE THIS TO THE IMPLEMENTING AGENT (WITH YOUR GITHUB ACCESS TOKEN) ===
 
-Target repository: https://github.com/daggerok/Pacer
+Read .worklog.txt in the repository root. It is the canonical, self-contained handoff file containing the complete mandatory recovery protocol, architecture rules, and brand-specific research.
+Reconcile CURRENT STATE against Git and remote.
+Start from the first unfinished step in CURRENT STATE and implement the ETF holdings-to-watchlist app according to the plan in .worklog.txt.
+After each small step, update .worklog.txt, commit, and push.
 GitHub Personal Access Token: <PASTE_YOUR_TOKEN_HERE>
 
-Используй .worklog.txt в корне репозитория как основной, самодостаточный журнал работы и восстановления. Вся архитектура, правила и данные исследования Pacer (обход WAF через r.jina.ai и Pacer Funds Trust CIK 0001616668) уже включены в .worklog.txt. Внешние файлы (00-generic.txt) не требуются.
+==============================================================================================
 
-Инструкции:
-1. Перед изменениями полностью прочитай существующий .worklog.txt. Сверь CURRENT STATE с Git и remote origin/main.
-2. Создай feature-ветку `feat/pacer-etfs`.
-3. Реализуй приложение согласно плану в .worklog.txt (Bun-only, zero runtime dependencies, sibling parity UI, offline tests, scoped live acceptance).
-4. После каждого небольшого законченного этапа обновляй .worklog.txt, делай scoped Conventional Commit и push.
-5. По завершении открой Pull Request в main.
-
-================================================================================================
 === 2nd and all next PROMPT(s) after rate limit stop/restart ===
 
 Начни с полного чтения .worklog.txt, при необходимости по частям.
@@ -37,4 +41,44 @@ GitHub Personal Access Token: <PASTE_YOUR_TOKEN_HERE>
 шага в рамках записанных разрешений. После каждого небольшого этапа
 обновляй .worklog.txt, делай commit и push.
 
-================================================================================================
+==============================================================================================
+
+=== 1st PROMPT (Alternative Russian wording matching protocol) ===
+
+Используй .worklog.txt в корне репозитория как основной,
+самодостаточный журнал работы и восстановления.
+
+Перед изменениями полностью прочитай существующий .worklog.txt.
+Сверь его с рабочим деревом, веткой, remote commits и PR.
+Не повторяй уже выполненную работу.
+
+Если файла нет, создай его до реализации. Включи полные тексты
+исходных планов и требований, последующие поправки пользователя,
+а также существующие plan.txt и релевантные файлы .plans.
+Одних ссылок на эти документы недостаточно.
+
+В начале файла поддерживай CURRENT STATE:
+цель, критерии готовности, ограничения, разрешения на изменения
+и публикацию, ветку/PR, завершённое и оставшееся, блокеры,
+последний подтверждённый pushed SHA и точное следующее действие.
+
+Ниже веди хронологический журнал: выполненные действия,
+принятые решения с краткими причинами, изменённые файлы,
+команды, результаты тесты, ошибки, исправления и важные источники.
+Сохраняй фактические выводы, а не внутренний поток рассуждений.
+
+После каждого небольшого законченного этапа обновляй журнал,
+делай scoped Conventional Commit в feature-ветке и push.
+Для исследовательского этапа допустим commit только журнала.
+Не откладывай сохранение до конца сессии.
+
+Проверяй успешность push. Различай запланированное, выполненное
+и подтверждённое. При сбое сохрани локальный checkpoint и укажи,
+что именно не опубликовано и как безопасно продолжить.
+
+Перед возможной остановкой обнови следующий шаг и незавершённую
+работу. Не рассчитывай на возможность отправить финальное сообщение.
+
+Никогда не сохраняй токены, секреты или auth headers.
+Не делай force-push, не затирай чужие изменения и не обходи проверки.
+Создание и merge PR выполняй только в явно разрешённом объёме.

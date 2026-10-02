@@ -1,0 +1,184 @@
+{
+  "ticker": "PBSC",
+  "page": 2,
+  "pageSize": 250,
+  "totalRows": 265,
+  "headers": [
+    "Name",
+    "Ticker",
+    "Identifier",
+    "Weight",
+    "Market Value",
+    "Shares Held",
+    "Asset Category",
+    "Coupon",
+    "Maturity"
+  ],
+  "rows": [
+    {
+      "Name": "SIX FLAGS ENT/SIX FLAG",
+      "Ticker": "-",
+      "Identifier": "83002YAA7",
+      "Weight": "0.2951652971",
+      "Market Value": "253208.69",
+      "Shares Held": "251500.000000000000",
+      "Asset Category": "DBT",
+      "Coupon": "6.625000000000",
+      "Maturity": "2032-05-01"
+    },
+    {
+      "Name": "UKG INC",
+      "Ticker": "-",
+      "Identifier": "90279XAA0",
+      "Weight": "0.4368568665",
+      "Market Value": "374759.35",
+      "Shares Held": "382500.000000000000",
+      "Asset Category": "DBT",
+      "Coupon": "6.875000000000",
+      "Maturity": "2031-02-01"
+    },
+    {
+      "Name": "VENTURE GLOBAL LNG INC",
+      "Ticker": "-",
+      "Identifier": "92332YAB7",
+      "Weight": "0.2699419917",
+      "Market Value": "231570.78",
+      "Shares Held": "224000.000000000000",
+      "Asset Category": "DBT",
+      "Coupon": "8.375000000000",
+      "Maturity": "2031-06-01"
+    },
+    {
+      "Name": "VENTURE GLOBAL LNG INC",
+      "Ticker": "-",
+      "Identifier": "92332YAD3",
+      "Weight": "0.2773846929",
+      "Market Value": "237955.53",
+      "Shares Held": "223500.000000000000",
+      "Asset Category": "DBT",
+      "Coupon": "9.875000000000",
+      "Maturity": "2032-02-01"
+    },
+    {
+      "Name": "VENTURE GLOBAL LNG INC",
+      "Ticker": "-",
+      "Identifier": "92332YAG6",
+      "Weight": "0.5943275454",
+      "Market Value": "509846.18",
+      "Shares Held": "523500.000000000000",
+      "Asset Category": "DBT",
+      "Coupon": "6.375000000000",
+      "Maturity": "2034-12-15"
+    },
+    {
+      "Name": "VOYAGER PARENT LLC",
+      "Ticker": "-",
+      "Identifier": "92921EAA0",
+      "Weight": "0.4458706629",
+      "Market Value": "382491.87",
+      "Shares Held": "360000.000000000000",
+      "Asset Category": "DBT",
+      "Coupon": "9.250000000000",
+      "Maturity": "2032-07-01"
+    },
+    {
+      "Name": "BROWN GROUP HOLDING LLC",
+      "Ticker": "-",
+      "Identifier": "11565HAB2",
+      "Weight": "0.233673833",
+      "Market Value": "200458",
+      "Shares Held": "200000.000000000000",
+      "Asset Category": "LON",
+      "Coupon": "6.143920000000",
+      "Maturity": "2031-07-01"
+    },
+    {
+      "Name": "ELEMENT MATERIAL TECHNOL",
+      "Ticker": "-",
+      "Identifier": "BBG01PNM1338",
+      "Weight": "0.2337227923",
+      "Market Value": "200500",
+      "Shares Held": "200000.000000000000",
+      "Asset Category": "LON",
+      "Coupon": "7.199610000000",
+      "Maturity": "2029-06-25"
+    },
+    {
+      "Name": "BROADSTREET PARTNERS INC",
+      "Ticker": "-",
+      "Identifier": "11132VAY5",
+      "Weight": "0.2291509181",
+      "Market Value": "196578",
+      "Shares Held": "200000.000000000000",
+      "Asset Category": "LON",
+      "Coupon": "6.143920000000",
+      "Maturity": "2031-06-16"
+    },
+    {
+      "Name": "BCP VI SUMMIT HOLDINGS L",
+      "Ticker": "-",
+      "Identifier": "05614GAC5",
+      "Weight": "0.2922263467",
+      "Market Value": "250687.5",
+      "Shares Held": "250000.000000000000",
+      "Asset Category": "LON",
+      "Coupon": "6.396700000000",
+      "Maturity": "2032-01-30"
+    },
+    {
+      "Name": "VARSITY BRANDS INC",
+      "Ticker": "-",
+      "Identifier": "92227QAH9",
+      "Weight": "0.2039648101",
+      "Market Value": "174972",
+      "Shares Held": "175000.000000000000",
+      "Asset Category": "LON",
+      "Coupon": "6.417960000000",
+      "Maturity": "2031-08-26"
+    },
+    {
+      "Name": "CLYDESDALE ACQUISITION",
+      "Ticker": "-",
+      "Identifier": "18972EAA3",
+      "Weight": "0.1934973163",
+      "Market Value": "165992.42",
+      "Shares Held": "167000.000000000000",
+      "Asset Category": "DBT",
+      "Coupon": "6.625000000000",
+      "Maturity": "2029-04-15"
+    },
+    {
+      "Name": "FLASH COMPUTE LLC",
+      "Ticker": "-",
+      "Identifier": "33853QAA9",
+      "Weight": "0.3502020255",
+      "Market Value": "300422.16",
+      "Shares Held": "297500.000000000000",
+      "Asset Category": "DBT",
+      "Coupon": "7.250000000000",
+      "Maturity": "2030-12-31"
+    },
+    {
+      "Name": "EMRLD BORROWER LP",
+      "Ticker": "-",
+      "Identifier": "26872NAC3",
+      "Weight": "0.2905571463",
+      "Market Value": "249255.57",
+      "Shares Held": "249370.280000000000",
+      "Asset Category": "LON",
+      "Coupon": "5.922740000000",
+      "Maturity": "2030-05-31"
+    },
+    {
+      "Name": "FLYNN RESTAURANT GROUP",
+      "Ticker": "-",
+      "Identifier": "34410JAG6",
+      "Weight": "0.2879190862",
+      "Market Value": "246992.5",
+      "Shares Held": "250000.000000000000",
+      "Asset Category": "LON",
+      "Coupon": "7.393920000000",
+      "Maturity": "2032-01-28"
+    }
+  ]
+}

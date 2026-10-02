@@ -1,0 +1,620 @@
+{
+  "ticker": "SRVR",
+  "page": 1,
+  "pageSize": 250,
+  "totalRows": 67,
+  "headers": [
+    "Name",
+    "Ticker",
+    "Identifier",
+    "Weight",
+    "Market Value",
+    "Shares Held",
+    "Asset Category"
+  ],
+  "rows": [
+    {
+      "Name": "American Tower Corp",
+      "Ticker": "-",
+      "Identifier": "03027X100",
+      "Weight": "15.0829071808",
+      "Market Value": "55913800.8",
+      "Shares Held": "322530.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "SUNeVision Holdings Ltd",
+      "Ticker": "SNEVY",
+      "Identifier": "KYG857001054",
+      "Weight": "0.1480027153",
+      "Market Value": "548660.43",
+      "Shares Held": "890761.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Sojitz Corp",
+      "Ticker": "-",
+      "Identifier": "JP3663900003",
+      "Weight": "0.112148507",
+      "Market Value": "415745.4",
+      "Shares Held": "12302.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "ABB Ltd",
+      "Ticker": "ABLZF",
+      "Identifier": "CH0012221716",
+      "Weight": "0.0589660229",
+      "Market Value": "218592.77",
+      "Shares Held": "2224.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Terrestrial Energy Inc",
+      "Ticker": "-",
+      "Identifier": "881454102",
+      "Weight": "0.7689279879",
+      "Market Value": "2850490.68",
+      "Shares Held": "580548.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "U.S. Bank Money Market Deposit Account",
+      "Ticker": "-",
+      "Identifier": "8AMMF0A84",
+      "Weight": "0.099288234",
+      "Market Value": "368071.12",
+      "Shares Held": "368071.120000000000",
+      "Asset Category": "STIV"
+    },
+    {
+      "Name": "Vnet Group Inc",
+      "Ticker": "VNET",
+      "Identifier": "90138A103",
+      "Weight": "0.4744396501",
+      "Market Value": "1758793.83",
+      "Shares Held": "245299.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Uniti Group Inc",
+      "Ticker": "UNIT",
+      "Identifier": "912932100",
+      "Weight": "0.912381788",
+      "Market Value": "3382287.84",
+      "Shares Held": "347972.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Ur-Energy Inc",
+      "Ticker": "URG",
+      "Identifier": "91688R108",
+      "Weight": "0.6156353086",
+      "Market Value": "2282219.84",
+      "Shares Held": "1870672.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Uranium Energy Corp",
+      "Ticker": "UEC",
+      "Identifier": "916896103",
+      "Weight": "0.3801443498",
+      "Market Value": "1409232",
+      "Shares Held": "146795.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Vertiv Holdings Co",
+      "Ticker": "VRT",
+      "Identifier": "92537N108",
+      "Weight": "0.7266459522",
+      "Market Value": "2693747.07",
+      "Shares Held": "11151.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Woojin Inc",
+      "Ticker": "-",
+      "Identifier": "KR7105840003",
+      "Weight": "0.3007276349",
+      "Market Value": "1114826.53",
+      "Shares Held": "120501.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Superloop Ltd",
+      "Ticker": "-",
+      "Identifier": "AU000000SLC8",
+      "Weight": "0.3514440168",
+      "Market Value": "1302837.08",
+      "Shares Held": "579677.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Silex Systems Ltd",
+      "Ticker": "-",
+      "Identifier": "AU000000SLX4",
+      "Weight": "0.4845256526",
+      "Market Value": "1796183.62",
+      "Shares Held": "554748.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "SBA Communications Corp",
+      "Ticker": "SBAC",
+      "Identifier": "78410G104",
+      "Weight": "4.3175317506",
+      "Market Value": "16005509.24",
+      "Shares Held": "88438.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "SES SA",
+      "Ticker": "-",
+      "Identifier": "LU0088087324",
+      "Weight": "0.8930777048",
+      "Market Value": "3310725.73",
+      "Shares Held": "500003.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Rolls-Royce Holdings PLC",
+      "Ticker": "-",
+      "Identifier": "GB00B63H8491",
+      "Weight": "1.0618448589",
+      "Market Value": "3936361.95",
+      "Shares Held": "199280.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "ASP Isotopes Inc",
+      "Ticker": "ASPI",
+      "Identifier": "00218A105",
+      "Weight": "0.7963481818",
+      "Market Value": "2952140",
+      "Shares Held": "738035.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "BWX Technologies Inc",
+      "Ticker": "BWXT",
+      "Identifier": "05605H100",
+      "Weight": "0.5347108452",
+      "Market Value": "1982225",
+      "Shares Held": "11750.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Cameco Corp",
+      "Ticker": "CCJ",
+      "Identifier": "13321L108",
+      "Weight": "0.6663494624",
+      "Market Value": "2470222.13",
+      "Shares Held": "28644.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Boss Energy Ltd",
+      "Ticker": "-",
+      "Identifier": "AU000000BOE4",
+      "Weight": "0.0597991249",
+      "Market Value": "221681.16",
+      "Shares Held": "258711.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Oklo Inc",
+      "Ticker": "OKLO",
+      "Identifier": "02156V109",
+      "Weight": "0.806725288",
+      "Market Value": "2990608.94",
+      "Shares Held": "77018.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Centrus Energy Corp",
+      "Ticker": "LEU",
+      "Identifier": "15643U104",
+      "Weight": "0.974067934",
+      "Market Value": "3610964.37",
+      "Shares Held": "20409.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Constellation Energy Corp",
+      "Ticker": "CEG",
+      "Identifier": "21037T109",
+      "Weight": "0.5312273244",
+      "Market Value": "1969311.25",
+      "Shares Held": "7495.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Crown Castle Inc",
+      "Ticker": "CCI",
+      "Identifier": "22822V101",
+      "Weight": "4.044720323",
+      "Market Value": "14994170.8",
+      "Shares Held": "196516.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Curtiss-Wright Corp",
+      "Ticker": "CW",
+      "Identifier": "231561101",
+      "Weight": "0.4605199094",
+      "Market Value": "1707192",
+      "Shares Held": "2358.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Digital Realty Trust Inc",
+      "Ticker": "DLR",
+      "Identifier": "253868103",
+      "Weight": "16.6674879652",
+      "Market Value": "61787995.56",
+      "Shares Held": "327753.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "DigitalBridge Group Inc",
+      "Ticker": "DBRG",
+      "Identifier": "25401T603",
+      "Weight": "1.0205722519",
+      "Market Value": "3783360.39",
+      "Shares Held": "238397.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Encore Energy Corp",
+      "Ticker": "EU",
+      "Identifier": "29259W700",
+      "Weight": "0.385679066",
+      "Market Value": "1429749.73",
+      "Shares Held": "1311697.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Equinix Inc",
+      "Ticker": "EQIX",
+      "Identifier": "29444U700",
+      "Weight": "15.7191022318",
+      "Market Value": "58272237.6",
+      "Shares Held": "57170.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Fermi Inc",
+      "Ticker": "FRMI",
+      "Identifier": "314911108",
+      "Weight": "1.1215591223",
+      "Market Value": "4157728.52",
+      "Shares Held": "730708.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Fluor Corp",
+      "Ticker": "FLR",
+      "Identifier": "343412102",
+      "Weight": "0.3022978015",
+      "Market Value": "1120647.29",
+      "Shares Held": "22337.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "GDS Holdings Ltd",
+      "Ticker": "GDS",
+      "Identifier": "36165L108",
+      "Weight": "1.7314210941",
+      "Market Value": "6418546.04",
+      "Shares Held": "196046.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "GE Vernova Inc",
+      "Ticker": "GEV",
+      "Identifier": "36828A101",
+      "Weight": "0.4423731603",
+      "Market Value": "1639920.24",
+      "Shares Held": "1656.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Iridium Communications Inc",
+      "Ticker": "IRDM",
+      "Identifier": "46269C102",
+      "Weight": "1.7181914108",
+      "Market Value": "6369502.32",
+      "Shares Held": "134548.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Iron Mountain Inc",
+      "Ticker": "IRM",
+      "Identifier": "46284V101",
+      "Weight": "4.696641663",
+      "Market Value": "17410906.48",
+      "Shares Held": "142339.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Lightbridge Corp",
+      "Ticker": "LTBR",
+      "Identifier": "53224K302",
+      "Weight": "0.5165191122",
+      "Market Value": "1914786.48",
+      "Shares Held": "232377.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Mirion Technologies Inc",
+      "Ticker": "MIR",
+      "Identifier": "60471A101",
+      "Weight": "0.3806525642",
+      "Market Value": "1411116",
+      "Shares Held": "94200.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Daikin Industries Ltd",
+      "Ticker": "DKILF",
+      "Identifier": "JP3481800005",
+      "Weight": "0.186395511",
+      "Market Value": "690986.25",
+      "Shares Held": "4723.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Delta Electronics Inc",
+      "Ticker": "-",
+      "Identifier": "TW0002308004",
+      "Weight": "0.1853132572",
+      "Market Value": "686974.23",
+      "Shares Held": "13538.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Doosan Enerbility Co Ltd",
+      "Ticker": "-",
+      "Identifier": "KR7034020008",
+      "Weight": "0.2438738146",
+      "Market Value": "904063.9",
+      "Shares Held": "19209.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "NANO Nuclear Energy Inc",
+      "Ticker": "NNE",
+      "Identifier": "63010H108",
+      "Weight": "0.7477160885",
+      "Market Value": "2771856.11",
+      "Shares Held": "174221.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Hyundai Engineering & Construc",
+      "Ticker": "-",
+      "Identifier": "KR7000720003",
+      "Weight": "0.3316865681",
+      "Market Value": "1229594.3",
+      "Shares Held": "18531.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "IHI Corp",
+      "Ticker": "IHICF",
+      "Identifier": "JP3134800006",
+      "Weight": "0.3365671498",
+      "Market Value": "1247687.09",
+      "Shares Held": "70261.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Korea Electric Power Corp",
+      "Ticker": "KEP",
+      "Identifier": "KR7015760002",
+      "Weight": "0.2241795474",
+      "Market Value": "831055.34",
+      "Shares Held": "34047.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Mitsubishi Heavy Industries Lt",
+      "Ticker": "-",
+      "Identifier": "JP3900000005",
+      "Weight": "0.1910815173",
+      "Market Value": "708357.73",
+      "Shares Held": "29965.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "NuScale Power Corp",
+      "Ticker": "SMR",
+      "Identifier": "67079K100",
+      "Weight": "0.8982317134",
+      "Market Value": "3329832.14",
+      "Shares Held": "395467.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Mount Vernon Liquid Assets Portfolio, LLC",
+      "Ticker": "-",
+      "Identifier": "990VR1110",
+      "Weight": "8.0652212639",
+      "Market Value": "29898558",
+      "Shares Held": "29898558.000000000000",
+      "Asset Category": "STIV"
+    },
+    {
+      "Name": "Engie SA",
+      "Ticker": "-",
+      "Identifier": "FR0010208488",
+      "Weight": "0.0245603713",
+      "Market Value": "91047.68",
+      "Shares Held": "2919.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Eutelsat Communications SACA",
+      "Ticker": "-",
+      "Identifier": "FR0010221234",
+      "Weight": "0.314045549",
+      "Market Value": "1164197.33",
+      "Shares Held": "492870.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Legrand SA",
+      "Ticker": "-",
+      "Identifier": "FR0010307819",
+      "Weight": "0.0945730567",
+      "Market Value": "350591.5",
+      "Shares Held": "2319.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "KEPCO Engineering & Constructi",
+      "Ticker": "-",
+      "Identifier": "KR7052690005",
+      "Weight": "0.4406547267",
+      "Market Value": "1633549.84",
+      "Shares Held": "26168.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Chorus Ltd",
+      "Ticker": "-",
+      "Identifier": "NZCNUE0001S2",
+      "Weight": "0.9095508829",
+      "Market Value": "3371793.4",
+      "Shares Held": "608457.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "NEXTDC Ltd",
+      "Ticker": "-",
+      "Identifier": "AU000000NXT8",
+      "Weight": "2.7754892914",
+      "Market Value": "10289008.18",
+      "Shares Held": "1096511.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Orbitech Co Ltd",
+      "Ticker": "-",
+      "Identifier": "KR7046120002",
+      "Weight": "0.3182050435",
+      "Market Value": "1179616.98",
+      "Shares Held": "408695.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Energy Fuels Inc/Canada",
+      "Ticker": "-",
+      "Identifier": "292671708",
+      "Weight": "0.439192499",
+      "Market Value": "1628129.22",
+      "Shares Held": "142218.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Helios Towers PLC",
+      "Ticker": "-",
+      "Identifier": "GB00BJVQC708",
+      "Weight": "0.7871080299",
+      "Market Value": "2917885.86",
+      "Shares Held": "1107366.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Lotus Resources Ltd",
+      "Ticker": "-",
+      "Identifier": "AU0000058737",
+      "Weight": "0.0339142995",
+      "Market Value": "125723.6",
+      "Shares Held": "745850.003043000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "HD Hyundai Heavy Industries Co",
+      "Ticker": "-",
+      "Identifier": "KR7329180004",
+      "Weight": "0.4024405263",
+      "Market Value": "1491886.09",
+      "Shares Held": "4422.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "NTT DC REIT",
+      "Ticker": "-",
+      "Identifier": "SGXC92727947",
+      "Weight": "0.2754356265",
+      "Market Value": "1021066.6",
+      "Shares Held": "1109855.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Keppel DC REIT",
+      "Ticker": "-",
+      "Identifier": "SG1AF6000009",
+      "Weight": "1.3510066677",
+      "Market Value": "5008312.84",
+      "Shares Held": "2883261.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Lotus Resources Ltd",
+      "Ticker": "-",
+      "Identifier": "AU0000481285",
+      "Weight": "0",
+      "Market Value": "0",
+      "Shares Held": "748957.003043000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "China Tower Corp Ltd",
+      "Ticker": "CHWRF",
+      "Identifier": "CNE100006V65",
+      "Weight": "2.3353847823",
+      "Market Value": "8657498.05",
+      "Shares Held": "6768558.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "HKBN Ltd",
+      "Ticker": "-",
+      "Identifier": "KYG451581055",
+      "Weight": "0.2136636695",
+      "Market Value": "792071.96",
+      "Shares Held": "1026630.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Cellnex Telecom SA",
+      "Ticker": "-",
+      "Identifier": "ES0105066007",
+      "Weight": "4.5200732564",
+      "Market Value": "16756350.26",
+      "Shares Held": "542009.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Infrastrutture Wireless Italia",
+      "Ticker": "-",
+      "Identifier": "IT0005090300",
+      "Weight": "0.8169302218",
+      "Market Value": "3028439.62",
+      "Shares Held": "409676.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Eaton Corp PLC",
+      "Ticker": "ETN",
+      "Identifier": "IE00B8KQN827",
+      "Weight": "0.2228827537",
+      "Market Value": "826248",
+      "Shares Held": "1990.000000000000",
+      "Asset Category": "EC"
+    }
+  ]
+}

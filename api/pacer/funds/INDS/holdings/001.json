@@ -1,0 +1,305 @@
+{
+  "ticker": "INDS",
+  "page": 1,
+  "pageSize": 250,
+  "totalRows": 32,
+  "headers": [
+    "Name",
+    "Ticker",
+    "Identifier",
+    "Weight",
+    "Market Value",
+    "Shares Held",
+    "Asset Category"
+  ],
+  "rows": [
+    {
+      "Name": "Big Yellow Group PLC",
+      "Ticker": "-",
+      "Identifier": "GB0002869419",
+      "Weight": "0.9005175602",
+      "Market Value": "1062277.62",
+      "Shares Held": "88810.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "CubeSmart",
+      "Ticker": "CUBE",
+      "Identifier": "229663109",
+      "Weight": "3.780474895",
+      "Market Value": "4459561.98",
+      "Shares Held": "107563.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "EastGroup Properties Inc",
+      "Ticker": "EGP",
+      "Identifier": "277276101",
+      "Weight": "4.4465760565",
+      "Market Value": "5245314.96",
+      "Shares Held": "25096.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Extra Space Storage Inc",
+      "Ticker": "EXR",
+      "Identifier": "30225T102",
+      "Weight": "14.4115697236",
+      "Market Value": "17000321.44",
+      "Shares Held": "114836.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "First Industrial Realty Trust",
+      "Ticker": "FR",
+      "Identifier": "32054K103",
+      "Weight": "3.4798420951",
+      "Market Value": "4104926.48",
+      "Shares Held": "62347.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "LXP Industrial Trust",
+      "Ticker": "LXP",
+      "Identifier": "529043408",
+      "Weight": "1.4239272967",
+      "Market Value": "1679707.5",
+      "Shares Held": "27750.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Prologis Inc",
+      "Ticker": "PLD",
+      "Identifier": "74340W103",
+      "Weight": "14.2537003034",
+      "Market Value": "16814093.92",
+      "Shares Held": "116272.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Public Storage",
+      "Ticker": "PSA",
+      "Identifier": "74460D109",
+      "Weight": "15.8671120241",
+      "Market Value": "18717322.95",
+      "Shares Held": "57739.220000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Rexford Industrial Realty Inc",
+      "Ticker": "REXR",
+      "Identifier": "76169C100",
+      "Weight": "3.4392043816",
+      "Market Value": "4056989.01",
+      "Shares Held": "107413.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Smartstop Self Storage REIT In",
+      "Ticker": "-",
+      "Identifier": "83192D402",
+      "Weight": "0.7449067803",
+      "Market Value": "878714.46",
+      "Shares Held": "26199.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "STAG Industrial Inc",
+      "Ticker": "STAG",
+      "Identifier": "85254J102",
+      "Weight": "2.9385434119",
+      "Market Value": "3466394.26",
+      "Shares Held": "90601.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Terreno Realty Corp",
+      "Ticker": "TRNO",
+      "Identifier": "88146M101",
+      "Weight": "3.0164997899",
+      "Market Value": "3558353.95",
+      "Shares Held": "49663.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Mount Vernon Liquid Assets Portfolio, LLC",
+      "Ticker": "-",
+      "Identifier": "990VR1110",
+      "Weight": "7.6656782045",
+      "Market Value": "9042664.75",
+      "Shares Held": "9042664.750000000000",
+      "Asset Category": "STIV"
+    },
+    {
+      "Name": "Mapletree Logistics Trust",
+      "Ticker": "-",
+      "Identifier": "SG1S03926213",
+      "Weight": "1.3223707156",
+      "Market Value": "1559908.3",
+      "Shares Held": "1613310.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Catena AB",
+      "Ticker": "-",
+      "Identifier": "SE0001664707",
+      "Weight": "0.7786404736",
+      "Market Value": "918507.74",
+      "Shares Held": "22176.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Safestore Holdings PLC",
+      "Ticker": "-",
+      "Identifier": "GB00B1N7Z094",
+      "Weight": "0.7140265154",
+      "Market Value": "842287.17",
+      "Shares Held": "101537.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Mapletree Industrial Trust",
+      "Ticker": "-",
+      "Identifier": "SG2C32962814",
+      "Weight": "1.2491739228",
+      "Market Value": "1473563.16",
+      "Shares Held": "979156.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "LondonMetric Property PLC",
+      "Ticker": "-",
+      "Identifier": "GB00B4WFW713",
+      "Weight": "2.2759285551",
+      "Market Value": "2684753.83",
+      "Shares Held": "1015307.668000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Segro PLC",
+      "Ticker": "-",
+      "Identifier": "GB00B5ZN1N88",
+      "Weight": "5.6808590233",
+      "Market Value": "6701312.3",
+      "Shares Held": "515258.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "GLP J-Reit",
+      "Ticker": "-",
+      "Identifier": "JP3047510007",
+      "Weight": "1.6834319244",
+      "Market Value": "1985826.97",
+      "Shares Held": "2179.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Nippon Prologis REIT Inc",
+      "Ticker": "-",
+      "Identifier": "JP3047550003",
+      "Weight": "1.6224339896",
+      "Market Value": "1913871.97",
+      "Shares Held": "3361.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Sagax AB",
+      "Ticker": "-",
+      "Identifier": "W7519A200",
+      "Weight": "1.5423979936",
+      "Market Value": "1819459.1",
+      "Shares Held": "103558.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Centuria Industrial REIT",
+      "Ticker": "-",
+      "Identifier": "AU000000CIP0",
+      "Weight": "0.4478040869",
+      "Market Value": "528243.18",
+      "Shares Held": "249408.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Tritax Big Box REIT PLC",
+      "Ticker": "-",
+      "Identifier": "GB00BG49KP99",
+      "Weight": "2.0425539236",
+      "Market Value": "2409458.09",
+      "Shares Held": "1051011.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Dream Industrial Real Estate I",
+      "Ticker": "-",
+      "Identifier": "26153W109",
+      "Weight": "1.1600397527",
+      "Market Value": "1368417.81",
+      "Shares Held": "133309.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Granite Real Estate Investment",
+      "Ticker": "-",
+      "Identifier": "387437205",
+      "Weight": "1.6694134791",
+      "Market Value": "1969290.39",
+      "Shares Held": "28694.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "ESR-REIT",
+      "Ticker": "-",
+      "Identifier": "SGXC55341835",
+      "Weight": "0.4896459151",
+      "Market Value": "577601.06",
+      "Shares Held": "282726.900000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Frasers Logistics & Commercial",
+      "Ticker": "-",
+      "Identifier": "SG1CI9000006",
+      "Weight": "1.1308047324",
+      "Market Value": "1333931.3",
+      "Shares Held": "1727980.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Mitsui Fudosan Logistics Park",
+      "Ticker": "-",
+      "Identifier": "JP3048300002",
+      "Weight": "0.8282375294",
+      "Market Value": "977013.92",
+      "Shares Held": "1438.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "U.S. Bank Money Market Deposit Account",
+      "Ticker": "-",
+      "Identifier": "8AMMF0A84",
+      "Weight": "0.1068599809",
+      "Market Value": "126055.25",
+      "Shares Held": "126055.250000000000",
+      "Asset Category": "STIV"
+    },
+    {
+      "Name": "WP Carey Inc",
+      "Ticker": "-",
+      "Identifier": "92936U109",
+      "Weight": "4.2199126644",
+      "Market Value": "4977936",
+      "Shares Held": "67635.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Warehouses De Pauw CVA",
+      "Ticker": "-",
+      "Identifier": "BE0974349814",
+      "Weight": "1.9717359444",
+      "Market Value": "2325919.07",
+      "Shares Held": "90368.000000000000",
+      "Asset Category": "EC"
+    }
+  ]
+}

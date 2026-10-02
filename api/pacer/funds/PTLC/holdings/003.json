@@ -1,0 +1,71 @@
+{
+  "ticker": "PTLC",
+  "page": 3,
+  "pageSize": 250,
+  "totalRows": 506,
+  "headers": [
+    "Name",
+    "Ticker",
+    "Identifier",
+    "Weight",
+    "Market Value",
+    "Shares Held",
+    "Asset Category"
+  ],
+  "rows": [
+    {
+      "Name": "Freeport-McMoRan Inc",
+      "Ticker": "FCX",
+      "Identifier": "35671D857",
+      "Weight": "0.139692355",
+      "Market Value": "4554453.6",
+      "Shares Held": "72720.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Estee Lauder Cos Inc/The",
+      "Ticker": "-",
+      "Identifier": "518439104",
+      "Weight": "0.0321694083",
+      "Market Value": "1048833.9",
+      "Shares Held": "12501.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Eli Lilly & Co",
+      "Ticker": "LLY",
+      "Identifier": "532457108",
+      "Weight": "1.4093997219",
+      "Market Value": "45951302.32",
+      "Shares Held": "39998.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Everest Group Ltd",
+      "Ticker": "EG",
+      "Identifier": "BMG3223R1088",
+      "Weight": "0.0238237134",
+      "Market Value": "776735.4",
+      "Shares Held": "2076.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Garmin Ltd",
+      "Ticker": "GRMN",
+      "Identifier": "CH0114405324",
+      "Weight": "0.0746086051",
+      "Market Value": "2432498.4",
+      "Shares Held": "8280.000000000000",
+      "Asset Category": "EC"
+    },
+    {
+      "Name": "Flex Ltd",
+      "Ticker": "FLEX",
+      "Identifier": "SG9999000020",
+      "Weight": "0.0648969154",
+      "Market Value": "2115863.75",
+      "Shares Held": "18601.000000000000",
+      "Asset Category": "EC"
+    }
+  ]
+}
