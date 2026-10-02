@@ -874,6 +874,10 @@ describe('repository parity', () => {
     expect(pages).toContain('api/pacer');
     expect(pages).toContain('.nojekyll');
     expect(pages).toContain("github.ref == 'refs/heads/main'");
+    // Pages must be enabled with the GitHub Actions source; the preflight says
+    // so with instructions instead of letting configure-pages fail opaquely.
+    expect(pages).toContain('repos/${GITHUB_REPOSITORY}/pages');
+    expect(pages).toContain('actions/configure-pages@v6');
   });
 
   test('the UI is brand-substituted, with no leftover sibling identifiers', () => {

@@ -1,5 +1,11 @@
 name: Deploy Pacer Pages
 
+# One-time repository prerequisite: Settings -> Pages -> Build and deployment ->
+# Source: "GitHub Actions". actions/configure-pages cannot enable or switch
+# Pages with GITHUB_TOKEN (its `enablement` input requires a PAT or a GitHub App
+# token), so the preflight step below fails fast with instructions instead of
+# surfacing an opaque "Get Pages site failed ... Not Found" from the action.
+
 on:
   push:
     branches: [main]
@@ -34,7 +40,21 @@ jobs:
       - uses: oven-sh/setup-bun@v2
       - run: bun install --frozen-lockfile
       - run: bun test
-      - uses: actions/configure-pages@v5
+      - name: Preflight — GitHub Pages must be enabled with the GitHub Actions source
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SETTINGS_URL: https://github.com/${{ github.repository }}/settings/pages
+        run: |
+          if ! build_type="$(gh api "repos/${GITHUB_REPOSITORY}/pages" --jq .build_type 2>/dev/null)"; then
+            echo "::error title=GitHub Pages is not enabled::Enable it once at ${SETTINGS_URL} (Build and deployment -> Source: GitHub Actions). actions/configure-pages cannot enable it with GITHUB_TOKEN."
+            exit 1
+          fi
+          if [ "${build_type}" != "workflow" ]; then
+            echo "::error title=GitHub Pages source is '${build_type}', not GitHub Actions::Switch it at ${SETTINGS_URL} (Build and deployment -> Source: GitHub Actions)."
+            exit 1
+          fi
+          echo "GitHub Pages enabled (build_type=${build_type})"
+      - uses: actions/configure-pages@v6
       - name: Stage only public application files
         run: |
           mkdir -p _site/api
