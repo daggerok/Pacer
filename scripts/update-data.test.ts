@@ -56,21 +56,6 @@ describe('scripts/update-data.config.json', () => {
     expect(inputs.length).toBeLessThanOrEqual(25);
   });
 
-  test('every workflow input is mirrored 1:1 into the updater env', () => {
-    for (const input of inputs) {
-      const envName = input.toUpperCase();
-      const needle = ['      ', envName, ': ${{ inputs.', input, " || '' }}"].join('');
-      expect(workflow, envName).toContain(needle);
-      expect(Object.keys(raw), envName).toContain(envName);
-    }
-  });
-
-  test('config keys without a workflow input are documented as CLI/config-only', () => {
-    const missing = Object.keys(raw).filter((key) => !inputs.includes(key.toLowerCase()));
-    // VERBOSE is config-file/CLI-only on purpose: 25 inputs is the GitHub limit.
-    expect(missing).toEqual(['VERBOSE']);
-  });
-
   test('checked-in defaults match the documented Pacer pacing (WAF-conservative)', () => {
     expect(raw.REQUEST_SLEEP).toBe('2.5');
     expect(raw.CONCURRENCY).toBe('1');

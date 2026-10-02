@@ -202,6 +202,55 @@ CHRONOLOGICAL JOURNAL
   untracked until the first successful workflow run publishes the feed.
 
 
+### 2026-10-01 — PR audit and the repo-wide updater-config standard (checkpoint 3)
+- Audited every open daggerok PR (gh search prs --owner=daggerok --state=open): 26 of them are the
+  same sweep - "chore: standardize updater config, workflow and README" - opened 2026-10-01 in
+  AAM, aberdeen, Amplify, ARK, Capital-Group, Fidelity, First-Trust, Franklin, Global-X,
+  Goldman-Sachs, Invesco, iShares, JPMorgan, Neos, Northern-Trust, ProShares, SPDR, Schwab, Tema,
+  Themes, VanEck, Vanguard, VictoryShares, WisdomTree, Xtrackers; daggerok/Sprott#1 is the newest
+  sibling app. The canonical description of the standard (Schwab#24):
+  "Adds exported CONTROL_NAMES, resolveControls and runtimeControls (file < advanced < nonblank
+  inputs < env), a SEC_UA control, a generated 25-input workflow with an advanced JSON input,
+  standardized README and offline config/docs/workflow tests. Provider logic is unchanged."
+- daggerok/Pacer#2 (branch feat/pacer-etfs, opened by a parallel session minutes after ours) is a
+  second complete Pacer implementation that already follows that standard. Merged into our branch:
+  * scripts/update-data.ts: CONTROL_NAMES / resolveControls / runtimeControls exported, import-time
+    env seeding removed (the resolver is now the single entry point), SEC_UA control with the
+    built-in descriptor `daggerok ETF feed daggerok@gmail.com`, validation of integers/booleans and
+    a newline/control-character guard, readConfig() run by the resolver before any request.
+  * .github/workflows/update-data.yml: 24 individual inputs + the `advanced` JSON input (25 = the
+    GitHub maximum), `DISPATCH_INPUTS: ${{ toJSON(inputs) }}` resolved in-workflow by importing
+    resolveControls (no `${{ inputs.* }}` interpolation into bash), protected `vars.SEC_UA` at the
+    highest precedence, timeout-minutes: 30, concurrency group `update-data`, `bun test`, and
+    `git add api/pacer` as the only staged path.
+  * scripts/config-docs.test.ts (new, 8 tests): precedence file < advanced < nonblank inputs < env,
+    invalid-value and newline-injection rejection, Pacer defaults, config keys == CONTROL_NAMES ==
+    README controls table == --help, workflow constraints, and the standard README structure with
+    the sorted 27-brand brands/siblings tables.
+  * scripts/update-data.config.json: SEC_UA added (blank = built-in descriptor); 27 controls.
+  * README.md rewritten to the standard heading structure (Using Bun / Updating the static data /
+    Data sources / Metrics and caveats / Update controls / Examples / TypeScript and verification /
+    Brands table / Sibling applications / License) with the full controls table, the Pacer caveats
+    (NAV derived from the daily holdings CSV, holdings fallback chain, WAF pacing) and the same
+    27-brand tables as the siblings, including the "(deployment pending)" Pages note.
+  * Two now-superseded config/workflow-input tests removed from scripts/update-data.test.ts.
+- Differences deliberately NOT merged from Pacer#2 (documented decisions):
+  * Holdings: ours reads the official daily holdings CSV first
+    (/products/holdings_download/{TICKER}, captured successfully during research) and keeps
+    SEC EDGAR N-PORT-P as the fallback; Pacer#2 treats the CSV as unreadable and starts from
+    N-PORT-P, so its holdings are always quarterly-lagged.
+  * Ours ships ci.yml and pages.yml as well (Pacer main has no workflows at all); Pacer#2 ships
+    update-data.yml only, so nothing runs its tests or deploys Pages there.
+- Not merged yet (candidate follow-up): Pacer#2 parses the fund-page "Fund Details" block
+  (NAV, market price, net assets, CUSIP, ISIN, inception, total expenses, shares outstanding,
+  number of securities, premium/discount, 30-day SEC yield) and the "Recent Investment Performance"
+  month-end YTD block; it also handles the Structured Outcome sub-path
+  /products/structured-outcome-strategies/{TICKER} and series-listing funds without a table row.
+  Its live evidence file reports a 74-fund catalog read through the rendering proxy.
+- Results after the merge: `bun test` 72 pass / 0 fail (371 assertions), both Bun builds OK,
+  `./scripts/update-data.ts --help` prints the new precedence block and SEC_UA.
+
+
 =============================================================================
 FULL SELF-CONTAINED IMPLEMENTATION PLAN
 =============================================================================

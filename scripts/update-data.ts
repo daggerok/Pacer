@@ -1,15 +1,4 @@
 #!/usr/bin/env bun
-// Checked-in JSON is the runtime default; any nonblank environment value wins.
-import { readFileSync as readUpdaterConfig } from 'node:fs';
-try {
-  const updaterDefaults = JSON.parse(readUpdaterConfig(new URL('./update-data.config.json', import.meta.url), 'utf8')) as Record<string, unknown>;
-  for (const [key, value] of Object.entries(updaterDefaults)) {
-    const current = process.env[key];
-    if ((current === undefined || current.trim() === '') && value !== null && value !== undefined) process.env[key] = String(value);
-  }
-} catch (error) {
-  if ((error as NodeJS.ErrnoException).code !== 'ENOENT') throw error;
-}
 /// <reference types="bun" />
 import { readFile as outputReadFile, readdir as outputReadDir } from 'node:fs/promises';
 import { createHash as outputCreateHash } from 'node:crypto';
@@ -63,7 +52,7 @@ function outputConfigEntries(config: Record<string, any>): [string, string][] {
 }
 function outputPrintConfig(brand: string, config: Record<string, any>): void {
   const entries: [string, string][] = [...outputConfigEntries(config), ['VERBOSE', String(outputVerbose())]];
-  console.log(`[ config   ] ${brand} updater:\n${entries.map(([key, value]) => `              ${key}=${/TOKEN|PASSWORD|SECRET|COOKIE/i.test(key) ? '<redacted>' : outputClean(value)}`).join('\n')}`);
+  console.log(`[ config   ] ${brand} updater:\n${entries.map(([key, value]) => `              ${key}=${/TOKEN|PASSWORD|SECRET|COOKIE|^SEC_UA$/i.test(key) ? '<redacted>' : outputClean(value)}`).join('\n')}`);
 }
 function outputHasOutputFilters(config: Record<string, any>): boolean {
   return outputConfigEntries(config).some(([name, value]) =>
@@ -186,7 +175,8 @@ const SEC_BROWSE_URL = `${SEC_SITE}/cgi-bin/browse-edgar`;
 const SEC_ARCHIVES = `${SEC_SITE}/Archives/edgar/data`;
 const SEC_FUND_TICKERS_URL = `${SEC_SITE}/files/company_tickers_mf.json`;
 const SEC_COMPANY_TICKERS_URL = `${SEC_SITE}/files/company_tickers.json`;
-const SEC_UA = 'daggerok Pacer ETF feed (https://github.com/daggerok/Pacer)';
+const DEFAULT_SEC_UA = 'daggerok ETF feed daggerok@gmail.com';
+let secUa = DEFAULT_SEC_UA; // overridden by the SEC_UA control when nonblank
 const BROWSER_UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36';
 const PROXY_SLEEP_SECONDS = 3.2; // r.jina.ai anonymous tier is ~20 requests per minute
 
@@ -331,6 +321,7 @@ type UpdaterConfig = {
   edgarFallback: boolean;
   skipPacer: boolean;
   skipYahoo: boolean;
+  secUa: string;
 };
 
 const EMPTY_RETURNS: CatalogReturns = { ytd: null, mo1: null, mo3: null, yr1: null, yr3: null, yr5: null, yr10: null, sinceInception: null };
@@ -535,7 +526,7 @@ function hasConfiguredFilters(config: UpdaterConfig): boolean {
   return Boolean(config.aum || config.ter || config.dividendYield || config.tickers || Object.keys(config.performance).length || Object.keys(config.totalReturn).length);
 }
 
-function readConfig(env: Record<string, string | undefined> = process.env): UpdaterConfig {
+export function readConfig(env: Record<string, string | undefined> = process.env): UpdaterConfig {
   return {
     maxFetches: parsePositiveInt(env.MAX_FETCHES, 0),
     requestSleep: parseDecimal(env.REQUEST_SLEEP, 2.5),
@@ -554,6 +545,7 @@ function readConfig(env: Record<string, string | undefined> = process.env): Upda
     edgarFallback: !['0', 'false', 'off', 'no'].includes(String(env.EDGAR_FALLBACK ?? '1').toLowerCase()),
     skipPacer: parseBoolean(env.SKIP_PACER),
     skipYahoo: parseBoolean(env.SKIP_YAHOO),
+    secUa: env.SEC_UA?.trim() || DEFAULT_SEC_UA,
   };
 }
 
@@ -860,7 +852,7 @@ async function fetchText(url: string, label: string, config: UpdaterConfig, head
   for (let attempt = 0; attempt <= config.maxRetries; attempt += 1) {
     try {
       await paceRequests(proxy);
-      const response = await fetch(url, { headers: { 'User-Agent': SEC_UA, Accept: '*/*', ...headers }, redirect: 'follow' });
+      const response = await fetch(url, { headers: { 'User-Agent': secUa, Accept: '*/*', ...headers }, redirect: 'follow' });
       if (!response.ok) {
         const snippet = cleanText((await response.text().catch(() => '')).replace(/<[^>]+>/g, ' ')).slice(0, 160);
         throw new HttpError(response.status, `${response.status} ${response.statusText}${snippet ? ` — ${snippet}` : ''}`);
@@ -917,7 +909,7 @@ async function fetchIssuerText(url: string, label: string, config: UpdaterConfig
     }
   }
   try {
-    const headers: Record<string, string> = { 'User-Agent': SEC_UA, Accept: 'text/plain,text/markdown;q=0.9,*/*;q=0.8' };
+    const headers: Record<string, string> = { 'User-Agent': secUa, Accept: 'text/plain,text/markdown;q=0.9,*/*;q=0.8' };
     if (options.cache === false) headers['X-No-Cache'] = 'true';
     const text = stripProxyPreamble(await fetchText(proxyUrl(url), `${label} (proxy)`, config, headers));
     if (validate(text)) return { text, via: 'proxy' };
@@ -1268,7 +1260,7 @@ export function parseHoldingsCsv(text: string): HoldingsCsv {
 // ---------------------------------------------------------------------------
 
 function secHeaders(): Record<string, string> {
-  return { 'User-Agent': SEC_UA, Accept: 'application/json, application/xml, text/xml, text/plain' };
+  return { 'User-Agent': secUa, Accept: 'application/json, application/xml, text/xml, text/plain' };
 }
 
 export function parseFundTickerMap(payload: JsonRecord): Map<string, SecSeriesRef> {
@@ -2108,7 +2100,9 @@ Sources:
                 as the fallback)
   history       Yahoo Finance public chart API (adjusted market-price closes)
 
-Environment variables (all filters use AND logic):
+Configuration: scripts/update-data.config.json defaults < advanced JSON (workflow
+only) < nonblank workflow inputs < environment variables below (all filters use
+AND logic):
   MAX_FETCHES=0       all eligible funds; positive value is a resumable batch
   REQUEST_SLEEP=2.5   seconds between outgoing request starts
   CONCURRENCY=1       parallel fund workers; the WAF gate stays conservative
@@ -2126,10 +2120,13 @@ Environment variables (all filters use AND logic):
   EDGAR_FALLBACK=1
   SKIP_PACER=off      use the previously published catalog/product data
   SKIP_YAHOO=off      keep previously published history when possible
+  SEC_UA=             SEC User-Agent override (declare a contact); blank uses the
+                      built-in default (daggerok ETF feed daggerok@gmail.com)
   VERBOSE=off         per-fund retry / fallback notices
 
-Defaults live in scripts/update-data.config.json; any nonblank environment
-value (or workflow_dispatch input) wins over the checked-in file.
+Defaults live in scripts/update-data.config.json. Precedence: file defaults <
+advanced JSON < nonblank workflow_dispatch inputs < environment variables, all
+resolved by resolveControls() (exported below and used by the workflow).
 
 Examples:
   TICKERS="COWZ CALF PTLC" ./scripts/update-data.ts
@@ -2137,8 +2134,69 @@ Examples:
   PERFORMANCE_3Y="10:" TOTAL_RETURN_1Y="15:" ./scripts/update-data.ts
 `;
 
+// File defaults and explicit overrides: allowlisted scalar controls only, so
+// GitHub Actions can resolve them without interpolating user input into bash.
+// Precedence: config file < advanced JSON < nonblank inputs < environment.
+export const CONTROL_NAMES = [
+  'MAX_FETCHES', 'REQUEST_SLEEP', 'CONCURRENCY', 'AUM', 'TER', 'DIVIDEND_YIELD', 'TICKERS',
+  'HOLDINGS_PAGE_SIZE', 'HISTORY_PAGE_SIZE', 'STORE_RAW_DOWNLOADS', 'MAX_RETRIES', 'HISTORY_RANGE',
+  'EDGAR_FALLBACK', 'SKIP_YAHOO', 'SKIP_PACER', 'SEC_UA', 'VERBOSE',
+  ...['PERFORMANCE', 'TOTAL_RETURN'].flatMap((prefix) => ['YTD', '1Y', '3Y', '5Y', '10Y'].map((period) => `${prefix}_${period}`)),
+] as const;
+export type ControlName = (typeof CONTROL_NAMES)[number];
+export const CONFIG_FILE_URL = new URL('./update-data.config.json', import.meta.url);
+
+export function resolveControls(
+  file: unknown = {},
+  advanced: unknown = {},
+  inputs: unknown = {},
+  env: Record<string, string | undefined> = {},
+): Record<string, string> {
+  const result: Record<string, string> = {};
+  const known = new Set<string>(CONTROL_NAMES);
+  const apply = (value: unknown, skipEmpty = false): void => {
+    if (!value || typeof value !== 'object' || Array.isArray(value)) throw new Error('Configuration must be a JSON object');
+    for (const [key, raw] of Object.entries(value)) {
+      if (!known.has(key)) throw new Error(`Unknown updater control: ${key}`);
+      if (skipEmpty && (raw === '' || raw === undefined || raw === null)) continue;
+      if (!['string', 'number', 'boolean'].includes(typeof raw)) throw new Error(`${key}: expected string, number or boolean`);
+      const text = String(raw);
+      if (/[\r\n\0]/.test(text)) throw new Error(`${key}: multiline/control characters are not allowed`);
+      result[key] = text;
+    }
+  };
+  apply(file);
+  apply(advanced);
+  apply(inputs, true);
+  for (const key of CONTROL_NAMES) {
+    const value = env[key];
+    if (value !== undefined) apply({ [key]: value });
+  }
+  for (const key of ['MAX_FETCHES', 'CONCURRENCY', 'HOLDINGS_PAGE_SIZE', 'HISTORY_PAGE_SIZE', 'MAX_RETRIES']) {
+    const v = result[key];
+    if (v === undefined || v.trim() === '') continue;
+    const min = key === 'MAX_FETCHES' ? 0 : 1;
+    if (!/^\d+$/.test(v.trim()) || !Number.isSafeInteger(Number(v)) || Number(v) < min) throw new Error(`${key}: expected integer >= ${min}`);
+  }
+  const sleep = result.REQUEST_SLEEP;
+  if (sleep && sleep.trim() && (!Number.isFinite(Number(sleep)) || Number(sleep) < 0)) throw new Error('REQUEST_SLEEP: expected nonnegative seconds');
+  for (const key of ['STORE_RAW_DOWNLOADS', 'EDGAR_FALLBACK', 'SKIP_YAHOO', 'SKIP_PACER', 'VERBOSE']) {
+    if (result[key] && !/^(0|1|true|false|yes|no|y|n|on|off)$/i.test(result[key].trim())) throw new Error(`${key}: expected boolean`);
+  }
+  readConfig(result); // validate every min:max filter before any request or write
+  return result;
+}
+
+export async function runtimeControls(env: Record<string, string | undefined> = process.env): Promise<Record<string, string>> {
+  const file = JSON.parse(await readFile(CONFIG_FILE_URL, 'utf8'));
+  return resolveControls(file, {}, {}, env);
+}
+
 async function main(): Promise<void> {
-  const config = readConfig();
+  const controls = await runtimeControls();
+  const config = readConfig(controls);
+  secUa = config.secUa;
+  if (controls.VERBOSE !== undefined) process.env.VERBOSE = controls.VERBOSE;
   requestSleepSeconds = config.requestSleep;
   nextRequestAt = 0;
   proxyGateAt = 0;
