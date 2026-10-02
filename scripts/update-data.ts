@@ -42,7 +42,7 @@ function outputConfigEntries(config: Record<string, any>): [string, string][] {
 }
 function outputPrintConfig(brand: string, config: Record<string, any>): void {
   const entries: [string, string][] = [...outputConfigEntries(config), ['VERBOSE', String(outputVerbose())]];
-  console.log(`[ config   ] ${brand} updater:\n${entries.map(([key, value]) => `              ${key}=${/TOKEN|PASSWORD|SECRET|COOKIE/i.test(key) ? '<redacted>' : outputClean(value)}`).join('\n')}`);
+  console.log(`[ config   ] ${brand} updater:\n${entries.map(([key, value]) => `              ${key}=${/TOKEN|PASSWORD|SECRET|COOKIE|SEC_UA/i.test(key) ? '<redacted>' : outputClean(value)}`).join('\n')}`);
 }
 function outputHasOutputFilters(config: Record<string, any>): boolean {
   return outputConfigEntries(config).some(([name, value]) =>
@@ -179,7 +179,7 @@ const SEC_BROWSE_URL = `${SEC_SITE}/cgi-bin/browse-edgar`;
 const SEC_ARCHIVES = `${SEC_SITE}/Archives/edgar/data`;
 const SEC_FUND_TICKERS_URL = `${SEC_SITE}/files/company_tickers_mf.json`;
 const SEC_COMPANY_TICKERS_URL = `${SEC_SITE}/files/company_tickers.json`;
-const DEFAULT_SEC_UA = 'DaggerOk Pacer ETF feed admin@daggerok.example.com';
+const DEFAULT_SEC_UA = 'daggerok ETF feed daggerok@gmail.com';
 let secUa = DEFAULT_SEC_UA; // overridden by the SEC_UA control when nonblank
 const BROWSER_UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36';
 const PROXY_SLEEP_SECONDS = 3.2; // r.jina.ai anonymous tier is ~20 requests per minute
@@ -314,6 +314,7 @@ type UpdaterConfig = {
   aum?: Range;
   ter?: Range;
   dividendYield?: Range;
+  secYield?: Range;
   performance: RangeMap;
   totalReturn: RangeMap;
   concurrency: number;
@@ -528,7 +529,7 @@ function readTickerSet(value: string | undefined): Set<string> | null {
 }
 
 function hasConfiguredFilters(config: UpdaterConfig): boolean {
-  return Boolean(config.aum || config.ter || config.dividendYield || config.tickers || Object.keys(config.performance).length || Object.keys(config.totalReturn).length);
+  return Boolean(config.aum || config.ter || config.dividendYield || config.secYield || config.tickers || Object.keys(config.performance).length || Object.keys(config.totalReturn).length);
 }
 
 export function readConfig(env: Record<string, string | undefined> = process.env): UpdaterConfig {
@@ -538,13 +539,14 @@ export function readConfig(env: Record<string, string | undefined> = process.env
     aum: parseAumRange(env.AUM ?? ':'),
     ter: parseRange(env.TER ?? ':', 'TER'),
     dividendYield: parseRange(env.DIVIDEND_YIELD ?? ':', 'DIVIDEND_YIELD'),
+    secYield: parseRange(env.SEC_YIELD ?? ':', 'SEC_YIELD'),
     performance: parseRanges(env, 'PERFORMANCE'),
     totalReturn: parseRanges(env, 'TOTAL_RETURN'),
     concurrency: Math.max(1, parsePositiveInt(env.CONCURRENCY, 1)),
     holdingsPageSize: Math.max(1, parsePositiveInt(env.HOLDINGS_PAGE_SIZE, 250)),
     historyPageSize: Math.max(1, parsePositiveInt(env.HISTORY_PAGE_SIZE, 1000)),
     storeRawDownloads: parseBoolean(env.STORE_RAW_DOWNLOADS),
-    maxRetries: Math.max(0, parsePositiveInt(env.MAX_RETRIES, 2)),
+    maxRetries: Math.max(1, parsePositiveInt(env.MAX_RETRIES, 2)),
     tickers: readTickerSet(env.TICKERS),
     historyRange: env.HISTORY_RANGE?.trim() || 'max',
     edgarFallback: !['0', 'false', 'off', 'no', 'n'].includes(String(env.EDGAR_FALLBACK ?? '1').trim().toLowerCase()),
@@ -829,7 +831,7 @@ export function proxyUrl(url: string): string {
   return `${PROXY_PREFIX}${url}`;
 }
 
-async function fetchText(url: string, label: string, config: UpdaterConfig, headers: Record<string, string> = {}): Promise<string> {
+export async function fetchText(url: string, label: string, config: UpdaterConfig, headers: Record<string, string> = {}): Promise<string> {
   let lastError: unknown = new Error('no request attempted');
   const proxy = isProxyUrl(url);
   for (let attempt = 0; attempt <= config.maxRetries; attempt += 1) {
@@ -1634,6 +1636,7 @@ function postFetchFilterReasons(fund: CatalogFund, metrics: JsonRecord, config: 
   const reasons: string[] = [];
   if (!rangeMatches(fund.netAssets, config.aum)) reasons.push('AUM');
   if (!rangeMatches(numberOrNull(metrics.dividendYield), config.dividendYield)) reasons.push('DIVIDEND_YIELD');
+  if (!rangeMatches(numberOrNull(metrics.secYield), config.secYield)) reasons.push('SEC_YIELD');
   const annual: Record<ReturnPeriod, number | null> = { YTD: metrics.ytd, '1Y': metrics.tr1y, '3Y': metrics.cagr3y, '5Y': metrics.cagr5y, '10Y': metrics.cagr10y };
   const cumulative: Record<ReturnPeriod, number | null> = { YTD: metrics.ytd, '1Y': metrics.tr1y, '3Y': metrics.tr3y, '5Y': metrics.tr5y, '10Y': metrics.tr10y };
   for (const [period, range] of Object.entries(config.performance) as [ReturnPeriod, Range][]) if (annual[period] !== null && !rangeMatches(annual[period], range)) reasons.push(`PERFORMANCE_${period}`);
@@ -1968,17 +1971,17 @@ only) < nonblank workflow inputs < environment variables below (all filters use
 AND logic):
   MAX_FETCHES=0       all eligible funds; positive value is a resumable batch
   REQUEST_SLEEP=2.5   seconds between request starts (proxy requests >= 3.2s)
-  CONCURRENCY=1       parallel fund workers; every request stays paced
-  AUM=:\n  TER=:\n  DIVIDEND_YIELD=:\n  TICKERS="COWZ FLRT"  optional ticker allowlist
+  CONCURRENCY=1       parallel fund workers, each with its own paced request lane (rendering-proxy requests share one global gate)
+  AUM=:\n  TER=:\n  DIVIDEND_YIELD=:\n  SEC_YIELD=:\n  TICKERS="COWZ FLRT"  optional ticker allowlist
   PERFORMANCE_YTD|1Y|3Y|5Y|10Y=min:max   annualized ranges
   TOTAL_RETURN_YTD|1Y|3Y|5Y|10Y=min:max cumulative ranges
   HOLDINGS_PAGE_SIZE=250
   HISTORY_PAGE_SIZE=1000
   HISTORY_RANGE=max
-  MAX_RETRIES=2
+  MAX_RETRIES=2       retries after the initial request (integer >= 1)
   STORE_RAW_DOWNLOADS=false
   EDGAR_FALLBACK=true full holdings from SEC EDGAR Form N-PORT-P (off keeps the official top 10 or the previous holdings)
-  SEC_UA=             SEC User-Agent override (declare a contact); blank uses the built-in descriptor
+  SEC_UA=             SEC User-Agent (default: daggerok ETF feed daggerok@gmail.com; redacted in logs)
   VERBOSE=false
   SKIP_PACER=off      use the previously published catalog/fund page data
   SKIP_YAHOO=off      keep previously published history when possible
@@ -1993,7 +1996,7 @@ Examples:
 // GitHub Actions can resolve them without interpolating user input into bash.
 // Precedence: config file < advanced JSON < nonblank inputs < environment.
 export const CONTROL_NAMES = [
-  'MAX_FETCHES', 'REQUEST_SLEEP', 'CONCURRENCY', 'AUM', 'TER', 'DIVIDEND_YIELD', 'TICKERS',
+  'MAX_FETCHES', 'REQUEST_SLEEP', 'CONCURRENCY', 'AUM', 'TER', 'DIVIDEND_YIELD', 'SEC_YIELD', 'TICKERS',
   'HOLDINGS_PAGE_SIZE', 'HISTORY_PAGE_SIZE', 'STORE_RAW_DOWNLOADS', 'MAX_RETRIES', 'HISTORY_RANGE',
   'EDGAR_FALLBACK', 'SKIP_YAHOO', 'SKIP_PACER', 'SEC_UA', 'VERBOSE',
   ...['PERFORMANCE', 'TOTAL_RETURN'].flatMap((prefix) => ['YTD', '1Y', '3Y', '5Y', '10Y'].map((period) => `${prefix}_${period}`)),
@@ -2030,7 +2033,7 @@ export function resolveControls(
   for (const key of ['MAX_FETCHES', 'CONCURRENCY', 'HOLDINGS_PAGE_SIZE', 'HISTORY_PAGE_SIZE', 'MAX_RETRIES']) {
     const v = result[key];
     if (v === undefined || v.trim() === '') continue;
-    const min = ['MAX_FETCHES', 'MAX_RETRIES'].includes(key) ? 0 : 1;
+    const min = key === 'MAX_FETCHES' ? 0 : 1;
     if (!/^\d+$/.test(v.trim()) || !Number.isSafeInteger(Number(v)) || Number(v) < min) throw new Error(`${key}: expected integer >= ${min}`);
   }
   const sleep = result.REQUEST_SLEEP;
@@ -2038,6 +2041,8 @@ export function resolveControls(
   for (const key of ['STORE_RAW_DOWNLOADS', 'EDGAR_FALLBACK', 'SKIP_YAHOO', 'SKIP_PACER', 'VERBOSE']) {
     if (result[key] && !/^(0|1|true|false|yes|no|y|n|on|off)$/i.test(result[key].trim())) throw new Error(`${key}: expected boolean`);
   }
+  const range = result.HISTORY_RANGE?.trim();
+  if (range && !/^(max|ytd|\d+(y|mo|d))$/i.test(range)) throw new Error('HISTORY_RANGE: expected max, ytd or a window such as 5y, 6mo, 30d');
   readConfig(result); // validate every min:max filter before any request or write
   return result;
 }
@@ -2047,14 +2052,24 @@ export async function runtimeControls(env: Record<string, string | undefined> = 
   return resolveControls(file, {}, {}, env);
 }
 
+/** Starts `count` workers at once and resolves when all of them are done. */
+export async function runWorkers(count: number, worker: () => Promise<void>): Promise<void> {
+  await Promise.all(Array.from({ length: Math.max(1, count) }, () => worker()));
+}
+
+/** Pacing setup shared by main() and the offline concurrency test. */
+export function configurePacing(sleepSeconds: number, concurrency: number): void {
+  requestSleepSeconds = sleepSeconds;
+  requestGates = new Array(Math.max(1, concurrency)).fill(0);
+  proxyGateAt = 0;
+}
+
 async function main(): Promise<void> {
   const controls = await runtimeControls();
   if (controls.VERBOSE !== undefined) process.env.VERBOSE = controls.VERBOSE;
   const config = readConfig(controls);
   secUa = config.secUa;
-  requestSleepSeconds = config.requestSleep;
-  requestGates = new Array(Math.max(1, config.concurrency)).fill(0);
-  proxyGateAt = 0;
+  configurePacing(config.requestSleep, config.concurrency);
   issuerDirectDenials = 0;
   outputPrintConfig('Pacer', config);
 
@@ -2121,7 +2136,7 @@ async function main(): Promise<void> {
       }
     }
   };
-  await Promise.all(Array.from({ length: config.concurrency }, () => worker()));
+  await runWorkers(config.concurrency, worker);
 
   const filterRun = hasConfiguredFilters(config);
   const funds = [...results].sort((a, b) => String(a.ticker).localeCompare(String(b.ticker)));
