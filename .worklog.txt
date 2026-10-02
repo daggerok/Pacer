@@ -100,10 +100,15 @@ CURRENT STATE
   7. README.md (structure pinned to daggerok/Schwab README: intro, sources table, metrics,
      update-controls table with the Pacer defaults, brands and sibling tables with a Pacer row,
      MIT/trademark note). PR #1: https://github.com/daggerok/Pacer/pull/1 (ci "offline" job green).
+  8. Repo-wide updater-config standard adopted (checkpoint 3): exported CONTROL_NAMES /
+     resolveControls / runtimeControls with precedence file < advanced JSON < nonblank inputs <
+     env, SEC_UA control, 25-input workflow (24 inputs + the `advanced` JSON input) resolving
+     dispatch inputs via toJSON(inputs), scripts/config-docs.test.ts, and the standard README
+     structure with the 27-brand tables. 72 tests pass, both Bun builds OK.
 - Next action:
   1. Get the live acceptance run: Actions -> "Update Pacer ETF data" -> Run workflow ->
      branch arena/01a0f9aa-pacer -> tickers "COWZ CALF PTLC", every other input left blank so the
-     JSON defaults apply. (The sandbox cannot dispatch it; see Blockers.)
+     JSON defaults apply (advanced: {} as well). (The sandbox cannot dispatch it; see Blockers.)
   2. Pull the generated api/pacer feed, verify per-fund values (name, category, inception, TER,
      NAV = NetAssets/SharesOutstanding, holdings rows, history rows), then re-run the identical
      command and confirm the second run reports no changes (byte-stable output).
