@@ -1435,7 +1435,13 @@ function lastCompletedQuarterEnd(now = new Date()): string {
 const DERIVED_RETURNS_BASIS = 'adjusted market-price closes (Yahoo chart API), not official Pacer NAV returns';
 const OFFICIAL_RETURNS_BASIS = 'official Pacer ETFs NAV total returns (product listing, month-end) where published; Yahoo adjusted market-price closes for missing values';
 
-function deriveMetrics(effective: PriceReturns, fund: CatalogFund, dividends: Distribution[], frequency: { paymentsPerYear: number | null }, price: number | null, official: boolean): JsonRecord {
+/** ISO date the returns are as of (official table date, else last Yahoo close), never the NAV date; null when unknown. */
+export function performanceAsOfDate(effective: { asOfDate: string | null | undefined }): string | null {
+  const iso = toIsoDate(effective.asOfDate ?? '');
+  return /^\d{4}-\d{2}-\d{2}$/.test(iso) ? iso : null;
+}
+
+export function deriveMetrics(effective: PriceReturns, fund: CatalogFund, dividends: Distribution[], frequency: { paymentsPerYear: number | null }, price: number | null, official: boolean): JsonRecord {
   const latest = dividends[dividends.length - 1];
   const indicated = fund.dividendYield ?? (latest && frequency.paymentsPerYear && price ? round((latest.amount * frequency.paymentsPerYear / price) * 100, 2) : null);
   return {
@@ -1453,6 +1459,7 @@ function deriveMetrics(effective: PriceReturns, fund: CatalogFund, dividends: Di
     secYield: fund.secYield,
     secYieldText: fund.secYield === null ? '—' : `${fund.secYield.toFixed(2)}%`,
     returnsBasis: official ? OFFICIAL_RETURNS_BASIS : DERIVED_RETURNS_BASIS,
+    performanceAsOf: performanceAsOfDate(effective),
   };
 }
 
@@ -1833,6 +1840,7 @@ async function processFund(fund: CatalogFund, config: UpdaterConfig, previous: J
   const text = (value: number | null) => (value === null ? '—' : `${value.toFixed(2)}%`);
   const returns: JsonRecord = {
     derivedFrom: officialMonthly ? OFFICIAL_RETURNS_BASIS : DERIVED_RETURNS_BASIS,
+    performanceAsOf: metrics.performanceAsOf,
     monthEnd: {
       asOfDate: effective.asOfDate ? formatDate(effective.asOfDate) : '—',
       mo1: effective.mo1, mo1Text: text(effective.mo1),

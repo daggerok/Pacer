@@ -8,6 +8,8 @@ import {
   installSystemCa,
   isCertError,
   configurePacing,
+  deriveMetrics,
+  performanceAsOfDate,
   fetchText,
   runWorkers,
   annualizedToTotal,
@@ -516,6 +518,21 @@ describe('Pacer fund page parser', () => {
     const official = { asOfDate: '2026-09-30', mo1: -6.84, mo3: 7.98, ytd: 12.15, yr1: 26.63, cagr3y: 14.48, cagr5y: 12.02, cagr10y: null, siAnn: 13.79 };
     expect(mergeOfficialReturns(derived, official)).toEqual({ asOfDate: '2026-09-30', mo1: -6.84, qtd: 2, ytd: 12.15, yr1: 26.63, cagr3y: 14.48, cagr5y: 12.02, cagr10y: 7, siAnn: 13.79 });
     expect(mergeOfficialReturns(derived, null)).toBe(derived);
+  });
+
+  test('metrics carry a non-empty returnsBasis then performanceAsOf as the last keys', () => {
+    const fund = { dividendYield: null, secYield: null } as never;
+    const derived = { asOfDate: '2026-09-17', mo1: 1, qtd: 2, ytd: 3, yr1: 4, cagr3y: 5, cagr5y: 6, cagr10y: 7, siAnn: 8 };
+    const official = mergeOfficialReturns(derived, { asOfDate: '2026-09-30', mo1: 1, mo3: 2, ytd: 3, yr1: 4, cagr3y: 5, cagr5y: 6, cagr10y: 7, siAnn: 8 });
+    const viaOfficial = deriveMetrics(official, fund, [], { paymentsPerYear: null }, 10, true);
+    const viaYahoo = deriveMetrics(derived, fund, [], { paymentsPerYear: null }, 10, false);
+    expect(Object.keys(viaOfficial).slice(-2)).toEqual(['returnsBasis', 'performanceAsOf']);
+    expect(viaOfficial.performanceAsOf).toBe('2026-09-30');
+    expect(viaYahoo.performanceAsOf).toBe('2026-09-17');
+    expect(String(viaOfficial.returnsBasis)).toMatch(/official Pacer/);
+    expect(String(viaYahoo.returnsBasis)).toMatch(/Yahoo/);
+    expect(performanceAsOfDate({ asOfDate: '' })).toBeNull();
+    expect(performanceAsOfDate({ asOfDate: null })).toBeNull();
   });
 });
 

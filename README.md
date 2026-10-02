@@ -45,6 +45,8 @@ Each fund carries a derived `metrics` object that powers the catalog columns sha
 - `siAnn` - since-inception annualized -> *SI Ann.*
 - `dividendYield` - indicated yield (latest distribution x payments per year / NAV), an estimate: Pacer publishes no distribution yield
 - `secYield` - 30-day SEC yield when the fund page publishes one; `-` otherwise
+- `returnsBasis` - always a non-empty label of how the returns were computed: official Pacer NAV total returns from the product listing (month-end) where published, with Yahoo adjusted market-price closes filling missing values, or Yahoo adjusted closes only (market-price estimates, not NAV returns)
+- `performanceAsOf` - ISO date `YYYY-MM-DD` the returns are as of: the product listing performance table date when official returns exist, otherwise the last Yahoo close date; it is not the NAV date and is `null` only when no date is known
 
 Caveats:
 
