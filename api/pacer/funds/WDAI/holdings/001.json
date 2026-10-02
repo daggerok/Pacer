@@ -1,0 +1,107 @@
+{
+  "ticker": "WDAI",
+  "page": 1,
+  "pageSize": 250,
+  "totalRows": 10,
+  "headers": [
+    "Name",
+    "Ticker",
+    "Identifier",
+    "Weight",
+    "Market Value",
+    "Shares Held",
+    "Asset Category"
+  ],
+  "rows": [
+    {
+      "Name": "HELLENiQ ENERGY Holdings S.A.",
+      "Ticker": "ELPEGA",
+      "Identifier": "-",
+      "Weight": "0.74",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Motor Oil Hellas Corinth Refineries SA",
+      "Ticker": "MOHGA",
+      "Identifier": "-",
+      "Weight": "0.68",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Nice Ltd",
+      "Ticker": "NICEIT",
+      "Identifier": "-",
+      "Weight": "0.66",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Cathay Pacific Airways Ltd",
+      "Ticker": "293HK",
+      "Identifier": "-",
+      "Weight": "0.63",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "AIB Group PLC",
+      "Ticker": "AIBGID",
+      "Identifier": "-",
+      "Weight": "0.61",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Ageas SA/NV",
+      "Ticker": "AGSBB",
+      "Identifier": "-",
+      "Weight": "0.6",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Frontline PLC",
+      "Ticker": "FRONO",
+      "Identifier": "-",
+      "Weight": "0.6",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Repsol SA",
+      "Ticker": "REPSM",
+      "Identifier": "-",
+      "Weight": "0.6",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "NN Group NV",
+      "Ticker": "NNNA",
+      "Identifier": "-",
+      "Weight": "0.58",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Valero Energy Corp",
+      "Ticker": "VLO",
+      "Identifier": "-",
+      "Weight": "0.55",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    }
+  ]
+}

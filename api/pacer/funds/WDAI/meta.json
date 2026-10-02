@@ -1,0 +1,166 @@
+{
+  "ticker": "WDAI",
+  "name": "Pacer Trendpilot® ETF Series",
+  "category": "Thematic Growth",
+  "categoryPath": "Thematic Growth",
+  "source": {
+    "fundPage": "https://www.paceretfs.com/products/WDAI",
+    "officialProductPage": "https://www.paceretfs.com/products/WDAI",
+    "productPageRendering": "read-only rendering proxy (r.jina.ai) of the official product page",
+    "productPageAsOf": null,
+    "holdingsDownload": null,
+    "navHistoryDownload": null,
+    "yahooChart": "https://query1.finance.yahoo.com/v8/finance/chart/WDAI",
+    "holdingsSource": "top 10 holdings published on the official Pacer ETFs product page (no CSV export or N-PORT-P holdings in this run)",
+    "historySource": "Yahoo Finance public chart API (adjusted close)",
+    "distributionsSource": "paceretfs.com fund page distribution history (total distribution per share)",
+    "provider": "Pacer ETFs product listing + official product page + per-fund daily holdings CSV export + SEC EDGAR Form N-PORT-P fallback + Yahoo Finance public chart API"
+  },
+  "identifiers": {
+    "cusip": null,
+    "isin": null,
+    "isinBasis": null,
+    "indexTicker": "[Pacer Trendpilot ETF Series](https://www.paceretfs.com/products/WDAI#product-menu-trendpilot) [Pacer Cash Cows Index ETF Series](https://www.paceretfs.com/products/WDAI#product-menu-cashcows) [Pacer Metaurus Dividend Multiplier ETF Series](https://www.paceretfs.com/products/WDAI#product-menu-metaurus) [Pacer Leaders ETF Series](https://www.paceretfs.com/products/WDAI#product-menu-leaders) [Pacer Factor ETF Series](https://www.paceretfs.com/products/WDAI#product-menu-factor) [Pacer Thematic ETF Series](https://www.paceretfs.com/products/WDAI#product-menu-thematic) [Pacer Swan SOS ETF Series](https://www.paceretfs.com/products/structured-outcome-strategies) [Pacer Custom ETF Series](https://www.paceretfs.com/products/WDAI#product-menu-custom) [Pacer UCITS For International Investors](https://www.paceretfs.com/products/WDAI#)",
+    "exchange": null,
+    "morningstarCategory": null
+  },
+  "expenseRatio": {
+    "display": "0.6%",
+    "value": 0.6,
+    "kind": "Total Expenses published in the official Pacer ETFs product listing"
+  },
+  "nav": {
+    "display": "—",
+    "value": null,
+    "asOfDate": "Sep 30 2026",
+    "source": "previous run"
+  },
+  "marketPrice": {
+    "display": "$27.89",
+    "value": 27.8902,
+    "asOfDate": "Sep 23 2026",
+    "source": "Yahoo Finance last regular-session price (the anonymous product page publishes no closing price)"
+  },
+  "premiumDiscount": {
+    "display": "—",
+    "value": null,
+    "asOfDate": "Sep 23 2026",
+    "source": "computed from Yahoo last price / the net-asset value implied by the daily holdings CSV"
+  },
+  "aum": {
+    "display": "—",
+    "value": null,
+    "asOfDate": "Sep 30 2026",
+    "source": "previous run"
+  },
+  "fundFacts": {
+    "sharesOutstanding": null,
+    "portfolioTurnover": null,
+    "publishedTotalHoldings": null,
+    "bidAskMidpoint": null
+  },
+  "yields": {
+    "dividendYield": 0.97,
+    "dividendYieldText": "0.97%",
+    "dividendYieldKind": "indicated (latest distribution per share x inferred payments per year / NAV) from the official Pacer distribution history",
+    "distributionRate": null,
+    "secYield": null,
+    "secYieldText": "—",
+    "secYieldKind": "not published on the official Pacer ETFs product page for this fund"
+  },
+  "returns": {
+    "derivedFrom": "official Pacer NAV total returns (product listing, month-end) where published; Yahoo adjusted market-price closes for missing values",
+    "monthEnd": {
+      "asOfDate": "Sep 30 2026",
+      "mo1": -3.34,
+      "mo1Text": "-3.34%",
+      "mo3": 2.45,
+      "mo3Text": "2.45%",
+      "qtd": 2.46,
+      "qtdText": "2.46%",
+      "ytd": null,
+      "ytdText": "—",
+      "yr1": null,
+      "yr1Text": "—",
+      "yr3": null,
+      "yr3Text": "—",
+      "yr5": null,
+      "yr5Text": "—",
+      "yr10": null,
+      "yr10Text": "—",
+      "sinceInception": 13.85,
+      "sinceInceptionText": "13.85%"
+    },
+    "quarterEnd": {
+      "asOfDate": "Sep 30 2026",
+      "ytd": null,
+      "yr1": null,
+      "yr3": null,
+      "yr5": null,
+      "yr10": null,
+      "sinceInception": null
+    }
+  },
+  "officialMarketPriceReturns": {
+    "monthEnd": null,
+    "quarterEnd": null
+  },
+  "distributions": {
+    "frequency": "Quarterly",
+    "frequencyCode": "04 - Quarterly",
+    "paymentsPerYear": 4,
+    "source": "paceretfs.com fund page distribution history (total distribution per share)",
+    "headers": [
+      "Ex Date",
+      "Record Date",
+      "Pay Date",
+      "Total Distributions",
+      "Ordinary Income*",
+      "Short Term Capital Gains",
+      "Long Term Capital Gains",
+      "Return of Capital"
+    ],
+    "rows": [
+      [
+        "6/4/2026",
+        "6/4/2026",
+        "6/8/2026",
+        "$0.048238",
+        "$0.048238",
+        "$0",
+        "$0",
+        "$0"
+      ],
+      [
+        "9/3/2026",
+        "9/3/2026",
+        "9/8/2026",
+        "$0.067584",
+        "$0.067584",
+        "$0",
+        "$0",
+        "$0"
+      ]
+    ]
+  },
+  "holdings": {
+    "pages": [
+      "holdings/001.json"
+    ],
+    "pageSize": 250,
+    "totalRows": 10,
+    "asOfDate": null,
+    "asOf": "—",
+    "source": "top 10 holdings published on the official Pacer ETFs product page (no CSV export or N-PORT-P holdings in this run)",
+    "publishedTopHoldings": 10
+  },
+  "history": {
+    "pages": [
+      "history/001.json"
+    ],
+    "pageSize": 1000,
+    "totalRows": 101,
+    "asOf": "Sep 30 2026",
+    "source": "Yahoo Finance public chart API (adjusted close)"
+  }
+}

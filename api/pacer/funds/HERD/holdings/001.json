@@ -1,0 +1,80 @@
+{
+  "ticker": "HERD",
+  "page": 1,
+  "pageSize": 250,
+  "totalRows": 7,
+  "headers": [
+    "Name",
+    "Ticker",
+    "Identifier",
+    "Weight",
+    "Market Value",
+    "Shares Held",
+    "Asset Category"
+  ],
+  "rows": [
+    {
+      "Name": "PACER US CASH COWS GROWTH ETF",
+      "Ticker": "BUL",
+      "Identifier": "-",
+      "Weight": "20.12",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Pacer US Cash Cows 100 ETF",
+      "Ticker": "COWZ",
+      "Identifier": "-",
+      "Weight": "20.02",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Pacer US Small Cap Cash Cows ETF",
+      "Ticker": "CALF",
+      "Identifier": "-",
+      "Weight": "20.01",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Pacer Global Cash Cows Dividend ETF",
+      "Ticker": "GCOW",
+      "Identifier": "-",
+      "Weight": "19.89",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Pacer Developed Markets International Cash Cows 100 ETF",
+      "Ticker": "ICOW",
+      "Identifier": "-",
+      "Weight": "19.87",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Cash & Other",
+      "Ticker": "CASH&OTHER",
+      "Identifier": "-",
+      "Weight": "0.06",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "U.S. Bank Money Market Deposit Account 06/01/2031",
+      "Ticker": "USBFS03",
+      "Identifier": "-",
+      "Weight": "0.02",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    }
+  ]
+}

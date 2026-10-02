@@ -1,0 +1,194 @@
+{
+  "ticker": "AAAP",
+  "name": "Pacer Trendpilot® ETF Series",
+  "category": "Income",
+  "categoryPath": "Income",
+  "source": {
+    "fundPage": "https://www.paceretfs.com/products/AAAP",
+    "officialProductPage": "https://www.paceretfs.com/products/AAAP",
+    "productPageRendering": "read-only rendering proxy (r.jina.ai) of the official product page",
+    "productPageAsOf": "Sep 30 2026",
+    "holdingsDownload": null,
+    "navHistoryDownload": null,
+    "yahooChart": "https://query1.finance.yahoo.com/v8/finance/chart/AAAP",
+    "holdingsSource": "top 10 holdings published on the official Pacer ETFs product page (no CSV export or N-PORT-P holdings in this run)",
+    "historySource": "Yahoo Finance public chart API (adjusted close)",
+    "distributionsSource": "paceretfs.com fund page distribution history (total distribution per share)",
+    "provider": "Pacer ETFs product listing + official product page + per-fund daily holdings CSV export + SEC EDGAR Form N-PORT-P fallback + Yahoo Finance public chart API"
+  },
+  "identifiers": {
+    "cusip": null,
+    "isin": null,
+    "isinBasis": null,
+    "indexTicker": "[Pacer Trendpilot ETF Series](https://www.paceretfs.com/products/AAAP#product-menu-trendpilot) [Pacer Cash Cows Index ETF Series](https://www.paceretfs.com/products/AAAP#product-menu-cashcows) [Pacer Metaurus Dividend Multiplier ETF Series](https://www.paceretfs.com/products/AAAP#product-menu-metaurus) [Pacer Leaders ETF Series](https://www.paceretfs.com/products/AAAP#product-menu-leaders) [Pacer Factor ETF Series](https://www.paceretfs.com/products/AAAP#product-menu-factor) [Pacer Thematic ETF Series](https://www.paceretfs.com/products/AAAP#product-menu-thematic) [Pacer Swan SOS ETF Series](https://www.paceretfs.com/products/structured-outcome-strategies) [Pacer Custom ETF Series](https://www.paceretfs.com/products/AAAP#product-menu-custom) [Pacer UCITS For International Investors](https://www.paceretfs.com/products/AAAP#)",
+    "exchange": null,
+    "morningstarCategory": null
+  },
+  "expenseRatio": {
+    "display": "0.39%",
+    "value": 0.39,
+    "kind": "Total Expenses published in the official Pacer ETFs product listing"
+  },
+  "nav": {
+    "display": "—",
+    "value": null,
+    "asOfDate": "Sep 30 2026",
+    "source": "previous run"
+  },
+  "marketPrice": {
+    "display": "$25.34",
+    "value": 25.335,
+    "asOfDate": "Oct 1 2026",
+    "source": "Yahoo Finance last regular-session price (the anonymous product page publishes no closing price)"
+  },
+  "premiumDiscount": {
+    "display": "—",
+    "value": null,
+    "asOfDate": "Oct 1 2026",
+    "source": "computed from Yahoo last price / the net-asset value implied by the daily holdings CSV"
+  },
+  "aum": {
+    "display": "—",
+    "value": null,
+    "asOfDate": "Sep 30 2026",
+    "source": "previous run"
+  },
+  "fundFacts": {
+    "sharesOutstanding": null,
+    "portfolioTurnover": null,
+    "publishedTotalHoldings": null,
+    "bidAskMidpoint": null
+  },
+  "yields": {
+    "dividendYield": 5.88,
+    "dividendYieldText": "5.88%",
+    "dividendYieldKind": "indicated (latest distribution per share x inferred payments per year / NAV) from the official Pacer distribution history",
+    "distributionRate": null,
+    "secYield": null,
+    "secYieldText": "—",
+    "secYieldKind": "not published on the official Pacer ETFs product page for this fund"
+  },
+  "returns": {
+    "derivedFrom": "official Pacer NAV total returns (product listing, month-end) where published; Yahoo adjusted market-price closes for missing values",
+    "monthEnd": {
+      "asOfDate": "Sep 30 2026",
+      "mo1": 0.46,
+      "mo1Text": "0.46%",
+      "mo3": 1.71,
+      "mo3Text": "1.71%",
+      "qtd": 1.7,
+      "qtdText": "1.70%",
+      "ytd": null,
+      "ytdText": "—",
+      "yr1": null,
+      "yr1Text": "—",
+      "yr3": null,
+      "yr3Text": "—",
+      "yr5": null,
+      "yr5Text": "—",
+      "yr10": null,
+      "yr10Text": "—",
+      "sinceInception": 1.66,
+      "sinceInceptionText": "1.66%"
+    },
+    "quarterEnd": {
+      "asOfDate": "Sep 30 2026",
+      "ytd": null,
+      "yr1": null,
+      "yr3": null,
+      "yr5": null,
+      "yr10": null,
+      "sinceInception": null
+    }
+  },
+  "officialMarketPriceReturns": {
+    "monthEnd": null,
+    "quarterEnd": {
+      "asOfDate": "Sep 30 2026",
+      "mo1": null,
+      "mo1Text": "—",
+      "mo3": 0.6,
+      "mo3Text": "0.60%",
+      "ytd": null,
+      "ytdText": "—",
+      "yr1": null,
+      "yr1Text": "—",
+      "yr3": null,
+      "yr3Text": "—",
+      "yr5": null,
+      "yr5Text": "—",
+      "yr10": null,
+      "yr10Text": "—",
+      "sinceInception": null,
+      "sinceInceptionText": "—"
+    }
+  },
+  "distributions": {
+    "frequency": "Monthly",
+    "frequencyCode": "01 - Monthly",
+    "paymentsPerYear": 12,
+    "source": "paceretfs.com fund page distribution history (total distribution per share)",
+    "headers": [
+      "Ex Date",
+      "Record Date",
+      "Pay Date",
+      "Total Distributions",
+      "Ordinary Income*",
+      "Short Term Capital Gains",
+      "Long Term Capital Gains",
+      "Return of Capital"
+    ],
+    "rows": [
+      [
+        "7/31/2026",
+        "7/31/2026",
+        "8/3/2026",
+        "$0.057435",
+        "$0.057435",
+        "$0",
+        "$0",
+        "$0"
+      ],
+      [
+        "8/31/2026",
+        "8/31/2026",
+        "9/1/2026",
+        "$0.096850",
+        "$0.096850",
+        "$0",
+        "$0",
+        "$0"
+      ],
+      [
+        "9/30/2026",
+        "9/30/2026",
+        "10/1/2026",
+        "$0.124175",
+        "$0.124175",
+        "$0",
+        "$0",
+        "$0"
+      ]
+    ]
+  },
+  "holdings": {
+    "pages": [
+      "holdings/001.json"
+    ],
+    "pageSize": 250,
+    "totalRows": 10,
+    "asOfDate": null,
+    "asOf": "—",
+    "source": "top 10 holdings published on the official Pacer ETFs product page (no CSV export or N-PORT-P holdings in this run)",
+    "publishedTopHoldings": 10
+  },
+  "history": {
+    "pages": [
+      "history/001.json"
+    ],
+    "pageSize": 1000,
+    "totalRows": 70,
+    "asOf": "Sep 30 2026",
+    "source": "Yahoo Finance public chart API (adjusted close)"
+  }
+}

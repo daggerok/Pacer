@@ -1,0 +1,107 @@
+{
+  "ticker": "MCOW",
+  "page": 1,
+  "pageSize": 250,
+  "totalRows": 10,
+  "headers": [
+    "Name",
+    "Ticker",
+    "Identifier",
+    "Weight",
+    "Market Value",
+    "Shares Held",
+    "Asset Category"
+  ],
+  "rows": [
+    {
+      "Name": "Docusign Inc",
+      "Ticker": "DOCU",
+      "Identifier": "-",
+      "Weight": "4.69",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Medpace Holdings Inc",
+      "Ticker": "MEDP",
+      "Identifier": "-",
+      "Weight": "4.13",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Manhattan Associates Inc",
+      "Ticker": "MANH",
+      "Identifier": "-",
+      "Weight": "4.03",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Lattice Semiconductor Corp",
+      "Ticker": "LSCC",
+      "Identifier": "-",
+      "Weight": "3.9",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Okta Inc",
+      "Ticker": "OKTA",
+      "Identifier": "-",
+      "Weight": "3.17",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Exelixis Inc",
+      "Ticker": "EXEL",
+      "Identifier": "-",
+      "Weight": "3.12",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Rambus Inc",
+      "Ticker": "RMBS",
+      "Identifier": "-",
+      "Weight": "2.85",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Qualys Inc",
+      "Ticker": "QLYS",
+      "Identifier": "-",
+      "Weight": "2.8",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Sterling Infrastructure Inc",
+      "Ticker": "STRL",
+      "Identifier": "-",
+      "Weight": "2.62",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Jazz Pharmaceuticals PLC",
+      "Ticker": "JAZZ",
+      "Identifier": "-",
+      "Weight": "2.44",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    }
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "ticker": "ACBH",
+  "page": 1,
+  "pageSize": 1000,
+  "totalRows": 15,
+  "headers": [
+    "Date",
+    "Close",
+    "Adj Close",
+    "Volume"
+  ],
+  "rows": [
+    {
+      "Date": "Sep 11 2026",
+      "Close": "25.023700714111328",
+      "Adj Close": "24.81",
+      "Volume": "0"
+    },
+    {
+      "Date": "Sep 14 2026",
+      "Close": "24.85689926147461",
+      "Adj Close": "24.65",
+      "Volume": "0"
+    },
+    {
+      "Date": "Sep 15 2026",
+      "Close": "24.67449951171875",
+      "Adj Close": "24.47",
+      "Volume": "0"
+    },
+    {
+      "Date": "Sep 16 2026",
+      "Close": "24.673099517822266",
+      "Adj Close": "24.47",
+      "Volume": "0"
+    },
+    {
+      "Date": "Sep 17 2026",
+      "Close": "25.01420021057129",
+      "Adj Close": "24.81",
+      "Volume": "0"
+    },
+    {
+      "Date": "Sep 18 2026",
+      "Close": "25.014999389648438",
+      "Adj Close": "24.81",
+      "Volume": "0"
+    },
+    {
+      "Date": "Sep 21 2026",
+      "Close": "25.562599182128906",
+      "Adj Close": "25.35",
+      "Volume": "0"
+    },
+    {
+      "Date": "Sep 22 2026",
+      "Close": "25.557300567626953",
+      "Adj Close": "25.34",
+      "Volume": "0"
+    },
+    {
+      "Date": "Sep 23 2026",
+      "Close": "25.32379913330078",
+      "Adj Close": "25.11",
+      "Volume": "0"
+    },
+    {
+      "Date": "Sep 24 2026",
+      "Close": "25.286699295043945",
+      "Adj Close": "25.08",
+      "Volume": "0"
+    },
+    {
+      "Date": "Sep 25 2026",
+      "Close": "25.433300018310547",
+      "Adj Close": "25.22",
+      "Volume": "0"
+    },
+    {
+      "Date": "Sep 28 2026",
+      "Close": "25.21109962463379",
+      "Adj Close": "25",
+      "Volume": "0"
+    },
+    {
+      "Date": "Sep 29 2026",
+      "Close": "25.148799896240234",
+      "Adj Close": "24.94",
+      "Volume": "0"
+    },
+    {
+      "Date": "Sep 30 2026",
+      "Close": "24.86199951171875",
+      "Adj Close": "24.86",
+      "Volume": "0"
+    },
+    {
+      "Date": "Oct 1 2026",
+      "Close": "24.92180061340332",
+      "Adj Close": "24.92",
+      "Volume": "16"
+    }
+  ]
+}

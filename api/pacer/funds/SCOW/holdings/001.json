@@ -1,0 +1,107 @@
+{
+  "ticker": "SCOW",
+  "page": 1,
+  "pageSize": 250,
+  "totalRows": 10,
+  "headers": [
+    "Name",
+    "Ticker",
+    "Identifier",
+    "Weight",
+    "Market Value",
+    "Shares Held",
+    "Asset Category"
+  ],
+  "rows": [
+    {
+      "Name": "Jackson Financial Inc",
+      "Ticker": "JXN",
+      "Identifier": "-",
+      "Weight": "5.75",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Etsy Inc",
+      "Ticker": "ETSY",
+      "Identifier": "-",
+      "Weight": "4.65",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Paycom Software Inc",
+      "Ticker": "PAYC",
+      "Identifier": "-",
+      "Weight": "4.62",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Match Group Inc",
+      "Ticker": "MTCH",
+      "Identifier": "-",
+      "Weight": "4.33",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "MarketAxess Holdings Inc",
+      "Ticker": "MKTX",
+      "Identifier": "-",
+      "Weight": "4.05",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Box Inc",
+      "Ticker": "BOX",
+      "Identifier": "-",
+      "Weight": "3.65",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Enova International Inc",
+      "Ticker": "ENVA",
+      "Identifier": "-",
+      "Weight": "3.44",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Bread Financial Holdings Inc",
+      "Ticker": "BFH",
+      "Identifier": "-",
+      "Weight": "3.36",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Magnolia Oil & Gas Corp",
+      "Ticker": "MGY",
+      "Identifier": "-",
+      "Weight": "3.24",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Qorvo Inc",
+      "Ticker": "QRVO",
+      "Identifier": "-",
+      "Weight": "2.48",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    }
+  ]
+}

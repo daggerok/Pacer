@@ -1,0 +1,107 @@
+{
+  "ticker": "PTEU",
+  "page": 1,
+  "pageSize": 250,
+  "totalRows": 10,
+  "headers": [
+    "Name",
+    "Ticker",
+    "Identifier",
+    "Weight",
+    "Market Value",
+    "Shares Held",
+    "Asset Category"
+  ],
+  "rows": [
+    {
+      "Name": "ASML Holding NV",
+      "Ticker": "ASMLNA",
+      "Identifier": "-",
+      "Weight": "9.12",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Siemens AG",
+      "Ticker": "SIEGR",
+      "Identifier": "-",
+      "Weight": "2.96",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "SAP SE",
+      "Ticker": "SAPGR",
+      "Identifier": "-",
+      "Weight": "2.69",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Banco Santander SA",
+      "Ticker": "SANSM",
+      "Identifier": "-",
+      "Weight": "2.64",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Allianz SE",
+      "Ticker": "ALVGR",
+      "Identifier": "-",
+      "Weight": "2.35",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Schneider Electric SE",
+      "Ticker": "SUFP",
+      "Identifier": "-",
+      "Weight": "2.35",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "TOTAL SE",
+      "Ticker": "TTEFP",
+      "Identifier": "-",
+      "Weight": "2.25",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "BANCO BILBAO VIZCAYA",
+      "Ticker": "BBVASM",
+      "Identifier": "-",
+      "Weight": "2.07",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Iberdrola SA",
+      "Ticker": "IBESM",
+      "Identifier": "-",
+      "Weight": "2.03",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "UniCredit SpA",
+      "Ticker": "UCGIM",
+      "Identifier": "-",
+      "Weight": "1.74",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    }
+  ]
+}

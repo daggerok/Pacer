@@ -1,0 +1,107 @@
+{
+  "ticker": "FLRT",
+  "page": 1,
+  "pageSize": 250,
+  "totalRows": 10,
+  "headers": [
+    "Name",
+    "Ticker",
+    "Identifier",
+    "Weight",
+    "Market Value",
+    "Shares Held",
+    "Asset Category"
+  ],
+  "rows": [
+    {
+      "Name": "U.S. Bank Money Market Deposit Account 06/01/2031",
+      "Ticker": "USBFS03",
+      "Identifier": "-",
+      "Weight": "18.59",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Allied Universal (Universal Services) T/L B 8/25 (USD) 6.9809% 08/06/2032",
+      "Ticker": "LX267472",
+      "Identifier": "-",
+      "Weight": "0.94",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "CQP Holdco (Blackstone CQP) T/L (6/21) - Target 5.4822% 12/31/2032",
+      "Ticker": "LX282215",
+      "Identifier": "-",
+      "Weight": "0.93",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Iridium Satellite LLC 5.9809% 09/20/2030",
+      "Ticker": "LX234353",
+      "Identifier": "-",
+      "Weight": "0.92",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "BioMarin Pharmaceutical T/L B (1/26) 5.4283% 01/26/2033",
+      "Ticker": "LX283705",
+      "Identifier": "-",
+      "Weight": "0.92",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "RealPage Inc 6.9938% 02/18/2028",
+      "Ticker": "LX192752",
+      "Identifier": "-",
+      "Weight": "0.91",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Wec US Holdings Ltd 5.7056% 01/31/2031",
+      "Ticker": "LX224734",
+      "Identifier": "-",
+      "Weight": "0.91",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Bausch & Lomb 12/25 T/L 7.4809% 01/15/2031",
+      "Ticker": "LX278575",
+      "Identifier": "-",
+      "Weight": "0.91",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Electronic Arts/Oak Eagle (3/26) (USD) T/L B1 7.2109% 03/23/2033",
+      "Ticker": "LX287247",
+      "Identifier": "-",
+      "Weight": "0.91",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Barnes Group T/L B 6.2309% 12/10/2031",
+      "Ticker": "LX255585",
+      "Identifier": "-",
+      "Weight": "0.9",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    }
+  ]
+}

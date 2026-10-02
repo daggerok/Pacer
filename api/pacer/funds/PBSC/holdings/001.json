@@ -1,0 +1,107 @@
+{
+  "ticker": "PBSC",
+  "page": 1,
+  "pageSize": 250,
+  "totalRows": 10,
+  "headers": [
+    "Name",
+    "Ticker",
+    "Identifier",
+    "Weight",
+    "Market Value",
+    "Shares Held",
+    "Asset Category"
+  ],
+  "rows": [
+    {
+      "Name": "U.S. Bank Money Market Deposit Account 06/01/2031",
+      "Ticker": "USBFS03",
+      "Identifier": "-",
+      "Weight": "4.93",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "1261229 BC Ltd 10% 04/15/2032",
+      "Ticker": "68288AAA5",
+      "Identifier": "-",
+      "Weight": "1.36",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Anchorage Capital Clo 32 Ltd 10.4144% 07/15/2039",
+      "Ticker": "03329HAJ9",
+      "Identifier": "-",
+      "Weight": "1.25",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Benefit Street Partners CLO XII-B Ltd 9.205% 10/15/2039",
+      "Ticker": "081918AE4",
+      "Identifier": "-",
+      "Weight": "1.24",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Battalion CLO XXIV Ltd 5.763% 07/14/2039",
+      "Ticker": "07135JBA8",
+      "Identifier": "-",
+      "Weight": "1",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Benefit Street Partners CLO XIV Ltd 0% 10/20/2039",
+      "Ticker": "08179LBJ9",
+      "Identifier": "-",
+      "Weight": "1",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Benefit Street Partners CLO XII-B Ltd 6.305% 10/15/2039",
+      "Ticker": "081917AS5",
+      "Identifier": "-",
+      "Weight": "1",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "CIFC Funding 2024-III Ltd 9.06% 07/21/2039",
+      "Ticker": "12576JAE7",
+      "Identifier": "-",
+      "Weight": "1",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Canyon CLO 2023-2 Ltd 10.03% 07/15/2039",
+      "Ticker": "13887BAE6",
+      "Identifier": "-",
+      "Weight": "1",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Carlyle US CLO 2022-4 Ltd 8.1482% 10/25/2039",
+      "Ticker": "14317BBN3",
+      "Identifier": "-",
+      "Weight": "1",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    }
+  ]
+}

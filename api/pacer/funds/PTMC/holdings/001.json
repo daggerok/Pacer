@@ -1,0 +1,107 @@
+{
+  "ticker": "PTMC",
+  "page": 1,
+  "pageSize": 250,
+  "totalRows": 10,
+  "headers": [
+    "Name",
+    "Ticker",
+    "Identifier",
+    "Weight",
+    "Market Value",
+    "Shares Held",
+    "Asset Category"
+  ],
+  "rows": [
+    {
+      "Name": "Twilio Inc",
+      "Ticker": "TWLO",
+      "Identifier": "-",
+      "Weight": "1.32",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Okta Inc",
+      "Ticker": "OKTA",
+      "Identifier": "-",
+      "Weight": "1.03",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "TechnipFMC PLC",
+      "Ticker": "FTI",
+      "Identifier": "-",
+      "Weight": "0.79",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "ATI Inc",
+      "Ticker": "ATI",
+      "Identifier": "-",
+      "Weight": "0.76",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "nVent Electric PLC",
+      "Ticker": "NVT",
+      "Identifier": "-",
+      "Weight": "0.76",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Entegris Inc",
+      "Ticker": "ENTG",
+      "Identifier": "-",
+      "Weight": "0.69",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "United Therapeutics Corp",
+      "Ticker": "UTHR",
+      "Identifier": "-",
+      "Weight": "0.68",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Tenet Healthcare Corp",
+      "Ticker": "THC",
+      "Identifier": "-",
+      "Weight": "0.61",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "XPO Inc",
+      "Ticker": "XPO",
+      "Identifier": "-",
+      "Weight": "0.61",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "TD SYNNEX Corp",
+      "Ticker": "SNX",
+      "Identifier": "-",
+      "Weight": "0.6",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    }
+  ]
+}

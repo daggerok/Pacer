@@ -1,0 +1,107 @@
+{
+  "ticker": "PIEL",
+  "page": 1,
+  "pageSize": 250,
+  "totalRows": 10,
+  "headers": [
+    "Name",
+    "Ticker",
+    "Identifier",
+    "Weight",
+    "Market Value",
+    "Shares Held",
+    "Asset Category"
+  ],
+  "rows": [
+    {
+      "Name": "ASML Holding NV",
+      "Ticker": "ASMLNA",
+      "Identifier": "-",
+      "Weight": "5.41",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "SK hynix Inc",
+      "Ticker": "000660KS",
+      "Identifier": "-",
+      "Weight": "4.95",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Samsung Electronics Co Ltd",
+      "Ticker": "005930KS",
+      "Identifier": "-",
+      "Weight": "4.67",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Roche Holding AG",
+      "Ticker": "ROPSW",
+      "Identifier": "-",
+      "Weight": "4.04",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Novartis AG",
+      "Ticker": "NOVNSW",
+      "Identifier": "-",
+      "Weight": "4.02",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "SAP SE",
+      "Ticker": "SAPGR",
+      "Identifier": "-",
+      "Weight": "3.57",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "AstraZeneca PLC",
+      "Ticker": "AZNLN",
+      "Identifier": "-",
+      "Weight": "3.48",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Nestle SA",
+      "Ticker": "NESNSW",
+      "Identifier": "-",
+      "Weight": "3.21",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "LVMH Moet Hennessy Louis Vuitton SE",
+      "Ticker": "MCFP",
+      "Identifier": "-",
+      "Weight": "3.03",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "BHP Group Ltd",
+      "Ticker": "BHPAU",
+      "Identifier": "-",
+      "Weight": "2.97",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    }
+  ]
+}

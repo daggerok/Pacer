@@ -1,0 +1,107 @@
+{
+  "ticker": "PTIN",
+  "page": 1,
+  "pageSize": 250,
+  "totalRows": 10,
+  "headers": [
+    "Name",
+    "Ticker",
+    "Identifier",
+    "Weight",
+    "Market Value",
+    "Shares Held",
+    "Asset Category"
+  ],
+  "rows": [
+    {
+      "Name": "Samsung Electronics Co Ltd",
+      "Ticker": "005930KS",
+      "Identifier": "-",
+      "Weight": "3.85",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "SK hynix Inc",
+      "Ticker": "000660KS",
+      "Identifier": "-",
+      "Weight": "3.26",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "ASML Holding NV",
+      "Ticker": "ASMLNA",
+      "Identifier": "-",
+      "Weight": "2.98",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "HSBC Holdings PLC",
+      "Ticker": "HSBALN",
+      "Identifier": "-",
+      "Weight": "1.45",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Roche Holding AG",
+      "Ticker": "ROPSW",
+      "Identifier": "-",
+      "Weight": "1.25",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Mitsubishi UFJ Financial Group Inc",
+      "Ticker": "8306JP",
+      "Identifier": "-",
+      "Weight": "1.18",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Royal Bank of Canada",
+      "Ticker": "RYCN",
+      "Identifier": "-",
+      "Weight": "1.16",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Shell PLC",
+      "Ticker": "SHELLN",
+      "Identifier": "-",
+      "Weight": "1.16",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Novartis AG",
+      "Ticker": "NOVNSW",
+      "Identifier": "-",
+      "Weight": "1.12",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "AstraZeneca PLC",
+      "Ticker": "AZNLN",
+      "Identifier": "-",
+      "Weight": "1.07",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    }
+  ]
+}

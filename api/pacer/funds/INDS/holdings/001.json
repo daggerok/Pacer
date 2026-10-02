@@ -1,0 +1,107 @@
+{
+  "ticker": "INDS",
+  "page": 1,
+  "pageSize": 250,
+  "totalRows": 10,
+  "headers": [
+    "Name",
+    "Ticker",
+    "Identifier",
+    "Weight",
+    "Market Value",
+    "Shares Held",
+    "Asset Category"
+  ],
+  "rows": [
+    {
+      "Name": "Prologis Inc",
+      "Ticker": "PLD",
+      "Identifier": "-",
+      "Weight": "14.83",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Extra Space Storage Inc",
+      "Ticker": "EXR",
+      "Identifier": "-",
+      "Weight": "14.82",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Public Storage",
+      "Ticker": "PSA",
+      "Identifier": "-",
+      "Weight": "14.79",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "EastGroup Properties Inc",
+      "Ticker": "EGP",
+      "Identifier": "-",
+      "Weight": "4.56",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Segro PLC",
+      "Ticker": "SGROLN",
+      "Identifier": "-",
+      "Weight": "4.54",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "WP Carey Inc",
+      "Ticker": "WPC",
+      "Identifier": "-",
+      "Weight": "4.35",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "CubeSmart",
+      "Ticker": "CUBE",
+      "Identifier": "-",
+      "Weight": "3.61",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Rexford Industrial Realty Inc",
+      "Ticker": "REXR",
+      "Identifier": "-",
+      "Weight": "3.46",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "First Industrial Realty Trust Inc",
+      "Ticker": "FR",
+      "Identifier": "-",
+      "Weight": "3.41",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Terreno Realty Corp",
+      "Ticker": "TRNO",
+      "Identifier": "-",
+      "Weight": "3.04",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    }
+  ]
+}

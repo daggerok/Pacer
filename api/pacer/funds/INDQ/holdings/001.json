@@ -1,0 +1,107 @@
+{
+  "ticker": "INDQ",
+  "page": 1,
+  "pageSize": 250,
+  "totalRows": 10,
+  "headers": [
+    "Name",
+    "Ticker",
+    "Identifier",
+    "Weight",
+    "Market Value",
+    "Shares Held",
+    "Asset Category"
+  ],
+  "rows": [
+    {
+      "Name": "Titan Co Ltd",
+      "Ticker": "TTANIN",
+      "Identifier": "-",
+      "Weight": "5.47",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Eicher Motors Ltd",
+      "Ticker": "EIMIN",
+      "Identifier": "-",
+      "Weight": "5.13",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Hero MotoCorp Ltd",
+      "Ticker": "HMCLIN",
+      "Identifier": "-",
+      "Weight": "4.95",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Dr Reddy's Laboratories Ltd",
+      "Ticker": "DRRDIN",
+      "Identifier": "-",
+      "Weight": "4.81",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Dr Lal PathLabs Ltd",
+      "Ticker": "DLPLIN",
+      "Identifier": "-",
+      "Weight": "4.38",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Indus Towers Ltd",
+      "Ticker": "INDUSTOWIN",
+      "Identifier": "-",
+      "Weight": "4.26",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Astral Ltd",
+      "Ticker": "ASTRAIN",
+      "Identifier": "-",
+      "Weight": "4.15",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "National Aluminium Co Ltd",
+      "Ticker": "NACLIN",
+      "Identifier": "-",
+      "Weight": "4.1",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Nippon Life India Asset Management Ltd",
+      "Ticker": "NAMIN",
+      "Identifier": "-",
+      "Weight": "3.76",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Bank of Maharashtra",
+      "Ticker": "BOMHIN",
+      "Identifier": "-",
+      "Weight": "3.63",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    }
+  ]
+}

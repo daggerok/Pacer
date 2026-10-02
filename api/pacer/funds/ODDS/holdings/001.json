@@ -1,0 +1,107 @@
+{
+  "ticker": "ODDS",
+  "page": 1,
+  "pageSize": 250,
+  "totalRows": 10,
+  "headers": [
+    "Name",
+    "Ticker",
+    "Identifier",
+    "Weight",
+    "Market Value",
+    "Shares Held",
+    "Asset Category"
+  ],
+  "rows": [
+    {
+      "Name": "Tencent Holdings Ltd",
+      "Ticker": "700HK",
+      "Identifier": "-",
+      "Weight": "8.74",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Evolution AB",
+      "Ticker": "EVOSS",
+      "Identifier": "-",
+      "Weight": "7.69",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "DraftKings Inc",
+      "Ticker": "DKNG",
+      "Identifier": "-",
+      "Weight": "7.07",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Flutter Entertainment PLC",
+      "Ticker": "FLUT",
+      "Identifier": "-",
+      "Weight": "6.61",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Nintendo Co Ltd",
+      "Ticker": "7974JT",
+      "Identifier": "-",
+      "Weight": "5.18",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "NETEASE INC",
+      "Ticker": "NTES",
+      "Identifier": "-",
+      "Weight": "5.04",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Super Group SGHC Ltd",
+      "Ticker": "SGHC",
+      "Identifier": "-",
+      "Weight": "3.13",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Entain PLC",
+      "Ticker": "ENTLN",
+      "Identifier": "-",
+      "Weight": "3.11",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Take-Two Interactive Software Inc",
+      "Ticker": "TTWO",
+      "Identifier": "-",
+      "Weight": "3.11",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "ROBLOX Corp",
+      "Ticker": "RBLX",
+      "Identifier": "-",
+      "Weight": "2.77",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    }
+  ]
+}

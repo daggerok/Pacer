@@ -1,0 +1,107 @@
+{
+  "ticker": "MILK",
+  "page": 1,
+  "pageSize": 250,
+  "totalRows": 10,
+  "headers": [
+    "Name",
+    "Ticker",
+    "Identifier",
+    "Weight",
+    "Market Value",
+    "Shares Held",
+    "Asset Category"
+  ],
+  "rows": [
+    {
+      "Name": "U.S. Bank Money Market Deposit Account 06/01/2031",
+      "Ticker": "USBFS03",
+      "Identifier": "-",
+      "Weight": "1.85",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Expand Energy Corp 5.375% 02/01/2029",
+      "Ticker": "845467AR0",
+      "Identifier": "-",
+      "Weight": "1.07",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "SS&C Technologies Inc 5.5% 09/30/2027",
+      "Ticker": "78466CAC0",
+      "Identifier": "-",
+      "Weight": "1.06",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "HF Sinclair Corp 5.5% 09/01/2032",
+      "Ticker": "403949AT7",
+      "Identifier": "-",
+      "Weight": "1.03",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Viatris Inc 3.85% 06/22/2040",
+      "Ticker": "92556VAE6",
+      "Identifier": "-",
+      "Weight": "1.03",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Aptiv Swiss Holdings Ltd 6.875% 12/15/2054",
+      "Ticker": "03837AAD2",
+      "Identifier": "-",
+      "Weight": "1.02",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Ford Motor Credit Co LLC 6.125% 03/08/2034",
+      "Ticker": "345397E66",
+      "Identifier": "-",
+      "Weight": "1.02",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Altria Group Inc 5.8% 02/14/2039",
+      "Ticker": "02209SBE2",
+      "Identifier": "-",
+      "Weight": "1.01",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Mylan Inc 5.2% 04/15/2048",
+      "Ticker": "628530BJ5",
+      "Identifier": "-",
+      "Weight": "1.01",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Utah Acquisition Sub Inc 5.25% 06/15/2046",
+      "Ticker": "62854AAP9",
+      "Identifier": "-",
+      "Weight": "1.01",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    }
+  ]
+}

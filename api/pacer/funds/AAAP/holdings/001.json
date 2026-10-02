@@ -1,0 +1,107 @@
+{
+  "ticker": "AAAP",
+  "page": 1,
+  "pageSize": 250,
+  "totalRows": 10,
+  "headers": [
+    "Name",
+    "Ticker",
+    "Identifier",
+    "Weight",
+    "Market Value",
+    "Shares Held",
+    "Asset Category"
+  ],
+  "rows": [
+    {
+      "Name": "Anchorage Capital CLO 31 Ltd 5.0292% 10/20/2038",
+      "Ticker": "032912AA5",
+      "Identifier": "-",
+      "Weight": "2.83",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Bryant Park Funding 2023-21 Ltd 4.9992% 10/18/2038",
+      "Ticker": "117650AL5",
+      "Identifier": "-",
+      "Weight": "2.83",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "KKR CLO 45a Ltd 5.5029% 07/15/2038",
+      "Ticker": "48190AAS5",
+      "Identifier": "-",
+      "Weight": "2.28",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Sixth Street CLO 32 Ltd 5.3135% 04/21/2039",
+      "Ticker": "83012YAE7",
+      "Identifier": "-",
+      "Weight": "1.9",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Apidos CLO XXXV 5.0902% 07/20/2039",
+      "Ticker": "03768UAL3",
+      "Identifier": "-",
+      "Weight": "1.89",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Canyon Clo 2025-2 Ltd 5.0829% 10/15/2037",
+      "Ticker": "13876FAA8",
+      "Identifier": "-",
+      "Weight": "1.89",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "CIFC Funding 2024-II Ltd 5.2217% 04/22/2037",
+      "Ticker": "17181UAQ1",
+      "Identifier": "-",
+      "Weight": "1.89",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "HPS Loan Management 2025-26 Ltd 5.0492% 07/20/2038",
+      "Ticker": "44333QAA6",
+      "Identifier": "-",
+      "Weight": "1.89",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "KKR CLO 46 Ltd 5.5292% 10/20/2037",
+      "Ticker": "48255VAS1",
+      "Identifier": "-",
+      "Weight": "1.89",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Katayma CLO II Ltd 5.5792% 04/20/2037",
+      "Ticker": "485862AS5",
+      "Identifier": "-",
+      "Weight": "1.88",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    }
+  ]
+}

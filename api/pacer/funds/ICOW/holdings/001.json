@@ -1,0 +1,107 @@
+{
+  "ticker": "ICOW",
+  "page": 1,
+  "pageSize": 250,
+  "totalRows": 10,
+  "headers": [
+    "Name",
+    "Ticker",
+    "Identifier",
+    "Weight",
+    "Market Value",
+    "Shares Held",
+    "Asset Category"
+  ],
+  "rows": [
+    {
+      "Name": "Takeda Pharmaceutical Co Ltd",
+      "Ticker": "4502JP",
+      "Identifier": "-",
+      "Weight": "2.41",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "KDDI Corp",
+      "Ticker": "9433JP",
+      "Identifier": "-",
+      "Weight": "2.28",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Agnico Eagle Mines Ltd",
+      "Ticker": "AEMCN",
+      "Identifier": "-",
+      "Weight": "2.27",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Vodafone Group PLC",
+      "Ticker": "VODLN",
+      "Identifier": "-",
+      "Weight": "2.23",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Shell PLC",
+      "Ticker": "SHELLN",
+      "Identifier": "-",
+      "Weight": "2.22",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Suncor Energy Inc",
+      "Ticker": "SUCN",
+      "Identifier": "-",
+      "Weight": "2.21",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Sony Group Corp",
+      "Ticker": "6758JP",
+      "Identifier": "-",
+      "Weight": "2.18",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "DHL Group",
+      "Ticker": "DHLGR",
+      "Identifier": "-",
+      "Weight": "2.17",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "LY Corp",
+      "Ticker": "4689JP",
+      "Identifier": "-",
+      "Weight": "2.09",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Barrick Mining Corp",
+      "Ticker": "ABXCN",
+      "Identifier": "-",
+      "Weight": "2.09",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    }
+  ]
+}

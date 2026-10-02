@@ -1,0 +1,107 @@
+{
+  "ticker": "USAI",
+  "page": 1,
+  "pageSize": 250,
+  "totalRows": 10,
+  "headers": [
+    "Name",
+    "Ticker",
+    "Identifier",
+    "Weight",
+    "Market Value",
+    "Shares Held",
+    "Asset Category"
+  ],
+  "rows": [
+    {
+      "Name": "Cheniere Energy Inc",
+      "Ticker": "LNG",
+      "Identifier": "-",
+      "Weight": "7.42",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Enbridge Inc",
+      "Ticker": "ENBCN",
+      "Identifier": "-",
+      "Weight": "7.3",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Energy Transfer LP",
+      "Ticker": "ET",
+      "Identifier": "-",
+      "Weight": "7.29",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "TC Energy Corp",
+      "Ticker": "TRPCN",
+      "Identifier": "-",
+      "Weight": "7.28",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Williams Cos Inc/The",
+      "Ticker": "WMB",
+      "Identifier": "-",
+      "Weight": "7.21",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Enterprise Products Partners LP",
+      "Ticker": "EPD",
+      "Identifier": "-",
+      "Weight": "7.05",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Venture Global Inc",
+      "Ticker": "VG",
+      "Identifier": "-",
+      "Weight": "4.32",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Kinder Morgan Inc",
+      "Ticker": "KMI",
+      "Identifier": "-",
+      "Weight": "4.25",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Targa Resources Corp",
+      "Ticker": "TRGP",
+      "Identifier": "-",
+      "Weight": "4.23",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "EQT Corp",
+      "Ticker": "EQT",
+      "Identifier": "-",
+      "Weight": "4.22",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    }
+  ]
+}

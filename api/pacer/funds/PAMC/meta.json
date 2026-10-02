@@ -1,0 +1,405 @@
+{
+  "ticker": "PAMC",
+  "name": "Pacer Trendpilot® ETF Series",
+  "category": "Factor",
+  "categoryPath": "Factor",
+  "source": {
+    "fundPage": "https://www.paceretfs.com/products/PAMC",
+    "officialProductPage": "https://www.paceretfs.com/products/PAMC",
+    "productPageRendering": "read-only rendering proxy (r.jina.ai) of the official product page",
+    "productPageAsOf": "Sep 30 2026",
+    "holdingsDownload": null,
+    "navHistoryDownload": null,
+    "yahooChart": "https://query1.finance.yahoo.com/v8/finance/chart/PAMC",
+    "holdingsSource": "top 10 holdings published on the official Pacer ETFs product page (no CSV export or N-PORT-P holdings in this run)",
+    "historySource": "Yahoo Finance public chart API (adjusted close)",
+    "distributionsSource": "paceretfs.com fund page distribution history (total distribution per share)",
+    "provider": "Pacer ETFs product listing + official product page + per-fund daily holdings CSV export + SEC EDGAR Form N-PORT-P fallback + Yahoo Finance public chart API"
+  },
+  "identifiers": {
+    "cusip": null,
+    "isin": null,
+    "isinBasis": null,
+    "indexTicker": "[Pacer Trendpilot ETF Series](https://www.paceretfs.com/products/PAMC#product-menu-trendpilot) [Pacer Cash Cows Index ETF Series](https://www.paceretfs.com/products/PAMC#product-menu-cashcows) [Pacer Metaurus Dividend Multiplier ETF Series](https://www.paceretfs.com/products/PAMC#product-menu-metaurus) [Pacer Leaders ETF Series](https://www.paceretfs.com/products/PAMC#product-menu-leaders) [Pacer Factor ETF Series](https://www.paceretfs.com/products/PAMC#product-menu-factor) [Pacer Thematic ETF Series](https://www.paceretfs.com/products/PAMC#product-menu-thematic) [Pacer Swan SOS ETF Series](https://www.paceretfs.com/products/structured-outcome-strategies) [Pacer Custom ETF Series](https://www.paceretfs.com/products/PAMC#product-menu-custom) [Pacer UCITS For International Investors](https://www.paceretfs.com/products/PAMC#)",
+    "exchange": null,
+    "morningstarCategory": null
+  },
+  "expenseRatio": {
+    "display": "0.6%",
+    "value": 0.6,
+    "kind": "Total Expenses published in the official Pacer ETFs product listing"
+  },
+  "nav": {
+    "display": "—",
+    "value": null,
+    "asOfDate": "Sep 30 2026",
+    "source": "previous run"
+  },
+  "marketPrice": {
+    "display": "$52.16",
+    "value": 52.1612,
+    "asOfDate": "Oct 1 2026",
+    "source": "Yahoo Finance last regular-session price (the anonymous product page publishes no closing price)"
+  },
+  "premiumDiscount": {
+    "display": "—",
+    "value": null,
+    "asOfDate": "Oct 1 2026",
+    "source": "computed from Yahoo last price / the net-asset value implied by the daily holdings CSV"
+  },
+  "aum": {
+    "display": "—",
+    "value": null,
+    "asOfDate": "Sep 30 2026",
+    "source": "previous run"
+  },
+  "fundFacts": {
+    "sharesOutstanding": null,
+    "portfolioTurnover": null,
+    "publishedTotalHoldings": null,
+    "bidAskMidpoint": null
+  },
+  "yields": {
+    "dividendYield": 1.21,
+    "dividendYieldText": "1.21%",
+    "dividendYieldKind": "indicated (latest distribution per share x inferred payments per year / NAV) from the official Pacer distribution history",
+    "distributionRate": null,
+    "secYield": null,
+    "secYieldText": "—",
+    "secYieldKind": "not published on the official Pacer ETFs product page for this fund"
+  },
+  "returns": {
+    "derivedFrom": "official Pacer NAV total returns (product listing, month-end) where published; Yahoo adjusted market-price closes for missing values",
+    "monthEnd": {
+      "asOfDate": "Sep 30 2026",
+      "mo1": -4.42,
+      "mo1Text": "-4.42%",
+      "mo3": -6.84,
+      "mo3Text": "-6.84%",
+      "qtd": 0,
+      "qtdText": "0.00%",
+      "ytd": 11.14,
+      "ytdText": "11.14%",
+      "yr1": 15.98,
+      "yr1Text": "15.98%",
+      "yr3": 15.84,
+      "yr3Text": "15.84%",
+      "yr5": 9.41,
+      "yr5Text": "9.41%",
+      "yr10": null,
+      "yr10Text": "—",
+      "sinceInception": 15.08,
+      "sinceInceptionText": "15.08%"
+    },
+    "quarterEnd": {
+      "asOfDate": "Sep 30 2026",
+      "ytd": 16.29,
+      "yr1": null,
+      "yr3": null,
+      "yr5": null,
+      "yr10": null,
+      "sinceInception": null
+    }
+  },
+  "officialMarketPriceReturns": {
+    "monthEnd": null,
+    "quarterEnd": {
+      "asOfDate": "Sep 30 2026",
+      "mo1": null,
+      "mo1Text": "—",
+      "mo3": 0.14,
+      "mo3Text": "0.14%",
+      "ytd": 16.26,
+      "ytdText": "16.26%",
+      "yr1": null,
+      "yr1Text": "—",
+      "yr3": null,
+      "yr3Text": "—",
+      "yr5": null,
+      "yr5Text": "—",
+      "yr10": null,
+      "yr10Text": "—",
+      "sinceInception": null,
+      "sinceInceptionText": "—"
+    }
+  },
+  "distributions": {
+    "frequency": "Quarterly",
+    "frequencyCode": "04 - Quarterly",
+    "paymentsPerYear": 4,
+    "source": "paceretfs.com fund page distribution history (total distribution per share)",
+    "headers": [
+      "Ex Date",
+      "Record Date",
+      "Pay Date",
+      "Total Distribution",
+      "Ordinary Income*",
+      "Short Term Capital Gains",
+      "Long Term Capital Gains",
+      "Return of Capital"
+    ],
+    "rows": [
+      [
+        "9/21/2020",
+        "9/22/2020",
+        "9/25/2020",
+        "$0.01757460",
+        "$0.01757460",
+        "$0",
+        "$0",
+        "$0"
+      ],
+      [
+        "12/21/2020",
+        "12/22/2020",
+        "12/28/2020",
+        "$0.07924000",
+        "$0.07924000",
+        "$0",
+        "$0",
+        "$0"
+      ],
+      [
+        "3/22/2021",
+        "3/23/2021",
+        "3/26/2021",
+        "$0.00678502",
+        "$0.00678502",
+        "$0",
+        "$0",
+        "$0"
+      ],
+      [
+        "6/21/2021",
+        "6/22/2021",
+        "6/25/2021",
+        "$0.05569284",
+        "$0.05569284",
+        "$0",
+        "$0",
+        "$0"
+      ],
+      [
+        "9/23/2021",
+        "9/24/2021",
+        "9/29/2021",
+        "$0.02209292",
+        "$0.02209292",
+        "$0",
+        "$0",
+        "$0"
+      ],
+      [
+        "12/23/2021",
+        "12/27/2021",
+        "12/30/2021",
+        "$0.04576400",
+        "$0.04576400",
+        "$0",
+        "$0",
+        "$0"
+      ],
+      [
+        "3/24/2022",
+        "3/25/2022",
+        "3/30/2022",
+        "$0.09003290",
+        "$0.09003290",
+        "$0",
+        "$0",
+        "$0"
+      ],
+      [
+        "6/23/2022",
+        "6/24/2022",
+        "6/29/2022",
+        "$0.10704305",
+        "$0.10704305",
+        "$0",
+        "$0",
+        "$0"
+      ],
+      [
+        "9/22/2022",
+        "9/23/2022",
+        "9/28/2022",
+        "$0.09147351",
+        "$0.09147351",
+        "$0",
+        "$0",
+        "$0"
+      ],
+      [
+        "12/22/2022",
+        "12/23/2022",
+        "12/29/2022",
+        "$0.11745218",
+        "$0.11745218",
+        "$0",
+        "$0",
+        "$0"
+      ],
+      [
+        "3/23/2023",
+        "3/24/2023",
+        "3/29/2023",
+        "$0.06531126",
+        "$0.06531126",
+        "$0",
+        "$0",
+        "$0"
+      ],
+      [
+        "6/22/2023",
+        "6/23/2023",
+        "6/28/2023",
+        "$0.02566740",
+        "$0.02566740",
+        "$0",
+        "$0",
+        "$0"
+      ],
+      [
+        "9/21/2023",
+        "9/22/2023",
+        "9/27/2023",
+        "$0.06703489",
+        "$0.06703489",
+        "$0",
+        "$0",
+        "$0"
+      ],
+      [
+        "12/27/2023",
+        "12/28/2023",
+        "1/3/2024",
+        "$0.09864728",
+        "$0.09864728",
+        "$0",
+        "$0",
+        "$0"
+      ],
+      [
+        "3/21/2024",
+        "3/22/2024",
+        "3/27/2024",
+        "$0.045537",
+        "$0.04553718",
+        "$0",
+        "$0",
+        "$0"
+      ],
+      [
+        "6/27/2024",
+        "6/27/2024",
+        "7/3/2024",
+        "$0.051336",
+        "$0.051336",
+        "$0",
+        "$0",
+        "$0"
+      ],
+      [
+        "9/26/2024",
+        "9/26/2024",
+        "10/2/2024",
+        "$0.141379",
+        "$0.141379",
+        "$0",
+        "$0",
+        "$0"
+      ],
+      [
+        "12/27/2024",
+        "12/27/2024",
+        "1/2/2025",
+        "$0.213910",
+        "$0.213910",
+        "$0",
+        "$0",
+        "$0"
+      ],
+      [
+        "6/5/2025",
+        "6/5/2025",
+        "6/11/2025",
+        "$0.055833",
+        "$0.055833",
+        "$0",
+        "$0",
+        "$0"
+      ],
+      [
+        "9/4/2025",
+        "9/4/2025",
+        "9/10/2025",
+        "$0.1082291",
+        "$0.1082291",
+        "$0",
+        "$0",
+        "$0"
+      ],
+      [
+        "12/30/2025",
+        "12/30/2025",
+        "1/5/2026",
+        "$0.3544183",
+        "$0.3544183",
+        "$0",
+        "$0",
+        "$0"
+      ],
+      [
+        "3/5/2026",
+        "3/5/2026",
+        "3/9/2026",
+        "$0.08576743",
+        "$0.08576743",
+        "$0",
+        "$0",
+        "$0"
+      ],
+      [
+        "6/4/2026",
+        "6/4/2026",
+        "6/8/2026",
+        "$0.055458",
+        "$0.055458",
+        "$0",
+        "$0",
+        "$0"
+      ],
+      [
+        "9/3/2026",
+        "9/3/2026",
+        "9/8/2026",
+        "$0.157839",
+        "$0.157839",
+        "$0",
+        "$0",
+        "$0"
+      ]
+    ]
+  },
+  "holdings": {
+    "pages": [
+      "holdings/001.json"
+    ],
+    "pageSize": 250,
+    "totalRows": 10,
+    "asOfDate": null,
+    "asOf": "—",
+    "source": "top 10 holdings published on the official Pacer ETFs product page (no CSV export or N-PORT-P holdings in this run)",
+    "publishedTopHoldings": 10
+  },
+  "history": {
+    "pages": [
+      "history/001.json",
+      "history/002.json"
+    ],
+    "pageSize": 1000,
+    "totalRows": 1575,
+    "asOf": "Oct 1 2026",
+    "source": "Yahoo Finance public chart API (adjusted close)"
+  }
+}

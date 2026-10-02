@@ -1,0 +1,107 @@
+{
+  "ticker": "PAMC",
+  "page": 1,
+  "pageSize": 250,
+  "totalRows": 10,
+  "headers": [
+    "Name",
+    "Ticker",
+    "Identifier",
+    "Weight",
+    "Market Value",
+    "Shares Held",
+    "Asset Category"
+  ],
+  "rows": [
+    {
+      "Name": "RenaissanceRe Holdings Ltd",
+      "Ticker": "RNR",
+      "Identifier": "-",
+      "Weight": "2.4",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "TechnipFMC PLC",
+      "Ticker": "FTI",
+      "Identifier": "-",
+      "Weight": "2.29",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Medpace Holdings Inc",
+      "Ticker": "MEDP",
+      "Identifier": "-",
+      "Weight": "1.98",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Tenet Healthcare Corp",
+      "Ticker": "THC",
+      "Identifier": "-",
+      "Weight": "1.93",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "HF Sinclair Corp",
+      "Ticker": "DINO",
+      "Identifier": "-",
+      "Weight": "1.87",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Reinsurance Group of America Inc",
+      "Ticker": "RGA",
+      "Identifier": "-",
+      "Weight": "1.82",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "TD SYNNEX Corp",
+      "Ticker": "SNX",
+      "Identifier": "-",
+      "Weight": "1.8",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "nVent Electric PLC",
+      "Ticker": "NVT",
+      "Identifier": "-",
+      "Weight": "1.78",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Exelixis Inc",
+      "Ticker": "EXEL",
+      "Identifier": "-",
+      "Weight": "1.73",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Manhattan Associates Inc",
+      "Ticker": "MANH",
+      "Identifier": "-",
+      "Weight": "1.69",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    }
+  ]
+}

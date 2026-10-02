@@ -1,0 +1,80 @@
+{
+  "ticker": "TRND",
+  "page": 1,
+  "pageSize": 250,
+  "totalRows": 7,
+  "headers": [
+    "Name",
+    "Ticker",
+    "Identifier",
+    "Weight",
+    "Market Value",
+    "Shares Held",
+    "Asset Category"
+  ],
+  "rows": [
+    {
+      "Name": "Pacer Funds Trust - Pacer Trendpilot 100 ETF",
+      "Ticker": "PTNQ",
+      "Identifier": "-",
+      "Weight": "20.14",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Pacer Trendpilot US Bond ETF",
+      "Ticker": "PTBD",
+      "Identifier": "-",
+      "Weight": "20.03",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Pacer Trendpilot US Large Cap ETF",
+      "Ticker": "PTLC",
+      "Identifier": "-",
+      "Weight": "19.97",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Pacer Trendpilot US Mid Cap ETF",
+      "Ticker": "PTMC",
+      "Identifier": "-",
+      "Weight": "19.94",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Pacer Trendpilot International ETF",
+      "Ticker": "PTIN",
+      "Identifier": "-",
+      "Weight": "19.84",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "U.S. Bank Money Market Deposit Account 06/01/2031",
+      "Ticker": "USBFS03",
+      "Identifier": "-",
+      "Weight": "0.14",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Cash & Other",
+      "Ticker": "CASH&OTHER",
+      "Identifier": "-",
+      "Weight": "-0.06",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    }
+  ]
+}

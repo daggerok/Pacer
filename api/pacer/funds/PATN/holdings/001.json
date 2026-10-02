@@ -1,0 +1,107 @@
+{
+  "ticker": "PATN",
+  "page": 1,
+  "pageSize": 250,
+  "totalRows": 10,
+  "headers": [
+    "Name",
+    "Ticker",
+    "Identifier",
+    "Weight",
+    "Market Value",
+    "Shares Held",
+    "Asset Category"
+  ],
+  "rows": [
+    {
+      "Name": "Taiwan Semiconductor Manufacturing Co Ltd",
+      "Ticker": "2330TT",
+      "Identifier": "-",
+      "Weight": "10.8",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Samsung Electronics Co Ltd",
+      "Ticker": "005930KS",
+      "Identifier": "-",
+      "Weight": "6.86",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "SK hynix Inc",
+      "Ticker": "000660KS",
+      "Identifier": "-",
+      "Weight": "5.64",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "ASML Holding NV",
+      "Ticker": "ASMLNA",
+      "Identifier": "-",
+      "Weight": "4.82",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Tencent Holdings Ltd",
+      "Ticker": "700HK",
+      "Identifier": "-",
+      "Weight": "3.62",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Roche Holding AG",
+      "Ticker": "ROPSW",
+      "Identifier": "-",
+      "Weight": "2.37",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Toyota Motor Corp",
+      "Ticker": "7203JP",
+      "Identifier": "-",
+      "Weight": "2.36",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "Novartis AG",
+      "Ticker": "NOVNSW",
+      "Identifier": "-",
+      "Weight": "2.34",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "SAP SE",
+      "Ticker": "SAPGR",
+      "Identifier": "-",
+      "Weight": "2.23",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    },
+    {
+      "Name": "MediaTek Inc",
+      "Ticker": "2454TT",
+      "Identifier": "-",
+      "Weight": "2.14",
+      "Market Value": "-",
+      "Shares Held": "-",
+      "Asset Category": "-"
+    }
+  ]
+}
