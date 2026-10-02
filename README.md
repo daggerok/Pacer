@@ -58,7 +58,7 @@ Caveats:
 
 ### Update controls
 
-Keep this table, `scripts/update-data.config.json`, `CONTROL_NAMES` and `--help` in sync (covered by `scripts/config-docs.test.ts`)
+Keep this table, `scripts/update-data.config.json`, `CONTROL_NAMES` and `--help` in sync (covered by `scripts/update-data.test.ts`)
 
 | Control | Default | Meaning |
 | --- | --: | --- |
@@ -107,7 +107,7 @@ bun build app.tsx --outfile=/dev/null
 git diff --check
 ```
 
-`bun test` also covers the README controls table, the config file, `--help` and the workflow (`scripts/config-docs.test.ts`).
+`bun test` also covers the README controls table, the config file, `--help` and the workflow (`scripts/update-data.test.ts`).
 
 ## Brands table
 
