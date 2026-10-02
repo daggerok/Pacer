@@ -531,10 +531,6 @@ function readTickerSet(value: string | undefined): Set<string> | null {
   return tickers.length ? new Set(tickers) : null;
 }
 
-function hasConfiguredFilters(config: UpdaterConfig): boolean {
-  return Boolean(config.aum || config.ter || config.dividendYield || config.secYield || config.tickers || Object.keys(config.performance).length || Object.keys(config.totalReturn).length);
-}
-
 export function readConfig(env: Record<string, string | undefined> = process.env): UpdaterConfig {
   return {
     maxFetches: parsePositiveInt(env.MAX_FETCHES, 0),
@@ -1552,6 +1548,73 @@ async function readPreviousIndex(): Promise<Map<string, JsonRecord>> {
   }
 }
 
+/** Index row rebuilt from a published meta.json (for funds with files but no index row). */
+export function rowFromMeta(meta: JsonRecord): JsonRecord {
+  const ticker = String(meta.ticker);
+  const returns = meta.returns || {};
+  const monthEnd = returns.monthEnd || {};
+  const num = (value: unknown) => numberOrNull(value);
+  const text = (value: number | null) => (value === null ? '—' : `${value.toFixed(2)}%`);
+  const nav = num(meta.nav?.value);
+  const aum = num(meta.aum?.value);
+  const price = num(meta.marketPrice?.value);
+  const ter = num(meta.expenseRatio?.value);
+  const premium = num(meta.premiumDiscount?.value);
+  const asOf = String(returns.performanceAsOf ?? '');
+  const total = (value: unknown, years: number) => annualizedToTotal(num(value), years);
+  const dividendYield = num(meta.yields?.dividendYield);
+  const secYield = num(meta.yields?.secYield);
+  const official = String(returns.derivedFrom || '').startsWith('official');
+  return {
+    ticker,
+    name: String(meta.name || ticker),
+    category: String(meta.category || 'ETF'),
+    fundPage: String(meta.source?.fundPage || `${PACER_SITE}/products/${ticker}`),
+    dataFile: `./funds/${ticker}/meta.json`,
+    cusip: meta.identifiers?.cusip ?? null,
+    isin: meta.identifiers?.isin ?? null,
+    ter: ter === null ? '—' : `${ter}%`,
+    terValue: ter,
+    nav: nav === null ? '—' : `$${nav.toFixed(2)}`,
+    navValue: nav,
+    aum: formatAumDisplay(aum),
+    aumValue: aum,
+    asOfDate: String(meta.nav?.asOfDate || '—'),
+    inceptionDate: '—',
+    exchange: String(meta.identifiers?.exchange || ''),
+    closePrice: price === null ? '—' : `$${price.toFixed(2)}`,
+    closePriceValue: price,
+    premiumDiscount: premium === null ? '—' : `${premium.toFixed(2)}%`,
+    premiumDiscountValue: premium,
+    frequencyCode: String(meta.distributions?.frequencyCode || frequencyCodeLabel(meta.distributions?.frequency)),
+    distributions: { frequency: meta.distributions?.frequency || '—', exDate: '—', dividend: '—' },
+    returns,
+    metrics: {
+      ytd: num(monthEnd.ytd), tr1y: num(monthEnd.yr1), tr3y: total(monthEnd.yr3, 3), tr5y: total(monthEnd.yr5, 5), tr10y: total(monthEnd.yr10, 10),
+      cagr3y: num(monthEnd.yr3), cagr5y: num(monthEnd.yr5), cagr10y: num(monthEnd.yr10), siAnn: num(monthEnd.sinceInception),
+      dividendYield, dividendYieldText: text(dividendYield), secYield, secYieldText: text(secYield),
+      returnsBasis: official ? OFFICIAL_RETURNS_BASIS : DERIVED_RETURNS_BASIS,
+      performanceAsOf: /^\d{4}-\d{2}-\d{2}$/.test(asOf) ? asOf : null,
+    },
+    holdings: num(meta.holdings?.totalRows) ?? 0,
+    history: num(meta.history?.totalRows) ?? 0,
+  };
+}
+
+/** Published index rows plus rows rebuilt from each fund's meta.json for funds the index forgot. */
+async function readKnownFunds(previous: Map<string, JsonRecord>): Promise<Map<string, JsonRecord>> {
+  const known = new Map(previous);
+  let dirs: string[] = [];
+  try { dirs = await outputReadDir(new URL('funds/', API_ROOT)); } catch { return known; }
+  for (const dir of dirs) {
+    const ticker = sanitizeTicker(dir);
+    if (!ticker || known.has(ticker)) continue;
+    const meta = await readPreviousMeta(dir);
+    if (meta?.ticker) known.set(ticker, rowFromMeta(meta));
+  }
+  return known;
+}
+
 async function readPreviousMeta(ticker: string): Promise<JsonRecord | null> {
   try {
     return JSON.parse(await readFile(new URL(`funds/${ticker}/meta.json`, API_ROOT), 'utf8')) as JsonRecord;
@@ -2123,7 +2186,7 @@ async function main(): Promise<void> {
   issuerDirectDenials = 0;
   outputPrintConfig('Pacer', config);
 
-  const previous = await readPreviousIndex();
+  const previous = await readKnownFunds(await readPreviousIndex());
   const catalog = new Map<string, CatalogFund>();
   let catalogSource = 'previous api/pacer/index.json';
   if (!config.skipPacer) {
@@ -2181,22 +2244,18 @@ async function main(): Promise<void> {
         failures += 1;
         const message = error instanceof Error ? error.message : String(error);
         const old = previous.get(fund.ticker);
-        if (old && !hasConfiguredFilters(config)) results.push(old);
+        if (old) results.push(old);
         await output.result(fund.ticker, before, 'failed', message);
       }
     }
   };
   await runWorkers(config.concurrency, worker);
 
-  const filterRun = hasConfiguredFilters(config);
-  const funds = [...results].sort((a, b) => String(a.ticker).localeCompare(String(b.ticker)));
-  if (!filterRun) {
-    for (const fund of universe) if (!funds.some((row) => row.ticker === fund.ticker)) {
-      const old = previous.get(fund.ticker);
-      if (old) funds.push(old);
-    }
-    funds.sort((a, b) => String(a.ticker).localeCompare(String(b.ticker)));
-  }
+  // A filtered, bounded or partially failed run never shrinks the feed: every known fund keeps a row
+  // (refreshed when selected, otherwise the published one).
+  const rows = new Map<string, JsonRecord>(previous);
+  for (const row of results) rows.set(String(row.ticker), row);
+  const funds = [...rows.values()].sort((a, b) => String(a.ticker).localeCompare(String(b.ticker)));
   const counts = { funds: funds.length, holdings: funds.reduce((sum, row) => sum + (numberOrNull(row.holdings) || 0), 0), history: funds.reduce((sum, row) => sum + (numberOrNull(row.history) || 0), 0) };
   await writeIfChanged(INDEX_FILE, {
     generatedAt: new Date().toISOString().replace(/\.\d{3}Z$/, 'Z'),

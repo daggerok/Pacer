@@ -2,7 +2,9 @@
 /// <reference types="bun" />
 import { describe, expect, test } from 'bun:test';
 import { spawnSync } from 'node:child_process';
-import { readFileSync } from 'node:fs';
+import { copyFileSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
 import {
   CONTROL_NAMES,
   installSystemCa,
@@ -12,6 +14,7 @@ import {
   performanceAsOfDate,
   fetchText,
   runWorkers,
+  rowFromMeta,
   annualizedToTotal,
   cleanHoldingTicker,
   firstDate,
@@ -1072,4 +1075,63 @@ test('updater is fixed to api/pacer and keeps the reference types line first', (
   expect(source).toContain("new URL('../api/pacer/', import.meta.url)");
   expect(source.split('\n').slice(0, 4).join('\n')).toContain('/// <reference types="bun" />');
   expect(source).not.toMatch(/OUTPUT_DIR/);
+});
+
+describe('filtered and failed runs never shrink the feed', () => {
+  // Runs a private copy of the updater against a seeded api/pacer with every request rejected (mocked fetch preload)
+  const runCopy = (env: Record<string, string>) => {
+    const root = mkdtempSync(join(tmpdir(), 'pacer-feed-'));
+    try {
+      mkdirSync(join(root, 'scripts'));
+      copyFileSync(new URL('./update-data.ts', import.meta.url), join(root, 'scripts/update-data.ts'));
+      copyFileSync(new URL('./update-data.config.json', import.meta.url), join(root, 'scripts/update-data.config.json'));
+      writeFileSync(join(root, 'preload.ts'), [
+        "globalThis.fetch = (async () => { throw new Error('offline test: network disabled'); }) as typeof fetch;",
+        '// collapse retry backoff and proxy pacing delays so the offline run is fast',
+        'const realSetTimeout = globalThis.setTimeout;',
+        'globalThis.setTimeout = ((fn: () => void, _ms?: number, ...args: unknown[]) => realSetTimeout(fn, 0, ...args)) as typeof setTimeout;',
+        '',
+      ].join('\n'));
+      const api = join(root, 'api/pacer');
+      const row = (ticker: string) => ({ ticker, name: `${ticker} ETF`, category: 'ETF', fundPage: `https://www.paceretfs.com/products/${ticker}`, dataFile: `./funds/${ticker}/meta.json`, navValue: 10, aumValue: 1e8, metrics: { returnsBasis: 'seed', performanceAsOf: null }, holdings: 1, history: 1 });
+      for (const ticker of ['AAA', 'BBB', 'CCC', 'DDD']) {
+        mkdirSync(join(api, 'funds', ticker), { recursive: true });
+        writeFileSync(join(api, 'funds', ticker, 'meta.json'), JSON.stringify({ ticker, name: `${ticker} ETF`, category: 'ETF', nav: { value: 10 }, aum: { value: 1e8 }, returns: { monthEnd: {} }, yields: {} }));
+      }
+      // DDD has files but the published index forgot it
+      writeFileSync(join(api, 'index.json'), JSON.stringify({ funds: ['AAA', 'BBB', 'CCC'].map(row) }));
+      const result = spawnSync(process.execPath, ['--preload', join(root, 'preload.ts'), join(root, 'scripts/update-data.ts')], {
+        env: { ...process.env, REQUEST_SLEEP: '0', MAX_RETRIES: '1', CONCURRENCY: '1', TICKERS: '', MAX_FETCHES: '', ...env },
+        encoding: 'utf8',
+      });
+      expect(result.stderr + result.stdout).toContain('funds updated');
+      expect(result.status).toBe(0);
+      const index = JSON.parse(readFileSync(join(api, 'index.json'), 'utf8'));
+      return index.funds.map((fund: { ticker: string }) => fund.ticker);
+    } finally {
+      rmSync(root, { recursive: true, force: true });
+    }
+  };
+
+  test('a one-ticker run keeps every published row', () => {
+    expect(runCopy({ TICKERS: 'BBB' })).toEqual(['AAA', 'BBB', 'CCC', 'DDD']);
+  });
+
+  test('a bounded run keeps every published row', () => {
+    expect(runCopy({ MAX_FETCHES: '1' })).toEqual(['AAA', 'BBB', 'CCC', 'DDD']);
+  });
+
+  test('a catalog failure on a full run does not shrink the index', () => {
+    expect(runCopy({})).toEqual(['AAA', 'BBB', 'CCC', 'DDD']);
+  });
+
+  test('rowFromMeta rebuilds a contract-shaped row for funds missing from the index', () => {
+    const row = rowFromMeta({ ticker: 'DDD', name: 'DDD ETF', nav: { value: 12.5 }, aum: { value: 5e8 }, returns: { derivedFrom: 'official x', monthEnd: { ytd: 4.27, yr3: 10 } }, yields: { secYield: 1.2 } });
+    expect(row.ticker).toBe('DDD');
+    expect(row.navValue).toBe(12.5);
+    expect(row.metrics.ytd).toBe(4.27);
+    expect(row.metrics.cagr5y).toBeNull();
+    expect(row.metrics.returnsBasis).toBeTruthy();
+    expect(row.metrics.performanceAsOf).toBeNull();
+  });
 });
