@@ -66,10 +66,14 @@ CURRENT STATE
 - Goal: Implement the Pacer ETFs holdings-to-watchlist app in daggerok/Pacer with sibling parity
   (Bun-only, zero runtime dependencies, static client app + api/pacer feed), including the
   checked-in scripts/update-data.config.json defaults and the full workflow set.
-- Status: Implementation complete; PR #1 opened; live data acceptance run pending (it must be
-  dispatched manually — see Blockers).
+- Status (2026-10-02): CONSOLIDATED. PR #1 (arena/01a0f9aa-pacer), PR #2 (feat/pacer-etfs) and
+  PR #3 (chore/standardize-config) are all merged into the session branch arena/01a0fa4e-pacer,
+  published as PR #4 (https://github.com/daggerok/Pacer/pull/4, ci "offline" job green). PR #1-#3
+  are superseded and closed with a comment pointing at #4. Live data regeneration with the merged
+  updater is still pending (must be dispatched from the Actions UI — see Blockers).
 - Repository: https://github.com/daggerok/Pacer
-- Branch: arena/01a0f9aa-pacer (session branch; PR opened from it)
+- Branch: arena/01a0fa4e-pacer (current session branch; PR #4 opened from it). It contains the
+  former session branch arena/01a0f9aa-pacer (PR #1) as its base plus merge commits for #2 and #3.
 - Pushed baseline: main @ f00bced ("docs(prompt): add ready-to-use agent implementation prompt for Pacer ETFs")
 - User amendments for this session (2026-10-01), applied in this order:
   1. Check the closest sibling for how scripts/update-data.config.json is used and do the same.
@@ -105,15 +109,24 @@ CURRENT STATE
      env, SEC_UA control, 25-input workflow (24 inputs + the `advanced` JSON input) resolving
      dispatch inputs via toJSON(inputs), scripts/config-docs.test.ts, and the standard README
      structure with the 27-brand tables. 72 tests pass, both Bun builds OK.
+  9. Two live workflow runs on arena/01a0f9aa-pacer (9d03129, 0469d10) published api/pacer
+     (49 funds) but exposed updater defects: every fund name = "Pacer Trendpilot(R) ETF Series"
+     (series link leaked into the name), NAV null everywhere, no CUSIP/ISIN.
+ 10. Consolidation (checkpoint 4): PR #2 merged with its N-PORT-P-first updater and Fund Details
+     parsing winning the updater/test/README/UI conflicts, PR #1 workflows/config/config-docs test/
+     data/fixtures kept, PR #3 merged (superseded; HISTORY_RANGE window ported). 73 tests pass.
 - Next action:
-  1. Get the live acceptance run: Actions -> "Update Pacer ETF data" -> Run workflow ->
-     branch arena/01a0f9aa-pacer -> tickers "COWZ CALF PTLC", every other input left blank so the
-     JSON defaults apply (advanced: {} as well). (The sandbox cannot dispatch it; see Blockers.)
-  2. Pull the generated api/pacer feed, verify per-fund values (name, category, inception, TER,
-     NAV = NetAssets/SharesOutstanding, holdings rows, history rows), then re-run the identical
-     command and confirm the second run reports no changes (byte-stable output).
-  3. Enable GitHub Pages (Settings -> Pages -> GitHub Actions) so pages.yml can publish.
-  4. After verification, merge PR #1.
+  1. Regenerate the data with the merged updater: Actions -> "Update Pacer ETF data" -> Run
+     workflow -> branch arena/01a0fa4e-pacer (or main after the merge), every input blank and
+     advanced {} (full pass, ~15 min at CONCURRENCY=1). A tickers-limited run publishes a
+     filtered index.json (sibling-standard filter semantics), so prefer the full pass to replace
+     the mislabelled 49-fund index with the 74-fund catalog. (The sandbox cannot dispatch it.)
+  2. Verify the committed api/pacer: COWZ name "Pacer US Cash Cows 100 ETF", holdings > 10 with
+     an N-PORT-P as-of date, meta.json with NAV / net assets / CUSIP / inception from Fund Details,
+     ~2455 history rows; re-run the identical workflow and confirm it logs
+     "api/pacer is already up to date". Record the run in evidence/live-acceptance-<date>.txt.
+  3. Merge PR #4 into main (the only open PR); enable GitHub Pages (Settings -> Pages ->
+     GitHub Actions) so pages.yml can publish.
 - Blockers:
   * Sandbox egress is allowlisted to github.com/npm/pypi/codeload only: paceretfs.com, sec.gov,
     query1.finance.yahoo.com and r.jina.ai all return HTTP 000 from bash/bun, so live runs must be
@@ -255,6 +268,54 @@ CHRONOLOGICAL JOURNAL
 - Results after the merge: `bun test` 72 pass / 0 fail (371 assertions), both Bun builds OK,
   `./scripts/update-data.ts --help` prints the new precedence block and SEC_UA.
 
+
+### 2026-10-02 — Consolidation of PR #1, #2 and #3 into one PR (checkpoint 4)
+- Context: three open PRs on the repository - #1 arena/01a0f9aa-pacer -> main (this journal's line,
+  7 commits, tip 0469d10), #2 feat/pacer-etfs -> main (parallel implementation, 7 commits, tip
+  f343a3e), #3 chore/standardize-config -> arena/01a0f9aa-pacer (owner's stacked standardization,
+  5 commits on top of 96e1a5c, tip 12a28fb). New session branch arena/01a0fa4e-pacer started at
+  main f00bced; the user asked for every branch to be merged into one PR, verified, and the other
+  PRs closed. All merges are real merge commits (no history rewrite, no force-push).
+- Evidence driving the resolution: the committed api/pacer from the PR #1 updater (0469d10) has
+  name = "Pacer Trendpilot(R) ETF Series" for all 49 funds, nav.display "—" / value null everywhere,
+  cusip undefined; holdings counts are real (N-PORT-P fallback, COWZ 102) but names/NAV are wrong.
+  PR #2's evidence/live-acceptance-2026-10-01.txt: 74-fund catalog, COWZ holdings 102 / history
+  2456 / distributions 40 / net assets $18.6B, FLRT 320, PSFF 14, ACBH 3 (top-10 partial).
+- Step A: git merge --ff-only origin/arena/01a0f9aa-pacer (session branch == PR #1 tip).
+- Step B: git merge --no-ff origin/feat/pacer-etfs -> exactly the 10 predicted conflicts
+  (update-data.yml, .worklog.txt, README.md, app.tsx, index.html, package.json,
+  config-docs.test.ts, update-data.config.json, update-data.test.ts, update-data.ts).
+  Resolution: update-data.ts + update-data.test.ts = PR #2; config-docs.test.ts,
+  update-data.config.json (VERBOSE then SEC_UA="", 27 keys) and update-data.yml = PR #1;
+  README/app.tsx/index.html/package.json = PR #2 wording (N-PORT-P full holdings, fund pages via the
+  rendering proxy) + PR #1's SEC EDGAR hyperlink + "bun build app.tsx" verification line +
+  scripts.test "bun test"; .worklog.txt = this journal + PR #2's CURRENT STATE and journal entries
+  appended verbatim; evidence/ kept from PR #2; api/pacer, ci.yml, pages.yml, .prompt.txt and
+  scripts/fixtures kept from PR #1. Ported onto PR #2's suite: repository parity (workflows, Pages,
+  UI brand guards incl. "no holdings CSV wording"), samePublishedContent, dated-fixture tests
+  (cowz-product-page.txt quarter-end rows / top 10 / distributions, cowz-chart.json). PR #1's
+  catalog-listing.txt is a different rendering than the proxy markdown PR #2's parser reads, so
+  it stays a reference capture (capture notes updated). Merge commit 6e040b2.
+- Step C: git merge --no-ff origin/chore/standardize-config -> conflicts in update-data.yml,
+  README.md, update-data.config.json, update-data.test.ts, update-data.ts, modify/delete on
+  .worklog.txt and scripts/fixtures/README-capture-notes.txt, and silent deletions of .prompt.txt
+  and the four fixtures (unchanged on our side since the merge base). Everything resolved to the
+  current line and the deleted files restored; PR #3's only still-relevant functional change was
+  ported into PR #2's updater: historyPeriodStart() applies HISTORY_RANGE=Ny through period1
+  (Yahoo ignores range next to period1/period2); default max unchanged. Merge commit f3f21b2.
+- Workflow compatibility: the "Resolve file defaults and manual overrides" step was replayed
+  locally against the merged updater with DISPATCH_INPUTS {"tickers":"COWZ CALF PTLC",
+  "max_fetches":"","advanced":"{}"} -> 27 controls written, TICKERS=COWZ CALF PTLC, SEC_UA blank.
+- Verification from a pristine git-archive export: bun install --frozen-lockfile ok; bun test 73
+  pass / 0 fail / 459 assertions; both Bun builds ok; --help shows the precedence block and SEC_UA;
+  git diff --check clean; no sibling identifier leaks; api/pacer intact (index.json, 52 fund dirs,
+  update-state.json); all three PR tips are ancestors of HEAD.
+- Published: arena/01a0fa4e-pacer pushed (f3f21b2); PR #4 opened against main; ci "offline" pass.
+  Workflow dispatch from the sandbox is still refused (gh workflow run -> 404 on the branch
+  workflow, REST dispatch -> 403 "Resource not accessible by integration").
+- Decisions: PR #3's removal of .worklog.txt/.prompt.txt/fixtures was NOT applied (the merge plan
+  keeps both journals, the prompt and the dated captures); SEC_UA stays blank in the config
+  (built-in descriptor); TICKERS-limited runs keep the sibling filter semantics (filtered index).
 
 ### 2026-10-01 — PR #2 (feat/pacer-etfs) journal, merged
 - Source: daggerok/Pacer#2, branch feat/pacer-etfs @ f343a3e (7 commits, parallel implementation of the same app),
