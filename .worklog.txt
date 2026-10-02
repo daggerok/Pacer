@@ -1079,3 +1079,69 @@ REQUEST PACING & CONCURRENCY:
 
 REPORT BACK WHEN DONE:
   Confirm whether r.jina.ai proxy fallback or SEC EDGAR N-PORT-P is fastest for full batch runs.
+
+=============================================================================
+CHECKPOINT 2026-10-02 — "Deploy Pacer Pages" failure: diagnosis + preflight
+=============================================================================
+
+CURRENT STATE: pages.yml hardened on branch arena/01a0fa68-pacer; the actual
+fix is one repository setting that this session's token cannot change (403).
+
+VERIFIED FACTS (commands in parentheses):
+- Failing run 36954020944, job "deploy": step 6 "Run actions/configure-pages@v5"
+  = failure; steps 7-9 skipped; steps 1-5 (checkout, setup-bun, install, test)
+  = success. (gh api repos/daggerok/Pacer/actions/runs/36954020944/jobs)
+- GitHub Pages IS enabled now, but with the wrong source:
+  build_type "legacy", source branch main path "/", status "built".
+  (gh api repos/daggerok/Pacer/pages) -> so the "Pages never enabled / 404"
+  reading of the original failure is outdated; today the blocker is the source.
+- Both API fixes are refused to this token:
+  PUT  repos/daggerok/Pacer/pages build_type=workflow -> 403 Resource not accessible
+  POST repos/daggerok/Pacer/pages build_type=workflow -> 403 Resource not accessible
+  (repo permissions reported: admin/maintain/push/triage/pull all false)
+- Consequence: the site is currently published by the LEGACY builder from the
+  whole main branch — https://daggerok.github.io/Pacer/package.json answers 200
+  with the repo's package.json, which the Actions staging step would never ship.
+  Switching Source to "GitHub Actions" fixes both the failing workflow and this
+  over-publishing.
+- All 27 sibling ETF repos are build_type "legacy"; Pacer is the only one with
+  a pages.yml, so the Actions source is the intended exception.
+- main moved 5c2fd94 -> 2ffa30b ("data update: Thu Oct  1 22:20:05 EDT 2026").
+  At 2ffa30b api/pacer is ALREADY the new updater's output: counts.funds 74,
+  COWZ "Pacer US Cash Cows 100 ETF", nav $66.77 (value 66.77, asOf Sep 30 2026),
+  aum 18588141764.67, cusip 69374H881, 0 funds named "Pacer Trendpilot(R) ETF
+  Series". So the "regenerate the data" step is no longer needed for correctness.
+  NOTE: those data commits did NOT come from update-data.yml (no runs exist for
+  it; its commit message would be "chore(data): update Pacer ETF data"), so the
+  byte-stability re-run is still outstanding.
+
+CHANGE MADE (this checkpoint):
+- .github/workflows/pages.yml: header comment documenting the one-time
+  prerequisite + a "Preflight" step before configure-pages that fails fast with
+  an actionable ::error (Pages not enabled / source is not GitHub Actions),
+  values passed through env only (repo rule: no ${{ }} inside run:).
+  configure-pages bumped v5 -> v6 (Node 24, removes the deprecation warning).
+- scripts/update-data.test.ts: the existing Pages-parity test now also asserts
+  the preflight API call and configure-pages@v6. No assertion removed.
+
+VALIDATION RUN HERE:
+- bun test -> 73 pass / 0 fail, 461 expect() calls (baseline was 73/0, 459).
+- Negative control: with the pre-bump pages.yml restored, that test fails on
+  "Expected to contain: repos/${GITHUB_REPOSITORY}/pages" — so the new
+  assertions are real, not tautologies.
+- bun build --target=bun scripts/update-data.ts and bun build app.tsx -> OK.
+- YAML parses (js-yaml); git diff --check clean.
+- Executed the shipped preflight script text against the live API:
+    daggerok/Pacer (legacy)  -> exit 1, "source is 'legacy', not GitHub Actions"
+    daggerok/<missing repo>  -> exit 1, "GitHub Pages is not enabled"
+    daggerok/gex (workflow)  -> exit 0, "GitHub Pages enabled (build_type=workflow)"
+
+BLOCKED ON (repo admin, ~30 s): Settings -> Pages -> Build and deployment ->
+Source: "GitHub Actions" at https://github.com/daggerok/Pacer/settings/pages
+Then re-run 36954020944 (or merge the PR, which is in the push paths filter).
+
+NOT DONE / DEFERRED:
+- README + scripts/config-docs.test.ts "deployment is pending" wording is left
+  untouched: the site answers 200 today only via the legacy builder, and
+  scripts/update-data.ts still answers 200 there. Retire the wording in a
+  follow-up once an Actions deploy is green and that URL answers 404.
