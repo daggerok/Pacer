@@ -10,7 +10,7 @@ bunx serve . -p 1234
 open http://0:1234
 ```
 
-The application will be published at <https://daggerok.github.io/Pacer/>; deployment is pending (the GitHub Pages site is not deployed yet and currently answers 404), so run it locally with the commands above.
+The application is live at <https://daggerok.github.io/Pacer/>.
 
 ## Updating the static Pacer data
 
@@ -21,9 +21,9 @@ bun test
 ./scripts/update-data.ts
 ```
 
-Run `./scripts/update-data.ts -h` (or `--help`) to print every configuration variable with its default and usage examples.
+`./scripts/update-data.ts` is directly executable (`#!/usr/bin/env bun`); `bun scripts/update-data.ts` works the same. Run `./scripts/update-data.ts -h` (or `--help`) to print every configuration variable with its default and usage examples.
 
-Defaults live in `scripts/update-data.config.json` (every control as a string). Explicit environment variables override the file. The **Update Pacer ETF data** GitHub Actions workflow uses the same resolver (`resolveControls` in `scripts/update-data.ts`): individual `workflow_dispatch` inputs are blank by default and inherit the file, and the `advanced` input accepts a JSON object with any control (for example `{"VERBOSE":"true"}`). Precedence: file defaults < advanced JSON < nonblank inputs < protected Actions variable or environment. GitHub allows at most 25 inputs, so `STORE_RAW_DOWNLOADS`, `VERBOSE` and `SEC_UA` are set through `advanced`, and `SEC_UA` is also taken from the protected `SEC_UA` repository Actions variable when it is nonblank. The workflow always writes to `api/pacer` only. All supplied filters use **AND** logic.
+Defaults live in `scripts/update-data.config.json` (every control as a string). Explicit environment variables (even empty ones) override the file. The **Update Pacer ETF data** GitHub Actions workflow uses the same resolver (`resolveControls` in `scripts/update-data.ts`): individual `workflow_dispatch` inputs are blank by default and inherit the file, and the `advanced` input accepts a JSON object with any control (for example `{"VERBOSE":"true"}`). Precedence: file defaults < advanced JSON < nonblank inputs < protected Actions variable or environment. GitHub allows at most 25 inputs, so `HOLDINGS_PAGE_SIZE`, `STORE_RAW_DOWNLOADS`, `VERBOSE` and `SEC_UA` are set through `advanced`, and `SEC_UA` is also taken from the protected `SEC_UA` repository Actions variable when it is nonblank. The workflow always writes to `api/pacer` only. All supplied filters use **AND** logic.
 
 ### Data sources
 
@@ -64,25 +64,26 @@ Keep this table, `scripts/update-data.config.json`, `CONTROL_NAMES` and `--help`
 | --- | --: | --- |
 | `MAX_FETCHES` | `0` (all) | Batch size: with a positive value the updater continues after the committed cursor in `api/pacer/update-state.json`; empty or `0` is a full pass - every fund is refreshed in one run |
 | `REQUEST_SLEEP` | `2.5` | Minimum delay in seconds between outgoing request starts, including retries; rendering-proxy requests are paced at 3.2s or slower |
-| `CONCURRENCY` | `1` | Number of parallel fund update workers; request starts are still globally spaced by `REQUEST_SLEEP` |
+| `CONCURRENCY` | `1` | Number of parallel fund update workers (for example `CONCURRENCY=15 ./scripts/update-data.ts`); each worker has its own request lane spaced by `REQUEST_SLEEP`, while rendering-proxy requests share one global gate (3.2s or slower), so keep it low when the WAF denies direct requests |
 | `AUM` | `:` | Net Assets range; each bound may be a USD amount or `K`/`M`/`B`/`T`, or one of `nano`, `micro`, `small`, `mid`, `large` |
 | `TER` | `:` | Total Expenses range in % (strict `min:max`) |
 | `DIVIDEND_YIELD` | `:` | Indicated dividend-yield percentage range |
+| `SEC_YIELD` | `:` | 30-day SEC yield percentage range; funds without a published SEC yield do not match |
 | `TICKERS` | empty (all) | Space-, comma- or semicolon-separated ticker allowlist, e.g. `COWZ CALF GCOW ICOW ECOW` |
 | `HOLDINGS_PAGE_SIZE` | `250` | Rows in each generated current-holdings JSON page |
 | `HISTORY_PAGE_SIZE` | `1000` | Rows in each generated daily-history JSON page |
 | `STORE_RAW_DOWNLOADS` | `false` | Store the official product listing and fund pages (markdown) under `api/pacer/raw` |
-| `MAX_RETRIES` | `2` | Retries after the initial request; only network errors and HTTP 403/408/425/429/5xx are retried with exponential backoff |
-| `HISTORY_RANGE` | `max` | Yahoo history window: `max`, or `Ny` (for example `5y`, applied as the request start date); other Yahoo range tokens are passed through as-is |
+| `MAX_RETRIES` | `2` | Retries after the initial request (integer >= 1); only network errors and HTTP 403/408/425/429/5xx are retried with exponential backoff |
+| `HISTORY_RANGE` | `max` | Yahoo history window: `max`, `ytd`, or a window such as `5y`, `6mo`, `30d` (`Ny` is applied as the request start date, other tokens as the Yahoo range) |
 | `EDGAR_FALLBACK` | `true` | Read full holdings from SEC EDGAR Form N-PORT-P; when off, the official top 10 table or the previous holdings are used |
 | `SKIP_YAHOO` | `false` | Keep previous history and distributions while refreshing catalog and holdings |
 | `SKIP_PACER` | `false` | Keep the previously published catalog, fund-page data, holdings and distributions |
-| `SEC_UA` | empty (built-in descriptor) | SEC User-Agent override; SEC policy requires automated tools to declare a contact; the protected `SEC_UA` Actions variable wins when nonblank |
+| `SEC_UA` | `daggerok ETF feed daggerok@gmail.com` | SEC User-Agent (SEC policy requires a declared contact); redacted in logs; the protected `SEC_UA` Actions variable wins when nonblank |
 | `VERBOSE` | `false` | Print per-fund retry and fallback notices |
 | `PERFORMANCE_YTD`, `_1Y`, `_3Y`, `_5Y`, `_10Y` | `:` | Annualized return ranges (`min:max`); YTD and 1Y are the official returns where published |
 | `TOTAL_RETURN_YTD`, `_1Y`, `_3Y`, `_5Y`, `_10Y` | `:` | Cumulative return ranges (`min:max`) |
 
-`TICKERS` combines with the AUM, TER and yield filters using AND logic; it does not override them. Funds not selected for a successful update keep their prior published metadata and data files
+`TICKERS` combines with the AUM, TER, yield and return filters using AND logic; it does not override them. Funds not selected for a successful update keep their prior published metadata and data files
 
 ### Examples
 
@@ -90,6 +91,7 @@ Keep this table, `scripts/update-data.config.json`, `CONTROL_NAMES` and `--help`
 MAX_FETCHES=10 ./scripts/update-data.ts
 TICKERS="COWZ CALF GCOW ICOW ECOW" ./scripts/update-data.ts
 AUM="1B:" TER=":0.5" ./scripts/update-data.ts
+CONCURRENCY=15 SEC_YIELD="3:" ./scripts/update-data.ts
 PERFORMANCE_1Y="15:" ./scripts/update-data.ts
 ```
 
@@ -103,11 +105,10 @@ Verification before every publish:
 bun install --frozen-lockfile
 bun test
 bun build --target=bun scripts/update-data.ts --outfile=/dev/null
-bun build app.tsx --outfile=/dev/null
 git diff --check
 ```
 
-`bun test` also covers the README controls table, the config file, `--help` and the workflow (`scripts/update-data.test.ts`).
+`bun test` also covers the README controls table, the config file, `--help` and the workflow.
 
 ## Brands table
 
@@ -128,11 +129,13 @@ git diff --check
 | **JPMorgan** | [am.jpmorgan.com](https://am.jpmorgan.com/us/en/asset-management/adv/products/fund-explorer/etf) \| [JPMorgan](https://daggerok.github.io/JPMorgan/) |
 | **NEOS** | [neosfunds.com](https://neosfunds.com/#explore-etfs) \| [Neos](https://daggerok.github.io/Neos/) |
 | **Northern Trust** | [etfs.ntam.northerntrust.com](https://etfs.ntam.northerntrust.com/us/en/individual/funds) \| [Northern-Trust](https://daggerok.github.io/Northern-Trust/) |
-| **Pacer ETFs** | [paceretfs.com](https://www.paceretfs.com/products/) \| [Pacer](https://daggerok.github.io/Pacer/) (deployment pending) |
+| **Pacer ETFs** | [paceretfs.com](https://www.paceretfs.com/products/) \| [Pacer](https://daggerok.github.io/Pacer/) |
+| **Parametric** | [eatonvance.com](https://www.eatonvance.com/products/etfs.html) \| [Parametric](https://daggerok.github.io/Parametric/) |
 | **ProShares** | [proshares.com](https://www.proshares.com/our-etfs/find-proshares-etfs) \| [ProShares](https://daggerok.github.io/ProShares/) |
 | **Schwab** | [schwabassetmanagement.com](https://www.schwabassetmanagement.com/products) \| [Schwab](https://daggerok.github.io/Schwab/) |
+| **SP Funds** | [sp-funds.com](https://www.sp-funds.com/) \| [SP-Funds](https://daggerok.github.io/SP-Funds/) |
 | **SPDR** | [ssga.com](https://www.ssga.com/us/en/intermediary/etfs/fund-finder) \| [SPDR](https://daggerok.github.io/SPDR/) |
-| **Sprott ETFs** | [sprottetfs.com](https://sprottetfs.com/) \| [Sprott](https://daggerok.github.io/Sprott/) (deployment pending) |
+| **Sprott ETFs** | [sprottetfs.com](https://sprottetfs.com/) \| [Sprott](https://daggerok.github.io/Sprott/) |
 | **Tema ETFs** | [temaetfs.com](https://temaetfs.com/funds) \| [Tema](https://daggerok.github.io/Tema/) |
 | **Themes ETFs** | [themesetfs.com/etfs](https://themesetfs.com/etfs) \| [Themes](https://daggerok.github.io/Themes/) |
 | **VanEck** | [vaneck.com](https://www.vaneck.com/us/en/etf-mutual-fund-finder/) \| [VanEck](https://daggerok.github.io/VanEck/) |
@@ -161,8 +164,10 @@ git diff --check
 | NEOS | neosfunds.com lineup table + official fund pages + daily holdings CSV | [Neos](https://github.com/daggerok/Neos) |
 | Northern Trust | etfs.ntam.northerntrust.com funds list + per-fund CSV/JSON downloads | [Northern-Trust](https://github.com/daggerok/Northern-Trust) |
 | Pacer ETFs | paceretfs.com product catalog and fund pages (Cloudflare WAF; r.jina.ai proxy fallback) + SEC EDGAR N-PORT-P (Pacer Funds Trust) + Yahoo Finance history/dividends | [Pacer](https://github.com/daggerok/Pacer) |
+| Parametric | eatonvance.com ETF catalog and Parametric product pages + SEC EDGAR N-PORT-P holdings + Yahoo Finance history/dividends | [Parametric](https://github.com/daggerok/Parametric) |
 | ProShares | proshares.com ETF finder + fund pages + official data host | [ProShares](https://github.com/daggerok/ProShares) |
 | Schwab | schwabassetmanagement.com product pages + CSV exports | [Schwab](https://github.com/daggerok/Schwab) |
+| SP Funds | sp-funds.com homepage catalog, fund pages and daily holdings CSV + SEC EDGAR N-PORT-P holdings fallback + Yahoo Finance history/dividends | [SP-Funds](https://github.com/daggerok/SP-Funds) |
 | SPDR | SSGA / State Street public feeds | [SPDR](https://github.com/daggerok/SPDR) |
 | Sprott ETFs | sprottetfs.com fund pages + SEC EDGAR N-PORT-P (Sprott Funds Trust) + Yahoo Finance history/dividends | [Sprott](https://github.com/daggerok/Sprott) |
 | Tema ETFs | Tema official fund pages + dated daily holdings CSV; SEC EDGAR N-PORT-P holdings fallback only + Yahoo Finance price/history/dividend fallback | [Tema](https://github.com/daggerok/Tema) |
