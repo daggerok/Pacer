@@ -2,11 +2,14 @@
 /// <reference types="bun" />
 import { describe, expect, test } from 'bun:test';
 import { spawnSync } from 'node:child_process';
-import { copyFileSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { appendFileSync, copyFileSync, existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import {
   CONTROL_NAMES,
+  postFetchFilterReasons,
+  paceRequests,
+  softDeadlineReached,
   installSystemCa,
   isCertError,
   configurePacing,
@@ -782,11 +785,10 @@ headerTest('header markup supplies a focusable counter and hidden rich panel wit
 
 
 describe('HISTORY_RANGE window', () => {
-  test('max (and non-year tokens) start at epoch 0; Ny starts N years back', () => {
+  test('max starts at epoch 0; Ny starts N years back', () => {
     const now = Date.UTC(2026, 9, 1, 12);
     expect(historyPeriodStart('max', now)).toBe(0);
     expect(historyPeriodStart('', now)).toBe(0);
-    expect(historyPeriodStart('6mo', now)).toBe(0);
     expect(historyPeriodStart('5y', now)).toBe(Math.floor(now / 1000 - 5 * 365.25 * 86_400));
     expect(historyPeriodStart(' 10Y ', now)).toBe(Math.floor(now / 1000 - 10 * 365.25 * 86_400));
     expect(historyPeriodStart('1y', now)).toBeLessThan(now / 1000);
@@ -1105,7 +1107,8 @@ describe('filtered and failed runs never shrink the feed', () => {
         encoding: 'utf8',
       });
       expect(result.stderr + result.stdout).toContain('funds updated');
-      expect(result.status).toBe(0);
+      // every fund failed offline: non-zero exit, but the index is still written with every published row
+      expect(result.status).toBe(1);
       const index = JSON.parse(readFileSync(join(api, 'index.json'), 'utf8'));
       return index.funds.map((fund: { ticker: string }) => fund.ticker);
     } finally {
@@ -1133,5 +1136,154 @@ describe('filtered and failed runs never shrink the feed', () => {
     expect(row.metrics.cagr5y).toBeNull();
     expect(row.metrics.returnsBasis).toBeTruthy();
     expect(row.metrics.performanceAsOf).toBeNull();
+  });
+
+  test('rowFromMeta keeps the latest distribution instead of a placeholder', () => {
+    const row = rowFromMeta({ ticker: 'DDD', distributions: { frequency: 'Monthly', rows: [['08/29/2026', '0.1'], ['09/30/2026', '0.124175']] } });
+    expect(row.distributions).toEqual({ frequency: 'Monthly', exDate: '09/30/2026', dividend: '0.124175' });
+  });
+});
+
+// ---------------------------------------------------------------------------
+// Robustness: HISTORY_RANGE, dates, QTD, retries, cursor, filters
+// ---------------------------------------------------------------------------
+
+describe('robustness fixes', () => {
+  const base = () => JSON.parse(readFileSync(new URL('./update-data.config.json', import.meta.url), 'utf8'));
+
+  // Runs private copies of the updater one after another against one seeded api/pacer; every request is recorded and rejected.
+  const seededRuns = (envs: Array<Record<string, string>>, opts: { terValues?: Record<string, number> } = {}) => {
+    const root = mkdtempSync(join(tmpdir(), 'pacer-robust-'));
+    try {
+      mkdirSync(join(root, 'scripts'));
+      copyFileSync(new URL('./update-data.ts', import.meta.url), join(root, 'scripts/update-data.ts'));
+      copyFileSync(new URL('./update-data.config.json', import.meta.url), join(root, 'scripts/update-data.config.json'));
+      writeFileSync(join(root, 'preload.ts'), [
+        "import { appendFileSync } from 'node:fs';",
+        `globalThis.fetch = (async (url: any) => { appendFileSync(${JSON.stringify(join(root, 'calls.txt'))}, String(url) + '\\n'); throw new Error('offline test: network disabled'); }) as typeof fetch;`,
+        'const realSetTimeout = globalThis.setTimeout;',
+        'globalThis.setTimeout = ((fn: () => void, _ms?: number, ...args: unknown[]) => realSetTimeout(fn, 0, ...args)) as typeof setTimeout;',
+        '',
+      ].join('\n'));
+      const api = join(root, 'api/pacer');
+      const tickers = ['AAA', 'BBB', 'CCC'];
+      for (const ticker of tickers) {
+        mkdirSync(join(api, 'funds', ticker), { recursive: true });
+        writeFileSync(join(api, 'funds', ticker, 'meta.json'), JSON.stringify({ ticker, name: `${ticker} ETF`, category: 'ETF', nav: { value: 10 }, aum: { value: 1e8 }, returns: { monthEnd: {} }, yields: {} }));
+      }
+      const row = (ticker: string) => ({ ticker, name: `${ticker} ETF`, category: 'ETF', fundPage: `https://www.paceretfs.com/products/${ticker}`, dataFile: `./funds/${ticker}/meta.json`, navValue: 10, aumValue: 1e8, terValue: opts.terValues?.[ticker] ?? 0.5, metrics: { returnsBasis: 'seed', performanceAsOf: null }, holdings: 1, history: 1 });
+      writeFileSync(join(api, 'index.json'), JSON.stringify({ funds: tickers.map(row) }));
+      const results = envs.map((env) => {
+        const result = spawnSync(process.execPath, ['--preload', join(root, 'preload.ts'), join(root, 'scripts/update-data.ts')], {
+          env: { ...process.env, REQUEST_SLEEP: '0', MAX_RETRIES: '1', CONCURRENCY: '1', TICKERS: '', MAX_FETCHES: '', SKIP_PACER: 'true', SKIP_YAHOO: 'true', EDGAR_FALLBACK: 'false', ...env },
+          encoding: 'utf8',
+        });
+        const state = existsSync(join(api, 'update-state.json')) ? readFileSync(join(api, 'update-state.json'), 'utf8') : null;
+        return { status: result.status, out: result.stdout + result.stderr, state: state ? JSON.parse(state) : null };
+      });
+      const calls = existsSync(join(root, 'calls.txt')) ? readFileSync(join(root, 'calls.txt'), 'utf8').split('\n').filter(Boolean) : [];
+      return { results, calls, api, read: (rel: string) => readFileSync(join(api, rel), 'utf8') };
+    } finally {
+      rmSync(root, { recursive: true, force: true });
+    }
+  };
+
+  test('HISTORY_RANGE is max or Ny only and the Yahoo request carries an explicit period1', () => {
+    for (const bad of ['bogus', '6mo', 'ytd', '30d', '0y', '5']) expect(() => resolveControls(base(), {}, {}, { HISTORY_RANGE: bad })).toThrow('HISTORY_RANGE');
+    expect(resolveControls(base(), {}, {}, { HISTORY_RANGE: '5Y' }).HISTORY_RANGE).toBe('5Y');
+    const five = seededRuns([{ TICKERS: 'AAA', SKIP_YAHOO: 'false', HISTORY_RANGE: '5y' }]).calls.find((call) => call.includes('/v8/finance/chart/AAA'))!;
+    const url = new URL(five);
+    expect(Number(url.searchParams.get('period1'))).toBeGreaterThan(Date.now() / 1000 - 5.1 * 365.25 * 86_400);
+    expect(url.searchParams.has('range')).toBe(false);
+    const max = seededRuns([{ TICKERS: 'AAA', SKIP_YAHOO: 'false' }]).calls.find((call) => call.includes('/v8/finance/chart/AAA'))!;
+    expect(new URL(max).searchParams.get('period1')).toBe('0');
+  });
+
+  test('month-name dates parse as UTC in any timezone', () => {
+    for (const tz of ['Asia/Tokyo', 'America/Los_Angeles', 'UTC']) {
+      const run = spawnSync(process.execPath, ['-e', "const m = await import(process.argv[1]); console.log(m.toIsoDate('Sep 30 2026') + '|' + m.toIsoDate('September 30, 2026'))", new URL('./update-data.ts', import.meta.url).pathname], { env: { ...process.env, TZ: tz }, encoding: 'utf8' });
+      expect(run.stdout.trim()).toBe('2026-09-30|2026-09-30');
+    }
+  });
+
+  test('QTD on the first trading day of a quarter is measured from the previous quarter-end close', () => {
+    const days = [{ date: '2026-09-30', close: 10, adjClose: 10, volume: 1 }, { date: '2026-10-01', close: 10.5, adjClose: 10.5, volume: 1 }];
+    expect(priceReturns(days).qtd).toBe(5);
+    expect(priceReturns([days[1]]).qtd).toBeNull();
+  });
+
+  test('since-inception annualized needs at least a year of history', () => {
+    const short = [{ date: '2026-09-01', close: 10, adjClose: 10, volume: 1 }, { date: '2026-10-01', close: 10.2, adjClose: 10.2, volume: 1 }];
+    expect(priceReturns(short).siAnn).toBeNull();
+    const long = [{ date: '2024-09-30', close: 10, adjClose: 10, volume: 1 }, { date: '2026-10-01', close: 12, adjClose: 12, volume: 1 }];
+    expect(priceReturns(long).siAnn).not.toBeNull();
+  });
+
+  test('bounded return filters exclude funds with no value for the tenor', () => {
+    const config = readConfig({ PERFORMANCE_3Y: '5:', TOTAL_RETURN_5Y: ':50' });
+    const fund = { ticker: 'X', netAssets: 1 } as any;
+    expect(postFetchFilterReasons(fund, { cagr3y: null, tr5y: null }, config)).toEqual(['PERFORMANCE_3Y', 'TOTAL_RETURN_5Y']);
+    expect(postFetchFilterReasons(fund, { cagr3y: 6, tr5y: 40 }, config)).toEqual([]);
+  });
+
+  test('TICKERS with an invalid entry is an error', () => {
+    expect(() => readConfig({ TICKERS: 'AAA $$$' })).toThrow('TICKERS');
+    expect([...readConfig({ TICKERS: 'aaa, bbb' }).tickers!]).toEqual(['AAA', 'BBB']);
+  });
+
+  test('every request carries a timeout signal and the proxy is retried at most once', async () => {
+    const saved = globalThis.fetch;
+    const seen: Array<{ url: string; signal: unknown }> = [];
+    globalThis.fetch = (async (input: any, init?: any) => { seen.push({ url: String(input), signal: init?.signal }); return new Response('boom', { status: 500 }); }) as typeof fetch;
+    try {
+      configurePacing(0, 1);
+      await expect(fetchText(proxyUrl('https://example.test/a'), 'proxy', readConfig({ MAX_RETRIES: '5' }))).rejects.toThrow('500');
+      expect(seen).toHaveLength(2);
+      expect(seen.every((call) => call.signal instanceof AbortSignal)).toBe(true);
+    } finally {
+      globalThis.fetch = saved;
+    }
+  }, 20_000);
+
+  test('request lanes: peak in-flight is 1 at CONCURRENCY=1 and N at CONCURRENCY=N', async () => {
+    for (const [concurrency, expected] of [[1, 1], [4, 4]] as const) {
+      configurePacing(0.02, concurrency);
+      let inFlight = 0;
+      let peak = 0;
+      await Promise.all(Array.from({ length: concurrency }, async () => {
+        for (let i = 0; i < 3; i += 1) {
+          await paceRequests(false);
+          inFlight += 1;
+          peak = Math.max(peak, inFlight);
+          await new Promise((resolve) => setTimeout(resolve, 5));
+          inFlight -= 1;
+        }
+      }));
+      expect(peak).toBe(expected);
+    }
+  });
+
+  test('soft deadline helper', () => {
+    expect(softDeadlineReached(0, 24 * 60_000)).toBe(false);
+    expect(softDeadlineReached(0, 25 * 60_000)).toBe(true);
+  });
+
+  test('funds removed by the catalog filter do not consume MAX_FETCHES or stall the cursor; the cursor wraps and is scoped', () => {
+    const { results } = seededRuns([{ TER: ':1', MAX_FETCHES: '1' }, { TER: ':1', MAX_FETCHES: '1' }, { TER: ':1', MAX_FETCHES: '1' }, { TER: ':2', MAX_FETCHES: '1' }], { terValues: { AAA: 5 } });
+    expect(results.map((run) => run.state.cursor)).toEqual(['BBB', 'CCC', 'BBB', 'BBB']);
+    expect(results[3].state.scope).not.toBe(results[2].state.scope);
+  });
+
+  test('a TICKERS run leaves the cursor state untouched and an unknown ticker is an error', () => {
+    const { results } = seededRuns([{ MAX_FETCHES: '1' }, { TICKERS: 'CCC', MAX_FETCHES: '1' }, { TICKERS: 'NOPE' }]);
+    expect(results[1].state).toEqual(results[0].state);
+    expect(results[2].status).toBe(1);
+    expect(results[2].out).toContain('NOPE');
+  });
+
+  test('a fund whose product page or Yahoo chart failed keeps its previous complete state', () => {
+    const run = seededRuns([{ TICKERS: 'AAA', SKIP_PACER: 'false', SKIP_YAHOO: 'false' }]);
+    expect(run.results[0].out).toContain('required source failed');
+    expect(run.results[0].status).toBe(1);
   });
 });

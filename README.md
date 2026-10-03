@@ -51,6 +51,10 @@ Each fund carries a derived `metrics` object that powers the catalog columns sha
 Caveats:
 
 - Returns in the product listing are official NAV total returns as of the table's first header date (month-end); the fund pages add quarter-end NAV and market-price rows; values derived from Yahoo Finance daily history are market-price estimates used only where the official figure is missing
+- A fund is either fully updated or fully kept: when the fund page or the Yahoo chart fails for an already published fund, its previous complete files stay untouched (the workflow commits whatever finished, so no fund mixes new and stale columns); the run stops taking new funds after 25 minutes and still writes `index.json`, and exits non-zero when every attempted fund failed
+- QTD and the other derived returns are anchored on the last close before the period started; `siAnn` is derived only from at least one year of history; month-name dates are parsed as UTC and printed zero-padded (`Oct 01 2026`)
+- A bounded `PERFORMANCE_*` or `TOTAL_RETURN_*` range excludes funds with no value for that tenor
+- New catalog funds are announced as `NEW FUNDS: ...` in the run output and the step summary
 - Unavailable values stay empty and are never written as `0`; young funds and autocallable funds publish `-` or `n/a` for tenors they do not have yet
 - Each fund keeps as-of date and source metadata for holdings, history and distributions
 - The full "Daily Holdings" file is a protected download that neither direct requests nor the rendering proxy can read, so full holdings come from the latest SEC EDGAR N-PORT-P filing (a quarterly-lagged report period, shown in the holdings as-of date); new funds without a filing fall back to the official top 10 table (partial, weights only, market values derived from net assets and labelled as such); a previously published full schedule is kept over the partial table, and the previous run is the last resort
@@ -64,19 +68,19 @@ Keep this table, `scripts/update-data.config.json`, `CONTROL_NAMES` and `--help`
 
 | Control | Default | Meaning |
 | --- | --: | --- |
-| `MAX_FETCHES` | `0` (all) | Batch size: with a positive value the updater continues after the committed cursor in `api/pacer/update-state.json`; empty or `0` is a full pass - every fund is refreshed in one run |
+| `MAX_FETCHES` | `0` (all) | Batch size: with a positive value the updater continues after the committed cursor in `api/pacer/update-state.json`; empty or `0` is a full pass - every fund is refreshed in one run. Only funds that pass the `TICKERS`/`TER` filters count against the batch, the cursor wraps around, is scoped to the filter set (a different filter set starts again from the top) and is never read or written by a `TICKERS` run |
 | `REQUEST_SLEEP` | `2.5` | Minimum delay in seconds between outgoing request starts, including retries; rendering-proxy requests are paced at 3.2s or slower |
 | `CONCURRENCY` | `1` | Number of parallel fund update workers (for example `CONCURRENCY=15 ./scripts/update-data.ts`); each worker has its own request lane spaced by `REQUEST_SLEEP`, while rendering-proxy requests share one global gate (3.2s or slower), so keep it low when the WAF denies direct requests |
 | `AUM` | `:` | Net Assets range; each bound may be a USD amount or `K`/`M`/`B`/`T`, or one of `nano`, `micro`, `small`, `mid`, `large` |
 | `TER` | `:` | Total Expenses range in % (strict `min:max`) |
 | `DIVIDEND_YIELD` | `:` | Indicated dividend-yield percentage range |
 | `SEC_YIELD` | `:` | 30-day SEC yield percentage range; funds without a published SEC yield do not match |
-| `TICKERS` | empty (all) | Space-, comma- or semicolon-separated ticker allowlist, e.g. `COWZ CALF GCOW ICOW ECOW` |
+| `TICKERS` | empty (all) | Space-, comma- or semicolon-separated ticker allowlist, e.g. `COWZ CALF GCOW ICOW ECOW`; an invalid entry or a ticker unknown to the catalog is an error |
 | `HOLDINGS_PAGE_SIZE` | `250` | Rows in each generated current-holdings JSON page |
 | `HISTORY_PAGE_SIZE` | `1000` | Rows in each generated daily-history JSON page |
 | `STORE_RAW_DOWNLOADS` | `false` | Store the official product listing and fund pages (markdown) under `api/pacer/raw` |
 | `MAX_RETRIES` | `2` | Retries after the initial request (integer >= 1); only network errors and HTTP 403/408/425/429/5xx are retried with exponential backoff |
-| `HISTORY_RANGE` | `max` | Yahoo history window: `max`, `ytd`, or a window such as `5y`, `6mo`, `30d` (`Ny` is applied as the request start date, other tokens as the Yahoo range) |
+| `HISTORY_RANGE` | `max` | Yahoo history window: `max` or `Ny` (for example `5y`); any other value is an error. The window is sent as an explicit `period1`/`period2` request (Yahoo ignores `range` next to them), so a shorter window also shortens the published history |
 | `EDGAR_FALLBACK` | `true` | Read full holdings from SEC EDGAR Form N-PORT-P; when off, the official top 10 table or the previous holdings are used |
 | `SKIP_YAHOO` | `false` | Keep previous history and distributions while refreshing catalog and holdings |
 | `SKIP_PACER` | `false` | Keep the previously published catalog, fund-page data, holdings and distributions |
