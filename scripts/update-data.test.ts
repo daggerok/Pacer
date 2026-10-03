@@ -18,6 +18,8 @@ import {
   frequencyCodeLabel,
   historyPeriodStart,
   holdingsFallback,
+  publishedAsOf,
+  stalestFirst,
   htmlToText,
   inferDistributionFrequency,
   installSystemCa,
@@ -638,8 +640,11 @@ const chart = (n) => {
   const close = timestamp.map((_, i) => 10 + i * 0.01);
   return { chart: { result: [{ meta: { exchangeName: 'PCX', regularMarketPrice: close[n - 1], regularMarketTime: end, firstTradeDate: timestamp[0] }, timestamp, indicators: { quote: [{ close, volume: close.map(() => 1) }], adjclose: [{ adjclose: close }] }, events: {} }] } };
 };
+const clockStep = Number(process.env.MOCK_CLOCK_STEP_MS || 0);
+if (clockStep) { const realNow = Date.now; let skew = 0; Date.now = () => realNow() + skew; globalThis.__tick = () => { skew += clockStep; }; }
 globalThis.fetch = (async (input) => {
   appendFileSync(process.env.MOCK_CALLS, String(input) + '\\n');
+  if (/\\/v8\\/finance\\/chart\\//.test(String(input))) globalThis.__tick?.();
   const fail = (process.env.MOCK_FAIL || '').split(',');
   const url = String(input).replace('https://r.jina.ai/', '');
   const reply = (body, ok = true) => (ok ? new Response(body) : new Response('boom', { status: 500 }));
@@ -658,6 +663,8 @@ type Snapshot = Map<string, { text: string; mtimeMs: number }>;
 type Feed = {
   run: (env?: Record<string, string>) => { status: number | null; out: string };
   read: (relative: string) => string;
+  write: (relative: string, text: string) => void;
+  path: (relative: string) => string;
   remove: (relative: string) => void;
   index: () => { funds: Array<Record<string, any>> };
   snapshot: () => Snapshot;
@@ -689,6 +696,8 @@ function withFeed(body: (feed: Feed) => void): void {
         return { status: result.status, out: result.stdout + result.stderr };
       },
       read: (relative) => readFileSync(join(api, relative), 'utf8'),
+      write: (relative, text) => writeFileSync(join(api, relative), text),
+      path: (relative) => join(root, relative),
       remove: (relative) => rmSync(join(api, relative)),
       index: () => JSON.parse(readFileSync(join(api, 'index.json'), 'utf8')),
       snapshot: () => walk(api, new Map()),
@@ -773,6 +782,35 @@ describe('pipeline', () => {
     });
     expect([holdingsFallback(102, 10), holdingsFallback(10, 10), holdingsFallback(5, 0), holdingsFallback(0, 10), holdingsFallback(0, 0)]).toEqual(['previous', 'top10', 'previous', 'top10', 'none']);
   }, 60_000);
+
+  test('stalest fund first: a deadline-truncated run refreshes the stalest, the next runs pick up the skipped funds', () => {
+    withFeed((feed) => {
+      expect(feed.run().status).toBe(0);
+      // published as-of dates: QFHD stalest, then COWZ, then PSFF (alphabetical order would be COWZ, PSFF, QFHD)
+      const asOf: Record<string, [string, string]> = { QFHD: ['Jan 10 2026', '2026-01-10'], COWZ: ['Feb 10 2026', '2026-02-10'], PSFF: ['Mar 01 2026', '2026-03-01'] };
+      const index = feed.index();
+      for (const row of index.funds) {
+        row.asOfDate = asOf[row.ticker][0];
+        row.metrics.performanceAsOf = asOf[row.ticker][1];
+      }
+      feed.write('index.json', JSON.stringify(index));
+      const published = new Map<string, Record<string, any>>(index.funds.map((row) => [row.ticker, row]));
+      expect(stalestFirst(['COWZ', 'PSFF', 'QFHD', 'ZNEW'].map((ticker) => ({ ticker })), published).map((f) => f.ticker)).toEqual(['ZNEW', 'QFHD', 'COWZ', 'PSFF']);
+      expect(publishedAsOf({ ...index.funds[0], dataFile: null })).toBeNull();
+
+      // fake clock: every chart request "takes" 26 minutes (soft deadline 25), so each run handles exactly one fund
+      const summary = feed.path('summary.md');
+      const order: string[] = [];
+      for (let run = 0; run < 3; run += 1) {
+        const seen = feed.calls().length;
+        expect(feed.run({ MOCK_CLOCK_STEP_MS: String(26 * 60_000), GITHUB_STEP_SUMMARY: summary }).status).toBe(0);
+        order.push(feed.calls().slice(seen).map((url) => /\/v8\/finance\/chart\/([A-Z]+)\?/.exec(url)?.[1]).filter(Boolean).join(','));
+      }
+      expect(order).toEqual(['QFHD', 'COWZ', 'PSFF']);
+      expect(readFileSync(summary, 'utf8')).toContain('1 of 3 funds refreshed, 2 keep their published data, oldest remaining published as-of: 2026-02-10 (COWZ)');
+      expect(tickers(feed)).toEqual(['COWZ', 'PSFF', 'QFHD']);
+    });
+  }, 90_000);
 
   test('bounded runs: the cursor skips filtered funds, wraps and is scoped; TICKERS runs leave it alone; an unknown ticker fails', () => {
     withFeed((feed) => {
