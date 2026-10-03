@@ -7,7 +7,7 @@
     "fundPage": "https://www.paceretfs.com/products/SRVR",
     "officialProductPage": "https://www.paceretfs.com/products/SRVR",
     "productPageRendering": "read-only rendering proxy (r.jina.ai) of the official fund page",
-    "productPageAsOf": "Sep 30 2026",
+    "productPageAsOf": "Oct 01 2026",
     "catalogListing": "https://www.paceretfs.com/products/",
     "holdingsDownload": "https://www.sec.gov/Archives/edgar/data/1616668/000089418926028996/0000894189-26-028996.txt",
     "officialHoldingsDownload": "https://www.paceretfs.com/products/holdings_download/SRVR",
@@ -33,36 +33,36 @@
     "kind": "Total Expenses published on the official fund page (product listing for funds without a page value)"
   },
   "nav": {
-    "display": "$28.30",
-    "value": 28.3,
-    "asOfDate": "Sep 30 2026"
+    "display": "$28.11",
+    "value": 28.11,
+    "asOfDate": "Oct 01 2026"
   },
   "marketPrice": {
-    "display": "$28.33",
-    "value": 28.33,
-    "asOfDate": "Sep 30 2026",
+    "display": "$28.17",
+    "value": 28.17,
+    "asOfDate": "Oct 01 2026",
     "source": "official fund page Market Price (closing price as of the Fund Details date)"
   },
   "premiumDiscount": {
-    "display": "0.10%",
-    "value": 0.1,
-    "asOfDate": "Sep 30 2026",
+    "display": "0.21%",
+    "value": 0.21,
+    "asOfDate": "Oct 01 2026",
     "source": "official fund page Fund Details Premium/Discount"
   },
   "aum": {
-    "display": "$319.82 M",
-    "value": 319818112.66,
-    "asOfDate": "Sep 30 2026",
+    "display": "$295.16 M",
+    "value": 295158666.42,
+    "asOfDate": "Oct 01 2026",
     "source": "official fund page Net Assets"
   },
   "fundFacts": {
-    "sharesOutstanding": 11300000,
-    "publishedTotalHoldings": 76,
-    "medianBidAskSpread": 0.001674
+    "sharesOutstanding": 10500000,
+    "publishedTotalHoldings": 77,
+    "medianBidAskSpread": 0.001687
   },
   "yields": {
-    "dividendYield": 9.01,
-    "dividendYieldText": "9.01%",
+    "dividendYield": 9.07,
+    "dividendYieldText": "9.07%",
     "dividendYieldKind": "indicated (latest distribution x inferred payments per year / NAV; Pacer publishes no distribution yield)",
     "secYield": null,
     "secYieldText": "—",
@@ -70,17 +70,17 @@
   },
   "returns": {
     "derivedFrom": "official Pacer ETFs NAV total returns (product listing, month-end) where published; Yahoo adjusted market-price closes for missing values",
-    "performanceAsOf": "2026-09-30",
+    "performanceAsOf": "2026-10-01",
     "monthEnd": {
-      "asOfDate": "Sep 30 2026",
-      "mo1": -7.37,
-      "mo1Text": "-7.37%",
-      "mo3": -8.76,
-      "mo3Text": "-8.76%",
-      "qtd": 0,
-      "qtdText": "0.00%",
-      "ytd": 1.74,
-      "ytdText": "1.74%",
+      "asOfDate": "Oct 01 2026",
+      "mo1": -6.66,
+      "mo1Text": "-6.66%",
+      "mo3": -8.9,
+      "mo3Text": "-8.90%",
+      "qtd": -0.18,
+      "qtdText": "-0.18%",
+      "ytd": 1.05,
+      "ytdText": "1.05%",
       "yr1": 1.57,
       "yr1Text": "1.57%",
       "yr3": 5.44,
@@ -104,13 +104,13 @@
   },
   "officialMarketPriceReturns": {
     "monthEnd": {
-      "asOfDate": "Sep 30 2026",
+      "asOfDate": "Oct 01 2026",
       "mo1": null,
       "mo1Text": "—",
       "mo3": null,
       "mo3Text": "—",
-      "ytd": 1.95,
-      "ytdText": "1.95%",
+      "ytd": 1.37,
+      "ytdText": "1.37%",
       "yr1": null,
       "yr1Text": "—",
       "yr3": null,
@@ -292,7 +292,7 @@
     "asOf": "Jul 31 2026",
     "source": "SEC EDGAR Form N-PORT-P (accession 0000894189-26-028996, report period 2026-07-31)",
     "marketValueBasis": "SEC Form N-PORT-P reported value (valUSD)",
-    "publishedTotalHoldings": 76
+    "publishedTotalHoldings": 77
   },
   "history": {
     "pages": [
@@ -301,8 +301,8 @@
       "history/003.json"
     ],
     "pageSize": 1000,
-    "totalRows": 2106,
-    "asOf": "Oct 1 2026",
+    "totalRows": 2107,
+    "asOf": "Oct 02 2026",
     "source": "Yahoo Finance public chart API (adjusted close)"
   }
 }

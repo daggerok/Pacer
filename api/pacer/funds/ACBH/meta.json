@@ -7,7 +7,7 @@
     "fundPage": "https://www.paceretfs.com/products/ACBH",
     "officialProductPage": "https://www.paceretfs.com/products/ACBH",
     "productPageRendering": "read-only rendering proxy (r.jina.ai) of the official fund page",
-    "productPageAsOf": "Sep 30 2026",
+    "productPageAsOf": "Oct 01 2026",
     "catalogListing": "https://www.paceretfs.com/products/",
     "holdingsDownload": "https://www.paceretfs.com/products/ACBH",
     "officialHoldingsDownload": "https://www.paceretfs.com/products/holdings_download/ACBH",
@@ -33,52 +33,52 @@
     "kind": "Total Expenses published on the official fund page (product listing for funds without a page value)"
   },
   "nav": {
-    "display": "$24.86",
-    "value": 24.86,
-    "asOfDate": "Sep 30 2026"
+    "display": "$24.94",
+    "value": 24.94,
+    "asOfDate": "Oct 01 2026"
   },
   "marketPrice": {
-    "display": "$24.93",
-    "value": 24.93,
-    "asOfDate": "Sep 30 2026",
+    "display": "$24.92",
+    "value": 24.92,
+    "asOfDate": "Oct 01 2026",
     "source": "official fund page Market Price (closing price as of the Fund Details date)"
   },
   "premiumDiscount": {
-    "display": "0.26%",
-    "value": 0.26,
-    "asOfDate": "Sep 30 2026",
+    "display": "-0.06%",
+    "value": -0.06,
+    "asOfDate": "Oct 01 2026",
     "source": "official fund page Fund Details Premium/Discount"
   },
   "aum": {
-    "display": "$3.11 M",
-    "value": 3107747.31,
-    "asOfDate": "Sep 30 2026",
+    "display": "$3.12 M",
+    "value": 3117254.09,
+    "asOfDate": "Oct 01 2026",
     "source": "official fund page Net Assets"
   },
   "fundFacts": {
     "sharesOutstanding": 125000,
     "publishedTotalHoldings": 3,
-    "medianBidAskSpread": 0.006842
+    "medianBidAskSpread": 0.006873
   },
   "yields": {
     "dividendYield": null,
     "dividendYieldText": "—",
     "dividendYieldKind": "indicated (latest distribution x inferred payments per year / NAV; Pacer publishes no distribution yield)",
-    "secYield": 1.24,
-    "secYieldText": "1.24%",
-    "secYieldKind": "30 Day SEC Yield published on the official fund page as of Sep 30 2026"
+    "secYield": 1.3,
+    "secYieldText": "1.30%",
+    "secYieldKind": "30 Day SEC Yield published on the official fund page as of Oct 01 2026"
   },
   "returns": {
     "derivedFrom": "adjusted market-price closes (Yahoo chart API), not official Pacer NAV returns",
     "performanceAsOf": "2026-10-01",
     "monthEnd": {
-      "asOfDate": "Oct 1 2026",
+      "asOfDate": "Oct 01 2026",
       "mo1": null,
       "mo1Text": "—",
       "mo3": null,
       "mo3Text": "—",
-      "qtd": 0,
-      "qtdText": "0.00%",
+      "qtd": 0.31,
+      "qtdText": "0.31%",
       "ytd": null,
       "ytdText": "—",
       "yr1": null,
@@ -89,8 +89,8 @@
       "yr5Text": "—",
       "yr10": null,
       "yr10Text": "—",
-      "sinceInception": 8.19,
-      "sinceInceptionText": "8.19%"
+      "sinceInception": null,
+      "sinceInceptionText": "—"
     },
     "quarterEnd": {
       "asOfDate": "Sep 30 2026",
@@ -128,8 +128,8 @@
     ],
     "pageSize": 250,
     "totalRows": 3,
-    "asOfDate": "2026-10-01",
-    "asOf": "Oct 1 2026",
+    "asOfDate": "2026-10-02",
+    "asOf": "Oct 02 2026",
     "source": "paceretfs.com fund page Top 10 Holdings (partial: 3 positions only; the full Daily Holdings file is a protected download and no SEC N-PORT-P filing was available; read via the rendering proxy)",
     "marketValueBasis": "derived: weight x Total Net Assets (the fund page publishes weights, not values)",
     "publishedTotalHoldings": 3
@@ -139,8 +139,8 @@
       "history/001.json"
     ],
     "pageSize": 1000,
-    "totalRows": 15,
-    "asOf": "Oct 1 2026",
+    "totalRows": 14,
+    "asOf": "Oct 01 2026",
     "source": "Yahoo Finance public chart API (adjusted close)"
   }
 }

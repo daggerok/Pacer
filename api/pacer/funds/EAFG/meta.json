@@ -7,7 +7,7 @@
     "fundPage": "https://www.paceretfs.com/products/EAFG",
     "officialProductPage": "https://www.paceretfs.com/products/EAFG",
     "productPageRendering": "read-only rendering proxy (r.jina.ai) of the official fund page",
-    "productPageAsOf": "Sep 30 2026",
+    "productPageAsOf": "Oct 01 2026",
     "catalogListing": "https://www.paceretfs.com/products/",
     "holdingsDownload": "https://www.sec.gov/Archives/edgar/data/1616668/000089418926029011/0000894189-26-029011.txt",
     "officialHoldingsDownload": "https://www.paceretfs.com/products/holdings_download/EAFG",
@@ -35,24 +35,24 @@
   "nav": {
     "display": "$24.98",
     "value": 24.98,
-    "asOfDate": "Sep 30 2026"
+    "asOfDate": "Oct 01 2026"
   },
   "marketPrice": {
-    "display": "$24.89",
-    "value": 24.89,
-    "asOfDate": "Sep 30 2026",
+    "display": "$24.90",
+    "value": 24.9,
+    "asOfDate": "Oct 01 2026",
     "source": "official fund page Market Price (closing price as of the Fund Details date)"
   },
   "premiumDiscount": {
-    "display": "-0.37%",
-    "value": -0.37,
-    "asOfDate": "Sep 30 2026",
+    "display": "-0.29%",
+    "value": -0.29,
+    "asOfDate": "Oct 01 2026",
     "source": "official fund page Fund Details Premium/Discount"
   },
   "aum": {
     "display": "$1.87 M",
-    "value": 1873492.55,
-    "asOfDate": "Sep 30 2026",
+    "value": 1873217.49,
+    "asOfDate": "Oct 01 2026",
     "source": "official fund page Net Assets"
   },
   "fundFacts": {
@@ -66,21 +66,21 @@
     "dividendYieldKind": "indicated (latest distribution x inferred payments per year / NAV; Pacer publishes no distribution yield)",
     "secYield": 1.36,
     "secYieldText": "1.36%",
-    "secYieldKind": "30 Day SEC Yield published on the official fund page as of Sep 30 2026"
+    "secYieldKind": "30 Day SEC Yield published on the official fund page as of Oct 01 2026"
   },
   "returns": {
     "derivedFrom": "official Pacer ETFs NAV total returns (product listing, month-end) where published; Yahoo adjusted market-price closes for missing values",
-    "performanceAsOf": "2026-09-30",
+    "performanceAsOf": "2026-10-01",
     "monthEnd": {
-      "asOfDate": "Sep 30 2026",
-      "mo1": -3.82,
-      "mo1Text": "-3.82%",
-      "mo3": -4.57,
-      "mo3Text": "-4.57%",
-      "qtd": 0,
-      "qtdText": "0.00%",
-      "ytd": 7.32,
-      "ytdText": "7.32%",
+      "asOfDate": "Oct 01 2026",
+      "mo1": -2.77,
+      "mo1Text": "-2.77%",
+      "mo3": -4.22,
+      "mo3Text": "-4.22%",
+      "qtd": 1.6,
+      "qtdText": "1.60%",
+      "ytd": 7.31,
+      "ytdText": "7.31%",
       "yr1": 22.08,
       "yr1Text": "22.08%",
       "yr3": null,
@@ -104,13 +104,13 @@
   },
   "officialMarketPriceReturns": {
     "monthEnd": {
-      "asOfDate": "Sep 30 2026",
+      "asOfDate": "Oct 01 2026",
       "mo1": null,
       "mo1Text": "—",
       "mo3": null,
       "mo3Text": "—",
-      "ytd": 7.12,
-      "ytdText": "7.12%",
+      "ytd": 7.18,
+      "ytdText": "7.18%",
       "yr1": null,
       "yr1Text": "—",
       "yr3": null,
@@ -207,8 +207,8 @@
       "history/001.json"
     ],
     "pageSize": 1000,
-    "totalRows": 634,
-    "asOf": "Oct 1 2026",
+    "totalRows": 635,
+    "asOf": "Oct 02 2026",
     "source": "Yahoo Finance public chart API (adjusted close)"
   }
 }

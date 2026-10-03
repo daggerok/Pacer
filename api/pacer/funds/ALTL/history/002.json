@@ -2,7 +2,7 @@
   "ticker": "ALTL",
   "page": 2,
   "pageSize": 1000,
-  "totalRows": 1575,
+  "totalRows": 1576,
   "headers": [
     "Date",
     "Close",
@@ -65,37 +65,37 @@
       "Volume": "22100"
     },
     {
-      "Date": "Jul 1 2024",
+      "Date": "Jul 01 2024",
       "Close": "34.349998474121094",
       "Adj Close": "33.49",
       "Volume": "27100"
     },
     {
-      "Date": "Jul 2 2024",
+      "Date": "Jul 02 2024",
       "Close": "34.4900016784668",
       "Adj Close": "33.63",
       "Volume": "18900"
     },
     {
-      "Date": "Jul 3 2024",
+      "Date": "Jul 03 2024",
       "Close": "34.43000030517578",
       "Adj Close": "33.57",
       "Volume": "41700"
     },
     {
-      "Date": "Jul 5 2024",
+      "Date": "Jul 05 2024",
       "Close": "34.59000015258789",
       "Adj Close": "33.73",
       "Volume": "19600"
     },
     {
-      "Date": "Jul 8 2024",
+      "Date": "Jul 08 2024",
       "Close": "34.5",
       "Adj Close": "33.64",
       "Volume": "18000"
     },
     {
-      "Date": "Jul 9 2024",
+      "Date": "Jul 09 2024",
       "Close": "34.470001220703125",
       "Adj Close": "33.61",
       "Volume": "38400"
@@ -197,43 +197,43 @@
       "Volume": "54600"
     },
     {
-      "Date": "Aug 1 2024",
+      "Date": "Aug 01 2024",
       "Close": "36.279998779296875",
       "Adj Close": "35.37",
       "Volume": "20700"
     },
     {
-      "Date": "Aug 2 2024",
+      "Date": "Aug 02 2024",
       "Close": "36.32099914550781",
       "Adj Close": "35.41",
       "Volume": "33600"
     },
     {
-      "Date": "Aug 5 2024",
+      "Date": "Aug 05 2024",
       "Close": "35.54899978637695",
       "Adj Close": "34.66",
       "Volume": "44300"
     },
     {
-      "Date": "Aug 6 2024",
+      "Date": "Aug 06 2024",
       "Close": "35.790000915527344",
       "Adj Close": "34.9",
       "Volume": "49300"
     },
     {
-      "Date": "Aug 7 2024",
+      "Date": "Aug 07 2024",
       "Close": "35.79999923706055",
       "Adj Close": "34.91",
       "Volume": "47500"
     },
     {
-      "Date": "Aug 8 2024",
+      "Date": "Aug 08 2024",
       "Close": "36.15999984741211",
       "Adj Close": "35.26",
       "Volume": "43500"
     },
     {
-      "Date": "Aug 9 2024",
+      "Date": "Aug 09 2024",
       "Close": "36.18000030517578",
       "Adj Close": "35.28",
       "Volume": "39200"
@@ -329,31 +329,31 @@
       "Volume": "32000"
     },
     {
-      "Date": "Sep 3 2024",
+      "Date": "Sep 03 2024",
       "Close": "37.86899948120117",
       "Adj Close": "36.92",
       "Volume": "44600"
     },
     {
-      "Date": "Sep 4 2024",
+      "Date": "Sep 04 2024",
       "Close": "38.01100158691406",
       "Adj Close": "37.06",
       "Volume": "23900"
     },
     {
-      "Date": "Sep 5 2024",
+      "Date": "Sep 05 2024",
       "Close": "37.69599914550781",
       "Adj Close": "36.75",
       "Volume": "34800"
     },
     {
-      "Date": "Sep 6 2024",
+      "Date": "Sep 06 2024",
       "Close": "37.40299987792969",
       "Adj Close": "36.47",
       "Volume": "38700"
     },
     {
-      "Date": "Sep 9 2024",
+      "Date": "Sep 09 2024",
       "Close": "37.78200149536133",
       "Adj Close": "36.84",
       "Volume": "18900"
@@ -449,43 +449,43 @@
       "Volume": "33400"
     },
     {
-      "Date": "Oct 1 2024",
+      "Date": "Oct 01 2024",
       "Close": "38.150001525878906",
       "Adj Close": "37.34",
       "Volume": "24700"
     },
     {
-      "Date": "Oct 2 2024",
+      "Date": "Oct 02 2024",
       "Close": "38.11000061035156",
       "Adj Close": "37.3",
       "Volume": "48100"
     },
     {
-      "Date": "Oct 3 2024",
+      "Date": "Oct 03 2024",
       "Close": "37.88999938964844",
       "Adj Close": "37.08",
       "Volume": "51100"
     },
     {
-      "Date": "Oct 4 2024",
+      "Date": "Oct 04 2024",
       "Close": "38.04999923706055",
       "Adj Close": "37.24",
       "Volume": "28400"
     },
     {
-      "Date": "Oct 7 2024",
+      "Date": "Oct 07 2024",
       "Close": "37.59199905395508",
       "Adj Close": "36.79",
       "Volume": "14200"
     },
     {
-      "Date": "Oct 8 2024",
+      "Date": "Oct 08 2024",
       "Close": "37.81999969482422",
       "Adj Close": "37.01",
       "Volume": "27900"
     },
     {
-      "Date": "Oct 9 2024",
+      "Date": "Oct 09 2024",
       "Close": "38.02000045776367",
       "Adj Close": "37.21",
       "Volume": "52100"
@@ -587,37 +587,37 @@
       "Volume": "52700"
     },
     {
-      "Date": "Nov 1 2024",
+      "Date": "Nov 01 2024",
       "Close": "37.720001220703125",
       "Adj Close": "36.92",
       "Volume": "10100"
     },
     {
-      "Date": "Nov 4 2024",
+      "Date": "Nov 04 2024",
       "Close": "37.667999267578125",
       "Adj Close": "36.86",
       "Volume": "17500"
     },
     {
-      "Date": "Nov 5 2024",
+      "Date": "Nov 05 2024",
       "Close": "37.9900016784668",
       "Adj Close": "37.18",
       "Volume": "20600"
     },
     {
-      "Date": "Nov 6 2024",
+      "Date": "Nov 06 2024",
       "Close": "38.68000030517578",
       "Adj Close": "37.85",
       "Volume": "21300"
     },
     {
-      "Date": "Nov 7 2024",
+      "Date": "Nov 07 2024",
       "Close": "38.619998931884766",
       "Adj Close": "37.8",
       "Volume": "238300"
     },
     {
-      "Date": "Nov 8 2024",
+      "Date": "Nov 08 2024",
       "Close": "38.95600128173828",
       "Adj Close": "38.12",
       "Volume": "71400"
@@ -707,37 +707,37 @@
       "Volume": "9600"
     },
     {
-      "Date": "Dec 2 2024",
+      "Date": "Dec 02 2024",
       "Close": "39.5",
       "Adj Close": "38.66",
       "Volume": "32700"
     },
     {
-      "Date": "Dec 3 2024",
+      "Date": "Dec 03 2024",
       "Close": "39.279998779296875",
       "Adj Close": "38.44",
       "Volume": "14900"
     },
     {
-      "Date": "Dec 4 2024",
+      "Date": "Dec 04 2024",
       "Close": "39.16400146484375",
       "Adj Close": "38.33",
       "Volume": "18600"
     },
     {
-      "Date": "Dec 5 2024",
+      "Date": "Dec 05 2024",
       "Close": "39.130001068115234",
       "Adj Close": "38.3",
       "Volume": "30000"
     },
     {
-      "Date": "Dec 6 2024",
+      "Date": "Dec 06 2024",
       "Close": "38.939998626708984",
       "Adj Close": "38.11",
       "Volume": "20100"
     },
     {
-      "Date": "Dec 9 2024",
+      "Date": "Dec 09 2024",
       "Close": "38.599998474121094",
       "Adj Close": "37.78",
       "Volume": "22000"
@@ -833,31 +833,31 @@
       "Volume": "34700"
     },
     {
-      "Date": "Jan 2 2025",
+      "Date": "Jan 02 2025",
       "Close": "36.9900016784668",
       "Adj Close": "36.39",
       "Volume": "33300"
     },
     {
-      "Date": "Jan 3 2025",
+      "Date": "Jan 03 2025",
       "Close": "37.83000183105469",
       "Adj Close": "37.22",
       "Volume": "18300"
     },
     {
-      "Date": "Jan 6 2025",
+      "Date": "Jan 06 2025",
       "Close": "38.369998931884766",
       "Adj Close": "37.75",
       "Volume": "21200"
     },
     {
-      "Date": "Jan 7 2025",
+      "Date": "Jan 07 2025",
       "Close": "37.91999816894531",
       "Adj Close": "37.3",
       "Volume": "43200"
     },
     {
-      "Date": "Jan 8 2025",
+      "Date": "Jan 08 2025",
       "Close": "37.619998931884766",
       "Adj Close": "37.01",
       "Volume": "29500"
@@ -953,31 +953,31 @@
       "Volume": "10900"
     },
     {
-      "Date": "Feb 3 2025",
+      "Date": "Feb 03 2025",
       "Close": "37.48500061035156",
       "Adj Close": "36.88",
       "Volume": "22300"
     },
     {
-      "Date": "Feb 4 2025",
+      "Date": "Feb 04 2025",
       "Close": "37.88999938964844",
       "Adj Close": "37.28",
       "Volume": "18300"
     },
     {
-      "Date": "Feb 5 2025",
+      "Date": "Feb 05 2025",
       "Close": "38.15999984741211",
       "Adj Close": "37.54",
       "Volume": "9800"
     },
     {
-      "Date": "Feb 6 2025",
+      "Date": "Feb 06 2025",
       "Close": "38.34000015258789",
       "Adj Close": "37.72",
       "Volume": "14100"
     },
     {
-      "Date": "Feb 7 2025",
+      "Date": "Feb 07 2025",
       "Close": "38.09299850463867",
       "Adj Close": "37.47",
       "Volume": "17400"
@@ -1067,31 +1067,31 @@
       "Volume": "17000"
     },
     {
-      "Date": "Mar 3 2025",
+      "Date": "Mar 03 2025",
       "Close": "34.959999084472656",
       "Adj Close": "34.39",
       "Volume": "21800"
     },
     {
-      "Date": "Mar 4 2025",
+      "Date": "Mar 04 2025",
       "Close": "34.34000015258789",
       "Adj Close": "33.78",
       "Volume": "40700"
     },
     {
-      "Date": "Mar 5 2025",
+      "Date": "Mar 05 2025",
       "Close": "34.439998626708984",
       "Adj Close": "33.88",
       "Volume": "21400"
     },
     {
-      "Date": "Mar 6 2025",
+      "Date": "Mar 06 2025",
       "Close": "34.24300003051758",
       "Adj Close": "33.69",
       "Volume": "17200"
     },
     {
-      "Date": "Mar 7 2025",
+      "Date": "Mar 07 2025",
       "Close": "34.573001861572266",
       "Adj Close": "34.01",
       "Volume": "145100"
@@ -1193,43 +1193,43 @@
       "Volume": "5500"
     },
     {
-      "Date": "Apr 1 2025",
+      "Date": "Apr 01 2025",
       "Close": "34.79499816894531",
       "Adj Close": "34.23",
       "Volume": "14200"
     },
     {
-      "Date": "Apr 2 2025",
+      "Date": "Apr 02 2025",
       "Close": "34.8650016784668",
       "Adj Close": "34.3",
       "Volume": "13800"
     },
     {
-      "Date": "Apr 3 2025",
+      "Date": "Apr 03 2025",
       "Close": "34.555999755859375",
       "Adj Close": "34",
       "Volume": "8200"
     },
     {
-      "Date": "Apr 4 2025",
+      "Date": "Apr 04 2025",
       "Close": "32.64699935913086",
       "Adj Close": "32.12",
       "Volume": "10500"
     },
     {
-      "Date": "Apr 7 2025",
+      "Date": "Apr 07 2025",
       "Close": "32.040000915527344",
       "Adj Close": "31.52",
       "Volume": "30100"
     },
     {
-      "Date": "Apr 8 2025",
+      "Date": "Apr 08 2025",
       "Close": "31.719999313354492",
       "Adj Close": "31.21",
       "Volume": "17700"
     },
     {
-      "Date": "Apr 9 2025",
+      "Date": "Apr 09 2025",
       "Close": "33.10300064086914",
       "Adj Close": "32.57",
       "Volume": "31000"
@@ -1319,43 +1319,43 @@
       "Volume": "4800"
     },
     {
-      "Date": "May 1 2025",
+      "Date": "May 01 2025",
       "Close": "33.742000579833984",
       "Adj Close": "33.2",
       "Volume": "8100"
     },
     {
-      "Date": "May 2 2025",
+      "Date": "May 02 2025",
       "Close": "33.99700164794922",
       "Adj Close": "33.45",
       "Volume": "9600"
     },
     {
-      "Date": "May 5 2025",
+      "Date": "May 05 2025",
       "Close": "33.869998931884766",
       "Adj Close": "33.32",
       "Volume": "14700"
     },
     {
-      "Date": "May 6 2025",
+      "Date": "May 06 2025",
       "Close": "33.810001373291016",
       "Adj Close": "33.26",
       "Volume": "3100"
     },
     {
-      "Date": "May 7 2025",
+      "Date": "May 07 2025",
       "Close": "34.01499938964844",
       "Adj Close": "33.47",
       "Volume": "6500"
     },
     {
-      "Date": "May 8 2025",
+      "Date": "May 08 2025",
       "Close": "33.88100051879883",
       "Adj Close": "33.33",
       "Volume": "2900"
     },
     {
-      "Date": "May 9 2025",
+      "Date": "May 09 2025",
       "Close": "33.83300018310547",
       "Adj Close": "33.29",
       "Volume": "7100"
@@ -1445,37 +1445,37 @@
       "Volume": "11300"
     },
     {
-      "Date": "Jun 2 2025",
+      "Date": "Jun 02 2025",
       "Close": "34.30099868774414",
       "Adj Close": "33.75",
       "Volume": "10900"
     },
     {
-      "Date": "Jun 3 2025",
+      "Date": "Jun 03 2025",
       "Close": "34.97999954223633",
       "Adj Close": "34.42",
       "Volume": "420900"
     },
     {
-      "Date": "Jun 4 2025",
+      "Date": "Jun 04 2025",
       "Close": "35.06999969482422",
       "Adj Close": "34.5",
       "Volume": "63400"
     },
     {
-      "Date": "Jun 5 2025",
+      "Date": "Jun 05 2025",
       "Close": "34.75699996948242",
       "Adj Close": "34.26",
       "Volume": "19800"
     },
     {
-      "Date": "Jun 6 2025",
+      "Date": "Jun 06 2025",
       "Close": "35.27000045776367",
       "Adj Close": "34.77",
       "Volume": "11000"
     },
     {
-      "Date": "Jun 9 2025",
+      "Date": "Jun 09 2025",
       "Close": "35.63600158691406",
       "Adj Close": "35.13",
       "Volume": "6500"
@@ -1565,37 +1565,37 @@
       "Volume": "12600"
     },
     {
-      "Date": "Jul 1 2025",
+      "Date": "Jul 01 2025",
       "Close": "37.709999084472656",
       "Adj Close": "37.17",
       "Volume": "14700"
     },
     {
-      "Date": "Jul 2 2025",
+      "Date": "Jul 02 2025",
       "Close": "38.369998931884766",
       "Adj Close": "37.82",
       "Volume": "9300"
     },
     {
-      "Date": "Jul 3 2025",
+      "Date": "Jul 03 2025",
       "Close": "38.7400016784668",
       "Adj Close": "38.19",
       "Volume": "26800"
     },
     {
-      "Date": "Jul 7 2025",
+      "Date": "Jul 07 2025",
       "Close": "38.25",
       "Adj Close": "37.71",
       "Volume": "33900"
     },
     {
-      "Date": "Jul 8 2025",
+      "Date": "Jul 08 2025",
       "Close": "38.6510009765625",
       "Adj Close": "38.1",
       "Volume": "9300"
     },
     {
-      "Date": "Jul 9 2025",
+      "Date": "Jul 09 2025",
       "Close": "38.87099838256836",
       "Adj Close": "38.32",
       "Volume": "12400"
@@ -1697,37 +1697,37 @@
       "Volume": "64000"
     },
     {
-      "Date": "Aug 1 2025",
+      "Date": "Aug 01 2025",
       "Close": "38.95000076293945",
       "Adj Close": "38.4",
       "Volume": "21600"
     },
     {
-      "Date": "Aug 4 2025",
+      "Date": "Aug 04 2025",
       "Close": "39.5099983215332",
       "Adj Close": "38.95",
       "Volume": "4200"
     },
     {
-      "Date": "Aug 5 2025",
+      "Date": "Aug 05 2025",
       "Close": "39.22999954223633",
       "Adj Close": "38.67",
       "Volume": "16400"
     },
     {
-      "Date": "Aug 6 2025",
+      "Date": "Aug 06 2025",
       "Close": "39.00699996948242",
       "Adj Close": "38.45",
       "Volume": "17100"
     },
     {
-      "Date": "Aug 7 2025",
+      "Date": "Aug 07 2025",
       "Close": "38.97999954223633",
       "Adj Close": "38.43",
       "Volume": "28200"
     },
     {
-      "Date": "Aug 8 2025",
+      "Date": "Aug 08 2025",
       "Close": "39.17499923706055",
       "Adj Close": "38.62",
       "Volume": "142600"
@@ -1823,37 +1823,37 @@
       "Volume": "10500"
     },
     {
-      "Date": "Sep 2 2025",
+      "Date": "Sep 02 2025",
       "Close": "40.09000015258789",
       "Adj Close": "39.52",
       "Volume": "18900"
     },
     {
-      "Date": "Sep 3 2025",
+      "Date": "Sep 03 2025",
       "Close": "40.02000045776367",
       "Adj Close": "39.45",
       "Volume": "8300"
     },
     {
-      "Date": "Sep 4 2025",
+      "Date": "Sep 04 2025",
       "Close": "40.44300079345703",
       "Adj Close": "39.92",
       "Volume": "22400"
     },
     {
-      "Date": "Sep 5 2025",
+      "Date": "Sep 05 2025",
       "Close": "40.56100082397461",
       "Adj Close": "40.03",
       "Volume": "7600"
     },
     {
-      "Date": "Sep 8 2025",
+      "Date": "Sep 08 2025",
       "Close": "40.689998626708984",
       "Adj Close": "40.16",
       "Volume": "6100"
     },
     {
-      "Date": "Sep 9 2025",
+      "Date": "Sep 09 2025",
       "Close": "40.66999816894531",
       "Adj Close": "40.14",
       "Volume": "7200"
@@ -1949,43 +1949,43 @@
       "Volume": "24000"
     },
     {
-      "Date": "Oct 1 2025",
+      "Date": "Oct 01 2025",
       "Close": "43.0099983215332",
       "Adj Close": "42.45",
       "Volume": "9800"
     },
     {
-      "Date": "Oct 2 2025",
+      "Date": "Oct 02 2025",
       "Close": "43.36000061035156",
       "Adj Close": "42.79",
       "Volume": "10500"
     },
     {
-      "Date": "Oct 3 2025",
+      "Date": "Oct 03 2025",
       "Close": "43.2599983215332",
       "Adj Close": "42.7",
       "Volume": "8200"
     },
     {
-      "Date": "Oct 6 2025",
+      "Date": "Oct 06 2025",
       "Close": "43.73099899291992",
       "Adj Close": "43.16",
       "Volume": "20000"
     },
     {
-      "Date": "Oct 7 2025",
+      "Date": "Oct 07 2025",
       "Close": "43.04999923706055",
       "Adj Close": "42.49",
       "Volume": "6000"
     },
     {
-      "Date": "Oct 8 2025",
+      "Date": "Oct 08 2025",
       "Close": "43.832000732421875",
       "Adj Close": "43.26",
       "Volume": "4000"
     },
     {
-      "Date": "Oct 9 2025",
+      "Date": "Oct 09 2025",
       "Close": "43.59000015258789",
       "Adj Close": "43.02",
       "Volume": "5800"
@@ -2087,31 +2087,31 @@
       "Volume": "5800"
     },
     {
-      "Date": "Nov 3 2025",
+      "Date": "Nov 03 2025",
       "Close": "44.52000045776367",
       "Adj Close": "43.94",
       "Volume": "12800"
     },
     {
-      "Date": "Nov 4 2025",
+      "Date": "Nov 04 2025",
       "Close": "43.15999984741211",
       "Adj Close": "42.6",
       "Volume": "7600"
     },
     {
-      "Date": "Nov 5 2025",
+      "Date": "Nov 05 2025",
       "Close": "43.92399978637695",
       "Adj Close": "43.35",
       "Volume": "12900"
     },
     {
-      "Date": "Nov 6 2025",
+      "Date": "Nov 06 2025",
       "Close": "43.25",
       "Adj Close": "42.69",
       "Volume": "8100"
     },
     {
-      "Date": "Nov 7 2025",
+      "Date": "Nov 07 2025",
       "Close": "43.40800094604492",
       "Adj Close": "42.84",
       "Volume": "4200"
@@ -2201,43 +2201,43 @@
       "Volume": "1900"
     },
     {
-      "Date": "Dec 1 2025",
+      "Date": "Dec 01 2025",
       "Close": "43.68000030517578",
       "Adj Close": "43.11",
       "Volume": "10300"
     },
     {
-      "Date": "Dec 2 2025",
+      "Date": "Dec 02 2025",
       "Close": "43.38600158691406",
       "Adj Close": "42.82",
       "Volume": "5800"
     },
     {
-      "Date": "Dec 3 2025",
+      "Date": "Dec 03 2025",
       "Close": "43.33000183105469",
       "Adj Close": "42.76",
       "Volume": "10200"
     },
     {
-      "Date": "Dec 4 2025",
+      "Date": "Dec 04 2025",
       "Close": "43.209999084472656",
       "Adj Close": "42.65",
       "Volume": "3700"
     },
     {
-      "Date": "Dec 5 2025",
+      "Date": "Dec 05 2025",
       "Close": "43.08000183105469",
       "Adj Close": "42.52",
       "Volume": "9600"
     },
     {
-      "Date": "Dec 8 2025",
+      "Date": "Dec 08 2025",
       "Close": "42.68000030517578",
       "Adj Close": "42.12",
       "Volume": "5000"
     },
     {
-      "Date": "Dec 9 2025",
+      "Date": "Dec 09 2025",
       "Close": "42.500999450683594",
       "Adj Close": "41.95",
       "Volume": "19400"
@@ -2333,37 +2333,37 @@
       "Volume": "9100"
     },
     {
-      "Date": "Jan 2 2026",
+      "Date": "Jan 02 2026",
       "Close": "42.790000915527344",
       "Adj Close": "42.51",
       "Volume": "6700"
     },
     {
-      "Date": "Jan 5 2026",
+      "Date": "Jan 05 2026",
       "Close": "43.470001220703125",
       "Adj Close": "43.19",
       "Volume": "12900"
     },
     {
-      "Date": "Jan 6 2026",
+      "Date": "Jan 06 2026",
       "Close": "44.4900016784668",
       "Adj Close": "44.2",
       "Volume": "6100"
     },
     {
-      "Date": "Jan 7 2026",
+      "Date": "Jan 07 2026",
       "Close": "43.79499816894531",
       "Adj Close": "43.51",
       "Volume": "7700"
     },
     {
-      "Date": "Jan 8 2026",
+      "Date": "Jan 08 2026",
       "Close": "43.599998474121094",
       "Adj Close": "43.32",
       "Volume": "13200"
     },
     {
-      "Date": "Jan 9 2026",
+      "Date": "Jan 09 2026",
       "Close": "44.20000076293945",
       "Adj Close": "43.91",
       "Volume": "9100"
@@ -2453,37 +2453,37 @@
       "Volume": "7300"
     },
     {
-      "Date": "Feb 2 2026",
+      "Date": "Feb 02 2026",
       "Close": "44.07699966430664",
       "Adj Close": "43.79",
       "Volume": "1400"
     },
     {
-      "Date": "Feb 3 2026",
+      "Date": "Feb 03 2026",
       "Close": "44.34299850463867",
       "Adj Close": "44.06",
       "Volume": "5000"
     },
     {
-      "Date": "Feb 4 2026",
+      "Date": "Feb 04 2026",
       "Close": "44.65299987792969",
       "Adj Close": "44.36",
       "Volume": "9500"
     },
     {
-      "Date": "Feb 5 2026",
+      "Date": "Feb 05 2026",
       "Close": "44.77000045776367",
       "Adj Close": "44.48",
       "Volume": "3700"
     },
     {
-      "Date": "Feb 6 2026",
+      "Date": "Feb 06 2026",
       "Close": "44.888999938964844",
       "Adj Close": "44.6",
       "Volume": "9000"
     },
     {
-      "Date": "Feb 9 2026",
+      "Date": "Feb 09 2026",
       "Close": "44.66299819946289",
       "Adj Close": "44.37",
       "Volume": "3800"
@@ -2567,37 +2567,37 @@
       "Volume": "500"
     },
     {
-      "Date": "Mar 2 2026",
+      "Date": "Mar 02 2026",
       "Close": "46.47100067138672",
       "Adj Close": "46.17",
       "Volume": "9000"
     },
     {
-      "Date": "Mar 3 2026",
+      "Date": "Mar 03 2026",
       "Close": "46.189998626708984",
       "Adj Close": "45.89",
       "Volume": "22700"
     },
     {
-      "Date": "Mar 4 2026",
+      "Date": "Mar 04 2026",
       "Close": "46.279998779296875",
       "Adj Close": "45.98",
       "Volume": "47900"
     },
     {
-      "Date": "Mar 5 2026",
+      "Date": "Mar 05 2026",
       "Close": "45.71099853515625",
       "Adj Close": "45.48",
       "Volume": "13700"
     },
     {
-      "Date": "Mar 6 2026",
+      "Date": "Mar 06 2026",
       "Close": "45.619998931884766",
       "Adj Close": "45.39",
       "Volume": "1800"
     },
     {
-      "Date": "Mar 9 2026",
+      "Date": "Mar 09 2026",
       "Close": "45.459999084472656",
       "Adj Close": "45.23",
       "Volume": "5500"
@@ -2699,37 +2699,37 @@
       "Volume": "1400"
     },
     {
-      "Date": "Apr 1 2026",
+      "Date": "Apr 01 2026",
       "Close": "44.029998779296875",
       "Adj Close": "43.81",
       "Volume": "8300"
     },
     {
-      "Date": "Apr 2 2026",
+      "Date": "Apr 02 2026",
       "Close": "44.362998962402344",
       "Adj Close": "44.14",
       "Volume": "4000"
     },
     {
-      "Date": "Apr 6 2026",
+      "Date": "Apr 06 2026",
       "Close": "44.388999938964844",
       "Adj Close": "44.17",
       "Volume": "4600"
     },
     {
-      "Date": "Apr 7 2026",
+      "Date": "Apr 07 2026",
       "Close": "44.2599983215332",
       "Adj Close": "44.04",
       "Volume": "5400"
     },
     {
-      "Date": "Apr 8 2026",
+      "Date": "Apr 08 2026",
       "Close": "44.76300048828125",
       "Adj Close": "44.54",
       "Volume": "3200"
     },
     {
-      "Date": "Apr 9 2026",
+      "Date": "Apr 09 2026",
       "Close": "44.94300079345703",
       "Adj Close": "44.72",
       "Volume": "2500"
@@ -2825,37 +2825,37 @@
       "Volume": "12000"
     },
     {
-      "Date": "May 1 2026",
+      "Date": "May 01 2026",
       "Close": "44.6150016784668",
       "Adj Close": "44.39",
       "Volume": "1500"
     },
     {
-      "Date": "May 4 2026",
+      "Date": "May 04 2026",
       "Close": "44.560001373291016",
       "Adj Close": "44.34",
       "Volume": "4800"
     },
     {
-      "Date": "May 5 2026",
+      "Date": "May 05 2026",
       "Close": "45.319000244140625",
       "Adj Close": "45.09",
       "Volume": "4100"
     },
     {
-      "Date": "May 6 2026",
+      "Date": "May 06 2026",
       "Close": "46.37200164794922",
       "Adj Close": "46.14",
       "Volume": "2800"
     },
     {
-      "Date": "May 7 2026",
+      "Date": "May 07 2026",
       "Close": "45.643001556396484",
       "Adj Close": "45.41",
       "Volume": "8000"
     },
     {
-      "Date": "May 8 2026",
+      "Date": "May 08 2026",
       "Close": "46.58700180053711",
       "Adj Close": "46.35",
       "Volume": "2300"
@@ -2945,43 +2945,43 @@
       "Volume": "6600"
     },
     {
-      "Date": "Jun 1 2026",
+      "Date": "Jun 01 2026",
       "Close": "49.51300048828125",
       "Adj Close": "49.26",
       "Volume": "2400"
     },
     {
-      "Date": "Jun 2 2026",
+      "Date": "Jun 02 2026",
       "Close": "50.43000030517578",
       "Adj Close": "50.18",
       "Volume": "13700"
     },
     {
-      "Date": "Jun 3 2026",
+      "Date": "Jun 03 2026",
       "Close": "50.0989990234375",
       "Adj Close": "49.85",
       "Volume": "6400"
     },
     {
-      "Date": "Jun 4 2026",
+      "Date": "Jun 04 2026",
       "Close": "49.96099853515625",
       "Adj Close": "49.74",
       "Volume": "1900"
     },
     {
-      "Date": "Jun 5 2026",
+      "Date": "Jun 05 2026",
       "Close": "47.13800048828125",
       "Adj Close": "46.93",
       "Volume": "2300"
     },
     {
-      "Date": "Jun 8 2026",
+      "Date": "Jun 08 2026",
       "Close": "47.94599914550781",
       "Adj Close": "47.74",
       "Volume": "4200"
     },
     {
-      "Date": "Jun 9 2026",
+      "Date": "Jun 09 2026",
       "Close": "47.584999084472656",
       "Adj Close": "47.38",
       "Volume": "3100"
@@ -3071,37 +3071,37 @@
       "Volume": "3000"
     },
     {
-      "Date": "Jul 1 2026",
+      "Date": "Jul 01 2026",
       "Close": "50.143001556396484",
       "Adj Close": "49.93",
       "Volume": "66100"
     },
     {
-      "Date": "Jul 2 2026",
+      "Date": "Jul 02 2026",
       "Close": "48.62799835205078",
       "Adj Close": "48.42",
       "Volume": "1000"
     },
     {
-      "Date": "Jul 6 2026",
+      "Date": "Jul 06 2026",
       "Close": "49.47999954223633",
       "Adj Close": "49.27",
       "Volume": "2000"
     },
     {
-      "Date": "Jul 7 2026",
+      "Date": "Jul 07 2026",
       "Close": "48.040000915527344",
       "Adj Close": "47.83",
       "Volume": "2500"
     },
     {
-      "Date": "Jul 8 2026",
+      "Date": "Jul 08 2026",
       "Close": "47.957000732421875",
       "Adj Close": "47.75",
       "Volume": "1700"
     },
     {
-      "Date": "Jul 9 2026",
+      "Date": "Jul 09 2026",
       "Close": "49.279998779296875",
       "Adj Close": "49.07",
       "Volume": "2200"
@@ -3203,31 +3203,31 @@
       "Volume": "2200"
     },
     {
-      "Date": "Aug 3 2026",
+      "Date": "Aug 03 2026",
       "Close": "47.191001892089844",
       "Adj Close": "46.99",
       "Volume": "38100"
     },
     {
-      "Date": "Aug 4 2026",
+      "Date": "Aug 04 2026",
       "Close": "47.32899856567383",
       "Adj Close": "47.12",
       "Volume": "5700"
     },
     {
-      "Date": "Aug 5 2026",
+      "Date": "Aug 05 2026",
       "Close": "47.2869987487793",
       "Adj Close": "47.08",
       "Volume": "20600"
     },
     {
-      "Date": "Aug 6 2026",
+      "Date": "Aug 06 2026",
       "Close": "47.17399978637695",
       "Adj Close": "46.97",
       "Volume": "3200"
     },
     {
-      "Date": "Aug 7 2026",
+      "Date": "Aug 07 2026",
       "Close": "47.183998107910156",
       "Adj Close": "46.98",
       "Volume": "10000"
@@ -3329,37 +3329,37 @@
       "Volume": "2500"
     },
     {
-      "Date": "Sep 1 2026",
+      "Date": "Sep 01 2026",
       "Close": "46.20800018310547",
       "Adj Close": "46.01",
       "Volume": "8600"
     },
     {
-      "Date": "Sep 2 2026",
+      "Date": "Sep 02 2026",
       "Close": "46.347999572753906",
       "Adj Close": "46.15",
       "Volume": "8400"
     },
     {
-      "Date": "Sep 3 2026",
+      "Date": "Sep 03 2026",
       "Close": "46.44599914550781",
       "Adj Close": "46.45",
       "Volume": "800"
     },
     {
-      "Date": "Sep 4 2026",
+      "Date": "Sep 04 2026",
       "Close": "46.165000915527344",
       "Adj Close": "46.17",
       "Volume": "4800"
     },
     {
-      "Date": "Sep 8 2026",
+      "Date": "Sep 08 2026",
       "Close": "46.095001220703125",
       "Adj Close": "46.1",
       "Volume": "5400"
     },
     {
-      "Date": "Sep 9 2026",
+      "Date": "Sep 09 2026",
       "Close": "45.749000549316406",
       "Adj Close": "45.75",
       "Volume": "3100"
@@ -3455,10 +3455,16 @@
       "Volume": "14500"
     },
     {
-      "Date": "Oct 1 2026",
+      "Date": "Oct 01 2026",
       "Close": "43.66999816894531",
       "Adj Close": "43.67",
-      "Volume": "11370"
+      "Volume": "11400"
+    },
+    {
+      "Date": "Oct 02 2026",
+      "Close": "44.2599983215332",
+      "Adj Close": "44.26",
+      "Volume": "5100"
     }
   ]
 }
