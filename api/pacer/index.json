@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-03T06:26:53Z",
+  "generatedAt": "2026-10-03T07:02:57Z",
   "source": {
     "provider": "Pacer ETFs (Pacer Advisors, Inc.; Pacer Funds Trust, SEC CIK 0001616668), U.S.-listed ETFs",
     "market": "us",
@@ -13,7 +13,7 @@
   "counts": {
     "funds": 74,
     "holdings": 8505,
-    "history": 82559
+    "history": 82560
   },
   "funds": [
     {
@@ -257,7 +257,7 @@
         "performanceAsOf": "2026-10-01"
       },
       "holdings": 3,
-      "history": 14
+      "history": 15
     },
     {
       "ticker": "ALTL",
@@ -2452,21 +2452,21 @@
       "category": "Structured Outcome",
       "fundPage": "https://www.paceretfs.com/products/structured-outcome-strategies/MNVR",
       "dataFile": "./funds/MNVR/meta.json",
-      "cusip": "69384J406",
-      "isin": "US69384J4067",
+      "cusip": null,
+      "isin": null,
       "ter": "0.49%",
       "terValue": 0.49,
       "nav": "$33.40",
       "navValue": 33.4,
-      "aum": "$1.67 M",
-      "aumValue": 1669771.37,
+      "aum": "$1.64 M",
+      "aumValue": 1640358.45,
       "asOfDate": "Oct 01 2026",
       "inceptionDate": "May 01 2026",
       "exchange": "BTS",
-      "closePrice": "$33.40",
-      "closePriceValue": 33.4,
-      "premiumDiscount": "0.03%",
-      "premiumDiscountValue": 0.03,
+      "closePrice": "$33.50",
+      "closePriceValue": 33.5,
+      "premiumDiscount": "0.30%",
+      "premiumDiscountValue": 0.3,
       "frequencyCode": "00 - None",
       "distributions": {
         "frequency": "—",

@@ -20,9 +20,9 @@
     "provider": "Pacer ETFs product listing + official fund pages (read-only rendering proxy) + SEC EDGAR Form N-PORT-P full holdings + Yahoo Finance public chart API"
   },
   "identifiers": {
-    "cusip": "69384J406",
-    "isin": "US69384J4067",
-    "isinBasis": "published on the official fund page",
+    "cusip": null,
+    "isin": null,
+    "isinBasis": null,
     "indexTicker": null,
     "exchange": null
   },
@@ -38,27 +38,27 @@
     "asOfDate": "Oct 01 2026"
   },
   "marketPrice": {
-    "display": "$33.40",
-    "value": 33.4,
-    "asOfDate": "Oct 01 2026",
-    "source": "official fund page Market Price (closing price as of the Fund Details date)"
+    "display": "$33.50",
+    "value": 33.5,
+    "asOfDate": "Sep 18 2026",
+    "source": "Yahoo Finance last regular-session price (the fund page published no market price)"
   },
   "premiumDiscount": {
-    "display": "0.03%",
-    "value": 0.03,
+    "display": "0.30%",
+    "value": 0.3,
     "asOfDate": "Oct 01 2026",
-    "source": "official fund page Fund Details Premium/Discount"
+    "source": "computed from market price / NAV"
   },
   "aum": {
-    "display": "$1.67 M",
-    "value": 1669771.37,
-    "asOfDate": "Oct 01 2026",
-    "source": "official fund page Net Assets"
+    "display": "$1.64 M",
+    "value": 1640358.45,
+    "asOfDate": "Jul 31 2026",
+    "source": "SEC Form N-PORT-P net assets (2026-07-31)"
   },
   "fundFacts": {
-    "sharesOutstanding": 50000,
-    "publishedTotalHoldings": 6,
-    "medianBidAskSpread": 0.002407
+    "sharesOutstanding": null,
+    "publishedTotalHoldings": null,
+    "medianBidAskSpread": null
   },
   "yields": {
     "dividendYield": null,
@@ -162,8 +162,7 @@
     "asOfDate": "2026-07-31",
     "asOf": "Jul 31 2026",
     "source": "SEC EDGAR Form N-PORT-P (accession 0000894189-26-029022, report period 2026-07-31)",
-    "marketValueBasis": "SEC Form N-PORT-P reported value (valUSD)",
-    "publishedTotalHoldings": 6
+    "marketValueBasis": "SEC Form N-PORT-P reported value (valUSD)"
   },
   "history": {
     "pages": [
