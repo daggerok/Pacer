@@ -2163,6 +2163,41 @@ export function softDeadlineReached(startedAt: number, now: number, limit = SOFT
   return now - startedAt >= limit;
 }
 
+/** Any accepted date form ("2026-09-30", "Sep 30 2026", "9/30/2026") as an ISO day, or null. */
+function isoDay(value: unknown): string | null {
+  const iso = toIsoDate(value);
+  if (/^\d{4}-\d{2}-\d{2}$/.test(iso)) return iso;
+  const parsed = typeof value === 'string' ? Date.parse(`${value} UTC`) : NaN;
+  return Number.isNaN(parsed) ? null : new Date(parsed).toISOString().slice(0, 10);
+}
+
+/**
+ * ISO date a published index row is refreshed up to (the latest of its dated fields),
+ * or null when the fund has no published data yet.
+ */
+export function publishedAsOf(row: JsonRecord | null | undefined): string | null {
+  if (!row || row.dataFile === null) return null;
+  const dates = [row.asOfDate, row.metrics?.performanceAsOf].map(isoDay).filter((value): value is string => value !== null);
+  return dates.length ? dates.sort()[dates.length - 1] : null;
+}
+
+/**
+ * Run order of an unbounded run: funds without published data first, then the stalest
+ * published as-of, ties alphabetical. A run cut short by the soft deadline therefore
+ * leaves the freshest funds for last, and the next run starts where this one stopped.
+ */
+export function stalestFirst<T extends { ticker: string }>(funds: T[], published: Map<string, JsonRecord>): T[] {
+  const key = (fund: T): string => publishedAsOf(published.get(fund.ticker)) ?? '';
+  return [...funds].sort((a, b) => (key(a) < key(b) ? -1 : key(a) > key(b) ? 1 : a.ticker.localeCompare(b.ticker)));
+}
+
+/** One line for the log and the step summary: what a deadline-truncated run left behind. */
+export function deadlineSummary(attempted: number, total: number, remaining: Array<{ ticker: string }>, published: Map<string, JsonRecord>): string {
+  const ordered = stalestFirst(remaining, published);
+  const oldest = ordered.length ? `${publishedAsOf(published.get(ordered[0].ticker)) ?? 'never published'} (${ordered[0].ticker})` : 'none';
+  return `${attempted} of ${total} funds refreshed, ${remaining.length} keep their published data, oldest remaining published as-of: ${oldest}`;
+}
+
 async function readCursorState(): Promise<{ cursor: string; scope: string } | null> {
   try {
     const state = JSON.parse(await readFile(STATE_FILE, 'utf8')) as JsonRecord;
@@ -2268,10 +2303,14 @@ async function main(): Promise<void> {
   const cursorState = config.tickers ? null : await readCursorState();
   const cursor = config.maxFetches > 0 && cursorState && cursorState.scope === scope ? cursorState.cursor : '';
   const index = cursor ? universe.findIndex((fund) => fund.ticker === cursor) : -1;
-  const ordered = index >= 0 ? universe.slice(index + 1).concat(universe.slice(0, index + 1)) : universe;
+  // A bounded run walks the alphabetical cursor; an unbounded run goes stalest first.
+  const ordered = config.maxFetches > 0
+    ? (index >= 0 ? universe.slice(index + 1).concat(universe.slice(0, index + 1)) : universe)
+    : stalestFirst(universe, previous);
   // Catalog-level filters (TICKERS, TER) are applied up front so skipped funds never consume the MAX_FETCHES budget.
   const queue = ordered.filter((fund) => catalogFilterReasons(fund, config).length === 0);
   const orderOf = new Map(ordered.map((fund, position) => [fund.ticker, position]));
+  const queued = queue.length;
   const totalAttempts = config.maxFetches > 0 ? Math.min(config.maxFetches, queue.length) : queue.length;
   const results: JsonRecord[] = [];
   let counted = 0;
@@ -2285,9 +2324,9 @@ async function main(): Promise<void> {
   const worker = async (): Promise<void> => {
     for (;;) {
       if (config.maxFetches > 0 && counted >= config.maxFetches) return;
+      if (!queue.length) return;
       if (softDeadlineReached(runStartedAt, Date.now())) { deadlineHit = true; return; }
-      const fund = queue.shift();
-      if (!fund) return;
+      const fund = queue.shift()!;
       const before = await output.before(fund.ticker);
       try {
         const row = await processFund(fund, config, previous.get(fund.ticker) || {});
@@ -2310,7 +2349,11 @@ async function main(): Promise<void> {
     }
   };
   await runWorkers(config.concurrency, worker);
-  if (deadlineHit) console.warn(`[ ${'deadline'.padEnd(9)}] soft deadline reached after ${Math.round((Date.now() - runStartedAt) / 60000)} min; remaining funds keep their published data`);
+  if (deadlineHit) {
+    const line = `soft deadline reached after ${Math.round((Date.now() - runStartedAt) / 60000)} min: ${deadlineSummary(queued - queue.length, queued, queue, previous)}; the next run starts with them`;
+    console.warn(`[ ${'deadline'.padEnd(9)}] ${line}`);
+    if (process.env.GITHUB_STEP_SUMMARY) await appendFile(process.env.GITHUB_STEP_SUMMARY, `### Soft deadline\n\n${line}\n`, 'utf8');
+  }
   const lastTicker: string | null = lastPosition >= 0 ? ordered[lastPosition].ticker : (cursor || null);
 
   // A filtered, bounded or partially failed run never shrinks the feed: every known fund keeps a row
