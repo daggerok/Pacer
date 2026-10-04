@@ -12,6 +12,8 @@ import {
   cleanHoldingTicker,
   configurePacing,
   deriveMetrics,
+  emptyMetrics,
+  dividendYieldBasisCode,
   fetchText,
   firstDate,
   firstNumber,
@@ -587,6 +589,28 @@ describe('metrics', () => {
       if (!['returnsBasis', 'performanceAsOf'].includes(key) && !key.endsWith('Text')) expect([key, value]).toEqual([key, null]);
     }
     expect(String(empty.returnsBasis).length).toBeGreaterThan(0);
+  });
+
+  test('dividendYieldBasis: code per yield source, null with null yield, same key set on fresh, rebuilt and placeholder rows', () => {
+    const none = { dividendYield: null, secYield: null } as never;
+    const dist = [{ epoch: 1, amount: 0.1 }];
+    const indicated = deriveMetrics(nullReturns, none, dist, { paymentsPerYear: 12 }, 10, false);
+    expect([indicated.dividendYield, indicated.dividendYieldBasis]).toEqual([12, 'indicated']);
+    const noYield = deriveMetrics(nullReturns, none, [], { paymentsPerYear: null }, 10, false);
+    expect([noYield.dividendYield, noYield.dividendYieldBasis]).toEqual([null, null]);
+    const published = deriveMetrics(nullReturns, { dividendYield: 3.5, secYield: null } as never, [], { paymentsPerYear: null }, 10, false);
+    expect([published.dividendYield, published.dividendYieldBasis]).toEqual([3.5, 'official-other']);
+    expect(dividendYieldBasisCode(null, true)).toBeNull();
+    const rebuilt = rowFromMeta({ ticker: 'DDD', yields: { dividendYield: 4.2, dividendYieldKind: 'indicated (latest distribution x inferred payments per year / NAV; Pacer publishes no distribution yield)' } });
+    expect(rebuilt.metrics).toMatchObject({ dividendYield: 4.2, dividendYieldBasis: 'indicated' });
+    expect(rowFromMeta({ ticker: 'DDD', yields: { dividendYield: 4.2, dividendYieldBasis: 'indicated' } }).metrics.dividendYieldBasis).toBe('indicated');
+    expect(rowFromMeta({ ticker: 'DDD', yields: {} }).metrics.dividendYieldBasis).toBeNull();
+    expect(rowFromMeta({ ticker: 'DDD', yields: { dividendYield: 4.2, dividendYieldKind: 'x' } }).metrics.dividendYieldBasis).toBe('official-other');
+    const keys = Object.keys(indicated).sort();
+    expect(Object.keys(rebuilt.metrics).sort()).toEqual(keys);
+    expect(Object.keys(emptyMetrics()).sort()).toEqual(keys);
+    expect(emptyMetrics().dividendYieldBasis).toBeNull();
+    expect(Object.keys(placeholderRow({ ticker: 'P', name: 'P', category: 'c', fundPage: '', cusip: '', isin: '', exchange: '', ter: null } as never).metrics).sort()).toEqual(keys);
   });
 
   test('official returns win but keep derived QTD and fill official gaps', () => {

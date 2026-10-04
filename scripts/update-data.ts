@@ -1478,6 +1478,22 @@ export function performanceAsOfDate(effective: { asOfDate: string | null | undef
   return /^\d{4}-\d{2}-\d{2}$/.test(iso) ? iso : null;
 }
 
+export type DividendYieldBasis = 'official-trailing-12m' | 'official-distribution-rate' | 'official-other' | 'computed-trailing-12m' | 'indicated';
+
+/** Code of the definition behind `dividendYield`; null exactly when the yield is null. Pacer publishes no yield, so a value is the indicated estimate. */
+export function dividendYieldBasisCode(yieldValue: number | null | undefined, published: boolean): DividendYieldBasis | null {
+  if (yieldValue === null || yieldValue === undefined) return null;
+  return published ? 'official-other' : 'indicated';
+}
+
+/** Code for a stored meta.yields block: its own code when valid, else mapped from the kind text of older meta files. */
+export function dividendYieldBasisFromYields(yields: JsonRecord | undefined): DividendYieldBasis | null {
+  const value = numberOrNull(yields?.dividendYield);
+  if (value === null) return null;
+  const kind = String(yields?.dividendYieldKind ?? '');
+  return dividendYieldBasisCode(value, kind !== '' && !kind.startsWith('indicated'));
+}
+
 export function deriveMetrics(effective: PriceReturns, fund: CatalogFund, dividends: Distribution[], frequency: { paymentsPerYear: number | null }, price: number | null, official: boolean): JsonRecord {
   const latest = dividends[dividends.length - 1];
   const indicated = fund.dividendYield ?? (latest && frequency.paymentsPerYear && price ? round((latest.amount * frequency.paymentsPerYear / price) * 100, 2) : null);
@@ -1493,6 +1509,7 @@ export function deriveMetrics(effective: PriceReturns, fund: CatalogFund, divide
     siAnn: effective.siAnn,
     dividendYield: indicated,
     dividendYieldText: indicated === null ? '—' : `${indicated.toFixed(2)}%`,
+    dividendYieldBasis: dividendYieldBasisCode(indicated, fund.dividendYield !== null && fund.dividendYield !== undefined),
     secYield: fund.secYield,
     secYieldText: fund.secYield === null ? '—' : `${fund.secYield.toFixed(2)}%`,
     returnsBasis: official ? OFFICIAL_RETURNS_BASIS : DERIVED_RETURNS_BASIS,
@@ -1635,7 +1652,7 @@ export function rowFromMeta(meta: JsonRecord): JsonRecord {
     metrics: {
       ytd: num(monthEnd.ytd), tr1y: num(monthEnd.yr1), tr3y: total(monthEnd.yr3, 3), tr5y: total(monthEnd.yr5, 5), tr10y: total(monthEnd.yr10, 10),
       cagr3y: num(monthEnd.yr3), cagr5y: num(monthEnd.yr5), cagr10y: num(monthEnd.yr10), siAnn: num(monthEnd.sinceInception),
-      dividendYield, dividendYieldText: text(dividendYield), secYield, secYieldText: text(secYield),
+      dividendYield, dividendYieldText: text(dividendYield), dividendYieldBasis: dividendYieldBasisFromYields(meta.yields), secYield, secYieldText: text(secYield),
       returnsBasis: official ? OFFICIAL_RETURNS_BASIS : DERIVED_RETURNS_BASIS,
       performanceAsOf: /^\d{4}-\d{2}-\d{2}$/.test(asOf) ? asOf : null,
     },
@@ -1888,7 +1905,7 @@ function retainPublishedSections(summary: ProductPageSummary | null, fund: Catal
 export function emptyMetrics(): JsonRecord {
   return {
     ytd: null, tr1y: null, tr3y: null, tr5y: null, tr10y: null, cagr3y: null, cagr5y: null, cagr10y: null, siAnn: null,
-    dividendYield: null, dividendYieldText: '—', secYield: null, secYieldText: '—',
+    dividendYield: null, dividendYieldText: '—', dividendYieldBasis: null, secYield: null, secYieldText: '—',
     returnsBasis: NO_DATA_BASIS, performanceAsOf: null,
   };
 }
@@ -2165,6 +2182,7 @@ async function processFund(fund: CatalogFund, config: UpdaterConfig, previous: J
     yields: {
       dividendYield: metrics.dividendYield,
       dividendYieldText: metrics.dividendYieldText,
+      dividendYieldBasis: metrics.dividendYieldBasis,
       dividendYieldKind: 'indicated (latest distribution x inferred payments per year / NAV; Pacer publishes no distribution yield)',
       secYield: metrics.secYield,
       secYieldText: metrics.secYieldText,
