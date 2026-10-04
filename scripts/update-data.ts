@@ -2394,13 +2394,6 @@ export async function runWorkers(count: number, worker: () => Promise<void>): Pr
   await Promise.all(Array.from({ length: Math.max(1, count) }, () => worker()));
 }
 
-/** Pacing setup shared by main() and the offline concurrency test. */
-export function configurePacing(sleepSeconds: number, concurrency: number): void {
-  requestSleepSeconds = sleepSeconds;
-  requestGates = new Array(Math.max(1, concurrency)).fill(0);
-  proxyGateAt = 0;
-}
-
 // --- TLS trust store (identical in every ETF repo) ---
 const SYSTEM_CA_MARKER = 'ETF_UPDATER_SYSTEM_CA';
 const CERT_ERROR = /UNABLE_TO_GET_ISSUER_CERT|UNABLE_TO_VERIFY_LEAF_SIGNATURE|SELF_SIGNED_CERT|CERT_HAS_EXPIRED|unable to get (?:local )?issuer certificate|self[- ]signed certificate|certificate has expired/i;
