@@ -7,7 +7,7 @@
     "fundPage": "https://www.paceretfs.com/products/structured-outcome-strategies/MNVR",
     "officialProductPage": "https://www.paceretfs.com/products/structured-outcome-strategies/MNVR",
     "productPageRendering": "read-only rendering proxy (r.jina.ai) of the official fund page",
-    "productPageAsOf": "Oct 01 2026",
+    "productPageAsOf": "Oct 02 2026",
     "catalogListing": "https://www.paceretfs.com/products/",
     "holdingsDownload": "https://www.sec.gov/Archives/edgar/data/1616668/000089418926029022/0000894189-26-029022.txt",
     "officialHoldingsDownload": "https://www.paceretfs.com/products/holdings_download/MNVR",
@@ -20,9 +20,9 @@
     "provider": "Pacer ETFs product listing + official fund pages (read-only rendering proxy) + SEC EDGAR Form N-PORT-P full holdings + Yahoo Finance public chart API"
   },
   "identifiers": {
-    "cusip": null,
-    "isin": null,
-    "isinBasis": null,
+    "cusip": "69384J406",
+    "isin": "US69384J4067",
+    "isinBasis": "published on the official fund page",
     "indexTicker": null,
     "exchange": null
   },
@@ -33,36 +33,37 @@
     "kind": "Total Expenses published on the official fund page (product listing for funds without a page value)"
   },
   "nav": {
-    "display": "$33.40",
-    "value": 33.4,
-    "asOfDate": "Oct 01 2026"
+    "display": "$33.49",
+    "value": 33.49,
+    "asOfDate": "Oct 02 2026"
   },
   "marketPrice": {
     "display": "$33.50",
     "value": 33.5,
-    "asOfDate": "Sep 18 2026",
-    "source": "Yahoo Finance last regular-session price (the fund page published no market price)"
+    "asOfDate": "Oct 02 2026",
+    "source": "official fund page Market Price (closing price as of the Fund Details date)"
   },
   "premiumDiscount": {
-    "display": "0.30%",
-    "value": 0.3,
-    "asOfDate": "Oct 01 2026",
-    "source": "computed from market price / NAV"
+    "display": "0.02%",
+    "value": 0.02,
+    "asOfDate": "Oct 02 2026",
+    "source": "official fund page Fund Details Premium/Discount"
   },
   "aum": {
-    "display": "$1.64 M",
-    "value": 1640358.45,
-    "asOfDate": "Jul 31 2026",
-    "source": "SEC Form N-PORT-P net assets (2026-07-31)"
+    "display": "$1.67 M",
+    "value": 1674650.13,
+    "asOfDate": "Oct 02 2026",
+    "source": "official fund page Net Assets"
   },
   "fundFacts": {
-    "sharesOutstanding": null,
-    "publishedTotalHoldings": null,
-    "medianBidAskSpread": null
+    "sharesOutstanding": 50000,
+    "publishedTotalHoldings": 6,
+    "medianBidAskSpread": 0.002407
   },
   "yields": {
     "dividendYield": null,
     "dividendYieldText": "—",
+    "dividendYieldBasis": null,
     "dividendYieldKind": "indicated (latest distribution x inferred payments per year / NAV; Pacer publishes no distribution yield)",
     "secYield": null,
     "secYieldText": "—",
@@ -70,13 +71,13 @@
   },
   "returns": {
     "derivedFrom": "official Pacer ETFs NAV total returns (product listing, month-end) where published; Yahoo adjusted market-price closes for missing values",
-    "performanceAsOf": "2026-10-01",
+    "performanceAsOf": "2026-10-02",
     "monthEnd": {
-      "asOfDate": "Oct 01 2026",
-      "mo1": 0.71,
-      "mo1Text": "0.71%",
-      "mo3": 2.41,
-      "mo3Text": "2.41%",
+      "asOfDate": "Oct 02 2026",
+      "mo1": 0.82,
+      "mo1Text": "0.82%",
+      "mo3": 2.67,
+      "mo3Text": "2.67%",
       "qtd": 0.24,
       "qtdText": "0.24%",
       "ytd": null,
@@ -104,7 +105,7 @@
   },
   "officialMarketPriceReturns": {
     "monthEnd": {
-      "asOfDate": "Oct 01 2026",
+      "asOfDate": "Oct 02 2026",
       "mo1": null,
       "mo1Text": "—",
       "mo3": null,
@@ -162,7 +163,8 @@
     "asOfDate": "2026-07-31",
     "asOf": "Jul 31 2026",
     "source": "SEC EDGAR Form N-PORT-P (accession 0000894189-26-029022, report period 2026-07-31)",
-    "marketValueBasis": "SEC Form N-PORT-P reported value (valUSD)"
+    "marketValueBasis": "SEC Form N-PORT-P reported value (valUSD)",
+    "publishedTotalHoldings": 6
   },
   "history": {
     "pages": [
