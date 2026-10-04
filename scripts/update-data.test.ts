@@ -41,6 +41,7 @@ import {
   parseFundTickerMap,
   parseNport,
   parseProductPage,
+  placeholderRow,
   parseQuarterPerformance,
   parseRange,
   parseRanges,
@@ -475,6 +476,23 @@ describe('parsing', () => {
     expect(empty.officialReturns.quarterEnd).toEqual({ nav: null, marketPrice: null });
   });
 
+  test('page-loaded check: the pricing block and both performance tables must be present, a missing SEC yield alone is not partial', () => {
+    const cut = (page: string, from: string, to: string) => page.slice(0, page.indexOf(from)) + page.slice(page.indexOf(to));
+    expect(parseProductPage(FUND_PAGE_COWZ, 'COWZ')).toMatchObject({ loadedFully: true, sections: { pricing: true, recent: true, quarter: true, secYield: true, distributions: true, topHoldings: true } });
+    expect(parseProductPage(FUND_PAGE_SOS, 'PSFF')).toMatchObject({ loadedFully: true, sections: { secYield: false, distributions: false } });
+    const noPerformance = FUND_PAGE_COWZ.slice(0, FUND_PAGE_COWZ.indexOf('## Recent Investment Performance'));
+    expect(parseProductPage(noPerformance, 'COWZ')).toMatchObject({ nav: 66.77, loadedFully: false, sections: { pricing: true, recent: false, quarter: false, distributions: false, topHoldings: false } });
+    // the Fund Details block cut before its Premium/Discount row, or either performance table missing, is partial
+    expect(parseProductPage(FUND_PAGE_COWZ.replace('| Premium/Discount 3 | -0.01 |\n', ''), 'COWZ')).toMatchObject({ loadedFully: false, sections: { pricing: false, recent: true, quarter: true } });
+    expect(parseProductPage(cut(FUND_PAGE_COWZ, '## Recent Investment Performance', '## Performance (%)'), 'COWZ')).toMatchObject({ loadedFully: false, sections: { recent: false, quarter: true } });
+    expect(parseProductPage(cut(FUND_PAGE_COWZ, '## Performance (%)', '## **Top 10'), 'COWZ')).toMatchObject({ loadedFully: false, sections: { recent: true, quarter: false } });
+    expect(parseProductPage(FUND_PAGE_COWZ.replace('| 30 Day SEC Yield | 1.63% |\n', ''), 'COWZ')).toMatchObject({ loadedFully: true, secYield: null, sections: { secYield: false } });
+    expect(parseProductPage('<html><body>Access denied</body></html>', 'COWZ')).toMatchObject({ loadedFully: false, sections: { pricing: false, recent: false, quarter: false } });
+    expect(isFundPage(FUND_PAGE_COWZ)).toBe(true);
+    expect(isFundPage(noPerformance)).toBe(true);
+    expect(isFundPage('## Fund Details\n| Fund Ticker | COWZ |')).toBe(false);
+  });
+
   test('fund page tables: recent and quarter-end performance, top 10 holdings, distributions', () => {
     const lines = toTextLines(stripProxyPreamble(FUND_PAGE_COWZ));
     const recent = parseRecentPerformance(lines);
@@ -640,6 +658,15 @@ const chart = (n) => {
   const close = timestamp.map((_, i) => 10 + i * 0.01);
   return { chart: { result: [{ meta: { exchangeName: 'PCX', regularMarketPrice: close[n - 1], regularMarketTime: end, firstTradeDate: timestamp[0] }, timestamp, indicators: { quote: [{ close, volume: close.map(() => 1) }], adjclose: [{ adjclose: close }] }, events: {} }] } };
 };
+// MOCK_PAGE: 'perf' = proxy rendering dropped everything after Fund Details, 'rows' = Fund Details cut before Premium/Discount,
+// 'nosec' = a fully loaded page that really has no SEC yield and a new market price
+const shape = (page) => {
+  if (!page) return page;
+  if (process.env.MOCK_PAGE === 'perf') return page.slice(0, page.indexOf('## Recent Investment Performance'));
+  if (process.env.MOCK_PAGE === 'rows') return page.split('\\n').filter((line) => !/^\\| (30 Day SEC Yield|Premium\\/Discount)/.test(line)).join('\\n');
+  if (process.env.MOCK_PAGE === 'nosec') return page.split('\\n').filter((line) => !/^\\| 30 Day SEC Yield/.test(line)).join('\\n').replace('| Market Price | $66.76 |', '| Market Price | $66.80 |');
+  return page;
+};
 const clockStep = Number(process.env.MOCK_CLOCK_STEP_MS || 0);
 if (clockStep) { const realNow = Date.now; let skew = 0; Date.now = () => realNow() + skew; globalThis.__tick = () => { skew += clockStep; }; }
 globalThis.fetch = (async (input) => {
@@ -648,11 +675,11 @@ globalThis.fetch = (async (input) => {
   const fail = (process.env.MOCK_FAIL || '').split(',');
   const url = String(input).replace('https://r.jina.ai/', '');
   const reply = (body, ok = true) => (ok ? new Response(body) : new Response('boom', { status: 500 }));
-  if (url === 'https://www.paceretfs.com/products/') return reply(F.catalog, !fail.includes('catalog'));
+  if (url === 'https://www.paceretfs.com/products/') return reply(process.env.MOCK_NEWF ? F.catalog + '\\n#### [NEWF](https://www.paceretfs.com/products/newf)\\n\\n[Pacer New Test ETF](https://www.paceretfs.com/products/newf)\\n' : F.catalog, !fail.includes('catalog'));
   const chartMatch = url.match(/\\/v8\\/finance\\/chart\\/([A-Z]+)\\?/);
   if (chartMatch) return reply(JSON.stringify(chart(chartMatch[1] === 'QFHD' ? 20 : 400)), !fail.includes(chartMatch[1] + ':chart'));
-  const page = url.match(/^https:\\/\\/www\\.paceretfs\\.com\\/products\\/(?:[a-z-]+\\/)?([A-Z]+)$/);
-  if (page) return reply(F.pages[page[1]], !fail.includes(page[1] + ':page'));
+  const page = url.match(/^https:\\/\\/www\\.paceretfs\\.com\\/products\\/(?:[a-z-]+\\/)?([A-Za-z]+)$/);
+  if (page) return reply(shape(F.pages[page[1].toUpperCase()]), !fail.includes(page[1].toUpperCase() + ':page'));
   return new Response('not mocked', { status: 404 });
 });
 const realSetTimeout = globalThis.setTimeout;
@@ -782,6 +809,53 @@ describe('pipeline', () => {
     });
     expect([holdingsFallback(102, 10), holdingsFallback(10, 10), holdingsFallback(5, 0), holdingsFallback(0, 10), holdingsFallback(0, 0)]).toEqual(['previous', 'top10', 'previous', 'top10', 'none']);
   }, 60_000);
+
+  test('a partial fund page or a failed listing keeps the published official sections (zero diff); a fully loaded page lacking a field is an honest null', () => {
+    withFeed((feed) => {
+      expect(feed.run().status).toBe(0);
+      const published = feed.snapshot();
+      const texts = (snap: Snapshot) => [...snap].map(([path, content]) => [path, content.text]);
+      const meta = JSON.parse(feed.read('funds/COWZ/meta.json'));
+      expect(meta).toMatchObject({ marketPrice: { value: 66.76, source: expect.stringContaining('official fund page Market Price') }, yields: { secYield: 1.63 }, returns: { derivedFrom: expect.stringContaining('official') } });
+
+      // proxy rendering dropped the performance tables and distributions / cut Fund Details / the listing failed / both
+      for (const env of [{ MOCK_PAGE: 'perf' }, { MOCK_PAGE: 'rows' }, { MOCK_FAIL: 'catalog' }, { MOCK_PAGE: 'perf', MOCK_FAIL: 'catalog' }]) {
+        const result = feed.run(env);
+        expect(result.status).toBe(0);
+        expect(texts(feed.snapshot())).toEqual(texts(published));
+        expect(result.out.match(/\[ kept/g)?.length).toBe(3); // one notice per fund
+      }
+      const partial = feed.run({ MOCK_PAGE: 'perf', MOCK_FAIL: 'catalog' }).out;
+      expect(partial).toMatch(/COWZ: .*kept the published month-end returns, recent performance \(market price\), quarter-end performance, distributions/);
+      expect(feed.index().funds.find((fund) => fund.ticker === 'COWZ')!.metrics).toMatchObject({ tr1y: 26.63, secYield: 1.63, performanceAsOf: '2026-09-30' });
+      expect(String(feed.index().funds.find((fund) => fund.ticker === 'COWZ')!.metrics.returnsBasis)).toContain('official');
+
+      // a page that loaded fully but has no SEC yield (and a new price) is fresh data with an honest null, nothing is kept
+      const fresh = feed.run({ MOCK_PAGE: 'nosec' });
+      expect(fresh.out).not.toContain('[ kept');
+      const next = JSON.parse(feed.read('funds/COWZ/meta.json'));
+      expect(next.marketPrice.value).toBe(66.8);
+      expect(next.yields).toMatchObject({ secYield: null, secYieldText: '—' });
+      expect(next.yields.secYieldKind).toContain('not published');
+    });
+  }, 120_000);
+
+  test('a new fund whose required source failed gets a catalog-only row (dataFile null, full metrics key set) and no files', () => {
+    withFeed((feed) => {
+      expect(feed.run().status).toBe(0);
+      const result = feed.run({ MOCK_NEWF: '1', TICKERS: 'NEWF' });
+      expect(result.out).toContain('NEW FUNDS: NEWF');
+      const { funds } = feed.index();
+      expect(funds.map((fund) => fund.ticker)).toEqual(['COWZ', 'NEWF', 'PSFF', 'QFHD']);
+      const row = funds.find((fund) => fund.ticker === 'NEWF')!;
+      expect(row).toMatchObject({ dataFile: null, name: 'Pacer New Test ETF', holdings: 0, history: 0 });
+      expect(Object.keys(row.metrics).sort()).toEqual(Object.keys(funds[0].metrics).sort());
+      expect(row.metrics).toMatchObject({ ytd: null, tr1y: null, secYield: null, performanceAsOf: null });
+      expect(String(row.metrics.returnsBasis).length).toBeGreaterThan(0);
+      expect(existsSync(feed.path('api/pacer/funds/NEWF'))).toBe(false);
+      expect(Object.keys(placeholderRow({ ticker: 'X', name: 'X', category: 'ETF', fundPage: '', cusip: '', isin: '', exchange: '', ter: null }).metrics).sort()).toEqual(Object.keys(row.metrics).sort());
+    });
+  }, 90_000);
 
   test('stalest fund first: a deadline-truncated run refreshes the stalest, the next runs pick up the skipped funds', () => {
     withFeed((feed) => {

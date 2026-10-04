@@ -305,7 +305,13 @@ export type ProductPageSummary = {
   officialReturns: OfficialReturns;
   topHoldings: TopHoldings;
   distributions: Distribution[];
+  /** Which sections of the page are present at all (a heading or labelled row), whether or not their values parsed. */
+  sections: PageSections;
+  /** True only when the Fund Details pricing block AND both performance tables are present: such a page has loaded fully. */
+  loadedFully: boolean;
 };
+
+export type PageSections = { pricing: boolean; recent: boolean; quarter: boolean; secYield: boolean; distributions: boolean; topHoldings: boolean };
 
 export type Distribution = { epoch: number; amount: number };
 
@@ -1084,7 +1090,23 @@ export function parseProductPage(text: string, ticker: string): ProductPageSumma
   const spread = numberOrNull(detail('30-day median bid/ask spread'));
   const monthEnd = parseRecentPerformance(lines);
   const quarterEnd = parseQuarterPerformance(lines);
+  const topHoldings = parseTopHoldings(lines);
+  const distributions = parseDistributionsTable(lines);
+  // Page-loaded check: the Fund Details pricing block (NAV, Market Price, Net Assets and its last row, Premium/Discount) and BOTH
+  // performance tables (Recent Investment Performance, Performance (%)) must be present. A page missing any of them came
+  // back partial (rendering proxy), so what it lacks is unknown, not an honest absence.
+  const heading = (pattern: RegExp) => lines.some((line) => line.cells.length === 1 && pattern.test(line.cells[0]));
+  const sections: PageSections = {
+    pricing: ['nav', 'market price', 'net assets', 'premium/discount'].every((label) => details.values.has(label)),
+    recent: heading(/^recent investment performance/i) || monthEnd.nav !== null,
+    quarter: heading(/^performance \(%\)$/i) || quarterEnd.nav !== null,
+    secYield: details.values.has('30 day sec yield'),
+    distributions: distributions.length > 0 || lines.some((line) => line.cells.length >= 4 && /^ex[- ]?date$/i.test(line.cells[0])),
+    topHoldings: topHoldings.rows.length > 0 || lines.some((line) => /^top 10 holdings/i.test(line.cells[0] ?? '')),
+  };
   return {
+    sections,
+    loadedFully: sections.pricing && sections.recent && sections.quarter,
     name: parseFundName(source, upper),
     asOfDate: details.asOfDate,
     cusip: /^[A-Z0-9]{9}$/.test(cusip) ? cusip : '',
@@ -1100,8 +1122,8 @@ export function parseProductPage(text: string, ticker: string): ProductPageSumma
     medianBidAskSpread: spread,
     secYield: firstNumber(detail('30 day sec yield')),
     officialReturns: { monthEnd, quarterEnd },
-    topHoldings: parseTopHoldings(lines),
-    distributions: parseDistributionsTable(lines),
+    topHoldings,
+    distributions,
   };
 }
 
@@ -1536,7 +1558,7 @@ function parsePreviousFund(ticker: string, row: JsonRecord): CatalogFund {
     category: String(row.category || 'ETF'),
     categoryPath: String(row.category || 'ETF'),
     inception: toIsoDate(row.inceptionDate) || null,
-    exchange: String(row.exchange || ''),
+    exchange: '', // the index row keeps its published exchange (`previous.exchange`); meta.json only carries one the listing supplied
     cusip: String(row.cusip || ''),
     isin: String(row.isin || ''),
     benchmark: '',
@@ -1765,9 +1787,134 @@ export function isCatalogPage(text: string): boolean {
   return /Total Return as of\s+\d/i.test(source) && /\]\(https?:\/\/[^)\s]*\/products\//i.test(source);
 }
 
-/** A fund page must carry the Fund Details table with a numeric Net Assets row. */
+/**
+ * A fund page must carry the Fund Details table (a numeric NAV or Net Assets row), not a bot wall. This only separates
+ * a fund page from garbage; whether the page loaded fully (pricing block and both performance tables) is
+ * `parseProductPage(...).loadedFully`, and a partial page is handled per section by `retainPublishedSections`.
+ */
 export function isFundPage(text: string): boolean {
-  return /\|\s*Net Assets\s*\|\s*\$?\d[\d,]*/i.test(htmlToText(stripProxyPreamble(text)));
+  return /\|\s*(?:Net Assets|NAV)\s*\|\s*\$?\d[\d,]*/i.test(htmlToText(stripProxyPreamble(text)));
+}
+
+const OFFICIAL_PRICE_SOURCE = 'official fund page Market Price';
+const OFFICIAL_PREMIUM_SOURCE = 'official fund page Fund Details Premium/Discount';
+const OFFICIAL_AUM_SOURCE = 'official fund page Net Assets';
+const OFFICIAL_DISTRIBUTIONS_SOURCE = 'paceretfs.com fund page Distributions table';
+const NO_DATA_BASIS = 'no data published for this fund yet; the next successful update fills it';
+
+/** A published returns block (returnRowJson / quarterEnd shape) back as an official row; null when it carries no figure. */
+function officialRowFromPublished(block: any): OfficialReturnRow | null {
+  if (!block || typeof block !== 'object') return null;
+  const asOf = toIsoDate(block.asOfDate);
+  const row: OfficialReturnRow = {
+    asOfDate: /^\d{4}-\d{2}-\d{2}$/.test(asOf) ? asOf : '',
+    mo1: numberOrNull(block.mo1), mo3: numberOrNull(block.mo3), ytd: numberOrNull(block.ytd), yr1: numberOrNull(block.yr1),
+    cagr3y: numberOrNull(block.yr3), cagr5y: numberOrNull(block.yr5), cagr10y: numberOrNull(block.yr10), siAnn: numberOrNull(block.sinceInception),
+  };
+  return returnRowHasValues(row) ? row : null;
+}
+
+/**
+ * A fund page that came back partial (the rendering proxy dropped sections: see `loadedFully`) says nothing about the
+ * sections it lacks, and a listing that did not carry a fund's table row says nothing about its month-end returns.
+ * Every section that was published as official before and is missing now counts as a FAILED read: its previous official
+ * block is restored into `summary`/`fund` as one unit (values with their as-of dates, basis and sources), so the normal
+ * build republishes it unchanged instead of flipping to Yahoo-derived values or null. A page that loaded fully and lacks
+ * a field is an honest null and never gets here. Returns the names of the kept sections.
+ */
+function retainPublishedSections(summary: ProductPageSummary | null, fund: CatalogFund, previousMeta: JsonRecord | null, listingRead: boolean): string[] {
+  if (!previousMeta) return [];
+  const kept: string[] = [];
+  const asIso = (value: unknown) => { const iso = toIsoDate(value); return /^\d{4}-\d{2}-\d{2}$/.test(iso) ? iso : null; };
+  if (summary && !summary.sections.pricing) {
+    const price = previousMeta.marketPrice;
+    const premium = previousMeta.premiumDiscount;
+    const aum = previousMeta.aum;
+    const officialPrice = String(price?.source || '').startsWith(OFFICIAL_PRICE_SOURCE) && numberOrNull(price.value) !== null;
+    const officialAum = String(aum?.source || '').startsWith(OFFICIAL_AUM_SOURCE) && numberOrNull(aum.value) !== null;
+    if (officialPrice || officialAum) {
+      const asOf = asIso(previousMeta.nav?.asOfDate);
+      summary.asOfDate = asOf;
+      if (asOf) fund.asOfDate = asOf;
+      summary.nav = numberOrNull(previousMeta.nav?.value);
+      fund.nav = summary.nav;
+      summary.marketPrice = officialPrice ? numberOrNull(price.value) : null;
+      fund.close = summary.marketPrice;
+      summary.totalNetAssets = officialAum ? numberOrNull(aum.value) : null;
+      fund.netAssets = summary.totalNetAssets;
+      summary.premiumDiscount = String(premium?.source || '').startsWith(OFFICIAL_PREMIUM_SOURCE) ? numberOrNull(premium.value) : null;
+      fund.premiumDiscount = summary.premiumDiscount;
+      const yields = previousMeta.yields || {};
+      summary.secYield = String(yields.secYieldKind || '').startsWith('30 Day SEC Yield') ? numberOrNull(yields.secYield) : null;
+      fund.secYield = summary.secYield;
+      const facts = previousMeta.fundFacts || {};
+      summary.sharesOutstanding = numberOrNull(facts.sharesOutstanding);
+      summary.totalHoldings = numberOrNull(facts.publishedTotalHoldings);
+      summary.medianBidAskSpread = numberOrNull(facts.medianBidAskSpread);
+      const ids = previousMeta.identifiers || {};
+      if (ids.cusip) { summary.cusip = String(ids.cusip); fund.cusip = summary.cusip; }
+      if (ids.isin && String(ids.isinBasis || '').startsWith('published')) { summary.isin = String(ids.isin); fund.isin = summary.isin; }
+      else if (ids.isin) fund.isin = String(ids.isin);
+      kept.push('fund details (price, NAV, premium/discount, net assets, SEC yield)');
+    }
+  }
+  const previousReturns = previousMeta.returns || {};
+  const officialBasis = String(previousReturns.derivedFrom || '').startsWith('official');
+  // Month-end returns come from the listing table (all tenors); the page's Recent Investment Performance carries the YTD
+  // column only, so it never stands in for a listing that was not read.
+  if (!listingRead && !fund.monthEnd && officialBasis) {
+    const monthEnd = officialRowFromPublished(previousReturns.monthEnd);
+    if (monthEnd) { fund.monthEnd = monthEnd; kept.push('month-end returns'); }
+  }
+  if (summary && !summary.sections.recent) {
+    const marketPrice = officialRowFromPublished(previousMeta.officialMarketPriceReturns?.monthEnd);
+    if (marketPrice) { summary.officialReturns.monthEnd.marketPrice = marketPrice; kept.push('recent performance (market price)'); }
+  }
+  if (summary && !summary.sections.quarter) {
+    const quarter = officialRowFromPublished(previousReturns.quarterEnd);
+    const marketPrice = officialRowFromPublished(previousMeta.officialMarketPriceReturns?.quarterEnd);
+    if (quarter || marketPrice) {
+      summary.officialReturns.quarterEnd = { nav: quarter, marketPrice };
+      kept.push('quarter-end performance');
+    }
+  }
+  if (summary && !summary.sections.distributions && !summary.distributions.length && String(previousMeta.distributions?.source || '').startsWith(OFFICIAL_DISTRIBUTIONS_SOURCE) && Array.isArray(previousMeta.distributions?.rows) && previousMeta.distributions.rows.length) {
+    kept.push('distributions');
+  }
+  return kept;
+}
+
+/** The metrics key set every index row carries (numbers in percent, null for unavailable, never 0). */
+export function emptyMetrics(): JsonRecord {
+  return {
+    ytd: null, tr1y: null, tr3y: null, tr5y: null, tr10y: null, cagr3y: null, cagr5y: null, cagr10y: null, siAnn: null,
+    dividendYield: null, dividendYieldText: '—', secYield: null, secYieldText: '—',
+    returnsBasis: NO_DATA_BASIS, performanceAsOf: null,
+  };
+}
+
+/** Index row for a catalog fund that has no published data yet: no meta.json, so dataFile is null and every metric is null. */
+export function placeholderRow(fund: Pick<CatalogFund, 'ticker' | 'name' | 'category' | 'fundPage' | 'cusip' | 'isin' | 'exchange' | 'ter'>): JsonRecord {
+  return {
+    ticker: fund.ticker,
+    name: fund.name,
+    category: fund.category,
+    fundPage: fund.fundPage,
+    dataFile: null,
+    cusip: fund.cusip || null,
+    isin: fund.isin || null,
+    ter: fund.ter === null ? '—' : `${fund.ter}%`,
+    terValue: fund.ter,
+    nav: '—', navValue: null, aum: '—', aumValue: null,
+    asOfDate: '—', inceptionDate: '—', exchange: fund.exchange || '',
+    closePrice: '—', closePriceValue: null, premiumDiscount: '—', premiumDiscountValue: null,
+    frequencyCode: frequencyCodeLabel('None'),
+    distributions: { frequency: '—', exDate: '—', dividend: '—' },
+    returns: {},
+    metrics: emptyMetrics(),
+    holdings: 0,
+    history: 0,
+  };
 }
 
 const PROVIDER_LABEL = 'Pacer ETFs product listing + official fund pages (read-only rendering proxy) + SEC EDGAR Form N-PORT-P full holdings + Yahoo Finance public chart API';
@@ -1778,8 +1925,10 @@ async function processFund(fund: CatalogFund, config: UpdaterConfig, previous: J
     return { __skipped: true, ticker: fund.ticker, __skipReasons: reasons };
   }
   const fundDir = new URL(`funds/${fund.ticker}/`, API_ROOT);
-  await mkdir(fundDir, { recursive: true });
   const previousMeta = await readPreviousMeta(fund.ticker);
+  // The listing carried this fund's table row (its as-of date is set only from that row); a fund restored from the
+  // published index, or one the listing only names in its series section, has no fresh month-end returns.
+  const listingRead = fund.source === 'pacer' && Boolean(fund.asOfDate);
 
   // 1. Official fund page (WAF host: read-only rendering proxy) -------------------
   let summary: ProductPageSummary | null = null;
@@ -1798,17 +1947,29 @@ async function processFund(fund: CatalogFund, config: UpdaterConfig, previous: J
       if (summary.cusip) fund.cusip = summary.cusip;
       if (summary.isin) fund.isin = summary.isin;
       if (summary.inception) fund.inception = summary.inception;
-      if (summary.nav !== null) fund.nav = summary.nav;
-      if (summary.marketPrice !== null) fund.close = summary.marketPrice;
-      if (summary.totalNetAssets !== null) fund.netAssets = summary.totalNetAssets;
       if (summary.totalExpenseRatio !== null) fund.ter = summary.totalExpenseRatio;
-      if (summary.premiumDiscount !== null) fund.premiumDiscount = summary.premiumDiscount;
-      if (summary.secYield !== null) fund.secYield = summary.secYield;
       if (summary.asOfDate) fund.asOfDate = summary.asOfDate;
+      if (summary.sections.pricing) {
+        // The pricing block loaded: a value it lacks is an honest null, never refilled from the published index.
+        fund.nav = summary.nav;
+        fund.close = summary.marketPrice;
+        fund.netAssets = summary.totalNetAssets;
+        fund.premiumDiscount = summary.premiumDiscount;
+        fund.secYield = summary.secYield;
+      } else {
+        if (summary.nav !== null) fund.nav = summary.nav;
+        if (summary.marketPrice !== null) fund.close = summary.marketPrice;
+        if (summary.totalNetAssets !== null) fund.netAssets = summary.totalNetAssets;
+        if (summary.premiumDiscount !== null) fund.premiumDiscount = summary.premiumDiscount;
+        if (summary.secYield !== null) fund.secYield = summary.secYield;
+      }
     } catch (error) {
       outputNote(`[ ${'product'.padEnd(9)}] ${fund.ticker}: ${error instanceof Error ? error.message : String(error)}`);
     }
   }
+  // A partial page (or a listing without this fund's row) keeps what was published as official: one notice per fund.
+  const keptSections = retainPublishedSections(summary, fund, previousMeta, listingRead);
+  if (keptSections.length) console.log(`[ ${'kept'.padEnd(9)}] ${fund.ticker}: ${summary && !summary.loadedFully ? 'fund page came back partial' : 'source unavailable'}${listingRead ? '' : ' / listing without this fund\'s returns'}, kept the published ${keptSections.join(', ')}`);
   if (!fund.isin && fund.cusip) fund.isin = isinFromCusip(fund.cusip);
 
   // 2. Holdings: N-PORT-P (full) -> official top 10 (partial) -> previous run ------
@@ -1865,7 +2026,13 @@ async function processFund(fund: CatalogFund, config: UpdaterConfig, previous: J
   let dividends: Distribution[] = summary?.distributions.length ? summary.distributions : [];
   let distributionsSource = 'not available';
   const distributionsDownload: string | null = fund.fundPage || null;
-  if (dividends.length) distributionsSource = `paceretfs.com fund page Distributions table (Total Distributions per share${productVia === 'proxy' ? ', via read-only rendering proxy' : ''})`;
+  if (!dividends.length && keptSections.includes('distributions')) {
+    // the page's Distributions table is missing: the published official table stands (not Yahoo events)
+    const rows: string[][] = previousMeta!.distributions.rows;
+    dividends = rows.map((row) => ({ epoch: isoToEpoch(toIsoDate(row[0])) ?? 0, amount: numberOrNull(row[1]) ?? 0 })).filter((item) => item.epoch > 0 && item.amount > 0);
+    distributionsSource = previousMeta!.distributions.source;
+  }
+  if (summary?.distributions.length) distributionsSource = `paceretfs.com fund page Distributions table (Total Distributions per share${productVia === 'proxy' ? ', via read-only rendering proxy' : ''})`;
 
   // 4. Yahoo chart: history + dividend fallback --------------------------------
   let chart: ParsedChart | null = null;
@@ -1907,8 +2074,12 @@ async function processFund(fund: CatalogFund, config: UpdaterConfig, previous: J
   const officialQuarterly = summary?.officialReturns.quarterEnd.nav || null;
   const effective = mergeOfficialReturns(derived, officialMonthly);
   const officialPrice = summary?.marketPrice ?? null;
-  const marketPrice = officialPrice ?? chart?.regularMarketPrice ?? (days.length ? days[days.length - 1].close : numberOrNull(previous.closePriceValue));
-  const nav = fund.nav ?? numberOrNull(previous.navValue);
+  // The published index fills a value only when the pricing block was not read at all (SKIP_PACER, or a failed read keeps the
+  // fund whole below); a page whose pricing block loaded and lacks a value publishes null (an unlabelled Yahoo price is
+  // never shown as the official one: the source label says which it is).
+  const pricingRead = Boolean(summary?.sections.pricing);
+  const marketPrice = officialPrice ?? chart?.regularMarketPrice ?? (days.length ? days[days.length - 1].close : pricingRead ? null : numberOrNull(previous.closePriceValue));
+  const nav = pricingRead ? summary!.nav : (fund.nav ?? numberOrNull(previous.navValue));
   const metrics = deriveMetrics(effective, fund, dividends, frequency, nav ?? marketPrice, Boolean(officialMonthly));
   const skipReasons = postFetchFilterReasons(fund, metrics, config);
   if (skipReasons.length) {
@@ -1917,11 +2088,13 @@ async function processFund(fund: CatalogFund, config: UpdaterConfig, previous: J
 
   // A fund is either fully updated or fully kept: when a required source failed for a fund that is already
   // published, keep its previous complete state instead of mixing fresh columns with stale ones.
-  if (previousMeta && ((!config.skipPacer && fund.fundPage && !summary) || (!config.skipYahoo && !chart))) {
-    throw new Error(`required source failed (${!summary && !config.skipPacer ? 'product page' : 'Yahoo chart'}); kept the previous complete data`);
+  // A fund with no published data has nothing to keep: it is not written at all and gets a catalog-only index row (dataFile null).
+  if ((!config.skipPacer && fund.fundPage && !summary) || (!config.skipYahoo && !chart)) {
+    throw new Error(`required source failed (${!summary && !config.skipPacer ? 'product page' : 'Yahoo chart'}); ${previousMeta ? 'kept the previous complete data' : 'no data published for this fund yet'}`);
   }
 
   // 6. Write sheets, meta.json and the index row --------------------------------
+  await mkdir(fundDir, { recursive: true });
   const history = historyRows(days);
   const historyAsOf = derived.asOfDate || previousMeta?.history?.asOf || null;
   const holdingManifest = await writePages(fundDir, fund.ticker, 'holdings', holdingsHeaders, holdingsRows, config.holdingsPageSize, holdingsAsOf, holdingsSource);
@@ -1929,8 +2102,8 @@ async function processFund(fund: CatalogFund, config: UpdaterConfig, previous: J
   if (summary?.totalHoldings !== null && summary?.totalHoldings !== undefined) holdingManifest.publishedTotalHoldings = summary.totalHoldings;
   const historyManifest = await writePages(fundDir, fund.ticker, 'history', historyHeaders(), history, config.historyPageSize, historyAsOf, historySource);
   const distributionFrequency = dividends.length ? frequency.frequency : (previousMeta?.distributions?.frequency || '—');
-  const premiumDiscount = fund.premiumDiscount ?? (nav && marketPrice ? round((marketPrice / nav - 1) * 100, 2) : numberOrNull(previous.premiumDiscountValue));
-  const netAssets = fund.netAssets ?? nport?.netAssets ?? numberOrNull(previous.aumValue);
+  const premiumDiscount = fund.premiumDiscount ?? (nav && marketPrice ? round((marketPrice / nav - 1) * 100, 2) : pricingRead ? null : numberOrNull(previous.premiumDiscountValue));
+  const netAssets = fund.netAssets ?? nport?.netAssets ?? (pricingRead ? null : numberOrNull(previous.aumValue));
   const asOfDate = fund.asOfDate || toIsoDate(previous.asOfDate) || null;
   const asOfLabel = asOfDate ? formatDate(asOfDate) : chart?.regularMarketTime ? formatDate(new Date(chart.regularMarketTime * 1000).toISOString().slice(0, 10)) : '—';
   const marketPriceAsOfLabel = officialPrice !== null ? asOfLabel : chart?.regularMarketTime ? formatDate(new Date(chart.regularMarketTime * 1000).toISOString().slice(0, 10)) : (days.length ? formatDate(days[days.length - 1].date) : asOfLabel);
@@ -2360,6 +2533,8 @@ async function main(): Promise<void> {
   // (refreshed when selected, otherwise the published one).
   const rows = new Map<string, JsonRecord>(previous);
   for (const row of results) rows.set(String(row.ticker), row);
+  // A catalog fund without published data (new, or its first read failed) is still listed: no meta.json, so dataFile is null.
+  for (const fund of universe) if (!rows.has(fund.ticker)) rows.set(fund.ticker, placeholderRow(fund));
   const funds = [...rows.values()].sort((a, b) => String(a.ticker).localeCompare(String(b.ticker)));
   const counts = { funds: funds.length, holdings: funds.reduce((sum, row) => sum + (numberOrNull(row.holdings) || 0), 0), history: funds.reduce((sum, row) => sum + (numberOrNull(row.history) || 0), 0) };
   await writeIfChanged(INDEX_FILE, {
