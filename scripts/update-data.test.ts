@@ -267,6 +267,8 @@ const FUND_PAGE_BOND_TOP10 = [
 // ---------------------------------------------------------------------------
 
 const realFetch = globalThis.fetch;
+// test doubles implement only the call signature, not fetch's extra members (preconnect)
+const asFetch = (stub: unknown) => stub as typeof fetch;
 const realTimeout = AbortSignal.timeout;
 const realTz = process.env.TZ;
 const realExitCode = process.exitCode;
@@ -364,11 +366,11 @@ describe('controls', () => {
     expect(restarts).toBe(1);
 
     let behavior: 'cert' | 'reset' | 'ok' = 'cert';
-    globalThis.fetch = (async () => {
+    globalThis.fetch = asFetch(async () => {
       if (behavior === 'cert') throw Object.assign(new Error('fetch failed'), { cause: { code: 'UNABLE_TO_GET_ISSUER_CERT_LOCALLY' } });
       if (behavior === 'reset') throw Object.assign(new Error('socket hang up'), { code: 'ECONNRESET' });
       return new Response('ok');
-    }) as typeof fetch;
+    });
     const wrapped = globalThis.fetch;
     installSystemCa('auto', reexec, false);
     expect(globalThis.fetch).not.toBe(wrapped);
@@ -555,7 +557,7 @@ describe('parsing', () => {
 });
 
 describe('metrics', () => {
-  const nullReturns = { asOfDate: null, mo1: null, qtd: null, ytd: null, yr1: null, cagr3y: null, cagr5y: null, cagr10y: null, siAnn: null };
+  const nullReturns = { asOfDate: '', mo1: null, qtd: null, ytd: null, yr1: null, cagr3y: null, cagr5y: null, cagr10y: null, siAnn: null };
   const bar = (date: string, close: number) => ({ date, close, adjClose: close, volume: 1 });
   const now = new Date(Date.UTC(2026, 9, 1, 12));
 
@@ -787,7 +789,8 @@ describe('pipeline', () => {
       const cowz = feed.index().funds.find((fund) => fund.ticker === 'COWZ');
       feed.run({ TICKERS: 'PSFF' });
       expect(feed.index().funds.find((fund) => fund.ticker === 'COWZ')).toEqual(cowz);
-      for (const env of [{ MAX_FETCHES: '1' }, { MOCK_FAIL: 'catalog' }]) {
+      const bounded: Array<Record<string, string>> = [{ MAX_FETCHES: '1' }, { MOCK_FAIL: 'catalog' }];
+      for (const env of bounded) {
         feed.run(env);
         expect(tickers(feed)).toEqual(['COWZ', 'PSFF', 'QFHD']);
       }
@@ -843,7 +846,8 @@ describe('pipeline', () => {
       expect(meta).toMatchObject({ marketPrice: { value: 66.76, source: expect.stringContaining('official fund page Market Price') }, yields: { secYield: 1.63 }, returns: { derivedFrom: expect.stringContaining('official') } });
 
       // proxy rendering dropped the performance tables and distributions / cut Fund Details / the listing failed / both
-      for (const env of [{ MOCK_PAGE: 'perf' }, { MOCK_PAGE: 'rows' }, { MOCK_FAIL: 'catalog' }, { MOCK_PAGE: 'perf', MOCK_FAIL: 'catalog' }]) {
+      const degraded: Array<Record<string, string>> = [{ MOCK_PAGE: 'perf' }, { MOCK_PAGE: 'rows' }, { MOCK_FAIL: 'catalog' }, { MOCK_PAGE: 'perf', MOCK_FAIL: 'catalog' }];
+      for (const env of degraded) {
         const result = feed.run(env);
         expect(result.status).toBe(0);
         expect(texts(feed.snapshot())).toEqual(texts(published));
