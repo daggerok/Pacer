@@ -140,7 +140,7 @@
       "history/001.json"
     ],
     "pageSize": 1000,
-    "totalRows": 16,
+    "totalRows": 15,
     "asOf": "Oct 02 2026",
     "source": "Yahoo Finance public chart API (adjusted close)"
   }

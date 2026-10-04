@@ -7,7 +7,7 @@
     "fundPage": "https://www.paceretfs.com/products/PALC",
     "officialProductPage": "https://www.paceretfs.com/products/PALC",
     "productPageRendering": "read-only rendering proxy (r.jina.ai) of the official fund page",
-    "productPageAsOf": "Oct 01 2026",
+    "productPageAsOf": "Oct 02 2026",
     "catalogListing": "https://www.paceretfs.com/products/",
     "holdingsDownload": "https://www.sec.gov/Archives/edgar/data/1616668/000089418926029044/0000894189-26-029044.txt",
     "officialHoldingsDownload": "https://www.paceretfs.com/products/holdings_download/PALC",
@@ -33,31 +33,31 @@
     "kind": "Total Expenses published on the official fund page (product listing for funds without a page value)"
   },
   "nav": {
-    "display": "$54.07",
-    "value": 54.07,
-    "asOfDate": "Oct 01 2026"
+    "display": "$53.97",
+    "value": 53.97,
+    "asOfDate": "Oct 02 2026"
   },
   "marketPrice": {
-    "display": "$54.08",
-    "value": 54.08,
-    "asOfDate": "Oct 01 2026",
+    "display": "$53.94",
+    "value": 53.94,
+    "asOfDate": "Oct 02 2026",
     "source": "official fund page Market Price (closing price as of the Fund Details date)"
   },
   "premiumDiscount": {
-    "display": "0.00%",
-    "value": 0,
-    "asOfDate": "Oct 01 2026",
+    "display": "-0.05%",
+    "value": -0.05,
+    "asOfDate": "Oct 02 2026",
     "source": "official fund page Fund Details Premium/Discount"
   },
   "aum": {
-    "display": "$197.37 M",
-    "value": 197372862.4,
-    "asOfDate": "Oct 01 2026",
+    "display": "$196.99 M",
+    "value": 196985949.96,
+    "asOfDate": "Oct 02 2026",
     "source": "official fund page Net Assets"
   },
   "fundFacts": {
     "sharesOutstanding": 3650000,
-    "publishedTotalHoldings": 182,
+    "publishedTotalHoldings": 173,
     "medianBidAskSpread": null
   },
   "yields": {
@@ -265,7 +265,7 @@
     "asOf": "Jul 31 2026",
     "source": "SEC EDGAR Form N-PORT-P (accession 0000894189-26-029044, report period 2026-07-31)",
     "marketValueBasis": "SEC Form N-PORT-P reported value (valUSD)",
-    "publishedTotalHoldings": 182
+    "publishedTotalHoldings": 173
   },
   "history": {
     "pages": [

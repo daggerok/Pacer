@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-04T03:44:34Z",
+  "generatedAt": "2026-10-04T05:05:57Z",
   "source": {
     "provider": "Pacer ETFs (Pacer Advisors, Inc.; Pacer Funds Trust, SEC CIK 0001616668), U.S.-listed ETFs",
     "market": "us",
@@ -13,7 +13,7 @@
   "counts": {
     "funds": 74,
     "holdings": 8505,
-    "history": 82563
+    "history": 82562
   },
   "funds": [
     {
@@ -260,7 +260,7 @@
         "performanceAsOf": "2026-10-02"
       },
       "holdings": 3,
-      "history": 16
+      "history": 15
     },
     {
       "ticker": "ALTL",
@@ -436,17 +436,17 @@
       "isin": "US69374H4103",
       "ter": "0.49%",
       "terValue": 0.49,
-      "nav": "$36.72",
-      "navValue": 36.72,
-      "aum": "$14.69 M",
-      "aumValue": 14687270.48,
-      "asOfDate": "Oct 01 2026",
+      "nav": "$37.41",
+      "navValue": 37.41,
+      "aum": "$14.96 M",
+      "aumValue": 14962557.51,
+      "asOfDate": "Oct 02 2026",
       "inceptionDate": "May 04 2022",
       "exchange": "NGM",
-      "closePrice": "$36.64",
-      "closePriceValue": 36.64,
-      "premiumDiscount": "-0.21%",
-      "premiumDiscountValue": -0.21,
+      "closePrice": "$37.55",
+      "closePriceValue": 37.55,
+      "premiumDiscount": "0.38%",
+      "premiumDiscountValue": 0.38,
       "frequencyCode": "06 - Semi-annually",
       "distributions": {
         "frequency": "Semi-Annual",
@@ -497,8 +497,8 @@
         "cagr5y": null,
         "cagr10y": null,
         "siAnn": 13.99,
-        "dividendYield": 0.5,
-        "dividendYieldText": "0.50%",
+        "dividendYield": 0.49,
+        "dividendYieldText": "0.49%",
         "dividendYieldBasis": "indicated",
         "secYield": null,
         "secYieldText": "—",
@@ -2732,17 +2732,17 @@
       "isin": "US69374H8161",
       "ter": "0.6%",
       "terValue": 0.6,
-      "nav": "$54.07",
-      "navValue": 54.07,
-      "aum": "$197.37 M",
-      "aumValue": 197372862.4,
-      "asOfDate": "Oct 01 2026",
+      "nav": "$53.97",
+      "navValue": 53.97,
+      "aum": "$196.99 M",
+      "aumValue": 196985949.96,
+      "asOfDate": "Oct 02 2026",
       "inceptionDate": "Jun 24 2020",
       "exchange": "PCX",
-      "closePrice": "$54.08",
-      "closePriceValue": 54.08,
-      "premiumDiscount": "0.00%",
-      "premiumDiscountValue": 0,
+      "closePrice": "$53.94",
+      "closePriceValue": 53.94,
+      "premiumDiscount": "-0.05%",
+      "premiumDiscountValue": -0.05,
       "frequencyCode": "04 - Quarterly",
       "distributions": {
         "frequency": "Quarterly",

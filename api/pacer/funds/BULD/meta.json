@@ -7,7 +7,7 @@
     "fundPage": "https://www.paceretfs.com/products/BULD",
     "officialProductPage": "https://www.paceretfs.com/products/BULD",
     "productPageRendering": "read-only rendering proxy (r.jina.ai) of the official fund page",
-    "productPageAsOf": "Oct 01 2026",
+    "productPageAsOf": "Oct 02 2026",
     "catalogListing": "https://www.paceretfs.com/products/",
     "holdingsDownload": "https://www.sec.gov/Archives/edgar/data/1616668/000089418926029027/0000894189-26-029027.txt",
     "officialHoldingsDownload": "https://www.paceretfs.com/products/holdings_download/BULD",
@@ -33,36 +33,36 @@
     "kind": "Total Expenses published on the official fund page (product listing for funds without a page value)"
   },
   "nav": {
-    "display": "$36.72",
-    "value": 36.72,
-    "asOfDate": "Oct 01 2026"
+    "display": "$37.41",
+    "value": 37.41,
+    "asOfDate": "Oct 02 2026"
   },
   "marketPrice": {
-    "display": "$36.64",
-    "value": 36.64,
-    "asOfDate": "Oct 01 2026",
+    "display": "$37.55",
+    "value": 37.55,
+    "asOfDate": "Oct 02 2026",
     "source": "official fund page Market Price (closing price as of the Fund Details date)"
   },
   "premiumDiscount": {
-    "display": "-0.21%",
-    "value": -0.21,
-    "asOfDate": "Oct 01 2026",
+    "display": "0.38%",
+    "value": 0.38,
+    "asOfDate": "Oct 02 2026",
     "source": "official fund page Fund Details Premium/Discount"
   },
   "aum": {
-    "display": "$14.69 M",
-    "value": 14687270.48,
-    "asOfDate": "Oct 01 2026",
+    "display": "$14.96 M",
+    "value": 14962557.51,
+    "asOfDate": "Oct 02 2026",
     "source": "official fund page Net Assets"
   },
   "fundFacts": {
     "sharesOutstanding": 400000,
     "publishedTotalHoldings": 64,
-    "medianBidAskSpread": 0.004606
+    "medianBidAskSpread": 0.004602
   },
   "yields": {
-    "dividendYield": 0.5,
-    "dividendYieldText": "0.50%",
+    "dividendYield": 0.49,
+    "dividendYieldText": "0.49%",
     "dividendYieldBasis": "indicated",
     "dividendYieldKind": "indicated (latest distribution x inferred payments per year / NAV; Pacer publishes no distribution yield)",
     "secYield": null,
