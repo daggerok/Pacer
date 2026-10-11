@@ -7,7 +7,7 @@
     "fundPage": "https://www.paceretfs.com/products/MCOW",
     "officialProductPage": "https://www.paceretfs.com/products/MCOW",
     "productPageRendering": "read-only rendering proxy (r.jina.ai) of the official fund page",
-    "productPageAsOf": "Oct 02 2026",
+    "productPageAsOf": "Oct 09 2026",
     "catalogListing": "https://www.paceretfs.com/products/",
     "holdingsDownload": "https://www.sec.gov/Archives/edgar/data/1616668/000089418926029054/0000894189-26-029054.txt",
     "officialHoldingsDownload": "https://www.paceretfs.com/products/holdings_download/MCOW",
@@ -33,85 +33,85 @@
     "kind": "Total Expenses published on the official fund page (product listing for funds without a page value)"
   },
   "nav": {
-    "display": "$22.24",
-    "value": 22.24,
-    "asOfDate": "Oct 02 2026"
+    "display": "$22.29",
+    "value": 22.29,
+    "asOfDate": "Oct 09 2026"
   },
   "marketPrice": {
-    "display": "$22.25",
-    "value": 22.25,
-    "asOfDate": "Oct 02 2026",
+    "display": "$22.30",
+    "value": 22.3,
+    "asOfDate": "Oct 09 2026",
     "source": "official fund page Market Price (closing price as of the Fund Details date)"
   },
   "premiumDiscount": {
     "display": "0.04%",
     "value": 0.04,
-    "asOfDate": "Oct 02 2026",
+    "asOfDate": "Oct 09 2026",
     "source": "official fund page Fund Details Premium/Discount"
   },
   "aum": {
     "display": "$1.11 M",
-    "value": 1111858.47,
-    "asOfDate": "Oct 02 2026",
+    "value": 1114367.11,
+    "asOfDate": "Oct 09 2026",
     "source": "official fund page Net Assets"
   },
   "fundFacts": {
     "sharesOutstanding": 50000,
-    "publishedTotalHoldings": 78,
-    "medianBidAskSpread": 0.002299
+    "publishedTotalHoldings": 77,
+    "medianBidAskSpread": 0.002284
   },
   "yields": {
     "dividendYield": 0.19,
     "dividendYieldText": "0.19%",
     "dividendYieldBasis": "indicated",
     "dividendYieldKind": "indicated (latest distribution x inferred payments per year / NAV; Pacer publishes no distribution yield)",
-    "secYield": 0.25,
-    "secYieldText": "0.25%",
-    "secYieldKind": "30 Day SEC Yield published on the official fund page as of Oct 02 2026"
+    "secYield": 0.26,
+    "secYieldText": "0.26%",
+    "secYieldKind": "30 Day SEC Yield published on the official fund page as of Oct 09 2026"
   },
   "returns": {
     "derivedFrom": "official Pacer ETFs NAV total returns (product listing, month-end) where published; Yahoo adjusted market-price closes for missing values",
-    "performanceAsOf": "2026-10-02",
+    "performanceAsOf": "2026-10-09",
     "monthEnd": {
-      "asOfDate": "Oct 02 2026",
-      "mo1": 3.64,
-      "mo1Text": "3.64%",
-      "mo3": 4.33,
-      "mo3Text": "4.33%",
-      "qtd": 2.14,
-      "qtdText": "2.14%",
-      "ytd": 13.47,
-      "ytdText": "13.47%",
-      "yr1": 7.68,
-      "yr1Text": "7.68%",
+      "asOfDate": "Oct 09 2026",
+      "mo1": 4.38,
+      "mo1Text": "4.38%",
+      "mo3": 4.25,
+      "mo3Text": "4.25%",
+      "qtd": 2.37,
+      "qtdText": "2.37%",
+      "ytd": 13.73,
+      "ytdText": "13.73%",
+      "yr1": 6.81,
+      "yr1Text": "6.81%",
       "yr3": null,
       "yr3Text": "—",
       "yr5": null,
       "yr5Text": "—",
       "yr10": null,
       "yr10Text": "—",
-      "sinceInception": 7.9,
-      "sinceInceptionText": "7.90%"
+      "sinceInception": 7.51,
+      "sinceInceptionText": "7.51%"
     },
     "quarterEnd": {
-      "asOfDate": "Jun 30 2026",
-      "ytd": 10.64,
-      "yr1": null,
+      "asOfDate": "Sep 30 2026",
+      "ytd": 11.16,
+      "yr1": 6.81,
       "yr3": null,
       "yr5": null,
       "yr10": null,
-      "sinceInception": 7.74
+      "sinceInception": 7.51
     }
   },
   "officialMarketPriceReturns": {
     "monthEnd": {
-      "asOfDate": "Oct 02 2026",
+      "asOfDate": "Oct 09 2026",
       "mo1": null,
       "mo1Text": "—",
       "mo3": null,
       "mo3Text": "—",
-      "ytd": 13.44,
-      "ytdText": "13.44%",
+      "ytd": 13.69,
+      "ytdText": "13.69%",
       "yr1": null,
       "yr1Text": "—",
       "yr3": null,
@@ -124,23 +124,23 @@
       "sinceInceptionText": "—"
     },
     "quarterEnd": {
-      "asOfDate": "Jun 30 2026",
-      "mo1": 3.44,
-      "mo1Text": "3.44%",
-      "mo3": 19.6,
-      "mo3Text": "19.60%",
-      "ytd": 10.64,
-      "ytdText": "10.64%",
-      "yr1": null,
-      "yr1Text": "—",
+      "asOfDate": "Sep 30 2026",
+      "mo1": 0.19,
+      "mo1Text": "0.19%",
+      "mo3": 0.38,
+      "mo3Text": "0.38%",
+      "ytd": 11.06,
+      "ytdText": "11.06%",
+      "yr1": 6.56,
+      "yr1Text": "6.56%",
       "yr3": null,
       "yr3Text": "—",
       "yr5": null,
       "yr5Text": "—",
       "yr10": null,
       "yr10Text": "—",
-      "sinceInception": 7.81,
-      "sinceInceptionText": "7.81%"
+      "sinceInception": 7.49,
+      "sinceInceptionText": "7.49%"
     }
   },
   "distributions": {
@@ -181,15 +181,15 @@
     "asOf": "Jul 31 2026",
     "source": "SEC EDGAR Form N-PORT-P (accession 0000894189-26-029054, report period 2026-07-31)",
     "marketValueBasis": "SEC Form N-PORT-P reported value (valUSD)",
-    "publishedTotalHoldings": 78
+    "publishedTotalHoldings": 77
   },
   "history": {
     "pages": [
       "history/001.json"
     ],
     "pageSize": 1000,
-    "totalRows": 276,
-    "asOf": "Oct 02 2026",
+    "totalRows": 281,
+    "asOf": "Oct 09 2026",
     "source": "Yahoo Finance public chart API (adjusted close)"
   }
 }

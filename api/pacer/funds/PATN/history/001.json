@@ -2,7 +2,7 @@
   "ticker": "PATN",
   "page": 1,
   "pageSize": 1000,
-  "totalRows": 513,
+  "totalRows": 518,
   "headers": [
     "Date",
     "Close",
@@ -3087,6 +3087,36 @@
       "Close": "36.625",
       "Adj Close": "36.63",
       "Volume": "226600"
+    },
+    {
+      "Date": "Oct 05 2026",
+      "Close": "36.58000183105469",
+      "Adj Close": "36.58",
+      "Volume": "403000"
+    },
+    {
+      "Date": "Oct 06 2026",
+      "Close": "36.290000915527344",
+      "Adj Close": "36.29",
+      "Volume": "168700"
+    },
+    {
+      "Date": "Oct 07 2026",
+      "Close": "35.801998138427734",
+      "Adj Close": "35.8",
+      "Volume": "153700"
+    },
+    {
+      "Date": "Oct 08 2026",
+      "Close": "35.220001220703125",
+      "Adj Close": "35.22",
+      "Volume": "212500"
+    },
+    {
+      "Date": "Oct 09 2026",
+      "Close": "35.46500015258789",
+      "Adj Close": "35.47",
+      "Volume": "77700"
     }
   ]
 }

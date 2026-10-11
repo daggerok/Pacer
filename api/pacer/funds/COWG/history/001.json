@@ -2,7 +2,7 @@
   "ticker": "COWG",
   "page": 1,
   "pageSize": 1000,
-  "totalRows": 942,
+  "totalRows": 947,
   "headers": [
     "Date",
     "Close",
@@ -5661,6 +5661,36 @@
       "Close": "40.417999267578125",
       "Adj Close": "40.42",
       "Volume": "217400"
+    },
+    {
+      "Date": "Oct 05 2026",
+      "Close": "40.86000061035156",
+      "Adj Close": "40.86",
+      "Volume": "303000"
+    },
+    {
+      "Date": "Oct 06 2026",
+      "Close": "41.0099983215332",
+      "Adj Close": "41.01",
+      "Volume": "244000"
+    },
+    {
+      "Date": "Oct 07 2026",
+      "Close": "40.847999572753906",
+      "Adj Close": "40.85",
+      "Volume": "192800"
+    },
+    {
+      "Date": "Oct 08 2026",
+      "Close": "40.887001037597656",
+      "Adj Close": "40.89",
+      "Volume": "250400"
+    },
+    {
+      "Date": "Oct 09 2026",
+      "Close": "41.57099914550781",
+      "Adj Close": "41.57",
+      "Volume": "157600"
     }
   ]
 }

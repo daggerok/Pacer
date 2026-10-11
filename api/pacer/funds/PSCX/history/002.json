@@ -2,7 +2,7 @@
   "ticker": "PSCX",
   "page": 2,
   "pageSize": 1000,
-  "totalRows": 1450,
+  "totalRows": 1455,
   "headers": [
     "Date",
     "Close",
@@ -2709,6 +2709,36 @@
       "Close": "33.595001220703125",
       "Adj Close": "33.6",
       "Volume": "100"
+    },
+    {
+      "Date": "Oct 05 2026",
+      "Close": "33.685001373291016",
+      "Adj Close": "33.69",
+      "Volume": "100"
+    },
+    {
+      "Date": "Oct 06 2026",
+      "Close": "33.75",
+      "Adj Close": "33.75",
+      "Volume": "2200"
+    },
+    {
+      "Date": "Oct 07 2026",
+      "Close": "33.709999084472656",
+      "Adj Close": "33.71",
+      "Volume": "500"
+    },
+    {
+      "Date": "Oct 08 2026",
+      "Close": "33.6619987487793",
+      "Adj Close": "33.66",
+      "Volume": "500"
+    },
+    {
+      "Date": "Oct 09 2026",
+      "Close": "33.775001525878906",
+      "Adj Close": "33.78",
+      "Volume": "400"
     }
   ]
 }

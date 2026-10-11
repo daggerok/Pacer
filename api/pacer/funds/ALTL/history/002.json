@@ -2,7 +2,7 @@
   "ticker": "ALTL",
   "page": 2,
   "pageSize": 1000,
-  "totalRows": 1576,
+  "totalRows": 1581,
   "headers": [
     "Date",
     "Close",
@@ -3465,6 +3465,36 @@
       "Close": "44.2599983215332",
       "Adj Close": "44.26",
       "Volume": "5100"
+    },
+    {
+      "Date": "Oct 05 2026",
+      "Close": "44.439998626708984",
+      "Adj Close": "44.44",
+      "Volume": "4700"
+    },
+    {
+      "Date": "Oct 06 2026",
+      "Close": "44.810001373291016",
+      "Adj Close": "44.81",
+      "Volume": "4400"
+    },
+    {
+      "Date": "Oct 07 2026",
+      "Close": "44.369998931884766",
+      "Adj Close": "44.37",
+      "Volume": "5900"
+    },
+    {
+      "Date": "Oct 08 2026",
+      "Close": "43.426998138427734",
+      "Adj Close": "43.43",
+      "Volume": "7500"
+    },
+    {
+      "Date": "Oct 09 2026",
+      "Close": "44.04999923706055",
+      "Adj Close": "44.05",
+      "Volume": "9700"
     }
   ]
 }

@@ -2,7 +2,7 @@
   "ticker": "COWZ",
   "page": 3,
   "pageSize": 1000,
-  "totalRows": 2457,
+  "totalRows": 2462,
   "headers": [
     "Date",
     "Close",
@@ -2751,6 +2751,36 @@
       "Close": "67.5",
       "Adj Close": "67.5",
       "Volume": "1715700"
+    },
+    {
+      "Date": "Oct 05 2026",
+      "Close": "67.66999816894531",
+      "Adj Close": "67.67",
+      "Volume": "1138800"
+    },
+    {
+      "Date": "Oct 06 2026",
+      "Close": "67.91999816894531",
+      "Adj Close": "67.92",
+      "Volume": "779200"
+    },
+    {
+      "Date": "Oct 07 2026",
+      "Close": "67.72000122070312",
+      "Adj Close": "67.72",
+      "Volume": "723500"
+    },
+    {
+      "Date": "Oct 08 2026",
+      "Close": "68.87000274658203",
+      "Adj Close": "68.87",
+      "Volume": "827100"
+    },
+    {
+      "Date": "Oct 09 2026",
+      "Close": "68.5199966430664",
+      "Adj Close": "68.52",
+      "Volume": "882800"
     }
   ]
 }

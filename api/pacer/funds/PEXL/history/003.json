@@ -1,0 +1,38 @@
+{
+  "ticker": "PEXL",
+  "page": 3,
+  "pageSize": 1000,
+  "totalRows": 2004,
+  "headers": [
+    "Date",
+    "Close",
+    "Adj Close",
+    "Volume"
+  ],
+  "rows": [
+    {
+      "Date": "Oct 06 2026",
+      "Close": "75.4000015258789",
+      "Adj Close": "75.4",
+      "Volume": "2100"
+    },
+    {
+      "Date": "Oct 07 2026",
+      "Close": "74.87000274658203",
+      "Adj Close": "74.87",
+      "Volume": "4100"
+    },
+    {
+      "Date": "Oct 08 2026",
+      "Close": "74.30000305175781",
+      "Adj Close": "74.3",
+      "Volume": "1000"
+    },
+    {
+      "Date": "Oct 09 2026",
+      "Close": "74.5",
+      "Adj Close": "74.5",
+      "Volume": "1000"
+    }
+  ]
+}

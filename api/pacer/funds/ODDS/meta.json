@@ -71,36 +71,36 @@
   },
   "returns": {
     "derivedFrom": "official Pacer ETFs NAV total returns (product listing, month-end) where published; Yahoo adjusted market-price closes for missing values",
-    "performanceAsOf": "2026-10-02",
+    "performanceAsOf": "2026-10-09",
     "monthEnd": {
-      "asOfDate": "Oct 02 2026",
-      "mo1": -8.05,
-      "mo1Text": "-8.05%",
-      "mo3": -5.46,
-      "mo3Text": "-5.46%",
-      "qtd": 0.24,
-      "qtdText": "0.24%",
-      "ytd": -19.03,
-      "ytdText": "-19.03%",
-      "yr1": -23.7,
-      "yr1Text": "-23.70%",
-      "yr3": 10.44,
-      "yr3Text": "10.44%",
+      "asOfDate": "Oct 09 2026",
+      "mo1": -6.36,
+      "mo1Text": "-6.36%",
+      "mo3": -5.21,
+      "mo3Text": "-5.21%",
+      "qtd": 3.06,
+      "qtdText": "3.06%",
+      "ytd": -17.23,
+      "ytdText": "-17.23%",
+      "yr1": -26.31,
+      "yr1Text": "-26.31%",
+      "yr3": 10.93,
+      "yr3Text": "10.93%",
       "yr5": null,
       "yr5Text": "—",
       "yr10": null,
       "yr10Text": "—",
-      "sinceInception": 7.39,
-      "sinceInceptionText": "7.39%"
+      "sinceInception": 6.23,
+      "sinceInceptionText": "6.23%"
     },
     "quarterEnd": {
-      "asOfDate": "Jun 30 2026",
-      "ytd": -16.26,
-      "yr1": -21.89,
-      "yr3": 7.26,
+      "asOfDate": "Sep 30 2026",
+      "ytd": -19.04,
+      "yr1": -30.38,
+      "yr3": 9.68,
       "yr5": null,
       "yr10": null,
-      "sinceInception": 6.22
+      "sinceInception": 5.07
     }
   },
   "officialMarketPriceReturns": {
@@ -124,23 +124,23 @@
       "sinceInceptionText": "—"
     },
     "quarterEnd": {
-      "asOfDate": "Jun 30 2026",
+      "asOfDate": "Sep 30 2026",
       "mo1": null,
       "mo1Text": "—",
       "mo3": null,
       "mo3Text": "—",
-      "ytd": -16.88,
-      "ytdText": "-16.88%",
-      "yr1": -23.29,
-      "yr1Text": "-23.29%",
-      "yr3": 6.99,
-      "yr3Text": "6.99%",
+      "ytd": -19.61,
+      "ytdText": "-19.61%",
+      "yr1": -30.92,
+      "yr1Text": "-30.92%",
+      "yr3": 9.5,
+      "yr3Text": "9.50%",
       "yr5": null,
       "yr5Text": "—",
       "yr10": null,
       "yr10Text": "—",
-      "sinceInception": 6.04,
-      "sinceInceptionText": "6.04%"
+      "sinceInception": 4.91,
+      "sinceInceptionText": "4.91%"
     }
   },
   "distributions": {
@@ -233,8 +233,8 @@
       "history/002.json"
     ],
     "pageSize": 1000,
-    "totalRows": 1124,
-    "asOf": "Oct 02 2026",
+    "totalRows": 1129,
+    "asOf": "Oct 09 2026",
     "source": "Yahoo Finance public chart API (adjusted close)"
   }
 }

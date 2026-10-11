@@ -7,7 +7,7 @@
     "fundPage": "https://www.paceretfs.com/products/structured-outcome-strategies/MSEP",
     "officialProductPage": "https://www.paceretfs.com/products/structured-outcome-strategies/MSEP",
     "productPageRendering": "read-only rendering proxy (r.jina.ai) of the official fund page",
-    "productPageAsOf": "Oct 02 2026",
+    "productPageAsOf": "Oct 09 2026",
     "catalogListing": "https://www.paceretfs.com/products/",
     "holdingsDownload": "https://www.sec.gov/Archives/edgar/data/1616668/000089418926029015/0000894189-26-029015.txt",
     "officialHoldingsDownload": "https://www.paceretfs.com/products/holdings_download/MSEP",
@@ -33,32 +33,32 @@
     "kind": "Total Expenses published on the official fund page (product listing for funds without a page value)"
   },
   "nav": {
-    "display": "$32.97",
-    "value": 32.97,
-    "asOfDate": "Oct 02 2026"
+    "display": "$33.18",
+    "value": 33.18,
+    "asOfDate": "Oct 09 2026"
   },
   "marketPrice": {
-    "display": "$32.94",
-    "value": 32.94,
-    "asOfDate": "Oct 02 2026",
+    "display": "$33.17",
+    "value": 33.17,
+    "asOfDate": "Oct 09 2026",
     "source": "official fund page Market Price (closing price as of the Fund Details date)"
   },
   "premiumDiscount": {
-    "display": "-0.08%",
-    "value": -0.08,
-    "asOfDate": "Oct 02 2026",
+    "display": "-0.02%",
+    "value": -0.02,
+    "asOfDate": "Oct 09 2026",
     "source": "official fund page Fund Details Premium/Discount"
   },
   "aum": {
-    "display": "$2.47 M",
-    "value": 2472491.59,
-    "asOfDate": "Oct 02 2026",
+    "display": "$2.49 M",
+    "value": 2488567.03,
+    "asOfDate": "Oct 09 2026",
     "source": "official fund page Net Assets"
   },
   "fundFacts": {
     "sharesOutstanding": 75000,
     "publishedTotalHoldings": 6,
-    "medianBidAskSpread": 0.002744
+    "medianBidAskSpread": 0.002743
   },
   "yields": {
     "dividendYield": null,
@@ -71,15 +71,15 @@
   },
   "returns": {
     "derivedFrom": "official Pacer ETFs NAV total returns (product listing, month-end) where published; Yahoo adjusted market-price closes for missing values",
-    "performanceAsOf": "2026-10-02",
+    "performanceAsOf": "2026-10-09",
     "monthEnd": {
-      "asOfDate": "Oct 02 2026",
-      "mo1": 0.53,
-      "mo1Text": "0.53%",
-      "mo3": 2.3,
-      "mo3Text": "2.30%",
-      "qtd": 0.37,
-      "qtdText": "0.37%",
+      "asOfDate": "Oct 09 2026",
+      "mo1": 1.37,
+      "mo1Text": "1.37%",
+      "mo3": 2.68,
+      "mo3Text": "2.68%",
+      "qtd": 1.07,
+      "qtdText": "1.07%",
       "ytd": null,
       "ytdText": "—",
       "yr1": null,
@@ -90,22 +90,22 @@
       "yr5Text": "—",
       "yr10": null,
       "yr10Text": "—",
-      "sinceInception": 2.52,
-      "sinceInceptionText": "2.52%"
+      "sinceInception": 2.5,
+      "sinceInceptionText": "2.50%"
     },
     "quarterEnd": {
-      "asOfDate": "Jun 30 2026",
+      "asOfDate": "Sep 30 2026",
       "ytd": null,
       "yr1": null,
       "yr3": null,
       "yr5": null,
       "yr10": null,
-      "sinceInception": 0.69
+      "sinceInception": 2.5
     }
   },
   "officialMarketPriceReturns": {
     "monthEnd": {
-      "asOfDate": "Oct 02 2026",
+      "asOfDate": "Oct 09 2026",
       "mo1": null,
       "mo1Text": "—",
       "mo3": null,
@@ -124,11 +124,11 @@
       "sinceInceptionText": "—"
     },
     "quarterEnd": {
-      "asOfDate": "Jun 30 2026",
-      "mo1": null,
-      "mo1Text": "—",
-      "mo3": null,
-      "mo3Text": "—",
+      "asOfDate": "Sep 30 2026",
+      "mo1": 0.01,
+      "mo1Text": "0.01%",
+      "mo3": 1.85,
+      "mo3Text": "1.85%",
       "ytd": null,
       "ytdText": "—",
       "yr1": null,
@@ -139,8 +139,8 @@
       "yr5Text": "—",
       "yr10": null,
       "yr10Text": "—",
-      "sinceInception": 0.7,
-      "sinceInceptionText": "0.70%"
+      "sinceInception": 2.56,
+      "sinceInceptionText": "2.56%"
     }
   },
   "distributions": {
@@ -171,8 +171,8 @@
       "history/001.json"
     ],
     "pageSize": 1000,
-    "totalRows": 82,
-    "asOf": "Oct 02 2026",
+    "totalRows": 87,
+    "asOf": "Oct 09 2026",
     "source": "Yahoo Finance public chart API (adjusted close)"
   }
 }

@@ -996,7 +996,7 @@
     },
     {
       "Name": "Bayerische Motoren Werke AG",
-      "Ticker": "BMWKY",
+      "Ticker": "-",
       "Identifier": "DE0005190003",
       "Weight": "0.0891876038",
       "Market Value": "164731.72",
@@ -1302,7 +1302,7 @@
     },
     {
       "Name": "Shionogi & Co Ltd",
-      "Ticker": "SGIOF",
+      "Ticker": "-",
       "Identifier": "JP3347200002",
       "Weight": "0.0608974917",
       "Market Value": "112479.18",

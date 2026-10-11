@@ -2,7 +2,7 @@
   "ticker": "PAMC",
   "page": 2,
   "pageSize": 1000,
-  "totalRows": 1576,
+  "totalRows": 1581,
   "headers": [
     "Date",
     "Close",
@@ -1009,7 +1009,7 @@
     {
       "Date": "Feb 14 2025",
       "Close": "47.40999984741211",
-      "Adj Close": "46.62",
+      "Adj Close": "46.63",
       "Volume": "3600"
     },
     {
@@ -3465,6 +3465,36 @@
       "Close": "52.45000076293945",
       "Adj Close": "52.45",
       "Volume": "400"
+    },
+    {
+      "Date": "Oct 05 2026",
+      "Close": "52.698001861572266",
+      "Adj Close": "52.7",
+      "Volume": "500"
+    },
+    {
+      "Date": "Oct 06 2026",
+      "Close": "53.130001068115234",
+      "Adj Close": "53.13",
+      "Volume": "2800"
+    },
+    {
+      "Date": "Oct 07 2026",
+      "Close": "52.09700012207031",
+      "Adj Close": "52.1",
+      "Volume": "2600"
+    },
+    {
+      "Date": "Oct 08 2026",
+      "Close": "51.650001525878906",
+      "Adj Close": "51.65",
+      "Volume": "3800"
+    },
+    {
+      "Date": "Oct 09 2026",
+      "Close": "52.34299850463867",
+      "Adj Close": "52.34",
+      "Volume": "1100"
     }
   ]
 }

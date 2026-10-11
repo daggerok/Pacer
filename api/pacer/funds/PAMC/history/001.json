@@ -2,7 +2,7 @@
   "ticker": "PAMC",
   "page": 1,
   "pageSize": 1000,
-  "totalRows": 1576,
+  "totalRows": 1581,
   "headers": [
     "Date",
     "Close",

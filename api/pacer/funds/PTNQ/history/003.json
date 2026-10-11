@@ -2,7 +2,7 @@
   "ticker": "PTNQ",
   "page": 3,
   "pageSize": 1000,
-  "totalRows": 2844,
+  "totalRows": 2849,
   "headers": [
     "Date",
     "Close",
@@ -5073,6 +5073,36 @@
       "Close": "90.37300109863281",
       "Adj Close": "90.37",
       "Volume": "29200"
+    },
+    {
+      "Date": "Oct 05 2026",
+      "Close": "91.26000213623047",
+      "Adj Close": "91.26",
+      "Volume": "53400"
+    },
+    {
+      "Date": "Oct 06 2026",
+      "Close": "91.60299682617188",
+      "Adj Close": "91.6",
+      "Volume": "20700"
+    },
+    {
+      "Date": "Oct 07 2026",
+      "Close": "91.41100311279297",
+      "Adj Close": "91.41",
+      "Volume": "19400"
+    },
+    {
+      "Date": "Oct 08 2026",
+      "Close": "90.15499877929688",
+      "Adj Close": "90.15",
+      "Volume": "28500"
+    },
+    {
+      "Date": "Oct 09 2026",
+      "Close": "90.58999633789062",
+      "Adj Close": "90.59",
+      "Volume": "14900"
     }
   ]
 }

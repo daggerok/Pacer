@@ -2,7 +2,7 @@
   "ticker": "PSFO",
   "page": 2,
   "pageSize": 1000,
-  "totalRows": 1256,
+  "totalRows": 1261,
   "headers": [
     "Date",
     "Close",
@@ -1545,6 +1545,36 @@
       "Close": "36.0880012512207",
       "Adj Close": "36.09",
       "Volume": "46200"
+    },
+    {
+      "Date": "Oct 05 2026",
+      "Close": "36.22700119018555",
+      "Adj Close": "36.23",
+      "Volume": "12800"
+    },
+    {
+      "Date": "Oct 06 2026",
+      "Close": "36.3650016784668",
+      "Adj Close": "36.37",
+      "Volume": "2200"
+    },
+    {
+      "Date": "Oct 07 2026",
+      "Close": "36.3380012512207",
+      "Adj Close": "36.34",
+      "Volume": "1900"
+    },
+    {
+      "Date": "Oct 08 2026",
+      "Close": "36.209999084472656",
+      "Adj Close": "36.21",
+      "Volume": "20800"
+    },
+    {
+      "Date": "Oct 09 2026",
+      "Close": "36.38100051879883",
+      "Adj Close": "36.38",
+      "Volume": "3100"
     }
   ]
 }

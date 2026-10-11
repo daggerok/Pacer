@@ -2,7 +2,7 @@
   "ticker": "PTBD",
   "page": 2,
   "pageSize": 1000,
-  "totalRows": 1745,
+  "totalRows": 1750,
   "headers": [
     "Date",
     "Close",
@@ -4479,6 +4479,36 @@
       "Close": "18.450000762939453",
       "Adj Close": "18.45",
       "Volume": "125900"
+    },
+    {
+      "Date": "Oct 05 2026",
+      "Close": "18.36199951171875",
+      "Adj Close": "18.36",
+      "Volume": "50800"
+    },
+    {
+      "Date": "Oct 06 2026",
+      "Close": "18.450000762939453",
+      "Adj Close": "18.45",
+      "Volume": "32600"
+    },
+    {
+      "Date": "Oct 07 2026",
+      "Close": "18.43000030517578",
+      "Adj Close": "18.43",
+      "Volume": "20000"
+    },
+    {
+      "Date": "Oct 08 2026",
+      "Close": "18.42099952697754",
+      "Adj Close": "18.42",
+      "Volume": "9300"
+    },
+    {
+      "Date": "Oct 09 2026",
+      "Close": "18.43000030517578",
+      "Adj Close": "18.43",
+      "Volume": "26300"
     }
   ]
 }

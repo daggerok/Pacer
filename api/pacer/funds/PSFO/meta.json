@@ -7,7 +7,7 @@
     "fundPage": "https://www.paceretfs.com/products/structured-outcome-strategies/PSFO",
     "officialProductPage": "https://www.paceretfs.com/products/structured-outcome-strategies/PSFO",
     "productPageRendering": "read-only rendering proxy (r.jina.ai) of the official fund page",
-    "productPageAsOf": "Oct 02 2026",
+    "productPageAsOf": "Oct 09 2026",
     "catalogListing": "https://www.paceretfs.com/products/",
     "holdingsDownload": "https://www.sec.gov/Archives/edgar/data/1616668/000089418926029051/0000894189-26-029051.txt",
     "officialHoldingsDownload": "https://www.paceretfs.com/products/holdings_download/PSFO",
@@ -33,32 +33,32 @@
     "kind": "Total Expenses published on the official fund page (product listing for funds without a page value)"
   },
   "nav": {
-    "display": "$36.09",
-    "value": 36.09,
-    "asOfDate": "Oct 02 2026"
+    "display": "$36.36",
+    "value": 36.36,
+    "asOfDate": "Oct 09 2026"
   },
   "marketPrice": {
-    "display": "$36.09",
-    "value": 36.09,
-    "asOfDate": "Oct 02 2026",
+    "display": "$36.38",
+    "value": 36.38,
+    "asOfDate": "Oct 09 2026",
     "source": "official fund page Market Price (closing price as of the Fund Details date)"
   },
   "premiumDiscount": {
-    "display": "0.00%",
-    "value": 0,
-    "asOfDate": "Oct 02 2026",
+    "display": "0.06%",
+    "value": 0.06,
+    "asOfDate": "Oct 09 2026",
     "source": "official fund page Fund Details Premium/Discount"
   },
   "aum": {
-    "display": "$42.41 M",
-    "value": 42405284.42,
-    "asOfDate": "Oct 02 2026",
+    "display": "$44.54 M",
+    "value": 44537929.02,
+    "asOfDate": "Oct 09 2026",
     "source": "official fund page Net Assets"
   },
   "fundFacts": {
-    "sharesOutstanding": 1175000,
+    "sharesOutstanding": 1225000,
     "publishedTotalHoldings": 7,
-    "medianBidAskSpread": 0.00167
+    "medianBidAskSpread": 0.001411
   },
   "yields": {
     "dividendYield": null,
@@ -71,47 +71,47 @@
   },
   "returns": {
     "derivedFrom": "official Pacer ETFs NAV total returns (product listing, month-end) where published; Yahoo adjusted market-price closes for missing values",
-    "performanceAsOf": "2026-10-02",
+    "performanceAsOf": "2026-10-09",
     "monthEnd": {
-      "asOfDate": "Oct 02 2026",
-      "mo1": 1.65,
-      "mo1Text": "1.65%",
-      "mo3": 4.3,
-      "mo3Text": "4.30%",
-      "qtd": 0.36,
-      "qtdText": "0.36%",
-      "ytd": 11.15,
-      "ytdText": "11.15%",
-      "yr1": 13.95,
-      "yr1Text": "13.95%",
-      "yr3": 12.38,
-      "yr3Text": "12.38%",
-      "yr5": 11.79,
-      "yr5Text": "11.79%",
+      "asOfDate": "Oct 09 2026",
+      "mo1": 2.39,
+      "mo1Text": "2.39%",
+      "mo3": 4.56,
+      "mo3Text": "4.56%",
+      "qtd": 1.17,
+      "qtdText": "1.17%",
+      "ytd": 11.97,
+      "ytdText": "11.97%",
+      "yr1": 13.11,
+      "yr1Text": "13.11%",
+      "yr3": 14.25,
+      "yr3Text": "14.25%",
+      "yr5": 11.87,
+      "yr5Text": "11.87%",
       "yr10": null,
       "yr10Text": "—",
-      "sinceInception": 11.81,
-      "sinceInceptionText": "11.81%"
+      "sinceInception": 11.87,
+      "sinceInceptionText": "11.87%"
     },
     "quarterEnd": {
-      "asOfDate": "Jun 30 2026",
-      "ytd": 6.57,
-      "yr1": 14.95,
-      "yr3": 12.2,
-      "yr5": null,
+      "asOfDate": "Sep 30 2026",
+      "ytd": 10.67,
+      "yr1": 13.11,
+      "yr3": 14.25,
+      "yr5": 11.87,
       "yr10": null,
-      "sinceInception": 11.65
+      "sinceInception": 11.87
     }
   },
   "officialMarketPriceReturns": {
     "monthEnd": {
-      "asOfDate": "Oct 02 2026",
+      "asOfDate": "Oct 09 2026",
       "mo1": null,
       "mo1Text": "—",
       "mo3": null,
       "mo3Text": "—",
-      "ytd": 11.38,
-      "ytdText": "11.38%",
+      "ytd": 12.28,
+      "ytdText": "12.28%",
       "yr1": null,
       "yr1Text": "—",
       "yr3": null,
@@ -124,23 +124,23 @@
       "sinceInceptionText": "—"
     },
     "quarterEnd": {
-      "asOfDate": "Jun 30 2026",
+      "asOfDate": "Sep 30 2026",
       "mo1": null,
       "mo1Text": "—",
       "mo3": null,
       "mo3Text": "—",
-      "ytd": 6.9,
-      "ytdText": "6.90%",
-      "yr1": 14.9,
-      "yr1Text": "14.90%",
-      "yr3": 12.21,
-      "yr3Text": "12.21%",
-      "yr5": null,
-      "yr5Text": "—",
+      "ytd": 10.98,
+      "ytdText": "10.98%",
+      "yr1": 13.17,
+      "yr1Text": "13.17%",
+      "yr3": 14.3,
+      "yr3Text": "14.30%",
+      "yr5": 11.88,
+      "yr5Text": "11.88%",
       "yr10": null,
       "yr10Text": "—",
-      "sinceInception": 11.67,
-      "sinceInceptionText": "11.67%"
+      "sinceInception": 11.88,
+      "sinceInceptionText": "11.88%"
     }
   },
   "distributions": {
@@ -172,8 +172,8 @@
       "history/002.json"
     ],
     "pageSize": 1000,
-    "totalRows": 1256,
-    "asOf": "Oct 02 2026",
+    "totalRows": 1261,
+    "asOf": "Oct 09 2026",
     "source": "Yahoo Finance public chart API (adjusted close)"
   }
 }

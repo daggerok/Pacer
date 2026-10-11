@@ -2,7 +2,7 @@
   "ticker": "ACBH",
   "page": 1,
   "pageSize": 1000,
-  "totalRows": 15,
+  "totalRows": 21,
   "headers": [
     "Date",
     "Close",
@@ -65,6 +65,12 @@
       "Volume": "0"
     },
     {
+      "Date": "Sep 24 2026",
+      "Close": "25.286699295043945",
+      "Adj Close": "25.08",
+      "Volume": "0"
+    },
+    {
       "Date": "Sep 25 2026",
       "Close": "25.433300018310547",
       "Adj Close": "25.22",
@@ -99,6 +105,36 @@
       "Close": "25.188800811767578",
       "Adj Close": "25.19",
       "Volume": "0"
+    },
+    {
+      "Date": "Oct 05 2026",
+      "Close": "25.397499084472656",
+      "Adj Close": "25.4",
+      "Volume": "0"
+    },
+    {
+      "Date": "Oct 06 2026",
+      "Close": "25.579999923706055",
+      "Adj Close": "25.58",
+      "Volume": "2106"
+    },
+    {
+      "Date": "Oct 07 2026",
+      "Close": "25.579999923706055",
+      "Adj Close": "25.58",
+      "Volume": "0"
+    },
+    {
+      "Date": "Oct 08 2026",
+      "Close": "25.415000915527344",
+      "Adj Close": "25.42",
+      "Volume": "2471"
+    },
+    {
+      "Date": "Oct 09 2026",
+      "Close": "25.600000381469727",
+      "Adj Close": "25.6",
+      "Volume": "15880"
     }
   ]
 }

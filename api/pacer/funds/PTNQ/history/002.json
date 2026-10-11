@@ -2,7 +2,7 @@
   "ticker": "PTNQ",
   "page": 2,
   "pageSize": 1000,
-  "totalRows": 2844,
+  "totalRows": 2849,
   "headers": [
     "Date",
     "Close",

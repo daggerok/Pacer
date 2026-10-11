@@ -2,7 +2,7 @@
   "ticker": "PEVC",
   "page": 1,
   "pageSize": 1000,
-  "totalRows": 418,
+  "totalRows": 423,
   "headers": [
     "Date",
     "Close",
@@ -2516,6 +2516,36 @@
       "Date": "Oct 02 2026",
       "Close": "32.11600112915039",
       "Adj Close": "32.12",
+      "Volume": "100"
+    },
+    {
+      "Date": "Oct 05 2026",
+      "Close": "32.53900146484375",
+      "Adj Close": "32.54",
+      "Volume": "100"
+    },
+    {
+      "Date": "Oct 06 2026",
+      "Close": "33.13999938964844",
+      "Adj Close": "33.14",
+      "Volume": "300"
+    },
+    {
+      "Date": "Oct 07 2026",
+      "Close": "32.665000915527344",
+      "Adj Close": "32.67",
+      "Volume": "400"
+    },
+    {
+      "Date": "Oct 08 2026",
+      "Close": "32.374000549316406",
+      "Adj Close": "32.37",
+      "Volume": "100"
+    },
+    {
+      "Date": "Oct 09 2026",
+      "Close": "32.85200119018555",
+      "Adj Close": "32.85",
       "Volume": "100"
     }
   ]
