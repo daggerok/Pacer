@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-13T02:13:38Z",
+  "generatedAt": "2026-10-13T05:11:55Z",
   "source": {
     "provider": "Pacer ETFs (Pacer Advisors, Inc.; Pacer Funds Trust, SEC CIK 0001616668), U.S.-listed ETFs",
     "market": "us",
@@ -13,7 +13,7 @@
   "counts": {
     "funds": 74,
     "holdings": 8505,
-    "history": 83006
+    "history": 83004
   },
   "funds": [
     {
@@ -134,8 +134,8 @@
           "mo1Text": "2.20%",
           "mo3": null,
           "mo3Text": "—",
-          "qtd": 1.3,
-          "qtdText": "1.30%",
+          "qtd": 1.21,
+          "qtdText": "1.21%",
           "ytd": null,
           "ytdText": "—",
           "yr1": null,
@@ -178,7 +178,7 @@
         "performanceAsOf": "2026-10-09"
       },
       "holdings": 3,
-      "history": 22
+      "history": 21
     },
     {
       "ticker": "ACBH",
@@ -216,8 +216,8 @@
           "mo1Text": "3.24%",
           "mo3": null,
           "mo3Text": "—",
-          "qtd": 2.93,
-          "qtdText": "2.93%",
+          "qtd": 2.97,
+          "qtdText": "2.97%",
           "ytd": null,
           "ytdText": "—",
           "yr1": null,
@@ -260,7 +260,7 @@
         "performanceAsOf": "2026-10-09"
       },
       "holdings": 3,
-      "history": 22
+      "history": 21
     },
     {
       "ticker": "ALTL",
@@ -1692,8 +1692,8 @@
           "mo1Text": "1.36%",
           "mo3": 2.82,
           "mo3Text": "2.82%",
-          "qtd": 0.78,
-          "qtdText": "0.78%",
+          "qtd": 0.79,
+          "qtdText": "0.79%",
           "ytd": null,
           "ytdText": "—",
           "yr1": null,

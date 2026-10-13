@@ -65,6 +65,7 @@ import {
   toIsoDate,
   toTextLines,
   topHoldingRows,
+  withoutLabel,
 } from './update-data';
 
 // ---------------------------------------------------------------------------
@@ -782,6 +783,27 @@ describe('pipeline', () => {
       expect(funds.find((fund) => fund.ticker === 'COWZ')!.metrics.tr1y).toBe(26.63);
     });
   }, 60_000);
+
+  test('console output: TICKERS=all, [ done ] lines count fund statuses, each message prefix printed once', () => {
+    withFeed((feed) => {
+      const first = feed.run().out;
+      expect(first).toContain('TICKERS=all');
+      expect(first).toMatch(/^\[ done {5}\] 3 funds: 3 updated, 0 unchanged, 0 kept, 0 skipped, 0 failed in \d+\.\ds$/m);
+      expect(first).toMatch(/^\[ done {5}\] counts: 3 funds \/ [\d,]+ holdings rows \/ [\d,]+ history rows$/m);
+      expect(feed.run().out).toMatch(/^\[ done {5}\] 3 funds: 0 updated, 3 unchanged, 0 kept, 0 skipped, 0 failed in /m);
+      const failed = feed.run({ MOCK_FAIL: 'catalog,COWZ:page', VERBOSE: 'true' }).out;
+      expect(failed).toMatch(/^\[ catalog {2}\] product listing: 500\b.*; 500\b.* — keeping the published feed$/m);
+      expect(failed).toMatch(/^\[ product {2}\] COWZ: 500\b/m);
+      expect(failed).not.toContain('[catalog ]');
+      expect(failed).not.toContain('[product ]');
+    });
+  }, 60_000);
+
+  test('withoutLabel strips the label a request already put on its error message', () => {
+    expect(withoutLabel('[catalog ] product listing: 403 Forbidden', '[catalog ] product listing')).toBe('403 Forbidden');
+    expect(withoutLabel('[catalog ] product listing: 403 Forbidden')).toBe('product listing: 403 Forbidden');
+    expect(withoutLabel('proxy response did not contain the expected content', '[product ] AAAP (proxy)')).toBe('proxy response did not contain the expected content');
+  });
 
   test('filtered, bounded and catalog-less runs never shrink the feed; a fund with files but no row is listed again', () => {
     withFeed((feed) => {
