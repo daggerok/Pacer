@@ -6,6 +6,7 @@ import { copyFileSync, existsSync, mkdirSync, mkdtempSync, readdirSync, readFile
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import {
+  ADJ_CLOSE_NOISE,
   CONTROL_NAMES,
   FETCH_TIMEOUT_MS,
   annualizedToTotal,
@@ -19,6 +20,7 @@ import {
   firstNumber,
   frequencyCodeLabel,
   historyPeriodStart,
+  historyRows,
   holdingsFallback,
   publishedAsOf,
   stalestFirst,
@@ -683,7 +685,9 @@ const chart = (n) => {
   const end = Math.floor(Date.now() / 1000 / DAY) * DAY - DAY;
   const timestamp = Array.from({ length: n }, (_, i) => end - (n - 1 - i) * DAY);
   const close = timestamp.map((_, i) => 10 + i * 0.01);
-  return { chart: { result: [{ meta: { exchangeName: 'PCX', regularMarketPrice: close[n - 1], regularMarketTime: end, firstTradeDate: timestamp[0] }, timestamp, indicators: { quote: [{ close, volume: close.map(() => 1) }], adjclose: [{ adjclose: close }] }, events: {} }] } };
+  // MOCK_ADJ: comma-separated adjusted closes for days 200.. (Yahoo float32 noise around a cent boundary)
+  const adjclose = close.map((value, i) => Number((process.env.MOCK_ADJ || '').split(',')[i - 200]) || value);
+  return { chart: { result: [{ meta: { exchangeName: 'PCX', regularMarketPrice: close[n - 1], regularMarketTime: end, firstTradeDate: timestamp[0] }, timestamp, indicators: { quote: [{ close, volume: close.map(() => 1) }], adjclose: [{ adjclose }] }, events: {} }] } };
 };
 // MOCK_PAGE: 'perf' = proxy rendering dropped everything after Fund Details, 'rows' = Fund Details cut before Premium/Discount,
 // 'nosec' = a fully loaded page that really has no SEC yield and a new market price
@@ -840,6 +844,25 @@ describe('pipeline', () => {
     expect(samePublishedContent('{"a":1}', { a: 2 })).toBe(false);
     expect(samePublishedContent('{"a":1,"generatedAt":"x"}', { a: 1, b: 2, generatedAt: 'x' })).toBe(false);
     expect(samePublishedContent('not json', {})).toBe(false);
+  }, 60_000);
+
+  test('two runs on the same source data write zero changes even when Yahoo adjusted closes jitter across a cent boundary', () => {
+    withFeed((feed) => {
+      // Yahoo float32 noise seen live: SPDV 2024-11-12 came back as 31.544998 and 31.545001 a minute apart
+      expect(feed.run({ TICKERS: 'COWZ', MOCK_ADJ: '23.915001,24.984999,25.995001' }).status).toBe(0);
+      const first = feed.snapshot();
+      const second = feed.run({ TICKERS: 'COWZ', MOCK_ADJ: '23.914998,24.985002,25.994999' });
+      expect(second.status).toBe(0);
+      expect(second.out).toMatch(/1 unchanged/);
+      expect(feed.snapshot()).toEqual(first);
+      // a real change beyond the noise is still written
+      expect(feed.run({ TICKERS: 'COWZ', MOCK_ADJ: '23.9,24.97,25.98' }).status).toBe(0);
+      expect(feed.snapshot()).not.toEqual(first);
+    });
+    const day = (adjClose: number) => ({ date: '2024-11-12', close: 33.928001, adjClose, volume: 3900 });
+    const prior = [{ Date: 'Nov 12 2024', Close: '33.928001', 'Adj Close': '31.54', Volume: '3900' }];
+    expect([31.545001, 31.5452, 31.56].map((adj) => historyRows([day(adj)], prior)[0]['Adj Close'])).toEqual(['31.54', '31.55', '31.56']);
+    expect(ADJ_CLOSE_NOISE).toBe(1e-4);
   }, 60_000);
 
   test('a failed required source keeps the fund exactly as published', () => {
