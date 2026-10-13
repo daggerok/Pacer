@@ -2,7 +2,7 @@
   "ticker": "PSMJ",
   "page": 2,
   "pageSize": 1000,
-  "totalRows": 1324,
+  "totalRows": 1325,
   "headers": [
     "Date",
     "Close",
@@ -1953,6 +1953,12 @@
       "Close": "34.86899948120117",
       "Adj Close": "34.87",
       "Volume": "600"
+    },
+    {
+      "Date": "Oct 12 2026",
+      "Close": "34.845001220703125",
+      "Adj Close": "34.85",
+      "Volume": "100"
     }
   ]
 }

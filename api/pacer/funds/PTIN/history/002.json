@@ -2,7 +2,7 @@
   "ticker": "PTIN",
   "page": 2,
   "pageSize": 1000,
-  "totalRows": 1869,
+  "totalRows": 1870,
   "headers": [
     "Date",
     "Close",
@@ -5223,6 +5223,12 @@
       "Close": "36.263999938964844",
       "Adj Close": "36.26",
       "Volume": "12400"
+    },
+    {
+      "Date": "Oct 12 2026",
+      "Close": "36.055999755859375",
+      "Adj Close": "36.06",
+      "Volume": "10500"
     }
   ]
 }

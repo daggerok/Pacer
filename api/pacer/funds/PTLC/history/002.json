@@ -2,7 +2,7 @@
   "ticker": "PTLC",
   "page": 2,
   "pageSize": 1000,
-  "totalRows": 2849,
+  "totalRows": 2850,
   "headers": [
     "Date",
     "Close",

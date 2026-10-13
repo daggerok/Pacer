@@ -2,7 +2,7 @@
   "ticker": "SCOW",
   "page": 1,
   "pageSize": 1000,
-  "totalRows": 281,
+  "totalRows": 282,
   "headers": [
     "Date",
     "Close",
@@ -1694,6 +1694,12 @@
       "Date": "Oct 09 2026",
       "Close": "22.389999389648438",
       "Adj Close": "22.39",
+      "Volume": "100"
+    },
+    {
+      "Date": "Oct 12 2026",
+      "Close": "22.40399932861328",
+      "Adj Close": "22.4",
       "Volume": "100"
     }
   ]

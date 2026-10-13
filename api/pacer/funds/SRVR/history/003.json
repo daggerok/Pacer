@@ -2,7 +2,7 @@
   "ticker": "SRVR",
   "page": 3,
   "pageSize": 1000,
-  "totalRows": 2112,
+  "totalRows": 2113,
   "headers": [
     "Date",
     "Close",
@@ -681,6 +681,12 @@
       "Close": "29.18000030517578",
       "Adj Close": "29.18",
       "Volume": "81600"
+    },
+    {
+      "Date": "Oct 12 2026",
+      "Close": "28.989999771118164",
+      "Adj Close": "28.99",
+      "Volume": "82100"
     }
   ]
 }

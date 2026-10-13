@@ -7,7 +7,7 @@
     "fundPage": "https://www.paceretfs.com/products/ODDS",
     "officialProductPage": "https://www.paceretfs.com/products/ODDS",
     "productPageRendering": "read-only rendering proxy (r.jina.ai) of the official fund page",
-    "productPageAsOf": "Oct 02 2026",
+    "productPageAsOf": "Oct 09 2026",
     "catalogListing": "https://www.paceretfs.com/products/",
     "holdingsDownload": "https://www.sec.gov/Archives/edgar/data/1616668/000089418926028991/0000894189-26-028991.txt",
     "officialHoldingsDownload": "https://www.paceretfs.com/products/holdings_download/ODDS",
@@ -33,32 +33,32 @@
     "kind": "Total Expenses published on the official fund page (product listing for funds without a page value)"
   },
   "nav": {
-    "display": "$23.45",
-    "value": 23.45,
-    "asOfDate": "Oct 02 2026"
+    "display": "$23.98",
+    "value": 23.98,
+    "asOfDate": "Oct 09 2026"
   },
   "marketPrice": {
-    "display": "$23.35",
-    "value": 23.35,
-    "asOfDate": "Oct 02 2026",
+    "display": "$24.01",
+    "value": 24.01,
+    "asOfDate": "Oct 09 2026",
     "source": "official fund page Market Price (closing price as of the Fund Details date)"
   },
   "premiumDiscount": {
-    "display": "-0.45%",
-    "value": -0.45,
-    "asOfDate": "Oct 02 2026",
+    "display": "0.11%",
+    "value": 0.11,
+    "asOfDate": "Oct 09 2026",
     "source": "official fund page Fund Details Premium/Discount"
   },
   "aum": {
-    "display": "$3.75 M",
-    "value": 3752685.38,
-    "asOfDate": "Oct 02 2026",
+    "display": "$3.84 M",
+    "value": 3836536.99,
+    "asOfDate": "Oct 09 2026",
     "source": "official fund page Net Assets"
   },
   "fundFacts": {
     "sharesOutstanding": 160000,
     "publishedTotalHoldings": 50,
-    "medianBidAskSpread": 0.00315
+    "medianBidAskSpread": 0.003166
   },
   "yields": {
     "dividendYield": 0.38,
@@ -78,20 +78,20 @@
       "mo1Text": "-6.36%",
       "mo3": -5.21,
       "mo3Text": "-5.21%",
-      "qtd": 3.06,
-      "qtdText": "3.06%",
+      "qtd": 1.84,
+      "qtdText": "1.84%",
       "ytd": -17.23,
       "ytdText": "-17.23%",
-      "yr1": -26.31,
-      "yr1Text": "-26.31%",
-      "yr3": 10.93,
-      "yr3Text": "10.93%",
+      "yr1": -24.27,
+      "yr1Text": "-24.27%",
+      "yr3": 10.25,
+      "yr3Text": "10.25%",
       "yr5": null,
       "yr5Text": "—",
       "yr10": null,
       "yr10Text": "—",
-      "sinceInception": 6.23,
-      "sinceInceptionText": "6.23%"
+      "sinceInception": 5.94,
+      "sinceInceptionText": "5.94%"
     },
     "quarterEnd": {
       "asOfDate": "Sep 30 2026",
@@ -105,13 +105,13 @@
   },
   "officialMarketPriceReturns": {
     "monthEnd": {
-      "asOfDate": "Oct 02 2026",
+      "asOfDate": "Oct 09 2026",
       "mo1": null,
       "mo1Text": "—",
       "mo3": null,
       "mo3Text": "—",
-      "ytd": -19.41,
-      "ytdText": "-19.41%",
+      "ytd": -17.15,
+      "ytdText": "-17.15%",
       "yr1": null,
       "yr1Text": "—",
       "yr3": null,
@@ -233,8 +233,8 @@
       "history/002.json"
     ],
     "pageSize": 1000,
-    "totalRows": 1129,
-    "asOf": "Oct 09 2026",
+    "totalRows": 1130,
+    "asOf": "Oct 12 2026",
     "source": "Yahoo Finance public chart API (adjusted close)"
   }
 }

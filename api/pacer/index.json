@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-11T04:55:26Z",
+  "generatedAt": "2026-10-13T02:13:38Z",
   "source": {
     "provider": "Pacer ETFs (Pacer Advisors, Inc.; Pacer Funds Trust, SEC CIK 0001616668), U.S.-listed ETFs",
     "market": "us",
@@ -13,7 +13,7 @@
   "counts": {
     "funds": 74,
     "holdings": 8505,
-    "history": 82928
+    "history": 83006
   },
   "funds": [
     {
@@ -96,7 +96,7 @@
         "performanceAsOf": "2026-10-09"
       },
       "holdings": 79,
-      "history": 77
+      "history": 78
     },
     {
       "ticker": "ACBE",
@@ -134,8 +134,8 @@
           "mo1Text": "2.20%",
           "mo3": null,
           "mo3Text": "—",
-          "qtd": 1.21,
-          "qtdText": "1.21%",
+          "qtd": 1.3,
+          "qtdText": "1.30%",
           "ytd": null,
           "ytdText": "—",
           "yr1": null,
@@ -178,7 +178,7 @@
         "performanceAsOf": "2026-10-09"
       },
       "holdings": 3,
-      "history": 21
+      "history": 22
     },
     {
       "ticker": "ACBH",
@@ -216,8 +216,8 @@
           "mo1Text": "3.24%",
           "mo3": null,
           "mo3Text": "—",
-          "qtd": 2.97,
-          "qtdText": "2.97%",
+          "qtd": 2.93,
+          "qtdText": "2.93%",
           "ytd": null,
           "ytdText": "—",
           "yr1": null,
@@ -260,7 +260,7 @@
         "performanceAsOf": "2026-10-09"
       },
       "holdings": 3,
-      "history": 21
+      "history": 22
     },
     {
       "ticker": "ALTL",
@@ -298,8 +298,8 @@
           "mo1Text": "-3.63%",
           "mo3": -10.24,
           "mo3Text": "-10.24%",
-          "qtd": 0.8,
-          "qtdText": "0.80%",
+          "qtd": -1.3,
+          "qtdText": "-1.30%",
           "ytd": 3.3,
           "ytdText": "3.30%",
           "yr1": 4.07,
@@ -342,7 +342,7 @@
         "performanceAsOf": "2026-10-09"
       },
       "holdings": 102,
-      "history": 1581
+      "history": 1582
     },
     {
       "ticker": "BUL",
@@ -380,8 +380,8 @@
           "mo1Text": "-1.52%",
           "mo3": 3.45,
           "mo3Text": "3.45%",
-          "qtd": 1.17,
-          "qtdText": "1.17%",
+          "qtd": 0.83,
+          "qtdText": "0.83%",
           "ytd": 11.97,
           "ytdText": "11.97%",
           "yr1": 15.63,
@@ -424,7 +424,7 @@
         "performanceAsOf": "2026-10-09"
       },
       "holdings": 51,
-      "history": 1869
+      "history": 1870
     },
     {
       "ticker": "BULD",
@@ -462,20 +462,20 @@
           "mo1Text": "8.38%",
           "mo3": 5.33,
           "mo3Text": "5.33%",
-          "qtd": 3.1,
-          "qtdText": "3.10%",
+          "qtd": 1.39,
+          "qtdText": "1.39%",
           "ytd": 43.2,
           "ytdText": "43.20%",
-          "yr1": 37.78,
-          "yr1Text": "37.78%",
-          "yr3": 26.77,
-          "yr3Text": "26.77%",
+          "yr1": 43.38,
+          "yr1Text": "43.38%",
+          "yr3": 25.21,
+          "yr3Text": "25.21%",
           "yr5": null,
           "yr5Text": "—",
           "yr10": null,
           "yr10Text": "—",
-          "sinceInception": 15.97,
-          "sinceInceptionText": "15.97%"
+          "sinceInception": 15.5,
+          "sinceInceptionText": "15.50%"
         },
         "quarterEnd": {
           "asOfDate": "Sep 30 2026",
@@ -489,14 +489,14 @@
       },
       "metrics": {
         "ytd": 43.2,
-        "tr1y": 37.78,
-        "tr3y": 103.73,
+        "tr1y": 43.38,
+        "tr3y": 96.3,
         "tr5y": null,
         "tr10y": null,
-        "cagr3y": 26.77,
+        "cagr3y": 25.21,
         "cagr5y": null,
         "cagr10y": null,
-        "siAnn": 15.97,
+        "siAnn": 15.5,
         "dividendYield": 0.49,
         "dividendYieldText": "0.49%",
         "dividendYieldBasis": "indicated",
@@ -506,7 +506,7 @@
         "performanceAsOf": "2026-10-09"
       },
       "holdings": 62,
-      "history": 1111
+      "history": 1112
     },
     {
       "ticker": "CAFG",
@@ -544,8 +544,8 @@
           "mo1Text": "0.17%",
           "mo3": -2.66,
           "mo3Text": "-2.66%",
-          "qtd": 3.59,
-          "qtdText": "3.59%",
+          "qtd": 3.52,
+          "qtdText": "3.52%",
           "ytd": 28.91,
           "ytdText": "28.91%",
           "yr1": 21.87,
@@ -588,7 +588,7 @@
         "performanceAsOf": "2026-10-09"
       },
       "holdings": 102,
-      "history": 864
+      "history": 865
     },
     {
       "ticker": "CALF",
@@ -626,20 +626,20 @@
           "mo1Text": "-1.90%",
           "mo3": 6.2,
           "mo3Text": "6.20%",
-          "qtd": 2.59,
-          "qtdText": "2.59%",
+          "qtd": 2.78,
+          "qtdText": "2.78%",
           "ytd": 23.88,
           "ytdText": "23.88%",
-          "yr1": 26.79,
-          "yr1Text": "26.79%",
-          "yr3": 11.32,
-          "yr3Text": "11.32%",
-          "yr5": 6.43,
-          "yr5Text": "6.43%",
+          "yr1": 33.34,
+          "yr1Text": "33.34%",
+          "yr3": 11.69,
+          "yr3Text": "11.69%",
+          "yr5": 6.59,
+          "yr5Text": "6.59%",
           "yr10": null,
           "yr10Text": "—",
-          "sinceInception": 10.28,
-          "sinceInceptionText": "10.28%"
+          "sinceInception": 10.29,
+          "sinceInceptionText": "10.29%"
         },
         "quarterEnd": {
           "asOfDate": "Sep 30 2026",
@@ -653,14 +653,14 @@
       },
       "metrics": {
         "ytd": 23.88,
-        "tr1y": 26.79,
-        "tr3y": 37.95,
-        "tr5y": 36.56,
+        "tr1y": 33.34,
+        "tr3y": 39.33,
+        "tr5y": 37.59,
         "tr10y": null,
-        "cagr3y": 11.32,
-        "cagr5y": 6.43,
+        "cagr3y": 11.69,
+        "cagr5y": 6.59,
         "cagr10y": null,
-        "siAnn": 10.28,
+        "siAnn": 10.29,
         "dividendYield": 1.4,
         "dividendYieldText": "1.40%",
         "dividendYieldBasis": "indicated",
@@ -670,7 +670,7 @@
         "performanceAsOf": "2026-10-09"
       },
       "holdings": 200,
-      "history": 2341
+      "history": 2342
     },
     {
       "ticker": "COWG",
@@ -708,8 +708,8 @@
           "mo1Text": "6.09%",
           "mo3": 5.73,
           "mo3Text": "5.73%",
-          "qtd": 4.24,
-          "qtdText": "4.24%",
+          "qtd": 3.28,
+          "qtdText": "3.28%",
           "ytd": 18.8,
           "ytdText": "18.80%",
           "yr1": 10.62,
@@ -752,7 +752,7 @@
         "performanceAsOf": "2026-10-09"
       },
       "holdings": 102,
-      "history": 947
+      "history": 948
     },
     {
       "ticker": "COWZ",
@@ -790,8 +790,8 @@
           "mo1Text": "-1.41%",
           "mo3": 7.84,
           "mo3Text": "7.84%",
-          "qtd": 2.64,
-          "qtdText": "2.64%",
+          "qtd": 2.88,
+          "qtdText": "2.88%",
           "ytd": 15.08,
           "ytdText": "15.08%",
           "yr1": 18.57,
@@ -834,7 +834,7 @@
         "performanceAsOf": "2026-10-09"
       },
       "holdings": 102,
-      "history": 2462
+      "history": 2463
     },
     {
       "ticker": "EAFG",
@@ -872,8 +872,8 @@
           "mo1Text": "-1.76%",
           "mo3": -0.53,
           "mo3Text": "-0.53%",
-          "qtd": 1.56,
-          "qtdText": "1.56%",
+          "qtd": 1.13,
+          "qtdText": "1.13%",
           "ytd": 8.71,
           "ytdText": "8.71%",
           "yr1": 12.53,
@@ -916,7 +916,7 @@
         "performanceAsOf": "2026-10-09"
       },
       "holdings": 103,
-      "history": 640
+      "history": 641
     },
     {
       "ticker": "ECOW",
@@ -954,8 +954,8 @@
           "mo1Text": "-1.93%",
           "mo3": 3.31,
           "mo3Text": "3.31%",
-          "qtd": 2.91,
-          "qtdText": "2.91%",
+          "qtd": 2.75,
+          "qtdText": "2.75%",
           "ytd": 13.75,
           "ytdText": "13.75%",
           "yr1": 14.85,
@@ -998,7 +998,7 @@
         "performanceAsOf": "2026-10-09"
       },
       "holdings": 111,
-      "history": 1869
+      "history": 1870
     },
     {
       "ticker": "FLRT",
@@ -1036,8 +1036,8 @@
           "mo1Text": "-0.20%",
           "mo3": 1.13,
           "mo3Text": "1.13%",
-          "qtd": 0.13,
-          "qtdText": "0.13%",
+          "qtd": 0.09,
+          "qtdText": "0.09%",
           "ytd": 3.19,
           "ytdText": "3.19%",
           "yr1": 4.81,
@@ -1080,7 +1080,7 @@
         "performanceAsOf": "2026-10-09"
       },
       "holdings": 320,
-      "history": 2928
+      "history": 2929
     },
     {
       "ticker": "FOWF",
@@ -1092,17 +1092,17 @@
       "isin": "US69374H2610",
       "ter": "0.49%",
       "terValue": 0.49,
-      "nav": "$33.83",
-      "navValue": 33.83,
-      "aum": "$14.38 M",
-      "aumValue": 14377014.75,
-      "asOfDate": "Oct 02 2026",
+      "nav": "$33.89",
+      "navValue": 33.89,
+      "aum": "$14.40 M",
+      "aumValue": 14402475.89,
+      "asOfDate": "Oct 09 2026",
       "inceptionDate": "Dec 17 2024",
       "exchange": "BTS",
-      "closePrice": "$33.86",
-      "closePriceValue": 33.86,
-      "premiumDiscount": "0.08%",
-      "premiumDiscountValue": 0.08,
+      "closePrice": "$33.90",
+      "closePriceValue": 33.9,
+      "premiumDiscount": "0.03%",
+      "premiumDiscountValue": 0.03,
       "frequencyCode": "04 - Quarterly",
       "distributions": {
         "frequency": "Quarterly",
@@ -1111,58 +1111,58 @@
       },
       "returns": {
         "derivedFrom": "official Pacer ETFs NAV total returns (product listing, month-end) where published; Yahoo adjusted market-price closes for missing values",
-        "performanceAsOf": "2026-10-02",
+        "performanceAsOf": "2026-10-09",
         "monthEnd": {
-          "asOfDate": "Oct 02 2026",
-          "mo1": -2.21,
-          "mo1Text": "-2.21%",
-          "mo3": -1.72,
-          "mo3Text": "-1.72%",
-          "qtd": 0.87,
-          "qtdText": "0.87%",
-          "ytd": 9.66,
-          "ytdText": "9.66%",
-          "yr1": 19.16,
-          "yr1Text": "19.16%",
+          "asOfDate": "Oct 09 2026",
+          "mo1": -1.07,
+          "mo1Text": "-1.07%",
+          "mo3": -0.53,
+          "mo3Text": "-0.53%",
+          "qtd": 0.73,
+          "qtdText": "0.73%",
+          "ytd": 9.85,
+          "ytdText": "9.85%",
+          "yr1": 8.04,
+          "yr1Text": "8.04%",
           "yr3": null,
           "yr3Text": "—",
           "yr5": null,
           "yr5Text": "—",
           "yr10": null,
           "yr10Text": "—",
-          "sinceInception": 24.72,
-          "sinceInceptionText": "24.72%"
+          "sinceInception": 19.52,
+          "sinceInceptionText": "19.52%"
         },
         "quarterEnd": {
-          "asOfDate": "Jun 30 2026",
-          "ytd": 8.84,
-          "yr1": 16.95,
+          "asOfDate": "Sep 30 2026",
+          "ytd": 8.76,
+          "yr1": 8.04,
           "yr3": null,
           "yr5": null,
           "yr10": null,
-          "sinceInception": 23.14
+          "sinceInception": 19.52
         }
       },
       "metrics": {
-        "ytd": 9.66,
-        "tr1y": 19.16,
+        "ytd": 9.85,
+        "tr1y": 8.04,
         "tr3y": null,
         "tr5y": null,
         "tr10y": null,
         "cagr3y": null,
         "cagr5y": null,
         "cagr10y": null,
-        "siAnn": 24.72,
+        "siAnn": 19.52,
         "dividendYield": 0.67,
         "dividendYieldText": "0.67%",
         "dividendYieldBasis": "indicated",
         "secYield": 0.91,
         "secYieldText": "0.91%",
         "returnsBasis": "official Pacer ETFs NAV total returns (product listing, month-end) where published; Yahoo adjusted market-price closes for missing values",
-        "performanceAsOf": "2026-10-02"
+        "performanceAsOf": "2026-10-09"
       },
       "holdings": 92,
-      "history": 448
+      "history": 454
     },
     {
       "ticker": "GCOW",
@@ -1200,8 +1200,8 @@
           "mo1Text": "-3.16%",
           "mo3": 3.46,
           "mo3Text": "3.46%",
-          "qtd": 0.69,
-          "qtdText": "0.69%",
+          "qtd": 0.96,
+          "qtdText": "0.96%",
           "ytd": 11.96,
           "ytdText": "11.96%",
           "yr1": 19.25,
@@ -1244,7 +1244,7 @@
         "performanceAsOf": "2026-10-09"
       },
       "holdings": 101,
-      "history": 2674
+      "history": 2675
     },
     {
       "ticker": "GLBL",
@@ -1282,8 +1282,8 @@
           "mo1Text": "2.77%",
           "mo3": 3.84,
           "mo3Text": "3.84%",
-          "qtd": 1.22,
-          "qtdText": "1.22%",
+          "qtd": 0.98,
+          "qtdText": "0.98%",
           "ytd": 15.48,
           "ytdText": "15.48%",
           "yr1": 16.82,
@@ -1326,7 +1326,7 @@
         "performanceAsOf": "2026-10-09"
       },
       "holdings": 363,
-      "history": 368
+      "history": 369
     },
     {
       "ticker": "HERD",
@@ -1364,8 +1364,8 @@
           "mo1Text": "-2.46%",
           "mo3": 4.64,
           "mo3Text": "4.64%",
-          "qtd": 1.39,
-          "qtdText": "1.39%",
+          "qtd": 1.38,
+          "qtdText": "1.38%",
           "ytd": 15.26,
           "ytdText": "15.26%",
           "yr1": 19.91,
@@ -1408,7 +1408,7 @@
         "performanceAsOf": "2026-10-09"
       },
       "holdings": 6,
-      "history": 1868
+      "history": 1869
     },
     {
       "ticker": "ICOW",
@@ -1420,17 +1420,17 @@
       "isin": "US69374H8732",
       "ter": "0.65%",
       "terValue": 0.65,
-      "nav": "$41.88",
-      "navValue": 41.88,
+      "nav": "$41.95",
+      "navValue": 41.95,
       "aum": "$1.73 B",
-      "aumValue": 1725555561.43,
-      "asOfDate": "Oct 02 2026",
+      "aumValue": 1728360795.23,
+      "asOfDate": "Oct 09 2026",
       "inceptionDate": "Jun 16 2017",
       "exchange": "BTS",
-      "closePrice": "$42.08",
-      "closePriceValue": 42.08,
-      "premiumDiscount": "0.47%",
-      "premiumDiscountValue": 0.47,
+      "closePrice": "$42.07",
+      "closePriceValue": 42.07,
+      "premiumDiscount": "0.28%",
+      "premiumDiscountValue": 0.28,
       "frequencyCode": "04 - Quarterly",
       "distributions": {
         "frequency": "Quarterly",
@@ -1446,8 +1446,8 @@
           "mo1Text": "-5.07%",
           "mo3": 2.16,
           "mo3Text": "2.16%",
-          "qtd": 0.02,
-          "qtdText": "0.02%",
+          "qtd": -0.29,
+          "qtdText": "-0.29%",
           "ytd": 11.4,
           "ytdText": "11.40%",
           "yr1": 20.4,
@@ -1481,16 +1481,16 @@
         "cagr5y": 10.56,
         "cagr10y": null,
         "siAnn": 9.29,
-        "dividendYield": 8.96,
-        "dividendYieldText": "8.96%",
+        "dividendYield": 8.95,
+        "dividendYieldText": "8.95%",
         "dividendYieldBasis": "indicated",
-        "secYield": 2.45,
-        "secYieldText": "2.45%",
+        "secYield": 2.43,
+        "secYieldText": "2.43%",
         "returnsBasis": "official Pacer ETFs NAV total returns (product listing, month-end) where published; Yahoo adjusted market-price closes for missing values",
         "performanceAsOf": "2026-10-09"
       },
       "holdings": 101,
-      "history": 2341
+      "history": 2342
     },
     {
       "ticker": "INDQ",
@@ -1528,8 +1528,8 @@
           "mo1Text": "-8.00%",
           "mo3": -7.15,
           "mo3Text": "-7.15%",
-          "qtd": -3.09,
-          "qtdText": "-3.09%",
+          "qtd": -1.77,
+          "qtdText": "-1.77%",
           "ytd": null,
           "ytdText": "—",
           "yr1": null,
@@ -1572,7 +1572,7 @@
         "performanceAsOf": "2026-10-09"
       },
       "holdings": 29,
-      "history": 132
+      "history": 133
     },
     {
       "ticker": "INDS",
@@ -1692,8 +1692,8 @@
           "mo1Text": "1.36%",
           "mo3": 2.82,
           "mo3Text": "2.82%",
-          "qtd": 0.79,
-          "qtdText": "0.79%",
+          "qtd": 0.78,
+          "qtdText": "0.78%",
           "ytd": null,
           "ytdText": "—",
           "yr1": null,
@@ -1736,7 +1736,7 @@
         "performanceAsOf": "2026-10-09"
       },
       "holdings": 13,
-      "history": 74
+      "history": 75
     },
     {
       "ticker": "LCOW",
@@ -1774,8 +1774,8 @@
           "mo1Text": "4.83%",
           "mo3": 6.64,
           "mo3Text": "6.64%",
-          "qtd": 2.93,
-          "qtdText": "2.93%",
+          "qtd": 3.03,
+          "qtdText": "3.03%",
           "ytd": 15.47,
           "ytdText": "15.47%",
           "yr1": 15.33,
@@ -1818,7 +1818,7 @@
         "performanceAsOf": "2026-10-09"
       },
       "holdings": 101,
-      "history": 358
+      "history": 359
     },
     {
       "ticker": "MAUG",
@@ -1900,7 +1900,7 @@
         "performanceAsOf": "2026-10-09"
       },
       "holdings": 5,
-      "history": 112
+      "history": 113
     },
     {
       "ticker": "MCOW",
@@ -1938,8 +1938,8 @@
           "mo1Text": "4.38%",
           "mo3": 4.25,
           "mo3Text": "4.25%",
-          "qtd": 2.37,
-          "qtdText": "2.37%",
+          "qtd": 1.97,
+          "qtdText": "1.97%",
           "ytd": 13.73,
           "ytdText": "13.73%",
           "yr1": 6.81,
@@ -1982,7 +1982,7 @@
         "performanceAsOf": "2026-10-09"
       },
       "holdings": 78,
-      "history": 281
+      "history": 282
     },
     {
       "ticker": "MDCR",
@@ -2020,8 +2020,8 @@
           "mo1Text": "1.34%",
           "mo3": 2.68,
           "mo3Text": "2.68%",
-          "qtd": 0.91,
-          "qtdText": "0.91%",
+          "qtd": 0.94,
+          "qtdText": "0.94%",
           "ytd": null,
           "ytdText": "—",
           "yr1": null,
@@ -2064,7 +2064,7 @@
         "performanceAsOf": "2026-10-09"
       },
       "holdings": 5,
-      "history": 83
+      "history": 84
     },
     {
       "ticker": "MFEB",
@@ -2146,7 +2146,7 @@
         "performanceAsOf": "2026-10-09"
       },
       "holdings": 5,
-      "history": 112
+      "history": 113
     },
     {
       "ticker": "MILK",
@@ -2184,8 +2184,8 @@
           "mo1Text": "-2.18%",
           "mo3": -2.92,
           "mo3Text": "-2.92%",
-          "qtd": 0.61,
-          "qtdText": "0.61%",
+          "qtd": 0.66,
+          "qtdText": "0.66%",
           "ytd": -0.87,
           "ytdText": "-0.87%",
           "yr1": -0.83,
@@ -2228,7 +2228,7 @@
         "performanceAsOf": "2026-10-09"
       },
       "holdings": 103,
-      "history": 453
+      "history": 454
     },
     {
       "ticker": "MJUN",
@@ -2310,7 +2310,7 @@
         "performanceAsOf": "2026-10-09"
       },
       "holdings": 5,
-      "history": 83
+      "history": 84
     },
     {
       "ticker": "MMAR",
@@ -2392,7 +2392,7 @@
         "performanceAsOf": "2026-10-09"
       },
       "holdings": 5,
-      "history": 83
+      "history": 84
     },
     {
       "ticker": "MMAY",
@@ -2474,7 +2474,7 @@
         "performanceAsOf": "2026-10-09"
       },
       "holdings": 5,
-      "history": 112
+      "history": 113
     },
     {
       "ticker": "MNVR",
@@ -2512,8 +2512,8 @@
           "mo1Text": "1.33%",
           "mo3": 2.78,
           "mo3Text": "2.78%",
-          "qtd": 0.72,
-          "qtdText": "0.72%",
+          "qtd": 0.75,
+          "qtdText": "0.75%",
           "ytd": null,
           "ytdText": "—",
           "yr1": null,
@@ -2556,7 +2556,7 @@
         "performanceAsOf": "2026-10-09"
       },
       "holdings": 5,
-      "history": 112
+      "history": 113
     },
     {
       "ticker": "MSEP",
@@ -2594,8 +2594,8 @@
           "mo1Text": "1.37%",
           "mo3": 2.68,
           "mo3Text": "2.68%",
-          "qtd": 1.07,
-          "qtdText": "1.07%",
+          "qtd": 1.04,
+          "qtdText": "1.04%",
           "ytd": null,
           "ytdText": "—",
           "yr1": null,
@@ -2638,7 +2638,7 @@
         "performanceAsOf": "2026-10-09"
       },
       "holdings": 5,
-      "history": 87
+      "history": 88
     },
     {
       "ticker": "ODDS",
@@ -2650,17 +2650,17 @@
       "isin": "US69374H3949",
       "ter": "0.49%",
       "terValue": 0.49,
-      "nav": "$23.45",
-      "navValue": 23.45,
-      "aum": "$3.75 M",
-      "aumValue": 3752685.38,
-      "asOfDate": "Oct 02 2026",
+      "nav": "$23.98",
+      "navValue": 23.98,
+      "aum": "$3.84 M",
+      "aumValue": 3836536.99,
+      "asOfDate": "Oct 09 2026",
       "inceptionDate": "Apr 08 2022",
       "exchange": "NGM",
-      "closePrice": "$23.35",
-      "closePriceValue": 23.35,
-      "premiumDiscount": "-0.45%",
-      "premiumDiscountValue": -0.45,
+      "closePrice": "$24.01",
+      "closePriceValue": 24.01,
+      "premiumDiscount": "0.11%",
+      "premiumDiscountValue": 0.11,
       "frequencyCode": "04 - Quarterly",
       "distributions": {
         "frequency": "Quarterly",
@@ -2676,20 +2676,20 @@
           "mo1Text": "-6.36%",
           "mo3": -5.21,
           "mo3Text": "-5.21%",
-          "qtd": 3.06,
-          "qtdText": "3.06%",
+          "qtd": 1.84,
+          "qtdText": "1.84%",
           "ytd": -17.23,
           "ytdText": "-17.23%",
-          "yr1": -26.31,
-          "yr1Text": "-26.31%",
-          "yr3": 10.93,
-          "yr3Text": "10.93%",
+          "yr1": -24.27,
+          "yr1Text": "-24.27%",
+          "yr3": 10.25,
+          "yr3Text": "10.25%",
           "yr5": null,
           "yr5Text": "—",
           "yr10": null,
           "yr10Text": "—",
-          "sinceInception": 6.23,
-          "sinceInceptionText": "6.23%"
+          "sinceInception": 5.94,
+          "sinceInceptionText": "5.94%"
         },
         "quarterEnd": {
           "asOfDate": "Sep 30 2026",
@@ -2703,14 +2703,14 @@
       },
       "metrics": {
         "ytd": -17.23,
-        "tr1y": -26.31,
-        "tr3y": 36.5,
+        "tr1y": -24.27,
+        "tr3y": 34.01,
         "tr5y": null,
         "tr10y": null,
-        "cagr3y": 10.93,
+        "cagr3y": 10.25,
         "cagr5y": null,
         "cagr10y": null,
-        "siAnn": 6.23,
+        "siAnn": 5.94,
         "dividendYield": 0.38,
         "dividendYieldText": "0.38%",
         "dividendYieldBasis": "indicated",
@@ -2720,7 +2720,7 @@
         "performanceAsOf": "2026-10-09"
       },
       "holdings": 43,
-      "history": 1129
+      "history": 1130
     },
     {
       "ticker": "PALC",
@@ -2758,8 +2758,8 @@
           "mo1Text": "-1.96%",
           "mo3": -5.11,
           "mo3Text": "-5.11%",
-          "qtd": 2.14,
-          "qtdText": "2.14%",
+          "qtd": 1.44,
+          "qtdText": "1.44%",
           "ytd": 5.95,
           "ytdText": "5.95%",
           "yr1": 5.04,
@@ -2802,7 +2802,7 @@
         "performanceAsOf": "2026-10-09"
       },
       "holdings": 179,
-      "history": 1581
+      "history": 1582
     },
     {
       "ticker": "PAMC",
@@ -2814,15 +2814,15 @@
       "isin": "US69374H7254",
       "ter": "0.6%",
       "terValue": 0.6,
-      "nav": "$52.44",
-      "navValue": 52.44,
-      "aum": "$52.44 M",
-      "aumValue": 52436861.27,
-      "asOfDate": "Oct 02 2026",
+      "nav": "$52.33",
+      "navValue": 52.33,
+      "aum": "$52.33 M",
+      "aumValue": 52332339.92,
+      "asOfDate": "Oct 09 2026",
       "inceptionDate": "Jun 24 2020",
       "exchange": "PCX",
-      "closePrice": "$52.45",
-      "closePriceValue": 52.45,
+      "closePrice": "$52.34",
+      "closePriceValue": 52.34,
       "premiumDiscount": "0.02%",
       "premiumDiscountValue": 0.02,
       "frequencyCode": "04 - Quarterly",
@@ -2840,8 +2840,8 @@
           "mo1Text": "-2.06%",
           "mo3": -3,
           "mo3Text": "-3.00%",
-          "qtd": 1.56,
-          "qtdText": "1.56%",
+          "qtd": -0.32,
+          "qtdText": "-0.32%",
           "ytd": 13,
           "ytdText": "13.00%",
           "yr1": 10.96,
@@ -2875,8 +2875,8 @@
         "cagr5y": 9.15,
         "cagr10y": null,
         "siAnn": 14.04,
-        "dividendYield": 1.2,
-        "dividendYieldText": "1.20%",
+        "dividendYield": 1.21,
+        "dividendYieldText": "1.21%",
         "dividendYieldBasis": "indicated",
         "secYield": null,
         "secYieldText": "—",
@@ -2884,7 +2884,7 @@
         "performanceAsOf": "2026-10-09"
       },
       "holdings": 151,
-      "history": 1581
+      "history": 1582
     },
     {
       "ticker": "PATN",
@@ -2922,8 +2922,8 @@
           "mo1Text": "-1.53%",
           "mo3": -0.14,
           "mo3Text": "-0.14%",
-          "qtd": -0.57,
-          "qtdText": "-0.57%",
+          "qtd": -1.79,
+          "qtdText": "-1.79%",
           "ytd": 31.79,
           "ytdText": "31.79%",
           "yr1": 42.64,
@@ -2966,7 +2966,7 @@
         "performanceAsOf": "2026-10-09"
       },
       "holdings": 101,
-      "history": 518
+      "history": 519
     },
     {
       "ticker": "PBSC",
@@ -3004,8 +3004,8 @@
           "mo1Text": "-0.67%",
           "mo3": 0.17,
           "mo3Text": "0.17%",
-          "qtd": 0.24,
-          "qtdText": "0.24%",
+          "qtd": 0.32,
+          "qtdText": "0.32%",
           "ytd": null,
           "ytdText": "—",
           "yr1": null,
@@ -3048,7 +3048,7 @@
         "performanceAsOf": "2026-10-09"
       },
       "holdings": 265,
-      "history": 77
+      "history": 78
     },
     {
       "ticker": "PEVC",
@@ -3086,8 +3086,8 @@
           "mo1Text": "2.21%",
           "mo3": null,
           "mo3Text": "—",
-          "qtd": 3.54,
-          "qtdText": "3.54%",
+          "qtd": 2.7,
+          "qtdText": "2.70%",
           "ytd": 13.87,
           "ytdText": "13.87%",
           "yr1": 15.85,
@@ -3130,7 +3130,7 @@
         "performanceAsOf": "2026-10-01"
       },
       "holdings": 215,
-      "history": 423
+      "history": 424
     },
     {
       "ticker": "PEXL",
@@ -3168,8 +3168,8 @@
           "mo1Text": "4.24%",
           "mo3": 0.79,
           "mo3Text": "0.79%",
-          "qtd": 0.89,
-          "qtdText": "0.89%",
+          "qtd": 0.19,
+          "qtdText": "0.19%",
           "ytd": 22.62,
           "ytdText": "22.62%",
           "yr1": 29.15,
@@ -3212,7 +3212,7 @@
         "performanceAsOf": "2026-10-09"
       },
       "holdings": 102,
-      "history": 2004
+      "history": 2005
     },
     {
       "ticker": "PIEL",
@@ -3250,8 +3250,8 @@
           "mo1Text": "-1.48%",
           "mo3": -1.02,
           "mo3Text": "-1.02%",
-          "qtd": 0.78,
-          "qtdText": "0.78%",
+          "qtd": 0.06,
+          "qtdText": "0.06%",
           "ytd": 12.55,
           "ytdText": "12.55%",
           "yr1": null,
@@ -3294,7 +3294,7 @@
         "performanceAsOf": "2026-10-09"
       },
       "holdings": 101,
-      "history": 197
+      "history": 198
     },
     {
       "ticker": "PSAI",
@@ -3332,8 +3332,8 @@
           "mo1Text": "-0.36%",
           "mo3": -0.23,
           "mo3Text": "-0.23%",
-          "qtd": 3.17,
-          "qtdText": "3.17%",
+          "qtd": 3.84,
+          "qtdText": "3.84%",
           "ytd": null,
           "ytdText": "—",
           "yr1": null,
@@ -3376,7 +3376,7 @@
         "performanceAsOf": "2026-10-09"
       },
       "holdings": 102,
-      "history": 108
+      "history": 109
     },
     {
       "ticker": "PSCJ",
@@ -3414,8 +3414,8 @@
           "mo1Text": "1.44%",
           "mo3": 2.6,
           "mo3Text": "2.60%",
-          "qtd": 1.14,
-          "qtdText": "1.14%",
+          "qtd": 1.08,
+          "qtdText": "1.08%",
           "ytd": 8.36,
           "ytdText": "8.36%",
           "yr1": 9.12,
@@ -3458,7 +3458,7 @@
         "performanceAsOf": "2026-10-09"
       },
       "holdings": 5,
-      "history": 1325
+      "history": 1326
     },
     {
       "ticker": "PSCQ",
@@ -3496,8 +3496,8 @@
           "mo1Text": "1.93%",
           "mo3": 3.94,
           "mo3Text": "3.94%",
-          "qtd": 1.16,
-          "qtdText": "1.16%",
+          "qtd": 1.1,
+          "qtdText": "1.10%",
           "ytd": 10.39,
           "ytdText": "10.39%",
           "yr1": 11.06,
@@ -3540,7 +3540,7 @@
         "performanceAsOf": "2026-10-09"
       },
       "holdings": 5,
-      "history": 1260
+      "history": 1261
     },
     {
       "ticker": "PSCW",
@@ -3578,8 +3578,8 @@
           "mo1Text": "0.98%",
           "mo3": 2.47,
           "mo3Text": "2.47%",
-          "qtd": 0.54,
-          "qtdText": "0.54%",
+          "qtd": 0.57,
+          "qtdText": "0.57%",
           "ytd": 10.4,
           "ytdText": "10.40%",
           "yr1": 12.09,
@@ -3622,7 +3622,7 @@
         "performanceAsOf": "2026-10-09"
       },
       "holdings": 5,
-      "history": 1388
+      "history": 1389
     },
     {
       "ticker": "PSCX",
@@ -3660,8 +3660,8 @@
           "mo1Text": "1.35%",
           "mo3": 2.97,
           "mo3Text": "2.97%",
-          "qtd": 0.8,
-          "qtdText": "0.80%",
+          "qtd": 0.75,
+          "qtdText": "0.75%",
           "ytd": 8.8,
           "ytdText": "8.80%",
           "yr1": 11.05,
@@ -3704,7 +3704,7 @@
         "performanceAsOf": "2026-10-09"
       },
       "holdings": 5,
-      "history": 1455
+      "history": 1456
     },
     {
       "ticker": "PSFD",
@@ -3742,8 +3742,8 @@
           "mo1Text": "1.58%",
           "mo3": 3.28,
           "mo3Text": "3.28%",
-          "qtd": 1,
-          "qtdText": "1.00%",
+          "qtd": 0.99,
+          "qtdText": "0.99%",
           "ytd": 10.43,
           "ytdText": "10.43%",
           "yr1": 12.72,
@@ -3786,7 +3786,7 @@
         "performanceAsOf": "2026-10-09"
       },
       "holdings": 6,
-      "history": 1455
+      "history": 1456
     },
     {
       "ticker": "PSFF",
@@ -3824,8 +3824,8 @@
           "mo1Text": "1.47%",
           "mo3": 3.05,
           "mo3Text": "3.05%",
-          "qtd": 1.05,
-          "qtdText": "1.05%",
+          "qtd": 1,
+          "qtdText": "1.00%",
           "ytd": 9.81,
           "ytdText": "9.81%",
           "yr1": 11.09,
@@ -3868,7 +3868,7 @@
         "performanceAsOf": "2026-10-09"
       },
       "holdings": 14,
-      "history": 1451
+      "history": 1452
     },
     {
       "ticker": "PSFJ",
@@ -3906,8 +3906,8 @@
           "mo1Text": "1.87%",
           "mo3": 3.11,
           "mo3Text": "3.11%",
-          "qtd": 1.24,
-          "qtdText": "1.24%",
+          "qtd": 1.19,
+          "qtdText": "1.19%",
           "ytd": 9.59,
           "ytdText": "9.59%",
           "yr1": 10.74,
@@ -3950,7 +3950,7 @@
         "performanceAsOf": "2026-10-09"
       },
       "holdings": 6,
-      "history": 1325
+      "history": 1326
     },
     {
       "ticker": "PSFM",
@@ -3962,17 +3962,17 @@
       "isin": "US69374H4772",
       "ter": "0.49%",
       "terValue": 0.49,
-      "nav": "$35.83",
-      "navValue": 35.83,
-      "aum": "$25.98 M",
-      "aumValue": 25976516.96,
-      "asOfDate": "Oct 02 2026",
+      "nav": "$35.98",
+      "navValue": 35.98,
+      "aum": "$26.08 M",
+      "aumValue": 26083464.58,
+      "asOfDate": "Oct 09 2026",
       "inceptionDate": "Mar 31 2021",
       "exchange": "BTS",
-      "closePrice": "$35.81",
-      "closePriceValue": 35.81,
-      "premiumDiscount": "-0.07%",
-      "premiumDiscountValue": -0.07,
+      "closePrice": "$35.97",
+      "closePriceValue": 35.97,
+      "premiumDiscount": "-0.02%",
+      "premiumDiscountValue": -0.02,
       "frequencyCode": "00 - None",
       "distributions": {
         "frequency": "—",
@@ -3988,8 +3988,8 @@
           "mo1Text": "1.18%",
           "mo3": 2.87,
           "mo3Text": "2.87%",
-          "qtd": 0.7,
-          "qtdText": "0.70%",
+          "qtd": 0.71,
+          "qtdText": "0.71%",
           "ytd": 12.91,
           "ytdText": "12.91%",
           "yr1": 14.6,
@@ -4032,7 +4032,7 @@
         "performanceAsOf": "2026-10-09"
       },
       "holdings": 6,
-      "history": 1388
+      "history": 1389
     },
     {
       "ticker": "PSFO",
@@ -4070,8 +4070,8 @@
           "mo1Text": "2.39%",
           "mo3": 4.56,
           "mo3Text": "4.56%",
-          "qtd": 1.17,
-          "qtdText": "1.17%",
+          "qtd": 1.08,
+          "qtdText": "1.08%",
           "ytd": 11.97,
           "ytdText": "11.97%",
           "yr1": 13.11,
@@ -4114,7 +4114,7 @@
         "performanceAsOf": "2026-10-09"
       },
       "holdings": 6,
-      "history": 1261
+      "history": 1262
     },
     {
       "ticker": "PSMD",
@@ -4152,8 +4152,8 @@
           "mo1Text": "1.31%",
           "mo3": 2.9,
           "mo3Text": "2.90%",
-          "qtd": 0.8,
-          "qtdText": "0.80%",
+          "qtd": 0.84,
+          "qtdText": "0.84%",
           "ytd": 9,
           "ytdText": "9.00%",
           "yr1": 11.04,
@@ -4196,7 +4196,7 @@
         "performanceAsOf": "2026-10-09"
       },
       "holdings": 5,
-      "history": 1455
+      "history": 1456
     },
     {
       "ticker": "PSMJ",
@@ -4234,8 +4234,8 @@
           "mo1Text": "1.46%",
           "mo3": 2.81,
           "mo3Text": "2.81%",
-          "qtd": 1.09,
-          "qtdText": "1.09%",
+          "qtd": 1.02,
+          "qtdText": "1.02%",
           "ytd": 8.31,
           "ytdText": "8.31%",
           "yr1": 9.27,
@@ -4278,7 +4278,7 @@
         "performanceAsOf": "2026-10-09"
       },
       "holdings": 5,
-      "history": 1324
+      "history": 1325
     },
     {
       "ticker": "PSMO",
@@ -4316,8 +4316,8 @@
           "mo1Text": "1.86%",
           "mo3": 3.82,
           "mo3Text": "3.82%",
-          "qtd": 1.08,
-          "qtdText": "1.08%",
+          "qtd": 0.94,
+          "qtdText": "0.94%",
           "ytd": 10.28,
           "ytdText": "10.28%",
           "yr1": 11.27,
@@ -4360,7 +4360,7 @@
         "performanceAsOf": "2026-10-09"
       },
       "holdings": 5,
-      "history": 1260
+      "history": 1261
     },
     {
       "ticker": "PSMR",
@@ -4398,8 +4398,8 @@
           "mo1Text": "1.01%",
           "mo3": 2.54,
           "mo3Text": "2.54%",
-          "qtd": 0.52,
-          "qtdText": "0.52%",
+          "qtd": 0.6,
+          "qtdText": "0.60%",
           "ytd": 10.96,
           "ytdText": "10.96%",
           "yr1": 12.55,
@@ -4442,7 +4442,7 @@
         "performanceAsOf": "2026-10-09"
       },
       "holdings": 5,
-      "history": 1388
+      "history": 1389
     },
     {
       "ticker": "PTBD",
@@ -4480,20 +4480,20 @@
           "mo1Text": "-1.92%",
           "mo3": -1.92,
           "mo3Text": "-1.92%",
-          "qtd": 0.38,
-          "qtdText": "0.38%",
+          "qtd": 0.52,
+          "qtdText": "0.52%",
           "ytd": -0.65,
           "ytdText": "-0.65%",
-          "yr1": -1.09,
-          "yr1Text": "-1.09%",
-          "yr3": 4.48,
-          "yr3Text": "4.48%",
-          "yr5": -1.62,
-          "yr5Text": "-1.62%",
+          "yr1": -0.05,
+          "yr1Text": "-0.05%",
+          "yr3": 4.72,
+          "yr3Text": "4.72%",
+          "yr5": -1.53,
+          "yr5Text": "-1.53%",
           "yr10": null,
           "yr10Text": "—",
-          "sinceInception": 0.58,
-          "sinceInceptionText": "0.58%"
+          "sinceInception": 0.6,
+          "sinceInceptionText": "0.60%"
         },
         "quarterEnd": {
           "asOfDate": "Sep 30 2026",
@@ -4507,14 +4507,14 @@
       },
       "metrics": {
         "ytd": -0.65,
-        "tr1y": -1.09,
-        "tr3y": 14.05,
-        "tr5y": -7.84,
+        "tr1y": -0.05,
+        "tr3y": 14.84,
+        "tr5y": -7.42,
         "tr10y": null,
-        "cagr3y": 4.48,
-        "cagr5y": -1.62,
+        "cagr3y": 4.72,
+        "cagr5y": -1.53,
         "cagr10y": null,
-        "siAnn": 0.58,
+        "siAnn": 0.6,
         "dividendYield": 6.1,
         "dividendYieldText": "6.10%",
         "dividendYieldBasis": "indicated",
@@ -4524,7 +4524,7 @@
         "performanceAsOf": "2026-10-09"
       },
       "holdings": 992,
-      "history": 1750
+      "history": 1751
     },
     {
       "ticker": "PTEU",
@@ -4562,8 +4562,8 @@
           "mo1Text": "-6.00%",
           "mo3": -4.13,
           "mo3Text": "-4.13%",
-          "qtd": -2.14,
-          "qtdText": "-2.14%",
+          "qtd": -2.53,
+          "qtdText": "-2.53%",
           "ytd": 3.45,
           "ytdText": "3.45%",
           "yr1": 11.64,
@@ -4606,7 +4606,7 @@
         "performanceAsOf": "2026-10-09"
       },
       "holdings": 289,
-      "history": 2718
+      "history": 2719
     },
     {
       "ticker": "PTIN",
@@ -4644,8 +4644,8 @@
           "mo1Text": "-3.87%",
           "mo3": -0.18,
           "mo3Text": "-0.18%",
-          "qtd": -0.51,
-          "qtdText": "-0.51%",
+          "qtd": -1.08,
+          "qtdText": "-1.08%",
           "ytd": 14.31,
           "ytdText": "14.31%",
           "yr1": 23.04,
@@ -4688,7 +4688,7 @@
         "performanceAsOf": "2026-10-09"
       },
       "holdings": 501,
-      "history": 1869
+      "history": 1870
     },
     {
       "ticker": "PTLC",
@@ -4726,8 +4726,8 @@
           "mo1Text": "2.33%",
           "mo3": 3.68,
           "mo3Text": "3.68%",
-          "qtd": 2.13,
-          "qtdText": "2.13%",
+          "qtd": 2.08,
+          "qtdText": "2.08%",
           "ytd": 9.34,
           "ytdText": "9.34%",
           "yr1": 9.76,
@@ -4770,7 +4770,7 @@
         "performanceAsOf": "2026-10-09"
       },
       "holdings": 506,
-      "history": 2849
+      "history": 2850
     },
     {
       "ticker": "PTMC",
@@ -4808,8 +4808,8 @@
           "mo1Text": "-1.31%",
           "mo3": -2.92,
           "mo3Text": "-2.92%",
-          "qtd": 1.82,
-          "qtdText": "1.82%",
+          "qtd": 1.5,
+          "qtdText": "1.50%",
           "ytd": 11.62,
           "ytdText": "11.62%",
           "yr1": 11.21,
@@ -4852,7 +4852,7 @@
         "performanceAsOf": "2026-10-09"
       },
       "holdings": 402,
-      "history": 2849
+      "history": 2850
     },
     {
       "ticker": "PTNQ",
@@ -4890,8 +4890,8 @@
           "mo1Text": "4.95%",
           "mo3": 3.86,
           "mo3Text": "3.86%",
-          "qtd": 1.57,
-          "qtdText": "1.57%",
+          "qtd": 0.85,
+          "qtdText": "0.85%",
           "ytd": 15.14,
           "ytdText": "15.14%",
           "yr1": 16,
@@ -4934,7 +4934,7 @@
         "performanceAsOf": "2026-10-09"
       },
       "holdings": 105,
-      "history": 2849
+      "history": 2850
     },
     {
       "ticker": "PWS",
@@ -4972,8 +4972,8 @@
           "mo1Text": "-0.85%",
           "mo3": -0.22,
           "mo3Text": "-0.22%",
-          "qtd": 0.79,
-          "qtdText": "0.79%",
+          "qtd": 0.31,
+          "qtdText": "0.31%",
           "ytd": 1.26,
           "ytdText": "1.26%",
           "yr1": 2.11,
@@ -5016,7 +5016,7 @@
         "performanceAsOf": "2026-10-09"
       },
       "holdings": 339,
-      "history": 2218
+      "history": 2219
     },
     {
       "ticker": "QDPL",
@@ -5054,8 +5054,8 @@
           "mo1Text": "2.13%",
           "mo3": 3.42,
           "mo3Text": "3.42%",
-          "qtd": 2.21,
-          "qtdText": "2.21%",
+          "qtd": 1.93,
+          "qtdText": "1.93%",
           "ytd": 14.09,
           "ytdText": "14.09%",
           "yr1": 14.75,
@@ -5098,7 +5098,7 @@
         "performanceAsOf": "2026-10-09"
       },
       "holdings": 519,
-      "history": 1308
+      "history": 1309
     },
     {
       "ticker": "QFHD",
@@ -5136,8 +5136,8 @@
           "mo1Text": "-1.91%",
           "mo3": 0.57,
           "mo3Text": "0.57%",
-          "qtd": 1.55,
-          "qtdText": "1.55%",
+          "qtd": 2.07,
+          "qtdText": "2.07%",
           "ytd": null,
           "ytdText": "—",
           "yr1": null,
@@ -5180,7 +5180,7 @@
         "performanceAsOf": "2026-10-09"
       },
       "holdings": 98,
-      "history": 186
+      "history": 187
     },
     {
       "ticker": "QFRD",
@@ -5218,8 +5218,8 @@
           "mo1Text": "9.39%",
           "mo3": 11.11,
           "mo3Text": "11.11%",
-          "qtd": 2.53,
-          "qtdText": "2.53%",
+          "qtd": 1.6,
+          "qtdText": "1.60%",
           "ytd": null,
           "ytdText": "—",
           "yr1": null,
@@ -5262,7 +5262,7 @@
         "performanceAsOf": "2026-10-09"
       },
       "holdings": 51,
-      "history": 186
+      "history": 187
     },
     {
       "ticker": "QQQG",
@@ -5300,8 +5300,8 @@
           "mo1Text": "5.70%",
           "mo3": 2.52,
           "mo3Text": "2.52%",
-          "qtd": 0,
-          "qtdText": "0.00%",
+          "qtd": -2.07,
+          "qtdText": "-2.07%",
           "ytd": 35.11,
           "ytdText": "35.11%",
           "yr1": 35.12,
@@ -5344,7 +5344,7 @@
         "performanceAsOf": "2026-10-09"
       },
       "holdings": 52,
-      "history": 536
+      "history": 537
     },
     {
       "ticker": "QQWZ",
@@ -5382,8 +5382,8 @@
           "mo1Text": "-2.43%",
           "mo3": -3.04,
           "mo3Text": "-3.04%",
-          "qtd": 1.45,
-          "qtdText": "1.45%",
+          "qtd": 0.73,
+          "qtdText": "0.73%",
           "ytd": 11.21,
           "ytdText": "11.21%",
           "yr1": 12.09,
@@ -5426,7 +5426,7 @@
         "performanceAsOf": "2026-10-09"
       },
       "holdings": 104,
-      "history": 358
+      "history": 359
     },
     {
       "ticker": "QSIX",
@@ -5464,20 +5464,20 @@
           "mo1Text": "4.51%",
           "mo3": 3.41,
           "mo3Text": "3.41%",
-          "qtd": 1.36,
-          "qtdText": "1.36%",
+          "qtd": 0.68,
+          "qtdText": "0.68%",
           "ytd": 20.35,
           "ytdText": "20.35%",
-          "yr1": 21.16,
-          "yr1Text": "21.16%",
+          "yr1": 24.6,
+          "yr1Text": "24.60%",
           "yr3": null,
           "yr3Text": "—",
           "yr5": null,
           "yr5Text": "—",
           "yr10": null,
           "yr10Text": "—",
-          "sinceInception": 21.76,
-          "sinceInceptionText": "21.76%"
+          "sinceInception": 21.27,
+          "sinceInceptionText": "21.27%"
         },
         "quarterEnd": {
           "asOfDate": "Sep 30 2026",
@@ -5491,14 +5491,14 @@
       },
       "metrics": {
         "ytd": 20.35,
-        "tr1y": 21.16,
+        "tr1y": 24.6,
         "tr3y": null,
         "tr5y": null,
         "tr10y": null,
         "cagr3y": null,
         "cagr5y": null,
         "cagr10y": null,
-        "siAnn": 21.76,
+        "siAnn": 21.27,
         "dividendYield": 4.09,
         "dividendYieldText": "4.09%",
         "dividendYieldBasis": "indicated",
@@ -5508,7 +5508,7 @@
         "performanceAsOf": "2026-10-09"
       },
       "holdings": 108,
-      "history": 513
+      "history": 514
     },
     {
       "ticker": "SCOW",
@@ -5546,20 +5546,20 @@
           "mo1Text": "-1.84%",
           "mo3": 2.45,
           "mo3Text": "2.45%",
-          "qtd": 2.51,
-          "qtdText": "2.51%",
+          "qtd": 2.57,
+          "qtdText": "2.57%",
           "ytd": 14.66,
           "ytdText": "14.66%",
-          "yr1": 9.63,
-          "yr1Text": "9.63%",
+          "yr1": 14.35,
+          "yr1Text": "14.35%",
           "yr3": null,
           "yr3Text": "—",
           "yr5": null,
           "yr5Text": "—",
           "yr10": null,
           "yr10Text": "—",
-          "sinceInception": 10.63,
-          "sinceInceptionText": "10.63%"
+          "sinceInception": 10.61,
+          "sinceInceptionText": "10.61%"
         },
         "quarterEnd": {
           "asOfDate": "Sep 30 2026",
@@ -5573,14 +5573,14 @@
       },
       "metrics": {
         "ytd": 14.66,
-        "tr1y": 9.63,
+        "tr1y": 14.35,
         "tr3y": null,
         "tr5y": null,
         "tr10y": null,
         "cagr3y": null,
         "cagr5y": null,
         "cagr10y": null,
-        "siAnn": 10.63,
+        "siAnn": 10.61,
         "dividendYield": 0.7,
         "dividendYieldText": "0.70%",
         "dividendYieldBasis": "indicated",
@@ -5590,7 +5590,7 @@
         "performanceAsOf": "2026-10-09"
       },
       "holdings": 80,
-      "history": 281
+      "history": 282
     },
     {
       "ticker": "SHPP",
@@ -5628,8 +5628,8 @@
           "mo1Text": "-2.15%",
           "mo3": -0.26,
           "mo3Text": "-0.26%",
-          "qtd": 1.49,
-          "qtdText": "1.49%",
+          "qtd": 1.81,
+          "qtdText": "1.81%",
           "ytd": 16.4,
           "ytdText": "16.40%",
           "yr1": 21.15,
@@ -5672,7 +5672,7 @@
         "performanceAsOf": "2026-10-09"
       },
       "holdings": 115,
-      "history": 1087
+      "history": 1088
     },
     {
       "ticker": "SRVR",
@@ -5710,8 +5710,8 @@
           "mo1Text": "-5.11%",
           "mo3": -4.32,
           "mo3Text": "-4.32%",
-          "qtd": 3,
-          "qtdText": "3.00%",
+          "qtd": 2.33,
+          "qtdText": "2.33%",
           "ytd": 4.81,
           "ytdText": "4.81%",
           "yr1": -6.62,
@@ -5754,7 +5754,7 @@
         "performanceAsOf": "2026-10-09"
       },
       "holdings": 67,
-      "history": 2112
+      "history": 2113
     },
     {
       "ticker": "TRFK",
@@ -5792,8 +5792,8 @@
           "mo1Text": "2.82%",
           "mo3": -0.29,
           "mo3Text": "-0.29%",
-          "qtd": 0.1,
-          "qtdText": "0.10%",
+          "qtd": -2.97,
+          "qtdText": "-2.97%",
           "ytd": 57.51,
           "ytdText": "57.51%",
           "yr1": 50.85,
@@ -5836,7 +5836,7 @@
         "performanceAsOf": "2026-10-09"
       },
       "holdings": 96,
-      "history": 1087
+      "history": 1088
     },
     {
       "ticker": "TRND",
@@ -5874,8 +5874,8 @@
           "mo1Text": "0.14%",
           "mo3": 0.44,
           "mo3Text": "0.44%",
-          "qtd": 0.83,
-          "qtdText": "0.83%",
+          "qtd": 0.52,
+          "qtdText": "0.52%",
           "ytd": 10.21,
           "ytdText": "10.21%",
           "yr1": 11.52,
@@ -5918,7 +5918,7 @@
         "performanceAsOf": "2026-10-09"
       },
       "holdings": 7,
-      "history": 1869
+      "history": 1870
     },
     {
       "ticker": "USAI",
@@ -5956,8 +5956,8 @@
           "mo1Text": "-5.67%",
           "mo3": -1.97,
           "mo3Text": "-1.97%",
-          "qtd": 4.01,
-          "qtdText": "4.01%",
+          "qtd": 4.9,
+          "qtdText": "4.90%",
           "ytd": 21.75,
           "ytdText": "21.75%",
           "yr1": 13.42,
@@ -6000,7 +6000,7 @@
         "performanceAsOf": "2026-10-09"
       },
       "holdings": 36,
-      "history": 2217
+      "history": 2218
     },
     {
       "ticker": "WDAI",
@@ -6038,8 +6038,8 @@
           "mo1Text": "-2.77%",
           "mo3": 1.15,
           "mo3Text": "1.15%",
-          "qtd": -0.07,
-          "qtdText": "-0.07%",
+          "qtd": 0,
+          "qtdText": "0.00%",
           "ytd": null,
           "ytdText": "—",
           "yr1": null,
@@ -6082,7 +6082,7 @@
         "performanceAsOf": "2026-10-09"
       },
       "holdings": 302,
-      "history": 108
+      "history": 109
     }
   ]
 }

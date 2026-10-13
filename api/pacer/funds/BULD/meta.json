@@ -78,20 +78,20 @@
       "mo1Text": "8.38%",
       "mo3": 5.33,
       "mo3Text": "5.33%",
-      "qtd": 3.1,
-      "qtdText": "3.10%",
+      "qtd": 1.39,
+      "qtdText": "1.39%",
       "ytd": 43.2,
       "ytdText": "43.20%",
-      "yr1": 37.78,
-      "yr1Text": "37.78%",
-      "yr3": 26.77,
-      "yr3Text": "26.77%",
+      "yr1": 43.38,
+      "yr1Text": "43.38%",
+      "yr3": 25.21,
+      "yr3Text": "25.21%",
       "yr5": null,
       "yr5Text": "—",
       "yr10": null,
       "yr10Text": "—",
-      "sinceInception": 15.97,
-      "sinceInceptionText": "15.97%"
+      "sinceInception": 15.5,
+      "sinceInceptionText": "15.50%"
     },
     "quarterEnd": {
       "asOfDate": "Sep 30 2026",
@@ -201,8 +201,8 @@
       "history/002.json"
     ],
     "pageSize": 1000,
-    "totalRows": 1111,
-    "asOf": "Oct 09 2026",
+    "totalRows": 1112,
+    "asOf": "Oct 12 2026",
     "source": "Yahoo Finance public chart API (adjusted close)"
   }
 }

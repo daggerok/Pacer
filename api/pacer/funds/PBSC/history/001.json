@@ -2,7 +2,7 @@
   "ticker": "PBSC",
   "page": 1,
   "pageSize": 1000,
-  "totalRows": 77,
+  "totalRows": 78,
   "headers": [
     "Date",
     "Close",
@@ -471,6 +471,12 @@
       "Close": "24.889999389648438",
       "Adj Close": "24.89",
       "Volume": "900"
+    },
+    {
+      "Date": "Oct 12 2026",
+      "Close": "24.91029930114746",
+      "Adj Close": "24.91",
+      "Volume": "4057"
     }
   ]
 }

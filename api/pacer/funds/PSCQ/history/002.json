@@ -2,7 +2,7 @@
   "ticker": "PSCQ",
   "page": 2,
   "pageSize": 1000,
-  "totalRows": 1260,
+  "totalRows": 1261,
   "headers": [
     "Date",
     "Close",
@@ -1569,6 +1569,12 @@
       "Close": "32.584999084472656",
       "Adj Close": "32.58",
       "Volume": "600"
+    },
+    {
+      "Date": "Oct 12 2026",
+      "Close": "32.564998626708984",
+      "Adj Close": "32.56",
+      "Volume": "394"
     }
   ]
 }

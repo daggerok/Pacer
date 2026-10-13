@@ -2,7 +2,7 @@
   "ticker": "FOWF",
   "page": 1,
   "pageSize": 1000,
-  "totalRows": 448,
+  "totalRows": 454,
   "headers": [
     "Date",
     "Close",
@@ -2697,6 +2697,42 @@
       "Close": "33.85599899291992",
       "Adj Close": "33.86",
       "Volume": "100"
+    },
+    {
+      "Date": "Oct 05 2026",
+      "Close": "33.917999267578125",
+      "Adj Close": "33.92",
+      "Volume": "10300"
+    },
+    {
+      "Date": "Oct 06 2026",
+      "Close": "33.90800094604492",
+      "Adj Close": "33.91",
+      "Volume": "1800"
+    },
+    {
+      "Date": "Oct 07 2026",
+      "Close": "33.45899963378906",
+      "Adj Close": "33.46",
+      "Volume": "3400"
+    },
+    {
+      "Date": "Oct 08 2026",
+      "Close": "33.58100128173828",
+      "Adj Close": "33.58",
+      "Volume": "800"
+    },
+    {
+      "Date": "Oct 09 2026",
+      "Close": "33.89799880981445",
+      "Adj Close": "33.9",
+      "Volume": "100"
+    },
+    {
+      "Date": "Oct 12 2026",
+      "Close": "33.80849838256836",
+      "Adj Close": "33.81",
+      "Volume": "188"
     }
   ]
 }

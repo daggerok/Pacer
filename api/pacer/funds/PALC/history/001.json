@@ -2,7 +2,7 @@
   "ticker": "PALC",
   "page": 1,
   "pageSize": 1000,
-  "totalRows": 1581,
+  "totalRows": 1582,
   "headers": [
     "Date",
     "Close",
