@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-18T03:49:07Z",
+  "generatedAt": "2026-10-18T06:38:01Z",
   "source": {
     "provider": "Pacer ETFs (Pacer Advisors, Inc.; Pacer Funds Trust, SEC CIK 0001616668), U.S.-listed ETFs",
     "market": "us",
@@ -13,7 +13,7 @@
   "counts": {
     "funds": 74,
     "holdings": 8505,
-    "history": 83276
+    "history": 83280
   },
   "funds": [
     {
@@ -600,17 +600,17 @@
       "isin": "US69374H8575",
       "ter": "0.59%",
       "terValue": 0.59,
-      "nav": "$54.64",
-      "navValue": 54.64,
-      "aum": "$3.59 B",
-      "aumValue": 3587101682.11,
-      "asOfDate": "Oct 09 2026",
+      "nav": "$56.22",
+      "navValue": 56.22,
+      "aum": "$3.68 B",
+      "aumValue": 3679309717.53,
+      "asOfDate": "Oct 16 2026",
       "inceptionDate": "Jun 16 2017",
       "exchange": "BTS",
-      "closePrice": "$54.66",
-      "closePriceValue": 54.66,
-      "premiumDiscount": "0.04%",
-      "premiumDiscountValue": 0.04,
+      "closePrice": "$56.18",
+      "closePriceValue": 56.18,
+      "premiumDiscount": "-0.06%",
+      "premiumDiscountValue": -0.06,
       "frequencyCode": "04 - Quarterly",
       "distributions": {
         "frequency": "Quarterly",
@@ -619,27 +619,27 @@
       },
       "returns": {
         "derivedFrom": "official Pacer ETFs NAV total returns (product listing, month-end) where published; Yahoo adjusted market-price closes for missing values",
-        "performanceAsOf": "2026-10-09",
+        "performanceAsOf": "2026-10-16",
         "monthEnd": {
-          "asOfDate": "Oct 09 2026",
-          "mo1": -1.9,
-          "mo1Text": "-1.90%",
-          "mo3": 6.2,
-          "mo3Text": "6.20%",
-          "qtd": 2.78,
-          "qtdText": "2.78%",
-          "ytd": 23.88,
-          "ytdText": "23.88%",
-          "yr1": 33.34,
-          "yr1Text": "33.34%",
-          "yr3": 11.69,
-          "yr3Text": "11.69%",
-          "yr5": 6.59,
-          "yr5Text": "6.59%",
+          "asOfDate": "Oct 16 2026",
+          "mo1": 0.35,
+          "mo1Text": "0.35%",
+          "mo3": 6.19,
+          "mo3Text": "6.19%",
+          "qtd": 5.44,
+          "qtdText": "5.44%",
+          "ytd": 27.46,
+          "ytdText": "27.46%",
+          "yr1": 23.28,
+          "yr1Text": "23.28%",
+          "yr3": 9.74,
+          "yr3Text": "9.74%",
+          "yr5": 6.32,
+          "yr5Text": "6.32%",
           "yr10": null,
           "yr10Text": "—",
-          "sinceInception": 10.29,
-          "sinceInceptionText": "10.29%"
+          "sinceInception": 10.03,
+          "sinceInceptionText": "10.03%"
         },
         "quarterEnd": {
           "asOfDate": "Sep 30 2026",
@@ -652,25 +652,25 @@
         }
       },
       "metrics": {
-        "ytd": 23.88,
-        "tr1y": 33.34,
-        "tr3y": 39.33,
-        "tr5y": 37.59,
+        "ytd": 27.46,
+        "tr1y": 23.28,
+        "tr3y": 32.16,
+        "tr5y": 35.85,
         "tr10y": null,
-        "cagr3y": 11.69,
-        "cagr5y": 6.59,
+        "cagr3y": 9.74,
+        "cagr5y": 6.32,
         "cagr10y": null,
-        "siAnn": 10.29,
-        "dividendYield": 1.4,
-        "dividendYieldText": "1.40%",
+        "siAnn": 10.03,
+        "dividendYield": 1.36,
+        "dividendYieldText": "1.36%",
         "dividendYieldBasis": "indicated",
-        "secYield": 1.08,
-        "secYieldText": "1.08%",
+        "secYield": 1.14,
+        "secYieldText": "1.14%",
         "returnsBasis": "official Pacer ETFs NAV total returns (product listing, month-end) where published; Yahoo adjusted market-price closes for missing values",
-        "performanceAsOf": "2026-10-09"
+        "performanceAsOf": "2026-10-16"
       },
       "holdings": 200,
-      "history": 2342
+      "history": 2346
     },
     {
       "ticker": "COWG",
