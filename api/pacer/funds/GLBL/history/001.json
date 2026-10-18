@@ -2,7 +2,7 @@
   "ticker": "GLBL",
   "page": 1,
   "pageSize": 1000,
-  "totalRows": 369,
+  "totalRows": 373,
   "headers": [
     "Date",
     "Close",
@@ -2222,6 +2222,30 @@
       "Date": "Oct 12 2026",
       "Close": "28.986000061035156",
       "Adj Close": "28.99",
+      "Volume": "100"
+    },
+    {
+      "Date": "Oct 13 2026",
+      "Close": "28.993000030517578",
+      "Adj Close": "28.99",
+      "Volume": "100"
+    },
+    {
+      "Date": "Oct 14 2026",
+      "Close": "28.725000381469727",
+      "Adj Close": "28.73",
+      "Volume": "500"
+    },
+    {
+      "Date": "Oct 15 2026",
+      "Close": "28.645000457763672",
+      "Adj Close": "28.65",
+      "Volume": "100"
+    },
+    {
+      "Date": "Oct 16 2026",
+      "Close": "28.117000579833984",
+      "Adj Close": "28.12",
       "Volume": "100"
     }
   ]

@@ -2,7 +2,7 @@
   "ticker": "ACBH",
   "page": 1,
   "pageSize": 1000,
-  "totalRows": 21,
+  "totalRows": 3,
   "headers": [
     "Date",
     "Close",
@@ -11,130 +11,22 @@
   ],
   "rows": [
     {
-      "Date": "Sep 11 2026",
-      "Close": "25.023700714111328",
-      "Adj Close": "24.81",
-      "Volume": "0"
+      "Date": "Oct 14 2026",
+      "Close": "25.280000686645508",
+      "Adj Close": "25.28",
+      "Volume": "800"
     },
     {
-      "Date": "Sep 14 2026",
-      "Close": "24.85689926147461",
-      "Adj Close": "24.65",
-      "Volume": "0"
+      "Date": "Oct 15 2026",
+      "Close": "25.3700008392334",
+      "Adj Close": "25.37",
+      "Volume": "400"
     },
     {
-      "Date": "Sep 15 2026",
-      "Close": "24.67449951171875",
-      "Adj Close": "24.47",
-      "Volume": "0"
-    },
-    {
-      "Date": "Sep 16 2026",
-      "Close": "24.673099517822266",
-      "Adj Close": "24.47",
-      "Volume": "0"
-    },
-    {
-      "Date": "Sep 17 2026",
-      "Close": "25.01420021057129",
-      "Adj Close": "24.81",
-      "Volume": "0"
-    },
-    {
-      "Date": "Sep 18 2026",
-      "Close": "25.014999389648438",
-      "Adj Close": "24.81",
-      "Volume": "0"
-    },
-    {
-      "Date": "Sep 21 2026",
-      "Close": "25.562599182128906",
-      "Adj Close": "25.35",
-      "Volume": "0"
-    },
-    {
-      "Date": "Sep 22 2026",
-      "Close": "25.557300567626953",
-      "Adj Close": "25.34",
-      "Volume": "0"
-    },
-    {
-      "Date": "Sep 23 2026",
-      "Close": "25.32379913330078",
-      "Adj Close": "25.11",
-      "Volume": "0"
-    },
-    {
-      "Date": "Sep 24 2026",
-      "Close": "25.286699295043945",
+      "Date": "Oct 16 2026",
+      "Close": "25.079999923706055",
       "Adj Close": "25.08",
-      "Volume": "0"
-    },
-    {
-      "Date": "Sep 25 2026",
-      "Close": "25.433300018310547",
-      "Adj Close": "25.22",
-      "Volume": "0"
-    },
-    {
-      "Date": "Sep 28 2026",
-      "Close": "25.21109962463379",
-      "Adj Close": "25",
-      "Volume": "0"
-    },
-    {
-      "Date": "Sep 29 2026",
-      "Close": "25.148799896240234",
-      "Adj Close": "24.94",
-      "Volume": "0"
-    },
-    {
-      "Date": "Sep 30 2026",
-      "Close": "24.86199951171875",
-      "Adj Close": "24.86",
-      "Volume": "0"
-    },
-    {
-      "Date": "Oct 01 2026",
-      "Close": "24.937999725341797",
-      "Adj Close": "24.94",
-      "Volume": "0"
-    },
-    {
-      "Date": "Oct 02 2026",
-      "Close": "25.188800811767578",
-      "Adj Close": "25.19",
-      "Volume": "0"
-    },
-    {
-      "Date": "Oct 05 2026",
-      "Close": "25.397499084472656",
-      "Adj Close": "25.4",
-      "Volume": "0"
-    },
-    {
-      "Date": "Oct 06 2026",
-      "Close": "25.579999923706055",
-      "Adj Close": "25.58",
-      "Volume": "2106"
-    },
-    {
-      "Date": "Oct 07 2026",
-      "Close": "25.579999923706055",
-      "Adj Close": "25.58",
-      "Volume": "0"
-    },
-    {
-      "Date": "Oct 08 2026",
-      "Close": "25.415000915527344",
-      "Adj Close": "25.42",
-      "Volume": "2471"
-    },
-    {
-      "Date": "Oct 09 2026",
-      "Close": "25.600000381469727",
-      "Adj Close": "25.6",
-      "Volume": "15880"
+      "Volume": "4600"
     }
   ]
 }

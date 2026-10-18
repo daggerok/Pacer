@@ -7,7 +7,7 @@
     "fundPage": "https://www.paceretfs.com/products/structured-outcome-strategies/MNVR",
     "officialProductPage": "https://www.paceretfs.com/products/structured-outcome-strategies/MNVR",
     "productPageRendering": "read-only rendering proxy (r.jina.ai) of the official fund page",
-    "productPageAsOf": "Oct 09 2026",
+    "productPageAsOf": "Oct 16 2026",
     "catalogListing": "https://www.paceretfs.com/products/",
     "holdingsDownload": "https://www.sec.gov/Archives/edgar/data/1616668/000089418926029022/0000894189-26-029022.txt",
     "officialHoldingsDownload": "https://www.paceretfs.com/products/holdings_download/MNVR",
@@ -33,32 +33,32 @@
     "kind": "Total Expenses published on the official fund page (product listing for funds without a page value)"
   },
   "nav": {
-    "display": "$33.65",
-    "value": 33.65,
-    "asOfDate": "Oct 09 2026"
+    "display": "$33.50",
+    "value": 33.5,
+    "asOfDate": "Oct 16 2026"
   },
   "marketPrice": {
-    "display": "$33.66",
-    "value": 33.66,
-    "asOfDate": "Oct 09 2026",
+    "display": "$33.51",
+    "value": 33.51,
+    "asOfDate": "Oct 16 2026",
     "source": "official fund page Market Price (closing price as of the Fund Details date)"
   },
   "premiumDiscount": {
     "display": "0.04%",
     "value": 0.04,
-    "asOfDate": "Oct 09 2026",
+    "asOfDate": "Oct 16 2026",
     "source": "official fund page Fund Details Premium/Discount"
   },
   "aum": {
-    "display": "$1.68 M",
-    "value": 1682319.53,
-    "asOfDate": "Oct 09 2026",
+    "display": "$1.67 M",
+    "value": 1674972.83,
+    "asOfDate": "Oct 16 2026",
     "source": "official fund page Net Assets"
   },
   "fundFacts": {
     "sharesOutstanding": 50000,
     "publishedTotalHoldings": 6,
-    "medianBidAskSpread": 0.002407
+    "medianBidAskSpread": 0.002673
   },
   "yields": {
     "dividendYield": null,
@@ -71,15 +71,15 @@
   },
   "returns": {
     "derivedFrom": "official Pacer ETFs NAV total returns (product listing, month-end) where published; Yahoo adjusted market-price closes for missing values",
-    "performanceAsOf": "2026-10-09",
+    "performanceAsOf": "2026-10-16",
     "monthEnd": {
-      "asOfDate": "Oct 09 2026",
-      "mo1": 1.33,
-      "mo1Text": "1.33%",
-      "mo3": 2.78,
-      "mo3Text": "2.78%",
-      "qtd": 0.75,
-      "qtdText": "0.75%",
+      "asOfDate": "Oct 16 2026",
+      "mo1": 1.11,
+      "mo1Text": "1.11%",
+      "mo3": 2.28,
+      "mo3Text": "2.28%",
+      "qtd": 0.27,
+      "qtdText": "0.27%",
       "ytd": null,
       "ytdText": "—",
       "yr1": null,
@@ -105,7 +105,7 @@
   },
   "officialMarketPriceReturns": {
     "monthEnd": {
-      "asOfDate": "Oct 09 2026",
+      "asOfDate": "Oct 16 2026",
       "mo1": null,
       "mo1Text": "—",
       "mo3": null,
@@ -171,8 +171,8 @@
       "history/001.json"
     ],
     "pageSize": 1000,
-    "totalRows": 113,
-    "asOf": "Oct 12 2026",
+    "totalRows": 117,
+    "asOf": "Oct 16 2026",
     "source": "Yahoo Finance public chart API (adjusted close)"
   }
 }

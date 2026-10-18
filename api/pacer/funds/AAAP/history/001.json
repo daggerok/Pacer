@@ -2,7 +2,7 @@
   "ticker": "AAAP",
   "page": 1,
   "pageSize": 1000,
-  "totalRows": 78,
+  "totalRows": 82,
   "headers": [
     "Date",
     "Close",
@@ -477,6 +477,30 @@
       "Close": "25.3700008392334",
       "Adj Close": "25.37",
       "Volume": "1800"
+    },
+    {
+      "Date": "Oct 13 2026",
+      "Close": "25.3700008392334",
+      "Adj Close": "25.37",
+      "Volume": "2700"
+    },
+    {
+      "Date": "Oct 14 2026",
+      "Close": "25.3799991607666",
+      "Adj Close": "25.38",
+      "Volume": "7000"
+    },
+    {
+      "Date": "Oct 15 2026",
+      "Close": "25.3799991607666",
+      "Adj Close": "25.38",
+      "Volume": "6800"
+    },
+    {
+      "Date": "Oct 16 2026",
+      "Close": "25.3799991607666",
+      "Adj Close": "25.38",
+      "Volume": "4000"
     }
   ]
 }

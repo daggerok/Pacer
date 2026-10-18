@@ -2,7 +2,7 @@
   "ticker": "QDPL",
   "page": 1,
   "pageSize": 1000,
-  "totalRows": 1309,
+  "totalRows": 1313,
   "headers": [
     "Date",
     "Close",

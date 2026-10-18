@@ -2,7 +2,7 @@
   "ticker": "BULD",
   "page": 1,
   "pageSize": 1000,
-  "totalRows": 1112,
+  "totalRows": 1116,
   "headers": [
     "Date",
     "Close",
