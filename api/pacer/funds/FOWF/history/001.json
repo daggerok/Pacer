@@ -2,7 +2,7 @@
   "ticker": "FOWF",
   "page": 1,
   "pageSize": 1000,
-  "totalRows": 458,
+  "totalRows": 459,
   "headers": [
     "Date",
     "Close",
@@ -2757,6 +2757,12 @@
       "Close": "33.88800048828125",
       "Adj Close": "33.89",
       "Volume": "100"
+    },
+    {
+      "Date": "Oct 19 2026",
+      "Close": "33.8838005065918",
+      "Adj Close": "33.88",
+      "Volume": "494"
     }
   ]
 }

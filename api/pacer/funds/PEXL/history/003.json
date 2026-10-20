@@ -2,7 +2,7 @@
   "ticker": "PEXL",
   "page": 3,
   "pageSize": 1000,
-  "totalRows": 2009,
+  "totalRows": 2010,
   "headers": [
     "Date",
     "Close",
@@ -63,6 +63,12 @@
       "Close": "71.12999725341797",
       "Adj Close": "71.13",
       "Volume": "500"
+    },
+    {
+      "Date": "Oct 19 2026",
+      "Close": "71.36000061035156",
+      "Adj Close": "71.36",
+      "Volume": "15046"
     }
   ]
 }

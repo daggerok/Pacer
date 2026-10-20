@@ -2,7 +2,7 @@
   "ticker": "ECOW",
   "page": 2,
   "pageSize": 1000,
-  "totalRows": 1874,
+  "totalRows": 1875,
   "headers": [
     "Date",
     "Close",
@@ -5253,6 +5253,12 @@
       "Close": "26.940000534057617",
       "Adj Close": "26.94",
       "Volume": "33400"
+    },
+    {
+      "Date": "Oct 19 2026",
+      "Close": "26.735000610351562",
+      "Adj Close": "26.74",
+      "Volume": "38000"
     }
   ]
 }

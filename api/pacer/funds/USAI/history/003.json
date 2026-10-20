@@ -2,7 +2,7 @@
   "ticker": "USAI",
   "page": 3,
   "pageSize": 1000,
-  "totalRows": 2222,
+  "totalRows": 2223,
   "headers": [
     "Date",
     "Close",
@@ -1341,6 +1341,12 @@
       "Close": "45.749000549316406",
       "Adj Close": "45.75",
       "Volume": "9000"
+    },
+    {
+      "Date": "Oct 19 2026",
+      "Close": "45.40999984741211",
+      "Adj Close": "45.41",
+      "Volume": "7100"
     }
   ]
 }

@@ -78,8 +78,8 @@
       "mo1Text": "2.34%",
       "mo3": 6.89,
       "mo3Text": "6.89%",
-      "qtd": -2.63,
-      "qtdText": "-2.63%",
+      "qtd": -1.74,
+      "qtdText": "-1.74%",
       "ytd": null,
       "ytdText": "—",
       "yr1": null,
@@ -184,8 +184,8 @@
       "history/001.json"
     ],
     "pageSize": 1000,
-    "totalRows": 191,
-    "asOf": "Oct 16 2026",
+    "totalRows": 192,
+    "asOf": "Oct 19 2026",
     "source": "Yahoo Finance public chart API (adjusted close)"
   }
 }

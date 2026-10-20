@@ -2,7 +2,7 @@
   "ticker": "PSCX",
   "page": 2,
   "pageSize": 1000,
-  "totalRows": 1460,
+  "totalRows": 1461,
   "headers": [
     "Date",
     "Close",
@@ -2769,6 +2769,12 @@
       "Close": "33.56100082397461",
       "Adj Close": "33.56",
       "Volume": "100"
+    },
+    {
+      "Date": "Oct 19 2026",
+      "Close": "33.65999984741211",
+      "Adj Close": "33.66",
+      "Volume": "408"
     }
   ]
 }

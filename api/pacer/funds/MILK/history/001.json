@@ -2,7 +2,7 @@
   "ticker": "MILK",
   "page": 1,
   "pageSize": 1000,
-  "totalRows": 458,
+  "totalRows": 459,
   "headers": [
     "Date",
     "Close",
@@ -2757,6 +2757,12 @@
       "Close": "23.584999084472656",
       "Adj Close": "23.58",
       "Volume": "6000"
+    },
+    {
+      "Date": "Oct 19 2026",
+      "Close": "23.486000061035156",
+      "Adj Close": "23.49",
+      "Volume": "16900"
     }
   ]
 }

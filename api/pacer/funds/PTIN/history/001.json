@@ -2,7 +2,7 @@
   "ticker": "PTIN",
   "page": 1,
   "pageSize": 1000,
-  "totalRows": 1874,
+  "totalRows": 1875,
   "headers": [
     "Date",
     "Close",

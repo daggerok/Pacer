@@ -2,7 +2,7 @@
   "ticker": "HERD",
   "page": 2,
   "pageSize": 1000,
-  "totalRows": 1873,
+  "totalRows": 1874,
   "headers": [
     "Date",
     "Close",
@@ -5247,6 +5247,12 @@
       "Close": "50.619998931884766",
       "Adj Close": "50.62",
       "Volume": "3400"
+    },
+    {
+      "Date": "Oct 19 2026",
+      "Close": "50.55580139160156",
+      "Adj Close": "50.56",
+      "Volume": "6129"
     }
   ]
 }

@@ -2,7 +2,7 @@
   "ticker": "PSMJ",
   "page": 1,
   "pageSize": 1000,
-  "totalRows": 1329,
+  "totalRows": 1330,
   "headers": [
     "Date",
     "Close",
