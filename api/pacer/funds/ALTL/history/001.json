@@ -2,7 +2,7 @@
   "ticker": "ALTL",
   "page": 1,
   "pageSize": 1000,
-  "totalRows": 1587,
+  "totalRows": 1588,
   "headers": [
     "Date",
     "Close",

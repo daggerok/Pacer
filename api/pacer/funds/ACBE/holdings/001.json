@@ -17,8 +17,8 @@
       "Name": "METACBE-SWAP-MSCS-L",
       "Ticker": "-",
       "Identifier": "METACBE-TRS-09102029MS",
-      "Weight": "100.34",
-      "Market Value": "3754078.68",
+      "Weight": "100.35",
+      "Market Value": "3773177.65",
       "Shares Held": "-",
       "Asset Category": "-"
     },
@@ -26,8 +26,8 @@
       "Name": "U.S. Bank Money Market Deposit Account 06/01/2031",
       "Ticker": "-",
       "Identifier": "USBFS03",
-      "Weight": "91.46",
-      "Market Value": "3421846.08",
+      "Weight": "91",
+      "Market Value": "3421616.01",
       "Shares Held": "-",
       "Asset Category": "-"
     },
@@ -35,8 +35,8 @@
       "Name": "Cash & Other",
       "Ticker": "-",
       "Identifier": "CASH&OTHER",
-      "Weight": "-91.81",
-      "Market Value": "-3434940.83",
+      "Weight": "-91.36",
+      "Market Value": "-3435152.07",
       "Shares Held": "-",
       "Asset Category": "-"
     }

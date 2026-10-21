@@ -2,7 +2,7 @@
   "ticker": "PTLC",
   "page": 3,
   "pageSize": 1000,
-  "totalRows": 2855,
+  "totalRows": 2856,
   "headers": [
     "Date",
     "Close",
@@ -5139,6 +5139,12 @@
       "Close": "59.849998474121094",
       "Adj Close": "59.85",
       "Volume": "384500"
+    },
+    {
+      "Date": "Oct 20 2026",
+      "Close": "60.040000915527344",
+      "Adj Close": "60.04",
+      "Volume": "94300"
     }
   ]
 }

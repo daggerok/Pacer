@@ -2,7 +2,7 @@
   "ticker": "MSEP",
   "page": 1,
   "pageSize": 1000,
-  "totalRows": 93,
+  "totalRows": 94,
   "headers": [
     "Date",
     "Close",
@@ -564,9 +564,15 @@
     },
     {
       "Date": "Oct 19 2026",
-      "Close": "32.93619918823242",
+      "Close": "32.939998626708984",
       "Adj Close": "32.94",
-      "Volume": "761"
+      "Volume": "800"
+    },
+    {
+      "Date": "Oct 20 2026",
+      "Close": "32.97999954223633",
+      "Adj Close": "32.98",
+      "Volume": "100"
     }
   ]
 }

@@ -7,7 +7,7 @@
     "fundPage": "https://www.paceretfs.com/products/PIEL",
     "officialProductPage": "https://www.paceretfs.com/products/PIEL",
     "productPageRendering": "read-only rendering proxy (r.jina.ai) of the official fund page",
-    "productPageAsOf": "Oct 16 2026",
+    "productPageAsOf": "Oct 19 2026",
     "catalogListing": "https://www.paceretfs.com/products/",
     "holdingsDownload": "https://www.sec.gov/Archives/edgar/data/1616668/000089418926029032/0000894189-26-029032.txt",
     "officialHoldingsDownload": "https://www.paceretfs.com/products/holdings_download/PIEL",
@@ -33,26 +33,26 @@
     "kind": "Total Expenses published on the official fund page (product listing for funds without a page value)"
   },
   "nav": {
-    "display": "$28.27",
-    "value": 28.27,
-    "asOfDate": "Oct 16 2026"
+    "display": "$28.18",
+    "value": 28.18,
+    "asOfDate": "Oct 19 2026"
   },
   "marketPrice": {
-    "display": "$28.06",
-    "value": 28.06,
-    "asOfDate": "Oct 16 2026",
+    "display": "$28.13",
+    "value": 28.13,
+    "asOfDate": "Oct 19 2026",
     "source": "official fund page Market Price (closing price as of the Fund Details date)"
   },
   "premiumDiscount": {
-    "display": "-0.73%",
-    "value": -0.73,
-    "asOfDate": "Oct 16 2026",
+    "display": "-0.17%",
+    "value": -0.17,
+    "asOfDate": "Oct 19 2026",
     "source": "official fund page Fund Details Premium/Discount"
   },
   "aum": {
     "display": "$1.13 M",
-    "value": 1130877.37,
-    "asOfDate": "Oct 16 2026",
+    "value": 1127042.35,
+    "asOfDate": "Oct 19 2026",
     "source": "official fund page Net Assets"
   },
   "fundFacts": {
@@ -71,17 +71,17 @@
   },
   "returns": {
     "derivedFrom": "official Pacer ETFs NAV total returns (product listing, month-end) where published; Yahoo adjusted market-price closes for missing values",
-    "performanceAsOf": "2026-10-16",
+    "performanceAsOf": "2026-10-19",
     "monthEnd": {
-      "asOfDate": "Oct 16 2026",
-      "mo1": -0.04,
-      "mo1Text": "-0.04%",
-      "mo3": -0.84,
-      "mo3Text": "-0.84%",
-      "qtd": -1.12,
-      "qtdText": "-1.12%",
-      "ytd": 11.6,
-      "ytdText": "11.60%",
+      "asOfDate": "Oct 19 2026",
+      "mo1": -0.26,
+      "mo1Text": "-0.26%",
+      "mo3": 0.1,
+      "mo3Text": "0.10%",
+      "qtd": -0.37,
+      "qtdText": "-0.37%",
+      "ytd": 11.23,
+      "ytdText": "11.23%",
       "yr1": null,
       "yr1Text": "—",
       "yr3": null,
@@ -105,13 +105,13 @@
   },
   "officialMarketPriceReturns": {
     "monthEnd": {
-      "asOfDate": "Oct 16 2026",
+      "asOfDate": "Oct 19 2026",
       "mo1": null,
       "mo1Text": "—",
       "mo3": null,
       "mo3Text": "—",
-      "ytd": 11.07,
-      "ytdText": "11.07%",
+      "ytd": 11.32,
+      "ytdText": "11.32%",
       "yr1": null,
       "yr1Text": "—",
       "yr3": null,
@@ -171,8 +171,8 @@
       "history/001.json"
     ],
     "pageSize": 1000,
-    "totalRows": 203,
-    "asOf": "Oct 19 2026",
+    "totalRows": 204,
+    "asOf": "Oct 20 2026",
     "source": "Yahoo Finance public chart API (adjusted close)"
   }
 }

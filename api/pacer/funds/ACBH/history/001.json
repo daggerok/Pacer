@@ -2,7 +2,7 @@
   "ticker": "ACBH",
   "page": 1,
   "pageSize": 1000,
-  "totalRows": 4,
+  "totalRows": 5,
   "headers": [
     "Date",
     "Close",
@@ -30,9 +30,15 @@
     },
     {
       "Date": "Oct 19 2026",
-      "Close": "25.21380043029785",
+      "Close": "25.209999084472656",
       "Adj Close": "25.21",
-      "Volume": "601"
+      "Volume": "600"
+    },
+    {
+      "Date": "Oct 20 2026",
+      "Close": "25.260000228881836",
+      "Adj Close": "25.26",
+      "Volume": "100"
     }
   ]
 }

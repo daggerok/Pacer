@@ -2,7 +2,7 @@
   "ticker": "TRND",
   "page": 2,
   "pageSize": 1000,
-  "totalRows": 1875,
+  "totalRows": 1876,
   "headers": [
     "Date",
     "Close",
@@ -5259,6 +5259,12 @@
       "Close": "36.284000396728516",
       "Adj Close": "36.28",
       "Volume": "100"
+    },
+    {
+      "Date": "Oct 20 2026",
+      "Close": "36.37799835205078",
+      "Adj Close": "36.38",
+      "Volume": "200"
     }
   ]
 }

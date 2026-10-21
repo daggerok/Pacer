@@ -2,7 +2,7 @@
   "ticker": "PSAI",
   "page": 1,
   "pageSize": 1000,
-  "totalRows": 114,
+  "totalRows": 115,
   "headers": [
     "Date",
     "Close",
@@ -693,6 +693,12 @@
       "Close": "28.65999984741211",
       "Adj Close": "28.66",
       "Volume": "300"
+    },
+    {
+      "Date": "Oct 20 2026",
+      "Close": "28.860000610351562",
+      "Adj Close": "28.86",
+      "Volume": "6100"
     }
   ]
 }

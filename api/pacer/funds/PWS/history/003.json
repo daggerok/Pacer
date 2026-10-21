@@ -2,7 +2,7 @@
   "ticker": "PWS",
   "page": 3,
   "pageSize": 1000,
-  "totalRows": 2224,
+  "totalRows": 2225,
   "headers": [
     "Date",
     "Close",
@@ -1353,6 +1353,12 @@
       "Close": "31.799999237060547",
       "Adj Close": "31.8",
       "Volume": "700"
+    },
+    {
+      "Date": "Oct 20 2026",
+      "Close": "32.14099884033203",
+      "Adj Close": "32.14",
+      "Volume": "100"
     }
   ]
 }

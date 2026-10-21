@@ -2,7 +2,7 @@
   "ticker": "ECOW",
   "page": 1,
   "pageSize": 1000,
-  "totalRows": 1875,
+  "totalRows": 1876,
   "headers": [
     "Date",
     "Close",

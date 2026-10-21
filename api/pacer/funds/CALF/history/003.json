@@ -2,7 +2,7 @@
   "ticker": "CALF",
   "page": 3,
   "pageSize": 1000,
-  "totalRows": 2347,
+  "totalRows": 2348,
   "headers": [
     "Date",
     "Close",
@@ -2091,6 +2091,12 @@
       "Close": "56.25",
       "Adj Close": "56.25",
       "Volume": "332100"
+    },
+    {
+      "Date": "Oct 20 2026",
+      "Close": "57.27000045776367",
+      "Adj Close": "57.27",
+      "Volume": "448900"
     }
   ]
 }

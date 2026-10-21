@@ -2,7 +2,7 @@
   "ticker": "INDS",
   "page": 3,
   "pageSize": 1000,
-  "totalRows": 2118,
+  "totalRows": 2119,
   "headers": [
     "Date",
     "Close",
@@ -717,6 +717,12 @@
       "Close": "37.881900787353516",
       "Adj Close": "37.88",
       "Volume": "4697"
+    },
+    {
+      "Date": "Oct 19 2026",
+      "Close": "37.49869918823242",
+      "Adj Close": "37.5",
+      "Volume": "6917"
     }
   ]
 }

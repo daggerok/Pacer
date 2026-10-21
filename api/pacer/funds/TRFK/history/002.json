@@ -2,7 +2,7 @@
   "ticker": "TRFK",
   "page": 2,
   "pageSize": 1000,
-  "totalRows": 1093,
+  "totalRows": 1094,
   "headers": [
     "Date",
     "Close",
@@ -567,6 +567,12 @@
       "Close": "88.7300033569336",
       "Adj Close": "88.73",
       "Volume": "144500"
+    },
+    {
+      "Date": "Oct 20 2026",
+      "Close": "88.38999938964844",
+      "Adj Close": "88.39",
+      "Volume": "115700"
     }
   ]
 }

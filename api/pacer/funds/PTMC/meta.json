@@ -71,15 +71,15 @@
   },
   "returns": {
     "derivedFrom": "official Pacer ETFs NAV total returns (product listing, month-end) where published; Yahoo adjusted market-price closes for missing values",
-    "performanceAsOf": "2026-10-16",
+    "performanceAsOf": "2026-10-19",
     "monthEnd": {
-      "asOfDate": "Oct 16 2026",
-      "mo1": -0.71,
-      "mo1Text": "-0.71%",
-      "mo3": -4.69,
-      "mo3Text": "-4.69%",
-      "qtd": 0.42,
-      "qtdText": "0.42%",
+      "asOfDate": "Oct 19 2026",
+      "mo1": -0.98,
+      "mo1Text": "-0.98%",
+      "mo3": -4.14,
+      "mo3Text": "-4.14%",
+      "qtd": 1.37,
+      "qtdText": "1.37%",
       "ytd": 9.99,
       "ytdText": "9.99%",
       "yr1": 11.21,
@@ -105,13 +105,13 @@
   },
   "officialMarketPriceReturns": {
     "monthEnd": {
-      "asOfDate": "Oct 16 2026",
+      "asOfDate": "Oct 19 2026",
       "mo1": null,
       "mo1Text": "—",
       "mo3": null,
       "mo3Text": "—",
-      "ytd": 10.09,
-      "ytdText": "10.09%",
+      "ytd": 10.1,
+      "ytdText": "10.10%",
       "yr1": null,
       "yr1Text": "—",
       "yr3": null,
@@ -219,8 +219,8 @@
       "history/003.json"
     ],
     "pageSize": 1000,
-    "totalRows": 2855,
-    "asOf": "Oct 19 2026",
+    "totalRows": 2856,
+    "asOf": "Oct 20 2026",
     "source": "Yahoo Finance public chart API (adjusted close)"
   }
 }

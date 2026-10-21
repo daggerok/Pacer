@@ -2,7 +2,7 @@
   "ticker": "MCOW",
   "page": 1,
   "pageSize": 1000,
-  "totalRows": 287,
+  "totalRows": 288,
   "headers": [
     "Date",
     "Close",
@@ -1728,9 +1728,15 @@
     },
     {
       "Date": "Oct 19 2026",
-      "Close": "22.047399520874023",
+      "Close": "22.047000885009766",
       "Adj Close": "22.05",
-      "Volume": "2172"
+      "Volume": "2200"
+    },
+    {
+      "Date": "Oct 20 2026",
+      "Close": "22.339000701904297",
+      "Adj Close": "22.34",
+      "Volume": "100"
     }
   ]
 }

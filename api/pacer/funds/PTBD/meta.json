@@ -7,7 +7,7 @@
     "fundPage": "https://www.paceretfs.com/products/PTBD",
     "officialProductPage": "https://www.paceretfs.com/products/PTBD",
     "productPageRendering": "read-only rendering proxy (r.jina.ai) of the official fund page",
-    "productPageAsOf": "Oct 16 2026",
+    "productPageAsOf": "Oct 19 2026",
     "catalogListing": "https://www.paceretfs.com/products/",
     "holdingsDownload": "https://www.sec.gov/Archives/edgar/data/1616668/000089418926029052/0000894189-26-029052.txt",
     "officialHoldingsDownload": "https://www.paceretfs.com/products/holdings_download/PTBD",
@@ -33,55 +33,55 @@
     "kind": "Total Expenses published on the official fund page (product listing for funds without a page value)"
   },
   "nav": {
-    "display": "$18.38",
-    "value": 18.38,
-    "asOfDate": "Oct 16 2026"
-  },
-  "marketPrice": {
     "display": "$18.36",
     "value": 18.36,
-    "asOfDate": "Oct 16 2026",
+    "asOfDate": "Oct 19 2026"
+  },
+  "marketPrice": {
+    "display": "$18.34",
+    "value": 18.34,
+    "asOfDate": "Oct 19 2026",
     "source": "official fund page Market Price (closing price as of the Fund Details date)"
   },
   "premiumDiscount": {
     "display": "-0.12%",
     "value": -0.12,
-    "asOfDate": "Oct 16 2026",
+    "asOfDate": "Oct 19 2026",
     "source": "official fund page Fund Details Premium/Discount"
   },
   "aum": {
-    "display": "$84.56 M",
-    "value": 84557864.09,
-    "asOfDate": "Oct 16 2026",
+    "display": "$84.47 M",
+    "value": 84468283.74,
+    "asOfDate": "Oct 19 2026",
     "source": "official fund page Net Assets"
   },
   "fundFacts": {
     "sharesOutstanding": 4600000,
-    "publishedTotalHoldings": 1046,
-    "medianBidAskSpread": 0.001593
+    "publishedTotalHoldings": 1047,
+    "medianBidAskSpread": 0.001594
   },
   "yields": {
     "dividendYield": 6.12,
     "dividendYieldText": "6.12%",
     "dividendYieldBasis": "indicated",
     "dividendYieldKind": "indicated (latest distribution x inferred payments per year / NAV; Pacer publishes no distribution yield)",
-    "secYield": 7.34,
-    "secYieldText": "7.34%",
-    "secYieldKind": "30 Day SEC Yield published on the official fund page as of Oct 16 2026"
+    "secYield": 7.35,
+    "secYieldText": "7.35%",
+    "secYieldKind": "30 Day SEC Yield published on the official fund page as of Oct 19 2026"
   },
   "returns": {
     "derivedFrom": "official Pacer ETFs NAV total returns (product listing, month-end) where published; Yahoo adjusted market-price closes for missing values",
-    "performanceAsOf": "2026-10-16",
+    "performanceAsOf": "2026-10-19",
     "monthEnd": {
-      "asOfDate": "Oct 16 2026",
-      "mo1": -1.57,
-      "mo1Text": "-1.57%",
-      "mo3": -2.18,
-      "mo3Text": "-2.18%",
-      "qtd": -0.11,
-      "qtdText": "-0.11%",
-      "ytd": -0.9,
-      "ytdText": "-0.90%",
+      "asOfDate": "Oct 19 2026",
+      "mo1": -1.67,
+      "mo1Text": "-1.67%",
+      "mo3": -2.24,
+      "mo3Text": "-2.24%",
+      "qtd": -0.16,
+      "qtdText": "-0.16%",
+      "ytd": -1,
+      "ytdText": "-1.00%",
       "yr1": -1.45,
       "yr1Text": "-1.45%",
       "yr3": 4.21,
@@ -105,13 +105,13 @@
   },
   "officialMarketPriceReturns": {
     "monthEnd": {
-      "asOfDate": "Oct 16 2026",
+      "asOfDate": "Oct 19 2026",
       "mo1": null,
       "mo1Text": "—",
       "mo3": null,
       "mo3Text": "—",
-      "ytd": -1.01,
-      "ytdText": "-1.01%",
+      "ytd": -1.12,
+      "ytdText": "-1.12%",
       "yr1": null,
       "yr1Text": "—",
       "yr3": null,
@@ -408,7 +408,7 @@
     "asOf": "Jul 31 2026",
     "source": "SEC EDGAR Form N-PORT-P (accession 0000894189-26-029052, report period 2026-07-31)",
     "marketValueBasis": "SEC Form N-PORT-P reported value (valUSD)",
-    "publishedTotalHoldings": 1046
+    "publishedTotalHoldings": 1047
   },
   "history": {
     "pages": [
@@ -416,8 +416,8 @@
       "history/002.json"
     ],
     "pageSize": 1000,
-    "totalRows": 1756,
-    "asOf": "Oct 19 2026",
+    "totalRows": 1757,
+    "asOf": "Oct 20 2026",
     "source": "Yahoo Finance public chart API (adjusted close)"
   }
 }

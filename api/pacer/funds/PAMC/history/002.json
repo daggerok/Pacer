@@ -2,7 +2,7 @@
   "ticker": "PAMC",
   "page": 2,
   "pageSize": 1000,
-  "totalRows": 1587,
+  "totalRows": 1588,
   "headers": [
     "Date",
     "Close",
@@ -3528,9 +3528,15 @@
     },
     {
       "Date": "Oct 19 2026",
-      "Close": "48.85449981689453",
+      "Close": "48.85499954223633",
       "Adj Close": "48.85",
-      "Volume": "1606"
+      "Volume": "1600"
+    },
+    {
+      "Date": "Oct 20 2026",
+      "Close": "49.15800094604492",
+      "Adj Close": "49.16",
+      "Volume": "800"
     }
   ]
 }

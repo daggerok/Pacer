@@ -2,7 +2,7 @@
   "ticker": "ACBE",
   "page": 1,
   "pageSize": 1000,
-  "totalRows": 1,
+  "totalRows": 2,
   "headers": [
     "Date",
     "Close",
@@ -12,9 +12,15 @@
   "rows": [
     {
       "Date": "Oct 19 2026",
-      "Close": "25.059799194335938",
+      "Close": "25.059999465942383",
       "Adj Close": "25.06",
-      "Volume": "4118"
+      "Volume": "4100"
+    },
+    {
+      "Date": "Oct 20 2026",
+      "Close": "25.1299991607666",
+      "Adj Close": "25.13",
+      "Volume": "100"
     }
   ]
 }

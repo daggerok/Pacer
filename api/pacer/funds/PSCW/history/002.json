@@ -2,7 +2,7 @@
   "ticker": "PSCW",
   "page": 2,
   "pageSize": 1000,
-  "totalRows": 1394,
+  "totalRows": 1395,
   "headers": [
     "Date",
     "Close",
@@ -2373,6 +2373,12 @@
       "Close": "30.780000686645508",
       "Adj Close": "30.78",
       "Volume": "100"
+    },
+    {
+      "Date": "Oct 20 2026",
+      "Close": "30.799999237060547",
+      "Adj Close": "30.8",
+      "Volume": "1800"
     }
   ]
 }
