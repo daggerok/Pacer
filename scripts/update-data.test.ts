@@ -22,6 +22,7 @@ import {
   historyPeriodStart,
   historyRows,
   holdingsFallback,
+  holdingsGuard,
   publishedAsOf,
   stalestFirst,
   htmlToText,
@@ -557,6 +558,21 @@ describe('parsing', () => {
     expect(cleanHoldingTicker(' n/a ')).toBe('');
     expect(cleanHoldingTicker('brk.b')).toBe('BRK.B');
   });
+
+  test('holdings guard: header-only, renamed weight column, broken weights, a bad weight sum and a halved sheet are rejected', () => {
+    const headers = ['Name', 'Ticker', 'Weight'];
+    const rows = [{ Name: 'A', Ticker: 'A', Weight: '60%' }, { Name: 'B', Ticker: 'B', Weight: '40%' }];
+    expect(holdingsGuard(headers, rows, 2)).toBeNull();
+    expect(holdingsGuard(headers, [['A', 'A', '60'], ['B', 'B', '40']], null)).toBeNull();
+    expect(holdingsGuard([], [], 0)).toBeNull(); // nothing published before: an empty sheet is honest
+    expect(holdingsGuard(headers, [], 505)).toContain('no holdings rows');
+    expect(holdingsGuard(['Name', 'Ticker', 'Wt'], rows, 2)).toContain('no weight column');
+    expect(holdingsGuard(headers, rows.map((row) => ({ ...row, Weight: '6​0' })), 2)).toContain('numeric weight');
+    const allocation = [{ Name: 'Cash&Collateral', Ticker: '-', Weight: '100' }, { Name: 'Equities', Ticker: '-', Weight: '476' }];
+    expect(holdingsGuard(headers, allocation, 2)).toContain('outside 50..150');
+    expect(holdingsGuard(headers, allocation, 2, ['sum'])).toBeNull();
+    expect(holdingsGuard(headers, rows, 5)).toContain('less than half');
+  });
 });
 
 describe('metrics', () => {
@@ -706,6 +722,18 @@ globalThis.fetch = (async (input) => {
   const fail = (process.env.MOCK_FAIL || '').split(',');
   const url = String(input).replace('https://r.jina.ai/', '');
   const reply = (body, ok = true) => (ok ? new Response(body) : new Response('boom', { status: 500 }));
+  // MOCK_NPORT: SEC EDGAR serves a COWZ N-PORT-P filing, 'good' (weights add up to 100) or 'nopct' (no pctVal: every weight is 0)
+  if (process.env.MOCK_NPORT && url.startsWith('https://www.sec.gov/')) {
+    if (url.endsWith('/files/company_tickers_mf.json')) return reply(JSON.stringify({ fields: ['cik', 'seriesId', 'classId', 'symbol'], data: [[1616668, 'S000034073', 'C000104937', 'COWZ']] }));
+    if (url.endsWith('/files/company_tickers.json')) return reply(JSON.stringify({ 0: { cik_str: 310158, ticker: 'MRK', title: 'Merck & Co., Inc.' } }));
+    if (url.includes('/cgi-bin/browse-edgar?')) return reply('<feed><entry><content><accession-number>0001752724-26-000001</accession-number><filing-date>2026-08-27</filing-date><filing-type>NPORT-P</filing-type><period>2026-06-30</period></content></entry></feed>');
+    if (url.endsWith('/0001752724-26-000001.txt')) {
+      const pct = (value) => (process.env.MOCK_NPORT === 'good' ? '<pctVal>' + value + '</pctVal>' : '');
+      return reply('<edgarSubmission><genInfo><seriesName>Pacer US Cash Cows 100 ETF</seriesName><seriesId>S000034073</seriesId><repPdDate>2026-06-30</repPdDate></genInfo><fundInfo><netAssets>1000</netAssets></fundInfo><invstOrSecs>'
+        + '<invstOrSec><name>MERCK &amp; CO INC</name><cusip>58933Y105</cusip><balance>10</balance><valUSD>600</valUSD>' + pct(60) + '<assetCat>EC</assetCat></invstOrSec>'
+        + '<invstOrSec><name>CHEVRON CORP</name><cusip>166764100</cusip><balance>5</balance><valUSD>400</valUSD>' + pct(40) + '<assetCat>EC</assetCat></invstOrSec></invstOrSecs></edgarSubmission>');
+    }
+  }
   if (url === 'https://www.paceretfs.com/products/') return reply(process.env.MOCK_NEWF ? F.catalog + '\\n#### [NEWF](https://www.paceretfs.com/products/newf)\\n\\n[Pacer New Test ETF](https://www.paceretfs.com/products/newf)\\n' : F.catalog, !fail.includes('catalog'));
   const chartMatch = url.match(/\\/v8\\/finance\\/chart\\/([A-Z]+)\\?/);
   if (chartMatch) return reply(JSON.stringify(chart(chartMatch[1] === 'QFHD' ? 20 : 400)), !fail.includes(chartMatch[1] + ':chart'));
@@ -880,6 +908,20 @@ describe('pipeline', () => {
       }
     });
     expect([holdingsFallback(102, 10), holdingsFallback(10, 10), holdingsFallback(5, 0), holdingsFallback(0, 10), holdingsFallback(0, 0)]).toEqual(['previous', 'top10', 'previous', 'top10', 'none']);
+  }, 60_000);
+
+  test('holdings that fail the guard keep the fund exactly as published and report it failed', () => {
+    withFeed((feed) => {
+      expect(feed.run({ EDGAR_FALLBACK: 'true', MOCK_NPORT: 'good' }).status).toBe(0);
+      expect(JSON.parse(feed.read('funds/COWZ/meta.json')).holdings).toMatchObject({ totalRows: 2, source: expect.stringContaining('N-PORT-P') });
+      const published = feed.snapshot();
+      // the filing lost its pctVal elements: every weight comes out 0
+      const summary = feed.path('step-summary.md');
+      const result = feed.run({ EDGAR_FALLBACK: 'true', MOCK_NPORT: 'nopct', GITHUB_STEP_SUMMARY: summary });
+      expect(result.out).toContain('holdings guard: weights add up to 0.00');
+      expect(readFileSync(summary, 'utf8')).toContain('- failed: 1\n');
+      expect(feed.snapshot()).toEqual(published);
+    });
   }, 60_000);
 
   test('a partial fund page or a failed listing keeps the published official sections (zero diff); a fully loaded page lacking a field is an honest null', () => {
