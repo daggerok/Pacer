@@ -2,7 +2,7 @@
   "ticker": "PSFF",
   "page": 2,
   "pageSize": 1000,
-  "totalRows": 1458,
+  "totalRows": 1461,
   "headers": [
     "Date",
     "Close",
@@ -2757,6 +2757,24 @@
       "Close": "35.279998779296875",
       "Adj Close": "35.28",
       "Volume": "92900"
+    },
+    {
+      "Date": "Oct 21 2026",
+      "Close": "35.41999816894531",
+      "Adj Close": "35.42",
+      "Volume": "48200"
+    },
+    {
+      "Date": "Oct 22 2026",
+      "Close": "35.15999984741211",
+      "Adj Close": "35.16",
+      "Volume": "64700"
+    },
+    {
+      "Date": "Oct 23 2026",
+      "Close": "35.09400177001953",
+      "Adj Close": "35.09",
+      "Volume": "35100"
     }
   ]
 }

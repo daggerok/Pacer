@@ -2,7 +2,7 @@
   "ticker": "PSFM",
   "page": 1,
   "pageSize": 1000,
-  "totalRows": 1395,
+  "totalRows": 1398,
   "headers": [
     "Date",
     "Close",

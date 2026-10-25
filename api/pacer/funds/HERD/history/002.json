@@ -2,7 +2,7 @@
   "ticker": "HERD",
   "page": 2,
   "pageSize": 1000,
-  "totalRows": 1875,
+  "totalRows": 1878,
   "headers": [
     "Date",
     "Close",
@@ -5259,6 +5259,24 @@
       "Close": "51.08100128173828",
       "Adj Close": "51.08",
       "Volume": "1000"
+    },
+    {
+      "Date": "Oct 21 2026",
+      "Close": "50.95000076293945",
+      "Adj Close": "50.95",
+      "Volume": "3500"
+    },
+    {
+      "Date": "Oct 22 2026",
+      "Close": "51.32400131225586",
+      "Adj Close": "51.32",
+      "Volume": "3000"
+    },
+    {
+      "Date": "Oct 23 2026",
+      "Close": "50.96900177001953",
+      "Adj Close": "50.97",
+      "Volume": "4300"
     }
   ]
 }

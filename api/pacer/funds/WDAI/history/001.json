@@ -2,7 +2,7 @@
   "ticker": "WDAI",
   "page": 1,
   "pageSize": 1000,
-  "totalRows": 115,
+  "totalRows": 118,
   "headers": [
     "Date",
     "Close",
@@ -699,6 +699,24 @@
       "Close": "28.479999542236328",
       "Adj Close": "28.48",
       "Volume": "1500"
+    },
+    {
+      "Date": "Oct 21 2026",
+      "Close": "28.59000015258789",
+      "Adj Close": "28.59",
+      "Volume": "100"
+    },
+    {
+      "Date": "Oct 22 2026",
+      "Close": "28.389999389648438",
+      "Adj Close": "28.39",
+      "Volume": "100"
+    },
+    {
+      "Date": "Oct 23 2026",
+      "Close": "28.299999237060547",
+      "Adj Close": "28.3",
+      "Volume": "300"
     }
   ]
 }

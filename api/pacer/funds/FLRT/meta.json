@@ -7,7 +7,7 @@
     "fundPage": "https://www.paceretfs.com/products/FLRT",
     "officialProductPage": "https://www.paceretfs.com/products/FLRT",
     "productPageRendering": "read-only rendering proxy (r.jina.ai) of the official fund page",
-    "productPageAsOf": "Oct 19 2026",
+    "productPageAsOf": "Oct 23 2026",
     "catalogListing": "https://www.paceretfs.com/products/",
     "holdingsDownload": "https://www.sec.gov/Archives/edgar/data/1616668/000089418926028988/0000894189-26-028988.txt",
     "officialHoldingsDownload": "https://www.paceretfs.com/products/holdings_download/FLRT",
@@ -33,55 +33,55 @@
     "kind": "Total Expenses published on the official fund page (product listing for funds without a page value)"
   },
   "nav": {
-    "display": "$46.39",
-    "value": 46.39,
-    "asOfDate": "Oct 19 2026"
+    "display": "$46.13",
+    "value": 46.13,
+    "asOfDate": "Oct 23 2026"
   },
   "marketPrice": {
-    "display": "$46.42",
-    "value": 46.42,
-    "asOfDate": "Oct 19 2026",
+    "display": "$46.15",
+    "value": 46.15,
+    "asOfDate": "Oct 23 2026",
     "source": "official fund page Market Price (closing price as of the Fund Details date)"
   },
   "premiumDiscount": {
-    "display": "0.06%",
-    "value": 0.06,
-    "asOfDate": "Oct 19 2026",
+    "display": "0.04%",
+    "value": 0.04,
+    "asOfDate": "Oct 23 2026",
     "source": "official fund page Fund Details Premium/Discount"
   },
   "aum": {
-    "display": "$1.05 B",
-    "value": 1047033983.15,
-    "asOfDate": "Oct 19 2026",
+    "display": "$1.06 B",
+    "value": 1055052246.4,
+    "asOfDate": "Oct 23 2026",
     "source": "official fund page Net Assets"
   },
   "fundFacts": {
-    "sharesOutstanding": 22570000,
-    "publishedTotalHoldings": 366,
-    "medianBidAskSpread": 0.000429
+    "sharesOutstanding": 22870000,
+    "publishedTotalHoldings": 375,
+    "medianBidAskSpread": 0.00043
   },
   "yields": {
-    "dividendYield": 5.67,
-    "dividendYieldText": "5.67%",
+    "dividendYield": 5.14,
+    "dividendYieldText": "5.14%",
     "dividendYieldBasis": "indicated",
     "dividendYieldKind": "indicated (latest distribution x inferred payments per year / NAV; Pacer publishes no distribution yield)",
-    "secYield": 6.09,
-    "secYieldText": "6.09%",
-    "secYieldKind": "30 Day SEC Yield published on the official fund page as of Oct 19 2026"
+    "secYield": 6.16,
+    "secYieldText": "6.16%",
+    "secYieldKind": "30 Day SEC Yield published on the official fund page as of Oct 23 2026"
   },
   "returns": {
     "derivedFrom": "official Pacer ETFs NAV total returns (product listing, month-end) where published; Yahoo adjusted market-price closes for missing values",
-    "performanceAsOf": "2026-10-19",
+    "performanceAsOf": "2026-10-23",
     "monthEnd": {
-      "asOfDate": "Oct 19 2026",
-      "mo1": -0.45,
-      "mo1Text": "-0.45%",
-      "mo3": 0.76,
-      "mo3Text": "0.76%",
-      "qtd": -0.11,
-      "qtdText": "-0.11%",
-      "ytd": 3.05,
-      "ytdText": "3.05%",
+      "asOfDate": "Oct 23 2026",
+      "mo1": -0.55,
+      "mo1Text": "-0.55%",
+      "mo3": 0.71,
+      "mo3Text": "0.71%",
+      "qtd": -0.2,
+      "qtdText": "-0.20%",
+      "ytd": 2.92,
+      "ytdText": "2.92%",
       "yr1": 4.81,
       "yr1Text": "4.81%",
       "yr3": 7.49,
@@ -105,13 +105,13 @@
   },
   "officialMarketPriceReturns": {
     "monthEnd": {
-      "asOfDate": "Oct 19 2026",
+      "asOfDate": "Oct 23 2026",
       "mo1": null,
       "mo1Text": "—",
       "mo3": null,
       "mo3Text": "—",
-      "ytd": 3.14,
-      "ytdText": "3.14%",
+      "ytd": 2.98,
+      "ytdText": "2.98%",
       "yr1": null,
       "yr1Text": "—",
       "yr3": null,
@@ -672,6 +672,10 @@
       [
         "09/24/2026",
         "0.219074"
+      ],
+      [
+        "10/22/2026",
+        "0.197525"
       ]
     ]
   },
@@ -686,7 +690,7 @@
     "asOf": "Jul 31 2026",
     "source": "SEC EDGAR Form N-PORT-P (accession 0000894189-26-028988, report period 2026-07-31)",
     "marketValueBasis": "SEC Form N-PORT-P reported value (valUSD)",
-    "publishedTotalHoldings": 366
+    "publishedTotalHoldings": 375
   },
   "history": {
     "pages": [
@@ -695,8 +699,8 @@
       "history/003.json"
     ],
     "pageSize": 1000,
-    "totalRows": 2935,
-    "asOf": "Oct 20 2026",
+    "totalRows": 2938,
+    "asOf": "Oct 23 2026",
     "source": "Yahoo Finance public chart API (adjusted close)"
   }
 }

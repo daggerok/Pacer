@@ -2,7 +2,7 @@
   "ticker": "PSCQ",
   "page": 2,
   "pageSize": 1000,
-  "totalRows": 1267,
+  "totalRows": 1270,
   "headers": [
     "Date",
     "Close",
@@ -1611,6 +1611,24 @@
       "Close": "32.369998931884766",
       "Adj Close": "32.37",
       "Volume": "8200"
+    },
+    {
+      "Date": "Oct 21 2026",
+      "Close": "32.4739990234375",
+      "Adj Close": "32.47",
+      "Volume": "100"
+    },
+    {
+      "Date": "Oct 22 2026",
+      "Close": "32.31999969482422",
+      "Adj Close": "32.32",
+      "Volume": "4300"
+    },
+    {
+      "Date": "Oct 23 2026",
+      "Close": "32.20899963378906",
+      "Adj Close": "32.21",
+      "Volume": "200"
     }
   ]
 }

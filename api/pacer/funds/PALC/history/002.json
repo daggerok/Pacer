@@ -2,7 +2,7 @@
   "ticker": "PALC",
   "page": 2,
   "pageSize": 1000,
-  "totalRows": 1588,
+  "totalRows": 1591,
   "headers": [
     "Date",
     "Close",
@@ -3537,6 +3537,24 @@
       "Close": "53.63600158691406",
       "Adj Close": "53.64",
       "Volume": "9300"
+    },
+    {
+      "Date": "Oct 21 2026",
+      "Close": "53.939998626708984",
+      "Adj Close": "53.94",
+      "Volume": "8600"
+    },
+    {
+      "Date": "Oct 22 2026",
+      "Close": "53.310001373291016",
+      "Adj Close": "53.31",
+      "Volume": "37100"
+    },
+    {
+      "Date": "Oct 23 2026",
+      "Close": "52.93000030517578",
+      "Adj Close": "52.93",
+      "Volume": "3400"
     }
   ]
 }

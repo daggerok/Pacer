@@ -2,7 +2,7 @@
   "ticker": "CALF",
   "page": 2,
   "pageSize": 1000,
-  "totalRows": 2348,
+  "totalRows": 2351,
   "headers": [
     "Date",
     "Close",

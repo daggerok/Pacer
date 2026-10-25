@@ -393,7 +393,7 @@
     },
     {
       "Name": "ABB Ltd",
-      "Ticker": "ABLZF",
+      "Ticker": "ABBNY",
       "Identifier": "CH0012221716",
       "Weight": "1.6232990253",
       "Market Value": "3355685.97",
@@ -429,7 +429,7 @@
     },
     {
       "Name": "Nitto Denko Corp",
-      "Ticker": "NDEKF",
+      "Ticker": "-",
       "Identifier": "JP3684000007",
       "Weight": "0.2344064719",
       "Market Value": "484565.38",
@@ -780,7 +780,7 @@
     },
     {
       "Name": "FANUC Corp",
-      "Ticker": "-",
+      "Ticker": "FANUF",
       "Identifier": "JP3802400006",
       "Weight": "0.540794446",
       "Market Value": "1117931.02",

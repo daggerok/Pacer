@@ -2,7 +2,7 @@
   "ticker": "PWS",
   "page": 1,
   "pageSize": 1000,
-  "totalRows": 2225,
+  "totalRows": 2228,
   "headers": [
     "Date",
     "Close",

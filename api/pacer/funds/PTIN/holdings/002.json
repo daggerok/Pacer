@@ -1608,7 +1608,7 @@
     },
     {
       "Name": "FANUC Corp",
-      "Ticker": "-",
+      "Ticker": "FANUF",
       "Identifier": "JP3802400006",
       "Weight": "0.1723835287",
       "Market Value": "318396.66",
@@ -1950,7 +1950,7 @@
     },
     {
       "Name": "Siemens Healthineers AG",
-      "Ticker": "-",
+      "Ticker": "SMMNY",
       "Identifier": "DE000SHL1006",
       "Weight": "0.0518937308",
       "Market Value": "95849.01",

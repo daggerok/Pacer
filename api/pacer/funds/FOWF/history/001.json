@@ -2,7 +2,7 @@
   "ticker": "FOWF",
   "page": 1,
   "pageSize": 1000,
-  "totalRows": 460,
+  "totalRows": 463,
   "headers": [
     "Date",
     "Close",
@@ -2769,6 +2769,24 @@
       "Close": "34.112998962402344",
       "Adj Close": "34.11",
       "Volume": "100"
+    },
+    {
+      "Date": "Oct 21 2026",
+      "Close": "34.275001525878906",
+      "Adj Close": "34.28",
+      "Volume": "700"
+    },
+    {
+      "Date": "Oct 22 2026",
+      "Close": "34.404998779296875",
+      "Adj Close": "34.4",
+      "Volume": "200"
+    },
+    {
+      "Date": "Oct 23 2026",
+      "Close": "34.50699996948242",
+      "Adj Close": "34.51",
+      "Volume": "300"
     }
   ]
 }

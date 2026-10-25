@@ -7,7 +7,7 @@
     "fundPage": "https://www.paceretfs.com/products/WDAI",
     "officialProductPage": "https://www.paceretfs.com/products/WDAI",
     "productPageRendering": "read-only rendering proxy (r.jina.ai) of the official fund page",
-    "productPageAsOf": "Oct 19 2026",
+    "productPageAsOf": "Oct 23 2026",
     "catalogListing": "https://www.paceretfs.com/products/",
     "holdingsDownload": "https://www.sec.gov/Archives/edgar/data/1616668/000089418926029056/0000894189-26-029056.txt",
     "officialHoldingsDownload": "https://www.paceretfs.com/products/holdings_download/WDAI",
@@ -33,53 +33,53 @@
     "kind": "Total Expenses published on the official fund page (product listing for funds without a page value)"
   },
   "nav": {
-    "display": "$28.37",
-    "value": 28.37,
-    "asOfDate": "Oct 19 2026"
+    "display": "$28.24",
+    "value": 28.24,
+    "asOfDate": "Oct 23 2026"
   },
   "marketPrice": {
-    "display": "$28.33",
-    "value": 28.33,
-    "asOfDate": "Oct 19 2026",
+    "display": "$28.30",
+    "value": 28.3,
+    "asOfDate": "Oct 23 2026",
     "source": "official fund page Market Price (closing price as of the Fund Details date)"
   },
   "premiumDiscount": {
-    "display": "-0.13%",
-    "value": -0.13,
-    "asOfDate": "Oct 19 2026",
+    "display": "0.21%",
+    "value": 0.21,
+    "asOfDate": "Oct 23 2026",
     "source": "official fund page Fund Details Premium/Discount"
   },
   "aum": {
     "display": "$1.13 M",
-    "value": 1134603.31,
-    "asOfDate": "Oct 19 2026",
+    "value": 1129553.72,
+    "asOfDate": "Oct 23 2026",
     "source": "official fund page Net Assets"
   },
   "fundFacts": {
     "sharesOutstanding": 40000,
     "publishedTotalHoldings": 311,
-    "medianBidAskSpread": 0.0021
+    "medianBidAskSpread": 0.002109
   },
   "yields": {
-    "dividendYield": 0.95,
-    "dividendYieldText": "0.95%",
+    "dividendYield": 0.96,
+    "dividendYieldText": "0.96%",
     "dividendYieldBasis": "indicated",
     "dividendYieldKind": "indicated (latest distribution x inferred payments per year / NAV; Pacer publishes no distribution yield)",
-    "secYield": 2.23,
-    "secYieldText": "2.23%",
-    "secYieldKind": "30 Day SEC Yield published on the official fund page as of Oct 19 2026"
+    "secYield": 2.32,
+    "secYieldText": "2.32%",
+    "secYieldKind": "30 Day SEC Yield published on the official fund page as of Oct 23 2026"
   },
   "returns": {
     "derivedFrom": "official Pacer ETFs NAV total returns (product listing, month-end) where published; Yahoo adjusted market-price closes for missing values",
-    "performanceAsOf": "2026-10-19",
+    "performanceAsOf": "2026-10-23",
     "monthEnd": {
-      "asOfDate": "Oct 19 2026",
-      "mo1": -1.49,
-      "mo1Text": "-1.49%",
-      "mo3": 4.46,
-      "mo3Text": "4.46%",
-      "qtd": 1.39,
-      "qtdText": "1.39%",
+      "asOfDate": "Oct 23 2026",
+      "mo1": -0.77,
+      "mo1Text": "-0.77%",
+      "mo3": 4.26,
+      "mo3Text": "4.26%",
+      "qtd": 0.75,
+      "qtdText": "0.75%",
       "ytd": null,
       "ytdText": "—",
       "yr1": null,
@@ -105,7 +105,7 @@
   },
   "officialMarketPriceReturns": {
     "monthEnd": {
-      "asOfDate": "Oct 19 2026",
+      "asOfDate": "Oct 23 2026",
       "mo1": null,
       "mo1Text": "—",
       "mo3": null,
@@ -181,8 +181,8 @@
       "history/001.json"
     ],
     "pageSize": 1000,
-    "totalRows": 115,
-    "asOf": "Oct 20 2026",
+    "totalRows": 118,
+    "asOf": "Oct 23 2026",
     "source": "Yahoo Finance public chart API (adjusted close)"
   }
 }

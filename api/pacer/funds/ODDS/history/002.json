@@ -2,7 +2,7 @@
   "ticker": "ODDS",
   "page": 2,
   "pageSize": 1000,
-  "totalRows": 1136,
+  "totalRows": 1139,
   "headers": [
     "Date",
     "Close",
@@ -825,6 +825,24 @@
       "Close": "24.1200008392334",
       "Adj Close": "24.12",
       "Volume": "2200"
+    },
+    {
+      "Date": "Oct 21 2026",
+      "Close": "23.93000030517578",
+      "Adj Close": "23.93",
+      "Volume": "100"
+    },
+    {
+      "Date": "Oct 22 2026",
+      "Close": "23.820999145507812",
+      "Adj Close": "23.82",
+      "Volume": "100"
+    },
+    {
+      "Date": "Oct 23 2026",
+      "Close": "23.841999053955078",
+      "Adj Close": "23.84",
+      "Volume": "100"
     }
   ]
 }

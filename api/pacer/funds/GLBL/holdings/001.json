@@ -978,7 +978,7 @@
     },
     {
       "Name": "Warner Bros Discovery Inc",
-      "Ticker": "WBD",
+      "Ticker": "-",
       "Identifier": "934423104",
       "Weight": "0.1472557741",
       "Market Value": "1630.6",
@@ -1923,7 +1923,7 @@
     },
     {
       "Name": "FANUC Corp",
-      "Ticker": "-",
+      "Ticker": "FANUF",
       "Identifier": "JP3802400006",
       "Weight": "0.101244892",
       "Market Value": "1121.11",

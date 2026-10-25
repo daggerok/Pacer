@@ -2,7 +2,7 @@
   "ticker": "QQQG",
   "page": 1,
   "pageSize": 1000,
-  "totalRows": 543,
+  "totalRows": 546,
   "headers": [
     "Date",
     "Close",
@@ -3267,6 +3267,24 @@
       "Close": "30.113000869750977",
       "Adj Close": "30.11",
       "Volume": "6700"
+    },
+    {
+      "Date": "Oct 21 2026",
+      "Close": "30.607999801635742",
+      "Adj Close": "30.61",
+      "Volume": "20600"
+    },
+    {
+      "Date": "Oct 22 2026",
+      "Close": "29.601999282836914",
+      "Adj Close": "29.6",
+      "Volume": "16400"
+    },
+    {
+      "Date": "Oct 23 2026",
+      "Close": "29.891000747680664",
+      "Adj Close": "29.89",
+      "Volume": "32200"
     }
   ]
 }

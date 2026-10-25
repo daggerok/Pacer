@@ -2,7 +2,7 @@
   "ticker": "TRFK",
   "page": 2,
   "pageSize": 1000,
-  "totalRows": 1094,
+  "totalRows": 1097,
   "headers": [
     "Date",
     "Close",
@@ -573,6 +573,24 @@
       "Close": "88.38999938964844",
       "Adj Close": "88.39",
       "Volume": "115700"
+    },
+    {
+      "Date": "Oct 21 2026",
+      "Close": "90.27999877929688",
+      "Adj Close": "90.28",
+      "Volume": "116500"
+    },
+    {
+      "Date": "Oct 22 2026",
+      "Close": "85.38999938964844",
+      "Adj Close": "85.39",
+      "Volume": "290200"
+    },
+    {
+      "Date": "Oct 23 2026",
+      "Close": "86.62999725341797",
+      "Adj Close": "86.63",
+      "Volume": "215600"
     }
   ]
 }
