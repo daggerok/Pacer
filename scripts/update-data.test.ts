@@ -7,10 +7,12 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import {
   ADJ_CLOSE_NOISE,
+  CLOSED_FUNDS,
   CONTROL_NAMES,
   FETCH_TIMEOUT_MS,
   annualizedToTotal,
   cleanHoldingTicker,
+  closedFund,
   configurePacing,
   deriveMetrics,
   emptyMetrics,
@@ -501,7 +503,9 @@ describe('parsing', () => {
     expect(isFundPage(noPerformance)).toBe(true);
     expect(isFundPage('## Fund Details\n| Fund Ticker | COWZ |')).toBe(false);
   });
+});
 
+describe('parsing 2', () => {
   test('fund page tables: recent and quarter-end performance, top 10 holdings, distributions', () => {
     const lines = toTextLines(stripProxyPreamble(FUND_PAGE_COWZ));
     const recent = parseRecentPerformance(lines);
@@ -640,6 +644,10 @@ describe('metrics', () => {
     expect(emptyMetrics().dividendYieldBasis).toBeNull();
     expect(Object.keys(placeholderRow({ ticker: 'P', name: 'P', category: 'c', fundPage: '', cusip: '', isin: '', exchange: '', ter: null } as never).metrics).sort()).toEqual(keys);
   });
+});
+
+describe('metrics 2', () => {
+  const nullReturns = { asOfDate: '', mo1: null, qtd: null, ytd: null, yr1: null, cagr3y: null, cagr5y: null, cagr10y: null, siAnn: null };
 
   test('official returns win but keep derived QTD and fill official gaps', () => {
     const derived = { ...nullReturns, asOfDate: '2026-09-17', mo1: 1, qtd: 2, ytd: 3, yr1: 4, cagr3y: 5, cagr5y: 6, cagr10y: 7, siAnn: 8 };
@@ -880,7 +888,9 @@ describe('pipeline', () => {
     expect(samePublishedContent('{"a":1,"generatedAt":"x"}', { a: 1, b: 2, generatedAt: 'x' })).toBe(false);
     expect(samePublishedContent('not json', {})).toBe(false);
   }, 60_000);
+});
 
+describe('pipeline 2', () => {
   test('two runs on the same source data write zero changes even when Yahoo adjusted closes jitter across a cent boundary', () => {
     withFeed((feed) => {
       // Yahoo float32 noise seen live: SPDV 2024-11-12 came back as 31.544998 and 31.545001 a minute apart
@@ -931,6 +941,88 @@ describe('pipeline', () => {
     });
   }, 60_000);
 
+  test('a closed fund is never fetched or reported failed: its files stay as published, its index row says closed, a rerun writes nothing', () => {
+    const entry = { ticker: 'COWZ', closed: '2026-10-01', source: 'https://www.sec.gov/Archives/edgar/data/1616668/notice.htm' };
+    expect(CLOSED_FUNDS).toEqual([]);
+    expect(() => closedFund([{ ...entry, closed: 'soon' }], 'COWZ')).toThrow('CLOSED_FUNDS');
+    expect(() => closedFund([{ ...entry, source: 'http://example.com/x' }], 'COWZ')).toThrow('CLOSED_FUNDS');
+    expect(closedFund([entry], 'cowz')).toEqual(entry);
+    withFeed((feed) => {
+      expect(feed.run({ EDGAR_FALLBACK: 'true', MOCK_NPORT: 'good' }).status).toBe(0);
+      const first = feed.snapshot();
+      const published = feed.index().funds.find((fund) => fund.ticker === 'COWZ');
+      const script = feed.path('scripts/update-data.ts');
+      CLOSED_FUNDS.push(entry);
+      try {
+        // the run under test is a child process: it gets this CLOSED_FUNDS list written into its copy of the updater
+        writeFileSync(script, readFileSync(script, 'utf8').replace('export const CLOSED_FUNDS: ClosedFund[] = [];', `export const CLOSED_FUNDS: ClosedFund[] = ${JSON.stringify(CLOSED_FUNDS)};`));
+        const seen = feed.calls().length;
+        // the guard would reject COWZ's new N-PORT-P schedule (no pctVal: every weight is 0)
+        const closed = feed.run({ TICKERS: 'COWZ', EDGAR_FALLBACK: 'true', MOCK_NPORT: 'nopct' });
+        expect(closed.status).toBe(0);
+        expect(closed.out).toContain('[ closed   ] COWZ');
+        expect(closed.out).not.toContain('holdings guard');
+        expect(closed.out).not.toMatch(/[1-9]\d* failed/);
+        expect(feed.calls().slice(seen).filter((url) => /cowz/i.test(url))).toEqual([]);
+        const after = feed.snapshot();
+        expect(Array.from(after.keys())).toEqual(Array.from(first.keys()));
+        first.forEach((content, path) => { if (path !== '/index.json') expect([path, after.get(path)?.text]).toEqual([path, content.text]); });
+        const rows = feed.index().funds;
+        expect(rows.map((fund) => fund.ticker)).toEqual(['COWZ', 'PSFF', 'QFHD']);
+        expect(rows.filter((fund) => fund.status === 'closed')).toHaveLength(1);
+        const { status, closedDate, closedSource, ...rest } = rows.find((fund) => fund.ticker === 'COWZ')!;
+        expect([status, closedDate, closedSource]).toEqual(['closed', '2026-10-01', entry.source]);
+        expect(rest).toEqual(published!);
+
+        // a full rerun skips COWZ again and writes nothing (same contents and mtimes)
+        const again = feed.calls().length;
+        expect(feed.run({ EDGAR_FALLBACK: 'true', MOCK_NPORT: 'nopct' }).status).toBe(0);
+        expect(feed.calls().slice(again).filter((url) => /cowz/i.test(url))).toEqual([]);
+        expect(feed.snapshot()).toEqual(after);
+      } finally {
+        CLOSED_FUNDS.splice(CLOSED_FUNDS.indexOf(entry), 1);
+      }
+    });
+  }, 90_000);
+
+  test('a new fund is failed with a catalog-only row when the guard rejects its holdings or no source answers; that row is never read back as published data', () => {
+    withFeed((feed) => {
+      expect(feed.run().status).toBe(0);
+      const newf = () => feed.index().funds.find((fund) => fund.ticker === 'NEWF');
+      // no source answered: no fund page and a failed chart, then SKIP_PACER with SKIP_YAHOO (never an empty meta.json reported updated)
+      const silent: Array<Record<string, string>> = [{ MOCK_NEWF: '1', MOCK_FAIL: 'NEWF:chart' }, { SKIP_PACER: 'true', SKIP_YAHOO: 'true' }];
+      for (const env of silent) {
+        const result = feed.run({ TICKERS: 'NEWF', ...env });
+        expect(result.status).toBe(1);
+        expect(result.out).toMatch(/0 updated, .*1 failed/);
+        expect(newf()).toMatchObject({ dataFile: null, holdings: 0, history: 0 });
+        expect(existsSync(feed.path('api/pacer/funds/NEWF'))).toBe(false);
+      }
+      // the catalog-only row is no published state: the first good refresh dates the fund from its chart, not from the row's '—'
+      expect(feed.run({ TICKERS: 'NEWF', SKIP_PACER: 'true' }).status).toBe(0);
+      expect(newf()).toMatchObject({ dataFile: './funds/NEWF/meta.json', asOfDate: expect.stringMatching(/^[A-Z][a-z]{2} \d{2} \d{4}$/) });
+
+      // COWZ unpublished (a new fund) whose first N-PORT-P schedule fails the guard: failed, catalog-only row, no files
+      rmSync(feed.path('api/pacer/funds/COWZ'), { recursive: true });
+      const index = feed.index();
+      index.funds = index.funds.filter((fund) => fund.ticker !== 'COWZ');
+      feed.write('index.json', JSON.stringify(index));
+      const guarded = feed.run({ TICKERS: 'COWZ', EDGAR_FALLBACK: 'true', MOCK_NPORT: 'nopct' });
+      expect(guarded.status).toBe(1);
+      expect(guarded.out).toContain('holdings guard: weights add up to 0.00');
+      expect(guarded.out).toContain('no data published for this fund yet');
+      expect(guarded.out).toMatch(/0 updated, .*1 failed/);
+      const funds = feed.index().funds;
+      const row = funds.find((fund) => fund.ticker === 'COWZ')!;
+      expect(row).toMatchObject({ dataFile: null, holdings: 0, history: 0 });
+      expect(Object.keys(row.metrics).sort()).toEqual(Object.keys(funds.find((fund) => fund.ticker === 'PSFF')!.metrics).sort());
+      expect(String(row.metrics.returnsBasis).length).toBeGreaterThan(0);
+      expect(existsSync(feed.path('api/pacer/funds/COWZ'))).toBe(false);
+    });
+  }, 120_000);
+});
+
+describe('pipeline 3', () => {
   test('a partial fund page or a failed listing keeps the published official sections (zero diff); a fully loaded page lacking a field is an honest null', () => {
     withFeed((feed) => {
       expect(feed.run().status).toBe(0);
