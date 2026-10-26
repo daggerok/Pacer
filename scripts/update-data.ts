@@ -218,6 +218,15 @@ const HOLDINGS_HEADERS = ['Name', 'Ticker', 'Identifier', 'Weight', 'Market Valu
 const BOND_HOLDINGS_HEADERS = [...HOLDINGS_HEADERS, 'Coupon', 'Maturity'];
 /** Funds whose holdings legitimately fail a holdingsGuard check (geared, futures, look-through, top-N lists): ticker, or '*' for every fund -> relaxed checks. */
 const HOLDINGS_GUARD_RELAX: Record<string, string[]> = {};
+/**
+ * The guard for the fresh holdings of one fund: an N-PORT-P schedule and the official top 10 fallback are both checked
+ * (the top 10 also relaxes 'sum', a partial list never adds up to the whole fund); re-published previous rows are not.
+ */
+export function freshHoldingsProblem(source: 'nport' | 'top10' | null, ticker: string, headers: ReadonlyArray<string>, rows: ReadonlyArray<unknown>, previousRows: number | null): string | null {
+  if (!source) return null;
+  const relax = HOLDINGS_GUARD_RELAX[ticker] ?? HOLDINGS_GUARD_RELAX['*'] ?? [];
+  return holdingsGuard(headers, rows, previousRows, source === 'top10' ? relax.concat('sum') : relax);
+}
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 const TRUTHY = new Set(['1', 'true', 'yes', 'y', 'on']);
 const AUM_BOUNDS = { nano: [0, 10_000_000], micro: [10_000_000, 300_000_000], small: [300_000_000, 2_000_000_000], mid: [2_000_000_000, 10_000_000_000], large: [10_000_000_000, undefined] } as const;
@@ -2042,6 +2051,7 @@ async function processFund(fund: CatalogFund, config: UpdaterConfig, previous: J
   let holdingsDownload: string | null = null;
   let marketValueBasis: string | null = null;
   let nport: ParsedNport | null = null;
+  let topUsed = false;
   const topRows = summary ? topHoldingRows(summary.topHoldings, fund.netAssets) : [];
   if (config.edgarFallback) {
     try {
@@ -2077,6 +2087,7 @@ async function processFund(fund: CatalogFund, config: UpdaterConfig, previous: J
       marketValueBasis = previousMeta?.holdings?.marketValueBasis || marketValueBasis;
     } else if (fallback === 'top10') {
       holdingsRows = topRows;
+      topUsed = true;
       holdingsAsOf = summary?.topHoldings.asOfDate || null;
       holdingsDownload = fund.fundPage;
       holdingsSource = `paceretfs.com fund page Top 10 Holdings (partial: ${topRows.length} positions only; the full Daily Holdings file is a protected download and no SEC N-PORT-P filing was available${productVia === 'proxy' ? '; read via the rendering proxy' : ''})`;
@@ -2152,8 +2163,8 @@ async function processFund(fund: CatalogFund, config: UpdaterConfig, previous: J
   // published, keep its previous complete state instead of mixing fresh columns with stale ones.
   // A fund with no published data has nothing to keep: it is not written at all and gets a catalog-only index row (dataFile null).
   // A fresh N-PORT-P schedule that looks broken (no weight column, non-numeric weights, a bad weight sum, half the rows gone)
-  // never replaces the published holdings. The official top 10 fallback is a partial list by design and is not checked.
-  const holdingsProblem = nport ? holdingsGuard(holdingsHeaders, holdingsRows, numberOrNull(previousMeta?.holdings?.totalRows), HOLDINGS_GUARD_RELAX[fund.ticker] ?? HOLDINGS_GUARD_RELAX['*'] ?? []) : null;
+  // never replaces the published holdings; neither does a broken official top 10 fallback (its weight sum is not checked: a partial list).
+  const holdingsProblem = freshHoldingsProblem(nport ? 'nport' : topUsed ? 'top10' : null, fund.ticker, holdingsHeaders, holdingsRows, numberOrNull(previousMeta?.holdings?.totalRows));
   if (holdingsProblem) throw new Error(`holdings guard: ${holdingsProblem}; ${previousMeta ? 'kept the previous complete data' : 'no data published for this fund yet'}`);
   if ((!config.skipPacer && fund.fundPage && !summary) || (!config.skipYahoo && !chart)) {
     throw new Error(`required source failed (${!summary && !config.skipPacer ? 'product page' : 'Yahoo chart'}); ${previousMeta ? 'kept the previous complete data' : 'no data published for this fund yet'}`);
