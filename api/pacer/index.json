@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-26T06:29:08Z",
+  "generatedAt": "2026-10-26T19:37:50Z",
   "source": {
     "provider": "Pacer ETFs (Pacer Advisors, Inc.; Pacer Funds Trust, SEC CIK 0001616668), U.S.-listed ETFs",
     "market": "us",
@@ -44,16 +44,16 @@
         "dividend": "0.124175"
       },
       "returns": {
-        "derivedFrom": "official Pacer ETFs NAV total returns (product listing, month-end) where published; Yahoo adjusted market-price closes for missing values",
-        "performanceAsOf": "2026-10-23",
+        "derivedFrom": "official Pacer ETFs NAV total returns as of the month end (product listing and fund page); null where Pacer publishes none",
+        "performanceAsOf": "2026-09-30",
         "monthEnd": {
-          "asOfDate": "Oct 23 2026",
-          "mo1": 0.19,
-          "mo1Text": "0.19%",
-          "mo3": 1.42,
-          "mo3Text": "1.42%",
-          "qtd": -0.08,
-          "qtdText": "-0.08%",
+          "asOfDate": "Sep 30 2026",
+          "mo1": 0.46,
+          "mo1Text": "0.46%",
+          "mo3": 1.71,
+          "mo3Text": "1.71%",
+          "qtd": 1.71,
+          "qtdText": "1.71%",
           "ytd": null,
           "ytdText": "—",
           "yr1": null,
@@ -64,8 +64,8 @@
           "yr5Text": "—",
           "yr10": null,
           "yr10Text": "—",
-          "sinceInception": 2.12,
-          "sinceInceptionText": "2.12%"
+          "sinceInception": null,
+          "sinceInceptionText": "—"
         },
         "quarterEnd": {
           "asOfDate": "Sep 30 2026",
@@ -74,7 +74,7 @@
           "yr3": null,
           "yr5": null,
           "yr10": null,
-          "sinceInception": 2.12
+          "sinceInception": null
         }
       },
       "metrics": {
@@ -86,14 +86,14 @@
         "cagr3y": null,
         "cagr5y": null,
         "cagr10y": null,
-        "siAnn": 2.12,
+        "siAnn": null,
         "dividendYield": 5.89,
         "dividendYieldText": "5.89%",
         "dividendYieldBasis": "indicated",
         "secYield": 5.94,
         "secYieldText": "5.94%",
-        "returnsBasis": "official Pacer ETFs NAV total returns (product listing, month-end) where published; Yahoo adjusted market-price closes for missing values",
-        "performanceAsOf": "2026-10-23"
+        "returnsBasis": "official Pacer ETFs NAV total returns as of the month end (product listing and fund page); null where Pacer publishes none",
+        "performanceAsOf": "2026-09-30"
       },
       "holdings": 79,
       "history": 87
