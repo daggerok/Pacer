@@ -262,7 +262,7 @@ export type CatalogFund = {
   secYield: number | null;
   asOfDate: string | null;
   returns: CatalogReturns;
-  /** NAV total returns from the catalog table (as of its first header date), null when the table has none. */
+  /** Month-end NAV total returns from the catalog table (1 Year .. Since Inception, as of the month-end header date), null when the table has none. */
   monthEnd: OfficialReturnRow | null;
   fundPage: string;
   source: 'pacer' | 'previous index' | 'seed';
@@ -685,7 +685,9 @@ export function toTextLines(text: string): TextLine[] {
     const line = raw.trim();
     if (!line) continue;
     if (/^\|?\s*(?:-{2,}\s*\|\s*)+-{0,}\s*\|?$/.test(line)) continue; // markdown table separator
-    const cells = line.split('|').map((cell) => stripMarkdown(cell)).filter(Boolean);
+    // a lone dash is Pacer's "no figure" cell: kept as a cell (it reads as null), never read as a markdown list marker,
+    // so the cells after it stay under their own headers (QFRD: `| - | - | 2.23 | 10.77 |`)
+    const cells = line.split('|').map((cell) => (/^\s*[-–—]\s*$/.test(cell) ? '-' : stripMarkdown(cell))).filter(Boolean);
     lines.push({ text: stripMarkdown(line.replace(/\|/g, ' ')), cells });
   }
   return lines;
@@ -714,6 +716,10 @@ export function returnSlotForHeader(header: string): ReturnSlot | null {
   if (/^since (?:fund )?inception$/.test(text)) return 'siAnn';
   return null;
 }
+
+/** Listing columns dated the daily "Total Return as of" header; the other return columns are dated the month end. */
+const DAILY_SLOTS: ReadonlyArray<ReturnSlot> = ['ytd', 'mo1', 'mo3'];
+const RETURN_SLOTS: ReadonlyArray<ReturnSlot> = ['mo1', 'mo3', 'ytd', 'yr1', 'cagr3y', 'cagr5y', 'cagr10y', 'siAnn'];
 
 function returnRowHasValues(row: OfficialReturnRow): boolean {
   return [row.mo1, row.mo3, row.ytd, row.yr1, row.cagr3y, row.cagr5y, row.cagr10y, row.siAnn].some((value) => value !== null);
@@ -777,10 +783,15 @@ const THEME_HEADING = /^##\s+\*\*!\[[^\]]*\]\([^)]*\)[ \t]*\r?\n[ \t]*([^*\r\n]+
  * Parses the product listing (rendered markdown through the proxy). Every
  * investment-theme section carries one table (Name | Ticker | Total Expenses |
  * Fund Inception | YTD | 1 Month | 3 Month | 1 Year | 3 Year | 5 Year | 10 Year |
- * Since Inception) headed by "Total Return as of <date>". The returns are NAV
- * total returns as of that first header date (the table's second header date
- * is a different, older series and is not used). Funds that only appear in the
- * series listing (no table row) are added with their name and page link.
+ * Since Inception) under two group headers: "Total Return as of <daily date>"
+ * spans YTD, 1 Month and 3 Month (colspan 3) and "Total Return as of <month
+ * end>" spans 1 Year .. Since Inception (colspan 5). The markdown rendering
+ * loses the colspans, so the columns are split by name (DAILY_SLOTS). Only the
+ * month-end group is kept as `monthEnd` (one date for every figure: ETF-H6);
+ * its YTD, 1 and 3 month figures come from the fund page's month-end columns
+ * (`monthEndReturns`). A table with one header date keeps every column under
+ * it. Funds that only appear in the series listing (no table row) are added
+ * with their name and page link.
  */
 export function parseCatalogText(text: string): CatalogFund[] {
   const source = htmlToText(stripProxyPreamble(text));
@@ -789,7 +800,10 @@ export function parseCatalogText(text: string): CatalogFund[] {
   themes.forEach((theme, index) => {
     const section = source.slice((theme.index ?? 0) + theme[0].length, themes[index + 1]?.index ?? source.length);
     const category = cleanText(theme[1]);
-    const asOf = firstDate(/Total Return as of\s+(\d{1,2}\/\d{1,2}\/\d{4})/i.exec(section)?.[1] ?? '');
+    const groupLine = section.split('\n').find((line) => /Total Return as of/i.test(line)) ?? '';
+    const groupDates = Array.from(groupLine.matchAll(/Total Return as of\s+(\d{1,2}\/\d{1,2}\/\d{4})/gi), (match) => firstDate(match[1]));
+    const asOf = groupDates[0] ?? null;
+    const periodAsOf = groupDates.length > 1 ? groupDates[groupDates.length - 1] : asOf;
     let header: string[] | null = null;
     for (const line of section.split('\n')) {
       const cells = tableCells(line);
@@ -809,10 +823,10 @@ export function parseCatalogText(text: string): CatalogFund[] {
       const inception = toIsoDate(cells[header.indexOf('fund inception')] ?? '');
       fund.inception = /^\d{4}-\d{2}-\d{2}$/.test(inception) ? inception : null;
       fund.asOfDate = asOf;
-      const row = emptyReturnRow(asOf ?? '');
+      const row = emptyReturnRow(periodAsOf ?? '');
       header.forEach((title, column) => {
         const slot = returnSlotForHeader(title);
-        if (slot) row[slot] = numberOrNull(cells[column] ?? '');
+        if (slot && (periodAsOf === asOf || !DAILY_SLOTS.includes(slot))) row[slot] = numberOrNull(cells[column] ?? '');
       });
       if (returnRowHasValues(row)) {
         fund.monthEnd = row;
@@ -1000,31 +1014,39 @@ export function parseFundDetails(lines: TextLine[]): { asOfDate: string | null; 
 }
 
 /**
- * Recent Investment Performance: the first column group (the latest month-end
- * date) carries YTD only; the later group is the previous month-end and is not
- * used. Rows are `<fund name> NAV` and `<fund name> Market Price`.
+ * Recent Investment Performance: two column groups, `as of <daily date>` over
+ * the first YTD column and `as of <month end>` over YTD | Previous Month |
+ * 3 Month Total. Only the month-end group is returned (ytd, mo1, mo3, dated the
+ * month end), so it can complete the listing's month-end row on one date. With
+ * a single date group every column is dated that date. Rows are
+ * `<fund name> NAV` and `<fund name> Market Price`.
  */
 export function parseRecentPerformance(lines: TextLine[]): OfficialReturns['monthEnd'] {
   const result: OfficialReturns['monthEnd'] = { nav: null, marketPrice: null };
   const start = lines.findIndex((line) => line.cells.length === 1 && /^recent investment performance/i.test(line.cells[0]));
   if (start < 0) return result;
-  let asOfDate = '';
-  let ytdFirst = false;
+  let dates: string[] = [];
+  let slots: Array<ReturnSlot | null> | null = null;
   for (const line of lines.slice(start + 1, start + 14)) {
     if (line.cells.length === 1 && !/^as of\b/i.test(line.cells[0])) break;
     if (line.cells.length >= 1 && line.cells.every((cell) => /^as of\b/i.test(cell))) {
-      asOfDate = toIsoDate(firstDate(line.cells[0]) ?? '');
+      dates = line.cells.map((cell) => toIsoDate(firstDate(cell) ?? ''));
       continue;
     }
     if (/^ytd$/i.test(line.cells[0] ?? '')) {
-      ytdFirst = true;
+      slots = line.cells.map(returnSlotForHeader);
       continue;
     }
     const label = line.cells[0] ?? '';
     const kind = /\sNAV$/i.test(label) ? 'nav' : /\sMarket Price$/i.test(label) ? 'marketPrice' : null;
-    if (!kind || !ytdFirst || line.cells.length < 2 || result[kind]) continue;
-    const row = emptyReturnRow(asOfDate);
-    row.ytd = numberOrNull(line.cells[1]);
+    if (!kind || !slots || line.cells.length < 2 || result[kind]) continue;
+    const monthEnd = dates[dates.length - 1] ?? '';
+    const firstColumn = dates.length > 1 && dates[0] !== monthEnd ? 1 : 0;
+    const row = emptyReturnRow(monthEnd);
+    line.cells.slice(1).forEach((cell, column) => {
+      const slot = slots?.[column];
+      if (slot && column >= firstColumn) row[slot] = numberOrNull(cell);
+    });
     if (returnRowHasValues(row)) result[kind] = row;
   }
   return result;
@@ -1271,22 +1293,34 @@ export function parseNport(xml: string): ParsedNport {
   const holdings: JsonRecord[] = [];
   let totalValue = 0;
   for (const match of text.matchAll(/<invstOrSec\b[^>]*>([\s\S]*?)<\/invstOrSec>/gi)) {
-    const body = match[1];
-    const name = tagValue(body, 'name') || tagValue(body, 'title') || '-';
+    // A derivative names its reference instrument (SPY's CUSIP, ISIN and ticker for a SPY option) inside derivativeInfo:
+    // those identifiers belong to another security and are never read as the position's own (PAC-4).
+    const derivative = /<derivativeInfo\b/i.test(match[1]);
+    const body = match[1].replace(/<derivativeInfo\b[^>]*>[\s\S]*?<\/derivativeInfo>/gi, ' ');
+    const ownName = tagValue(body, 'name');
+    const named = (ownName && !/^n\/?a$/i.test(ownName) ? ownName : tagValue(body, 'title')) || '-';
+    const category = tagValue(body, 'assetCat') || '-';
     const cusip = tagValue(body, 'cusip');
-    const identifier = cusip && !/^n\/?a$/i.test(cusip) ? cusip : tagAttribute(body, 'isin', 'value') || tagAttribute(body, 'other', 'value') || '-';
+    const isin = tagAttribute(body, 'isin', 'value');
+    const ownCode = tagAttribute(body, 'ticker', 'value');
+    const ownTicker = cleanHoldingTicker(ownCode);
+    const identifier = cusip && !/^n\/?a$/i.test(cusip) && !/^0+$/.test(cusip) ? cusip : isin || tagAttribute(body, 'other', 'value') || (derivative ? ownCode : '') || '-';
+    // the filer's own ticker names an exchange listing only for a U.S.-listed stock; a local foreign code (Munich Re)
+    // or a contract code (`2SPY 7 P610.86`) would merge unrelated positions in the hub's Watchlist (PAC-3)
+    const ticker = /^(EC|EP)$/i.test(category) && (!isin || /^US/i.test(isin)) && ownTicker ? ownTicker : '-';
+    const name = derivative && ownTicker && named !== '-' && !named.includes(ownCode) ? `${named} (${ownCode})` : named;
     const value = numberOrNull(tagValue(body, 'valUSD'));
     const weight = numberOrNull(tagValue(body, 'pctVal'));
     if (value !== null) totalValue += value;
     const debt = /<debtSec\b[^>]*>([\s\S]*?)<\/debtSec>/i.exec(body)?.[1] || '';
     holdings.push({
       Name: name,
-      Ticker: '-',
+      Ticker: ticker,
       Identifier: identifier,
       Weight: weight === null ? '0' : String(weight),
       'Market Value': value === null ? '0' : String(value),
       'Shares Held': tagValue(body, 'balance') || '-',
-      'Asset Category': tagValue(body, 'assetCat') || '-',
+      'Asset Category': category,
       ...(debt ? { Coupon: tagValue(debt, 'annualizedRt') || '-', Maturity: tagValue(debt, 'maturityDt') || '-' } : {}),
     });
   }
@@ -1367,13 +1401,25 @@ async function loadCompanyTickerTable(config: UpdaterConfig): Promise<Map<string
   }
 }
 
-function fillNportTickers(rows: JsonRecord[], names: Map<string, string>): JsonRecord[] {
-  return rows.map((row) => {
+/**
+ * Fills a missing ticker of a U.S. stock row (asset category EC or EP, CUSIP or US ISIN) from the SEC issuer-name table.
+ * A name names an issuer, not a share class: when a name-filled ticker also sits on a row with another identifier
+ * (Alphabet class A and C, Fox A and B), the name-filled rows go back to `-` so the hub keys them by identifier (PAC-3).
+ */
+export function fillNportTickers(rows: JsonRecord[], names: Map<string, string>): JsonRecord[] {
+  const filled = rows.map((row) => {
     if (cleanHoldingTicker(row.Ticker)) return row;
-    if ('Maturity' in row && row.Maturity !== '-') return row; // bonds stay identifier-keyed
+    if (!/^(EC|EP)$/i.test(String(row['Asset Category'] ?? ''))) return row; // bonds, cash, derivatives stay identifier-keyed
+    if (!/^(?:[0-9A-Z]{9}|US[0-9A-Z]{10})$/i.test(String(row.Identifier ?? ''))) return row; // foreign ordinary shares too
     const ticker = names.get(normalizeHoldingName(row.Name)) || names.get(normalizeHoldingNameCore(row.Name)) || '';
     return ticker ? { ...row, Ticker: ticker } : row;
   });
+  const identifiers = new Map<string, Set<string>>();
+  for (const row of filled) {
+    const ticker = cleanHoldingTicker(row.Ticker);
+    if (ticker) identifiers.set(ticker, (identifiers.get(ticker) ?? new Set<string>()).add(String(row.Identifier ?? '')));
+  }
+  return filled.map((row, index) => (row !== rows[index] && (identifiers.get(cleanHoldingTicker(row.Ticker))?.size ?? 0) > 1 ? rows[index] : row));
 }
 
 async function resolveNportFiling(fund: CatalogFund, config: UpdaterConfig): Promise<{ ref: SecSeriesRef; accession: NportAccession } | null> {
@@ -1514,7 +1560,7 @@ function lastCompletedQuarterEnd(now = new Date()): string {
 }
 
 const DERIVED_RETURNS_BASIS = 'adjusted market-price closes (Yahoo chart API), not official Pacer NAV returns';
-const OFFICIAL_RETURNS_BASIS = 'official Pacer ETFs NAV total returns (product listing, month-end) where published; Yahoo adjusted market-price closes for missing values';
+const OFFICIAL_RETURNS_BASIS = 'official Pacer ETFs NAV total returns as of the month end (product listing and fund page); null where Pacer publishes none';
 
 /** ISO date the returns are as of (official table date, else last Yahoo close), never the NAV date; null when unknown. */
 export function performanceAsOfDate(effective: { asOfDate: string | null | undefined }): string | null {
@@ -1586,19 +1632,60 @@ function distributionRows(dividends: Distribution[]): string[][] {
   return dividends.map((item) => [formatUsDate(item.epoch), String(round(item.amount, 6))]);
 }
 
+/** True when the ISO date is the last day of a calendar quarter. */
+function isQuarterEnd(iso: string): boolean {
+  const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso);
+  if (!match) return false;
+  const month = Number(match[2]);
+  return month % 3 === 0 && Number(match[3]) === new Date(Date.UTC(Number(match[1]), month, 0)).getUTCDate();
+}
+
+/**
+ * Pacer's since-inception figure of a fund younger than one year at the row's date is cumulative, not annualized
+ * (QFRD, incepted 2026-01-12, shows 23.58 as of 2026-09-30): it is never published as `siAnn`.
+ */
+export function withoutYoungSinceInception(row: OfficialReturnRow | null, inception: string | null | undefined): OfficialReturnRow | null {
+  if (!row || row.siAnn === null) return row;
+  const start = /^(\d{4})-(\d{2})-(\d{2})$/.exec(String(inception ?? ''));
+  if (!start || !/^\d{4}-\d{2}-\d{2}$/.test(row.asOfDate)) return row;
+  const firstYear = `${Number(start[1]) + 1}-${start[2]}-${start[3]}`;
+  return row.asOfDate < firstYear ? { ...row, siAnn: null } : row;
+}
+
+/**
+ * The official month-end row behind the published metrics, every figure on one date (ETF-H6): the listing's month-end
+ * columns (1 Year .. Since Inception), completed with the fund page's month-end YTD, previous month and 3 months, and
+ * the quarter-end table, each only when it carries the same date. Without a listing row the page's month-end group
+ * leads. A since-inception figure of a fund younger than a year is dropped (cumulative, not annualized).
+ */
+export function monthEndReturns(listing: OfficialReturnRow | null, page: OfficialReturnRow | null, quarter: OfficialReturnRow | null, inception: string | null | undefined): OfficialReturnRow | null {
+  const base = listing ?? page ?? quarter;
+  if (!base) return null;
+  const row: OfficialReturnRow = { ...base };
+  for (const extra of [page, quarter]) {
+    if (!extra || extra === base || !extra.asOfDate || extra.asOfDate !== row.asOfDate) continue;
+    for (const slot of RETURN_SLOTS) if (row[slot] === null) row[slot] = extra[slot];
+  }
+  return withoutYoungSinceInception(row, inception);
+}
+
+/**
+ * Metrics from the official month-end row when there is one: every value is that row's, dated its date, never filled
+ * from Yahoo returns of another date (a missing tenor stays null). QTD is the 3-month figure when the row's date is a
+ * quarter end, else null. Without an official row the Yahoo-derived returns stand, dated the last close.
+ */
 export function mergeOfficialReturns(derived: PriceReturns, official: OfficialReturnRow | null): PriceReturns {
   if (!official) return derived;
   return {
-    ...derived,
-    asOfDate: official.asOfDate || derived.asOfDate,
-    mo1: official.mo1 ?? derived.mo1,
-    qtd: derived.qtd, // the product page publishes 3-month, not quarter-to-date
-    ytd: official.ytd ?? derived.ytd,
-    yr1: official.yr1 ?? derived.yr1,
-    cagr3y: official.cagr3y ?? derived.cagr3y,
-    cagr5y: official.cagr5y ?? derived.cagr5y,
-    cagr10y: official.cagr10y ?? derived.cagr10y,
-    siAnn: official.siAnn ?? derived.siAnn,
+    asOfDate: official.asOfDate,
+    mo1: official.mo1,
+    qtd: isQuarterEnd(official.asOfDate) ? official.mo3 : null,
+    ytd: official.ytd,
+    yr1: official.yr1,
+    cagr3y: official.cagr3y,
+    cagr5y: official.cagr5y,
+    cagr10y: official.cagr10y,
+    siAnn: official.siAnn,
   };
 }
 
@@ -1933,8 +2020,8 @@ function retainPublishedSections(summary: ProductPageSummary | null, fund: Catal
   }
   const previousReturns = previousMeta.returns || {};
   const officialBasis = String(previousReturns.derivedFrom || '').startsWith('official');
-  // Month-end returns come from the listing table (all tenors); the page's Recent Investment Performance carries the YTD
-  // column only, so it never stands in for a listing that was not read.
+  // Month-end returns come from the listing table (1 Year .. Since Inception); the page's Recent Investment Performance
+  // carries YTD, previous month and 3 months only, so it never stands in for a listing that was not read.
   if (!listingRead && !fund.monthEnd && officialBasis) {
     const monthEnd = officialRowFromPublished(previousReturns.monthEnd);
     if (monthEnd) { fund.monthEnd = monthEnd; kept.push('month-end returns'); }
@@ -1942,6 +2029,10 @@ function retainPublishedSections(summary: ProductPageSummary | null, fund: Catal
   if (summary && !summary.sections.recent) {
     const marketPrice = officialRowFromPublished(previousMeta.officialMarketPriceReturns?.monthEnd);
     if (marketPrice) { summary.officialReturns.monthEnd.marketPrice = marketPrice; kept.push('recent performance (market price)'); }
+    // The NAV month-end YTD, previous month and 3 months were published inside returns.monthEnd: keep exactly those.
+    const published = officialBasis ? officialRowFromPublished(previousReturns.monthEnd) : null;
+    const nav = published ? { ...emptyReturnRow(published.asOfDate), ytd: published.ytd, mo1: published.mo1, mo3: published.mo3 } : null;
+    if (nav && returnRowHasValues(nav)) { summary.officialReturns.monthEnd.nav = nav; kept.push('recent performance (NAV)'); }
   }
   if (summary && !summary.sections.quarter) {
     const quarter = officialRowFromPublished(previousReturns.quarterEnd);
@@ -2145,8 +2236,9 @@ async function processFund(fund: CatalogFund, config: UpdaterConfig, previous: J
   const frequency = inferDistributionFrequency(dividends);
   const latest = dividends[dividends.length - 1] || null;
   const derived = priceReturns(days);
-  const officialMonthly = fund.monthEnd || summary?.officialReturns.monthEnd.nav || null;
-  const officialQuarterly = summary?.officialReturns.quarterEnd.nav || null;
+  const inception = fund.inception ?? (chart?.firstTradeDate ? new Date(chart.firstTradeDate * 1000).toISOString().slice(0, 10) : null);
+  const officialQuarterly = withoutYoungSinceInception(summary?.officialReturns.quarterEnd.nav || null, inception);
+  const officialMonthly = monthEndReturns(fund.monthEnd, summary?.officialReturns.monthEnd.nav || null, officialQuarterly, inception);
   const effective = mergeOfficialReturns(derived, officialMonthly);
   const officialPrice = summary?.marketPrice ?? null;
   // The published index fills a value only when the pricing block was not read at all (SKIP_PACER, or a failed read keeps the
@@ -2253,7 +2345,7 @@ async function processFund(fund: CatalogFund, config: UpdaterConfig, previous: J
       secYieldKind: fund.secYield !== null ? `30 Day SEC Yield published on the official fund page${summary?.secYield !== null && summary?.secYield !== undefined && summary.asOfDate ? ` as of ${formatDate(summary.asOfDate)}` : ''}` : 'not published on the official fund page for this fund',
     },
     returns,
-    officialMarketPriceReturns: summary ? { monthEnd: returnRowJson(summary.officialReturns.monthEnd.marketPrice), quarterEnd: returnRowJson(summary.officialReturns.quarterEnd.marketPrice) } : null,
+    officialMarketPriceReturns: summary ? { monthEnd: returnRowJson(summary.officialReturns.monthEnd.marketPrice), quarterEnd: returnRowJson(withoutYoungSinceInception(summary.officialReturns.quarterEnd.marketPrice, inception)) } : null,
     distributions: { frequency: distributionFrequency, frequencyCode: frequencyCodeLabel(distributionFrequency), paymentsPerYear: frequency.paymentsPerYear, source: distributionsSource, headers: ['Ex-Date', 'Amount'], rows: distributionTable },
     holdings: holdingManifest,
     history: historyManifest,
