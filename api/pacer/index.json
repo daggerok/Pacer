@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-26T19:37:50Z",
+  "generatedAt": "2026-10-26T23:35:04Z",
   "source": {
     "provider": "Pacer ETFs (Pacer Advisors, Inc.; Pacer Funds Trust, SEC CIK 0001616668), U.S.-listed ETFs",
     "market": "us",
@@ -13,7 +13,7 @@
   "counts": {
     "funds": 74,
     "holdings": 8505,
-    "history": 83624
+    "history": 83625
   },
   "funds": [
     {
@@ -96,7 +96,7 @@
         "performanceAsOf": "2026-09-30"
       },
       "holdings": 79,
-      "history": 87
+      "history": 88
     },
     {
       "ticker": "ACBE",
