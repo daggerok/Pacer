@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-26T01:33:39Z",
+  "generatedAt": "2026-10-26T06:29:08Z",
   "source": {
     "provider": "Pacer ETFs (Pacer Advisors, Inc.; Pacer Funds Trust, SEC CIK 0001616668), U.S.-listed ETFs",
     "market": "us",
@@ -782,18 +782,18 @@
         "dividend": "0.431373"
       },
       "returns": {
-        "derivedFrom": "official Pacer ETFs NAV total returns (product listing, month-end) where published; Yahoo adjusted market-price closes for missing values",
-        "performanceAsOf": "2026-10-23",
+        "derivedFrom": "official Pacer ETFs NAV total returns as of the month end (product listing and fund page); null where Pacer publishes none",
+        "performanceAsOf": "2026-09-30",
         "monthEnd": {
-          "asOfDate": "Oct 23 2026",
-          "mo1": 4.63,
-          "mo1Text": "4.63%",
-          "mo3": 12.26,
-          "mo3Text": "12.26%",
-          "qtd": 6.47,
-          "qtdText": "6.47%",
-          "ytd": 19.38,
-          "ytdText": "19.38%",
+          "asOfDate": "Sep 30 2026",
+          "mo1": -6.84,
+          "mo1Text": "-6.84%",
+          "mo3": 7.98,
+          "mo3Text": "7.98%",
+          "qtd": 7.98,
+          "qtdText": "7.98%",
+          "ytd": 12.15,
+          "ytdText": "12.15%",
           "yr1": 18.57,
           "yr1Text": "18.57%",
           "yr3": 12.67,
@@ -816,7 +816,7 @@
         }
       },
       "metrics": {
-        "ytd": 19.38,
+        "ytd": 12.15,
         "tr1y": 18.57,
         "tr3y": 43.03,
         "tr5y": 68.51,
@@ -830,8 +830,8 @@
         "dividendYieldBasis": "indicated",
         "secYield": 1.71,
         "secYieldText": "1.71%",
-        "returnsBasis": "official Pacer ETFs NAV total returns (product listing, month-end) where published; Yahoo adjusted market-price closes for missing values",
-        "performanceAsOf": "2026-10-23"
+        "returnsBasis": "official Pacer ETFs NAV total returns as of the month end (product listing and fund page); null where Pacer publishes none",
+        "performanceAsOf": "2026-09-30"
       },
       "holdings": 102,
       "history": 2472
