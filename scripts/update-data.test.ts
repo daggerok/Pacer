@@ -18,6 +18,7 @@ import {
   emptyMetrics,
   dividendYieldBasisCode,
   fetchText,
+  fillNportTickers,
   firstDate,
   firstNumber,
   frequencyCodeLabel,
@@ -36,6 +37,8 @@ import {
   isFundPage,
   isinFromCusip,
   mergeOfficialReturns,
+  monthEndReturns,
+  withoutYoungSinceInception,
   normalizeHoldingName,
   nportUrlFor,
   numberOrNull,
@@ -435,12 +438,15 @@ describe('parsing', () => {
 
     const cowz = byTicker('COWZ');
     expect(cowz).toMatchObject({ name: 'Pacer US Cash Cows 100 ETF', ter: 0.49, inception: '2016-12-16', asOfDate: '2026-09-30', source: 'pacer' });
-    expect(cowz.monthEnd).toEqual({ asOfDate: '2026-09-30', mo1: -6.84, mo3: 7.98, ytd: 12.15, yr1: 26.63, cagr3y: 14.48, cagr5y: 12.02, cagr10y: null, siAnn: 13.79 });
-    expect(cowz.returns).toEqual({ ytd: 12.15, yr1: 26.63, yr3: 14.48, yr5: 12.02, yr10: null, sinceInception: 13.79 });
+    // YTD, 1 and 3 month sit under the daily header (09/30), 1 Year .. Since Inception under the month end (08/31): one date per row (ETF-H6)
+    expect(cowz.monthEnd).toEqual({ asOfDate: '2026-08-31', mo1: null, mo3: null, ytd: null, yr1: 26.63, cagr3y: 14.48, cagr5y: 12.02, cagr10y: null, siAnn: 13.79 });
+    expect(cowz.returns).toEqual({ ytd: null, yr1: 26.63, yr3: 14.48, yr5: 12.02, yr10: null, sinceInception: 13.79 });
+    const oneDate = parseCatalogText(CATALOG_MARKDOWN.replace(/Total Return as of 09\/30\/2026 \| Total Return as of 08\/31\/2026/g, 'Total Return as of 09/30/2026 | Total Return as of 09/30/2026'));
+    expect(oneDate.find((fund) => fund.ticker === 'COWZ')!.monthEnd).toEqual({ asOfDate: '2026-09-30', mo1: -6.84, mo3: 7.98, ytd: 12.15, yr1: 26.63, cagr3y: 14.48, cagr5y: 12.02, cagr10y: null, siAnn: 13.79 });
     expect(byTicker('TRND').ter).toBe(0.77);
     expect(byTicker('PTLC').monthEnd?.cagr10y).toBe(11.05);
 
-    expect(byTicker('QFHD').monthEnd).toEqual({ asOfDate: '2026-09-30', mo1: -5.07, mo3: 0.19, ytd: null, yr1: null, cagr3y: null, cagr5y: null, cagr10y: null, siAnn: 13.62 });
+    expect(byTicker('QFHD').monthEnd).toEqual({ asOfDate: '2026-08-31', mo1: null, mo3: null, ytd: null, yr1: null, cagr3y: null, cagr5y: null, cagr10y: null, siAnn: 13.62 });
     expect(byTicker('ACBH').monthEnd).toBeNull();
     expect(byTicker('ACBH').inception).toBe('2026-09-09');
 
@@ -476,7 +482,7 @@ describe('parsing', () => {
     expect(sos).toMatchObject({ asOfDate: '2026-09-30', cusip: '69374H568', isin: 'US69374H5688', nav: 35.12, marketPrice: 35.11, totalNetAssets: 611_921_840.4, totalExpenseRatio: 0.66, totalHoldings: 14, premiumDiscount: -0.02, secYield: null });
     expect(sos.distributions).toEqual([]);
     expect(sos.officialReturns.quarterEnd.nav).toMatchObject({ asOfDate: '2026-06-30', ytd: 6.17, siAnn: 10.02 });
-    expect(sos.officialReturns.monthEnd.nav?.ytd).toBe(8.82);
+    expect(sos.officialReturns.monthEnd.nav).toMatchObject({ asOfDate: '2026-08-31', ytd: 8.34, mo1: 1.42, mo3: 2.29 });
 
     expect(parseFundName('## COWZ\n\n## Pacer US Cash Cows 100 ETF\n', 'COWZ')).toBe('Pacer US Cash Cows 100 ETF');
     expect(parseFundName('#### PSFF\n\n### as of 09/30/2026', 'PSFF')).toBeNull();
@@ -509,8 +515,12 @@ describe('parsing 2', () => {
   test('fund page tables: recent and quarter-end performance, top 10 holdings, distributions', () => {
     const lines = toTextLines(stripProxyPreamble(FUND_PAGE_COWZ));
     const recent = parseRecentPerformance(lines);
-    expect(recent.nav).toEqual({ asOfDate: '2026-09-30', mo1: null, mo3: null, ytd: 12.15, yr1: null, cagr3y: null, cagr5y: null, cagr10y: null, siAnn: null });
-    expect(recent.marketPrice?.ytd).toBe(12.16);
+    // only the month-end group (08/31: YTD, previous month, 3 months); the daily YTD (09/30) is another date
+    expect(recent.nav).toEqual({ asOfDate: '2026-08-31', mo1: 7.79, mo3: 11.14, ytd: 20.39, yr1: null, cagr3y: null, cagr5y: null, cagr10y: null, siAnn: null });
+    expect(recent.marketPrice?.ytd).toBe(20.41);
+    // QFRD 2026-10-26: dash cells stay in place, so 10.77 is the 3 months and never the month-end YTD
+    const young = toTextLines(['## Recent Investment Performance (%)', '|  | as of 10/23/2026 | as of 09/30/2026 |', '| --- | --- | --- |', '|  | YTD | YTD | Previous Month | 3 Month Total |', '| Pacer S&P 500 Quality FCF R&D Leaders ETF NAV | - | - | 2.23 | 10.77 |'].join('\n'));
+    expect(parseRecentPerformance(young).nav).toEqual({ asOfDate: '2026-09-30', mo1: 2.23, mo3: 10.77, ytd: null, yr1: null, cagr3y: null, cagr5y: null, cagr10y: null, siAnn: null });
     expect(parseRecentPerformance(toTextLines('nothing'))).toEqual({ nav: null, marketPrice: null });
     const quarter = parseQuarterPerformance(lines);
     expect(quarter.nav).toEqual({ asOfDate: '2026-06-30', mo1: null, mo3: null, ytd: 3.87, yr1: 15.13, cagr3y: 11.24, cagr5y: 9.87, cagr10y: null, siAnn: 12.3 });
@@ -562,6 +572,22 @@ describe('parsing 2', () => {
     expect(normalizeHoldingName('Merck & Co., Inc.')).toBe('MERCK AND');
     expect(cleanHoldingTicker(' n/a ')).toBe('');
     expect(cleanHoldingTicker('brk.b')).toBe('BRK.B');
+  });
+
+  test('N-PORT positions: own identifiers only (a SPY option is not SPY), filer tickers only for U.S. stocks, one issuer name never tickers two share classes', () => {
+    // MAUG 2026-07-31 (accession 0000894189-26-029042): name N/A, the option's own ticker and BBGID, SPY's identifiers inside derivativeInfo
+    const option = '<invstOrSec><name>N/A</name><title>State Street SPDR S&amp;P 500 ETF Trust</title><cusip>N/A</cusip><identifiers><ticker value="2SPY 7 P610.86"/><other otherDesc="BBGID" value="BBG02217GFC2"/></identifiers>'
+      + '<balance>-22</balance><valUSD>-1340.5</valUSD><pctVal>-1.19</pctVal><assetCat>DE</assetCat><derivativeInfo><optionSwaptionWarrantDeriv derivCat="OPT"><descRefInstrmnt><otherRefInst><issueTitle>State Street SPDR S&amp;P 500 ETF Trust</issueTitle>'
+      + '<identifiers><cusip value="78462F103"/><isin value="US78462F1030"/><ticker value="SPY"/></identifiers></otherRefInst></descRefInstrmnt></optionSwaptionWarrantDeriv></derivativeInfo></invstOrSec>';
+    // GLBL 2026-07-31 (accession 0000894189-26-029009): filer tickers on U.S. stocks and on a foreign ordinary share
+    const stock = (name: string, cusip: string, isin: string, ticker: string) => `<invstOrSec><name>${name}</name><cusip>${cusip}</cusip><identifiers><isin value="${isin}"/>${ticker ? `<ticker value="${ticker}"/>` : ''}</identifiers><balance>1</balance><valUSD>1</valUSD><pctVal>1</pctVal><assetCat>EC</assetCat></invstOrSec>`;
+    const xml = `<edgarSubmission><genInfo><seriesId>S000099999</seriesId></genInfo><invstOrSecs>${option}${stock('Alphabet Inc', '02079K107', 'US02079K1079', 'GOOG')}${stock('Munich Re', 'N/A', 'DE0008430026', 'MUV2')}`
+      + `${stock('Fox Corp', '35137L105', 'US35137L1052', '')}${stock('Fox Corp', '35137L204', 'US35137L2043', '')}${stock('Merck &amp; Co Inc', '000000000', 'US58933Y1055', '')}</invstOrSecs></edgarSubmission>`;
+    const rows = parseNport(xml).holdings;
+    expect(rows[0]).toMatchObject({ Name: 'State Street SPDR S&P 500 ETF Trust (2SPY 7 P610.86)', Ticker: '-', Identifier: 'BBG02217GFC2', Weight: '-1.19', 'Asset Category': 'DE' });
+    expect(rows.slice(1).map((row) => [row.Ticker, row.Identifier])).toEqual([['GOOG', '02079K107'], ['-', 'DE0008430026'], ['-', '35137L105'], ['-', '35137L204'], ['-', 'US58933Y1055']]);
+    const names = new Map([['FOX', 'FOXA'], ['MERCK AND', 'MRK'], ['MUNICH RE', 'MURGY'], ['STATE STREET SPDR S AND P 500 ETF TRUST', 'SPY']]);
+    expect(fillNportTickers(rows, names).map((row) => row.Ticker)).toEqual(['-', 'GOOG', '-', '-', '-', 'MRK']);
   });
 
   test('holdings guard: header-only, renamed weight column, broken weights, a bad weight sum and a halved sheet are rejected', () => {
@@ -649,11 +675,25 @@ describe('metrics', () => {
 describe('metrics 2', () => {
   const nullReturns = { asOfDate: '', mo1: null, qtd: null, ytd: null, yr1: null, cagr3y: null, cagr5y: null, cagr10y: null, siAnn: null };
 
-  test('official returns win but keep derived QTD and fill official gaps', () => {
-    const derived = { ...nullReturns, asOfDate: '2026-09-17', mo1: 1, qtd: 2, ytd: 3, yr1: 4, cagr3y: 5, cagr5y: 6, cagr10y: 7, siAnn: 8 };
-    const official = { asOfDate: '2026-09-30', mo1: -6.84, mo3: 7.98, ytd: 12.15, yr1: 26.63, cagr3y: 14.48, cagr5y: 12.02, cagr10y: null, siAnn: 13.79 };
-    expect(mergeOfficialReturns(derived, official)).toEqual({ asOfDate: '2026-09-30', mo1: -6.84, qtd: 2, ytd: 12.15, yr1: 26.63, cagr3y: 14.48, cagr5y: 12.02, cagr10y: 7, siAnn: 13.79 });
+  test('official month-end returns: one date for every figure, no Yahoo fill, QTD only at a quarter end; a young fund has no siAnn', () => {
+    const row = (asOfDate: string, values: Partial<Record<'mo1' | 'mo3' | 'ytd' | 'yr1' | 'cagr3y' | 'cagr5y' | 'cagr10y' | 'siAnn', number>>) => ({ asOfDate, mo1: null, mo3: null, ytd: null, yr1: null, cagr3y: null, cagr5y: null, cagr10y: null, siAnn: null, ...values });
+    // PTLC on 2026-10-26: listing 1Y..SI as of 09/30 (its YTD 6.74 is as of 10/23 and is not used), page month-end group and quarter table as of 09/30
+    const listing = row('2026-09-30', { yr1: 9.76, cagr3y: 15.35, cagr5y: 10.6, cagr10y: 11.01, siAnn: 8.98 });
+    const page = row('2026-09-30', { ytd: 7.08, mo1: -0.41, mo3: 2.16 });
+    const quarter = row('2026-09-30', { ytd: 7.08, yr1: 9.76, cagr5y: 10.6, cagr10y: 11.01, siAnn: 8.98 });
+    const ptlc = monthEndReturns(listing, page, quarter, '2015-06-11');
+    expect(ptlc).toEqual(row('2026-09-30', { ytd: 7.08, mo1: -0.41, mo3: 2.16, yr1: 9.76, cagr3y: 15.35, cagr5y: 10.6, cagr10y: 11.01, siAnn: 8.98 }));
+    // a page of another date never completes the row
+    expect(monthEndReturns(listing, { ...page, asOfDate: '2026-08-31' }, null, '2015-06-11')?.ytd).toBeNull();
+    const derived = { ...nullReturns, asOfDate: '2026-10-23', mo1: 1, qtd: 2, ytd: 6.74, yr1: 4, cagr3y: 5, cagr5y: 6, cagr10y: 7, siAnn: 8 };
+    expect(mergeOfficialReturns(derived, ptlc)).toEqual({ asOfDate: '2026-09-30', mo1: -0.41, qtd: 2.16, ytd: 7.08, yr1: 9.76, cagr3y: 15.35, cagr5y: 10.6, cagr10y: 11.01, siAnn: 8.98 });
+    expect(mergeOfficialReturns(derived, { ...listing, asOfDate: '2026-08-31' })).toEqual({ ...nullReturns, asOfDate: '2026-08-31', yr1: 9.76, cagr3y: 15.35, cagr5y: 10.6, cagr10y: 11.01, siAnn: 8.98 });
     expect(mergeOfficialReturns(derived, null)).toBe(derived);
+    // QFRD (incepted 2026-01-12) shows a cumulative 23.58 since inception as of 09/30: not annualized, never siAnn
+    expect(monthEndReturns(row('2026-09-30', { siAnn: 23.58 }), row('2026-09-30', { mo1: 2.23, mo3: 10.77 }), null, '2026-01-12')).toEqual(row('2026-09-30', { mo1: 2.23, mo3: 10.77 }));
+    expect(withoutYoungSinceInception(row('2027-01-11', { siAnn: 30 }), '2026-01-12')?.siAnn).toBeNull();
+    expect(withoutYoungSinceInception(row('2027-01-12', { siAnn: 30 }), '2026-01-12')?.siAnn).toBe(30);
+    expect(withoutYoungSinceInception(row('2026-09-30', { siAnn: 23.58 }), null)?.siAnn).toBe(23.58);
   });
 
   test('bounded return filters exclude a fund with no value for the tenor; rebuilt rows share the metrics key set', () => {
@@ -1040,8 +1080,8 @@ describe('pipeline 3', () => {
         expect(result.out.match(/\[ kept/g)?.length).toBe(3); // one notice per fund
       }
       const partial = feed.run({ MOCK_PAGE: 'perf', MOCK_FAIL: 'catalog' }).out;
-      expect(partial).toMatch(/COWZ: .*kept the published month-end returns, recent performance \(market price\), quarter-end performance, distributions/);
-      expect(feed.index().funds.find((fund) => fund.ticker === 'COWZ')!.metrics).toMatchObject({ tr1y: 26.63, secYield: 1.63, performanceAsOf: '2026-09-30' });
+      expect(partial).toMatch(/COWZ: .*kept the published month-end returns, recent performance \(market price\), recent performance \(NAV\), quarter-end performance, distributions/);
+      expect(feed.index().funds.find((fund) => fund.ticker === 'COWZ')!.metrics).toMatchObject({ ytd: 20.39, tr1y: 26.63, secYield: 1.63, performanceAsOf: '2026-08-31' });
       expect(String(feed.index().funds.find((fund) => fund.ticker === 'COWZ')!.metrics.returnsBasis)).toContain('official');
 
       // a page that loaded fully but has no SEC yield (and a new price) is fresh data with an honest null, nothing is kept
