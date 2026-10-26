@@ -22,6 +22,7 @@ import {
   historyPeriodStart,
   historyRows,
   holdingsFallback,
+  freshHoldingsProblem,
   holdingsGuard,
   publishedAsOf,
   stalestFirst,
@@ -572,6 +573,12 @@ describe('parsing', () => {
     expect(holdingsGuard(headers, allocation, 2)).toContain('outside 50..150');
     expect(holdingsGuard(headers, allocation, 2, ['sum'])).toBeNull();
     expect(holdingsGuard(headers, rows, 5)).toContain('less than half');
+    // the official top 10 fallback is guarded like N-PORT, except its weight sum (a partial list); previous rows are not re-checked
+    const top10 = [{ Name: 'A', Ticker: 'A', Weight: '3.1' }, { Name: 'B', Ticker: 'B', Weight: '2.9' }];
+    expect(freshHoldingsProblem('top10', 'COWZ', headers, top10, 2)).toBeNull();
+    expect(freshHoldingsProblem('top10', 'COWZ', headers, top10.map((row) => ({ ...row, Weight: 'n/a' })), 2)).toContain('numeric weight');
+    expect(freshHoldingsProblem('nport', 'COWZ', headers, top10, 2)).toContain('outside 50..150');
+    expect(freshHoldingsProblem(null, 'COWZ', headers, [], 2)).toBeNull();
   });
 });
 
