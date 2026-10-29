@@ -909,15 +909,14 @@ describe('pipeline', () => {
       const failed = feed.run({ MOCK_FAIL: 'catalog,COWZ:page', VERBOSE: 'true' }).out;
       expect(failed).toMatch(/^\[ catalog {2}\] product listing: 500\b.*; 500\b.* — keeping the published feed$/m);
       expect(failed).toMatch(/^\[ product {2}\] COWZ: 500\b/m);
-      expect(failed).not.toContain('[catalog ]');
-      expect(failed).not.toContain('[product ]');
+      expect(failed).not.toMatch(/\] +\[ (catalog|product) /);
     });
   }, 60_000);
 
   test('withoutLabel strips the label a request already put on its error message', () => {
-    expect(withoutLabel('[catalog ] product listing: 403 Forbidden', '[catalog ] product listing')).toBe('403 Forbidden');
-    expect(withoutLabel('[catalog ] product listing: 403 Forbidden')).toBe('product listing: 403 Forbidden');
-    expect(withoutLabel('proxy response did not contain the expected content', '[product ] AAAP (proxy)')).toBe('proxy response did not contain the expected content');
+    expect(withoutLabel('[ catalog  ] product listing: 403 Forbidden', '[ catalog  ] product listing')).toBe('403 Forbidden');
+    expect(withoutLabel('[ catalog  ] product listing: 403 Forbidden')).toBe('product listing: 403 Forbidden');
+    expect(withoutLabel('proxy response did not contain the expected content', '[ product  ] AAAP (proxy)')).toBe('proxy response did not contain the expected content');
   });
 
   test('filtered, bounded and catalog-less runs never shrink the feed; a fund with files but no row is listed again', () => {
