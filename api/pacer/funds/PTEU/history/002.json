@@ -2,7 +2,7 @@
   "ticker": "PTEU",
   "page": 2,
   "pageSize": 1000,
-  "totalRows": 2728,
+  "totalRows": 2732,
   "headers": [
     "Date",
     "Close",

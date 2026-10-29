@@ -2,7 +2,7 @@
   "ticker": "SRVR",
   "page": 3,
   "pageSize": 1000,
-  "totalRows": 2122,
+  "totalRows": 2126,
   "headers": [
     "Date",
     "Close",
@@ -741,6 +741,30 @@
       "Close": "27.469999313354492",
       "Adj Close": "27.47",
       "Volume": "85600"
+    },
+    {
+      "Date": "Oct 26 2026",
+      "Close": "27.6299991607666",
+      "Adj Close": "27.63",
+      "Volume": "130200"
+    },
+    {
+      "Date": "Oct 27 2026",
+      "Close": "28.010000228881836",
+      "Adj Close": "28.01",
+      "Volume": "80200"
+    },
+    {
+      "Date": "Oct 28 2026",
+      "Close": "28.209999084472656",
+      "Adj Close": "28.21",
+      "Volume": "134700"
+    },
+    {
+      "Date": "Oct 29 2026",
+      "Close": "28.520000457763672",
+      "Adj Close": "28.52",
+      "Volume": "79192"
     }
   ]
 }

@@ -2,7 +2,7 @@
   "ticker": "SHPP",
   "page": 2,
   "pageSize": 1000,
-  "totalRows": 1097,
+  "totalRows": 1100,
   "headers": [
     "Date",
     "Close",
@@ -591,6 +591,24 @@
       "Close": "33.999000549316406",
       "Adj Close": "34",
       "Volume": "100"
+    },
+    {
+      "Date": "Oct 26 2026",
+      "Close": "34.20500183105469",
+      "Adj Close": "34.21",
+      "Volume": "300"
+    },
+    {
+      "Date": "Oct 27 2026",
+      "Close": "34.6870002746582",
+      "Adj Close": "34.69",
+      "Volume": "100"
+    },
+    {
+      "Date": "Oct 28 2026",
+      "Close": "34.430999755859375",
+      "Adj Close": "34.43",
+      "Volume": "300"
     }
   ]
 }

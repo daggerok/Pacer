@@ -2,7 +2,7 @@
   "ticker": "COWZ",
   "page": 2,
   "pageSize": 1000,
-  "totalRows": 2472,
+  "totalRows": 2476,
   "headers": [
     "Date",
     "Close",

@@ -2,7 +2,7 @@
   "ticker": "PTEU",
   "page": 3,
   "pageSize": 1000,
-  "totalRows": 2728,
+  "totalRows": 2732,
   "headers": [
     "Date",
     "Close",
@@ -4377,6 +4377,30 @@
       "Close": "31.416000366210938",
       "Adj Close": "31.42",
       "Volume": "800"
+    },
+    {
+      "Date": "Oct 26 2026",
+      "Close": "31.547000885009766",
+      "Adj Close": "31.55",
+      "Volume": "300"
+    },
+    {
+      "Date": "Oct 27 2026",
+      "Close": "31.702999114990234",
+      "Adj Close": "31.7",
+      "Volume": "400"
+    },
+    {
+      "Date": "Oct 28 2026",
+      "Close": "31.767000198364258",
+      "Adj Close": "31.77",
+      "Volume": "300"
+    },
+    {
+      "Date": "Oct 29 2026",
+      "Close": "32.459999084472656",
+      "Adj Close": "32.46",
+      "Volume": "4142"
     }
   ]
 }

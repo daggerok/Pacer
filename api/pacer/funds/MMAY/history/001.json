@@ -2,7 +2,7 @@
   "ticker": "MMAY",
   "page": 1,
   "pageSize": 1000,
-  "totalRows": 122,
+  "totalRows": 125,
   "headers": [
     "Date",
     "Close",
@@ -741,6 +741,24 @@
       "Close": "33.41999816894531",
       "Adj Close": "33.42",
       "Volume": "100"
+    },
+    {
+      "Date": "Oct 26 2026",
+      "Close": "33.529998779296875",
+      "Adj Close": "33.53",
+      "Volume": "100"
+    },
+    {
+      "Date": "Oct 27 2026",
+      "Close": "33.619998931884766",
+      "Adj Close": "33.62",
+      "Volume": "2900"
+    },
+    {
+      "Date": "Oct 28 2026",
+      "Close": "33.650001525878906",
+      "Adj Close": "33.65",
+      "Volume": "400"
     }
   ]
 }

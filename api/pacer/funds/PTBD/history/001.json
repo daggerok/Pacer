@@ -2,7 +2,7 @@
   "ticker": "PTBD",
   "page": 1,
   "pageSize": 1000,
-  "totalRows": 1760,
+  "totalRows": 1764,
   "headers": [
     "Date",
     "Close",

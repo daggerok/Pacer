@@ -2,7 +2,7 @@
   "ticker": "INDS",
   "page": 3,
   "pageSize": 1000,
-  "totalRows": 2123,
+  "totalRows": 2127,
   "headers": [
     "Date",
     "Close",
@@ -728,7 +728,7 @@
       "Date": "Oct 20 2026",
       "Close": "38.19599914550781",
       "Adj Close": "38.2",
-      "Volume": "3508"
+      "Volume": "3509"
     },
     {
       "Date": "Oct 21 2026",
@@ -740,13 +740,37 @@
       "Date": "Oct 22 2026",
       "Close": "38.456298828125",
       "Adj Close": "38.46",
-      "Volume": "8990"
+      "Volume": "8991"
     },
     {
       "Date": "Oct 23 2026",
       "Close": "38.439998626708984",
       "Adj Close": "38.44",
       "Volume": "6703"
+    },
+    {
+      "Date": "Oct 26 2026",
+      "Close": "38.444400787353516",
+      "Adj Close": "38.44",
+      "Volume": "3837"
+    },
+    {
+      "Date": "Oct 27 2026",
+      "Close": "38.63999938964844",
+      "Adj Close": "38.64",
+      "Volume": "10553"
+    },
+    {
+      "Date": "Oct 28 2026",
+      "Close": "38.310699462890625",
+      "Adj Close": "38.31",
+      "Volume": "7694"
+    },
+    {
+      "Date": "Oct 29 2026",
+      "Close": "39.040000915527344",
+      "Adj Close": "39.04",
+      "Volume": "2888"
     }
   ]
 }

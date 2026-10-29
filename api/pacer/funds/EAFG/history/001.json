@@ -2,7 +2,7 @@
   "ticker": "EAFG",
   "page": 1,
   "pageSize": 1000,
-  "totalRows": 650,
+  "totalRows": 654,
   "headers": [
     "Date",
     "Close",
@@ -3909,6 +3909,30 @@
       "Close": "25.32200050354004",
       "Adj Close": "25.32",
       "Volume": "100"
+    },
+    {
+      "Date": "Oct 26 2026",
+      "Close": "25.360000610351562",
+      "Adj Close": "25.36",
+      "Volume": "1400"
+    },
+    {
+      "Date": "Oct 27 2026",
+      "Close": "25.503999710083008",
+      "Adj Close": "25.5",
+      "Volume": "100"
+    },
+    {
+      "Date": "Oct 28 2026",
+      "Close": "25.711000442504883",
+      "Adj Close": "25.71",
+      "Volume": "100"
+    },
+    {
+      "Date": "Oct 29 2026",
+      "Close": "25.705799102783203",
+      "Adj Close": "25.71",
+      "Volume": "7"
     }
   ]
 }

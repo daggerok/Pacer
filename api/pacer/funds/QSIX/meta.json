@@ -7,7 +7,7 @@
     "fundPage": "https://www.paceretfs.com/products/QSIX",
     "officialProductPage": "https://www.paceretfs.com/products/QSIX",
     "productPageRendering": "read-only rendering proxy (r.jina.ai) of the official fund page",
-    "productPageAsOf": "Oct 23 2026",
+    "productPageAsOf": "Oct 28 2026",
     "catalogListing": "https://www.paceretfs.com/products/",
     "holdingsDownload": "https://www.sec.gov/Archives/edgar/data/1616668/000089418926029048/0000894189-26-029048.txt",
     "officialHoldingsDownload": "https://www.paceretfs.com/products/holdings_download/QSIX",
@@ -33,55 +33,55 @@
     "kind": "Total Expenses published on the official fund page (product listing for funds without a page value)"
   },
   "nav": {
-    "display": "$41.30",
-    "value": 41.3,
-    "asOfDate": "Oct 23 2026"
+    "display": "$42.45",
+    "value": 42.45,
+    "asOfDate": "Oct 28 2026"
   },
   "marketPrice": {
-    "display": "$41.31",
-    "value": 41.31,
-    "asOfDate": "Oct 23 2026",
+    "display": "$42.42",
+    "value": 42.42,
+    "asOfDate": "Oct 28 2026",
     "source": "official fund page Market Price (closing price as of the Fund Details date)"
   },
   "premiumDiscount": {
-    "display": "0.01%",
-    "value": 0.01,
-    "asOfDate": "Oct 23 2026",
+    "display": "-0.06%",
+    "value": -0.06,
+    "asOfDate": "Oct 28 2026",
     "source": "official fund page Fund Details Premium/Discount"
   },
   "aum": {
-    "display": "$20.65 M",
-    "value": 20650922.42,
-    "asOfDate": "Oct 23 2026",
+    "display": "$21.22 M",
+    "value": 21224618.12,
+    "asOfDate": "Oct 28 2026",
     "source": "official fund page Net Assets"
   },
   "fundFacts": {
     "sharesOutstanding": 500000,
     "publishedTotalHoldings": 106,
-    "medianBidAskSpread": 0.001191
+    "medianBidAskSpread": 0.001188
   },
   "yields": {
-    "dividendYield": 4.34,
-    "dividendYieldText": "4.34%",
+    "dividendYield": 4.22,
+    "dividendYieldText": "4.22%",
     "dividendYieldBasis": "indicated",
     "dividendYieldKind": "indicated (latest distribution x inferred payments per year / NAV; Pacer publishes no distribution yield)",
-    "secYield": -0.23,
-    "secYieldText": "-0.23%",
-    "secYieldKind": "30 Day SEC Yield published on the official fund page as of Oct 23 2026"
+    "secYield": -0.22,
+    "secYieldText": "-0.22%",
+    "secYieldKind": "30 Day SEC Yield published on the official fund page as of Oct 28 2026"
   },
   "returns": {
-    "derivedFrom": "official Pacer ETFs NAV total returns (product listing, month-end) where published; Yahoo adjusted market-price closes for missing values",
-    "performanceAsOf": "2026-10-23",
+    "derivedFrom": "official Pacer ETFs NAV total returns as of the month end (product listing and fund page); null where Pacer publishes none",
+    "performanceAsOf": "2026-09-30",
     "monthEnd": {
-      "asOfDate": "Oct 23 2026",
-      "mo1": -4.64,
-      "mo1Text": "-4.64%",
-      "mo3": 1.41,
-      "mo3Text": "1.41%",
-      "qtd": -4.54,
-      "qtdText": "-4.54%",
-      "ytd": 13.34,
-      "ytdText": "13.34%",
+      "asOfDate": "Sep 30 2026",
+      "mo1": 2.76,
+      "mo1Text": "2.76%",
+      "mo3": 0.16,
+      "mo3Text": "0.16%",
+      "qtd": 0.16,
+      "qtdText": "0.16%",
+      "ytd": 18.62,
+      "ytdText": "18.62%",
       "yr1": 21.44,
       "yr1Text": "21.44%",
       "yr3": null,
@@ -105,13 +105,13 @@
   },
   "officialMarketPriceReturns": {
     "monthEnd": {
-      "asOfDate": "Oct 23 2026",
-      "mo1": null,
-      "mo1Text": "—",
-      "mo3": null,
-      "mo3Text": "—",
-      "ytd": 13.4,
-      "ytdText": "13.40%",
+      "asOfDate": "Sep 30 2026",
+      "mo1": 2.86,
+      "mo1Text": "2.86%",
+      "mo3": 0.24,
+      "mo3Text": "0.24%",
+      "ytd": 18.79,
+      "ytdText": "18.79%",
       "yr1": null,
       "yr1Text": "—",
       "yr3": null,
@@ -244,8 +244,8 @@
       "history/001.json"
     ],
     "pageSize": 1000,
-    "totalRows": 523,
-    "asOf": "Oct 23 2026",
+    "totalRows": 527,
+    "asOf": "Oct 29 2026",
     "source": "Yahoo Finance public chart API (adjusted close)"
   }
 }

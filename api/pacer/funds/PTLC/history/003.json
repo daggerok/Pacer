@@ -2,7 +2,7 @@
   "ticker": "PTLC",
   "page": 3,
   "pageSize": 1000,
-  "totalRows": 2859,
+  "totalRows": 2863,
   "headers": [
     "Date",
     "Close",
@@ -5163,6 +5163,30 @@
       "Close": "59.34000015258789",
       "Adj Close": "59.34",
       "Volume": "71900"
+    },
+    {
+      "Date": "Oct 26 2026",
+      "Close": "59.77000045776367",
+      "Adj Close": "59.77",
+      "Volume": "58200"
+    },
+    {
+      "Date": "Oct 27 2026",
+      "Close": "60.11000061035156",
+      "Adj Close": "60.11",
+      "Volume": "86000"
+    },
+    {
+      "Date": "Oct 28 2026",
+      "Close": "60.310001373291016",
+      "Adj Close": "60.31",
+      "Volume": "96400"
+    },
+    {
+      "Date": "Oct 29 2026",
+      "Close": "60.08000183105469",
+      "Adj Close": "60.08",
+      "Volume": "74229"
     }
   ]
 }

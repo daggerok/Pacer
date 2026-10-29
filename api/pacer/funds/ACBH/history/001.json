@@ -2,7 +2,7 @@
   "ticker": "ACBH",
   "page": 1,
   "pageSize": 1000,
-  "totalRows": 8,
+  "totalRows": 12,
   "headers": [
     "Date",
     "Close",
@@ -57,6 +57,30 @@
       "Close": "24.899999618530273",
       "Adj Close": "24.9",
       "Volume": "100"
+    },
+    {
+      "Date": "Oct 26 2026",
+      "Close": "25.030000686645508",
+      "Adj Close": "25.03",
+      "Volume": "100"
+    },
+    {
+      "Date": "Oct 27 2026",
+      "Close": "25.299999237060547",
+      "Adj Close": "25.3",
+      "Volume": "400"
+    },
+    {
+      "Date": "Oct 28 2026",
+      "Close": "25.389999389648438",
+      "Adj Close": "25.39",
+      "Volume": "2900"
+    },
+    {
+      "Date": "Oct 29 2026",
+      "Close": "25.34000015258789",
+      "Adj Close": "25.34",
+      "Volume": "1081"
     }
   ]
 }

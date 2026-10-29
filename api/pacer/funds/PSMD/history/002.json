@@ -2,7 +2,7 @@
   "ticker": "PSMD",
   "page": 2,
   "pageSize": 1000,
-  "totalRows": 1465,
+  "totalRows": 1468,
   "headers": [
     "Date",
     "Close",
@@ -2799,6 +2799,24 @@
       "Close": "35.23699951171875",
       "Adj Close": "35.24",
       "Volume": "500"
+    },
+    {
+      "Date": "Oct 26 2026",
+      "Close": "35.345001220703125",
+      "Adj Close": "35.35",
+      "Volume": "500"
+    },
+    {
+      "Date": "Oct 27 2026",
+      "Close": "35.42499923706055",
+      "Adj Close": "35.42",
+      "Volume": "4200"
+    },
+    {
+      "Date": "Oct 28 2026",
+      "Close": "35.45500183105469",
+      "Adj Close": "35.46",
+      "Volume": "2000"
     }
   ]
 }

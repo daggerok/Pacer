@@ -7,7 +7,7 @@
     "fundPage": "https://www.paceretfs.com/products/structured-outcome-strategies/PSMD",
     "officialProductPage": "https://www.paceretfs.com/products/structured-outcome-strategies/PSMD",
     "productPageRendering": "read-only rendering proxy (r.jina.ai) of the official fund page",
-    "productPageAsOf": "Oct 23 2026",
+    "productPageAsOf": "Oct 28 2026",
     "catalogListing": "https://www.paceretfs.com/products/",
     "holdingsDownload": "https://www.sec.gov/Archives/edgar/data/1616668/000089418926029005/0000894189-26-029005.txt",
     "officialHoldingsDownload": "https://www.paceretfs.com/products/holdings_download/PSMD",
@@ -33,32 +33,32 @@
     "kind": "Total Expenses published on the official fund page (product listing for funds without a page value)"
   },
   "nav": {
-    "display": "$35.24",
-    "value": 35.24,
-    "asOfDate": "Oct 23 2026"
+    "display": "$35.46",
+    "value": 35.46,
+    "asOfDate": "Oct 28 2026"
   },
   "marketPrice": {
-    "display": "$35.24",
-    "value": 35.24,
-    "asOfDate": "Oct 23 2026",
+    "display": "$35.46",
+    "value": 35.46,
+    "asOfDate": "Oct 28 2026",
     "source": "official fund page Market Price (closing price as of the Fund Details date)"
   },
   "premiumDiscount": {
-    "display": "0.00%",
-    "value": 0,
-    "asOfDate": "Oct 23 2026",
+    "display": "-0.02%",
+    "value": -0.02,
+    "asOfDate": "Oct 28 2026",
     "source": "official fund page Fund Details Premium/Discount"
   },
   "aum": {
-    "display": "$95.14 M",
-    "value": 95136174.82,
-    "asOfDate": "Oct 23 2026",
+    "display": "$95.75 M",
+    "value": 95752508.18,
+    "asOfDate": "Oct 28 2026",
     "source": "official fund page Net Assets"
   },
   "fundFacts": {
     "sharesOutstanding": 2700000,
     "publishedTotalHoldings": 6,
-    "medianBidAskSpread": 0.001984
+    "medianBidAskSpread": 0.00198
   },
   "yields": {
     "dividendYield": null,
@@ -70,18 +70,18 @@
     "secYieldKind": "not published on the official fund page for this fund"
   },
   "returns": {
-    "derivedFrom": "official Pacer ETFs NAV total returns (product listing, month-end) where published; Yahoo adjusted market-price closes for missing values",
-    "performanceAsOf": "2026-10-23",
+    "derivedFrom": "official Pacer ETFs NAV total returns as of the month end (product listing and fund page); null where Pacer publishes none",
+    "performanceAsOf": "2026-09-30",
     "monthEnd": {
-      "asOfDate": "Oct 23 2026",
-      "mo1": 0.13,
-      "mo1Text": "0.13%",
-      "mo3": 2.71,
-      "mo3Text": "2.71%",
-      "qtd": 0.19,
-      "qtdText": "0.19%",
-      "ytd": 8.34,
-      "ytdText": "8.34%",
+      "asOfDate": "Sep 30 2026",
+      "mo1": 0.35,
+      "mo1Text": "0.35%",
+      "mo3": 2.54,
+      "mo3Text": "2.54%",
+      "qtd": 2.54,
+      "qtdText": "2.54%",
+      "ytd": 8.12,
+      "ytdText": "8.12%",
       "yr1": 11.04,
       "yr1Text": "11.04%",
       "yr3": 13.13,
@@ -105,13 +105,13 @@
   },
   "officialMarketPriceReturns": {
     "monthEnd": {
-      "asOfDate": "Oct 23 2026",
-      "mo1": null,
-      "mo1Text": "—",
-      "mo3": null,
-      "mo3Text": "—",
-      "ytd": 8.54,
-      "ytdText": "8.54%",
+      "asOfDate": "Sep 30 2026",
+      "mo1": 0.39,
+      "mo1Text": "0.39%",
+      "mo3": 2.5,
+      "mo3Text": "2.50%",
+      "ytd": 8.33,
+      "ytdText": "8.33%",
       "yr1": null,
       "yr1Text": "—",
       "yr3": null,
@@ -177,8 +177,8 @@
       "history/002.json"
     ],
     "pageSize": 1000,
-    "totalRows": 1465,
-    "asOf": "Oct 23 2026",
+    "totalRows": 1468,
+    "asOf": "Oct 28 2026",
     "source": "Yahoo Finance public chart API (adjusted close)"
   }
 }
