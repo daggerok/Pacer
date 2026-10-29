@@ -278,6 +278,8 @@ const FUND_PAGE_BOND_TOP10 = [
 // ---------------------------------------------------------------------------
 
 const realFetch = globalThis.fetch;
+// the seven 52-week keys withRange52w puts into every index row in front of returnsBasis and performanceAsOf (range-52w block)
+const RANGE_KEYS = ['week52Low', 'week52High', 'range52w', 'range52wClose', 'range52wAsOf', 'range52wSince', 'range52wBasis'];
 // test doubles implement only the call signature, not fetch's extra members (preconnect)
 const asFetch = (stub: unknown) => stub as typeof fetch;
 const realTimeout = AbortSignal.timeout;
@@ -892,6 +894,7 @@ describe('pipeline', () => {
         expect(fund.dataFile).toBe(`./funds/${fund.ticker}/meta.json`);
         expect(JSON.parse(feed.read(`funds/${fund.ticker}/meta.json`)).ticker).toBe(fund.ticker);
         expect(String(fund.metrics.returnsBasis).length).toBeGreaterThan(0);
+        expect(Object.keys(fund.metrics).slice(-9)).toEqual([...RANGE_KEYS, 'returnsBasis', 'performanceAsOf']);
       }
       const young = funds.find((fund) => fund.ticker === 'QFHD')!.metrics;
       expect([young.cagr3y, young.cagr5y, young.cagr10y, young.tr3y, young.tr1y]).toEqual([null, null, null, null, null]);
@@ -1140,7 +1143,8 @@ describe('pipeline 3', () => {
       expect(row.metrics).toMatchObject({ ytd: null, tr1y: null, secYield: null, performanceAsOf: null });
       expect(String(row.metrics.returnsBasis).length).toBeGreaterThan(0);
       expect(existsSync(feed.path('api/pacer/funds/NEWF'))).toBe(false);
-      expect(Object.keys(placeholderRow({ ticker: 'X', name: 'X', category: 'ETF', fundPage: '', cusip: '', isin: '', exchange: '', ter: null }).metrics).sort()).toEqual(Object.keys(row.metrics).sort());
+      // the index row also has the 52-week keys, added from the history pages right before index.json is written
+      expect([...Object.keys(placeholderRow({ ticker: 'X', name: 'X', category: 'ETF', fundPage: '', cusip: '', isin: '', exchange: '', ter: null }).metrics), ...RANGE_KEYS].sort()).toEqual(Object.keys(row.metrics).sort());
     });
   }, 90_000);
 
