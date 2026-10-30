@@ -820,6 +820,12 @@ globalThis.fetch = (async (input) => {
       result.indicators.quote[0].volume = result.indicators.quote[0].volume.slice(-days);
       result.indicators.adjclose[0].adjclose = result.indicators.adjclose[0].adjclose.slice(-days);
     }
+    // MOCK_CHART_LONE: one new day that does not overlap the published ones
+    if (process.env.MOCK_CHART_LONE) {
+      const result = payload.chart.result[0];
+      result.timestamp = [result.timestamp[result.timestamp.length - 1] + 20 * 86400];
+      for (const list of [result.indicators.quote[0].close, result.indicators.quote[0].volume, result.indicators.adjclose[0].adjclose]) list.splice(1);
+    }
     return reply(JSON.stringify(payload), !fail.includes(chartMatch[1] + ':chart'));
   }
   const page = url.match(/^https:\\/\\/www\\.paceretfs\\.com\\/products\\/(?:[a-z-]+\\/)?([A-Za-z]+)$/);
@@ -1208,6 +1214,14 @@ describe('pipeline 4', () => {
       const windowed = feed.run({ HISTORY_RANGE: '1y', MOCK_CHART_DAYS: '300' });
       expect(windowed.status).toBe(0);
       expect(feed.snapshot()).toEqual(first);
+      expect(JSON.parse(feed.read('funds/COWZ/meta.json')).history.totalRows).toBe(400);
+      // a truncated `max` answer (Yahoo served 2 bars for some funds on 2026-10-29) never shrinks the history either:
+      // one that joins the published days keeps them all, one that does not join keeps the fund as published
+      expect(feed.run({ MOCK_CHART_DAYS: '2' }).status).toBe(0);
+      expect(feed.snapshot()).toEqual(first);
+      const lone = feed.run({ MOCK_CHART_LONE: '1' });
+      expect(lone.status).toBe(1);
+      expect(lone.out).toContain('kept the previous complete data');
       expect(JSON.parse(feed.read('funds/COWZ/meta.json')).history.totalRows).toBe(400);
     });
   }, 60_000);
