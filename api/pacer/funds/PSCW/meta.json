@@ -7,7 +7,7 @@
     "fundPage": "https://www.paceretfs.com/products/structured-outcome-strategies/PSCW",
     "officialProductPage": "https://www.paceretfs.com/products/structured-outcome-strategies/PSCW",
     "productPageRendering": "read-only rendering proxy (r.jina.ai) of the official fund page",
-    "productPageAsOf": "Oct 28 2026",
+    "productPageAsOf": "Oct 30 2026",
     "catalogListing": "https://www.paceretfs.com/products/",
     "holdingsDownload": "https://www.sec.gov/Archives/edgar/data/1616668/000089418926029020/0000894189-26-029020.txt",
     "officialHoldingsDownload": "https://www.paceretfs.com/products/holdings_download/PSCW",
@@ -33,26 +33,26 @@
     "kind": "Total Expenses published on the official fund page (product listing for funds without a page value)"
   },
   "nav": {
-    "display": "$30.87",
-    "value": 30.87,
-    "asOfDate": "Oct 28 2026"
+    "display": "$30.75",
+    "value": 30.75,
+    "asOfDate": "Oct 30 2026"
   },
   "marketPrice": {
-    "display": "$30.86",
-    "value": 30.86,
-    "asOfDate": "Oct 28 2026",
+    "display": "$30.71",
+    "value": 30.71,
+    "asOfDate": "Oct 30 2026",
     "source": "official fund page Market Price (closing price as of the Fund Details date)"
   },
   "premiumDiscount": {
-    "display": "-0.03%",
-    "value": -0.03,
-    "asOfDate": "Oct 28 2026",
+    "display": "-0.12%",
+    "value": -0.12,
+    "asOfDate": "Oct 30 2026",
     "source": "official fund page Fund Details Premium/Discount"
   },
   "aum": {
-    "display": "$61.74 M",
-    "value": 61741353.16,
-    "asOfDate": "Oct 28 2026",
+    "display": "$61.50 M",
+    "value": 61503995.34,
+    "asOfDate": "Oct 30 2026",
     "source": "official fund page Net Assets"
   },
   "fundFacts": {
@@ -172,8 +172,8 @@
       "history/002.json"
     ],
     "pageSize": 1000,
-    "totalRows": 1401,
-    "asOf": "Oct 28 2026",
+    "totalRows": 1403,
+    "asOf": "Oct 30 2026",
     "source": "Yahoo Finance public chart API (adjusted close)"
   }
 }

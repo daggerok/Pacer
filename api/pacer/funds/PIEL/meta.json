@@ -7,7 +7,7 @@
     "fundPage": "https://www.paceretfs.com/products/PIEL",
     "officialProductPage": "https://www.paceretfs.com/products/PIEL",
     "productPageRendering": "read-only rendering proxy (r.jina.ai) of the official fund page",
-    "productPageAsOf": "Oct 28 2026",
+    "productPageAsOf": "Oct 30 2026",
     "catalogListing": "https://www.paceretfs.com/products/",
     "holdingsDownload": "https://www.sec.gov/Archives/edgar/data/1616668/000089418926029032/0000894189-26-029032.txt",
     "officialHoldingsDownload": "https://www.paceretfs.com/products/holdings_download/PIEL",
@@ -33,31 +33,31 @@
     "kind": "Total Expenses published on the official fund page (product listing for funds without a page value)"
   },
   "nav": {
-    "display": "$28.38",
-    "value": 28.38,
-    "asOfDate": "Oct 28 2026"
+    "display": "$28.37",
+    "value": 28.37,
+    "asOfDate": "Oct 30 2026"
   },
   "marketPrice": {
-    "display": "$28.67",
-    "value": 28.67,
-    "asOfDate": "Oct 28 2026",
+    "display": "$28.30",
+    "value": 28.3,
+    "asOfDate": "Oct 30 2026",
     "source": "official fund page Market Price (closing price as of the Fund Details date)"
   },
   "premiumDiscount": {
-    "display": "1.03%",
-    "value": 1.03,
-    "asOfDate": "Oct 28 2026",
+    "display": "-0.24%",
+    "value": -0.24,
+    "asOfDate": "Oct 30 2026",
     "source": "official fund page Fund Details Premium/Discount"
   },
   "aum": {
-    "display": "$1.14 M",
-    "value": 1135038.13,
-    "asOfDate": "Oct 28 2026",
+    "display": "$1.13 M",
+    "value": 1134805.97,
+    "asOfDate": "Oct 30 2026",
     "source": "official fund page Net Assets"
   },
   "fundFacts": {
     "sharesOutstanding": 40000,
-    "publishedTotalHoldings": 105,
+    "publishedTotalHoldings": 106,
     "medianBidAskSpread": 0.002099
   },
   "yields": {
@@ -164,15 +164,15 @@
     "asOf": "Jul 31 2026",
     "source": "SEC EDGAR Form N-PORT-P (accession 0000894189-26-029032, report period 2026-07-31)",
     "marketValueBasis": "SEC Form N-PORT-P reported value (valUSD)",
-    "publishedTotalHoldings": 105
+    "publishedTotalHoldings": 106
   },
   "history": {
     "pages": [
       "history/001.json"
     ],
     "pageSize": 1000,
-    "totalRows": 210,
-    "asOf": "Oct 28 2026",
+    "totalRows": 212,
+    "asOf": "Oct 30 2026",
     "source": "Yahoo Finance public chart API (adjusted close)"
   }
 }

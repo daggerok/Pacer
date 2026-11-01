@@ -2,7 +2,7 @@
   "ticker": "ICOW",
   "page": 3,
   "pageSize": 1000,
-  "totalRows": 2355,
+  "totalRows": 2356,
   "headers": [
     "Date",
     "Close",
@@ -2138,7 +2138,13 @@
       "Date": "Oct 29 2026",
       "Close": "42.790000915527344",
       "Adj Close": "42.79",
-      "Volume": "84481"
+      "Volume": "84500"
+    },
+    {
+      "Date": "Oct 30 2026",
+      "Close": "42.7400016784668",
+      "Adj Close": "42.74",
+      "Volume": "76300"
     }
   ]
 }

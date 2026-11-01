@@ -2,7 +2,7 @@
   "ticker": "HERD",
   "page": 1,
   "pageSize": 1000,
-  "totalRows": 1882,
+  "totalRows": 1883,
   "headers": [
     "Date",
     "Close",

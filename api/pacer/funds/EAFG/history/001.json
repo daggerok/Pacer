@@ -2,7 +2,7 @@
   "ticker": "EAFG",
   "page": 1,
   "pageSize": 1000,
-  "totalRows": 654,
+  "totalRows": 655,
   "headers": [
     "Date",
     "Close",
@@ -3930,9 +3930,15 @@
     },
     {
       "Date": "Oct 29 2026",
-      "Close": "25.705799102783203",
+      "Close": "25.70599937438965",
       "Adj Close": "25.71",
-      "Volume": "7"
+      "Volume": "100"
+    },
+    {
+      "Date": "Oct 30 2026",
+      "Close": "25.374000549316406",
+      "Adj Close": "25.37",
+      "Volume": "100"
     }
   ]
 }

@@ -7,7 +7,7 @@
     "fundPage": "https://www.paceretfs.com/products/structured-outcome-strategies/MMAY",
     "officialProductPage": "https://www.paceretfs.com/products/structured-outcome-strategies/MMAY",
     "productPageRendering": "read-only rendering proxy (r.jina.ai) of the official fund page",
-    "productPageAsOf": "Oct 28 2026",
+    "productPageAsOf": "Oct 30 2026",
     "catalogListing": "https://www.paceretfs.com/products/",
     "holdingsDownload": "https://www.sec.gov/Archives/edgar/data/1616668/000089418926029021/0000894189-26-029021.txt",
     "officialHoldingsDownload": "https://www.paceretfs.com/products/holdings_download/MMAY",
@@ -33,32 +33,32 @@
     "kind": "Total Expenses published on the official fund page (product listing for funds without a page value)"
   },
   "nav": {
-    "display": "$33.67",
-    "value": 33.67,
-    "asOfDate": "Oct 28 2026"
+    "display": "$33.39",
+    "value": 33.39,
+    "asOfDate": "Oct 30 2026"
   },
   "marketPrice": {
-    "display": "$33.65",
-    "value": 33.65,
-    "asOfDate": "Oct 28 2026",
+    "display": "$33.34",
+    "value": 33.34,
+    "asOfDate": "Oct 30 2026",
     "source": "official fund page Market Price (closing price as of the Fund Details date)"
   },
   "premiumDiscount": {
-    "display": "-0.05%",
-    "value": -0.05,
-    "asOfDate": "Oct 28 2026",
+    "display": "-0.15%",
+    "value": -0.15,
+    "asOfDate": "Oct 30 2026",
     "source": "official fund page Fund Details Premium/Discount"
   },
   "aum": {
-    "display": "$3.37 M",
-    "value": 3366701.72,
-    "asOfDate": "Oct 28 2026",
+    "display": "$3.34 M",
+    "value": 3338703.6,
+    "asOfDate": "Oct 30 2026",
     "source": "official fund page Net Assets"
   },
   "fundFacts": {
     "sharesOutstanding": 100000,
     "publishedTotalHoldings": 6,
-    "medianBidAskSpread": 0.002379
+    "medianBidAskSpread": 0.002377
   },
   "yields": {
     "dividendYield": null,
@@ -171,8 +171,8 @@
       "history/001.json"
     ],
     "pageSize": 1000,
-    "totalRows": 125,
-    "asOf": "Oct 28 2026",
+    "totalRows": 127,
+    "asOf": "Oct 30 2026",
     "source": "Yahoo Finance public chart API (adjusted close)"
   }
 }

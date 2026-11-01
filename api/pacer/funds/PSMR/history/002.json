@@ -2,7 +2,7 @@
   "ticker": "PSMR",
   "page": 2,
   "pageSize": 1000,
-  "totalRows": 1401,
+  "totalRows": 1403,
   "headers": [
     "Date",
     "Close",
@@ -2414,6 +2414,18 @@
       "Date": "Oct 28 2026",
       "Close": "33.1349983215332",
       "Adj Close": "33.13",
+      "Volume": "300"
+    },
+    {
+      "Date": "Oct 29 2026",
+      "Close": "33.130001068115234",
+      "Adj Close": "33.13",
+      "Volume": "100"
+    },
+    {
+      "Date": "Oct 30 2026",
+      "Close": "32.96500015258789",
+      "Adj Close": "32.97",
       "Volume": "300"
     }
   ]

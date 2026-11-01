@@ -2,7 +2,7 @@
   "ticker": "PSCJ",
   "page": 2,
   "pageSize": 1000,
-  "totalRows": 1338,
+  "totalRows": 1340,
   "headers": [
     "Date",
     "Close",
@@ -2036,6 +2036,18 @@
       "Date": "Oct 28 2026",
       "Close": "32.470001220703125",
       "Adj Close": "32.47",
+      "Volume": "100"
+    },
+    {
+      "Date": "Oct 29 2026",
+      "Close": "32.42599868774414",
+      "Adj Close": "32.43",
+      "Volume": "100"
+    },
+    {
+      "Date": "Oct 30 2026",
+      "Close": "32.09199905395508",
+      "Adj Close": "32.09",
       "Volume": "100"
     }
   ]

@@ -7,7 +7,7 @@
     "fundPage": "https://www.paceretfs.com/products/GLBL",
     "officialProductPage": "https://www.paceretfs.com/products/GLBL",
     "productPageRendering": "read-only rendering proxy (r.jina.ai) of the official fund page",
-    "productPageAsOf": "Oct 28 2026",
+    "productPageAsOf": "Oct 30 2026",
     "catalogListing": "https://www.paceretfs.com/products/",
     "holdingsDownload": "https://www.sec.gov/Archives/edgar/data/1616668/000089418926029009/0000894189-26-029009.txt",
     "officialHoldingsDownload": "https://www.paceretfs.com/products/holdings_download/GLBL",
@@ -33,36 +33,36 @@
     "kind": "Total Expenses published on the official fund page (product listing for funds without a page value)"
   },
   "nav": {
-    "display": "$28.44",
-    "value": 28.44,
-    "asOfDate": "Oct 28 2026"
+    "display": "$27.38",
+    "value": 27.38,
+    "asOfDate": "Oct 30 2026"
   },
   "marketPrice": {
-    "display": "$28.45",
-    "value": 28.45,
-    "asOfDate": "Oct 28 2026",
+    "display": "$27.38",
+    "value": 27.38,
+    "asOfDate": "Oct 30 2026",
     "source": "official fund page Market Price (closing price as of the Fund Details date)"
   },
   "premiumDiscount": {
     "display": "0.04%",
     "value": 0.04,
-    "asOfDate": "Oct 28 2026",
+    "asOfDate": "Oct 30 2026",
     "source": "official fund page Fund Details Premium/Discount"
   },
   "aum": {
-    "display": "$1.14 M",
-    "value": 1137439.08,
-    "asOfDate": "Oct 28 2026",
+    "display": "$1.10 M",
+    "value": 1095001.99,
+    "asOfDate": "Oct 30 2026",
     "source": "official fund page Net Assets"
   },
   "fundFacts": {
     "sharesOutstanding": 40000,
     "publishedTotalHoldings": 359,
-    "medianBidAskSpread": 0.002112
+    "medianBidAskSpread": 0.002144
   },
   "yields": {
-    "dividendYield": 0.12,
-    "dividendYieldText": "0.12%",
+    "dividendYield": 0.13,
+    "dividendYieldText": "0.13%",
     "dividendYieldBasis": "indicated",
     "dividendYieldKind": "indicated (latest distribution x inferred payments per year / NAV; Pacer publishes no distribution yield)",
     "secYield": null,
@@ -197,8 +197,8 @@
       "history/001.json"
     ],
     "pageSize": 1000,
-    "totalRows": 381,
-    "asOf": "Oct 28 2026",
+    "totalRows": 383,
+    "asOf": "Oct 30 2026",
     "source": "Yahoo Finance public chart API (adjusted close)"
   }
 }

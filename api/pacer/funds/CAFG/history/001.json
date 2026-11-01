@@ -2,7 +2,7 @@
   "ticker": "CAFG",
   "page": 1,
   "pageSize": 1000,
-  "totalRows": 878,
+  "totalRows": 879,
   "headers": [
     "Date",
     "Close",
@@ -5274,9 +5274,15 @@
     },
     {
       "Date": "Oct 29 2026",
-      "Close": "34.43000030517578",
-      "Adj Close": "34.43",
-      "Volume": "5153"
+      "Close": "34.45199966430664",
+      "Adj Close": "34.45",
+      "Volume": "5200"
+    },
+    {
+      "Date": "Oct 30 2026",
+      "Close": "33.992000579833984",
+      "Adj Close": "33.99",
+      "Volume": "15700"
     }
   ]
 }

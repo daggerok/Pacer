@@ -2,7 +2,7 @@
   "ticker": "PSFD",
   "page": 2,
   "pageSize": 1000,
-  "totalRows": 1469,
+  "totalRows": 1470,
   "headers": [
     "Date",
     "Close",
@@ -2820,9 +2820,15 @@
     },
     {
       "Date": "Oct 29 2026",
-      "Close": "41.27909851074219",
-      "Adj Close": "41.28",
-      "Volume": "626"
+      "Close": "41.244998931884766",
+      "Adj Close": "41.24",
+      "Volume": "600"
+    },
+    {
+      "Date": "Oct 30 2026",
+      "Close": "40.84299850463867",
+      "Adj Close": "40.84",
+      "Volume": "200"
     }
   ]
 }

@@ -2,7 +2,7 @@
   "ticker": "FLRT",
   "page": 3,
   "pageSize": 1000,
-  "totalRows": 2942,
+  "totalRows": 2943,
   "headers": [
     "Date",
     "Close",
@@ -5660,7 +5660,13 @@
       "Date": "Oct 29 2026",
       "Close": "46.27000045776367",
       "Adj Close": "46.27",
-      "Volume": "132437"
+      "Volume": "132400"
+    },
+    {
+      "Date": "Oct 30 2026",
+      "Close": "46.2400016784668",
+      "Adj Close": "46.24",
+      "Volume": "178600"
     }
   ]
 }
