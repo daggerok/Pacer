@@ -2,7 +2,7 @@
   "ticker": "PSCJ",
   "page": 2,
   "pageSize": 1000,
-  "totalRows": 1340,
+  "totalRows": 1345,
   "headers": [
     "Date",
     "Close",
@@ -2048,6 +2048,36 @@
       "Date": "Oct 30 2026",
       "Close": "32.09199905395508",
       "Adj Close": "32.09",
+      "Volume": "100"
+    },
+    {
+      "Date": "Nov 02 2026",
+      "Close": "32.01499938964844",
+      "Adj Close": "32.01",
+      "Volume": "100"
+    },
+    {
+      "Date": "Nov 03 2026",
+      "Close": "32.058998107910156",
+      "Adj Close": "32.06",
+      "Volume": "500"
+    },
+    {
+      "Date": "Nov 04 2026",
+      "Close": "32.375999450683594",
+      "Adj Close": "32.38",
+      "Volume": "100"
+    },
+    {
+      "Date": "Nov 05 2026",
+      "Close": "31.58300018310547",
+      "Adj Close": "31.58",
+      "Volume": "100"
+    },
+    {
+      "Date": "Nov 06 2026",
+      "Close": "31.607999801635742",
+      "Adj Close": "31.61",
       "Volume": "100"
     }
   ]

@@ -7,7 +7,7 @@
     "fundPage": "https://www.paceretfs.com/products/structured-outcome-strategies/MDCR",
     "officialProductPage": "https://www.paceretfs.com/products/structured-outcome-strategies/MDCR",
     "productPageRendering": "read-only rendering proxy (r.jina.ai) of the official fund page",
-    "productPageAsOf": "Oct 30 2026",
+    "productPageAsOf": "Nov 06 2026",
     "catalogListing": "https://www.paceretfs.com/products/",
     "holdingsDownload": "https://www.sec.gov/Archives/edgar/data/1616668/000089418926028993/0000894189-26-028993.txt",
     "officialHoldingsDownload": "https://www.paceretfs.com/products/holdings_download/MDCR",
@@ -33,32 +33,32 @@
     "kind": "Total Expenses published on the official fund page (product listing for funds without a page value)"
   },
   "nav": {
-    "display": "$32.89",
-    "value": 32.89,
-    "asOfDate": "Oct 30 2026"
+    "display": "$32.40",
+    "value": 32.4,
+    "asOfDate": "Nov 06 2026"
   },
   "marketPrice": {
-    "display": "$32.88",
-    "value": 32.88,
-    "asOfDate": "Oct 30 2026",
+    "display": "$32.40",
+    "value": 32.4,
+    "asOfDate": "Nov 06 2026",
     "source": "official fund page Market Price (closing price as of the Fund Details date)"
   },
   "premiumDiscount": {
-    "display": "-0.04%",
-    "value": -0.04,
-    "asOfDate": "Oct 30 2026",
+    "display": "-0.02%",
+    "value": -0.02,
+    "asOfDate": "Nov 06 2026",
     "source": "official fund page Fund Details Premium/Discount"
   },
   "aum": {
-    "display": "$1.64 M",
-    "value": 1644513.38,
-    "asOfDate": "Oct 30 2026",
+    "display": "$1.62 M",
+    "value": 1620214.36,
+    "asOfDate": "Nov 06 2026",
     "source": "official fund page Net Assets"
   },
   "fundFacts": {
     "sharesOutstanding": 50000,
     "publishedTotalHoldings": 6,
-    "medianBidAskSpread": 0.002715
+    "medianBidAskSpread": 0.002713
   },
   "yields": {
     "dividendYield": null,
@@ -105,11 +105,11 @@
   },
   "officialMarketPriceReturns": {
     "monthEnd": {
-      "asOfDate": "Sep 30 2026",
-      "mo1": 0.27,
-      "mo1Text": "0.27%",
-      "mo3": 2.12,
-      "mo3Text": "2.12%",
+      "asOfDate": "Oct 31 2026",
+      "mo1": -0.23,
+      "mo1Text": "-0.23%",
+      "mo3": 1.3,
+      "mo3Text": "1.30%",
       "ytd": null,
       "ytdText": "—",
       "yr1": null,
@@ -171,8 +171,8 @@
       "history/001.json"
     ],
     "pageSize": 1000,
-    "totalRows": 98,
-    "asOf": "Oct 30 2026",
+    "totalRows": 103,
+    "asOf": "Nov 06 2026",
     "source": "Yahoo Finance public chart API (adjusted close)"
   }
 }

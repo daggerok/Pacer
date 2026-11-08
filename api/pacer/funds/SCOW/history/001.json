@@ -2,7 +2,7 @@
   "ticker": "SCOW",
   "page": 1,
   "pageSize": 1000,
-  "totalRows": 296,
+  "totalRows": 301,
   "headers": [
     "Date",
     "Close",
@@ -1784,6 +1784,36 @@
       "Date": "Oct 30 2026",
       "Close": "23.583999633789062",
       "Adj Close": "23.58",
+      "Volume": "100"
+    },
+    {
+      "Date": "Nov 02 2026",
+      "Close": "23.924999237060547",
+      "Adj Close": "23.92",
+      "Volume": "400"
+    },
+    {
+      "Date": "Nov 03 2026",
+      "Close": "23.535999298095703",
+      "Adj Close": "23.54",
+      "Volume": "2300"
+    },
+    {
+      "Date": "Nov 04 2026",
+      "Close": "24.1299991607666",
+      "Adj Close": "24.13",
+      "Volume": "20400"
+    },
+    {
+      "Date": "Nov 05 2026",
+      "Close": "23.259000778198242",
+      "Adj Close": "23.26",
+      "Volume": "1000"
+    },
+    {
+      "Date": "Nov 06 2026",
+      "Close": "22.993999481201172",
+      "Adj Close": "22.99",
       "Volume": "100"
     }
   ]

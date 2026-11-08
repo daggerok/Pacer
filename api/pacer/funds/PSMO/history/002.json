@@ -2,7 +2,7 @@
   "ticker": "PSMO",
   "page": 2,
   "pageSize": 1000,
-  "totalRows": 1275,
+  "totalRows": 1280,
   "headers": [
     "Date",
     "Close",
@@ -1659,6 +1659,36 @@
       "Close": "33.46699905395508",
       "Adj Close": "33.47",
       "Volume": "500"
+    },
+    {
+      "Date": "Nov 02 2026",
+      "Close": "33.38399887084961",
+      "Adj Close": "33.38",
+      "Volume": "48500"
+    },
+    {
+      "Date": "Nov 03 2026",
+      "Close": "33.42599868774414",
+      "Adj Close": "33.43",
+      "Volume": "500"
+    },
+    {
+      "Date": "Nov 04 2026",
+      "Close": "33.74399948120117",
+      "Adj Close": "33.74",
+      "Volume": "200"
+    },
+    {
+      "Date": "Nov 05 2026",
+      "Close": "32.93000030517578",
+      "Adj Close": "32.93",
+      "Volume": "36200"
+    },
+    {
+      "Date": "Nov 06 2026",
+      "Close": "32.9900016784668",
+      "Adj Close": "32.99",
+      "Volume": "1500"
     }
   ]
 }

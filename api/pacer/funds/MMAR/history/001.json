@@ -2,7 +2,7 @@
   "ticker": "MMAR",
   "page": 1,
   "pageSize": 1000,
-  "totalRows": 98,
+  "totalRows": 103,
   "headers": [
     "Date",
     "Close",
@@ -596,6 +596,36 @@
       "Date": "Oct 30 2026",
       "Close": "32.880001068115234",
       "Adj Close": "32.88",
+      "Volume": "100"
+    },
+    {
+      "Date": "Nov 02 2026",
+      "Close": "32.79999923706055",
+      "Adj Close": "32.8",
+      "Volume": "100"
+    },
+    {
+      "Date": "Nov 03 2026",
+      "Close": "32.849998474121094",
+      "Adj Close": "32.85",
+      "Volume": "100"
+    },
+    {
+      "Date": "Nov 04 2026",
+      "Close": "33.13999938964844",
+      "Adj Close": "33.14",
+      "Volume": "100"
+    },
+    {
+      "Date": "Nov 05 2026",
+      "Close": "32.38999938964844",
+      "Adj Close": "32.39",
+      "Volume": "100"
+    },
+    {
+      "Date": "Nov 06 2026",
+      "Close": "32.439998626708984",
+      "Adj Close": "32.44",
       "Volume": "100"
     }
   ]

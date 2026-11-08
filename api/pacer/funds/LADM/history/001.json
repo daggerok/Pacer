@@ -2,7 +2,7 @@
   "ticker": "LADM",
   "page": 1,
   "pageSize": 1000,
-  "totalRows": 89,
+  "totalRows": 94,
   "headers": [
     "Date",
     "Close",
@@ -542,6 +542,36 @@
       "Date": "Oct 30 2026",
       "Close": "32.77000045776367",
       "Adj Close": "32.77",
+      "Volume": "100"
+    },
+    {
+      "Date": "Nov 02 2026",
+      "Close": "32.75",
+      "Adj Close": "32.75",
+      "Volume": "500"
+    },
+    {
+      "Date": "Nov 03 2026",
+      "Close": "32.79999923706055",
+      "Adj Close": "32.8",
+      "Volume": "100"
+    },
+    {
+      "Date": "Nov 04 2026",
+      "Close": "33.08000183105469",
+      "Adj Close": "33.08",
+      "Volume": "100"
+    },
+    {
+      "Date": "Nov 05 2026",
+      "Close": "32.36000061035156",
+      "Adj Close": "32.36",
+      "Volume": "1600"
+    },
+    {
+      "Date": "Nov 06 2026",
+      "Close": "32.380001068115234",
+      "Adj Close": "32.38",
       "Volume": "100"
     }
   ]

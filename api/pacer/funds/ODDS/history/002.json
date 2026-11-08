@@ -2,7 +2,7 @@
   "ticker": "ODDS",
   "page": 2,
   "pageSize": 1000,
-  "totalRows": 1144,
+  "totalRows": 1149,
   "headers": [
     "Date",
     "Close",
@@ -872,6 +872,36 @@
       "Date": "Oct 30 2026",
       "Close": "23.417999267578125",
       "Adj Close": "23.42",
+      "Volume": "100"
+    },
+    {
+      "Date": "Nov 02 2026",
+      "Close": "23.91699981689453",
+      "Adj Close": "23.92",
+      "Volume": "1400"
+    },
+    {
+      "Date": "Nov 03 2026",
+      "Close": "23.979999542236328",
+      "Adj Close": "23.98",
+      "Volume": "100"
+    },
+    {
+      "Date": "Nov 04 2026",
+      "Close": "24.823999404907227",
+      "Adj Close": "24.82",
+      "Volume": "1500"
+    },
+    {
+      "Date": "Nov 05 2026",
+      "Close": "24.59000015258789",
+      "Adj Close": "24.59",
+      "Volume": "900"
+    },
+    {
+      "Date": "Nov 06 2026",
+      "Close": "24.183000564575195",
+      "Adj Close": "24.18",
       "Volume": "100"
     }
   ]

@@ -2,7 +2,7 @@
   "ticker": "HERD",
   "page": 2,
   "pageSize": 1000,
-  "totalRows": 1883,
+  "totalRows": 1888,
   "headers": [
     "Date",
     "Close",
@@ -5307,6 +5307,36 @@
       "Close": "51.150001525878906",
       "Adj Close": "51.15",
       "Volume": "4400"
+    },
+    {
+      "Date": "Nov 02 2026",
+      "Close": "51.37900161743164",
+      "Adj Close": "51.38",
+      "Volume": "3100"
+    },
+    {
+      "Date": "Nov 03 2026",
+      "Close": "51.03099822998047",
+      "Adj Close": "51.03",
+      "Volume": "1000"
+    },
+    {
+      "Date": "Nov 04 2026",
+      "Close": "52.2599983215332",
+      "Adj Close": "52.26",
+      "Volume": "5300"
+    },
+    {
+      "Date": "Nov 05 2026",
+      "Close": "51.29499816894531",
+      "Adj Close": "51.29",
+      "Volume": "5000"
+    },
+    {
+      "Date": "Nov 06 2026",
+      "Close": "50.74700164794922",
+      "Adj Close": "50.75",
+      "Volume": "1000"
     }
   ]
 }

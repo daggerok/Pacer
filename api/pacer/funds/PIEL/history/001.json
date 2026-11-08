@@ -2,7 +2,7 @@
   "ticker": "PIEL",
   "page": 1,
   "pageSize": 1000,
-  "totalRows": 212,
+  "totalRows": 217,
   "headers": [
     "Date",
     "Close",
@@ -1280,6 +1280,36 @@
       "Date": "Oct 30 2026",
       "Close": "28.301000595092773",
       "Adj Close": "28.3",
+      "Volume": "100"
+    },
+    {
+      "Date": "Nov 02 2026",
+      "Close": "28.53700065612793",
+      "Adj Close": "28.54",
+      "Volume": "100"
+    },
+    {
+      "Date": "Nov 03 2026",
+      "Close": "28.316999435424805",
+      "Adj Close": "28.32",
+      "Volume": "100"
+    },
+    {
+      "Date": "Nov 04 2026",
+      "Close": "28.945999145507812",
+      "Adj Close": "28.95",
+      "Volume": "100"
+    },
+    {
+      "Date": "Nov 05 2026",
+      "Close": "27.875",
+      "Adj Close": "27.88",
+      "Volume": "100"
+    },
+    {
+      "Date": "Nov 06 2026",
+      "Close": "27.892000198364258",
+      "Adj Close": "27.89",
       "Volume": "100"
     }
   ]

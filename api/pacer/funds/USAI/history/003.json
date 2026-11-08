@@ -2,7 +2,7 @@
   "ticker": "USAI",
   "page": 3,
   "pageSize": 1000,
-  "totalRows": 2232,
+  "totalRows": 2237,
   "headers": [
     "Date",
     "Close",
@@ -1401,6 +1401,36 @@
       "Close": "48.029998779296875",
       "Adj Close": "48.03",
       "Volume": "21400"
+    },
+    {
+      "Date": "Nov 02 2026",
+      "Close": "46.433998107910156",
+      "Adj Close": "46.43",
+      "Volume": "6300"
+    },
+    {
+      "Date": "Nov 03 2026",
+      "Close": "46.5620002746582",
+      "Adj Close": "46.56",
+      "Volume": "8800"
+    },
+    {
+      "Date": "Nov 04 2026",
+      "Close": "44.58000183105469",
+      "Adj Close": "44.58",
+      "Volume": "17800"
+    },
+    {
+      "Date": "Nov 05 2026",
+      "Close": "43.38800048828125",
+      "Adj Close": "43.39",
+      "Volume": "6300"
+    },
+    {
+      "Date": "Nov 06 2026",
+      "Close": "43.071998596191406",
+      "Adj Close": "43.07",
+      "Volume": "7500"
     }
   ]
 }

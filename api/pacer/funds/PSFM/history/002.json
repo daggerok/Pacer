@@ -2,7 +2,7 @@
   "ticker": "PSFM",
   "page": 2,
   "pageSize": 1000,
-  "totalRows": 1403,
+  "totalRows": 1408,
   "headers": [
     "Date",
     "Close",
@@ -2426,6 +2426,36 @@
       "Date": "Oct 30 2026",
       "Close": "35.742000579833984",
       "Adj Close": "35.74",
+      "Volume": "100"
+    },
+    {
+      "Date": "Nov 02 2026",
+      "Close": "35.67599868774414",
+      "Adj Close": "35.68",
+      "Volume": "100"
+    },
+    {
+      "Date": "Nov 03 2026",
+      "Close": "35.720001220703125",
+      "Adj Close": "35.72",
+      "Volume": "100"
+    },
+    {
+      "Date": "Nov 04 2026",
+      "Close": "35.98500061035156",
+      "Adj Close": "35.99",
+      "Volume": "100"
+    },
+    {
+      "Date": "Nov 05 2026",
+      "Close": "35.30400085449219",
+      "Adj Close": "35.3",
+      "Volume": "200"
+    },
+    {
+      "Date": "Nov 06 2026",
+      "Close": "35.349998474121094",
+      "Adj Close": "35.35",
       "Volume": "100"
     }
   ]

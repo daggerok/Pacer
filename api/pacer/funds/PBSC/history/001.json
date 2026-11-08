@@ -2,7 +2,7 @@
   "ticker": "PBSC",
   "page": 1,
   "pageSize": 1000,
-  "totalRows": 92,
+  "totalRows": 97,
   "headers": [
     "Date",
     "Close",
@@ -561,6 +561,36 @@
       "Close": "24.649999618530273",
       "Adj Close": "24.65",
       "Volume": "3500"
+    },
+    {
+      "Date": "Nov 02 2026",
+      "Close": "24.649999618530273",
+      "Adj Close": "24.65",
+      "Volume": "10100"
+    },
+    {
+      "Date": "Nov 03 2026",
+      "Close": "24.649999618530273",
+      "Adj Close": "24.65",
+      "Volume": "18000"
+    },
+    {
+      "Date": "Nov 04 2026",
+      "Close": "24.770000457763672",
+      "Adj Close": "24.77",
+      "Volume": "10600"
+    },
+    {
+      "Date": "Nov 05 2026",
+      "Close": "24.739999771118164",
+      "Adj Close": "24.74",
+      "Volume": "35100"
+    },
+    {
+      "Date": "Nov 06 2026",
+      "Close": "24.760000228881836",
+      "Adj Close": "24.76",
+      "Volume": "1000"
     }
   ]
 }

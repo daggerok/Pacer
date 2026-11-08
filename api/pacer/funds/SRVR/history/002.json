@@ -2,7 +2,7 @@
   "ticker": "SRVR",
   "page": 2,
   "pageSize": 1000,
-  "totalRows": 2127,
+  "totalRows": 2132,
   "headers": [
     "Date",
     "Close",

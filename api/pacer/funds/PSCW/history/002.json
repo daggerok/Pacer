@@ -2,7 +2,7 @@
   "ticker": "PSCW",
   "page": 2,
   "pageSize": 1000,
-  "totalRows": 1403,
+  "totalRows": 1408,
   "headers": [
     "Date",
     "Close",
@@ -2426,6 +2426,36 @@
       "Date": "Oct 30 2026",
       "Close": "30.714000701904297",
       "Adj Close": "30.71",
+      "Volume": "100"
+    },
+    {
+      "Date": "Nov 02 2026",
+      "Close": "30.672000885009766",
+      "Adj Close": "30.67",
+      "Volume": "100"
+    },
+    {
+      "Date": "Nov 03 2026",
+      "Close": "30.704999923706055",
+      "Adj Close": "30.7",
+      "Volume": "400"
+    },
+    {
+      "Date": "Nov 04 2026",
+      "Close": "30.885000228881836",
+      "Adj Close": "30.89",
+      "Volume": "100"
+    },
+    {
+      "Date": "Nov 05 2026",
+      "Close": "30.423999786376953",
+      "Adj Close": "30.42",
+      "Volume": "100"
+    },
+    {
+      "Date": "Nov 06 2026",
+      "Close": "30.44099998474121",
+      "Adj Close": "30.44",
       "Volume": "100"
     }
   ]

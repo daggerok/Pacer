@@ -2,7 +2,7 @@
   "ticker": "BUL",
   "page": 1,
   "pageSize": 1000,
-  "totalRows": 1884,
+  "totalRows": 1889,
   "headers": [
     "Date",
     "Close",

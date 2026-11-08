@@ -2,7 +2,7 @@
   "ticker": "PSMR",
   "page": 2,
   "pageSize": 1000,
-  "totalRows": 1403,
+  "totalRows": 1408,
   "headers": [
     "Date",
     "Close",
@@ -2427,6 +2427,36 @@
       "Close": "32.96500015258789",
       "Adj Close": "32.97",
       "Volume": "300"
+    },
+    {
+      "Date": "Nov 02 2026",
+      "Close": "32.92499923706055",
+      "Adj Close": "32.92",
+      "Volume": "200"
+    },
+    {
+      "Date": "Nov 03 2026",
+      "Close": "32.974998474121094",
+      "Adj Close": "32.97",
+      "Volume": "100"
+    },
+    {
+      "Date": "Nov 04 2026",
+      "Close": "33.13999938964844",
+      "Adj Close": "33.14",
+      "Volume": "500"
+    },
+    {
+      "Date": "Nov 05 2026",
+      "Close": "32.65999984741211",
+      "Adj Close": "32.66",
+      "Volume": "400"
+    },
+    {
+      "Date": "Nov 06 2026",
+      "Close": "32.6879997253418",
+      "Adj Close": "32.69",
+      "Volume": "100"
     }
   ]
 }

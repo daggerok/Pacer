@@ -7,7 +7,7 @@
     "fundPage": "https://www.paceretfs.com/products/ODDS",
     "officialProductPage": "https://www.paceretfs.com/products/ODDS",
     "productPageRendering": "read-only rendering proxy (r.jina.ai) of the official fund page",
-    "productPageAsOf": "Oct 30 2026",
+    "productPageAsOf": "Nov 06 2026",
     "catalogListing": "https://www.paceretfs.com/products/",
     "holdingsDownload": "https://www.sec.gov/Archives/edgar/data/1616668/000089418926028991/0000894189-26-028991.txt",
     "officialHoldingsDownload": "https://www.paceretfs.com/products/holdings_download/ODDS",
@@ -33,36 +33,36 @@
     "kind": "Total Expenses published on the official fund page (product listing for funds without a page value)"
   },
   "nav": {
-    "display": "$23.41",
-    "value": 23.41,
-    "asOfDate": "Oct 30 2026"
+    "display": "$24.15",
+    "value": 24.15,
+    "asOfDate": "Nov 06 2026"
   },
   "marketPrice": {
-    "display": "$23.42",
-    "value": 23.42,
-    "asOfDate": "Oct 30 2026",
+    "display": "$24.18",
+    "value": 24.18,
+    "asOfDate": "Nov 06 2026",
     "source": "official fund page Market Price (closing price as of the Fund Details date)"
   },
   "premiumDiscount": {
-    "display": "0.05%",
-    "value": 0.05,
-    "asOfDate": "Oct 30 2026",
+    "display": "0.12%",
+    "value": 0.12,
+    "asOfDate": "Nov 06 2026",
     "source": "official fund page Fund Details Premium/Discount"
   },
   "aum": {
-    "display": "$3.28 M",
-    "value": 3277001,
-    "asOfDate": "Oct 30 2026",
+    "display": "$3.38 M",
+    "value": 3381671.97,
+    "asOfDate": "Nov 06 2026",
     "source": "official fund page Net Assets"
   },
   "fundFacts": {
     "sharesOutstanding": 140000,
     "publishedTotalHoldings": 50,
-    "medianBidAskSpread": 0.003371
+    "medianBidAskSpread": 0.003377
   },
   "yields": {
-    "dividendYield": 0.39,
-    "dividendYieldText": "0.39%",
+    "dividendYield": 0.37,
+    "dividendYieldText": "0.37%",
     "dividendYieldBasis": "indicated",
     "dividendYieldKind": "indicated (latest distribution x inferred payments per year / NAV; Pacer publishes no distribution yield)",
     "secYield": null,
@@ -74,12 +74,12 @@
     "performanceAsOf": "2026-09-30",
     "monthEnd": {
       "asOfDate": "Sep 30 2026",
-      "mo1": -8.8,
-      "mo1Text": "-8.80%",
-      "mo3": -3.32,
-      "mo3Text": "-3.32%",
-      "qtd": -3.32,
-      "qtdText": "-3.32%",
+      "mo1": null,
+      "mo1Text": "—",
+      "mo3": null,
+      "mo3Text": "—",
+      "qtd": null,
+      "qtdText": "—",
       "ytd": -19.04,
       "ytdText": "-19.04%",
       "yr1": -30.38,
@@ -105,13 +105,13 @@
   },
   "officialMarketPriceReturns": {
     "monthEnd": {
-      "asOfDate": "Sep 30 2026",
-      "mo1": -8.45,
-      "mo1Text": "-8.45%",
-      "mo3": -3.29,
-      "mo3Text": "-3.29%",
-      "ytd": -19.61,
-      "ytdText": "-19.61%",
+      "asOfDate": "Oct 31 2026",
+      "mo1": 0.54,
+      "mo1Text": "0.54%",
+      "mo3": -6.62,
+      "mo3Text": "-6.62%",
+      "ytd": -19.18,
+      "ytdText": "-19.18%",
       "yr1": null,
       "yr1Text": "—",
       "yr3": null,
@@ -233,8 +233,8 @@
       "history/002.json"
     ],
     "pageSize": 1000,
-    "totalRows": 1144,
-    "asOf": "Oct 30 2026",
+    "totalRows": 1149,
+    "asOf": "Nov 06 2026",
     "source": "Yahoo Finance public chart API (adjusted close)"
   }
 }

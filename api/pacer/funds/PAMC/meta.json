@@ -7,7 +7,7 @@
     "fundPage": "https://www.paceretfs.com/products/PAMC",
     "officialProductPage": "https://www.paceretfs.com/products/PAMC",
     "productPageRendering": "read-only rendering proxy (r.jina.ai) of the official fund page",
-    "productPageAsOf": "Oct 30 2026",
+    "productPageAsOf": "Nov 06 2026",
     "catalogListing": "https://www.paceretfs.com/products/",
     "holdingsDownload": "https://www.sec.gov/Archives/edgar/data/1616668/000089418926029018/0000894189-26-029018.txt",
     "officialHoldingsDownload": "https://www.paceretfs.com/products/holdings_download/PAMC",
@@ -33,31 +33,31 @@
     "kind": "Total Expenses published on the official fund page (product listing for funds without a page value)"
   },
   "nav": {
-    "display": "$48.29",
-    "value": 48.29,
-    "asOfDate": "Oct 30 2026"
+    "display": "$48.25",
+    "value": 48.25,
+    "asOfDate": "Nov 06 2026"
   },
   "marketPrice": {
     "display": "$48.22",
     "value": 48.22,
-    "asOfDate": "Oct 30 2026",
+    "asOfDate": "Nov 06 2026",
     "source": "official fund page Market Price (closing price as of the Fund Details date)"
   },
   "premiumDiscount": {
-    "display": "-0.15%",
-    "value": -0.15,
-    "asOfDate": "Oct 30 2026",
+    "display": "-0.06%",
+    "value": -0.06,
+    "asOfDate": "Nov 06 2026",
     "source": "official fund page Fund Details Premium/Discount"
   },
   "aum": {
-    "display": "$48.29 M",
-    "value": 48291022.46,
-    "asOfDate": "Oct 30 2026",
+    "display": "$48.25 M",
+    "value": 48250763.34,
+    "asOfDate": "Nov 06 2026",
     "source": "official fund page Net Assets"
   },
   "fundFacts": {
     "sharesOutstanding": 1000000,
-    "publishedTotalHoldings": 116,
+    "publishedTotalHoldings": 136,
     "medianBidAskSpread": null
   },
   "yields": {
@@ -74,12 +74,12 @@
     "performanceAsOf": "2026-09-30",
     "monthEnd": {
       "asOfDate": "Sep 30 2026",
-      "mo1": -4.42,
-      "mo1Text": "-4.42%",
-      "mo3": -6.84,
-      "mo3Text": "-6.84%",
-      "qtd": -6.84,
-      "qtdText": "-6.84%",
+      "mo1": null,
+      "mo1Text": "—",
+      "mo3": null,
+      "mo3Text": "—",
+      "qtd": null,
+      "qtdText": "—",
       "ytd": 11.14,
       "ytdText": "11.14%",
       "yr1": 10.96,
@@ -105,13 +105,13 @@
   },
   "officialMarketPriceReturns": {
     "monthEnd": {
-      "asOfDate": "Sep 30 2026",
-      "mo1": -4.32,
-      "mo1Text": "-4.32%",
-      "mo3": -6.75,
-      "mo3Text": "-6.75%",
-      "ytd": 11.23,
-      "ytdText": "11.23%",
+      "asOfDate": "Oct 31 2026",
+      "mo1": -6.44,
+      "mo1Text": "-6.44%",
+      "mo3": -10.01,
+      "mo3Text": "-10.01%",
+      "ytd": 4.06,
+      "ytdText": "4.06%",
       "yr1": null,
       "yr1Text": "—",
       "yr3": null,
@@ -261,7 +261,7 @@
     "asOf": "Jul 31 2026",
     "source": "SEC EDGAR Form N-PORT-P (accession 0000894189-26-029018, report period 2026-07-31)",
     "marketValueBasis": "SEC Form N-PORT-P reported value (valUSD)",
-    "publishedTotalHoldings": 116
+    "publishedTotalHoldings": 136
   },
   "history": {
     "pages": [
@@ -269,8 +269,8 @@
       "history/002.json"
     ],
     "pageSize": 1000,
-    "totalRows": 1596,
-    "asOf": "Oct 30 2026",
+    "totalRows": 1601,
+    "asOf": "Nov 06 2026",
     "source": "Yahoo Finance public chart API (adjusted close)"
   }
 }
