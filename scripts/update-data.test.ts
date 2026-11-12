@@ -280,6 +280,8 @@ const FUND_PAGE_BOND_TOP10 = [
 const realFetch = globalThis.fetch;
 // the seven 52-week keys withRange52w puts into every index row in front of returnsBasis and performanceAsOf (range-52w block)
 const RANGE_KEYS = ['week52Low', 'week52High', 'range52w', 'range52wClose', 'range52wAsOf', 'range52wSince', 'range52wBasis'];
+// the nine swing keys withSwing puts after them, from the Close column of the same history pages (swing block)
+const SWING_KEYS = ['pctFrom52wHigh', 'athPrice', 'athDate', 'athBasis', 'pctFromAth', 'volatility1y', 'sigmaFromMean60d', 'high60d', 'low60d'];
 // test doubles implement only the call signature, not fetch's extra members (preconnect)
 const asFetch = (stub: unknown) => stub as typeof fetch;
 const realTimeout = AbortSignal.timeout;
@@ -900,7 +902,9 @@ describe('pipeline', () => {
         expect(fund.dataFile).toBe(`./funds/${fund.ticker}/meta.json`);
         expect(JSON.parse(feed.read(`funds/${fund.ticker}/meta.json`)).ticker).toBe(fund.ticker);
         expect(String(fund.metrics.returnsBasis).length).toBeGreaterThan(0);
-        expect(Object.keys(fund.metrics).slice(-9)).toEqual([...RANGE_KEYS, 'returnsBasis', 'performanceAsOf']);
+        expect(Object.keys(fund.metrics).slice(-18)).toEqual([...RANGE_KEYS, ...SWING_KEYS, 'returnsBasis', 'performanceAsOf']);
+        expect(Object.keys(fund.metrics).slice(-11, -2)).toEqual(SWING_KEYS);
+        expect([typeof fund.metrics.athPrice, fund.metrics.athBasis]).toEqual(['number', expect.stringMatching(/^daily closes since \d{4}-\d{2}-\d{2}$/)]);
       }
       const young = funds.find((fund) => fund.ticker === 'QFHD')!.metrics;
       expect([young.cagr3y, young.cagr5y, young.cagr10y, young.tr3y, young.tr1y]).toEqual([null, null, null, null, null]);
@@ -1150,7 +1154,7 @@ describe('pipeline 3', () => {
       expect(String(row.metrics.returnsBasis).length).toBeGreaterThan(0);
       expect(existsSync(feed.path('api/pacer/funds/NEWF'))).toBe(false);
       // the index row also has the 52-week keys, added from the history pages right before index.json is written
-      expect([...Object.keys(placeholderRow({ ticker: 'X', name: 'X', category: 'ETF', fundPage: '', cusip: '', isin: '', exchange: '', ter: null }).metrics), ...RANGE_KEYS].sort()).toEqual(Object.keys(row.metrics).sort());
+      expect([...Object.keys(placeholderRow({ ticker: 'X', name: 'X', category: 'ETF', fundPage: '', cusip: '', isin: '', exchange: '', ter: null }).metrics), ...RANGE_KEYS, ...SWING_KEYS].sort()).toEqual(Object.keys(row.metrics).sort());
     });
   }, 90_000);
 
