@@ -281,6 +281,7 @@ const realFetch = globalThis.fetch;
 // the seven 52-week keys withRange52w puts into every index row in front of returnsBasis and performanceAsOf (range-52w block)
 const RANGE_KEYS = ['week52Low', 'week52High', 'range52w', 'range52wClose', 'range52wAsOf', 'range52wSince', 'range52wBasis'];
 // the nine swing keys withSwing puts after them, from the Close column of the same history pages (swing block)
+const DIVIDEND_KEYS = ['dividendRate', 'dividendGrowth', 'dividendGrowth3y', 'dividendGrowth5y', 'dividendStreak', 'dividendCut10y'];
 const SWING_KEYS = ['pctFrom52wHigh', 'athPrice', 'athDate', 'athBasis', 'pctFromAth', 'volatility1y', 'sigmaFromMean60d', 'high60d', 'low60d'];
 // test doubles implement only the call signature, not fetch's extra members (preconnect)
 const asFetch = (stub: unknown) => stub as typeof fetch;
@@ -775,7 +776,7 @@ const chart = (n) => {
   const close = timestamp.map((_, i) => 10 + i * 0.01);
   // MOCK_ADJ: comma-separated adjusted closes for days 200.. (Yahoo float32 noise around a cent boundary)
   const adjclose = close.map((value, i) => Number((process.env.MOCK_ADJ || '').split(',')[i - 200]) || value);
-  return { chart: { result: [{ meta: { exchangeName: 'PCX', regularMarketPrice: close[n - 1], regularMarketTime: end, firstTradeDate: timestamp[0] }, timestamp, indicators: { quote: [{ close, volume: close.map(() => 1) }], adjclose: [{ adjclose }] }, events: {} }] } };
+  return { chart: { result: [{ meta: { exchangeName: 'PCX', dataGranularity: '1d', regularMarketPrice: close[n - 1], regularMarketTime: end, firstTradeDate: timestamp[0] }, timestamp, indicators: { quote: [{ close, volume: close.map(() => 1) }], adjclose: [{ adjclose }] }, events: { dividends: { [timestamp[Math.max(0, n - 3)]]: { amount: 0.25, date: timestamp[Math.max(0, n - 3)] } } } }] } };
 };
 // MOCK_PAGE: 'perf' = proxy rendering dropped everything after Fund Details, 'rows' = Fund Details cut before Premium/Discount,
 // 'nosec' = a fully loaded page that really has no SEC yield and a new market price
@@ -902,13 +903,19 @@ describe('pipeline', () => {
         expect(fund.dataFile).toBe(`./funds/${fund.ticker}/meta.json`);
         expect(JSON.parse(feed.read(`funds/${fund.ticker}/meta.json`)).ticker).toBe(fund.ticker);
         expect(String(fund.metrics.returnsBasis).length).toBeGreaterThan(0);
-        expect(Object.keys(fund.metrics).slice(-18)).toEqual([...RANGE_KEYS, ...SWING_KEYS, 'returnsBasis', 'performanceAsOf']);
-        expect(Object.keys(fund.metrics).slice(-11, -2)).toEqual(SWING_KEYS);
+        expect(Object.keys(fund.metrics).slice(-24)).toEqual([...RANGE_KEYS, ...SWING_KEYS, ...DIVIDEND_KEYS, 'returnsBasis', 'performanceAsOf']);
+        expect(Object.keys(fund.metrics).slice(-17, -8)).toEqual(SWING_KEYS);
+        expect(Object.keys(fund.metrics).slice(-8, -2)).toEqual(DIVIDEND_KEYS);
         expect([typeof fund.metrics.athPrice, fund.metrics.athBasis]).toEqual(['number', expect.stringMatching(/^daily closes since \d{4}-\d{2}-\d{2}$/)]);
       }
       const young = funds.find((fund) => fund.ticker === 'QFHD')!.metrics;
       expect([young.cagr3y, young.cagr5y, young.cagr10y, young.tr3y, young.tr1y]).toEqual([null, null, null, null, null]);
       expect(funds.find((fund) => fund.ticker === 'COWZ')!.metrics.tr1y).toBe(26.63);
+      // the dividend keys from one Yahoo daily chart request (includePrePost=false) per updated fund: 0.25 in the last year, the rest null
+      const cowz = funds.find((fund) => fund.ticker === 'COWZ')!.metrics;
+      expect(DIVIDEND_KEYS.map((key) => cowz[key])).toEqual([0.25, null, null, null, null, null]);
+      const dividendRequests = feed.calls().filter((url) => /chart\/[^?]+\?period1=0&.*includePrePost=false/.test(url)).map((url) => /chart\/([^?]+)/.exec(url)?.[1]).sort();
+      expect(dividendRequests).toEqual(['COWZ', 'PSFF', 'QFHD']);
     });
   }, 60_000);
 
@@ -1154,7 +1161,7 @@ describe('pipeline 3', () => {
       expect(String(row.metrics.returnsBasis).length).toBeGreaterThan(0);
       expect(existsSync(feed.path('api/pacer/funds/NEWF'))).toBe(false);
       // the index row also has the 52-week keys, added from the history pages right before index.json is written
-      expect([...Object.keys(placeholderRow({ ticker: 'X', name: 'X', category: 'ETF', fundPage: '', cusip: '', isin: '', exchange: '', ter: null }).metrics), ...RANGE_KEYS, ...SWING_KEYS].sort()).toEqual(Object.keys(row.metrics).sort());
+      expect([...Object.keys(placeholderRow({ ticker: 'X', name: 'X', category: 'ETF', fundPage: '', cusip: '', isin: '', exchange: '', ter: null }).metrics), ...RANGE_KEYS, ...SWING_KEYS, ...DIVIDEND_KEYS].sort()).toEqual(Object.keys(row.metrics).sort());
     });
   }, 90_000);
 
@@ -1179,7 +1186,7 @@ describe('pipeline 3', () => {
       for (let run = 0; run < 3; run += 1) {
         const seen = feed.calls().length;
         expect(feed.run({ MOCK_CLOCK_STEP_MS: String(26 * 60_000), GITHUB_STEP_SUMMARY: summary }).status).toBe(0);
-        order.push(feed.calls().slice(seen).map((url) => /\/v8\/finance\/chart\/([A-Z]+)\?/.exec(url)?.[1]).filter(Boolean).join(','));
+        order.push(feed.calls().slice(seen).filter((url) => !url.includes('includePrePost=false')).map((url) => /\/v8\/finance\/chart\/([A-Z]+)\?/.exec(url)?.[1]).filter(Boolean).join(','));
       }
       expect(order).toEqual(['QFHD', 'COWZ', 'PSFF']);
       expect(readFileSync(summary, 'utf8')).toContain('1 of 3 funds refreshed, 2 keep their published data, oldest remaining published as-of: 2026-02-10 (COWZ)');
@@ -1355,7 +1362,7 @@ describe('network', () => {
     withFeed((feed) => {
       const lastChartUrl = (env: Record<string, string>) => {
         feed.run({ TICKERS: 'COWZ', ...env });
-        return new URL(feed.calls().filter((call) => call.includes('/v8/finance/chart/COWZ')).slice(-1)[0]);
+        return new URL(feed.calls().filter((call) => call.includes('/v8/finance/chart/COWZ') && !call.includes('includePrePost=false')).slice(-1)[0]);
       };
       const five = lastChartUrl({ HISTORY_RANGE: '5y' });
       const nowSeconds = Date.now() / 1000;
