@@ -2,7 +2,7 @@
   "ticker": "PSCW",
   "page": 1,
   "pageSize": 1000,
-  "totalRows": 1408,
+  "totalRows": 1413,
   "headers": [
     "Date",
     "Close",

@@ -2,7 +2,7 @@
   "ticker": "FLRT",
   "page": 3,
   "pageSize": 1000,
-  "totalRows": 2948,
+  "totalRows": 2953,
   "headers": [
     "Date",
     "Close",
@@ -5697,6 +5697,36 @@
       "Close": "46.34000015258789",
       "Adj Close": "46.34",
       "Volume": "195900"
+    },
+    {
+      "Date": "Nov 09 2026",
+      "Close": "46.40999984741211",
+      "Adj Close": "46.41",
+      "Volume": "277400"
+    },
+    {
+      "Date": "Nov 10 2026",
+      "Close": "46.45000076293945",
+      "Adj Close": "46.45",
+      "Volume": "323500"
+    },
+    {
+      "Date": "Nov 11 2026",
+      "Close": "46.56999969482422",
+      "Adj Close": "46.57",
+      "Volume": "580000"
+    },
+    {
+      "Date": "Nov 12 2026",
+      "Close": "46.459999084472656",
+      "Adj Close": "46.46",
+      "Volume": "650500"
+    },
+    {
+      "Date": "Nov 13 2026",
+      "Close": "46.459999084472656",
+      "Adj Close": "46.46",
+      "Volume": "102800"
     }
   ]
 }

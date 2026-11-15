@@ -2,7 +2,7 @@
   "ticker": "QQWZ",
   "page": 1,
   "pageSize": 1000,
-  "totalRows": 378,
+  "totalRows": 383,
   "headers": [
     "Date",
     "Close",
@@ -2277,6 +2277,36 @@
       "Close": "25.03499984741211",
       "Adj Close": "25.03",
       "Volume": "6000"
+    },
+    {
+      "Date": "Nov 09 2026",
+      "Close": "25.437000274658203",
+      "Adj Close": "25.44",
+      "Volume": "3200"
+    },
+    {
+      "Date": "Nov 10 2026",
+      "Close": "25.45800018310547",
+      "Adj Close": "25.46",
+      "Volume": "2900"
+    },
+    {
+      "Date": "Nov 11 2026",
+      "Close": "25.68400001525879",
+      "Adj Close": "25.68",
+      "Volume": "2300"
+    },
+    {
+      "Date": "Nov 12 2026",
+      "Close": "25.538000106811523",
+      "Adj Close": "25.54",
+      "Volume": "6100"
+    },
+    {
+      "Date": "Nov 13 2026",
+      "Close": "25.642000198364258",
+      "Adj Close": "25.64",
+      "Volume": "3800"
     }
   ]
 }

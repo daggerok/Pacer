@@ -7,7 +7,7 @@
     "fundPage": "https://www.paceretfs.com/products/PIEL",
     "officialProductPage": "https://www.paceretfs.com/products/PIEL",
     "productPageRendering": "read-only rendering proxy (r.jina.ai) of the official fund page",
-    "productPageAsOf": "Nov 06 2026",
+    "productPageAsOf": "Nov 13 2026",
     "catalogListing": "https://www.paceretfs.com/products/",
     "holdingsDownload": "https://www.sec.gov/Archives/edgar/data/1616668/000089418926029032/0000894189-26-029032.txt",
     "officialHoldingsDownload": "https://www.paceretfs.com/products/holdings_download/PIEL",
@@ -33,32 +33,32 @@
     "kind": "Total Expenses published on the official fund page (product listing for funds without a page value)"
   },
   "nav": {
-    "display": "$27.78",
-    "value": 27.78,
-    "asOfDate": "Nov 06 2026"
+    "display": "$28.16",
+    "value": 28.16,
+    "asOfDate": "Nov 13 2026"
   },
   "marketPrice": {
-    "display": "$27.89",
-    "value": 27.89,
-    "asOfDate": "Nov 06 2026",
+    "display": "$28.35",
+    "value": 28.35,
+    "asOfDate": "Nov 13 2026",
     "source": "official fund page Market Price (closing price as of the Fund Details date)"
   },
   "premiumDiscount": {
-    "display": "0.42%",
-    "value": 0.42,
-    "asOfDate": "Nov 06 2026",
+    "display": "0.66%",
+    "value": 0.66,
+    "asOfDate": "Nov 13 2026",
     "source": "official fund page Fund Details Premium/Discount"
   },
   "aum": {
-    "display": "$1.11 M",
-    "value": 1111016.01,
-    "asOfDate": "Nov 06 2026",
+    "display": "$1.13 M",
+    "value": 1126554.4,
+    "asOfDate": "Nov 13 2026",
     "source": "official fund page Net Assets"
   },
   "fundFacts": {
     "sharesOutstanding": 40000,
-    "publishedTotalHoldings": 106,
-    "medianBidAskSpread": 0.002102
+    "publishedTotalHoldings": 104,
+    "medianBidAskSpread": 0.002103
   },
   "yields": {
     "dividendYield": null,
@@ -164,15 +164,15 @@
     "asOf": "Jul 31 2026",
     "source": "SEC EDGAR Form N-PORT-P (accession 0000894189-26-029032, report period 2026-07-31)",
     "marketValueBasis": "SEC Form N-PORT-P reported value (valUSD)",
-    "publishedTotalHoldings": 106
+    "publishedTotalHoldings": 104
   },
   "history": {
     "pages": [
       "history/001.json"
     ],
     "pageSize": 1000,
-    "totalRows": 217,
-    "asOf": "Nov 06 2026",
+    "totalRows": 222,
+    "asOf": "Nov 13 2026",
     "source": "Yahoo Finance public chart API (adjusted close)"
   }
 }

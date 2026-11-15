@@ -2,7 +2,7 @@
   "ticker": "QFRD",
   "page": 1,
   "pageSize": 1000,
-  "totalRows": 206,
+  "totalRows": 211,
   "headers": [
     "Date",
     "Close",
@@ -1245,6 +1245,36 @@
       "Close": "28.937000274658203",
       "Adj Close": "28.94",
       "Volume": "300"
+    },
+    {
+      "Date": "Nov 09 2026",
+      "Close": "29.691999435424805",
+      "Adj Close": "29.69",
+      "Volume": "100"
+    },
+    {
+      "Date": "Nov 10 2026",
+      "Close": "29.565000534057617",
+      "Adj Close": "29.57",
+      "Volume": "300"
+    },
+    {
+      "Date": "Nov 11 2026",
+      "Close": "30.014999389648438",
+      "Adj Close": "30.01",
+      "Volume": "300"
+    },
+    {
+      "Date": "Nov 12 2026",
+      "Close": "29.924999237060547",
+      "Adj Close": "29.92",
+      "Volume": "100"
+    },
+    {
+      "Date": "Nov 13 2026",
+      "Close": "29.827999114990234",
+      "Adj Close": "29.83",
+      "Volume": "1100"
     }
   ]
 }

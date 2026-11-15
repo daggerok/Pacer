@@ -2,7 +2,7 @@
   "ticker": "QFHD",
   "page": 1,
   "pageSize": 1000,
-  "totalRows": 206,
+  "totalRows": 211,
   "headers": [
     "Date",
     "Close",
@@ -1245,6 +1245,36 @@
       "Close": "28.599000930786133",
       "Adj Close": "28.6",
       "Volume": "300"
+    },
+    {
+      "Date": "Nov 09 2026",
+      "Close": "28.979000091552734",
+      "Adj Close": "28.98",
+      "Volume": "100"
+    },
+    {
+      "Date": "Nov 10 2026",
+      "Close": "29.027000427246094",
+      "Adj Close": "29.03",
+      "Volume": "100"
+    },
+    {
+      "Date": "Nov 11 2026",
+      "Close": "29.093000411987305",
+      "Adj Close": "29.09",
+      "Volume": "200"
+    },
+    {
+      "Date": "Nov 12 2026",
+      "Close": "28.97800064086914",
+      "Adj Close": "28.98",
+      "Volume": "100"
+    },
+    {
+      "Date": "Nov 13 2026",
+      "Close": "29.176000595092773",
+      "Adj Close": "29.18",
+      "Volume": "200"
     }
   ]
 }

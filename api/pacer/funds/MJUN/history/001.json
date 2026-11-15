@@ -2,7 +2,7 @@
   "ticker": "MJUN",
   "page": 1,
   "pageSize": 1000,
-  "totalRows": 103,
+  "totalRows": 108,
   "headers": [
     "Date",
     "Close",
@@ -626,6 +626,36 @@
       "Date": "Nov 06 2026",
       "Close": "32.400001525878906",
       "Adj Close": "32.4",
+      "Volume": "100"
+    },
+    {
+      "Date": "Nov 09 2026",
+      "Close": "32.83000183105469",
+      "Adj Close": "32.83",
+      "Volume": "100"
+    },
+    {
+      "Date": "Nov 10 2026",
+      "Close": "32.7599983215332",
+      "Adj Close": "32.76",
+      "Volume": "100"
+    },
+    {
+      "Date": "Nov 11 2026",
+      "Close": "32.9900016784668",
+      "Adj Close": "32.99",
+      "Volume": "100"
+    },
+    {
+      "Date": "Nov 12 2026",
+      "Close": "32.93000030517578",
+      "Adj Close": "32.93",
+      "Volume": "100"
+    },
+    {
+      "Date": "Nov 13 2026",
+      "Close": "32.869998931884766",
+      "Adj Close": "32.87",
       "Volume": "100"
     }
   ]

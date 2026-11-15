@@ -2,7 +2,7 @@
   "ticker": "MILK",
   "page": 1,
   "pageSize": 1000,
-  "totalRows": 473,
+  "totalRows": 478,
   "headers": [
     "Date",
     "Close",
@@ -2847,6 +2847,36 @@
       "Close": "23.885000228881836",
       "Adj Close": "23.89",
       "Volume": "1400"
+    },
+    {
+      "Date": "Nov 09 2026",
+      "Close": "23.941999435424805",
+      "Adj Close": "23.94",
+      "Volume": "5700"
+    },
+    {
+      "Date": "Nov 10 2026",
+      "Close": "23.7549991607666",
+      "Adj Close": "23.75",
+      "Volume": "7500"
+    },
+    {
+      "Date": "Nov 11 2026",
+      "Close": "23.774999618530273",
+      "Adj Close": "23.77",
+      "Volume": "3500"
+    },
+    {
+      "Date": "Nov 12 2026",
+      "Close": "23.589000701904297",
+      "Adj Close": "23.59",
+      "Volume": "11700"
+    },
+    {
+      "Date": "Nov 13 2026",
+      "Close": "23.510000228881836",
+      "Adj Close": "23.51",
+      "Volume": "15100"
     }
   ]
 }

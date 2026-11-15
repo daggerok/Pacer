@@ -2,7 +2,7 @@
   "ticker": "ACBE",
   "page": 1,
   "pageSize": 1000,
-  "totalRows": 15,
+  "totalRows": 20,
   "headers": [
     "Date",
     "Close",
@@ -13,61 +13,61 @@
     {
       "Date": "Oct 19 2026",
       "Close": "25.059999465942383",
-      "Adj Close": "25.06",
+      "Adj Close": "24.85",
       "Volume": "4100"
     },
     {
       "Date": "Oct 20 2026",
       "Close": "25.1299991607666",
-      "Adj Close": "25.13",
+      "Adj Close": "24.91",
       "Volume": "100"
     },
     {
       "Date": "Oct 21 2026",
       "Close": "25.280000686645508",
-      "Adj Close": "25.28",
+      "Adj Close": "25.06",
       "Volume": "87000"
     },
     {
       "Date": "Oct 22 2026",
       "Close": "25.030000686645508",
-      "Adj Close": "25.03",
+      "Adj Close": "24.82",
       "Volume": "4900"
     },
     {
       "Date": "Oct 23 2026",
       "Close": "24.8799991607666",
-      "Adj Close": "24.88",
+      "Adj Close": "24.67",
       "Volume": "300"
     },
     {
       "Date": "Oct 26 2026",
       "Close": "25.030000686645508",
-      "Adj Close": "25.03",
+      "Adj Close": "24.82",
       "Volume": "3000"
     },
     {
       "Date": "Oct 27 2026",
       "Close": "25.18000030517578",
-      "Adj Close": "25.18",
+      "Adj Close": "24.96",
       "Volume": "100"
     },
     {
       "Date": "Oct 28 2026",
       "Close": "25.239999771118164",
-      "Adj Close": "25.24",
+      "Adj Close": "25.02",
       "Volume": "4800"
     },
     {
       "Date": "Oct 29 2026",
       "Close": "25.170000076293945",
-      "Adj Close": "25.17",
+      "Adj Close": "24.95",
       "Volume": "1800"
     },
     {
       "Date": "Oct 30 2026",
       "Close": "24.510000228881836",
-      "Adj Close": "24.51",
+      "Adj Close": "24.3",
       "Volume": "600"
     },
     {
@@ -99,6 +99,36 @@
       "Close": "23.799999237060547",
       "Adj Close": "23.8",
       "Volume": "2600"
+    },
+    {
+      "Date": "Nov 09 2026",
+      "Close": "24.3799991607666",
+      "Adj Close": "24.38",
+      "Volume": "700"
+    },
+    {
+      "Date": "Nov 10 2026",
+      "Close": "24.200000762939453",
+      "Adj Close": "24.2",
+      "Volume": "2400"
+    },
+    {
+      "Date": "Nov 11 2026",
+      "Close": "24.440000534057617",
+      "Adj Close": "24.44",
+      "Volume": "1400"
+    },
+    {
+      "Date": "Nov 12 2026",
+      "Close": "24.270000457763672",
+      "Adj Close": "24.27",
+      "Volume": "700"
+    },
+    {
+      "Date": "Nov 13 2026",
+      "Close": "24.139999389648438",
+      "Adj Close": "24.14",
+      "Volume": "700"
     }
   ]
 }

@@ -2,7 +2,7 @@
   "ticker": "LCOW",
   "page": 1,
   "pageSize": 1000,
-  "totalRows": 378,
+  "totalRows": 383,
   "headers": [
     "Date",
     "Close",
@@ -2277,6 +2277,36 @@
       "Close": "26.371000289916992",
       "Adj Close": "26.37",
       "Volume": "9100"
+    },
+    {
+      "Date": "Nov 09 2026",
+      "Close": "26.895999908447266",
+      "Adj Close": "26.9",
+      "Volume": "14000"
+    },
+    {
+      "Date": "Nov 10 2026",
+      "Close": "26.882999420166016",
+      "Adj Close": "26.88",
+      "Volume": "14000"
+    },
+    {
+      "Date": "Nov 11 2026",
+      "Close": "27.184999465942383",
+      "Adj Close": "27.18",
+      "Volume": "6200"
+    },
+    {
+      "Date": "Nov 12 2026",
+      "Close": "27.093000411987305",
+      "Adj Close": "27.09",
+      "Volume": "12600"
+    },
+    {
+      "Date": "Nov 13 2026",
+      "Close": "27.059999465942383",
+      "Adj Close": "27.06",
+      "Volume": "19200"
     }
   ]
 }

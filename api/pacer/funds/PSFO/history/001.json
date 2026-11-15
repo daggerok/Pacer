@@ -2,7 +2,7 @@
   "ticker": "PSFO",
   "page": 1,
   "pageSize": 1000,
-  "totalRows": 1281,
+  "totalRows": 1286,
   "headers": [
     "Date",
     "Close",

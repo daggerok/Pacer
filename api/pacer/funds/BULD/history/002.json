@@ -2,7 +2,7 @@
   "ticker": "BULD",
   "page": 2,
   "pageSize": 1000,
-  "totalRows": 1131,
+  "totalRows": 1136,
   "headers": [
     "Date",
     "Close",
@@ -795,6 +795,36 @@
       "Close": "30.808000564575195",
       "Adj Close": "30.81",
       "Volume": "300"
+    },
+    {
+      "Date": "Nov 09 2026",
+      "Close": "32.284000396728516",
+      "Adj Close": "32.28",
+      "Volume": "300"
+    },
+    {
+      "Date": "Nov 10 2026",
+      "Close": "31.94499969482422",
+      "Adj Close": "31.94",
+      "Volume": "1400"
+    },
+    {
+      "Date": "Nov 11 2026",
+      "Close": "32.275001525878906",
+      "Adj Close": "32.28",
+      "Volume": "400"
+    },
+    {
+      "Date": "Nov 12 2026",
+      "Close": "31.606000900268555",
+      "Adj Close": "31.61",
+      "Volume": "800"
+    },
+    {
+      "Date": "Nov 13 2026",
+      "Close": "31.371999740600586",
+      "Adj Close": "31.37",
+      "Volume": "200"
     }
   ]
 }
