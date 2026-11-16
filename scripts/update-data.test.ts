@@ -281,7 +281,11 @@ const realFetch = globalThis.fetch;
 // the seven 52-week keys withRange52w puts into every index row in front of returnsBasis and performanceAsOf (range-52w block)
 const RANGE_KEYS = ['week52Low', 'week52High', 'range52w', 'range52wClose', 'range52wAsOf', 'range52wSince', 'range52wBasis'];
 // the nine swing keys withSwing puts after them, from the Close column of the same history pages (swing block)
-const DIVIDEND_KEYS = ['dividendRate', 'dividendGrowth', 'dividendGrowth3y', 'dividendGrowth5y', 'dividendStreak', 'dividendCut10y'];
+const DIVIDEND_KEYS = ['dividendRate', 'dividendGrowth', 'dividendGrowth3y', 'dividendGrowth5y', 'dividendStreak', 'dividendCut10y', 'paymentsPerYear', 'payFrequency'];
+// the benchmark block puts its 32 keys after the dividend ones, in front of returnsBasis and performanceAsOf
+const BENCHMARK_KEYS = ['perf1y', 'perf3y', 'perf5y', 'perf10y', 'perfSi', 'maxDrawdown1y', 'maxDrawdown3y', 'maxDrawdown5y', 'maxDrawdown10y',
+  'vsSpy1y', 'vsSpy3y', 'vsSpy5y', 'vsSpy10y', 'beta1ySpy', 'corr1ySpy', 'upCapture3ySpy', 'downCapture3ySpy', 'relStrength3mSpy', 'stressReturnSpy', 'stressBasisSpy',
+  'vsQqq1y', 'vsQqq3y', 'vsQqq5y', 'vsQqq10y', 'beta1yQqq', 'corr1yQqq', 'upCapture3yQqq', 'downCapture3yQqq', 'relStrength3mQqq', 'stressReturnQqq', 'stressBasisQqq', 'benchmarkAsOf'];
 const SWING_KEYS = ['pctFrom52wHigh', 'athPrice', 'athDate', 'athBasis', 'pctFromAth', 'volatility1y', 'sigmaFromMean60d', 'high60d', 'low60d'];
 // test doubles implement only the call signature, not fetch's extra members (preconnect)
 const asFetch = (stub: unknown) => stub as typeof fetch;
@@ -903,9 +907,10 @@ describe('pipeline', () => {
         expect(fund.dataFile).toBe(`./funds/${fund.ticker}/meta.json`);
         expect(JSON.parse(feed.read(`funds/${fund.ticker}/meta.json`)).ticker).toBe(fund.ticker);
         expect(String(fund.metrics.returnsBasis).length).toBeGreaterThan(0);
-        expect(Object.keys(fund.metrics).slice(-24)).toEqual([...RANGE_KEYS, ...SWING_KEYS, ...DIVIDEND_KEYS, 'returnsBasis', 'performanceAsOf']);
-        expect(Object.keys(fund.metrics).slice(-17, -8)).toEqual(SWING_KEYS);
-        expect(Object.keys(fund.metrics).slice(-8, -2)).toEqual(DIVIDEND_KEYS);
+        expect(Object.keys(fund.metrics).slice(-58)).toEqual([...RANGE_KEYS, ...SWING_KEYS, ...DIVIDEND_KEYS, ...BENCHMARK_KEYS, 'returnsBasis', 'performanceAsOf']);
+        expect(Object.keys(fund.metrics).slice(-51, -42)).toEqual(SWING_KEYS);
+        expect(Object.keys(fund.metrics).slice(-42, -34)).toEqual(DIVIDEND_KEYS);
+        expect(Object.keys(fund.metrics).slice(-34, -2)).toEqual(BENCHMARK_KEYS);
         expect([typeof fund.metrics.athPrice, fund.metrics.athBasis]).toEqual(['number', expect.stringMatching(/^daily closes since \d{4}-\d{2}-\d{2}$/)]);
       }
       const young = funds.find((fund) => fund.ticker === 'QFHD')!.metrics;
@@ -913,9 +918,12 @@ describe('pipeline', () => {
       expect(funds.find((fund) => fund.ticker === 'COWZ')!.metrics.tr1y).toBe(26.63);
       // the dividend keys from one Yahoo daily chart request (includePrePost=false) per updated fund: 0.25 in the last year, the rest null
       const cowz = funds.find((fund) => fund.ticker === 'COWZ')!.metrics;
-      expect(DIVIDEND_KEYS.map((key) => cowz[key])).toEqual([0.25, null, null, null, null, null]);
+      expect(DIVIDEND_KEYS.map((key) => cowz[key])).toEqual([0.25, null, null, null, null, null, 1, 'annual']);
       const dividendRequests = feed.calls().filter((url) => /chart\/[^?]+\?period1=0&.*includePrePost=false/.test(url)).map((url) => /chart\/([^?]+)/.exec(url)?.[1]).sort();
-      expect(dividendRequests).toEqual(['COWZ', 'PSFF', 'QFHD']);
+      // one request per updated fund feeds dividends and benchmark; SPY and QQQ are read once as the benchmarks
+      expect(dividendRequests).toEqual(['COWZ', 'PSFF', 'QFHD', 'QQQ', 'SPY']);
+      // the mock gives every ticker the same daily bars (counted back from yesterday), so the fund equals the benchmarks: beta and correlation 1, no gap
+      expect([typeof cowz.perf1y, cowz.vsSpy1y, cowz.beta1ySpy, cowz.corr1ySpy, cowz.relStrength3mQqq, cowz.stressReturnSpy, cowz.benchmarkAsOf]).toEqual(['number', 0, 1, 1, 0, null, expect.stringMatching(/^\d{4}-\d{2}-\d{2}$/)]);
     });
   }, 60_000);
 
@@ -1161,7 +1169,7 @@ describe('pipeline 3', () => {
       expect(String(row.metrics.returnsBasis).length).toBeGreaterThan(0);
       expect(existsSync(feed.path('api/pacer/funds/NEWF'))).toBe(false);
       // the index row also has the 52-week keys, added from the history pages right before index.json is written
-      expect([...Object.keys(placeholderRow({ ticker: 'X', name: 'X', category: 'ETF', fundPage: '', cusip: '', isin: '', exchange: '', ter: null }).metrics), ...RANGE_KEYS, ...SWING_KEYS, ...DIVIDEND_KEYS].sort()).toEqual(Object.keys(row.metrics).sort());
+      expect([...Object.keys(placeholderRow({ ticker: 'X', name: 'X', category: 'ETF', fundPage: '', cusip: '', isin: '', exchange: '', ter: null }).metrics), ...RANGE_KEYS, ...SWING_KEYS, ...DIVIDEND_KEYS, ...BENCHMARK_KEYS].sort()).toEqual(Object.keys(row.metrics).sort());
     });
   }, 90_000);
 
