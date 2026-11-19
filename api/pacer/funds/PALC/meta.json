@@ -7,7 +7,7 @@
     "fundPage": "https://www.paceretfs.com/products/PALC",
     "officialProductPage": "https://www.paceretfs.com/products/PALC",
     "productPageRendering": "read-only rendering proxy (r.jina.ai) of the official fund page",
-    "productPageAsOf": "Nov 13 2026",
+    "productPageAsOf": "Nov 17 2026",
     "catalogListing": "https://www.paceretfs.com/products/",
     "holdingsDownload": "https://www.sec.gov/Archives/edgar/data/1616668/000089418926029044/0000894189-26-029044.txt",
     "officialHoldingsDownload": "https://www.paceretfs.com/products/holdings_download/PALC",
@@ -33,26 +33,26 @@
     "kind": "Total Expenses published on the official fund page (product listing for funds without a page value)"
   },
   "nav": {
-    "display": "$53.48",
-    "value": 53.48,
-    "asOfDate": "Nov 13 2026"
+    "display": "$52.62",
+    "value": 52.62,
+    "asOfDate": "Nov 17 2026"
   },
   "marketPrice": {
-    "display": "$53.45",
-    "value": 53.45,
-    "asOfDate": "Nov 13 2026",
+    "display": "$52.60",
+    "value": 52.6,
+    "asOfDate": "Nov 17 2026",
     "source": "official fund page Market Price (closing price as of the Fund Details date)"
   },
   "premiumDiscount": {
-    "display": "-0.05%",
-    "value": -0.05,
-    "asOfDate": "Nov 13 2026",
+    "display": "-0.04%",
+    "value": -0.04,
+    "asOfDate": "Nov 17 2026",
     "source": "official fund page Fund Details Premium/Discount"
   },
   "aum": {
-    "display": "$187.16 M",
-    "value": 187163185.19,
-    "asOfDate": "Nov 13 2026",
+    "display": "$184.17 M",
+    "value": 184168034.93,
+    "asOfDate": "Nov 17 2026",
     "source": "official fund page Net Assets"
   },
   "fundFacts": {
@@ -61,8 +61,8 @@
     "medianBidAskSpread": null
   },
   "yields": {
-    "dividendYield": 1.63,
-    "dividendYieldText": "1.63%",
+    "dividendYield": 1.65,
+    "dividendYieldText": "1.65%",
     "dividendYieldBasis": "indicated",
     "dividendYieldKind": "indicated (latest distribution x inferred payments per year / NAV; Pacer publishes no distribution yield)",
     "secYield": null,
@@ -273,8 +273,8 @@
       "history/002.json"
     ],
     "pageSize": 1000,
-    "totalRows": 1606,
-    "asOf": "Nov 13 2026",
+    "totalRows": 1609,
+    "asOf": "Nov 18 2026",
     "source": "Yahoo Finance public chart API (adjusted close)"
   }
 }

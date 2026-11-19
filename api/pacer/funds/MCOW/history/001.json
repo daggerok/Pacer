@@ -2,7 +2,7 @@
   "ticker": "MCOW",
   "page": 1,
   "pageSize": 1000,
-  "totalRows": 306,
+  "totalRows": 309,
   "headers": [
     "Date",
     "Close",
@@ -1845,6 +1845,24 @@
       "Close": "22.360000610351562",
       "Adj Close": "22.36",
       "Volume": "200"
+    },
+    {
+      "Date": "Nov 16 2026",
+      "Close": "22.06999969482422",
+      "Adj Close": "22.07",
+      "Volume": "100"
+    },
+    {
+      "Date": "Nov 17 2026",
+      "Close": "21.815000534057617",
+      "Adj Close": "21.82",
+      "Volume": "100"
+    },
+    {
+      "Date": "Nov 18 2026",
+      "Close": "21.94300079345703",
+      "Adj Close": "21.94",
+      "Volume": "7200"
     }
   ]
 }

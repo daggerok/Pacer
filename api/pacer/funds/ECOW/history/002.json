@@ -2,7 +2,7 @@
   "ticker": "ECOW",
   "page": 2,
   "pageSize": 1000,
-  "totalRows": 1894,
+  "totalRows": 1897,
   "headers": [
     "Date",
     "Close",
@@ -5373,6 +5373,24 @@
       "Close": "25.968000411987305",
       "Adj Close": "25.97",
       "Volume": "20400"
+    },
+    {
+      "Date": "Nov 16 2026",
+      "Close": "25.684999465942383",
+      "Adj Close": "25.68",
+      "Volume": "32900"
+    },
+    {
+      "Date": "Nov 17 2026",
+      "Close": "25.718000411987305",
+      "Adj Close": "25.72",
+      "Volume": "21700"
+    },
+    {
+      "Date": "Nov 18 2026",
+      "Close": "25.17099952697754",
+      "Adj Close": "25.17",
+      "Volume": "20500"
     }
   ]
 }

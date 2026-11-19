@@ -2,7 +2,7 @@
   "ticker": "PWS",
   "page": 3,
   "pageSize": 1000,
-  "totalRows": 2243,
+  "totalRows": 2246,
   "headers": [
     "Date",
     "Close",
@@ -1466,6 +1466,24 @@
       "Date": "Nov 13 2026",
       "Close": "31.716999053955078",
       "Adj Close": "31.72",
+      "Volume": "200"
+    },
+    {
+      "Date": "Nov 16 2026",
+      "Close": "31.07900047302246",
+      "Adj Close": "31.08",
+      "Volume": "200"
+    },
+    {
+      "Date": "Nov 17 2026",
+      "Close": "30.64699935913086",
+      "Adj Close": "30.65",
+      "Volume": "3100"
+    },
+    {
+      "Date": "Nov 18 2026",
+      "Close": "30.552000045776367",
+      "Adj Close": "30.55",
       "Volume": "200"
     }
   ]

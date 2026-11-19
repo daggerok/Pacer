@@ -2,7 +2,7 @@
   "ticker": "PSFJ",
   "page": 2,
   "pageSize": 1000,
-  "totalRows": 1350,
+  "totalRows": 1353,
   "headers": [
     "Date",
     "Close",
@@ -2109,6 +2109,24 @@
       "Close": "35.74399948120117",
       "Adj Close": "35.74",
       "Volume": "700"
+    },
+    {
+      "Date": "Nov 16 2026",
+      "Close": "35.279998779296875",
+      "Adj Close": "35.28",
+      "Volume": "900"
+    },
+    {
+      "Date": "Nov 17 2026",
+      "Close": "35",
+      "Adj Close": "35",
+      "Volume": "3400"
+    },
+    {
+      "Date": "Nov 18 2026",
+      "Close": "35.027000427246094",
+      "Adj Close": "35.03",
+      "Volume": "1900"
     }
   ]
 }

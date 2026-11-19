@@ -2,7 +2,7 @@
   "ticker": "BUL",
   "page": 2,
   "pageSize": 1000,
-  "totalRows": 1894,
+  "totalRows": 1897,
   "headers": [
     "Date",
     "Close",
@@ -5373,6 +5373,24 @@
       "Close": "62.50199890136719",
       "Adj Close": "62.5",
       "Volume": "5900"
+    },
+    {
+      "Date": "Nov 16 2026",
+      "Close": "61.56999969482422",
+      "Adj Close": "61.57",
+      "Volume": "4800"
+    },
+    {
+      "Date": "Nov 17 2026",
+      "Close": "60.66999816894531",
+      "Adj Close": "60.67",
+      "Volume": "11600"
+    },
+    {
+      "Date": "Nov 18 2026",
+      "Close": "60.36899948120117",
+      "Adj Close": "60.37",
+      "Volume": "31000"
     }
   ]
 }

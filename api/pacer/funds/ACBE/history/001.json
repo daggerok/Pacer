@@ -2,7 +2,7 @@
   "ticker": "ACBE",
   "page": 1,
   "pageSize": 1000,
-  "totalRows": 20,
+  "totalRows": 23,
   "headers": [
     "Date",
     "Close",
@@ -129,6 +129,24 @@
       "Close": "24.139999389648438",
       "Adj Close": "24.14",
       "Volume": "700"
+    },
+    {
+      "Date": "Nov 16 2026",
+      "Close": "23.700000762939453",
+      "Adj Close": "23.7",
+      "Volume": "1800"
+    },
+    {
+      "Date": "Nov 17 2026",
+      "Close": "23.56999969482422",
+      "Adj Close": "23.57",
+      "Volume": "400"
+    },
+    {
+      "Date": "Nov 18 2026",
+      "Close": "23.540000915527344",
+      "Adj Close": "23.54",
+      "Volume": "1500"
     }
   ]
 }

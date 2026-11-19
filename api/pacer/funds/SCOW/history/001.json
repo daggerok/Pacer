@@ -2,7 +2,7 @@
   "ticker": "SCOW",
   "page": 1,
   "pageSize": 1000,
-  "totalRows": 306,
+  "totalRows": 309,
   "headers": [
     "Date",
     "Close",
@@ -1845,6 +1845,24 @@
       "Close": "23.621999740600586",
       "Adj Close": "23.62",
       "Volume": "100"
+    },
+    {
+      "Date": "Nov 16 2026",
+      "Close": "23.329999923706055",
+      "Adj Close": "23.33",
+      "Volume": "800"
+    },
+    {
+      "Date": "Nov 17 2026",
+      "Close": "22.93000030517578",
+      "Adj Close": "22.93",
+      "Volume": "100"
+    },
+    {
+      "Date": "Nov 18 2026",
+      "Close": "23.118000030517578",
+      "Adj Close": "23.12",
+      "Volume": "3900"
     }
   ]
 }

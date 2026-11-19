@@ -2,7 +2,7 @@
   "ticker": "CALF",
   "page": 3,
   "pageSize": 1000,
-  "totalRows": 2366,
+  "totalRows": 2369,
   "headers": [
     "Date",
     "Close",
@@ -2205,6 +2205,24 @@
       "Close": "58.040000915527344",
       "Adj Close": "58.04",
       "Volume": "232100"
+    },
+    {
+      "Date": "Nov 16 2026",
+      "Close": "57.279998779296875",
+      "Adj Close": "57.28",
+      "Volume": "497800"
+    },
+    {
+      "Date": "Nov 17 2026",
+      "Close": "56.369998931884766",
+      "Adj Close": "56.37",
+      "Volume": "355000"
+    },
+    {
+      "Date": "Nov 18 2026",
+      "Close": "56.470001220703125",
+      "Adj Close": "56.47",
+      "Volume": "474300"
     }
   ]
 }

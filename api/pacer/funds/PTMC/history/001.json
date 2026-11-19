@@ -2,7 +2,7 @@
   "ticker": "PTMC",
   "page": 1,
   "pageSize": 1000,
-  "totalRows": 2874,
+  "totalRows": 2877,
   "headers": [
     "Date",
     "Close",

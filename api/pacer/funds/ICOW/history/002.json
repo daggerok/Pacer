@@ -2,7 +2,7 @@
   "ticker": "ICOW",
   "page": 2,
   "pageSize": 1000,
-  "totalRows": 2366,
+  "totalRows": 2369,
   "headers": [
     "Date",
     "Close",

@@ -2,7 +2,7 @@
   "ticker": "MAUG",
   "page": 1,
   "pageSize": 1000,
-  "totalRows": 137,
+  "totalRows": 140,
   "headers": [
     "Date",
     "Close",
@@ -830,6 +830,24 @@
       "Date": "Nov 13 2026",
       "Close": "33.2599983215332",
       "Adj Close": "33.26",
+      "Volume": "100"
+    },
+    {
+      "Date": "Nov 16 2026",
+      "Close": "32.900001525878906",
+      "Adj Close": "32.9",
+      "Volume": "100"
+    },
+    {
+      "Date": "Nov 17 2026",
+      "Close": "32.65999984741211",
+      "Adj Close": "32.66",
+      "Volume": "1900"
+    },
+    {
+      "Date": "Nov 18 2026",
+      "Close": "32.689998626708984",
+      "Adj Close": "32.69",
       "Volume": "100"
     }
   ]

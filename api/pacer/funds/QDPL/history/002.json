@@ -2,7 +2,7 @@
   "ticker": "QDPL",
   "page": 2,
   "pageSize": 1000,
-  "totalRows": 1333,
+  "totalRows": 1336,
   "headers": [
     "Date",
     "Close",
@@ -2007,6 +2007,24 @@
       "Close": "45.25",
       "Adj Close": "45.25",
       "Volume": "163000"
+    },
+    {
+      "Date": "Nov 16 2026",
+      "Close": "44.34000015258789",
+      "Adj Close": "44.34",
+      "Volume": "153700"
+    },
+    {
+      "Date": "Nov 17 2026",
+      "Close": "43.90999984741211",
+      "Adj Close": "43.91",
+      "Volume": "122700"
+    },
+    {
+      "Date": "Nov 18 2026",
+      "Close": "43.81999969482422",
+      "Adj Close": "43.82",
+      "Volume": "143700"
     }
   ]
 }

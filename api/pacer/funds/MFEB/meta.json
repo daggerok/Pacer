@@ -7,7 +7,7 @@
     "fundPage": "https://www.paceretfs.com/products/structured-outcome-strategies/MFEB",
     "officialProductPage": "https://www.paceretfs.com/products/structured-outcome-strategies/MFEB",
     "productPageRendering": "read-only rendering proxy (r.jina.ai) of the official fund page",
-    "productPageAsOf": "Nov 13 2026",
+    "productPageAsOf": "Nov 17 2026",
     "catalogListing": "https://www.paceretfs.com/products/",
     "holdingsDownload": "https://www.sec.gov/Archives/edgar/data/1616668/000089418926029008/0000894189-26-029008.txt",
     "officialHoldingsDownload": "https://www.paceretfs.com/products/holdings_download/MFEB",
@@ -33,26 +33,26 @@
     "kind": "Total Expenses published on the official fund page (product listing for funds without a page value)"
   },
   "nav": {
-    "display": "$33.36",
-    "value": 33.36,
-    "asOfDate": "Nov 13 2026"
+    "display": "$32.85",
+    "value": 32.85,
+    "asOfDate": "Nov 17 2026"
   },
   "marketPrice": {
-    "display": "$33.40",
-    "value": 33.4,
-    "asOfDate": "Nov 13 2026",
+    "display": "$32.81",
+    "value": 32.81,
+    "asOfDate": "Nov 17 2026",
     "source": "official fund page Market Price (closing price as of the Fund Details date)"
   },
   "premiumDiscount": {
-    "display": "0.13%",
-    "value": 0.13,
-    "asOfDate": "Nov 13 2026",
+    "display": "-0.10%",
+    "value": -0.1,
+    "asOfDate": "Nov 17 2026",
     "source": "official fund page Fund Details Premium/Discount"
   },
   "aum": {
-    "display": "$1.67 M",
-    "value": 1667942.73,
-    "asOfDate": "Nov 13 2026",
+    "display": "$1.64 M",
+    "value": 1642308.15,
+    "asOfDate": "Nov 17 2026",
     "source": "official fund page Net Assets"
   },
   "fundFacts": {
@@ -171,8 +171,8 @@
       "history/001.json"
     ],
     "pageSize": 1000,
-    "totalRows": 137,
-    "asOf": "Nov 13 2026",
+    "totalRows": 140,
+    "asOf": "Nov 18 2026",
     "source": "Yahoo Finance public chart API (adjusted close)"
   }
 }

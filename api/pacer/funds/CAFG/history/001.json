@@ -2,7 +2,7 @@
   "ticker": "CAFG",
   "page": 1,
   "pageSize": 1000,
-  "totalRows": 889,
+  "totalRows": 892,
   "headers": [
     "Date",
     "Close",
@@ -5343,6 +5343,24 @@
       "Close": "33.000999450683594",
       "Adj Close": "33",
       "Volume": "9600"
+    },
+    {
+      "Date": "Nov 16 2026",
+      "Close": "32.6150016784668",
+      "Adj Close": "32.62",
+      "Volume": "1300"
+    },
+    {
+      "Date": "Nov 17 2026",
+      "Close": "32.077999114990234",
+      "Adj Close": "32.08",
+      "Volume": "2800"
+    },
+    {
+      "Date": "Nov 18 2026",
+      "Close": "32.37799835205078",
+      "Adj Close": "32.38",
+      "Volume": "16100"
     }
   ]
 }

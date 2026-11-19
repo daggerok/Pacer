@@ -7,7 +7,7 @@
     "fundPage": "https://www.paceretfs.com/products/PTBD",
     "officialProductPage": "https://www.paceretfs.com/products/PTBD",
     "productPageRendering": "read-only rendering proxy (r.jina.ai) of the official fund page",
-    "productPageAsOf": "Nov 13 2026",
+    "productPageAsOf": "Nov 17 2026",
     "catalogListing": "https://www.paceretfs.com/products/",
     "holdingsDownload": "https://www.sec.gov/Archives/edgar/data/1616668/000089418926029052/0000894189-26-029052.txt",
     "officialHoldingsDownload": "https://www.paceretfs.com/products/holdings_download/PTBD",
@@ -35,39 +35,39 @@
   "nav": {
     "display": "$18.22",
     "value": 18.22,
-    "asOfDate": "Nov 13 2026"
+    "asOfDate": "Nov 17 2026"
   },
   "marketPrice": {
-    "display": "$18.21",
-    "value": 18.21,
-    "asOfDate": "Nov 13 2026",
+    "display": "$18.19",
+    "value": 18.19,
+    "asOfDate": "Nov 17 2026",
     "source": "official fund page Market Price (closing price as of the Fund Details date)"
   },
   "premiumDiscount": {
-    "display": "-0.09%",
-    "value": -0.09,
-    "asOfDate": "Nov 13 2026",
+    "display": "-0.16%",
+    "value": -0.16,
+    "asOfDate": "Nov 17 2026",
     "source": "official fund page Fund Details Premium/Discount"
   },
   "aum": {
-    "display": "$82.00 M",
-    "value": 81996741.27,
-    "asOfDate": "Nov 13 2026",
+    "display": "$81.99 M",
+    "value": 81987470.62,
+    "asOfDate": "Nov 17 2026",
     "source": "official fund page Net Assets"
   },
   "fundFacts": {
     "sharesOutstanding": 4500000,
-    "publishedTotalHoldings": 1059,
-    "medianBidAskSpread": 0.001094
+    "publishedTotalHoldings": 1012,
+    "medianBidAskSpread": 0.001098
   },
   "yields": {
     "dividendYield": 6.34,
     "dividendYieldText": "6.34%",
     "dividendYieldBasis": "indicated",
     "dividendYieldKind": "indicated (latest distribution x inferred payments per year / NAV; Pacer publishes no distribution yield)",
-    "secYield": 7.01,
-    "secYieldText": "7.01%",
-    "secYieldKind": "30 Day SEC Yield published on the official fund page as of Nov 13 2026"
+    "secYield": 6.92,
+    "secYieldText": "6.92%",
+    "secYieldKind": "30 Day SEC Yield published on the official fund page as of Nov 17 2026"
   },
   "returns": {
     "derivedFrom": "official Pacer ETFs NAV total returns as of the month end (product listing and fund page); null where Pacer publishes none",
@@ -412,7 +412,7 @@
     "asOf": "Jul 31 2026",
     "source": "SEC EDGAR Form N-PORT-P (accession 0000894189-26-029052, report period 2026-07-31)",
     "marketValueBasis": "SEC Form N-PORT-P reported value (valUSD)",
-    "publishedTotalHoldings": 1059
+    "publishedTotalHoldings": 1012
   },
   "history": {
     "pages": [
@@ -420,8 +420,8 @@
       "history/002.json"
     ],
     "pageSize": 1000,
-    "totalRows": 1775,
-    "asOf": "Nov 13 2026",
+    "totalRows": 1778,
+    "asOf": "Nov 18 2026",
     "source": "Yahoo Finance public chart API (adjusted close)"
   }
 }

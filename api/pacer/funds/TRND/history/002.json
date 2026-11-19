@@ -2,7 +2,7 @@
   "ticker": "TRND",
   "page": 2,
   "pageSize": 1000,
-  "totalRows": 1894,
+  "totalRows": 1897,
   "headers": [
     "Date",
     "Close",
@@ -5373,6 +5373,24 @@
       "Close": "35.89099884033203",
       "Adj Close": "35.89",
       "Volume": "800"
+    },
+    {
+      "Date": "Nov 16 2026",
+      "Close": "35.30799865722656",
+      "Adj Close": "35.31",
+      "Volume": "200"
+    },
+    {
+      "Date": "Nov 17 2026",
+      "Close": "34.987998962402344",
+      "Adj Close": "34.99",
+      "Volume": "14600"
+    },
+    {
+      "Date": "Nov 18 2026",
+      "Close": "34.99800109863281",
+      "Adj Close": "35",
+      "Volume": "1200"
     }
   ]
 }

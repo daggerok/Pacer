@@ -2,7 +2,7 @@
   "ticker": "MNVR",
   "page": 1,
   "pageSize": 1000,
-  "totalRows": 137,
+  "totalRows": 140,
   "headers": [
     "Date",
     "Close",
@@ -830,6 +830,24 @@
       "Date": "Nov 13 2026",
       "Close": "33.529998779296875",
       "Adj Close": "33.53",
+      "Volume": "100"
+    },
+    {
+      "Date": "Nov 16 2026",
+      "Close": "33.18000030517578",
+      "Adj Close": "33.18",
+      "Volume": "100"
+    },
+    {
+      "Date": "Nov 17 2026",
+      "Close": "32.93000030517578",
+      "Adj Close": "32.93",
+      "Volume": "100"
+    },
+    {
+      "Date": "Nov 18 2026",
+      "Close": "32.959999084472656",
+      "Adj Close": "32.96",
       "Volume": "100"
     }
   ]

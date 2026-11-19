@@ -2,7 +2,7 @@
   "ticker": "PSFJ",
   "page": 1,
   "pageSize": 1000,
-  "totalRows": 1350,
+  "totalRows": 1353,
   "headers": [
     "Date",
     "Close",
