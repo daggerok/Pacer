@@ -2,7 +2,7 @@
   "ticker": "PEVC",
   "page": 1,
   "pageSize": 1000,
-  "totalRows": 451,
+  "totalRows": 453,
   "headers": [
     "Date",
     "Close",
@@ -2715,6 +2715,18 @@
       "Close": "27.86199951171875",
       "Adj Close": "27.86",
       "Volume": "100"
+    },
+    {
+      "Date": "Nov 19 2026",
+      "Close": "27.06999969482422",
+      "Adj Close": "27.07",
+      "Volume": "400"
+    },
+    {
+      "Date": "Nov 20 2026",
+      "Close": "25.680099487304688",
+      "Adj Close": "25.68",
+      "Volume": "2246"
     }
   ]
 }

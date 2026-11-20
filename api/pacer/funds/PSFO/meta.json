@@ -7,7 +7,7 @@
     "fundPage": "https://www.paceretfs.com/products/structured-outcome-strategies/PSFO",
     "officialProductPage": "https://www.paceretfs.com/products/structured-outcome-strategies/PSFO",
     "productPageRendering": "read-only rendering proxy (r.jina.ai) of the official fund page",
-    "productPageAsOf": "Nov 17 2026",
+    "productPageAsOf": "Nov 19 2026",
     "catalogListing": "https://www.paceretfs.com/products/",
     "holdingsDownload": "https://www.sec.gov/Archives/edgar/data/1616668/000089418926029051/0000894189-26-029051.txt",
     "officialHoldingsDownload": "https://www.paceretfs.com/products/holdings_download/PSFO",
@@ -33,32 +33,32 @@
     "kind": "Total Expenses published on the official fund page (product listing for funds without a page value)"
   },
   "nav": {
-    "display": "$35.03",
-    "value": 35.03,
-    "asOfDate": "Nov 17 2026"
+    "display": "$34.50",
+    "value": 34.5,
+    "asOfDate": "Nov 19 2026"
   },
   "marketPrice": {
-    "display": "$34.97",
-    "value": 34.97,
-    "asOfDate": "Nov 17 2026",
+    "display": "$34.54",
+    "value": 34.54,
+    "asOfDate": "Nov 19 2026",
     "source": "official fund page Market Price (closing price as of the Fund Details date)"
   },
   "premiumDiscount": {
-    "display": "-0.18%",
-    "value": -0.18,
-    "asOfDate": "Nov 17 2026",
+    "display": "0.14%",
+    "value": 0.14,
+    "asOfDate": "Nov 19 2026",
     "source": "official fund page Fund Details Premium/Discount"
   },
   "aum": {
-    "display": "$48.17 M",
-    "value": 48171631.43,
-    "asOfDate": "Nov 17 2026",
+    "display": "$46.57 M",
+    "value": 46570354.32,
+    "asOfDate": "Nov 19 2026",
     "source": "official fund page Net Assets"
   },
   "fundFacts": {
-    "sharesOutstanding": 1375000,
+    "sharesOutstanding": 1350000,
     "publishedTotalHoldings": 7,
-    "medianBidAskSpread": 0.00168
+    "medianBidAskSpread": 0.001694
   },
   "yields": {
     "dividendYield": null,
@@ -172,8 +172,8 @@
       "history/002.json"
     ],
     "pageSize": 1000,
-    "totalRows": 1289,
-    "asOf": "Nov 18 2026",
+    "totalRows": 1291,
+    "asOf": "Nov 20 2026",
     "source": "Yahoo Finance public chart API (adjusted close)"
   }
 }

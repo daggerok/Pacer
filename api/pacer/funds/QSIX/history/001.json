@@ -2,7 +2,7 @@
   "ticker": "QSIX",
   "page": 1,
   "pageSize": 1000,
-  "totalRows": 541,
+  "totalRows": 543,
   "headers": [
     "Date",
     "Close",
@@ -3255,6 +3255,18 @@
       "Close": "38.78499984741211",
       "Adj Close": "38.78",
       "Volume": "100"
+    },
+    {
+      "Date": "Nov 19 2026",
+      "Close": "38.01499938964844",
+      "Adj Close": "38.01",
+      "Volume": "200"
+    },
+    {
+      "Date": "Nov 20 2026",
+      "Close": "36.010101318359375",
+      "Adj Close": "36.01",
+      "Volume": "2049"
     }
   ]
 }

@@ -2,7 +2,7 @@
   "ticker": "INDQ",
   "page": 1,
   "pageSize": 1000,
-  "totalRows": 160,
+  "totalRows": 162,
   "headers": [
     "Date",
     "Close",
@@ -969,6 +969,18 @@
       "Close": "25.729999542236328",
       "Adj Close": "25.73",
       "Volume": "8100"
+    },
+    {
+      "Date": "Nov 19 2026",
+      "Close": "25.84000015258789",
+      "Adj Close": "25.84",
+      "Volume": "100"
+    },
+    {
+      "Date": "Nov 20 2026",
+      "Close": "26.011600494384766",
+      "Adj Close": "26.01",
+      "Volume": "12510"
     }
   ]
 }

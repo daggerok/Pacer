@@ -2,7 +2,7 @@
   "ticker": "INDS",
   "page": 3,
   "pageSize": 1000,
-  "totalRows": 2140,
+  "totalRows": 2143,
   "headers": [
     "Date",
     "Close",
@@ -849,6 +849,24 @@
       "Close": "39.5630989074707",
       "Adj Close": "39.56",
       "Volume": "4356"
+    },
+    {
+      "Date": "Nov 18 2026",
+      "Close": "39.532501220703125",
+      "Adj Close": "39.53",
+      "Volume": "23952"
+    },
+    {
+      "Date": "Nov 19 2026",
+      "Close": "39.11000061035156",
+      "Adj Close": "39.11",
+      "Volume": "15398"
+    },
+    {
+      "Date": "Nov 20 2026",
+      "Close": "38.839698791503906",
+      "Adj Close": "38.84",
+      "Volume": "5486"
     }
   ]
 }

@@ -2,7 +2,7 @@
   "ticker": "PSMO",
   "page": 2,
   "pageSize": 1000,
-  "totalRows": 1288,
+  "totalRows": 1290,
   "headers": [
     "Date",
     "Close",
@@ -1737,6 +1737,18 @@
       "Close": "32.847999572753906",
       "Adj Close": "32.85",
       "Volume": "100"
+    },
+    {
+      "Date": "Nov 19 2026",
+      "Close": "32.472999572753906",
+      "Adj Close": "32.47",
+      "Volume": "5400"
+    },
+    {
+      "Date": "Nov 20 2026",
+      "Close": "31.799999237060547",
+      "Adj Close": "31.8",
+      "Volume": "26888"
     }
   ]
 }

@@ -2,7 +2,7 @@
   "ticker": "PATN",
   "page": 1,
   "pageSize": 1000,
-  "totalRows": 546,
+  "totalRows": 548,
   "headers": [
     "Date",
     "Close",
@@ -3285,6 +3285,18 @@
       "Close": "30.844999313354492",
       "Adj Close": "30.84",
       "Volume": "97900"
+    },
+    {
+      "Date": "Nov 19 2026",
+      "Close": "30.260000228881836",
+      "Adj Close": "30.26",
+      "Volume": "80100"
+    },
+    {
+      "Date": "Nov 20 2026",
+      "Close": "28.739999771118164",
+      "Adj Close": "28.74",
+      "Volume": "202197"
     }
   ]
 }

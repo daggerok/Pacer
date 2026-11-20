@@ -2,7 +2,7 @@
   "ticker": "PSFF",
   "page": 2,
   "pageSize": 1000,
-  "totalRows": 1479,
+  "totalRows": 1481,
   "headers": [
     "Date",
     "Close",
@@ -2883,6 +2883,18 @@
       "Close": "34.4900016784668",
       "Adj Close": "34.49",
       "Volume": "109200"
+    },
+    {
+      "Date": "Nov 19 2026",
+      "Close": "34.119998931884766",
+      "Adj Close": "34.12",
+      "Volume": "99300"
+    },
+    {
+      "Date": "Nov 20 2026",
+      "Close": "33.38999938964844",
+      "Adj Close": "33.39",
+      "Volume": "348049"
     }
   ]
 }

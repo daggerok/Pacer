@@ -2,7 +2,7 @@
   "ticker": "BUL",
   "page": 2,
   "pageSize": 1000,
-  "totalRows": 1897,
+  "totalRows": 1899,
   "headers": [
     "Date",
     "Close",
@@ -5391,6 +5391,18 @@
       "Close": "60.36899948120117",
       "Adj Close": "60.37",
       "Volume": "31000"
+    },
+    {
+      "Date": "Nov 19 2026",
+      "Close": "58.57600021362305",
+      "Adj Close": "58.58",
+      "Volume": "12100"
+    },
+    {
+      "Date": "Nov 20 2026",
+      "Close": "56.46649932861328",
+      "Adj Close": "56.47",
+      "Volume": "13592"
     }
   ]
 }
