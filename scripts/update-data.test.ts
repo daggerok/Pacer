@@ -356,7 +356,7 @@ describe('controls', () => {
     expect(Object.keys(file()).sort()).toEqual([...CONTROL_NAMES].sort());
     for (const value of Object.values(file())) expect(typeof value).toBe('string');
     const config = readConfig(resolveControls(file()));
-    expect(config).toMatchObject({ maxFetches: 0, concurrency: 1, holdingsPageSize: 250, historyPageSize: 1000, maxRetries: 2, historyRange: 'max', edgarFallback: true, skipPacer: false, skipYahoo: false, storeRawDownloads: false, tickers: null, performance: {}, totalReturn: {} });
+    expect(config).toMatchObject({ maxFetches: 0, requestSleep: 1.5, concurrency: 3, holdingsPageSize: 250, historyPageSize: 1000, maxRetries: 2, historyRange: 'max', edgarFallback: true, skipPacer: false, skipYahoo: false, storeRawDownloads: false, tickers: null, performance: {}, totalReturn: {} });
     expect(config.secYield).toBeUndefined();
     expect(readConfig(resolveControls(file(), {}, {}, { SEC_YIELD: '3:' })).secYield).toEqual({ min: 3, max: undefined });
     expect(file().SEC_UA).toBe('daggerok ETF feed daggerok@gmail.com');
@@ -916,12 +916,12 @@ describe('pipeline', () => {
       const young = funds.find((fund) => fund.ticker === 'QFHD')!.metrics;
       expect([young.cagr3y, young.cagr5y, young.cagr10y, young.tr3y, young.tr1y]).toEqual([null, null, null, null, null]);
       expect(funds.find((fund) => fund.ticker === 'COWZ')!.metrics.tr1y).toBe(26.63);
-      // the dividend keys from one Yahoo daily chart request (includePrePost=false) per updated fund: 0.25 in the last year, the rest null
+      // the dividend keys from the fund's own full daily chart (no second request): 0.25 in the last year, the rest null
       const cowz = funds.find((fund) => fund.ticker === 'COWZ')!.metrics;
       expect(DIVIDEND_KEYS.map((key) => cowz[key])).toEqual([0.25, null, null, null, null, null, 1, 'annual']);
-      const dividendRequests = feed.calls().filter((url) => /chart\/[^?]+\?period1=0&.*includePrePost=false/.test(url)).map((url) => /chart\/([^?]+)/.exec(url)?.[1]).sort();
-      // one request per updated fund feeds dividends and benchmark; SPY and QQQ are read once as the benchmarks
-      expect(dividendRequests).toEqual(['COWZ', 'PSFF', 'QFHD', 'QQQ', 'SPY']);
+      const chartRequests = feed.calls().filter((url) => /chart\/[^?]+\?/.test(url)).map((url) => /chart\/([^?]+)/.exec(url)?.[1]).sort();
+      // one chart request per updated fund feeds history, dividends and benchmark; SPY and QQQ are read once as the benchmarks
+      expect(chartRequests).toEqual(['COWZ', 'PSFF', 'QFHD', 'QQQ', 'SPY']);
       // the mock gives every ticker the same daily bars (counted back from yesterday), so the fund equals the benchmarks: beta and correlation 1, no gap
       expect([typeof cowz.perf1y, cowz.vsSpy1y, cowz.beta1ySpy, cowz.corr1ySpy, cowz.relStrength3mQqq, cowz.stressReturnSpy, cowz.benchmarkAsOf]).toEqual(['number', 0, 1, 1, 0, null, expect.stringMatching(/^\d{4}-\d{2}-\d{2}$/)]);
     });
