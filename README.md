@@ -114,7 +114,7 @@ Caveats:
 - The full "Daily Holdings" file is a protected download that neither direct requests nor the rendering proxy can read, so full holdings come from the fund's own newest SEC EDGAR N-PORT-P filing (the filing must name the fund's own series, newest report period first, read from the trust's own EDGAR folder; a lagged report period, shown in the holdings as-of date). A filing replaces a published N-PORT-P schedule only when its report period is strictly newer (an undated published schedule is kept); it always replaces a published top 10 table. New funds without a filing fall back to the official top 10 table (partial, weights only, market values derived from net assets and labelled as such); a previously published full schedule is kept over the partial table, and the previous run is the last resort. Identifiers come from the position itself, never from a derivative's reference instrument (a SPY option keeps its own Bloomberg id and contract code, not SPY's ISIN); a ticker is set only for a U.S. equity traded in USD (the filer's own, else from SEC's issuer names) and never on two different securities (Alphabet A and C stay `-`, so the hub keys those rows by identifier)
 - Net assets, NAV and market price are the official fund-page figures as of the Fund Details date; premium/discount is the published value
 - Only funds listed in the Pacer product listing are published; SEC series without a listing entry (for example SZNE and SZNG) are ignored
-- Pages are fetched direct first and through the rendering proxy (paced at 3.2s or slower, one request per fund) after two denials; `REQUEST_SLEEP` and `CONCURRENCY` defaults are conservative for this reason
+- Pages are fetched direct first and through the rendering proxy (paced at 3.2s or slower, one request per fund) after two denials; with `CONCURRENCY=3` the proxy gate, not the per-worker lanes, sets the pace (about 3.5s per fund), and each fund's full Yahoo chart also serves the dividend and benchmark metrics, so no second chart request is made
 
 ### Update controls
 
@@ -123,8 +123,8 @@ Keep this table, `scripts/update-data.config.json`, `CONTROL_NAMES` and `--help`
 | Control | Default | Meaning |
 | --- | --: | --- |
 | `MAX_FETCHES` | `0` (all) | Batch size: with a positive value the updater continues after the committed cursor in `api/pacer/update-state.json`; empty or `0` is a full pass - every fund is refreshed in one run. Only funds that pass the `TICKERS`/`TER` filters count against the batch, the cursor wraps around, is scoped to the filter set (a different filter set starts again from the top) and is never read or written by a `TICKERS` run |
-| `REQUEST_SLEEP` | `2.5` | Minimum delay in seconds between outgoing request starts, including retries; rendering-proxy requests are paced at 3.2s or slower |
-| `CONCURRENCY` | `1` | Number of parallel fund update workers (for example `CONCURRENCY=15 ./scripts/update-data.ts`); each worker has its own request lane spaced by `REQUEST_SLEEP`, while rendering-proxy requests share one global gate (3.2s or slower), so keep it low when the WAF denies direct requests |
+| `REQUEST_SLEEP` | `1.5` | Minimum delay in seconds between outgoing request starts, including retries; rendering-proxy requests are paced at 3.2s or slower |
+| `CONCURRENCY` | `3` | Number of parallel fund update workers (for example `CONCURRENCY=15 ./scripts/update-data.ts`); each worker has its own request lane spaced by `REQUEST_SLEEP`, while rendering-proxy requests share one global gate (3.2s or slower), so more than about 3 workers only queue behind that gate when the WAF denies direct requests |
 | `AUM` | `:` | Net Assets range; each bound may be a USD amount or `K`/`M`/`B`/`T`, or one of `nano`, `micro`, `small`, `mid`, `large` |
 | `TER` | `:` | Total Expenses range in % (strict `min:max`) |
 | `DIVIDEND_YIELD` | `:` | Indicated dividend-yield percentage range |

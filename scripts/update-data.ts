@@ -371,9 +371,24 @@ const EMPTY_PRICE_RETURNS: PriceReturns = { asOfDate: '', mo1: null, qtd: null, 
 // multiplies throughput as documented instead of only overlapping wait time.
 let requestGates: number[] = [0];
 let proxyGateAt = 0;
-let requestSleepSeconds = 2.5;
+let requestSleepSeconds = 1.5;
 /** One run's SEC state: the two SEC ticker tables (each loaded once) and the N-PORT reader cache (submissions and documents). */
 let secState: { funds: Promise<Map<string, NportSeriesRef>> | null; names: Promise<Map<string, string>> | null; reader: Map<string, unknown> } = { funds: null, names: null, reader: new Map() };
+/**
+ * The full daily Yahoo chart each fund read this run (period1=0, interval=1d, dividend events): the dividends and benchmark
+ * blocks would otherwise ask Yahoo for the same chart a second time per updated fund. Filled only by a `max` history request.
+ */
+let fundCharts = new Map<string, JsonRecord>();
+
+/** The dividends/benchmark chart fetch: a chart this run already read for the fund is served once from memory, else `fetch` asks Yahoo. */
+export function reuseFundChart(fetch: (url: string, ticker: string) => Promise<unknown>, charts: Map<string, JsonRecord> = fundCharts): (url: string, ticker: string) => Promise<unknown> {
+  return async (url: string, ticker: string): Promise<unknown> => {
+    const seen = charts.get(ticker);
+    if (!seen) return fetch(url, ticker);
+    charts.delete(ticker);
+    return seen;
+  };
+}
 
 function sleep(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -551,14 +566,14 @@ function readTickerSet(value: string | undefined): Set<string> | null {
 export function readConfig(env: Record<string, string | undefined> = process.env): UpdaterConfig {
   return {
     maxFetches: parsePositiveInt(env.MAX_FETCHES, 0),
-    requestSleep: parseDecimal(env.REQUEST_SLEEP, 2.5),
+    requestSleep: parseDecimal(env.REQUEST_SLEEP, 1.5),
     aum: parseAumRange(env.AUM ?? ':'),
     ter: parseRange(env.TER ?? ':', 'TER'),
     dividendYield: parseRange(env.DIVIDEND_YIELD ?? ':', 'DIVIDEND_YIELD'),
     secYield: parseRange(env.SEC_YIELD ?? ':', 'SEC_YIELD'),
     performance: parseRanges(env, 'PERFORMANCE'),
     totalReturn: parseRanges(env, 'TOTAL_RETURN'),
-    concurrency: Math.max(1, parsePositiveInt(env.CONCURRENCY, 1)),
+    concurrency: Math.max(1, parsePositiveInt(env.CONCURRENCY, 3)),
     holdingsPageSize: Math.max(1, parsePositiveInt(env.HOLDINGS_PAGE_SIZE, 250)),
     historyPageSize: Math.max(1, parsePositiveInt(env.HISTORY_PAGE_SIZE, 1000)),
     storeRawDownloads: parseBoolean(env.STORE_RAW_DOWNLOADS),
@@ -2044,6 +2059,8 @@ async function processFund(fund: CatalogFund, config: UpdaterConfig, previous: J
       const query = new URLSearchParams({ period1: String(historyPeriodStart(config.historyRange)), period2: String(Math.floor(Date.now() / 1000) + 86_400), interval: '1d', events: 'div|split', includeAdjustedClose: 'true' });
       const payload = await fetchJson(`${YAHOO_CHART_URL}/${encodeURIComponent(fund.ticker)}?${query.toString()}`, `[ chart    ] ${fund.ticker}`, config, { 'User-Agent': 'Mozilla/5.0' });
       const fetched = parseChart(payload);
+      // the same full daily chart the dividends and benchmark blocks read (swingChartUrl): kept for them, no second request
+      if (historyPeriodStart(config.historyRange) === 0) fundCharts.set(fund.ticker, payload);
       // A fresh chart never shrinks the published history (and with it 3y, 5y, 10y and since inception): this covers a
       // HISTORY_RANGE window and a truncated `max` answer (2026-10-29: Yahoo served 2 bars for some funds). A full `max`
       // answer starts at inception: nothing older is published, so the chart stays unchanged
@@ -2262,8 +2279,8 @@ Configuration: scripts/update-data.config.json defaults < advanced JSON (workflo
 only) < nonblank workflow inputs < environment variables below (all filters use
 AND logic):
   MAX_FETCHES=0       all eligible funds; positive value is a resumable batch
-  REQUEST_SLEEP=2.5   seconds between request starts (proxy requests >= 3.2s)
-  CONCURRENCY=1       parallel fund workers, each with its own paced request lane (rendering-proxy requests share one global gate)
+  REQUEST_SLEEP=1.5   seconds between request starts (proxy requests >= 3.2s)
+  CONCURRENCY=3       parallel fund workers, each with its own paced request lane (rendering-proxy requests share one global gate)
   AUM=:\n  TER=:\n  DIVIDEND_YIELD=:\n  SEC_YIELD=:\n  TICKERS="COWZ FLRT"  optional ticker allowlist
   PERFORMANCE_YTD|1Y|3Y|5Y|10Y=min:max   annualized ranges
   TOTAL_RETURN_YTD|1Y|3Y|5Y|10Y=min:max cumulative ranges
@@ -2446,6 +2463,7 @@ async function main(): Promise<void> {
   configurePacing(config.requestSleep, config.concurrency);
   issuerDirectDenials = 0;
   resetSecState();
+  fundCharts = new Map();
   outputPrintConfig('Pacer', config);
 
   const previous = await readKnownFunds(await readPreviousIndex());
@@ -2548,7 +2566,7 @@ async function main(): Promise<void> {
   // the 52-week range and the swing metrics of every row from its published history pages (shared range-52w and swing blocks),
   // the dividend and the benchmark metrics from one Yahoo daily chart per fund this run updated (shared dividends and
   // benchmark blocks); the SPY and QQQ charts are read once per run before any fund chart
-  const chartFetch = (url: string, ticker: string) => fetchJson(url, `[ dividend ] ${ticker}`, config, { 'User-Agent': 'Mozilla/5.0' });
+  const chartFetch = reuseFundChart((url: string, ticker: string) => fetchJson(url, `[ dividend ] ${ticker}`, config, { 'User-Agent': 'Mozilla/5.0' }));
   const benchmarks = config.skipYahoo ? {} : await benchmarkLoad(chartFetch, (ticker, error) => outputNote(`[ bench    ] ${ticker}: ${error instanceof Error ? error.message : String(error)}; published ${ticker} benchmark metrics kept`));
   const benchRows = benchmarkTap(chartFetch, benchmarks);
   const previousRows = Array.from(previous.values());
