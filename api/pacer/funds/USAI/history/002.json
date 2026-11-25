@@ -2,7 +2,7 @@
   "ticker": "USAI",
   "page": 2,
   "pageSize": 1000,
-  "totalRows": 2247,
+  "totalRows": 2249,
   "headers": [
     "Date",
     "Close",

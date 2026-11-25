@@ -2,7 +2,7 @@
   "ticker": "MDCR",
   "page": 1,
   "pageSize": 1000,
-  "totalRows": 113,
+  "totalRows": 115,
   "headers": [
     "Date",
     "Close",
@@ -684,9 +684,21 @@
     },
     {
       "Date": "Nov 20 2026",
-      "Close": "31.816099166870117",
+      "Close": "31.81999969482422",
       "Adj Close": "31.82",
-      "Volume": "5848"
+      "Volume": "5800"
+    },
+    {
+      "Date": "Nov 23 2026",
+      "Close": "32.02000045776367",
+      "Adj Close": "32.02",
+      "Volume": "800"
+    },
+    {
+      "Date": "Nov 24 2026",
+      "Close": "31.96500015258789",
+      "Adj Close": "31.97",
+      "Volume": "1022"
     }
   ]
 }

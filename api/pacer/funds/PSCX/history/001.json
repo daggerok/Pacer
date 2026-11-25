@@ -2,7 +2,7 @@
   "ticker": "PSCX",
   "page": 1,
   "pageSize": 1000,
-  "totalRows": 1485,
+  "totalRows": 1487,
   "headers": [
     "Date",
     "Close",

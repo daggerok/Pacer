@@ -2,7 +2,7 @@
   "ticker": "PTBD",
   "page": 2,
   "pageSize": 1000,
-  "totalRows": 1780,
+  "totalRows": 1782,
   "headers": [
     "Date",
     "Close",
@@ -4688,7 +4688,19 @@
       "Date": "Nov 20 2026",
       "Close": "18.280000686645508",
       "Adj Close": "18.28",
-      "Volume": "18704"
+      "Volume": "18700"
+    },
+    {
+      "Date": "Nov 23 2026",
+      "Close": "18.295000076293945",
+      "Adj Close": "18.3",
+      "Volume": "13700"
+    },
+    {
+      "Date": "Nov 24 2026",
+      "Close": "18.29599952697754",
+      "Adj Close": "18.3",
+      "Volume": "4100"
     }
   ]
 }

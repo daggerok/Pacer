@@ -2,7 +2,7 @@
   "ticker": "MSEP",
   "page": 1,
   "pageSize": 1000,
-  "totalRows": 117,
+  "totalRows": 119,
   "headers": [
     "Date",
     "Close",
@@ -708,9 +708,21 @@
     },
     {
       "Date": "Nov 20 2026",
-      "Close": "31.047100067138672",
+      "Close": "31.049999237060547",
       "Adj Close": "31.05",
-      "Volume": "112"
+      "Volume": "100"
+    },
+    {
+      "Date": "Nov 23 2026",
+      "Close": "31.93000030517578",
+      "Adj Close": "31.93",
+      "Volume": "5700"
+    },
+    {
+      "Date": "Nov 24 2026",
+      "Close": "31.831199645996094",
+      "Adj Close": "31.83",
+      "Volume": "1013"
     }
   ]
 }

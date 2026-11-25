@@ -2,7 +2,7 @@
   "ticker": "COWG",
   "page": 1,
   "pageSize": 1000,
-  "totalRows": 977,
+  "totalRows": 979,
   "headers": [
     "Date",
     "Close",
@@ -5870,7 +5870,19 @@
       "Date": "Nov 20 2026",
       "Close": "35.17100143432617",
       "Adj Close": "35.17",
-      "Volume": "694687"
+      "Volume": "695500"
+    },
+    {
+      "Date": "Nov 23 2026",
+      "Close": "36.630001068115234",
+      "Adj Close": "36.63",
+      "Volume": "481000"
+    },
+    {
+      "Date": "Nov 24 2026",
+      "Close": "36.4630012512207",
+      "Adj Close": "36.46",
+      "Volume": "319600"
     }
   ]
 }

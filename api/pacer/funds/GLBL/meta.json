@@ -7,7 +7,7 @@
     "fundPage": "https://www.paceretfs.com/products/GLBL",
     "officialProductPage": "https://www.paceretfs.com/products/GLBL",
     "productPageRendering": "read-only rendering proxy (r.jina.ai) of the official fund page",
-    "productPageAsOf": "Nov 19 2026",
+    "productPageAsOf": "Nov 23 2026",
     "catalogListing": "https://www.paceretfs.com/products/",
     "holdingsDownload": "https://www.sec.gov/Archives/edgar/data/1616668/000089418926029009/0000894189-26-029009.txt",
     "officialHoldingsDownload": "https://www.paceretfs.com/products/holdings_download/GLBL",
@@ -33,32 +33,32 @@
     "kind": "Total Expenses published on the official fund page (product listing for funds without a page value)"
   },
   "nav": {
-    "display": "$26.07",
-    "value": 26.07,
-    "asOfDate": "Nov 19 2026"
+    "display": "$26.14",
+    "value": 26.14,
+    "asOfDate": "Nov 23 2026"
   },
   "marketPrice": {
-    "display": "$26.11",
-    "value": 26.11,
-    "asOfDate": "Nov 19 2026",
+    "display": "$26.18",
+    "value": 26.18,
+    "asOfDate": "Nov 23 2026",
     "source": "official fund page Market Price (closing price as of the Fund Details date)"
   },
   "premiumDiscount": {
-    "display": "0.15%",
-    "value": 0.15,
-    "asOfDate": "Nov 19 2026",
+    "display": "0.16%",
+    "value": 0.16,
+    "asOfDate": "Nov 23 2026",
     "source": "official fund page Fund Details Premium/Discount"
   },
   "aum": {
-    "display": "$1.04 M",
-    "value": 1042848.46,
-    "asOfDate": "Nov 19 2026",
+    "display": "$1.05 M",
+    "value": 1045627.6,
+    "asOfDate": "Nov 23 2026",
     "source": "official fund page Net Assets"
   },
   "fundFacts": {
     "sharesOutstanding": 40000,
     "publishedTotalHoldings": 359,
-    "medianBidAskSpread": 0.002194
+    "medianBidAskSpread": 0.002197
   },
   "yields": {
     "dividendYield": 0.13,
@@ -197,8 +197,8 @@
       "history/001.json"
     ],
     "pageSize": 1000,
-    "totalRows": 398,
-    "asOf": "Nov 20 2026",
+    "totalRows": 400,
+    "asOf": "Nov 24 2026",
     "source": "Yahoo Finance public chart API (adjusted close)"
   }
 }

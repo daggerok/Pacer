@@ -2,7 +2,7 @@
   "ticker": "PTMC",
   "page": 3,
   "pageSize": 1000,
-  "totalRows": 2879,
+  "totalRows": 2881,
   "headers": [
     "Date",
     "Close",
@@ -5282,7 +5282,19 @@
       "Date": "Nov 20 2026",
       "Close": "37.209999084472656",
       "Adj Close": "37.21",
-      "Volume": "52461"
+      "Volume": "52500"
+    },
+    {
+      "Date": "Nov 23 2026",
+      "Close": "38.470001220703125",
+      "Adj Close": "38.47",
+      "Volume": "11400"
+    },
+    {
+      "Date": "Nov 24 2026",
+      "Close": "38.45989990234375",
+      "Adj Close": "38.46",
+      "Volume": "107358"
     }
   ]
 }

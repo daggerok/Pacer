@@ -2,7 +2,7 @@
   "ticker": "QQWZ",
   "page": 1,
   "pageSize": 1000,
-  "totalRows": 388,
+  "totalRows": 390,
   "headers": [
     "Date",
     "Close",
@@ -2336,7 +2336,19 @@
       "Date": "Nov 20 2026",
       "Close": "23.753000259399414",
       "Adj Close": "23.75",
-      "Volume": "6758"
+      "Volume": "6800"
+    },
+    {
+      "Date": "Nov 23 2026",
+      "Close": "24.141000747680664",
+      "Adj Close": "24.14",
+      "Volume": "3700"
+    },
+    {
+      "Date": "Nov 24 2026",
+      "Close": "24.416000366210938",
+      "Adj Close": "24.42",
+      "Volume": "5000"
     }
   ]
 }

@@ -2,7 +2,7 @@
   "ticker": "MJUN",
   "page": 1,
   "pageSize": 1000,
-  "totalRows": 113,
+  "totalRows": 115,
   "headers": [
     "Date",
     "Close",
@@ -684,9 +684,21 @@
     },
     {
       "Date": "Nov 20 2026",
-      "Close": "31.228599548339844",
+      "Close": "31.229999542236328",
       "Adj Close": "31.23",
-      "Volume": "261"
+      "Volume": "300"
+    },
+    {
+      "Date": "Nov 23 2026",
+      "Close": "32.099998474121094",
+      "Adj Close": "32.1",
+      "Volume": "100"
+    },
+    {
+      "Date": "Nov 24 2026",
+      "Close": "32",
+      "Adj Close": "32",
+      "Volume": "100"
     }
   ]
 }

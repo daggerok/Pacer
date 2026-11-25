@@ -2,7 +2,7 @@
   "ticker": "ALTL",
   "page": 2,
   "pageSize": 1000,
-  "totalRows": 1611,
+  "totalRows": 1613,
   "headers": [
     "Date",
     "Close",
@@ -3674,7 +3674,19 @@
       "Date": "Nov 20 2026",
       "Close": "37.90999984741211",
       "Adj Close": "37.91",
-      "Volume": "37327"
+      "Volume": "37300"
+    },
+    {
+      "Date": "Nov 23 2026",
+      "Close": "38.25699996948242",
+      "Adj Close": "38.26",
+      "Volume": "28000"
+    },
+    {
+      "Date": "Nov 24 2026",
+      "Close": "38.599998474121094",
+      "Adj Close": "38.6",
+      "Volume": "6052"
     }
   ]
 }

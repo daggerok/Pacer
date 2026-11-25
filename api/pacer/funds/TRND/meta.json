@@ -7,7 +7,7 @@
     "fundPage": "https://www.paceretfs.com/products/TRND",
     "officialProductPage": "https://www.paceretfs.com/products/TRND",
     "productPageRendering": "read-only rendering proxy (r.jina.ai) of the official fund page",
-    "productPageAsOf": "Nov 19 2026",
+    "productPageAsOf": "Nov 23 2026",
     "catalogListing": "https://www.paceretfs.com/products/",
     "holdingsDownload": "https://www.sec.gov/Archives/edgar/data/1616668/000089418926029026/0000894189-26-029026.txt",
     "officialHoldingsDownload": "https://www.paceretfs.com/products/holdings_download/TRND",
@@ -33,32 +33,32 @@
     "kind": "Total Expenses published on the official fund page (product listing for funds without a page value)"
   },
   "nav": {
-    "display": "$34.49",
-    "value": 34.49,
-    "asOfDate": "Nov 19 2026"
+    "display": "$34.47",
+    "value": 34.47,
+    "asOfDate": "Nov 23 2026"
   },
   "marketPrice": {
-    "display": "$34.48",
-    "value": 34.48,
-    "asOfDate": "Nov 19 2026",
+    "display": "$34.45",
+    "value": 34.45,
+    "asOfDate": "Nov 23 2026",
     "source": "official fund page Market Price (closing price as of the Fund Details date)"
   },
   "premiumDiscount": {
-    "display": "-0.03%",
-    "value": -0.03,
-    "asOfDate": "Nov 19 2026",
+    "display": "-0.08%",
+    "value": -0.08,
+    "asOfDate": "Nov 23 2026",
     "source": "official fund page Fund Details Premium/Discount"
   },
   "aum": {
-    "display": "$58.64 M",
-    "value": 58636215.82,
-    "asOfDate": "Nov 19 2026",
+    "display": "$58.60 M",
+    "value": 58602664.57,
+    "asOfDate": "Nov 23 2026",
     "source": "official fund page Net Assets"
   },
   "fundFacts": {
     "sharesOutstanding": 1700000,
     "publishedTotalHoldings": 7,
-    "medianBidAskSpread": 0.002211
+    "medianBidAskSpread": 0.002222
   },
   "yields": {
     "dividendYield": 2.26,
@@ -201,8 +201,8 @@
       "history/002.json"
     ],
     "pageSize": 1000,
-    "totalRows": 1899,
-    "asOf": "Nov 20 2026",
+    "totalRows": 1901,
+    "asOf": "Nov 24 2026",
     "source": "Yahoo Finance public chart API (adjusted close)"
   }
 }

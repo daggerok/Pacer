@@ -2,7 +2,7 @@
   "ticker": "LCOW",
   "page": 1,
   "pageSize": 1000,
-  "totalRows": 388,
+  "totalRows": 390,
   "headers": [
     "Date",
     "Close",
@@ -2336,7 +2336,19 @@
       "Date": "Nov 20 2026",
       "Close": "25.06999969482422",
       "Adj Close": "25.07",
-      "Volume": "9072"
+      "Volume": "9100"
+    },
+    {
+      "Date": "Nov 23 2026",
+      "Close": "25.950000762939453",
+      "Adj Close": "25.95",
+      "Volume": "14000"
+    },
+    {
+      "Date": "Nov 24 2026",
+      "Close": "26.0132999420166",
+      "Adj Close": "26.01",
+      "Volume": "3437"
     }
   ]
 }

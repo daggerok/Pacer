@@ -2,7 +2,7 @@
   "ticker": "PTIN",
   "page": 2,
   "pageSize": 1000,
-  "totalRows": 1899,
+  "totalRows": 1901,
   "headers": [
     "Date",
     "Close",
@@ -5400,9 +5400,21 @@
     },
     {
       "Date": "Nov 20 2026",
-      "Close": "32.368499755859375",
+      "Close": "32.36899948120117",
       "Adj Close": "32.37",
-      "Volume": "13679"
+      "Volume": "13700"
+    },
+    {
+      "Date": "Nov 23 2026",
+      "Close": "33.604000091552734",
+      "Adj Close": "33.6",
+      "Volume": "5700"
+    },
+    {
+      "Date": "Nov 24 2026",
+      "Close": "33.52899932861328",
+      "Adj Close": "33.53",
+      "Volume": "30900"
     }
   ]
 }

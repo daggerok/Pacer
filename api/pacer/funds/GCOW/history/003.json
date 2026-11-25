@@ -2,7 +2,7 @@
   "ticker": "GCOW",
   "page": 3,
   "pageSize": 1000,
-  "totalRows": 2704,
+  "totalRows": 2706,
   "headers": [
     "Date",
     "Close",
@@ -4232,7 +4232,19 @@
       "Date": "Nov 20 2026",
       "Close": "45.45000076293945",
       "Adj Close": "45.45",
-      "Volume": "415727"
+      "Volume": "415700"
+    },
+    {
+      "Date": "Nov 23 2026",
+      "Close": "45.650001525878906",
+      "Adj Close": "45.65",
+      "Volume": "374700"
+    },
+    {
+      "Date": "Nov 24 2026",
+      "Close": "46.18000030517578",
+      "Adj Close": "46.18",
+      "Volume": "305100"
     }
   ]
 }
