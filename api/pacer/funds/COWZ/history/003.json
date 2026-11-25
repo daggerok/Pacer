@@ -2,7 +2,7 @@
   "ticker": "COWZ",
   "page": 3,
   "pageSize": 1000,
-  "totalRows": 2494,
+  "totalRows": 2495,
   "headers": [
     "Date",
     "Close",
@@ -2973,6 +2973,12 @@
       "Close": "67.7699966430664",
       "Adj Close": "67.77",
       "Volume": "1718300"
+    },
+    {
+      "Date": "Nov 25 2026",
+      "Close": "68.37999725341797",
+      "Adj Close": "68.38",
+      "Volume": "1383119"
     }
   ]
 }

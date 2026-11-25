@@ -2,7 +2,7 @@
   "ticker": "LADM",
   "page": 1,
   "pageSize": 1000,
-  "totalRows": 106,
+  "totalRows": 107,
   "headers": [
     "Date",
     "Close",
@@ -645,6 +645,12 @@
       "Close": "31.979999542236328",
       "Adj Close": "31.98",
       "Volume": "100"
+    },
+    {
+      "Date": "Nov 25 2026",
+      "Close": "31.971599578857422",
+      "Adj Close": "31.97",
+      "Volume": "242"
     }
   ]
 }

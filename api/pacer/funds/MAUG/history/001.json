@@ -2,7 +2,7 @@
   "ticker": "MAUG",
   "page": 1,
   "pageSize": 1000,
-  "totalRows": 144,
+  "totalRows": 145,
   "headers": [
     "Date",
     "Close",
@@ -873,6 +873,12 @@
       "Close": "32.400001525878906",
       "Adj Close": "32.4",
       "Volume": "100"
+    },
+    {
+      "Date": "Nov 25 2026",
+      "Close": "32.37200164794922",
+      "Adj Close": "32.37",
+      "Volume": "208"
     }
   ]
 }

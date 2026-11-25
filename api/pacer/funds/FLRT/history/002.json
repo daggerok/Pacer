@@ -2,7 +2,7 @@
   "ticker": "FLRT",
   "page": 2,
   "pageSize": 1000,
-  "totalRows": 2960,
+  "totalRows": 2961,
   "headers": [
     "Date",
     "Close",

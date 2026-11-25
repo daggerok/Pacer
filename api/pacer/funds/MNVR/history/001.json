@@ -2,7 +2,7 @@
   "ticker": "MNVR",
   "page": 1,
   "pageSize": 1000,
-  "totalRows": 144,
+  "totalRows": 145,
   "headers": [
     "Date",
     "Close",
@@ -873,6 +873,12 @@
       "Close": "32.66999816894531",
       "Adj Close": "32.67",
       "Volume": "100"
+    },
+    {
+      "Date": "Nov 25 2026",
+      "Close": "32.63779830932617",
+      "Adj Close": "32.64",
+      "Volume": "1935"
     }
   ]
 }

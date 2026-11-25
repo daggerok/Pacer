@@ -7,7 +7,7 @@
     "fundPage": "https://www.paceretfs.com/products/INDS",
     "officialProductPage": "https://www.paceretfs.com/products/INDS",
     "productPageRendering": "read-only rendering proxy (r.jina.ai) of the official fund page",
-    "productPageAsOf": "Nov 23 2026",
+    "productPageAsOf": "Nov 24 2026",
     "catalogListing": "https://www.paceretfs.com/products/",
     "holdingsDownload": "https://www.sec.gov/Archives/edgar/data/1616668/000089418926029007/0000894189-26-029007.txt",
     "officialHoldingsDownload": "https://www.paceretfs.com/products/holdings_download/INDS",
@@ -33,36 +33,36 @@
     "kind": "Total Expenses published on the official fund page (product listing for funds without a page value)"
   },
   "nav": {
-    "display": "$39.46",
-    "value": 39.46,
-    "asOfDate": "Nov 23 2026"
+    "display": "$39.85",
+    "value": 39.85,
+    "asOfDate": "Nov 24 2026"
   },
   "marketPrice": {
-    "display": "$39.49",
-    "value": 39.49,
-    "asOfDate": "Nov 23 2026",
+    "display": "$39.75",
+    "value": 39.75,
+    "asOfDate": "Nov 24 2026",
     "source": "official fund page Market Price (closing price as of the Fund Details date)"
   },
   "premiumDiscount": {
-    "display": "0.06%",
-    "value": 0.06,
-    "asOfDate": "Nov 23 2026",
+    "display": "-0.24%",
+    "value": -0.24,
+    "asOfDate": "Nov 24 2026",
     "source": "official fund page Fund Details Premium/Discount"
   },
   "aum": {
-    "display": "$102.60 M",
-    "value": 102604183.77,
-    "asOfDate": "Nov 23 2026",
+    "display": "$103.60 M",
+    "value": 103597904.56,
+    "asOfDate": "Nov 24 2026",
     "source": "official fund page Net Assets"
   },
   "fundFacts": {
     "sharesOutstanding": 2600000,
     "publishedTotalHoldings": 38,
-    "medianBidAskSpread": 0.001988
+    "medianBidAskSpread": 0.001984
   },
   "yields": {
-    "dividendYield": 8.02,
-    "dividendYieldText": "8.02%",
+    "dividendYield": 7.94,
+    "dividendYieldText": "7.94%",
     "dividendYieldBasis": "indicated",
     "dividendYieldKind": "indicated (latest distribution x inferred payments per year / NAV; Pacer publishes no distribution yield)",
     "secYield": null,
@@ -302,8 +302,8 @@
       "history/003.json"
     ],
     "pageSize": 1000,
-    "totalRows": 2144,
-    "asOf": "Nov 23 2026",
+    "totalRows": 2146,
+    "asOf": "Nov 25 2026",
     "source": "Yahoo Finance public chart API (adjusted close)"
   }
 }

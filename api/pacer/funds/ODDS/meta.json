@@ -7,7 +7,7 @@
     "fundPage": "https://www.paceretfs.com/products/ODDS",
     "officialProductPage": "https://www.paceretfs.com/products/ODDS",
     "productPageRendering": "read-only rendering proxy (r.jina.ai) of the official fund page",
-    "productPageAsOf": "Nov 23 2026",
+    "productPageAsOf": "Nov 24 2026",
     "catalogListing": "https://www.paceretfs.com/products/",
     "holdingsDownload": "https://www.sec.gov/Archives/edgar/data/1616668/000089418926028991/0000894189-26-028991.txt",
     "officialHoldingsDownload": "https://www.paceretfs.com/products/holdings_download/ODDS",
@@ -33,32 +33,32 @@
     "kind": "Total Expenses published on the official fund page (product listing for funds without a page value)"
   },
   "nav": {
-    "display": "$22.50",
-    "value": 22.5,
-    "asOfDate": "Nov 23 2026"
-  },
-  "marketPrice": {
     "display": "$22.67",
     "value": 22.67,
-    "asOfDate": "Nov 23 2026",
+    "asOfDate": "Nov 24 2026"
+  },
+  "marketPrice": {
+    "display": "$22.71",
+    "value": 22.71,
+    "asOfDate": "Nov 24 2026",
     "source": "official fund page Market Price (closing price as of the Fund Details date)"
   },
   "premiumDiscount": {
-    "display": "0.76%",
-    "value": 0.76,
-    "asOfDate": "Nov 23 2026",
+    "display": "0.16%",
+    "value": 0.16,
+    "asOfDate": "Nov 24 2026",
     "source": "official fund page Fund Details Premium/Discount"
   },
   "aum": {
-    "display": "$3.15 M",
-    "value": 3150016.31,
-    "asOfDate": "Nov 23 2026",
+    "display": "$3.17 M",
+    "value": 3173840.41,
+    "asOfDate": "Nov 24 2026",
     "source": "official fund page Net Assets"
   },
   "fundFacts": {
     "sharesOutstanding": 140000,
     "publishedTotalHoldings": 49,
-    "medianBidAskSpread": 0.003376
+    "medianBidAskSpread": 0.003393
   },
   "yields": {
     "dividendYield": 0.4,
@@ -233,8 +233,8 @@
       "history/002.json"
     ],
     "pageSize": 1000,
-    "totalRows": 1161,
-    "asOf": "Nov 24 2026",
+    "totalRows": 1162,
+    "asOf": "Nov 25 2026",
     "source": "Yahoo Finance public chart API (adjusted close)"
   }
 }

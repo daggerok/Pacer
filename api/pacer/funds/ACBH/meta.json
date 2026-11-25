@@ -7,7 +7,7 @@
     "fundPage": "https://www.paceretfs.com/products/ACBH",
     "officialProductPage": "https://www.paceretfs.com/products/ACBH",
     "productPageRendering": "read-only rendering proxy (r.jina.ai) of the official fund page",
-    "productPageAsOf": "Nov 23 2026",
+    "productPageAsOf": "Nov 24 2026",
     "catalogListing": "https://www.paceretfs.com/products/",
     "holdingsDownload": "https://www.paceretfs.com/products/ACBH",
     "officialHoldingsDownload": "https://www.paceretfs.com/products/holdings_download/ACBH",
@@ -33,41 +33,41 @@
     "kind": "Total Expenses published on the official fund page (product listing for funds without a page value)"
   },
   "nav": {
-    "display": "$22.84",
-    "value": 22.84,
-    "asOfDate": "Nov 23 2026"
+    "display": "$22.78",
+    "value": 22.78,
+    "asOfDate": "Nov 24 2026"
   },
   "marketPrice": {
     "display": "$22.72",
     "value": 22.72,
-    "asOfDate": "Nov 23 2026",
+    "asOfDate": "Nov 24 2026",
     "source": "official fund page Market Price (closing price as of the Fund Details date)"
   },
   "premiumDiscount": {
-    "display": "-0.55%",
-    "value": -0.55,
-    "asOfDate": "Nov 23 2026",
+    "display": "-0.29%",
+    "value": -0.29,
+    "asOfDate": "Nov 24 2026",
     "source": "official fund page Fund Details Premium/Discount"
   },
   "aum": {
-    "display": "$3.43 M",
-    "value": 3426267.36,
-    "asOfDate": "Nov 23 2026",
+    "display": "$3.42 M",
+    "value": 3417401.12,
+    "asOfDate": "Nov 24 2026",
     "source": "official fund page Net Assets"
   },
   "fundFacts": {
     "sharesOutstanding": 150000,
     "publishedTotalHoldings": 3,
-    "medianBidAskSpread": 0.006606
+    "medianBidAskSpread": 0.006584
   },
   "yields": {
-    "dividendYield": 15.5,
-    "dividendYieldText": "15.50%",
+    "dividendYield": 15.55,
+    "dividendYieldText": "15.55%",
     "dividendYieldBasis": "indicated",
     "dividendYieldKind": "indicated (latest distribution x inferred payments per year / NAV; Pacer publishes no distribution yield)",
-    "secYield": 1.96,
-    "secYieldText": "1.96%",
-    "secYieldKind": "30 Day SEC Yield published on the official fund page as of Nov 23 2026"
+    "secYield": 1.95,
+    "secYieldText": "1.95%",
+    "secYieldKind": "30 Day SEC Yield published on the official fund page as of Nov 24 2026"
   },
   "returns": {
     "derivedFrom": "official Pacer ETFs NAV total returns as of the month end (product listing and fund page); null where Pacer publishes none",
@@ -169,8 +169,8 @@
     ],
     "pageSize": 250,
     "totalRows": 3,
-    "asOfDate": "2026-11-24",
-    "asOf": "Nov 24 2026",
+    "asOfDate": "2026-11-25",
+    "asOf": "Nov 25 2026",
     "source": "paceretfs.com fund page Top 10 Holdings (partial: 3 positions only; the full Daily Holdings file is a protected download and no SEC N-PORT-P filing was available; read via the rendering proxy)",
     "marketValueBasis": "derived: weight x Total Net Assets (the fund page publishes weights, not values)",
     "publishedTotalHoldings": 3
@@ -180,8 +180,8 @@
       "history/001.json"
     ],
     "pageSize": 1000,
-    "totalRows": 30,
-    "asOf": "Nov 24 2026",
+    "totalRows": 31,
+    "asOf": "Nov 25 2026",
     "source": "Yahoo Finance public chart API (adjusted close)"
   }
 }

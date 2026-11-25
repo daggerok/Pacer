@@ -7,7 +7,7 @@
     "fundPage": "https://www.paceretfs.com/products/QDPL",
     "officialProductPage": "https://www.paceretfs.com/products/QDPL",
     "productPageRendering": "read-only rendering proxy (r.jina.ai) of the official fund page",
-    "productPageAsOf": "Nov 23 2026",
+    "productPageAsOf": "Nov 24 2026",
     "catalogListing": "https://www.paceretfs.com/products/",
     "holdingsDownload": "https://www.sec.gov/Archives/edgar/data/1616668/000089418926029047/0000894189-26-029047.txt",
     "officialHoldingsDownload": "https://www.paceretfs.com/products/holdings_download/QDPL",
@@ -33,41 +33,41 @@
     "kind": "Total Expenses published on the official fund page (product listing for funds without a page value)"
   },
   "nav": {
-    "display": "$43.37",
-    "value": 43.37,
-    "asOfDate": "Nov 23 2026"
+    "display": "$43.17",
+    "value": 43.17,
+    "asOfDate": "Nov 24 2026"
   },
   "marketPrice": {
     "display": "$43.15",
     "value": 43.15,
-    "asOfDate": "Nov 23 2026",
+    "asOfDate": "Nov 24 2026",
     "source": "official fund page Market Price (closing price as of the Fund Details date)"
   },
   "premiumDiscount": {
-    "display": "-0.51%",
-    "value": -0.51,
-    "asOfDate": "Nov 23 2026",
+    "display": "-0.04%",
+    "value": -0.04,
+    "asOfDate": "Nov 24 2026",
     "source": "official fund page Fund Details Premium/Discount"
   },
   "aum": {
-    "display": "$1.74 B",
-    "value": 1739678474.22,
-    "asOfDate": "Nov 23 2026",
+    "display": "$1.73 B",
+    "value": 1731471376.36,
+    "asOfDate": "Nov 24 2026",
     "source": "official fund page Net Assets"
   },
   "fundFacts": {
     "sharesOutstanding": 40110000,
     "publishedTotalHoldings": 519,
-    "medianBidAskSpread": 0.001316
+    "medianBidAskSpread": 0.001325
   },
   "yields": {
-    "dividendYield": 3.59,
-    "dividendYieldText": "3.59%",
+    "dividendYield": 3.61,
+    "dividendYieldText": "3.61%",
     "dividendYieldBasis": "indicated",
     "dividendYieldKind": "indicated (latest distribution x inferred payments per year / NAV; Pacer publishes no distribution yield)",
-    "secYield": 0.7,
-    "secYieldText": "0.70%",
-    "secYieldKind": "30 Day SEC Yield published on the official fund page as of Nov 23 2026"
+    "secYield": 0.78,
+    "secYieldText": "0.78%",
+    "secYieldKind": "30 Day SEC Yield published on the official fund page as of Nov 24 2026"
   },
   "returns": {
     "derivedFrom": "official Pacer ETFs NAV total returns as of the month end (product listing and fund page); null where Pacer publishes none",
@@ -303,8 +303,8 @@
       "history/002.json"
     ],
     "pageSize": 1000,
-    "totalRows": 1340,
-    "asOf": "Nov 24 2026",
+    "totalRows": 1341,
+    "asOf": "Nov 25 2026",
     "source": "Yahoo Finance public chart API (adjusted close)"
   }
 }

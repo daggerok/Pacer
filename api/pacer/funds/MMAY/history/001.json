@@ -2,7 +2,7 @@
   "ticker": "MMAY",
   "page": 1,
   "pageSize": 1000,
-  "totalRows": 144,
+  "totalRows": 145,
   "headers": [
     "Date",
     "Close",
@@ -873,6 +873,12 @@
       "Close": "32.4900016784668",
       "Adj Close": "32.49",
       "Volume": "200"
+    },
+    {
+      "Date": "Nov 25 2026",
+      "Close": "32.46730041503906",
+      "Adj Close": "32.47",
+      "Volume": "206"
     }
   ]
 }
