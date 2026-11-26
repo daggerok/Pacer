@@ -7,7 +7,7 @@
     "fundPage": "https://www.paceretfs.com/products/structured-outcome-strategies/MSEP",
     "officialProductPage": "https://www.paceretfs.com/products/structured-outcome-strategies/MSEP",
     "productPageRendering": "read-only rendering proxy (r.jina.ai) of the official fund page",
-    "productPageAsOf": "Nov 24 2026",
+    "productPageAsOf": "Nov 25 2026",
     "catalogListing": "https://www.paceretfs.com/products/",
     "holdingsDownload": "https://www.sec.gov/Archives/edgar/data/1616668/000089418926029015/0000894189-26-029015.txt",
     "officialHoldingsDownload": "https://www.paceretfs.com/products/holdings_download/MSEP",
@@ -33,32 +33,32 @@
     "kind": "Total Expenses published on the official fund page (product listing for funds without a page value)"
   },
   "nav": {
-    "display": "$31.83",
-    "value": 31.83,
-    "asOfDate": "Nov 24 2026"
+    "display": "$31.80",
+    "value": 31.8,
+    "asOfDate": "Nov 25 2026"
   },
   "marketPrice": {
-    "display": "$31.83",
-    "value": 31.83,
-    "asOfDate": "Nov 24 2026",
+    "display": "$31.81",
+    "value": 31.81,
+    "asOfDate": "Nov 25 2026",
     "source": "official fund page Market Price (closing price as of the Fund Details date)"
   },
   "premiumDiscount": {
-    "display": "0.01%",
-    "value": 0.01,
-    "asOfDate": "Nov 24 2026",
+    "display": "0.02%",
+    "value": 0.02,
+    "asOfDate": "Nov 25 2026",
     "source": "official fund page Fund Details Premium/Discount"
   },
   "aum": {
-    "display": "$2.39 M",
-    "value": 2387084.71,
-    "asOfDate": "Nov 24 2026",
+    "display": "$2.38 M",
+    "value": 2384952.8,
+    "asOfDate": "Nov 25 2026",
     "source": "official fund page Net Assets"
   },
   "fundFacts": {
     "sharesOutstanding": 75000,
     "publishedTotalHoldings": 6,
-    "medianBidAskSpread": 0.002436
+    "medianBidAskSpread": 0.00244
   },
   "yields": {
     "dividendYield": null,

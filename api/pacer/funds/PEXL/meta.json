@@ -7,7 +7,7 @@
     "fundPage": "https://www.paceretfs.com/products/PEXL",
     "officialProductPage": "https://www.paceretfs.com/products/PEXL",
     "productPageRendering": "read-only rendering proxy (r.jina.ai) of the official fund page",
-    "productPageAsOf": "Nov 24 2026",
+    "productPageAsOf": "Nov 25 2026",
     "catalogListing": "https://www.paceretfs.com/products/",
     "holdingsDownload": "https://www.sec.gov/Archives/edgar/data/1616668/000089418926029023/0000894189-26-029023.txt",
     "officialHoldingsDownload": "https://www.paceretfs.com/products/holdings_download/PEXL",
@@ -33,32 +33,32 @@
     "kind": "Total Expenses published on the official fund page (product listing for funds without a page value)"
   },
   "nav": {
-    "display": "$65.21",
-    "value": 65.21,
-    "asOfDate": "Nov 24 2026"
+    "display": "$65.25",
+    "value": 65.25,
+    "asOfDate": "Nov 25 2026"
   },
   "marketPrice": {
-    "display": "$65.17",
-    "value": 65.17,
-    "asOfDate": "Nov 24 2026",
+    "display": "$65.23",
+    "value": 65.23,
+    "asOfDate": "Nov 25 2026",
     "source": "official fund page Market Price (closing price as of the Fund Details date)"
   },
   "premiumDiscount": {
-    "display": "-0.07%",
-    "value": -0.07,
-    "asOfDate": "Nov 24 2026",
+    "display": "-0.03%",
+    "value": -0.03,
+    "asOfDate": "Nov 25 2026",
     "source": "official fund page Fund Details Premium/Discount"
   },
   "aum": {
-    "display": "$48.26 M",
-    "value": 48255503.12,
-    "asOfDate": "Nov 24 2026",
+    "display": "$48.28 M",
+    "value": 48282237.13,
+    "asOfDate": "Nov 25 2026",
     "source": "official fund page Net Assets"
   },
   "fundFacts": {
     "sharesOutstanding": 740000,
     "publishedTotalHoldings": 102,
-    "medianBidAskSpread": 0.002355
+    "medianBidAskSpread": 0.002356
   },
   "yields": {
     "dividendYield": 0.51,

@@ -7,7 +7,7 @@
     "fundPage": "https://www.paceretfs.com/products/structured-outcome-strategies/MJUN",
     "officialProductPage": "https://www.paceretfs.com/products/structured-outcome-strategies/MJUN",
     "productPageRendering": "read-only rendering proxy (r.jina.ai) of the official fund page",
-    "productPageAsOf": "Nov 24 2026",
+    "productPageAsOf": "Nov 25 2026",
     "catalogListing": "https://www.paceretfs.com/products/",
     "holdingsDownload": "https://www.sec.gov/Archives/edgar/data/1616668/000089418926029024/0000894189-26-029024.txt",
     "officialHoldingsDownload": "https://www.paceretfs.com/products/holdings_download/MJUN",
@@ -33,32 +33,32 @@
     "kind": "Total Expenses published on the official fund page (product listing for funds without a page value)"
   },
   "nav": {
-    "display": "$31.98",
-    "value": 31.98,
-    "asOfDate": "Nov 24 2026"
+    "display": "$31.96",
+    "value": 31.96,
+    "asOfDate": "Nov 25 2026"
   },
   "marketPrice": {
-    "display": "$32.00",
-    "value": 32,
-    "asOfDate": "Nov 24 2026",
+    "display": "$31.98",
+    "value": 31.98,
+    "asOfDate": "Nov 25 2026",
     "source": "official fund page Market Price (closing price as of the Fund Details date)"
   },
   "premiumDiscount": {
-    "display": "0.05%",
-    "value": 0.05,
-    "asOfDate": "Nov 24 2026",
+    "display": "0.07%",
+    "value": 0.07,
+    "asOfDate": "Nov 25 2026",
     "source": "official fund page Fund Details Premium/Discount"
   },
   "aum": {
     "display": "$1.60 M",
-    "value": 1598953.04,
-    "asOfDate": "Nov 24 2026",
+    "value": 1598080.33,
+    "asOfDate": "Nov 25 2026",
     "source": "official fund page Net Assets"
   },
   "fundFacts": {
     "sharesOutstanding": 50000,
     "publishedTotalHoldings": 6,
-    "medianBidAskSpread": 0.003333
+    "medianBidAskSpread": 0.003336
   },
   "yields": {
     "dividendYield": null,

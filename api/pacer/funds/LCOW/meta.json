@@ -7,7 +7,7 @@
     "fundPage": "https://www.paceretfs.com/products/LCOW",
     "officialProductPage": "https://www.paceretfs.com/products/LCOW",
     "productPageRendering": "read-only rendering proxy (r.jina.ai) of the official fund page",
-    "productPageAsOf": "Nov 24 2026",
+    "productPageAsOf": "Nov 25 2026",
     "catalogListing": "https://www.paceretfs.com/products/",
     "holdingsDownload": "https://www.sec.gov/Archives/edgar/data/1616668/000089418926029002/0000894189-26-029002.txt",
     "officialHoldingsDownload": "https://www.paceretfs.com/products/holdings_download/LCOW",
@@ -33,26 +33,26 @@
     "kind": "Total Expenses published on the official fund page (product listing for funds without a page value)"
   },
   "nav": {
-    "display": "$26.03",
-    "value": 26.03,
-    "asOfDate": "Nov 24 2026"
+    "display": "$26.05",
+    "value": 26.05,
+    "asOfDate": "Nov 25 2026"
   },
   "marketPrice": {
-    "display": "$26.01",
-    "value": 26.01,
-    "asOfDate": "Nov 24 2026",
+    "display": "$26.06",
+    "value": 26.06,
+    "asOfDate": "Nov 25 2026",
     "source": "official fund page Market Price (closing price as of the Fund Details date)"
   },
   "premiumDiscount": {
-    "display": "-0.05%",
-    "value": -0.05,
-    "asOfDate": "Nov 24 2026",
+    "display": "0.02%",
+    "value": 0.02,
+    "asOfDate": "Nov 25 2026",
     "source": "official fund page Fund Details Premium/Discount"
   },
   "aum": {
-    "display": "$27.98 M",
-    "value": 27976953.21,
-    "asOfDate": "Nov 24 2026",
+    "display": "$28.01 M",
+    "value": 28007545.49,
+    "asOfDate": "Nov 25 2026",
     "source": "official fund page Net Assets"
   },
   "fundFacts": {
@@ -67,7 +67,7 @@
     "dividendYieldKind": "indicated (latest distribution x inferred payments per year / NAV; Pacer publishes no distribution yield)",
     "secYield": 0.76,
     "secYieldText": "0.76%",
-    "secYieldKind": "30 Day SEC Yield published on the official fund page as of Nov 24 2026"
+    "secYieldKind": "30 Day SEC Yield published on the official fund page as of Nov 25 2026"
   },
   "returns": {
     "derivedFrom": "official Pacer ETFs NAV total returns as of the month end (product listing and fund page); null where Pacer publishes none",

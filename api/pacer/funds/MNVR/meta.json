@@ -7,7 +7,7 @@
     "fundPage": "https://www.paceretfs.com/products/structured-outcome-strategies/MNVR",
     "officialProductPage": "https://www.paceretfs.com/products/structured-outcome-strategies/MNVR",
     "productPageRendering": "read-only rendering proxy (r.jina.ai) of the official fund page",
-    "productPageAsOf": "Nov 24 2026",
+    "productPageAsOf": "Nov 25 2026",
     "catalogListing": "https://www.paceretfs.com/products/",
     "holdingsDownload": "https://www.sec.gov/Archives/edgar/data/1616668/000089418926029022/0000894189-26-029022.txt",
     "officialHoldingsDownload": "https://www.paceretfs.com/products/holdings_download/MNVR",
@@ -35,30 +35,30 @@
   "nav": {
     "display": "$32.63",
     "value": 32.63,
-    "asOfDate": "Nov 24 2026"
+    "asOfDate": "Nov 25 2026"
   },
   "marketPrice": {
-    "display": "$32.67",
-    "value": 32.67,
-    "asOfDate": "Nov 24 2026",
+    "display": "$32.64",
+    "value": 32.64,
+    "asOfDate": "Nov 25 2026",
     "source": "official fund page Market Price (closing price as of the Fund Details date)"
   },
   "premiumDiscount": {
-    "display": "0.09%",
-    "value": 0.09,
-    "asOfDate": "Nov 24 2026",
+    "display": "0.03%",
+    "value": 0.03,
+    "asOfDate": "Nov 25 2026",
     "source": "official fund page Fund Details Premium/Discount"
   },
   "aum": {
     "display": "$2.45 M",
-    "value": 2447582.67,
-    "asOfDate": "Nov 24 2026",
+    "value": 2447112.68,
+    "asOfDate": "Nov 25 2026",
     "source": "official fund page Net Assets"
   },
   "fundFacts": {
     "sharesOutstanding": 75000,
     "publishedTotalHoldings": 6,
-    "medianBidAskSpread": 0.002434
+    "medianBidAskSpread": 0.002462
   },
   "yields": {
     "dividendYield": null,

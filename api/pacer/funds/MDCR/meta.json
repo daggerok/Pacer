@@ -7,7 +7,7 @@
     "fundPage": "https://www.paceretfs.com/products/structured-outcome-strategies/MDCR",
     "officialProductPage": "https://www.paceretfs.com/products/structured-outcome-strategies/MDCR",
     "productPageRendering": "read-only rendering proxy (r.jina.ai) of the official fund page",
-    "productPageAsOf": "Nov 24 2026",
+    "productPageAsOf": "Nov 25 2026",
     "catalogListing": "https://www.paceretfs.com/products/",
     "holdingsDownload": "https://www.sec.gov/Archives/edgar/data/1616668/000089418926028993/0000894189-26-028993.txt",
     "officialHoldingsDownload": "https://www.paceretfs.com/products/holdings_download/MDCR",
@@ -33,32 +33,32 @@
     "kind": "Total Expenses published on the official fund page (product listing for funds without a page value)"
   },
   "nav": {
-    "display": "$31.94",
-    "value": 31.94,
-    "asOfDate": "Nov 24 2026"
+    "display": "$31.95",
+    "value": 31.95,
+    "asOfDate": "Nov 25 2026"
   },
   "marketPrice": {
-    "display": "$31.97",
-    "value": 31.97,
-    "asOfDate": "Nov 24 2026",
+    "display": "$32.00",
+    "value": 32,
+    "asOfDate": "Nov 25 2026",
     "source": "official fund page Market Price (closing price as of the Fund Details date)"
   },
   "premiumDiscount": {
-    "display": "0.08%",
-    "value": 0.08,
-    "asOfDate": "Nov 24 2026",
+    "display": "0.17%",
+    "value": 0.17,
+    "asOfDate": "Nov 25 2026",
     "source": "official fund page Fund Details Premium/Discount"
   },
   "aum": {
     "display": "$7.19 M",
-    "value": 7186656.1,
-    "asOfDate": "Nov 24 2026",
+    "value": 7187766.1,
+    "asOfDate": "Nov 25 2026",
     "source": "official fund page Net Assets"
   },
   "fundFacts": {
     "sharesOutstanding": 225000,
     "publishedTotalHoldings": 6,
-    "medianBidAskSpread": 0.002721
+    "medianBidAskSpread": 0.002715
   },
   "yields": {
     "dividendYield": null,

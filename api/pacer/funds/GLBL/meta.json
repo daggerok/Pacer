@@ -7,7 +7,7 @@
     "fundPage": "https://www.paceretfs.com/products/GLBL",
     "officialProductPage": "https://www.paceretfs.com/products/GLBL",
     "productPageRendering": "read-only rendering proxy (r.jina.ai) of the official fund page",
-    "productPageAsOf": "Nov 24 2026",
+    "productPageAsOf": "Nov 25 2026",
     "catalogListing": "https://www.paceretfs.com/products/",
     "holdingsDownload": "https://www.sec.gov/Archives/edgar/data/1616668/000089418926029009/0000894189-26-029009.txt",
     "officialHoldingsDownload": "https://www.paceretfs.com/products/holdings_download/GLBL",
@@ -33,32 +33,32 @@
     "kind": "Total Expenses published on the official fund page (product listing for funds without a page value)"
   },
   "nav": {
-    "display": "$25.89",
-    "value": 25.89,
-    "asOfDate": "Nov 24 2026"
-  },
-  "marketPrice": {
     "display": "$25.83",
     "value": 25.83,
-    "asOfDate": "Nov 24 2026",
+    "asOfDate": "Nov 25 2026"
+  },
+  "marketPrice": {
+    "display": "$25.88",
+    "value": 25.88,
+    "asOfDate": "Nov 25 2026",
     "source": "official fund page Market Price (closing price as of the Fund Details date)"
   },
   "premiumDiscount": {
-    "display": "-0.24%",
-    "value": -0.24,
-    "asOfDate": "Nov 24 2026",
+    "display": "0.18%",
+    "value": 0.18,
+    "asOfDate": "Nov 25 2026",
     "source": "official fund page Fund Details Premium/Discount"
   },
   "aum": {
-    "display": "$1.04 M",
-    "value": 1035527.22,
-    "asOfDate": "Nov 24 2026",
+    "display": "$1.03 M",
+    "value": 1033262.76,
+    "asOfDate": "Nov 25 2026",
     "source": "official fund page Net Assets"
   },
   "fundFacts": {
     "sharesOutstanding": 40000,
     "publishedTotalHoldings": 359,
-    "medianBidAskSpread": 0.002192
+    "medianBidAskSpread": 0.002195
   },
   "yields": {
     "dividendYield": 0.13,

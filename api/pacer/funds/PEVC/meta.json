@@ -7,7 +7,7 @@
     "fundPage": "https://www.paceretfs.com/products/pevc",
     "officialProductPage": "https://www.paceretfs.com/products/pevc",
     "productPageRendering": "read-only rendering proxy (r.jina.ai) of the official fund page",
-    "productPageAsOf": "Nov 24 2026",
+    "productPageAsOf": "Nov 25 2026",
     "catalogListing": "https://www.paceretfs.com/products/",
     "holdingsDownload": "https://www.sec.gov/Archives/edgar/data/1616668/000089418926028994/0000894189-26-028994.txt",
     "officialHoldingsDownload": "https://www.paceretfs.com/products/holdings_download/PEVC",
@@ -33,41 +33,41 @@
     "kind": "Total Expenses published on the official fund page (product listing for funds without a page value)"
   },
   "nav": {
-    "display": "$27.04",
-    "value": 27.04,
-    "asOfDate": "Nov 24 2026"
+    "display": "$26.98",
+    "value": 26.98,
+    "asOfDate": "Nov 25 2026"
   },
   "marketPrice": {
-    "display": "$27.01",
-    "value": 27.01,
-    "asOfDate": "Nov 24 2026",
+    "display": "$27.00",
+    "value": 27,
+    "asOfDate": "Nov 25 2026",
     "source": "official fund page Market Price (closing price as of the Fund Details date)"
   },
   "premiumDiscount": {
-    "display": "-0.13%",
-    "value": -0.13,
-    "asOfDate": "Nov 24 2026",
+    "display": "0.06%",
+    "value": 0.06,
+    "asOfDate": "Nov 25 2026",
     "source": "official fund page Fund Details Premium/Discount"
   },
   "aum": {
     "display": "$2.16 M",
-    "value": 2163385.4,
-    "asOfDate": "Nov 24 2026",
+    "value": 2158702.09,
+    "asOfDate": "Nov 25 2026",
     "source": "official fund page Net Assets"
   },
   "fundFacts": {
     "sharesOutstanding": 80000,
     "publishedTotalHoldings": 213,
-    "medianBidAskSpread": 0.001761
+    "medianBidAskSpread": 0.001789
   },
   "yields": {
     "dividendYield": 0.21,
     "dividendYieldText": "0.21%",
     "dividendYieldBasis": "indicated",
     "dividendYieldKind": "indicated (latest distribution x inferred payments per year / NAV; Pacer publishes no distribution yield)",
-    "secYield": 0.38,
-    "secYieldText": "0.38%",
-    "secYieldKind": "30 Day SEC Yield published on the official fund page as of Nov 24 2026"
+    "secYield": 0.4,
+    "secYieldText": "0.40%",
+    "secYieldKind": "30 Day SEC Yield published on the official fund page as of Nov 25 2026"
   },
   "returns": {
     "derivedFrom": "official Pacer ETFs NAV total returns as of the month end (product listing and fund page); null where Pacer publishes none",
