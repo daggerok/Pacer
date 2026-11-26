@@ -169,8 +169,8 @@
     ],
     "pageSize": 250,
     "totalRows": 3,
-    "asOfDate": "2026-11-25",
-    "asOf": "Nov 25 2026",
+    "asOfDate": "2026-11-27",
+    "asOf": "Nov 27 2026",
     "source": "paceretfs.com fund page Top 10 Holdings (partial: 3 positions only; the full Daily Holdings file is a protected download and no SEC N-PORT-P filing was available; read via the rendering proxy)",
     "marketValueBasis": "derived: weight x Total Net Assets (the fund page publishes weights, not values)",
     "publishedTotalHoldings": 3
