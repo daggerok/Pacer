@@ -2,7 +2,7 @@
   "ticker": "WDAI",
   "page": 1,
   "pageSize": 1000,
-  "totalRows": 140,
+  "totalRows": 141,
   "headers": [
     "Date",
     "Close",
@@ -848,6 +848,12 @@
       "Date": "Nov 24 2026",
       "Close": "26.959999084472656",
       "Adj Close": "26.96",
+      "Volume": "100"
+    },
+    {
+      "Date": "Nov 25 2026",
+      "Close": "27.100000381469727",
+      "Adj Close": "27.1",
       "Volume": "100"
     }
   ]

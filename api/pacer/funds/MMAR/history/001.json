@@ -2,7 +2,7 @@
   "ticker": "MMAR",
   "page": 1,
   "pageSize": 1000,
-  "totalRows": 115,
+  "totalRows": 116,
   "headers": [
     "Date",
     "Close",
@@ -698,6 +698,12 @@
       "Date": "Nov 24 2026",
       "Close": "32.060001373291016",
       "Adj Close": "32.06",
+      "Volume": "100"
+    },
+    {
+      "Date": "Nov 25 2026",
+      "Close": "32.04999923706055",
+      "Adj Close": "32.05",
       "Volume": "100"
     }
   ]
