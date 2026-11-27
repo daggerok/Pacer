@@ -2,7 +2,7 @@
   "ticker": "PSFM",
   "page": 2,
   "pageSize": 1000,
-  "totalRows": 1421,
+  "totalRows": 1422,
   "headers": [
     "Date",
     "Close",
@@ -2535,6 +2535,12 @@
       "Close": "34.98400115966797",
       "Adj Close": "34.98",
       "Volume": "1100"
+    },
+    {
+      "Date": "Nov 27 2026",
+      "Close": "35.25429916381836",
+      "Adj Close": "35.25",
+      "Volume": "506"
     }
   ]
 }

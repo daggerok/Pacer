@@ -2,7 +2,7 @@
   "ticker": "PSMD",
   "page": 1,
   "pageSize": 1000,
-  "totalRows": 1488,
+  "totalRows": 1489,
   "headers": [
     "Date",
     "Close",

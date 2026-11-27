@@ -2,7 +2,7 @@
   "ticker": "PSFO",
   "page": 2,
   "pageSize": 1000,
-  "totalRows": 1294,
+  "totalRows": 1295,
   "headers": [
     "Date",
     "Close",
@@ -1773,6 +1773,12 @@
       "Close": "34.577999114990234",
       "Adj Close": "34.58",
       "Volume": "21500"
+    },
+    {
+      "Date": "Nov 27 2026",
+      "Close": "34.91339874267578",
+      "Adj Close": "34.91",
+      "Volume": "2222"
     }
   ]
 }

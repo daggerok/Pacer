@@ -2,7 +2,7 @@
   "ticker": "QDPL",
   "page": 2,
   "pageSize": 1000,
-  "totalRows": 1341,
+  "totalRows": 1342,
   "headers": [
     "Date",
     "Close",
@@ -2055,6 +2055,12 @@
       "Close": "43.08000183105469",
       "Adj Close": "43.08",
       "Volume": "235200"
+    },
+    {
+      "Date": "Nov 27 2026",
+      "Close": "43.650001525878906",
+      "Adj Close": "43.65",
+      "Volume": "75051"
     }
   ]
 }

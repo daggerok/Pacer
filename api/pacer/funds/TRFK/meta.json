@@ -58,7 +58,7 @@
   "fundFacts": {
     "sharesOutstanding": 12620000,
     "publishedTotalHoldings": 99,
-    "medianBidAskSpread": 0.001964
+    "medianBidAskSpread": 0.001966
   },
   "yields": {
     "dividendYield": 0.1,
@@ -217,8 +217,8 @@
       "history/002.json"
     ],
     "pageSize": 1000,
-    "totalRows": 1120,
-    "asOf": "Nov 25 2026",
+    "totalRows": 1121,
+    "asOf": "Nov 27 2026",
     "source": "Yahoo Finance public chart API (adjusted close)"
   }
 }

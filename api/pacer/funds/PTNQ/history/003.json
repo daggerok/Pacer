@@ -2,7 +2,7 @@
   "ticker": "PTNQ",
   "page": 3,
   "pageSize": 1000,
-  "totalRows": 2882,
+  "totalRows": 2883,
   "headers": [
     "Date",
     "Close",
@@ -5301,6 +5301,12 @@
       "Close": "74.87999725341797",
       "Adj Close": "74.88",
       "Volume": "28000"
+    },
+    {
+      "Date": "Nov 27 2026",
+      "Close": "75.81559753417969",
+      "Adj Close": "75.82",
+      "Volume": "2242"
     }
   ]
 }

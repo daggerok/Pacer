@@ -2,7 +2,7 @@
   "ticker": "INDS",
   "page": 1,
   "pageSize": 1000,
-  "totalRows": 2146,
+  "totalRows": 2147,
   "headers": [
     "Date",
     "Close",
