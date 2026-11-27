@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-26T21:45:11Z",
+  "generatedAt": "2026-11-27T09:45:47Z",
   "source": {
     "provider": "Pacer ETFs (Pacer Advisors, Inc.; Pacer Funds Trust, SEC CIK 0001616668), U.S.-listed ETFs",
     "market": "us",
@@ -1781,7 +1781,7 @@
         "maxDrawdown3y": -2.87,
         "maxDrawdown5y": -7.6,
         "maxDrawdown10y": -20.96,
-        "vsSpy1y": -2.59,
+        "vsSpy1y": -2.58,
         "vsSpy3y": -10.63,
         "vsSpy5y": -4.18,
         "vsSpy10y": -9.9,

@@ -58,7 +58,7 @@
   "fundFacts": {
     "sharesOutstanding": 1400000,
     "publishedTotalHoldings": 100,
-    "medianBidAskSpread": 0.00091
+    "medianBidAskSpread": 0.000917
   },
   "yields": {
     "dividendYield": 0.29,
