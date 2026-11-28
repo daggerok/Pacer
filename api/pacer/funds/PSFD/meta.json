@@ -7,7 +7,7 @@
     "fundPage": "https://www.paceretfs.com/products/structured-outcome-strategies/PSFD",
     "officialProductPage": "https://www.paceretfs.com/products/structured-outcome-strategies/PSFD",
     "productPageRendering": "read-only rendering proxy (r.jina.ai) of the official fund page",
-    "productPageAsOf": "Nov 25 2026",
+    "productPageAsOf": "Nov 27 2026",
     "catalogListing": "https://www.paceretfs.com/products/",
     "holdingsDownload": "https://www.sec.gov/Archives/edgar/data/1616668/000089418926029045/0000894189-26-029045.txt",
     "officialHoldingsDownload": "https://www.paceretfs.com/products/holdings_download/PSFD",
@@ -33,26 +33,26 @@
     "kind": "Total Expenses published on the official fund page (product listing for funds without a page value)"
   },
   "nav": {
-    "display": "$39.40",
-    "value": 39.4,
-    "asOfDate": "Nov 25 2026"
+    "display": "$39.85",
+    "value": 39.85,
+    "asOfDate": "Nov 27 2026"
   },
   "marketPrice": {
-    "display": "$39.42",
-    "value": 39.42,
-    "asOfDate": "Nov 25 2026",
+    "display": "$39.87",
+    "value": 39.87,
+    "asOfDate": "Nov 27 2026",
     "source": "official fund page Market Price (closing price as of the Fund Details date)"
   },
   "premiumDiscount": {
-    "display": "0.05%",
-    "value": 0.05,
-    "asOfDate": "Nov 25 2026",
+    "display": "0.04%",
+    "value": 0.04,
+    "asOfDate": "Nov 27 2026",
     "source": "official fund page Fund Details Premium/Discount"
   },
   "aum": {
-    "display": "$60.08 M",
-    "value": 60081606.7,
-    "asOfDate": "Nov 25 2026",
+    "display": "$60.78 M",
+    "value": 60775848.56,
+    "asOfDate": "Nov 27 2026",
     "source": "official fund page Net Assets"
   },
   "fundFacts": {

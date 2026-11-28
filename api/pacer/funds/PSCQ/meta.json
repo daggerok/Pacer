@@ -7,7 +7,7 @@
     "fundPage": "https://www.paceretfs.com/products/structured-outcome-strategies/PSCQ",
     "officialProductPage": "https://www.paceretfs.com/products/structured-outcome-strategies/PSCQ",
     "productPageRendering": "read-only rendering proxy (r.jina.ai) of the official fund page",
-    "productPageAsOf": "Nov 25 2026",
+    "productPageAsOf": "Nov 27 2026",
     "catalogListing": "https://www.paceretfs.com/products/",
     "holdingsDownload": "https://www.sec.gov/Archives/edgar/data/1616668/000089418926029049/0000894189-26-029049.txt",
     "officialHoldingsDownload": "https://www.paceretfs.com/products/holdings_download/PSCQ",
@@ -33,26 +33,26 @@
     "kind": "Total Expenses published on the official fund page (product listing for funds without a page value)"
   },
   "nav": {
-    "display": "$31.24",
-    "value": 31.24,
-    "asOfDate": "Nov 25 2026"
+    "display": "$31.51",
+    "value": 31.51,
+    "asOfDate": "Nov 27 2026"
   },
   "marketPrice": {
-    "display": "$31.29",
-    "value": 31.29,
-    "asOfDate": "Nov 25 2026",
+    "display": "$31.46",
+    "value": 31.46,
+    "asOfDate": "Nov 27 2026",
     "source": "official fund page Market Price (closing price as of the Fund Details date)"
   },
   "premiumDiscount": {
-    "display": "0.16%",
-    "value": 0.16,
-    "asOfDate": "Nov 25 2026",
+    "display": "-0.17%",
+    "value": -0.17,
+    "asOfDate": "Nov 27 2026",
     "source": "official fund page Fund Details Premium/Discount"
   },
   "aum": {
-    "display": "$51.54 M",
-    "value": 51543642.68,
-    "asOfDate": "Nov 25 2026",
+    "display": "$51.99 M",
+    "value": 51993381.76,
+    "asOfDate": "Nov 27 2026",
     "source": "official fund page Net Assets"
   },
   "fundFacts": {

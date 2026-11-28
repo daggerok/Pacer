@@ -7,7 +7,7 @@
     "fundPage": "https://www.paceretfs.com/products/PEXL",
     "officialProductPage": "https://www.paceretfs.com/products/PEXL",
     "productPageRendering": "read-only rendering proxy (r.jina.ai) of the official fund page",
-    "productPageAsOf": "Nov 25 2026",
+    "productPageAsOf": "Nov 27 2026",
     "catalogListing": "https://www.paceretfs.com/products/",
     "holdingsDownload": "https://www.sec.gov/Archives/edgar/data/1616668/000089418926029023/0000894189-26-029023.txt",
     "officialHoldingsDownload": "https://www.paceretfs.com/products/holdings_download/PEXL",
@@ -33,26 +33,26 @@
     "kind": "Total Expenses published on the official fund page (product listing for funds without a page value)"
   },
   "nav": {
-    "display": "$65.25",
-    "value": 65.25,
-    "asOfDate": "Nov 25 2026"
+    "display": "$66.83",
+    "value": 66.83,
+    "asOfDate": "Nov 27 2026"
   },
   "marketPrice": {
-    "display": "$65.23",
-    "value": 65.23,
-    "asOfDate": "Nov 25 2026",
+    "display": "$66.60",
+    "value": 66.6,
+    "asOfDate": "Nov 27 2026",
     "source": "official fund page Market Price (closing price as of the Fund Details date)"
   },
   "premiumDiscount": {
-    "display": "-0.03%",
-    "value": -0.03,
-    "asOfDate": "Nov 25 2026",
+    "display": "-0.35%",
+    "value": -0.35,
+    "asOfDate": "Nov 27 2026",
     "source": "official fund page Fund Details Premium/Discount"
   },
   "aum": {
-    "display": "$48.28 M",
-    "value": 48282237.13,
-    "asOfDate": "Nov 25 2026",
+    "display": "$49.46 M",
+    "value": 49455430.7,
+    "asOfDate": "Nov 27 2026",
     "source": "official fund page Net Assets"
   },
   "fundFacts": {
@@ -61,8 +61,8 @@
     "medianBidAskSpread": 0.002351
   },
   "yields": {
-    "dividendYield": 0.51,
-    "dividendYieldText": "0.51%",
+    "dividendYield": 0.5,
+    "dividendYieldText": "0.50%",
     "dividendYieldBasis": "indicated",
     "dividendYieldKind": "indicated (latest distribution x inferred payments per year / NAV; Pacer publishes no distribution yield)",
     "secYield": null,

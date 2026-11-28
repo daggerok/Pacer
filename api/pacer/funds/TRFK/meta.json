@@ -7,7 +7,7 @@
     "fundPage": "https://www.paceretfs.com/products/TRFK",
     "officialProductPage": "https://www.paceretfs.com/products/TRFK",
     "productPageRendering": "read-only rendering proxy (r.jina.ai) of the official fund page",
-    "productPageAsOf": "Nov 25 2026",
+    "productPageAsOf": "Nov 27 2026",
     "catalogListing": "https://www.paceretfs.com/products/",
     "holdingsDownload": "https://www.sec.gov/Archives/edgar/data/1616668/000089418926029019/0000894189-26-029019.txt",
     "officialHoldingsDownload": "https://www.paceretfs.com/products/holdings_download/TRFK",
@@ -33,36 +33,36 @@
     "kind": "Total Expenses published on the official fund page (product listing for funds without a page value)"
   },
   "nav": {
-    "display": "$68.50",
-    "value": 68.5,
-    "asOfDate": "Nov 25 2026"
+    "display": "$71.78",
+    "value": 71.78,
+    "asOfDate": "Nov 27 2026"
   },
   "marketPrice": {
-    "display": "$68.83",
-    "value": 68.83,
-    "asOfDate": "Nov 25 2026",
+    "display": "$72.03",
+    "value": 72.03,
+    "asOfDate": "Nov 27 2026",
     "source": "official fund page Market Price (closing price as of the Fund Details date)"
   },
   "premiumDiscount": {
-    "display": "0.48%",
-    "value": 0.48,
-    "asOfDate": "Nov 25 2026",
+    "display": "0.35%",
+    "value": 0.35,
+    "asOfDate": "Nov 27 2026",
     "source": "official fund page Fund Details Premium/Discount"
   },
   "aum": {
-    "display": "$864.47 M",
-    "value": 864474697.64,
-    "asOfDate": "Nov 25 2026",
+    "display": "$914.43 M",
+    "value": 914434840.22,
+    "asOfDate": "Nov 27 2026",
     "source": "official fund page Net Assets"
   },
   "fundFacts": {
-    "sharesOutstanding": 12620000,
+    "sharesOutstanding": 12740000,
     "publishedTotalHoldings": 99,
     "medianBidAskSpread": 0.001966
   },
   "yields": {
-    "dividendYield": 0.1,
-    "dividendYieldText": "0.10%",
+    "dividendYield": 0.09,
+    "dividendYieldText": "0.09%",
     "dividendYieldBasis": "indicated",
     "dividendYieldKind": "indicated (latest distribution x inferred payments per year / NAV; Pacer publishes no distribution yield)",
     "secYield": null,

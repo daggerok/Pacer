@@ -7,7 +7,7 @@
     "fundPage": "https://www.paceretfs.com/products/PALC",
     "officialProductPage": "https://www.paceretfs.com/products/PALC",
     "productPageRendering": "read-only rendering proxy (r.jina.ai) of the official fund page",
-    "productPageAsOf": "Nov 25 2026",
+    "productPageAsOf": "Nov 27 2026",
     "catalogListing": "https://www.paceretfs.com/products/",
     "holdingsDownload": "https://www.sec.gov/Archives/edgar/data/1616668/000089418926029044/0000894189-26-029044.txt",
     "officialHoldingsDownload": "https://www.paceretfs.com/products/holdings_download/PALC",
@@ -33,26 +33,26 @@
     "kind": "Total Expenses published on the official fund page (product listing for funds without a page value)"
   },
   "nav": {
-    "display": "$52.66",
-    "value": 52.66,
-    "asOfDate": "Nov 25 2026"
+    "display": "$53.02",
+    "value": 53.02,
+    "asOfDate": "Nov 27 2026"
   },
   "marketPrice": {
-    "display": "$52.74",
-    "value": 52.74,
-    "asOfDate": "Nov 25 2026",
+    "display": "$53.02",
+    "value": 53.02,
+    "asOfDate": "Nov 27 2026",
     "source": "official fund page Market Price (closing price as of the Fund Details date)"
   },
   "premiumDiscount": {
-    "display": "0.16%",
-    "value": 0.16,
-    "asOfDate": "Nov 25 2026",
+    "display": "0.00%",
+    "value": 0,
+    "asOfDate": "Nov 27 2026",
     "source": "official fund page Fund Details Premium/Discount"
   },
   "aum": {
-    "display": "$184.30 M",
-    "value": 184297841.06,
-    "asOfDate": "Nov 25 2026",
+    "display": "$185.56 M",
+    "value": 185561650.02,
+    "asOfDate": "Nov 27 2026",
     "source": "official fund page Net Assets"
   },
   "fundFacts": {
@@ -61,8 +61,8 @@
     "medianBidAskSpread": null
   },
   "yields": {
-    "dividendYield": 1.65,
-    "dividendYieldText": "1.65%",
+    "dividendYield": 1.64,
+    "dividendYieldText": "1.64%",
     "dividendYieldBasis": "indicated",
     "dividendYieldKind": "indicated (latest distribution x inferred payments per year / NAV; Pacer publishes no distribution yield)",
     "secYield": null,
