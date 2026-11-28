@@ -2,7 +2,7 @@
   "ticker": "QFHD",
   "page": 1,
   "pageSize": 1000,
-  "totalRows": 219,
+  "totalRows": 220,
   "headers": [
     "Date",
     "Close",
@@ -1322,6 +1322,12 @@
       "Date": "Nov 25 2026",
       "Close": "28.768999099731445",
       "Adj Close": "28.77",
+      "Volume": "100"
+    },
+    {
+      "Date": "Nov 27 2026",
+      "Close": "28.8799991607666",
+      "Adj Close": "28.88",
       "Volume": "100"
     }
   ]

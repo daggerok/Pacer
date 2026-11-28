@@ -2,7 +2,7 @@
   "ticker": "ODDS",
   "page": 2,
   "pageSize": 1000,
-  "totalRows": 1162,
+  "totalRows": 1163,
   "headers": [
     "Date",
     "Close",
@@ -981,6 +981,12 @@
       "Close": "23.21299934387207",
       "Adj Close": "23.21",
       "Volume": "900"
+    },
+    {
+      "Date": "Nov 27 2026",
+      "Close": "23.611000061035156",
+      "Adj Close": "23.61",
+      "Volume": "100"
     }
   ]
 }

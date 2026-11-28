@@ -2,7 +2,7 @@
   "ticker": "QFRD",
   "page": 1,
   "pageSize": 1000,
-  "totalRows": 219,
+  "totalRows": 220,
   "headers": [
     "Date",
     "Close",
@@ -1323,6 +1323,12 @@
       "Close": "28.239999771118164",
       "Adj Close": "28.24",
       "Volume": "200"
+    },
+    {
+      "Date": "Nov 27 2026",
+      "Close": "28.69700050354004",
+      "Adj Close": "28.7",
+      "Volume": "100"
     }
   ]
 }

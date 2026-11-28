@@ -2,7 +2,7 @@
   "ticker": "SHPP",
   "page": 2,
   "pageSize": 1000,
-  "totalRows": 1120,
+  "totalRows": 1121,
   "headers": [
     "Date",
     "Close",
@@ -728,6 +728,12 @@
       "Date": "Nov 25 2026",
       "Close": "33.117000579833984",
       "Adj Close": "33.12",
+      "Volume": "100"
+    },
+    {
+      "Date": "Nov 27 2026",
+      "Close": "33.43199920654297",
+      "Adj Close": "33.43",
       "Volume": "100"
     }
   ]

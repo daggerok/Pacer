@@ -2,7 +2,7 @@
   "ticker": "PIEL",
   "page": 1,
   "pageSize": 1000,
-  "totalRows": 230,
+  "totalRows": 231,
   "headers": [
     "Date",
     "Close",
@@ -1388,6 +1388,12 @@
       "Date": "Nov 25 2026",
       "Close": "26.733999252319336",
       "Adj Close": "26.73",
+      "Volume": "100"
+    },
+    {
+      "Date": "Nov 27 2026",
+      "Close": "27.198999404907227",
+      "Adj Close": "27.2",
       "Volume": "100"
     }
   ]
